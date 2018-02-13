@@ -76,3 +76,5 @@ lib/bundler/man
 spec/reports
 /spec/examples.txt
 .env
+*.sh
+/public/assets
