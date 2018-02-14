@@ -80,14 +80,14 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  # config.fits_path = "fits.sh"
+  config.fits_path = ENV['FITS_PATH']
 
   # Path to the file derivatives creation tool
-  # config.libreoffice_path = "soffice"
+  config.libreoffice_path = "soffice"
 
   # Option to enable/disable full text extraction from PDFs
   # Default is true, set to false to disable full text extraction
-  # config.extract_full_text = true
+  config.extract_full_text = true
 
   # How many seconds back from the current time that we should show by default of the user's activity on the user's dashboard
   # config.activity_to_show_default_seconds_since_now = 24*60*60
@@ -147,17 +147,17 @@ Hyrax.config do |config|
   # config.working_path = Rails.root.join( 'tmp', 'uploads')
 
   # Should the media display partial render a download link?
-  # config.display_media_download_link = true
+  config.display_media_download_link = true
 
   # A configuration point for changing the behavior of the license service
   #   @see Hyrax::LicenseService for implementation details
   # config.license_service_class = Hyrax::LicenseService
 
   # Labels for display of permission levels
-  # config.permission_levels = { "View/Download" => "read", "Edit access" => "edit" }
+  config.permission_levels = { "View/Download" => "read", "Edit access" => "edit" }
 
   # Labels for permission level options used in dropdown menus
-  # config.permission_options = { "Choose Access" => "none", "View/Download" => "read", "Edit" => "edit" }
+  config.permission_options = { "Choose Access" => "none", "View/Download" => "read", "Edit" => "edit" }
 
   # Labels for owner permission levels
   # config.owner_permission_levels = { "Edit Access" => "edit" }

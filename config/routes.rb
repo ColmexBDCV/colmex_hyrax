@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   
+  mount Sidekiq::Web => '/jobs'
+
   mount Blacklight::Engine => '/'
   
     concern :searchable, Blacklight::Routes::Searchable.new
