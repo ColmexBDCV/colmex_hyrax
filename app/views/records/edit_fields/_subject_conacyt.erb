@@ -1,0 +1,6 @@
+<%= f.input :subject_conacyt,
+    collection: SubjectService.areascono,
+    include_blank: true,
+    #item_helper: method(:include_current_value),
+    input_html: { class: 'form-control' }
+%>
