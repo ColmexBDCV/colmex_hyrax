@@ -43,9 +43,20 @@ module AssignorService
         end
       end
     end
-    gw.creator_conacyt = creator
-    gw.contributor_conacyt = contributor
-    gw.save
+    unless creator.empty?
+      gw.creator_conacyt = creator
+      gw.save
+    else
+      gw.creator_conacyt = nil
+      gw.save  
+    end
+    unless contributor.empty?
+      gw.contributor_conacyt = contributor
+      gw.save
+    else
+      gw.contributor_conacyt = nil
+      gw.save 
+    end
     # puts "\n\n\n\n"
     # puts creator
     # puts "\n\n\n\n"

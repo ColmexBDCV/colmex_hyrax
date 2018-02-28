@@ -40,6 +40,7 @@ gem 'simple_form', '<= 3.5.0'
 gem 'hydra-role-management'
 gem 'sidekiq'
 gem 'sidekiq-failures'
+gem 'blacklight_oai_provider'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
