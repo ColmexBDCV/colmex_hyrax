@@ -1,6 +1,7 @@
 class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
+  include BlacklightOaiProvider::Controller
 
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
@@ -18,6 +19,21 @@ class CatalogController < ApplicationController
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]
 
+    config.oai = {
+      provider: {
+        repository_name: 'Test',
+        repository_url: 'http://localhost/catalog/oai',
+        record_prefix: 'oai:test',
+        admin_email: 'root@localhost',
+        sample_id: '109660'
+      },
+      document: {
+        limit: 25,            # number of records returned with each request, default: 15
+        set_fields: [        # ability to define ListSets, optional, default: nil
+          { label: 'adminSet', solr_field: 'admin_set_tesim' }
+        ]
+      }
+    }  
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
