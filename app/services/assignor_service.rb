@@ -20,8 +20,13 @@ module AssignorService
 
           conn = Faraday.new :url =>'http://catalogs.repositorionacionalcti.mx/webresources/', :headers => { :Authorization => "Basic #{ENV['CONACYT_AUTH']}"}
           a = conn.get "persona/byNombreCompleto/params;nombre=#{buscar}"
-          data = JSON.parse(a.body.force_encoding('utf-8'))
-                      
+          
+          begin
+            data = JSON.parse(a.body.force_encoding('utf-8'))
+          rescue JSON::ParserError
+            data = {}
+          end
+          
           unless data.empty?
             
             autor = ""
