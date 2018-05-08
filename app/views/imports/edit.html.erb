@@ -1,0 +1,95 @@
+<h1>Edit import</h1>
+
+<% if @import.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger" role="alert">
+    <p><b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> <%= pluralize(@import.errors.count, "error") %> prohibited this import from being saved:</b></p>
+    <ul>
+      <% @import.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='row'>
+  <div class='col-md-8'>
+
+    <%= form_for @import, html: { class: 'form-horizontal' } do |f| %>
+
+      <%= f.hidden_field :import_type, value: "Generic"%>
+
+      <div class='form-group required'>
+        <%= f.label :name, 'Import name', class: 'col-md-3 control-label' %>
+        <div class='col-md-9'>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :unit_id, "#{t('osul.unit_label')}", class: 'col-md-3 control-label' %>
+        <div class='col-md-9'>
+          <%= f.select :unit_id, options_for_select(@units.map{|u| [u.name, u.id]}, @import.unit_id), {}, {class: 'chosen-select'} %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :rights, "Rights for this collection", class: 'col-md-3 control-label' %>
+        <div class='col-md-9'>
+          <%= f.select :rights, options_for_select(RightsService.select_active_options, @import.rights), {include_blank: 'Select rights...'}, { class: 'chosen-select' } %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :preservation_level, 'Preservation level', class: 'col-md-3 control-label' %>
+        <div class='col-md-9'>
+          <%= f.select :preservation_level, options_for_select(PreservationLevelRationalesService.select_all_options, @import.preservation_level), {include_blank: 'Select preservation level...'}, { class: 'chosen-select' } %>
+        </div>
+      </div>
+
+      <% if can? :publish, GenericWork %>
+        <div class='form-group'>
+          <%= f.label :visibility, 'Visibility', class: 'col-md-3 control-label' %>
+          <div class='col-md-9'>
+            <%= f.select :visibility, options_for_select(@visibility_levels, @import.visibility), {}, { class: 'chosen-select' } %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Image directory</label>
+        <div class="col-sm-9">
+          <p class="form-control-static"><%= @import.server_import_location_name %></p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">CSV file</label>
+        <div class="col-sm-9">
+          <p class="form-control-static"><%= @import.csv.original_filename %></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Metadata field mappings</h2>
+      <p>Select which column in the CSV file applies to which metadata fields.</p>
+
+      <%= f.fields_for :import_field_mappings do |i| %>
+        <div class='form-group <%= import_field_form_class_for i %>'>
+          <% value = (i.object.key == "collection_name") ?  "subject_conacyt" : i.object.key %>
+          <%= i.label i.object.key.to_sym, value.gsub('_', ' ').titleize, class: 'col-md-3 control-label' %>
+          <div class='col-md-9'>
+            <%= i.select :value, options_for_select(@import.csv_columns, selected: i.object.value),
+              {}, { class: import_field_select_class_for(i), multiple: true, data: { placeholder: 'Select columns...' } }  %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class='col-md-10'>
+        <%= f.submit 'Save', disable_with: 'Saving', class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', @import, class: 'btn btn-link' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

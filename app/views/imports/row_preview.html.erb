@@ -1,0 +1,18 @@
+<h1><%= @import.name %> - Item <%= @row_num +1 %></h1>
+
+<ul class="property-list">
+  <li>
+    <span><%= t('osul.unit_label') %></span>
+    <span><%= @import.unit.name %></span>
+  </li>
+  <li>
+    <span>Import last run</span>
+    <span><%= last_run_for @import %></span>
+  </li>
+</ul>
+
+<hr />
+
+<%= render :partial => 'import_preview', locals: {import: @import, object_previews: @preview_objects}  %>
+
+<%= link_to 'Back', :back %>

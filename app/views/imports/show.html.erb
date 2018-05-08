@@ -1,0 +1,79 @@
+<h1><%= @import.name %></h1>
+
+<% if @import.complete? and can? :finalize, @import %>
+  <div class="alert alert-warning">
+    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+    This import is complete but has not been finalized. Please click Finalize to complete the import process.<br>
+    <strong>NOTE:</strong> Finalized imports cannot be undone!
+  </div>
+<% end %>
+
+<ul class="property-list">
+  <li>
+    <span><%= t('osul.unit_label') %></span>
+    <span><%= @import.unit_name %></span>
+  </li>
+  <li>
+    <span>Created</span>
+    <span><%= @import.created_at.strftime("%-m/%-d/%Y %l:%M%P") %></span>
+  </li>
+  <li>
+    <span>Last run</span>
+    <span><%= last_run_for @import %></span>
+  </li>
+  <li>
+    <span>Status</span>
+    <span><span class="glyphicon <%= status_icon_class_for @import %>"></span>
+      <%= @import.status_name %>
+      <% if @import.complete? && @import.number_of_records_with_errors > 0 %>
+        (with <%= link_to 'errors', report_import_path(@import) %>)
+      <% end %>
+    </span>
+  </li>
+
+  <% if @import.in_progress?
+    pct_complete = number_to_percentage(@import.percent_records_imported, precision: 0) %>
+    <li class="progress-property">
+      <span>Progress</span>
+      <div class="progress-wrapper">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<%= @import.percent_records_imported.to_i %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= pct_complete %>">
+            <%= pct_complete %>
+          </div>
+        </div>
+      </div>
+    </li>
+    <script>startImportProgressBar(<%= @import.id %>);</script>
+  <% end %>
+</ul>
+
+<% if can? :finalize, @import %>
+  <%= link_to 'Finalize', finalize_import_path(@import), method: :post, class: 'btn btn-success', :data => {:confirm => 'Are you sure you want to finalize this import? You will no longer be able to undo imported records!'}  %>
+<% end %>
+
+<% if can? :start, @import %>
+  <%= link_to 'Start import', start_import_path(@import), method: :post, class: 'btn btn-success' %>
+<% elsif can? :undo, @import %>
+  <%= link_to 'Undo', undo_import_path(@import), method: :post, class: 'btn btn-warning', :data => {:confirm => 'Are you sure you want to remove all records created by this import?'} %>
+<% end %>
+
+<% if can? :edit, @import %>
+  <%= link_to 'Edit', edit_import_path(@import), class: 'btn btn-primary' %>
+<% end %>
+
+<% if can? :destroy, @import %>
+  <%= link_to 'Delete', @import, class: 'btn btn-warning', method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<% if can? :report, @import %>
+  <%= link_to 'Report', report_import_path(@import), class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Back', imports_path, class: 'btn btn-link' %>
+
+<hr>
+<%= render partial: 'import_preview', locals: {import: @import, object_previews: @preview_objects}  %>
+
+<%- if @import.reverting? %>
+  <script>startUndoProgressCheck(<%= @import.id %>);</script>
+<%- end %>

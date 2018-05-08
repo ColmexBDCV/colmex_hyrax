@@ -1,0 +1,83 @@
+<h1><%= @import.name %> report</h1>
+
+<ul class="property-list">
+  <li>
+    <span><%= t('osul.unit_label') %></span>
+    <span><%= @import.unit.name %></span>
+  </li>
+  <li>
+    <span>Import run</span>
+    <span><%= last_run_for @import %></span>
+  </li>
+  <li>
+    <span>Status</span>
+    <span><span class="glyphicon <%= status_icon_class_for @import %>"></span> <%= @import.status_name %></span>
+  </li>
+  <li>
+    <span>Rows in CSV</span>
+    <span><%= @import.csv_file_row_count %></span>
+  </li>
+  <li>
+    <span>Files in directory</span>
+    <span><%= @import.directory_file_count %></span>
+  </li>
+  <li>
+    <span>Records successfully imported</span>
+    <span><%= @import.number_of_successful_records %></span>
+  </li>
+  <li>
+    <span>Records with errors</span>
+    <span><%= @import.number_of_records_with_errors %></span>
+  </li>
+</ul>
+
+<h2>Records with invalid fields</h2>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Invalid fields</td>
+      <td>Options</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @import.invalid_records.each do |invalid_record| %>
+      <tr>
+        <td><%= link_to invalid_record[:name], edit_curation_concerns_generic_work_path(id: invalid_record[:generic_work_pid]) %></td>
+        <td><%= invalid_record[:fields].join(', ') %>
+        <td><%= link_to 'Edit', edit_curation_concerns_generic_work_path(id: invalid_record[:generic_work_pid]), class: 'btn btn-primary btn-mini' %></td>
+      </tr>
+    <% end.empty? %>
+      <tr><td colspan="3">There were no invalid records.</td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Records that could not be imported</h2>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <td>Csv Row</td>
+      <td>Error message</td>
+      <td>Options</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @import.unimported_records.each do |unimported_record| %>
+      <tr>
+        <td><%= unimported_record[:csv_row] %></td>
+        <td><%= unimported_record[:message] %>
+        <td><%= link_to 'Preview', row_preview_import_path(unimported_record.import_id, unimported_record[:csv_row]), class: 'btn btn-primary btn-mini' %></td>
+      </tr>
+    <% end.empty? %>
+      <tr><td colspan="3">There were no unimported records.</td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', @import %>

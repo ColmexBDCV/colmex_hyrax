@@ -1,0 +1,94 @@
+<h1>New import</h1>
+<p>Create a new batch import from a directory of image files and a comma separated value (CSV) spreadsheet containing image metadata.</p>
+<hr>
+
+<% if @import.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger" role="alert">
+    <p><b><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> <%= pluralize(@import.errors.count, "error") %> prohibited this import from being saved:</b></p>
+    <ul>
+      <% @import.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class='row'>
+  <div class='col-md-8'>
+
+    <%= form_for @import, validate: true, html: { class: 'form-horizontal' } do |f| %>
+      <%= f.hidden_field :import_type, value: "Generic"%>
+
+      <div class='form-group required'>
+        <%= f.label :name, 'Import name', class: 'col-md-4 control-label' %>
+        <div class='col-md-8'>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :unit_id, "#{t('osul.unit_label')}", class: 'col-md-4 control-label' %>
+        <div class='col-md-8'>
+          <%= f.select :unit_id, options_for_select(@units.map{|u| [u.name, u.id]}, @import.unit_id), {}, {class: 'chosen-select'} %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :rights, "Rights for this collection", class: 'col-md-4 control-label' %>
+        <div class='col-md-8'>
+          <%= f.select :rights, options_for_select(RightsService.select_active_options, @import.rights), {include_blank: 'Select rights...'}, { class: 'chosen-select' } %>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :preservation_level, 'Preservation level', class: 'col-md-4 control-label' %>
+        <div class='col-md-8'>
+          <%= f.select :preservation_level, options_for_select(PreservationLevelRationalesService.select_all_options,  @import.preservation_level), {include_blank: 'Select preservation level...', disable_search: true}, { class: 'chosen-select' } %>
+        </div>
+      </div>
+
+      <% if can? :publish, GenericWork %>
+        <div class='form-group'>
+          <%= f.label :visibility, 'Default Work Visibility', class: 'col-md-4 control-label' %>
+          <div class='col-md-8'>
+            <%= f.select :visibility, options_for_select(@visibility_levels, @import.visibility), {}, { class: 'chosen-select', style: "width: 100%" } %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class='form-group server-browse required'>
+        <%= f.label :server_import_location_name, 'Image directory', class: 'col-md-4 control-label' %>
+        <div class='col-md-8'>
+          <%= f.text_field :server_import_location_name, class: 'form-control', id: 'import_server_import_location_name', readonly: true, placeholder: 'Select a directory to import...' %>
+          <div style="display:none;"></div>
+          <div id="import_file_browser" class="file-browser">Foo</div>
+        </div>
+      </div>
+
+      <div class='form-group required'>
+        <%= f.label :csv, 'Choose a CSV file', class: 'control-label col-md-4' %>
+        <div class='col-md-8'>
+          <div class="input-group">
+            <%= f.file_field :csv, class: 'form-control' %>
+            <%= render partial: "shared/input_help_button", locals: {title: 'CSV file', content: 'Choose a CSV file on your computer that contains the metadata for each imported file, one file per line.'} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+          <div class="checkbox">
+            <%= f.label :includes_headers do %>
+              <%= f.check_box :includes_headers %> CSV includes header row
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'Create', class: 'btn btn-primary', disable_with: 'Creating...' %>
+        <%= link_to 'Cancel', imports_path, class: 'btn btn-link' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="clearfix">
+  <h1 class="pull-left">Batch imports</h1>
+  <%= link_to new_import_path, class: 'btn btn-success pull-right', style: 'margin-top:20px;' do %>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New import
+  <% end %>
+</div>
+
+<p>Batch imports allow large numbers of files to be ingested at once.</p>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <%if can? :view_all, Import %>
+        <th>Owner</th>
+      <% end %>
+      <th>Created</th>
+      <th>Files imported / total</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @imports.each do |import| %>
+      <tr>
+        <td><%= link_to title_for(import), import %></td>
+        <% if can? :view_all, Import %>
+          <td><%= import.user %></td>
+        <% end %>
+        <td><%= import.created_at.strftime("%-m/%-d/%Y %l:%M%P") %></td>
+        <td><%= import.imported_records.size %> / <%= import.csv_file_row_count %></td>
+        <td><span class="glyphicon <%= status_icon_class_for import %>"></span> <%= import.status_name %></td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'View', import, class: 'btn btn-default' %>
+            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
+              <span class='caret'></span>
+              <span class='sr-only'>Toggle Dropdown</span>
+            </button>
+            <ul class='dropdown-menu' role='menu'>
+              <% if can? :start, import %><li><%= link_to 'Start', start_import_path(import), method: :post %></li><% end %>
+              <% if can? :edit, import %><li><%= link_to 'Edit', edit_import_path(import) %></li><% end %>
+              <% if can? :resume, import %><li><%= link_to 'Resume', resume_import_path(import), method: :post %></li><% end %>
+              <% if can? :undo, import %><li><%= link_to 'Undo', undo_import_path(import), method: :post %></li><% end %>
+              <% if can? :destroy, import %><li><%= link_to 'Delete', import, method: :delete, data: { confirm: 'Are you sure?' } %></li><% end %>
+              <% if can? :report, import %><li><%= link_to 'View report', report_import_path(import) %></li><% end %>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end.empty? %>
+      <tr><td colspan="5">No batch imports have been created.</td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @imports %>
