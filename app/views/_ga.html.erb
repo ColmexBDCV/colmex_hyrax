@@ -1,13 +1,9 @@
 <%
-if Hyrax.config.google_analytics_id?
-tracking_id = Hyrax.config.google_analytics_id
+if Sufia.config.respond_to? :google_analytics_id
+tracking_id = Sufia.config.google_analytics_id
 %>
 <script type="text/javascript">
-  (function() {
-    var at = document.createElement('script'); at.type = 'text/javascript'; at.async = true;
-    at.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://') + 'cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js';
-    var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(at, t);
-  })();
+
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,7 +17,30 @@ tracking_id = Hyrax.config.google_analytics_id
     ga('create', '<%= tracking_id %>', 'auto')
   <% end %>
     ga('send', 'pageview');
-    ga('require', 'eventTracker');
+
+  $(document).on('turbolinks:load',function(){
+
+    $("a[href*='downloads']").click(function(event){
+      var href = this.href;
+
+      // Don't follow the link
+      event.preventDefault();
+
+      var label = href.split("/").pop().split("?")
+
+      ga('send', 'event', {
+        eventCategory: 'downloads',
+        eventAction: 'click',
+        eventLabel: label[0]
+      });
+
+
+      window.open(href, '_new');
+
+
+    });
+
+  });
 
 </script>
 <% end %>
