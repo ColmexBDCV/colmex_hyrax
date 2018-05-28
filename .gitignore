@@ -79,3 +79,5 @@ spec/reports
 *.sh
 /public/assets
 solr/*
+digital_objects/*
+*.csv

@@ -3,18 +3,28 @@
 ##
 # A validator to ensures that each imported record has an import
 class RepresentativeFileValidator < Darlingtonia::Validator
+  def self.config
+    Rails.application.config_for(:importer)
+  end
+  
+  def config
+    self.class.config
+  end
+
   private
 
     ##
     # @private
     def run_validation(parser:)
+      
       parser.records.each_with_object([]) do |record, errors|
         if record.representative_file.blank?
           errors <<
             Error.new(self, :missing_file, missing_message_for(record: record))
         else
-          filename = record.representative_file
-          next if File.exist?(path_for(filename: filename))
+          filenames = record.representative_file
+          # next if File.exist?(path_for(filename: filename))
+          next if path_for(filenames: filenames)
           errors <<
             Error.new(self,
                       :file_not_readable,
@@ -33,7 +43,11 @@ class RepresentativeFileValidator < Darlingtonia::Validator
       "the file at the configured path: #{path_for(filename: filename)}"
     end
 
-    def path_for(filename:)
-      "spec/fixtures/#{filename}"
+    def path_for(filenames:)
+      # "spec/fixtures/#{filename}"
+      filenames.each do |filename| 
+        return false unless File.exist?(config['file_path']+filename)
+      end
+      return true
     end
 end
