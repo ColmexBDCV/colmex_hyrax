@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
-  
+   #Conacyt Requirements
+
+   get 'padron', to: 'conacyt_stats#padron'
+   get 'ranking/articulos', to: 'conacyt_stats#articulos'
+   get 'ranking/autores', to: 'conacyt_stats#autores'
+   get 'descargas', to: 'conacyt_stats#descargas'
+ 
+   #End Conacyt Requirements
+     
   require 'sidekiq/web'
   
   mount Sidekiq::Web => '/jobs'
