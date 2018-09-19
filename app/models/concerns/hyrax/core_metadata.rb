@@ -9,7 +9,7 @@ module Hyrax
         index.as :symbol, :stored_searchable
       end
 
-      property :title, predicate: ::RDF::Vocab::DC.title do |index|
+      property :title, predicate: ::Vocab::RDAM.titleProper do |index|
         index.as :stored_searchable, :facetable
       end
 

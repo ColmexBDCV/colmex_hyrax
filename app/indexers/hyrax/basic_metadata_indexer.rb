@@ -2,13 +2,15 @@ module Hyrax
   # This class gets called by ActiveFedora::IndexingService#olrize_rdf_assertions
   class BasicMetadataIndexer < ActiveFedora::RDF::IndexingService
     class_attribute :stored_and_facetable_fields, :stored_fields, :symbol_fields
-    self.stored_and_facetable_fields = %i[resource_type creator contributor keyword publisher subject language based_near]
-    self.stored_fields = %i[description license rights_statement date_created identifier related_url bibliographic_citation source]
+    # self.stored_and_facetable_fields = %i[resource_type creator contributor keyword publisher subject language based_near subject_person, subject_family, subject_work, subject_topic,]
+    self.stored_and_facetable_fields = %i[resource_type creator keyword publisher language based_near temporary_coverage subject_person subject_family subject_work subject_topic]
+    # self.stored_fields = %i[description license rights_statement date_created identifier related_url bibliographic_citation source]
+    self.stored_fields = %i[description license rights_statement date_created identifier bibliographic_citation ]
     self.symbol_fields = %i[import_url]
 
     private
 
-      # This method overrides ActiveFedora::RDF::IndexingService
+      # This method overrides ActiveFedora:RDF::IndexingService
       # @return [ActiveFedora::Indexing::Map]
       def index_config
         merge_config(

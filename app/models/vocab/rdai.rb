@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+require 'rdf'
+
+module Vocab
+  class RDAI  < RDF::Vocabulary('http://www.rdaregistry.info/Elements/i/#')
+    term :restrictionsOnAccessToItem
+    term :restrictionsOnUseOfItem
+  end
+end

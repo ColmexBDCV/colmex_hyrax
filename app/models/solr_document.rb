@@ -8,7 +8,8 @@ class SolrDocument
   # Adds Hyrax behaviors to the SolrDocument.
   include Hyrax::SolrDocumentBehavior
 
-  field_semantics.merge!(contributor: Solrizer.solr_name('contributor'),
+  field_semantics.merge!(
+                        #  contributor: Solrizer.solr_name('contributor'),
                          coverage:    Solrizer.solr_name('spatial'),
                          creator:     Solrizer.solr_name('creator'),
                          date:        Solrizer.solr_name('date_created'),
@@ -20,8 +21,14 @@ class SolrDocument
                          contributor_conacyt:    Solrizer.solr_name('contributor_conacyt'),
                          publisher:   Solrizer.solr_name('publisher'),
                          rights:      Solrizer.solr_name('rights'),
-                         source:      Solrizer.solr_name('source'),
-                         subject:     Solrizer.solr_name('subject'),
+                        #  source:      Solrizer.solr_name('source'),
+                        #  subject:     Solrizer.solr_name('subject'),
+                         alternate_title: Solrizer.solr_name('alternate_title'),
+                         other_title: Solrizer.solr_name('other_title'),
+                         subject_person: Solrizer.solr_name('subject_person'),
+                         subject_family: Solrizer.solr_name('subject_family'),
+                         subject_work: Solrizer.solr_name('subject_work'),
+                         subject_topic: Solrizer.solr_name('subject_topic'),
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
                          title:       Solrizer.solr_name('title'),
                          type:        Solrizer.solr_name('resource_type'),
@@ -46,6 +53,10 @@ class SolrDocument
 
   use_extension( Hydra::ContentNegotiation )
 
+  def temporary_coverage
+    self[Solrizer.solr_name('temporary_coverage')]
+  end
+
   def subject_conacyt
     self[Solrizer.solr_name('subject_conacyt')]
   end
@@ -54,6 +65,30 @@ class SolrDocument
     self[Solrizer.solr_name('contributor_conacyt')]
   end
 
+  def other_title
+    self[Solrizer.solr_name('other_title')]
+  end
+
+  def subject_person
+    self[Solrizer.solr_name('subject_person')]
+  end
+
+  def subject_family
+    self[Solrizer.solr_name('subject_family')]
+  end
+
+  def subject_work
+    self[Solrizer.solr_name('subject_work')]
+  end
+
+  def subject_topic
+    self[Solrizer.solr_name('subject_topic')]
+  end
+
+  def alternate_title
+    self[Solrizer.solr_name('alternate_title')]
+  end
+ 
   def creator_conacyt
     self[Solrizer.solr_name('creator_conacyt')]
   end

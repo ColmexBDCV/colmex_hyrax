@@ -6,14 +6,17 @@ module Hyrax
     extend ActiveSupport::Concern
 
     included do
+      property :alternate_title, predicate: ::Vocab::RDAM.variantTitle, multiple: true
+      property :other_title, predicate: ::Vocab::RDAM.otherTitleInformation, multiple: false
+      
       property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false
 
       property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false
 
       property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false
       property :resource_type, predicate: ::RDF::Vocab::DC.type
-      property :creator, predicate: ::RDF::URI.new('http://www.rdaregistry.info/Elements/#a/P50195'), multiple: true
-      property :contributor, predicate: ::RDF::Vocab::DC11.contributor
+      property :creator, predicate: ::Vocab::RDAA.authorOf, multiple: true
+      # property :contributor, predicate: ::RDF::Vocab::DC11.contributor
       property :description, predicate: ::RDF::Vocab::DC11.description
       property :keyword, predicate: ::RDF::Vocab::DC11.relation
       # Used for a license
@@ -22,15 +25,20 @@ module Hyrax
       
       # This is for the rights statement
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights
-      property :publisher, predicate: ::RDF::Vocab::DC11.publisher
-      property :date_created, predicate: ::RDF::Vocab::DC.created
-      property :subject, predicate: ::RDF::Vocab::DC11.subject
-      property :language, predicate: ::RDF::Vocab::DC11.language
-      property :identifier, predicate: ::RDF::Vocab::DC.identifier
+      property :publisher, predicate: ::Vocab::RDAM.publicationStatement, multiple: true
+      property :date_created, predicate: ::Vocab::RDAM.dateOfPublication
+      #property :subject, predicate: ::RDF::Vocab::DC11.subject
+      property :subject_person, predicate: ::Vocab::RDAW.subjectPerson, multiple: true
+      property :subject_family, predicate: ::Vocab::RDAW.subjectFamily, multiple: true
+      property :subject_work, predicate: ::Vocab::RDAW.subjectWork, multiple: true
+      property :subject_topic, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
+      property :language, predicate: ::Vocab::RDAM.languageOfTheContent
+      property :identifier, predicate: ::Vocab::RDAM.identifierForTheManifestation, multiple: false
       property :based_near, predicate: ::RDF::Vocab::FOAF.based_near, class_name: Hyrax::ControlledVocabularies::Location
-      property :related_url, predicate: ::RDF::RDFS.seeAlso
-      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation
-      property :source, predicate: ::RDF::Vocab::DC.source
+      property :temporary_coverage, predicate: ::Vocab::RDAW.coverageOfTheContent
+      # property :related_url, predicate: ::RDF::RDFS.seeAlso
+      property :bibliographic_citation, predicate: ::Vocab::RDAM.preferredCitation
+      # property :source, predicate: ::RDF::Vocab::DC.source
       
       id_blank = proc { |attributes| attributes[:id].blank? }
 
