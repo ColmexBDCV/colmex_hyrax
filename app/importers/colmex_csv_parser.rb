@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class ColmexCsvParser < Darlingtonia::CsvParser
-  attr_accessor :file, :validators, :work
+  attr_accessor :file, :validators, :work, :collection
     attr_reader   :errors
 
     ##
     # @param file [File]
-    def initialize(file:, work:,**_opts)
+    def initialize(file:, work:,collection:,**_opts)
       self.file     = file
       
       Hyrax.config.curation_concerns.each_with_index do |tw, i|
@@ -16,6 +16,8 @@ class ColmexCsvParser < Darlingtonia::CsvParser
         end
       end
       
+      self.collection = collection
+
       @errors       = []
       @validators ||= self.class::DEFAULT_VALIDATORS
       yield self if block_given?
@@ -42,7 +44,7 @@ class ColmexCsvParser < Darlingtonia::CsvParser
         next unless field_available(column_header)
         if column_header == :file_name || is_multiple(column_header)
           row[column_header] ||= row[column_header] = []
-          column_value = YAML.load(column_value)
+          column_value = YAML.load(column_value) unless column_value.instance_of? Integer
           row[column_header].push(column_value) if column_value.instance_of? String
           row[column_header] = column_value if column_value.instance_of? Array
         else

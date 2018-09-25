@@ -22,19 +22,13 @@ module Hyrax
       attr_reader :agreement_accepted
 
       self.terms = [:title, :alternate_title, :other_title, :creator, 
-                    # :contributor, 
-                    :description, 
-                    :subject_person, :subject_family, :subject_work, :subject_topic,
+                    :contributor, :description, :subject_person, :subject_family, :subject_work, :subject,
                     :keyword, :license, :rights_statement, :publisher, :date_created,
-                    # :subject, 
-                    :language, :identifier, :based_near, :temporary_coverage,
-                    # :related_url,
-                    :representative_id, :thumbnail_id, :rendering_ids, :files,
+                    :language, :identifier, :doi, :isbn, :based_near, :temporary_coverage,
+                    :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease,
-                    :visibility, :ordered_member_ids, 
-                    # :source, 
-                    :in_works_ids,
+                    :visibility, :ordered_member_ids, :source, :in_works_ids,
                     :member_of_collection_ids, :admin_set_id]
 
       self.required_fields = [:title, :creator, :keyword, :rights_statement]

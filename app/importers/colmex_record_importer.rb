@@ -9,7 +9,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
   #   @return [User]
   # @!attribute [rw] file_path
   #   @return [String]
-  attr_accessor :creator, :file_path, :work
+  attr_accessor :creator, :file_path, :work, :collection
 
   ##
   # @param file_path [String]
@@ -18,6 +18,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     self.creator   = opts.delete(:creator)   || raise(ArgumentError)
     self.file_path = opts.delete(:file_path) || raise(ArgumentError)
     self.work = opts.delete(:work) || raise(ArgumentError)
+    self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError))
     super
   end
 
@@ -59,8 +60,13 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
                                                  attributes)
       
       Hyrax::CurationConcern.actor.create(actor_env)
+     
+      unless collection.empty?
+        Collection.find(collection[0].id).add_member_objects([created.id])
+      end
 
       info_stream << "Record created at: #{created.id}"
+
     rescue Errno::ENOENT => e
       error_stream << e.message
     end

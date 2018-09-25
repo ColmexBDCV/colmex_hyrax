@@ -15,8 +15,8 @@ module Hyrax
 
     # delegate fields from Hyrax::Works::Metadata to solr_document
     delegate :based_near_label, 
-            #  :related_url, 
-             :depositor, :identifier, :resource_type,
+             :related_url, 
+             :depositor, :identifier, :doi, :isbn, :resource_type,
              :keyword, :itemtype, :admin_set, to: :solr_document
 
     # @param [SolrDocument] solr_document
@@ -39,11 +39,10 @@ module Hyrax
 
     # Metadata Methods
     delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
-            #  :contributor, :subject, 
-             :subject_person, :subject_family, :subject_work, :subject_topic,:publisher, :language, :embargo_release_date,
+             :contributor, :subject, :subject_person, :subject_family, :subject_work, 
+             :publisher, :language, :embargo_release_date,
              :lease_expiration_date, :license, :temporary_coverage,
-            #  :source, 
-             :rights_statement, :thumbnail_id, :representative_id,
+             :source, :rights_statement, :thumbnail_id, :representative_id,
              :rendering_ids, :member_of_collection_ids, to: :solr_document
 
     def workflow

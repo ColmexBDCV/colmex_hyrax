@@ -6,10 +6,11 @@ class Importer < Darlingtonia::Importer
     Rails.application.config_for(:importer)
   end
 
-  attr_accessor :parser, :record_importer, :work
+  attr_accessor :parser, :record_importer, :work, :collection
 
-  def initialize(parser:, work: )
+  def initialize(parser:, work:, collection: )
     self.work = work
+    self.collection = collection
     self.parser          = parser
     self.record_importer = default_record_importer
     # record_importer: default_record_importer
@@ -29,7 +30,8 @@ class Importer < Darlingtonia::Importer
     def default_record_importer
       ColmexRecordImporter.new(creator:   default_creator,
                                 file_path: config['file_path'],
-                                work: work
+                                work: work,
+                                collection: collection
                                 )
     end
 end

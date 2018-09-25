@@ -1,8 +1,8 @@
 # Generated via
-#  `rails generate hyrax:work Work`
+#  `rails generate hyrax:work Thesis`
 require 'rails_helper'
 
-RSpec.describe Hyrax::Actors::WorkActor do
+RSpec.describe Thesis do
   it "has tests" do
     skip "Add your tests here"
   end
