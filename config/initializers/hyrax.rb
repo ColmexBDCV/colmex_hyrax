@@ -1,6 +1,6 @@
 Hyrax.config do |config|
   # Injected via `rails g hyrax:work Work`
-  config.register_curation_concern :work
+  # config.register_curation_concern :work
   # Injected via `rails g hyrax:work Thesis`
   config.register_curation_concern :thesis
   # Register roles that are expected by your implementation.
