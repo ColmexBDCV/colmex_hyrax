@@ -2,6 +2,7 @@
 #  `rails generate hyrax:work Thesis`
 class Thesis < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
+  include Conacyt
 
   self.indexer = ThesisIndexer
   # Change this to restrict which works can be added as a child.
@@ -172,22 +173,7 @@ class Thesis < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end
-
-  property :creator_conacyt, predicate: ::RDF::Vocab::MODS.namePrincipal, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable
-  end
-
-  property :contributor_conacyt, predicate: ::RDF::Vocab::MODS.name, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable
-  end
-
-  property :subject_conacyt, predicate: ::Vocab::RDAW.intendedAudience, multiple: false do |index|
-    index.type :text
-    index.as :stored_searchable
-  end
-
+  
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

@@ -34,13 +34,15 @@ module Hyrax
       property :language, predicate: ::Vocab::RDAM.languageOfTheContent
       property :identifier, predicate: ::RDF::Vocab::BF2.Local, multiple: false
       property :based_near, predicate: ::RDF::Vocab::BF2.geographicCoverage, class_name: Hyrax::ControlledVocabularies::Location
+      property :geographic_coverage, predicate: ::RDF::Vocab::FOAF.based_near
       property :temporary_coverage, predicate: ::RDF::Vocab::BF2.temporalCoverage
+      property :gender_or_form, predicate: ::Vocab::RDAW.formOfWork, multiple: true
       property :related_url, predicate: ::RDF::RDFS.seeAlso
       property :bibliographic_citation, predicate: ::Vocab::RDAM.preferredCitation
       property :source, predicate: ::RDF::Vocab::DC.source
       property :doi, predicate: ::RDF::Vocab::BF2.Doi, multiple: false
       property :isbn, predicate: ::RDF::Vocab::BF2.Isbn, multiple: true 
-        
+      property :notes, predicate: ::Vocab::RDAM.noteOnManifestation, multiple: true  
       
       id_blank = proc { |attributes| attributes[:id].blank? }
 

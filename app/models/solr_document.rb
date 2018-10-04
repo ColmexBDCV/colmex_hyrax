@@ -30,6 +30,10 @@ class SolrDocument
                          subject_work: Solrizer.solr_name('subject_work'),
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
                          title:       Solrizer.solr_name('title'),
+                         geographic_coverage: Solrizer.solr_name('geographic_coverage'),
+                         temporal_coverage: Solrizer.solr_name('temporal_coverage'),
+                         gender_or_form: Solrizer.solr_name('gender_or_form'),
+                         notes: Solrizer.solr_name('notes'),
                          type:        Solrizer.solr_name('resource_type'),
                          thesis_director: Solrizer.solr_name('thesis_director'),
                          other_related_persons: Solrizer.solr_name('other_related_persons'),
@@ -88,8 +92,20 @@ class SolrDocument
 
   use_extension( Hydra::ContentNegotiation )
 
+  def notes
+    self[Solrizer.solr_name('notes')]
+  end
+
+  def geographic_coverage
+    self[Solrizer.solr_name('geographic_coverage')]
+  end
+
   def temporary_coverage
     self[Solrizer.solr_name('temporary_coverage')]
+  end
+
+  def gender_or_form
+    self[Solrizer.solr_name('gender_or_form')]
   end
 
   def subject_conacyt
