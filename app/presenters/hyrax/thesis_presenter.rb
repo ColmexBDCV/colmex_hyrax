@@ -8,7 +8,7 @@ module Hyrax
     :file_details, :dimensions, :system_requirements, :exemplar_of_manifestation, :extension, :type_of_file, 
     :mode_of_publication, :other_formats, :access_restrictions, :use_restrictions, 
     :responsibility_statement, :academic_degree, :type_of_thesis, :degree_program, :institution, :center,
-    :themes, :classification, :table_of_contents, :date_of_presentation_of_the_thesis, to: :solr_document
+    :classification, :table_of_contents, :date_of_presentation_of_the_thesis, to: :solr_document
 
     # This must be included at the end,
     include Hyrax::ConacytPresenter

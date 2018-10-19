@@ -12,7 +12,7 @@ module Hyrax
       :file_type_details, :digital_resource_generation_information, :file_details, :dimensions, 
       :system_requirements, :exemplar_of_manifestation, :extension, :type_of_file, :mode_of_publication, 
       :other_formats, :access_restrictions, :use_restrictions, :responsibility_statement, 
-      :academic_degree, :type_of_thesis, :degree_program, :institution, :center, :themes, :classification, 
+      :academic_degree, :type_of_thesis, :degree_program, :institution, :center, :classification, 
       :table_of_contents, :date_of_presentation_of_the_thesis]
       
        # This must be included at the end,

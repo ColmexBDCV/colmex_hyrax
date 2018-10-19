@@ -154,11 +154,6 @@ class Thesis < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
  
-  property :themes, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
   property :classification, predicate: ::RDF::Vocab::BF2.Classification, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable

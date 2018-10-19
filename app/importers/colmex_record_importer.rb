@@ -18,7 +18,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     self.creator   = opts.delete(:creator)   || raise(ArgumentError)
     self.file_path = opts.delete(:file_path) || raise(ArgumentError)
     self.work = opts.delete(:work) || raise(ArgumentError)
-    self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError))
+    self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError)) 
     super
   end
 

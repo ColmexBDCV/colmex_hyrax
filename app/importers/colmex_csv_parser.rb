@@ -29,7 +29,6 @@ class ColmexCsvParser < Darlingtonia::CsvParser
 
   def records
     return enum_for(:records) unless block_given?
-
     file.rewind
     csv = CSV.table(file.path, {:headers => :first_row})
     headers = csv.headers
@@ -40,12 +39,12 @@ class ColmexCsvParser < Darlingtonia::CsvParser
       (0...headers.length).each do |j|
         column_header = headers[j]
         column_value = r[j]
-        
         next unless field_available(column_header)
         if column_header == :file_name || is_multiple(column_header)
           row[column_header] ||= row[column_header] = []
           column_value = YAML.load(column_value) unless column_value.instance_of? Integer
-          row[column_header].push(column_value) if column_value.instance_of? String
+          column_value = column_value.split("|").map(&:strip) unless column_value.instance_of? Integer
+          row[column_header].push(column_value) unless column_value.instance_of? Array
           row[column_header] = column_value if column_value.instance_of? Array
         else
           row[column_header] = column_value

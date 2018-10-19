@@ -67,7 +67,6 @@ class SolrDocument
                          institution: Solrizer.solr_name('institution'),
                          center: Solrizer.solr_name('center'),
                          audience: Solrizer.solr_name('audience'),
-                         themes: Solrizer.solr_name('themes'),
                          classification: Solrizer.solr_name('classification'),
                          table_of_contents: Solrizer.solr_name('table_of_contents'),
                          date_of_presentation_of_the_thesis: Solrizer.solr_name('date_of_presentation_of_the_thesis'),
@@ -266,10 +265,6 @@ class SolrDocument
 
   def audience
     self[Solrizer.solr_name('audience')]
-  end
-
-  def themes
-    self[Solrizer.solr_name('themes')]
   end
 
   def classification
