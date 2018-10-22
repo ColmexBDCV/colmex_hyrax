@@ -16,7 +16,7 @@ module Blacklight::Document::DublinCore
   end
 
   def dublin_core_field_names
-    [ :contributor_conacyt, :coverage, :creator_conacyt, :date, :description, :format, :identifier, :language, :publisher, :relation, :rights, :source, :title, :type, :access, :audience]
+    [ :contributor_conacyt, :creator_conacyt, :date, :description, :identifier, :language, :publisher, :source, :title, :pub_conacyt, :subject_conacyt, :rights ]
   end
 
   # dublin core elements are mapped against the #dublin_core_field_names whitelist.
@@ -30,24 +30,15 @@ module Blacklight::Document::DublinCore
       to_semantic_values.select { |field, values| dublin_core_field_name? field }.each do |field, values|
         Array.wrap(values).each do |v|
           if field == :creator_conacyt || field == :contributor_conacyt
-            # end xml looks like this: <dc:creator id="repositorio.colmex.mx/orcid/123456">Cervantes</dc:creator>
             add_identifiers(field, v, xml)
-          elsif field == :access
-            add_access_rights(field, v, xml)
-          elsif field == :identifier
-              #xml.tag! "dc:#{field}", "http://repositorio.colmex.mx/concern/generic_works/#{representative_id}"
-          elsif field == :title
-            xml.tag! "dc:identifier", "http://repositorio.colmex.mx/concern/generic_works/#{id}"
-            unless subject_conacyt.nil?
-              subject_conacyt.each do |value|
-                xml.tag! "dc:subject", "info:eu-repo/classification/cti/#{value}"
-              end
-            end
-            # end
-            xml.tag! "dc:#{field}", v
-          # elsif field == :subject
-          #   valor = add_sc(field, v, xml)
-          #   xml.tag! "dc:subject", "info:eu-repo/semantics/#{valor}"
+          elsif field == :subject_conacyt
+            xml.tag! "dc:subject", "info:eu-repo/classification/cti/#{v}"
+          elsif field == :pub_conacyt
+            xml.tag! "dc:type", "info:eu-repo/semantics/#{v}"
+          elsif field == :rights
+            xml.tag! "dc:rights", v
+            add_access_rights(field, visibility, xml)
+            xml.tag! "dc:identifier", "http://repositorio.colmex.mx/concern/#{human_readable_type.pluralize.downcase}/#{id}"
           else
             xml.tag! "dc:#{field}", v
           end

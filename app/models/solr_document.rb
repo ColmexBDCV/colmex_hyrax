@@ -20,7 +20,7 @@ class SolrDocument
                          creator_conacyt:    Solrizer.solr_name('creator_conacyt'),
                          contributor_conacyt:    Solrizer.solr_name('contributor_conacyt'),
                          publisher:   Solrizer.solr_name('publisher'),
-                         rights:      Solrizer.solr_name('rights'),
+                         rights:      Solrizer.solr_name('license'),
                          source:      Solrizer.solr_name('source'),
                          subject:     Solrizer.solr_name('subject'),
                          alternate_title: Solrizer.solr_name('alternate_title'),
@@ -29,6 +29,7 @@ class SolrDocument
                          subject_family: Solrizer.solr_name('subject_family'),
                          subject_work: Solrizer.solr_name('subject_work'),
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
+                         pub_conacyt:     Solrizer.solr_name('pub_conacyt'),
                          title:       Solrizer.solr_name('title'),
                          geographic_coverage: Solrizer.solr_name('geographic_coverage'),
                          temporal_coverage: Solrizer.solr_name('temporal_coverage'),
@@ -91,6 +92,10 @@ class SolrDocument
 
   use_extension( Hydra::ContentNegotiation )
 
+  def identifier
+    self[Solrizer.solr_name('identifier')]
+  end
+
   def notes
     self[Solrizer.solr_name('notes')]
   end
@@ -109,6 +114,10 @@ class SolrDocument
 
   def subject_conacyt
     self[Solrizer.solr_name('subject_conacyt')]
+  end
+
+  def pub_conacyt
+    self[Solrizer.solr_name('pub_conacyt')]
   end
 
   def contributor_conacyt
