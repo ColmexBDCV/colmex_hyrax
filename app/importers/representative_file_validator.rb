@@ -16,7 +16,6 @@ class RepresentativeFileValidator < Darlingtonia::Validator
     ##
     # @private
     def run_validation(parser:)
-      
       parser.records.each_with_object([]) do |record, errors|
         if record.representative_file.blank?
           errors <<
@@ -24,11 +23,11 @@ class RepresentativeFileValidator < Darlingtonia::Validator
         else
           filenames = record.representative_file
           # next if File.exist?(path_for(filename: filename))
-          next if path_for(filenames: filenames)
-          errors <<
+          next if path_for(filenames: filenames) 
+            errors <<
             Error.new(self,
                       :file_not_readable,
-                      not_readable_message_for(filename: filename))
+                      not_readable_message_for(filenames: filenames))
         end
       end
     end
@@ -38,9 +37,12 @@ class RepresentativeFileValidator < Darlingtonia::Validator
       "\tEach record must have a representative file to be successfully imported."
     end
 
-    def not_readable_message_for(filename:)
-      "No file was found on disk for file: #{filename}\n\tExpected to find " \
-      "the file at the configured path: #{path_for(filename: filename)}"
+    def not_readable_message_for(filenames:)
+      msg = ""
+      filenames.each do |filename| 
+        msg +="\nNo file was found on disk for file: " + config['file_path']+filename
+      end
+      return msg
     end
 
     def path_for(filenames:)
