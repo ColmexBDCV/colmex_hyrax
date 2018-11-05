@@ -23,55 +23,11 @@ class SolrDocument
                          rights:      Solrizer.solr_name('license'),
                          source:      Solrizer.solr_name('source'),
                          subject:     Solrizer.solr_name('subject'),
-                         alternate_title: Solrizer.solr_name('alternate_title'),
-                         other_title: Solrizer.solr_name('other_title'),
-                         subject_person: Solrizer.solr_name('subject_person'),
-                         subject_family: Solrizer.solr_name('subject_family'),
-                         subject_work: Solrizer.solr_name('subject_work'),
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
                          pub_conacyt:     Solrizer.solr_name('pub_conacyt'),
                          title:       Solrizer.solr_name('title'),
-                         geographic_coverage: Solrizer.solr_name('geographic_coverage'),
-                         temporal_coverage: Solrizer.solr_name('temporal_coverage'),
-                         gender_or_form: Solrizer.solr_name('gender_or_form'),
-                         notes: Solrizer.solr_name('notes'),
-                         type:        Solrizer.solr_name('resource_type'),
-                         thesis_director: Solrizer.solr_name('thesis_director'),
-                         other_related_persons: Solrizer.solr_name('other_related_persons'),
-                         awards: Solrizer.solr_name('awards'),
-                         type_of_content: Solrizer.solr_name('type_of_content'),
-                         type_of_illustrations: Solrizer.solr_name('type_of_illustrations'),
-                         summary: Solrizer.solr_name('summary'),
-                         supplementary_content_or_bibliography: Solrizer.solr_name('supplementary_content_or_bibliography'),
-                         item_access_restrictions: Solrizer.solr_name('item_access_restrictions'),
-                         item_use_restrictions: Solrizer.solr_name('item_use_restrictions'),
-                         edition: Solrizer.solr_name('edition'),
-                         encoding_format_details: Solrizer.solr_name('encoding_format_details'),
-                         file_type_details: Solrizer.solr_name('file_type_details'),
-                         digital_resource_generation_information: Solrizer.solr_name('digital_resource_generation_information'),
-                         file_details: Solrizer.solr_name('file_details'),
-                         dimensions: Solrizer.solr_name('dimensions'),
-                         system_requirements: Solrizer.solr_name('system_requirements'),
-                         exemplar_of_manifestation: Solrizer.solr_name('exemplar_of_manifestation'),
-                         extension: Solrizer.solr_name('extension'),
-                         type_of_file: Solrizer.solr_name('type_of_file'),
-                         doi: Solrizer.solr_name('doi'),
-                         isbn: Solrizer.solr_name('isbn'),
-                         mode_of_publication: Solrizer.solr_name('mode_of_publication'),
-                         other_formats: Solrizer.solr_name('other_formats'),
-                         access_restrictions: Solrizer.solr_name('access_restrictions'),
-                         use_restrictions: Solrizer.solr_name('use_restrictions'),
-                         responsibility_statement: Solrizer.solr_name('responsibility_statement'),
-                         academic_degree: Solrizer.solr_name('academic_degree'),
-                         type_of_thesis: Solrizer.solr_name('type_of_thesis'),
-                         degree_program: Solrizer.solr_name('degree_program'),
-                         institution: Solrizer.solr_name('institution'),
-                         center: Solrizer.solr_name('center'),
-                         audience: Solrizer.solr_name('audience'),
-                         classification: Solrizer.solr_name('classification'),
-                         table_of_contents: Solrizer.solr_name('table_of_contents'),
-                         date_of_presentation_of_the_thesis: Solrizer.solr_name('date_of_presentation_of_the_thesis'),
-                         access: Solrizer.solr_name('access'))
+                         type:        Solrizer.solr_name('resource_type')
+                        )
 
   # self.unique_key = 'id'
 
@@ -148,8 +104,8 @@ class SolrDocument
     self[Solrizer.solr_name('creator_conacyt')]
   end
 
-  def thesis_director
-    self[Solrizer.solr_name('thesis_director')]
+  def director
+    self[Solrizer.solr_name('director')]
   end
 
   def other_related_persons

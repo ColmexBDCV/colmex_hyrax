@@ -1,3 +1,4 @@
+
 <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
 <%= presenter.attribute_to_html(:creator, render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contributor, render_as: :faceted, html_dl: true) %>
@@ -12,5 +13,10 @@
 <%= presenter.attribute_to_html(:resource_type, render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:source, html_dl: true) %>
 <%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
-
-
+<% [:depositor, :doi, :isbn, :alternate_title, :other_title, :subject_person, :subject_family, :subject_work,  
+    :embargo_release_date, :lease_expiration_date, :license, :geographic_coverage, :temporary_coverage,
+    :gender_or_form, :notes].each do |a| %>
+    <%= presenter.attribute_to_html(a, html_dl:true) %>
+<% end %>    
+<!-- Special partial for every work type -->
+<%= render dom_class(presenter)+'_attribute_rows', presenter: presenter %>

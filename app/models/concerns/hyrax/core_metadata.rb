@@ -2,8 +2,9 @@ module Hyrax
   # These are the metadata elements that Hyrax internally requires of
   # all managed Collections, Works and FileSets will have.
   module CoreMetadata
+    include Vocab
     extend ActiveSupport::Concern
-
+   
     included do
       property :depositor, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/relators/dpt'), multiple: false do |index|
         index.as :symbol, :stored_searchable

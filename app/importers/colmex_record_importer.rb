@@ -48,7 +48,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      info_stream << 'Creating record: ' \
+      info_stream << '\nCreating record: ' \
                      "#{record.respond_to?(:title) ? record.title : record}."
       created    = import_type.new
       attributes = record.attributes
@@ -65,7 +65,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         Collection.find(collection[0].id).add_member_objects([created.id])
       end
 
-      info_stream << "Record created at: #{created.id}"
+      info_stream << "\nRecord created at: #{created.id}"
 
     rescue Errno::ENOENT => e
       error_stream << e.message

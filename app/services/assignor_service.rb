@@ -1,7 +1,7 @@
 module AssignorService
   
   def self.work
-    Work.all.each do |gw| 
+    Thesis.all.each do |gw| 
       process(gw)
     end
   end
@@ -18,7 +18,7 @@ module AssignorService
 
           buscar = I18n.transliterate(nombre).gsub(/[^0-9A-Za-z  ]/, '').gsub(" ", "%20")
 
-          conn = Faraday.new :url =>'http://catalogs.repositorionacionalcti.mx/webresources/', :headers => { :Authorization => "Basic #{ENV['CONACYT_AUTH']}"}
+          conn = Faraday.new :url =>'http://catalogs.repositorionacionalcti.mx/webresources/', :headers => { :Authorization => "Basic #{ENV['CONACYT_AUTH'] || "ZWNtOkVjTTA1XzA2"}"}
           a = conn.get "persona/byNombreCompleto/params;nombre=#{buscar}"
           
           begin
