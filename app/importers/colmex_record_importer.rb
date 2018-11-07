@@ -48,8 +48,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      info_stream << '\nCreating record: ' \
-                     "#{record.respond_to?(:title) ? record.title : record}."
+      info_stream << 'Creating record: ' \
+                     "#{record.respond_to?(:title) ? record.title : record}"
       created    = import_type.new
       attributes = record.attributes
       attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
@@ -65,8 +65,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         Collection.find(collection[0].id).add_member_objects([created.id])
       end
 
-      info_stream << "\nRecord created at: #{created.id}"
-
+      info_stream << "\nRecord created at: #{created.id} \n"
+      
     rescue Errno::ENOENT => e
       error_stream << e.message
     end

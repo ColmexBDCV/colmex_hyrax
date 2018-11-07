@@ -10,7 +10,7 @@ class Importer < Darlingtonia::Importer
 
   def initialize(parser:, work:, collection: )
     self.work = work
-    self.collection = collection ? !collection.nil? : ""
+    self.collection = collection.nil? ? "" : collection 
     self.parser          = parser
     self.record_importer = default_record_importer
     # record_importer: default_record_importer
