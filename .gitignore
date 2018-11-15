@@ -69,7 +69,6 @@ db/*.sqlite3
 ## Carried over from hyrax-models (RIP)
 *.gem
 *.rbc
-.config
 InstalledFiles
 _yardoc
 lib/bundler/man
@@ -82,5 +81,3 @@ solr/*
 digital_objects/*
 *.csv
 config/ga.key
-config/*
-config/initializers/hyrax.rb
