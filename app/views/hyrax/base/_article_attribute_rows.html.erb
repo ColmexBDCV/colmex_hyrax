@@ -1,0 +1,3 @@
+<% [:period, :part, :year, :volume, :number, :mode_of_issuance, :pages, :contained_in].each do |a| %>
+    <%= presenter.attribute_to_html(a, html_dl:true) %>
+<% end %> 

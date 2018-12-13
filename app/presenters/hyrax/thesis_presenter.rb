@@ -2,13 +2,13 @@
 #  `rails generate hyrax:work Thesis`
 module Hyrax
   class ThesisPresenter < Hyrax::WorkShowPresenter
-    delegate :director, :other_related_persons, :awards, :type_of_content, :type_of_illustrations, 
-    :summary, :supplementary_content_or_bibliography, :item_access_restrictions, :item_use_restrictions, 
+    delegate :director, :awards,  
+    :item_access_restrictions, :item_use_restrictions, 
     :edition, :encoding_format_details, :file_type_details, :digital_resource_generation_information, 
     :file_details, :dimensions, :system_requirements, :exemplar_of_manifestation, :extension, :type_of_file, 
     :mode_of_publication, :other_formats, :access_restrictions, :use_restrictions, 
-    :responsibility_statement, :academic_degree, :type_of_thesis, :degree_program, :institution, :center,
-    :classification, :table_of_contents, :date_of_presentation_of_the_thesis, to: :solr_document
+    :academic_degree, :type_of_thesis, :degree_program, :institution,
+    :date_of_presentation_of_the_thesis, to: :solr_document
 
     # This must be included at the end,
     include Hyrax::ConacytPresenter

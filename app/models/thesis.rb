@@ -14,32 +14,7 @@ class Thesis < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
-  property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
   property :awards, predicate: ::Vocab::RDAE.award, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :supplementary_content_or_bibliography, predicate: ::Vocab::RDAE.supplementaryContent, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end
@@ -124,11 +99,6 @@ class Thesis < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
-  property :responsibility_statement, predicate: ::Vocab::RDAM.statementOfResponsibilityRelatingToTitleProper, multiple: false do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
   property :academic_degree, predicate: ::Vocab::RDAW.academicDegree, multiple: false do |index|
     index.type :text
     index.as :stored_searchable, :facetable
@@ -148,22 +118,7 @@ class Thesis < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end
-
-  property :center, predicate: ::RDF::Vocab::SCHEMA.department, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
- 
-  property :classification, predicate: ::RDF::Vocab::BF2.Classification, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
+  
   property :date_of_presentation_of_the_thesis, predicate: ::Vocab::RDAW.yearDegreeGranted, multiple: false do |index|
     index.type :text
     index.as :stored_searchable, :facetable

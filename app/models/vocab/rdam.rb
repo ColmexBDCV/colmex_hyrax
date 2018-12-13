@@ -27,5 +27,10 @@ module Vocab
     term :detailsOfGenerationOfDigitalResource
     term :restrictionsOnAccessToManifestation
     term :restrictionsOnUseOfManifestation
+    term :alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence
+    term :alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence
+    term :chronologicalDesignationOfFirstIssueOrPartOfSequence
+    term :numberingOfSerials
+    term :numberingWithinSubseries
   end
 end

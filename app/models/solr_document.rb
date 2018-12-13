@@ -228,10 +228,6 @@ class SolrDocument
     self[Solrizer.solr_name('center')]
   end
 
-  def audience
-    self[Solrizer.solr_name('audience')]
-  end
-
   def classification
     self[Solrizer.solr_name('classification')]
   end
@@ -243,4 +239,41 @@ class SolrDocument
   def date_of_presentation_of_the_thesis
     self[Solrizer.solr_name('date_of_presentation_of_the_thesis')]
   end
+
+  def themes
+    self[Solrizer.solr_name('themes')]
+  end
+   
+  def period
+    self[Solrizer.solr_name('period')]
+  end
+
+  def part
+    self[Solrizer.solr_name('part')]
+  end
+  
+  def year
+    self[Solrizer.solr_name('year')]
+  end
+
+  def volume
+    self[Solrizer.solr_name('volume')]
+  end
+
+  def number
+    self[Solrizer.solr_name('number')]
+  end
+
+  def mode_of_issuance
+    self[Solrizer.solr_name('mode_of_issuance')]
+  end
+
+  def pages
+    self[Solrizer.solr_name('pages')]
+  end
+
+  def contained_in
+    self[Solrizer.solr_name('contained_in')]
+  end
+  
 end

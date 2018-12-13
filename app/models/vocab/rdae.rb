@@ -10,5 +10,6 @@ module Vocab
     term :summarizationOfTheContent
     term :illustrativeContent
     term :contentType
+    term :noteOnExpression
   end
 end

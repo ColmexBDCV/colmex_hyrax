@@ -18,5 +18,7 @@ module Vocab
     term :subjectCorporateBody
     term :yearDegreeGranted
     term :dissertationOrThesisInformation
+    term :containedInWork
+    term :numberingOfPart
   end
 end

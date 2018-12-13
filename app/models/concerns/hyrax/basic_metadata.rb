@@ -27,12 +27,12 @@ module Hyrax
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights
       property :publisher, predicate: ::Vocab::RDAM.publicationStatement, multiple: true
       property :date_created, predicate: ::Vocab::RDAM.dateOfPublication
-      property :subject, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
+      property :subject, predicate: ::Vocab::RDAW.subjectRelationship, multiple: true
       property :subject_person, predicate: ::Vocab::RDAW.subjectPerson, multiple: true
       property :subject_family, predicate: ::Vocab::RDAW.subjectFamily, multiple: true
       property :subject_work, predicate: ::Vocab::RDAW.subjectWork, multiple: true
       property :language, predicate: ::Vocab::RDAM.languageOfTheContent
-      property :identifier, predicate: ::RDF::Vocab::BF2.Local, multiple: false
+      property :identifier, predicate: ::Vocab::RDAE::identifierForTheManifestation, multiple: false
       property :based_near, predicate: ::RDF::Vocab::BF2.geographicCoverage, class_name: Hyrax::ControlledVocabularies::Location
       property :geographic_coverage, predicate: ::RDF::Vocab::FOAF.based_near
       property :temporary_coverage, predicate: ::RDF::Vocab::BF2.temporalCoverage
@@ -43,7 +43,17 @@ module Hyrax
       property :doi, predicate: ::RDF::Vocab::BF2.Doi, multiple: false
       property :isbn, predicate: ::RDF::Vocab::BF2.Isbn, multiple: true 
       property :notes, predicate: ::Vocab::RDAM.noteOnManifestation, multiple: true  
-      
+      property :center, predicate: ::RDF::Vocab::SCHEMA.department, multiple: true
+      property :classification, predicate: ::RDF::Vocab::BF2.Classification, multiple: true
+      property :supplementary_content_or_bibliography, predicate: ::Vocab::RDAE.supplementaryContent, multiple: true
+      property :responsibility_statement, predicate: ::Vocab::RDAM.statementOfResponsibilityRelatingToTitleProper, multiple: false
+      property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true
+      property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
+      property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
+      property :themes, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
+      property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
+      property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
+   
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties
