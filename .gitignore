@@ -82,5 +82,4 @@ solr/*
 digital_objects/*
 *.csv
 config/ga.key
-config/*
 config/initializers/hyrax.rb
