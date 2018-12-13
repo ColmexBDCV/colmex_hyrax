@@ -69,7 +69,6 @@ db/*.sqlite3
 ## Carried over from hyrax-models (RIP)
 *.gem
 *.rbc
-.config
 InstalledFiles
 _yardoc
 lib/bundler/man
