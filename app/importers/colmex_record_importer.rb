@@ -48,28 +48,32 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      info_stream << 'Creating record: ' \
-                     "#{record.respond_to?(:title) ? record.title : record}"
-      created    = import_type.new
-      attributes = record.attributes
-      attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
-      embargo_attributes(attributes, record)
+      if work.singularize.classify.constantize.where(title: record.title).empty?
+        info_stream << 'Creating record: ' \
+                      "#{record.respond_to?(:title) ? record.title : record}"
+        created    = import_type.new
+        attributes = record.attributes
+        attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
+        embargo_attributes(attributes, record)
+        
+        actor_env = Hyrax::Actors::Environment.new(created,
+                                                  ::Ability.new(creator),
+                                                  attributes)
+        
+        Hyrax::CurationConcern.actor.create(actor_env)
       
-      actor_env = Hyrax::Actors::Environment.new(created,
-                                                 ::Ability.new(creator),
-                                                 attributes)
-      
-      Hyrax::CurationConcern.actor.create(actor_env)
-     
-      unless collection.empty?
-        Collection.find(collection[0].id).add_member_objects([created.id])
-      end
+        unless collection.empty?
+          Collection.find(collection[0].id).add_member_objects([created.id])
+        end
 
-      info_stream << "\nRecord created at: #{created.id} \n"
-      
-    rescue Errno::ENOENT => e
-      error_stream << e.message
-    end
+        info_stream << "\nRecord created at: #{created.id} \n"
+        
+      else  
+        info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
+      end
+      rescue Errno::ENOENT => e
+          error_stream << e.message
+   end
 
     def file_for(filenames)
       ids = []

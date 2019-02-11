@@ -82,3 +82,4 @@ digital_objects/*
 *.csv
 config/ga.key
 config/initializers/hyrax.rb
+config/database.yml

@@ -65,6 +65,7 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.3.3'
+gem 'rack-cors'
 gem 'hydra-access-controls', '10.6.0'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'

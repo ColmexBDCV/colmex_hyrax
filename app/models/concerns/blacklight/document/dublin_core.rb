@@ -34,7 +34,9 @@ module Blacklight::Document::DublinCore
           elsif field == :subject_conacyt
             xml.tag! "dc:subject", "info:eu-repo/classification/cti/#{v}"
           elsif field == :pub_conacyt
-            xml.tag! "dc:type", "info:eu-repo/semantics/#{v}"
+            xml.tag! "dc:audience", v
+          elsif field == :type
+            xml.tag! "dc:type", v
           elsif field == :rights
             xml.tag! "dc:rights", v
             add_access_rights(field, visibility, xml)

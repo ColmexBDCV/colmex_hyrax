@@ -6,7 +6,8 @@ module Hyrax
     include Hyrax::ConacytForm
 
     self.model_class = ::Thesis
-    self.terms += [:resource_type, :director, :awards, 
+    self.terms += [#:resource_type, 
+      :director, :awards, 
       :item_access_restrictions, :item_use_restrictions, :edition, :encoding_format_details, 
       :file_type_details, :digital_resource_generation_information, :file_details, :dimensions, 
       :system_requirements, :exemplar_of_manifestation, :extension, :type_of_file, :mode_of_publication, 
