@@ -14,9 +14,7 @@ module Hyrax
     delegate :has?, :first, :fetch, :export_formats, :export_as, to: :solr_document
 
     # delegate fields from Hyrax::Works::Metadata to solr_document
-    delegate :based_near_label, 
-             :related_url, 
-             :depositor, :identifier, :doi, :isbn, #:resource_type,
+    delegate :based_near_label, :related_url, :depositor, :identifier, #:resource_type,
              :keyword, :itemtype, :admin_set, to: :solr_document
 
     # @param [SolrDocument] solr_document
@@ -38,11 +36,11 @@ module Hyrax
              to: :solr_document
 
     # Metadata Methods
-    delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
+   delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
              :contributor, :subject, :subject_person, :subject_family, :subject_work, 
              :publisher, :language, :embargo_release_date, :themes,
              :lease_expiration_date, :license, :geographic_coverage, :temporary_coverage,
-             :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography,
+             :gender_or_form, :notesIIIF, :classification, :supplementary_content_or_bibliography,
              :responsibility_statement, :other_related_persons, :summary, :table_of_contents, 
              :type_of_content, :type_of_illustrations,
              :source, :rights_statement, :thumbnail_id, :representative_id,
@@ -62,13 +60,33 @@ module Hyrax
       Hyrax::Engine.routes.url_helpers.download_url(representative_presenter, host: request.host)
     end
 
-    # @return [Boolean] render the UniversalViewer
-    def universal_viewer?
+    # @return [Boolean] render a IIIF viewer
+    def iiif_viewer?
       representative_id.present? &&
         representative_presenter.present? &&
         representative_presenter.image? &&
         Hyrax.config.iiif_image_server? &&
         members_include_viewable_image?
+    end
+
+    alias universal_viewer? iiif_viewer?
+    deprecation_deprecate universal_viewer?: "use iiif_viewer? instead"
+
+    # @return [Symbol] the name of the IIIF viewer partial to render
+    # @example A work presenter with a custom iiif viewer
+    #   module Hyrax
+    #     class GenericWorkPresenter < Hyrax::WorkShowPresenter
+    #       def iiif_viewer
+    #         :my_iiif_viewer
+    #       end
+    #     end
+    #   end
+    #
+    #   Custom iiif viewer partial at app/views/hyrax/base/iiif_viewers/_my_iiif_viewer.html.erb
+    #   <h3>My IIIF Viewer!</h3>
+    #   <a href=<%= main_app.polymorphic_url([main_app, :manifest, presenter], { locale: nil }) %>>Manifest</a>
+    def iiif_viewer
+      :universal_viewer
     end
 
     # @return FileSetPresenter presenter for the representative FileSets
@@ -205,7 +223,7 @@ module Hyrax
       Hyrax.config.iiif_metadata_fields.each do |field|
         metadata << {
           'label' => I18n.t("simple_form.labels.defaults.#{field}"),
-          'value' => Array.wrap(send(field))
+          'value' => Array.wrap(send(field).map { |f| Loofah.fragment(f.to_s).scrub!(:whitewash).to_s })
         }
       end
       metadata
