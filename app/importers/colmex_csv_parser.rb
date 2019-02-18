@@ -45,12 +45,13 @@ class ColmexCsvParser < Darlingtonia::CsvParser
           row[column_header] ||= row[column_header] = []
           # column_value = YAML.load(column_value) unless column_value.instance_of? Integer
           column_value = column_value.split("|").map(&:strip) # unless column_value.instance_of? Integer
-          row[column_header].push(column_value) 
-          
+          row[column_header].push(column_value) unless column_value.instance_of? Array
+          row[column_header] = row[column_header] + column_value if column_value.instance_of? Array
         else
           row[column_header] = column_value
         end 
       end 
+      byebug
       yield Darlingtonia::InputRecord.from(metadata: row, mapper: ColmexMapper.new)
     end
     
