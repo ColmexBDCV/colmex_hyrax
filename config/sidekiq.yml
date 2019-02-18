@@ -1,0 +1,12 @@
+:queues:
+  - default
+  - event
+  - ingest
+development:
+  :concurrency: 5
+  :timeout: 3
+  :logfile: ./log/sidekiq.log
+production:
+  :concurrency: 10
+  :timeout: 5
+  :logfile: ./log/sidekiq.log
