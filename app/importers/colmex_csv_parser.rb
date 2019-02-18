@@ -51,7 +51,6 @@ class ColmexCsvParser < Darlingtonia::CsvParser
           row[column_header] = column_value
         end 
       end 
-      byebug
       yield Darlingtonia::InputRecord.from(metadata: row, mapper: ColmexMapper.new)
     end
     
