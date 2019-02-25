@@ -14,7 +14,7 @@ module Hyrax
     delegate :has?, :first, :fetch, :export_formats, :export_as, to: :solr_document
 
     # delegate fields from Hyrax::Works::Metadata to solr_document
-    delegate :based_near_label, :related_url, :depositor, :identifier, #:resource_type,
+    delegate :based_near_label, :related_url, :depositor, :identifier, :resource_type,
              :keyword, :itemtype, :admin_set, to: :solr_document
 
     # @param [SolrDocument] solr_document
@@ -42,7 +42,8 @@ module Hyrax
              :lease_expiration_date, :license, :geographic_coverage, :temporary_coverage,
              :gender_or_form, :notesIIIF, :classification, :supplementary_content_or_bibliography,
              :responsibility_statement, :other_related_persons, :summary, :table_of_contents, 
-             :type_of_content, :type_of_illustrations,
+             #:type_of_content, 
+             :type_of_illustrations,
              :source, :rights_statement, :thumbnail_id, :representative_id,
              :rendering_ids, :member_of_collection_ids, to: :solr_document
 

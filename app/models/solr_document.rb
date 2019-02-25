@@ -26,7 +26,7 @@ class SolrDocument
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
                          pub_conacyt:     Solrizer.solr_name('pub_conacyt'),
                          title:       Solrizer.solr_name('title'),
-                         type:        Solrizer.solr_name('resource_type')
+                         type:        Solrizer.solr_name('type_conacyt')
                         )
 
   # self.unique_key = 'id'

@@ -14,7 +14,7 @@ module Hyrax
       property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false
 
       property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false
-      property :resource_type, predicate: ::RDF::Vocab::DC.type
+      property :resource_type, predicate: ::Vocab::RDAE.contentType
       property :creator, predicate: ::Vocab::RDAA.authorOf, multiple: true
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor
       property :description, predicate: ::RDF::Vocab::DC11.description
@@ -51,7 +51,7 @@ module Hyrax
       property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
       property :themes, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
-      property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
+      #property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
    
       id_blank = proc { |attributes| attributes[:id].blank? }
