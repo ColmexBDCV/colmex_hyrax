@@ -17,7 +17,7 @@ module Conacyt
             index.as :stored_searchable
         end
 
-        property :pub_conacyt, predicate: ::RDF::Vocab::DC11.type, multiple: false do |index|
+        property :pub_conacyt, predicate: ::RDF::Vocab::DC11.type, multiple: true do |index|
             index.type :text
             index.as :stored_searchable
         end
