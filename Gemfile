@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 gem 'bagit'
-gem 'darlingtonia'
 gem 'awesome_print'
 gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -65,6 +64,7 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'hyrax', '2.3.3'
+gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls', '10.6.0'
 group :development, :test do

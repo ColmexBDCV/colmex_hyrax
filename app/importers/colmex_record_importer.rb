@@ -55,6 +55,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         attributes = record.attributes
         attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
         embargo_attributes(attributes, record)
+
+        # byebug
+
+        attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
         
         actor_env = Hyrax::Actors::Environment.new(created,
                                                   ::Ability.new(creator),
@@ -62,9 +66,9 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         
         Hyrax::CurationConcern.actor.create(actor_env)
       
-        unless collection.empty?
-          Collection.find(collection[0].id).add_member_objects([created.id])
-        end
+        # unless collection.empty?
+        #   Collection.find(collection[0].id).add_member_objects([created.id])
+        # end
 
         info_stream << "\nRecord created at: #{created.id} \n"
         
