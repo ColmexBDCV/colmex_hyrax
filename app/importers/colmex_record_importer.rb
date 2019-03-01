@@ -48,15 +48,13 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      if work.singularize.classify.constantize.where(title: record.title).empty?
+      if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
         info_stream << 'Creating record: ' \
                       "#{record.respond_to?(:title) ? record.title : record}"
         created    = import_type.new
         attributes = record.attributes
         attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
         embargo_attributes(attributes, record)
-
-        # byebug
 
         attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
         
@@ -66,10 +64,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         
         Hyrax::CurationConcern.actor.create(actor_env)
       
-        # unless collection.empty?
-        #   Collection.find(collection[0].id).add_member_objects([created.id])
-        # end
-
         info_stream << "\nRecord created at: #{created.id} \n"
         
       else  

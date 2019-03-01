@@ -21,6 +21,13 @@ class Importer < Darlingtonia::Importer
     self.class.config
   end
 
+  def import
+    records.each { |record| record_importer.import(record: record) }
+    #@info_stream << "event: finish_import, batch_id: #{record_importer.batch_id}, successful_record_count: #{record_importer.success_count}, failed_record_count: #{record_importer.failure_count}"
+    @info_stream << "Finish"
+
+  end
+
   private
 
     def default_creator
@@ -34,4 +41,5 @@ class Importer < Darlingtonia::Importer
                                 collection: collection
                                 )
     end
+   
 end
