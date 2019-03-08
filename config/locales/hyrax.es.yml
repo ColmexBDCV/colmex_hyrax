@@ -12,6 +12,8 @@ es:
           language_sim: Idioma
           publisher_sim: Editor
           subject_sim: Tema
+          resource_type_tesim: Tipo de recurso
+          human_readable_type_sim: Tipo de objeto
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
@@ -28,6 +30,8 @@ es:
           publisher_tesim: Editor
           rights_statement_tesim: Derechos
           subject_tesim: Tema
+          resource_type_tesim: Tipo de recurso
+          depositor_tesim: Propietario
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor

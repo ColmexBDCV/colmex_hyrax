@@ -19,7 +19,11 @@ module AssignorService
           buscar = I18n.transliterate(nombre).gsub(/[^0-9A-Za-z  ]/, '').gsub(" ", "%20")
 
           conn = Faraday.new :url =>'http://catalogs.repositorionacionalcti.mx/webresources/', :headers => { :Authorization => "Basic #{ENV['CONACYT_AUTH'] || "ZWNtOkVjTTA1XzA2"}"}
-          a = conn.get "persona/byNombreCompleto/params;nombre=#{buscar}"
+          begin          
+            a = conn.get "persona/byNombreCompleto/params;nombre=#{buscar}"
+          rescue Faraday::ConnectionFailed 
+            retry
+          end
           
           begin
             data = JSON.parse(a.body.force_encoding('utf-8'))
