@@ -16,7 +16,7 @@ module Blacklight::Document::DublinCore
   end
 
   def dublin_core_field_names
-    [ :contributor_conacyt, :creator_conacyt, :date, :description, :identifier, :language, :publisher, :source, :title, :pub_conacyt, :subject_conacyt, :rights ,:type]
+    [ :contributor_conacyt, :creator_conacyt, :date, :description, :identifier, :language, :publisher, :source, :title, :subject_conacyt, :rights ,:type, :audience]
   end
 
   # dublin core elements are mapped against the #dublin_core_field_names whitelist.
@@ -33,14 +33,12 @@ module Blacklight::Document::DublinCore
             add_identifiers(field, v, xml)
           elsif field == :subject_conacyt
             xml.tag! "dc:subject", "info:eu-repo/classification/cti/#{v}"
-          elsif field == :pub_conacyt
-            xml.tag! "dc:audience", v
+            add_access_rights(field, visibility, xml)
+            xml.tag! "dc:identifier", "http://repositorio.colmex.mx/concern/#{human_readable_type.pluralize.downcase}/#{id}"
           elsif field == :type
             xml.tag! "dc:type", v
           elsif field == :rights
             xml.tag! "dc:rights", v
-            add_access_rights(field, visibility, xml)
-            xml.tag! "dc:identifier", "http://repositorio.colmex.mx/concern/#{human_readable_type.pluralize.downcase}/#{id}"
           else
             xml.tag! "dc:#{field}", v
           end

@@ -20,13 +20,15 @@ class SolrDocument
                          creator_conacyt:    Solrizer.solr_name('creator_conacyt'),
                          contributor_conacyt:    Solrizer.solr_name('contributor_conacyt'),
                          publisher:   Solrizer.solr_name('publisher'),
-                         rights:      Solrizer.solr_name('license'),
+                         rights:      Solrizer.solr_name('rights_statement'),
                          source:      Solrizer.solr_name('source'),
                          subject:     Solrizer.solr_name('subject'),
                          subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
-                         pub_conacyt:     Solrizer.solr_name('pub_conacyt'),
+                         audience:     Solrizer.solr_name('pub_conacyt'),
                          title:       Solrizer.solr_name('title'),
-                         type:        Solrizer.solr_name('type_conacyt')
+                         type:        Solrizer.solr_name('type_conacyt'),
+                         publisher:   Solrizer.solr_name('publisher'),
+                         
                         )
 
   # self.unique_key = 'id'
