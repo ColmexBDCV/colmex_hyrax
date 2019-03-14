@@ -6,6 +6,7 @@ es:
         facet:
           based_near_label_sim: Ubicación
           creator_sim: Creador
+          contributor_sim: Colaborador
           file_format_sim: Formato
           generic_type_sim: Tipo
           keyword_sim: Palabra clave
@@ -14,9 +15,13 @@ es:
           subject_sim: Tema
           resource_type_tesim: Tipo de recurso
           human_readable_type_sim: Tipo de objeto
+          content:
+            Thesis: Tesis
+            Collection: Colección
+            Article: Artículo
         index:
           based_near_tesim: Ubicación
-          contributor_tesim: Contribuidor
+          contributor_tesim: Colaborador
           creator_tesim: Creador
           date_created_tesim: Fecha de Creacion
           date_modified_dtsi: Fecha Modificada
@@ -49,8 +54,88 @@ es:
           rights_statement_tesim: Derechos
           subject_tesim: Tema
           title_tesim: Título
+          badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
+      sort:
+        label: Ordenar por %{field}
+        relevance: relevancia
+        date uploaded ▼: fecha de subida ▼
+        date uploaded ▲: fecha de subida ▲
+        date modified ▼: fecha de modificación ▼
+        date modified ▲: fecha de modificación ▲
+      view:
+        List: Lista
+        Gallery: Galería
+        Masonry: Mampostería
+        Slideshow: Diapositivas
+
   hyrax:
     account_name: Mi identificador de cuenta institucional
+    base:
+      show:
+        analitycs: Analíticas
+        work_type_Thesis: Tesis
+        last_modified: Última modificación
+        creator: Autor
+        contributor: Contribuidor
+        subject: Tema Topico
+        publisher: Editor
+        languague: Lenguaje
+        identifier: Identificador
+        keyword: Palabras clave
+        date_created: Fecha de creación
+        loation: Ubicación
+        related_url: URL relacionada
+        resource_type: Tipo de recurso
+        source: Fuente
+        rights_statement: Declaración de derechos
+        license: Licencia
+        alternate_title: Título variante
+        other_title: Otro título
+        subject_person: Tema persona
+        subject_family: Tema familia
+        geographic_coverage: Cobertura geográfica
+        temporary_coverage: cobertura temporal
+        gender_or_form: Género o forma
+        notes: Notas
+        center: Centro
+        classification: Clasificación
+        supplementary_content_or_bibliography: Contenido suplementario o bibliografía
+        responsibility_statement: Declaración de responsabilidad
+        other_related_persons: Otras personas relacionadas
+        summary: Resumen
+        themes: Temas
+        table_of_contents: Tabla de contenidos
+        type_of_illustrations: tipo de ilustraciones
+        director: Director
+        awards: Premios/Reconocimientos
+        item_access_restrictions: Restricción de acceso del ítem
+        item_use_restrictions: Restricción de uso del ítem
+        edition: Edición
+        encoding_format_details: Detalles de codificación del formato
+        file_type_details: Detalles del tipo de archivo
+        digital_resource_generation_information: Información de generación de recursos digitales
+        file_details: DEtalles de archivo
+        dimensions: Dimensiones
+        system_requirements: Requerimientos de sistema
+        exemplar_of_manifestation: Ejemplar de manifestación
+        extension: Extensión
+        type_of_file: Tipo de archivo
+        mode_of_publication: Modo de publicación
+        other_formats: Otros Formatos
+        access_restrictions: Restricciones de acceso
+        use_restrictions: Restricciones de uso
+        academic_degree: Grado Académico
+        type_of_thesis: Tipo de Tesis
+        degree_program: Programa de estudios
+        institution: Institución
+        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
+        period: Periodo
+        part: Parte
+        year: Año
+        volume: Volumen
+        number: Número
+        mode_of_issuance: Modo de emisión
+
     directory:
       suffix: "@example.org"
     footer:

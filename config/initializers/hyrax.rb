@@ -23,7 +23,7 @@ Hyrax.config do |config|
   # config.admin_set_predicate = ::RDF::DC.isPartOf
 
   # Email recipient of messages sent via the contact form
-  # config.contact_email = "repo-admin@example.org"
+  config.contact_email = ENV['ADMIN_EMAIL'] || "admin@example.net"
 
   # Text prefacing the subject entered in the contact form
   # config.subject_prefix = "Contact form:"
@@ -127,7 +127,7 @@ Hyrax.config do |config|
   # config.audit_user_key = 'audituser@example.com'
   #
   # The banner image. Should be 5000px wide by 1000px tall
-  # config.banner_image = 'https://cloud.githubusercontent.com/assets/92044/18370978/88ecac20-75f6-11e6-8399-6536640ef695.jpg'
+  config.banner_image = '/img/Foto_aerea_3.png'
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately

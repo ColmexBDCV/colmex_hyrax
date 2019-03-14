@@ -43,7 +43,7 @@ module Hyrax
              :gender_or_form, :notesIIIF, :classification, :supplementary_content_or_bibliography,
              :responsibility_statement, :other_related_persons, :summary, :table_of_contents, 
              #:type_of_content, 
-             :type_of_illustrations,
+             :type_of_illustrations, :center,
              :source, :rights_statement, :thumbnail_id, :representative_id,
              :rendering_ids, :member_of_collection_ids, to: :solr_document
 

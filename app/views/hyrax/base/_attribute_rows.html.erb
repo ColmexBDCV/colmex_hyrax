@@ -1,25 +1,25 @@
 
 <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
-<%= presenter.attribute_to_html(:creator, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:contributor, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:subject, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:publisher, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:language, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:identifier, render_as: :linked, search_field: 'identifier_tesim', html_dl: true) %>
-<%= presenter.attribute_to_html(:keyword, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:date_created, render_as: :linked, search_field: 'date_created_tesim', html_dl: true) %>
-<%= presenter.attribute_to_html(:based_near_label, html_dl: true) %>
-<%= presenter.attribute_to_html(:related_url, render_as: :external_link, html_dl: true) %>
-<%= presenter.attribute_to_html(:resource_type, render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:source, html_dl: true) %>
-<%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement, html_dl: true) %>
-<%= presenter.attribute_to_html(:license, render_as: :license, html_dl: true) %>
+<%= presenter.attribute_to_html(:creator, label: t('hyrax.base.show.creator'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:contributor, label: t('hyrax.base.show.contributor'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:subject, label: t('hyrax.base.show.subject'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:publisher, label: t('hyrax.base.show.publisher'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:language, label: t('hyrax.base.show.languague'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :linked, search_field: 'identifier_tesim', html_dl: true) %>
+<%= presenter.attribute_to_html(:keyword, label: t('hyrax.base.show.keyword'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:date_created, label: t('hyrax.base.show.date_created'), render_as: :linked, search_field: 'date_created_tesim', html_dl: true) %>
+<%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), html_dl: true) %>
+<%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
+<%= presenter.attribute_to_html(:resource_type, label: t('hyrax.base.show.resource_type'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>
+<%= presenter.attribute_to_html(:rights_statement, label: t('hyrax.base.show.rights_tatement'), render_as: :rights_statement, html_dl: true) %>
+<%= presenter.attribute_to_html(:license, label: t('hyrax.base.show.license'), render_as: :license, html_dl: true) %>
 <% [:depositor, :doi, :isbn, :alternate_title, :other_title, :subject_person, :subject_family, :subject_work,  
     :embargo_release_date, :lease_expiration_date, :geographic_coverage, :temporary_coverage,
     :gender_or_form, :notes, :center, :classification, :supplementary_content_or_bibliography,
     :responsibility_statement, :other_related_persons, :summary, :themes, :table_of_contents, 
-    :type_of_content, :type_of_illustrations].each do |a| %>
-    <%= presenter.attribute_to_html(a, html_dl:true) %>
+    :type_of_illustrations].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>    
 <!-- Special partial for every work type -->
 <%= render dom_class(presenter)+'_attribute_rows', presenter: presenter rescue nil%>
