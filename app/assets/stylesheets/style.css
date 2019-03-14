@@ -1,0 +1,7 @@
+.navbar-brand {
+    height: 80px !important;
+}
+
+#logo>img {
+    width: 150px;
+}
