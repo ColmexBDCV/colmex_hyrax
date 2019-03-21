@@ -12,7 +12,7 @@
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
 <%= presenter.attribute_to_html(:resource_type, label: t('hyrax.base.show.resource_type'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>
-<%= presenter.attribute_to_html(:rights_statement, label: t('hyrax.base.show.rights_tatement'), render_as: :rights_statement, html_dl: true) %>
+<%= presenter.attribute_to_html(:rights_statement, label: t('hyrax.base.show.rights_statement'), render_as: :rights_statement, html_dl: true) %>
 <%= presenter.attribute_to_html(:license, label: t('hyrax.base.show.license'), render_as: :license, html_dl: true) %>
 <% [:depositor, :doi, :isbn, :alternate_title, :other_title, :subject_person, :subject_family, :subject_work,  
     :embargo_release_date, :lease_expiration_date, :geographic_coverage, :temporary_coverage,

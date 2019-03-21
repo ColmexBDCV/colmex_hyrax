@@ -33,7 +33,7 @@ es:
           language_tesim: Idioma
           license_tesim: Licencia
           publisher_tesim: Editor
-          rights_statement_tesim: Derechos
+          rights_statement_tesim: Declaración de derechos
           subject_tesim: Tema
           resource_type_tesim: Tipo de recurso
           depositor_tesim: Propietario
@@ -51,7 +51,7 @@ es:
           language_tesim: Idioma
           license_tesim: Licencia
           publisher_tesim: Editor
-          rights_statement_tesim: Derechos
+          rights_statement_tesim: Declaración de derechos
           subject_tesim: Tema
           title_tesim: Título
           badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
