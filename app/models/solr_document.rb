@@ -27,8 +27,6 @@ class SolrDocument
                          audience:     Solrizer.solr_name('pub_conacyt'),
                          title:       Solrizer.solr_name('title'),
                          type:        Solrizer.solr_name('type_conacyt'),
-                         publisher:   Solrizer.solr_name('publisher'),
-                         
                         )
 
   # self.unique_key = 'id'
