@@ -63,10 +63,9 @@ es:
         date modified ▼: fecha de modificación ▼
         date modified ▲: fecha de modificación ▲
       view:
-        List: Lista
-        Gallery: Galería
-        Masonry: Mampostería
-        Slideshow: Diapositivas
+        gallery: Galería
+        masonry: Mampostería
+        slideshow: Diapositivas
 
   hyrax:
     account_name: Mi identificador de cuenta institucional
@@ -136,7 +135,13 @@ es:
         volume: Volumen
         number: Número
         mode_of_issuance: Modo de emisión
-
+    collections:
+      show:
+        last_updated: "Ultima Actualización"
+        refresh: Recargar
+        number_of_results: Número de resultados por página
+        results_per_page: Resultados por página
+        sort: <span>Ordenar por:</span>
     directory:
       suffix: "@example.org"
     footer:
