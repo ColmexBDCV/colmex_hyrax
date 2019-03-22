@@ -14,7 +14,7 @@ signed in %>
 <%= yield :twitter_meta %>
 <!-- Google Scholar metadata -->
 <%= yield :gscholar_meta %>
-<%= favicon_link_tag 'favicon.ico' %>
+
 <title><%= content_for?(:page_title) ? yield(:page_title) : default_page_title %></title>
 
 <!-- application css -->
@@ -30,3 +30,4 @@ signed in %>
 
 <!-- for extras, e.g., a favicon -->
 <%= render partial: '/head_tag_extras', formats: [:html] %>
+<%= favicon_link_tag asset_tag('favicon.ico') %>
