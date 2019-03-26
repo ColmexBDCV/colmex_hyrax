@@ -1,10 +1,18 @@
 es:
   hyrax:
     icons:
-      article:     'fa fa-file-text-o'
+      article: "fa fa-file-text-o"
     select_type:
       article:
         # TODO: translate `human_name` into Spanish
-        description:        "Article trabajos"
-        name:               "Article"
+        description: "Article trabajos"
+        name: "Article"
         # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        period: Periodo
+        part: Parte
+        year: Año
+        volume: Volumen
+        number: Número
+        mode_of_issuance: Modo de emisión

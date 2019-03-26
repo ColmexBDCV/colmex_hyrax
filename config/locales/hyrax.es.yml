@@ -15,6 +15,7 @@ es:
           subject_sim: Tema
           resource_type_tesim: Tipo de recurso
           human_readable_type_sim: Tipo de objeto
+          center_sim: Centro
           content:
             Thesis: Tesis
             Collection: Colección
@@ -37,6 +38,8 @@ es:
           subject_tesim: Tema
           resource_type_tesim: Tipo de recurso
           depositor_tesim: Propietario
+          works: Trabajos
+          collections: Colecciones
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
@@ -106,35 +109,6 @@ es:
         themes: Temas
         table_of_contents: Tabla de contenidos
         type_of_illustrations: tipo de ilustraciones
-        director: Director
-        awards: Premios/Reconocimientos
-        item_access_restrictions: Restricción de acceso del ítem
-        item_use_restrictions: Restricción de uso del ítem
-        edition: Edición
-        encoding_format_details: Detalles de codificación del formato
-        file_type_details: Detalles del tipo de archivo
-        digital_resource_generation_information: Información de generación de recursos digitales
-        file_details: DEtalles de archivo
-        dimensions: Dimensiones
-        system_requirements: Requerimientos de sistema
-        exemplar_of_manifestation: Ejemplar de manifestación
-        extension: Extensión
-        type_of_file: Tipo de archivo
-        mode_of_publication: Modo de publicación
-        other_formats: Otros Formatos
-        access_restrictions: Restricciones de acceso
-        use_restrictions: Restricciones de uso
-        academic_degree: Grado Académico
-        type_of_thesis: Tipo de Tesis
-        degree_program: Programa de estudios
-        institution: Institución
-        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
-        period: Periodo
-        part: Parte
-        year: Año
-        volume: Volumen
-        number: Número
-        mode_of_issuance: Modo de emisión
     collections:
       show:
         last_updated: "Ultima Actualización"
