@@ -9,7 +9,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
   #   @return [User]
   # @!attribute [rw] file_path
   #   @return [String]
-  attr_accessor :creator, :file_path, :work, :collection
+  attr_accessor :creator, :file_path, :work, :collection, :update
 
   ##
   # @param file_path [String]
@@ -19,7 +19,20 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     self.file_path = opts.delete(:file_path) || raise(ArgumentError)
     self.work = opts.delete(:work) || raise(ArgumentError)
     self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError)) 
+    self.update = opts.respond_to?(:update) ?  opts.delete(:update) : nil
     super
+  end
+
+  def import(record:)
+    create_for(record: record) if update.nil?
+    update_for(record: record) unless update.nil?
+    
+  rescue Faraday::ConnectionFailed, Ldp::HttpError => e
+    error_stream << e
+  rescue RuntimeError => e
+    error_stream << e
+    raise e
+    
   end
 
   private
@@ -48,6 +61,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
+      byebug
       if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
         info_stream << 'Creating record: ' \
                       "#{record.respond_to?(:title) ? record.title : record}"
@@ -71,7 +85,23 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       end
       rescue Errno::ENOENT => e
           error_stream << e.message
-   end
+    end
+
+    def update_for(record:)
+      gw = work.singularize.classify.constantize.where(identifier: record.identifier)
+      if !gw.empty? && record.respond_to?(:identifier)
+        gw = gw.first
+        attrs = record.attributes  
+        attrs.delete(:identifier)
+        attrs.each do |key, val|
+          gw.send("#{key}=",val)
+        end
+        gw.save
+         info_stream << "\nRecord #{record.identifier} is updated"
+      else
+        info_stream << "\nRecord #{record.title} fail to update"
+      end  
+    end
 
     def file_for(filenames)
       ids = []
@@ -82,7 +112,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def import_type
-      raise 'No curation_concern found for import' unless
+      raise 'No curation_concern found for import' unless 
         defined?(Hyrax) && Hyrax&.config&.curation_concerns&.any?
       
       Hyrax.config.curation_concerns.each_with_index do |tw, i|
@@ -91,7 +121,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           return Hyrax.config.curation_concerns[i]
         end
       end
-
     end
 
 end
