@@ -1,6 +1,13 @@
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
 
 es:
+  activerecord:
+    attributes:
+      user:
+        first_name: "Nombre/s"
+        paternal_surname: "Apellido paterno"
+        maternal_surname: "Apellido materno"
+        phone: "Teléfono"
   devise:
     confirmations:
       confirmed: "Tu correo electrónico ha sido confirmado exitosamente."

@@ -15,10 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :firstname, required: true, label: "primer nombre" %>
-    <%= f.input :paternal_surname, required: true %>
-    <%= f.input :maternal_surname, required: true %>
-    <%= f.input :phone, required: true %>
+    <%= f.input :firstname, required: true, label: t("activerecord.attributes.user.first_name", :default => "First name") %>
+    <%= f.input :paternal_surname, required: true, label: t("activerecord.attributes.user.paternal_surname", :default => "Paternal surname") %>
+    <%= f.input :maternal_surname, required: true, label: t("activerecord.attributes.user.maternal_surname", :default => "Maternal surname") %>
+    <%= f.input :phone, required: true, label: t("activerecord.attributes.user.phone", :default => "Phone") %>
   </div>
 
   <div class="form-actions">

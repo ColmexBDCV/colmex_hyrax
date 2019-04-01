@@ -83,5 +83,5 @@ digital_objects/*
 config/ga.key
 config/initializers/hyrax.rb
 config/database.yml
-Gemfile
+
 
