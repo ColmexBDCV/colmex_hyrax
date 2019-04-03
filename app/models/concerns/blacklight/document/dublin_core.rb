@@ -16,7 +16,24 @@ module Blacklight::Document::DublinCore
   end
 
   def dublin_core_field_names
-    [ :contributor_conacyt, :creator_conacyt, :date, :description, :identifier, :language, :publisher, :source, :title, :subject_conacyt, :rights ,:type, :audience]
+    [ :contributor_conacyt, 
+      :creator_conacyt, 
+      :date, 
+      :description, 
+      :subject, 
+      :subject_person, 
+      :subject_work, 
+      :subject_family, 
+      :themes, 
+      :identifier, 
+      :language, 
+      :publisher, 
+      :source, 
+      :title, 
+      :subject_conacyt, 
+      :rights, 
+      :type, 
+      :audience]
   end
 
   # dublin core elements are mapped against the #dublin_core_field_names whitelist.
@@ -39,6 +56,8 @@ module Blacklight::Document::DublinCore
             xml.tag! "dc:type", v
           elsif field == :rights
             xml.tag! "dc:rights", v
+          elsif field == :description || field == :subject || field == :subject_work || field == :subject_person || field == :subject_family || field == :themes
+            xml.tag! "dc:description", v
           else
             xml.tag! "dc:#{field}", v
           end

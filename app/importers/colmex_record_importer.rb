@@ -61,7 +61,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      byebug
       if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
         info_stream << 'Creating record: ' \
                       "#{record.respond_to?(:title) ? record.title : record}"

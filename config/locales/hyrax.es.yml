@@ -5,7 +5,7 @@ es:
       fields:
         facet:
           based_near_label_sim: Ubicación
-          creator_sim: Creador
+          creator_sim: Autor
           contributor_sim: Colaborador
           file_format_sim: Formato
           generic_type_sim: Tipo
@@ -23,7 +23,7 @@ es:
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
-          creator_tesim: Creador
+          creator_tesim: Autor
           date_created_tesim: Fecha de Creacion
           date_modified_dtsi: Fecha Modificada
           date_uploaded_dtsi: Fecha de Subida
@@ -43,7 +43,7 @@ es:
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
-          creator_tesim: Creador
+          creator_tesim: Autor
           date_created_tesim: Fecha de Creacion
           date_modified_dtsi: Fecha Modificada
           date_uploaded_dtsi: Fecha de Subida
