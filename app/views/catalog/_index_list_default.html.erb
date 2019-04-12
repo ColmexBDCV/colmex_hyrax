@@ -7,7 +7,7 @@
           <dt><%= render_index_field_label document, field: field_name %></dt>
           <dd>
             <% field_render = doc_presenter.field_value field_name %>
-            <%= field_render.to_s.gsub("and", t('hyrax.stopwords.and')).html_safe %>
+            <%= field_render.to_s.gsub(", and", " "+t('hyrax.stopwords.and')).html_safe %>
           </dd>
       <% end %>
     <% end %>
