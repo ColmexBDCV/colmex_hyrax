@@ -4,19 +4,26 @@ en:
       fields:
         facet:
           based_near_label_sim: Location
+          center_sim: Center
           creator_sim: Creator
+          date_created: Year
+          director_sim: Thesis Advisor
           file_format_sim: Format
           generic_type_sim: Type
+          geographic_coverage_sim: Geographic Coverage
           keyword_sim: Keyword
           language_sim: Language
           publisher_sim: Publisher
           subject_sim: Subject
-          center_sim: Center
+          subject_person_sim: Subject Person
+          subject_family_sim: Subject Family
+          subject_work_sim: Subject Work
+          temporary_coverage_sim: Temporary Coverage
         index:
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
-          date_created_tesim: Date Created
+          date_created_tesim: Year
           date_modified_dtsi: Date Modified
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
@@ -28,6 +35,9 @@ en:
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
           subject_tesim: Subject
+          subject_person_tesim: Subject Person
+          subject_family_tesim: Subject Family
+          subject_work_tesim: Subject Work
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -44,9 +54,13 @@ en:
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
           subject_tesim: Subject
+          subject_person_sim: Subject person
+          subject_family_sim: Subject family
+          subject_work_sim: Subject work
           title_tesim: Title
   hyrax:
-    product_name: "Hyrax"
+    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
+    product_name: "Institutional Repository COLMEX"
     product_twitter_handle: "@SamveraRepo"
     institution_name: "Institution"
     institution_name_full: "The Institution Name"
@@ -54,5 +68,5 @@ en:
     directory:
       suffix: "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
-      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0 <br> Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by/4.0'> Creative Commons Attribution International License 4.0. </a>"
+      service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.

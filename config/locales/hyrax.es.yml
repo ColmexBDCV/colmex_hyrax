@@ -5,26 +5,33 @@ es:
       fields:
         facet:
           based_near_label_sim: Ubicación
-          creator_sim: Autor
-          contributor_sim: Colaborador
-          file_format_sim: Formato
-          generic_type_sim: Tipo
-          keyword_sim: Palabras clave
-          language_sim: Idioma
-          publisher_sim: Editor
-          subject_sim: Tema
-          resource_type_tesim: Tipo de recurso
-          human_readable_type_sim: Tipo de objeto
           center_sim: Centro
           content:
             Thesis: Tesis
             Collection: Colección
             Article: Artículo
+          creator_sim: Autor
+          contributor_sim: Colaborador
+          date_created_sim: Año
+          director_sim: Director de Tesis
+          file_format_sim: Formato
+          generic_type_sim: Tipo
+          geographic_coverage_sim: Covertura Geográfica
+          human_readable_type_sim: Tipo de objeto
+          keyword_sim: Palabras clave
+          language_sim: Idioma
+          publisher_sim: Editor
+          resource_type_tesim: Tipo de documento
+          subject_sim: Tema
+          subject_person_sim: Tema persona
+          subject_family_sim: Tema familia
+          subject_work_sim: Tema trabajo
+          temporary_coverage_sim: covertura temporal
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
           creator_tesim: Autor
-          date_created_tesim: Fecha de Creacion
+          date_created_tesim: Año
           date_modified_dtsi: Fecha Modificada
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
@@ -36,6 +43,9 @@ es:
           publisher_tesim: Editor
           rights_statement_tesim: Declaración de derechos
           subject_tesim: Tema
+          subject_person_tesim: Tema persona
+          subject_family_tesim: Tema familia
+          subject_work_tesim: Tema trabajo
           resource_type_tesim: Tipo de recurso
           depositor_tesim: Propietario
           works: Trabajos
@@ -72,6 +82,7 @@ es:
 
   hyrax:
     account_name: Mi identificador de cuenta institucional
+    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
     base:
       show:
         analitycs: Analíticas
@@ -116,12 +127,25 @@ es:
         number_of_results: Número de resultados por página
         results_per_page: Resultados por página
         sort: <span>Ordenar por:</span>
+    contact_form:
+      notice: Por favor utilice este formulario para enviar preguntas, reportar problemas, solicitar ayuda o enviar comentarios sobre el sistema.
+      name_label: Nombre
+      subject_label: Asunto
+      email_label: Correo Electrónico
     directory:
       suffix: "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> bajo licencia de Apache, Version 2.0"
-      service_html: Un servicio de <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> bajo licencia de Apache, Version 2.0 <br> Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by/4.0/deed.es'>Licencia Internacional de Creative Commons Attribution 4.0.</a>"
+      service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
+    homepage:
+      recently_uploaded:
+        tab_label: Integrados recientemente
+        title: Integrados recientemente
     institution_name: institución
     institution_name_full: El nombre de la institución
-    product_name: Hyrax
+    product_name: Repositorio Institucional COLMEX
     product_twitter_handle: "@SamveraRepo"
+    search:
+      form:
+        q:
+          label_alt: "Buscar: "
