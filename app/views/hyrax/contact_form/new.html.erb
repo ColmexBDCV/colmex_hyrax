@@ -5,9 +5,8 @@
 <h1>
     <%= t('hyrax.contact_form.header') %>
 </h1>
-
 <% if user_signed_in? %>
-  <% nm = current_user.name %>
+  <% nm = current_user.firstname + " " + current_user.paternal_surname + " " + current_user.maternal_surname %>
   <% em = current_user.email %>
 <% else %>
   <% nm = '' %>

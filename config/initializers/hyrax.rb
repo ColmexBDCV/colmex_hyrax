@@ -23,7 +23,7 @@ Hyrax.config do |config|
   # config.admin_set_predicate = ::RDF::DC.isPartOf
 
   # Email recipient of messages sent via the contact form
-  config.contact_email = ENV['ADMIN_EMAIL'] || "admin@example.net"
+  config.contact_email = ENV['ADMIN_EMAIL'] || "rod.youkai@gmail.com"
 
   # Text prefacing the subject entered in the contact form
   # config.subject_prefix = "Contact form:"

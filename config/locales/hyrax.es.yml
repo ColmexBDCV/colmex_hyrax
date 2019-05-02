@@ -46,7 +46,7 @@ es:
           subject_person_tesim: Tema persona
           subject_family_tesim: Tema familia
           subject_work_tesim: Tema trabajo
-          resource_type_tesim: Tipo de recurso
+          resource_type_tesim: Tipo de documento
           depositor_tesim: Propietario
           works: Trabajos
           collections: Colecciones
@@ -54,7 +54,7 @@ es:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
           creator_tesim: Autor
-          date_created_tesim: Fecha de Creacion
+          date_created_tesim: Año
           date_modified_dtsi: Fecha Modificada
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
@@ -95,10 +95,10 @@ es:
         languague: Lenguaje
         identifier: Identificador
         keyword: Palabras clave
-        date_created: Fecha de creación
+        date_created: Año
         loation: Ubicación
         related_url: URL relacionada
-        resource_type: Tipo de recurso
+        resource_type: Tipo de documento
         source: Fuente
         rights_statement: Declaración de derechos
         license: Licencia

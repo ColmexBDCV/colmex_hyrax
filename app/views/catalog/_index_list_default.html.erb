@@ -7,7 +7,13 @@
           <dt><%= render_index_field_label document, field: field_name %></dt>
           <dd>
             <% field_render = doc_presenter.field_value field_name %>
-            <%= field_render.to_s.gsub(", and", " "+t('hyrax.stopwords.and')).html_safe %>
+            <% if field_render.to_s.include? ", and" %>
+              <%= field_render.to_s.gsub(", and", " "+t('hyrax.stopwords.and')).html_safe %>
+            <% elsif field_render.to_s.include? " and" %>
+              <%= field_render.to_s.gsub(" and", " "+t('hyrax.stopwords.and')).html_safe %>
+            <% else %>
+              <%= doc_presenter.field_value field %>
+            <%end%>
           </dd>
       <% end %>
     <% end %>
