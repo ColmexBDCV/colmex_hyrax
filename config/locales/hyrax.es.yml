@@ -149,3 +149,7 @@ es:
       form:
         q:
           label_alt: "Buscar: "
+    stopwords:
+      and: "y"
+      or: "o"
+      not: "no"

@@ -70,3 +70,9 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0 <br> Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by/4.0'> Creative Commons Attribution International License 4.0. </a>"
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
+      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
+      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    stopwords:
+      and: "and"
+      or: "or"
+      not: "not"
