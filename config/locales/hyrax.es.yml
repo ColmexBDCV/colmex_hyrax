@@ -120,6 +120,9 @@ es:
         themes: Temas
         table_of_contents: Tabla de contenidos
         type_of_illustrations: tipo de ilustraciones
+      relationships_parent_row:
+        label: "En %{type}:"
+        Collection: Colección
     collections:
       show:
         last_updated: "Ultima Actualización"
