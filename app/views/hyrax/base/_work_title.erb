@@ -3,7 +3,11 @@
     <div class="col-sm-8">
       <% if index == 0 %>
         <h2><%= title %>
-          <small class="text-muted"><%= presenter.permission_badge %> <%= raw t('blacklight.search.fields.show.badge_deposited', :default => presenter.workflow.badge) %></small>
+          <%
+=begin%>
+ <small class="text-muted"><%= presenter.permission_badge %> <%= raw t('blacklight.search.fields.show.badge_deposited', :default => presenter.workflow.badge) %></small> 
+<%
+=end%>
         </h2>
       <% else %>
         <h2><%= title %></h2>

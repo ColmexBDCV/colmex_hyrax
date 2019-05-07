@@ -1,9 +1,13 @@
 
-<%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
+<%
+=begin%>
+ <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %> 
+<%
+=end%>
 <%= presenter.attribute_to_html(:creator, label: t('hyrax.base.show.creator'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contributor, label: t('hyrax.base.show.contributor'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:subject, label: t('hyrax.base.show.subject'), render_as: :faceted, html_dl: true) %>
-<% [:subject_person, :subject_family, :subject_work, :doi, :isbn, :alternate_title, :other_title,   
+<% [:subject_person, :subject_work, :doi, :isbn, :alternate_title, :other_title,   
     :embargo_release_date, :lease_expiration_date, :geographic_coverage, :temporary_coverage,
     :gender_or_form, :notes, :center, :classification, :supplementary_content_or_bibliography,
     :responsibility_statement, :other_related_persons, :summary, :themes, :table_of_contents, 
@@ -28,3 +32,4 @@
 =end%>
 <!-- Special partial for every work type -->
 <%= render dom_class(presenter)+'_attribute_rows', presenter: presenter rescue nil%>
+

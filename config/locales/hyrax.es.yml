@@ -16,17 +16,17 @@ es:
           director_sim: Director de Tesis
           file_format_sim: Formato
           generic_type_sim: Tipo
-          geographic_coverage_sim: Covertura Geográfica
+          geographic_coverage_sim: Covbrtura Geográfica
           human_readable_type_sim: Tipo de objeto
           keyword_sim: Palabras clave
           language_sim: Idioma
           publisher_sim: Editor
-          resource_type_tesim: Tipo de documento
+          resource_type_sim: Tipo de documento
           subject_sim: Tema
           subject_person_sim: Tema persona
           subject_family_sim: Tema familia
-          subject_work_sim: Tema trabajo
-          temporary_coverage_sim: covertura temporal
+          subject_work_sim: Tema Obra
+          temporary_coverage_sim: Cobertura temporal
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -45,7 +45,7 @@ es:
           subject_tesim: Tema
           subject_person_tesim: Tema persona
           subject_family_tesim: Tema familia
-          subject_work_tesim: Tema trabajo
+          subject_work_tesim: Tema Obra
           resource_type_tesim: Tipo de documento
           depositor_tesim: Propietario
           works: Trabajos
@@ -84,13 +84,16 @@ es:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
     base:
+      citations:
+        header: "Citación:"
       show:
         analitycs: Analíticas
+
         work_type_Thesis: Tesis
         last_modified: Última modificación
         creator: Autor
         contributor: Contribuidor
-        subject: Tema Topico
+        subject: Tema
         publisher: Editor
         languague: Lenguaje
         identifier: Identificador
@@ -104,7 +107,7 @@ es:
         license: Licencia
         alternate_title: Título variante
         other_title: Otro título
-        subject_work: Tema trabajo
+        subject_work: Tema Obra
         subject_person: Tema persona
         subject_family: Tema familia
         geographic_coverage: Cobertura geográfica
@@ -112,12 +115,13 @@ es:
         gender_or_form: Género o forma
         notes: Notas
         center: Centro
-        classification: Clasificación
+        classification: Clasificación de la biblioteca
         supplementary_content_or_bibliography: Contenido suplementario o bibliografía
         responsibility_statement: Declaración de responsabilidad
         other_related_persons: Otras personas relacionadas
         summary: Resumen
         themes: Temas
+        title: Título
         table_of_contents: Tabla de contenidos
         type_of_illustrations: tipo de ilustraciones
       relationships_parent_row:

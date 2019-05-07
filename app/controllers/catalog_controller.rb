@@ -65,7 +65,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("subject", :facetable), limit: 5
     config.add_facet_field solr_name("subject_person", :facetable), limit: 5
     config.add_facet_field solr_name("subject_work", :facetable), limit: 5
-    config.add_facet_field solr_name("subject_family", :facetable), limit: 5
+    # config.add_facet_field solr_name("subject_family", :facetable), limit: 5
     # config.add_facet_field solr_name("language", :facetable), limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), limit: 5
     config.add_facet_field solr_name("geographic_coverage", :facetable), limit: 5
@@ -95,7 +95,7 @@ class CatalogController < ApplicationController
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
     config.add_index_field solr_name("subject_person", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_person", :facetable)
-    config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
+    # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
     config.add_index_field solr_name("subject_work", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_work", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
     # config.add_index_field solr_name("depositor"), label: "Owner", helper_method: :link_to_profile

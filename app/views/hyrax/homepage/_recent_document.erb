@@ -3,7 +3,7 @@
       <div class="col-sm-12">
         <span class="sr-only"><%= t('hyrax.homepage.recently_uploaded.document.title_label') %></span>
         <h3>
-          <%= link_to [main_app, recent_document] do %>
+          <span class="recent-label"><%= t('hyrax.base.show.title') %>:</span> <%= link_to [main_app, recent_document] do %>
             <%= render_thumbnail_tag(recent_document, {width: 90}, {suppress_link: true}) + recent_document.to_s %>
           <% end %>
         </h3>
