@@ -6,6 +6,11 @@
     width: 200px;
 }
 
+.citation-way {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 /* dl {
     width: 100%;
     overflow: hidden;

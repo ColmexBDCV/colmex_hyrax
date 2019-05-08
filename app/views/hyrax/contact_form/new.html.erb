@@ -17,6 +17,8 @@
                             html: { class: 'form-horizontal' } do |f| %>
   <%= f.text_field :contact_method, class: 'hide' %>
   <%
+%>
+ <%
 =begin%>
  <div class="form-group">
     <%= f.label :category, t('hyrax.contact_form.type_label'), class: "col-sm-2 control-label" %>
@@ -26,9 +28,12 @@
     <div class="col-sm-10">
       <%= f.select 'category', options_for_select(issue_types), {}, {class: 'form-control', required: true } %>
     </div>
-  </div> 
+  </div>  
 <%
 =end%>
+
+<%= f.hidden_field 'category', value: 'otro' %>
+
 
   <div class="form-group">
     <%= f.label :name, t('hyrax.contact_form.name_label'), class: "col-sm-2 control-label" %>

@@ -16,4 +16,8 @@
         <li><%= link_to 'Mendeley', hyrax.mendeley_path, id: 'mendeleyLink', name: 'mendeley' %></li>
       </ul>
     </div>
+  <h3>Forma de Citar:</h3>
+  <div class="citation-way">
+    <%= build_citation(presenter)%>
+  </div>
 </div>
