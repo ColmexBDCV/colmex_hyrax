@@ -139,6 +139,7 @@ es:
       name_label: Nombre
       subject_label: Asunto
       email_label: Correo Electrónico
+      thanks: Gracias por su mensaje
     directory:
       suffix: "@example.org"
     footer:
