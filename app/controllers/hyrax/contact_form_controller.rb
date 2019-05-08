@@ -9,7 +9,7 @@ module Hyrax
       # not spam and a valid form
       if @contact_form.valid?
         ContactMailer.contact(@contact_form).deliver_now
-        flash.now[:notice] = t('hyrax.contact_form_thanks',:default =>'Thank you for your message!')
+        flash.now[:notice] = t('hyrax.contact_form.thanks',:default =>'Thank you for your message!')
         after_deliver
         @contact_form = ContactForm.new
       else
