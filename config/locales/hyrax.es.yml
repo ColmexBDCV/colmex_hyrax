@@ -16,7 +16,7 @@ es:
           director_sim: Director de Tesis
           file_format_sim: Formato
           generic_type_sim: Tipo
-          geographic_coverage_sim: Covbrtura Geográfica
+          geographic_coverage_sim: Cobertura Geográfica
           human_readable_type_sim: Tipo de objeto
           keyword_sim: Palabras clave
           language_sim: Idioma
@@ -112,7 +112,7 @@ es:
         subject_person: Tema persona
         subject_family: Tema familia
         geographic_coverage: Cobertura geográfica
-        temporary_coverage: cobertura temporal
+        temporary_coverage: Cobertura temporal
         gender_or_form: Género o forma
         notes: Notas
         center: Centro
@@ -124,7 +124,7 @@ es:
         themes: Temas
         title: Título
         table_of_contents: Tabla de contenidos
-        type_of_illustrations: tipo de ilustraciones
+        type_of_illustrations: Tipo de ilustraciones
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
