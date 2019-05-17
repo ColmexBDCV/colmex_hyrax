@@ -11,6 +11,11 @@
     text-justify: inter-word;
 }
 
+@media (min-width: 768px) {
+    #content-wrapper {
+        padding-top: 30px;
+    }
+}
 /* dl {
     width: 100%;
     overflow: hidden;
