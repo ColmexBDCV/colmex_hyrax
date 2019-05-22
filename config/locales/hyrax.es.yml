@@ -13,10 +13,10 @@ es:
           creator_sim: Autor
           contributor_sim: Colaborador
           date_created_sim: Año
-          director_sim: Director de Tesis
+          director_sim: Director de tesis
           file_format_sim: Formato
           generic_type_sim: Tipo
-          geographic_coverage_sim: Cobertura Geográfica
+          geographic_coverage_sim: Cobertura geográfica
           human_readable_type_sim: Tipo de objeto
           keyword_sim: Palabras clave
           language_sim: Idioma
@@ -25,17 +25,17 @@ es:
           subject_sim: Tema
           subject_person_sim: Tema persona
           subject_family_sim: Tema familia
-          subject_work_sim: Tema Obra
+          subject_work_sim: Tema obra
           temporary_coverage_sim: Cobertura temporal
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
           creator_tesim: Autor
           date_created_tesim: Año
-          date_modified_dtsi: Fecha Modificada
-          date_uploaded_dtsi: Fecha de Subida
+          date_modified_dtsi: Fecha de modificación
+          date_uploaded_dtsi: Fecha de subida
           description_tesim: Descripción
-          file_format_tesim: Formato de Archivo
+          file_format_tesim: Formato de archivo
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
@@ -45,7 +45,7 @@ es:
           subject_tesim: Tema
           subject_person_tesim: Tema persona
           subject_family_tesim: Tema familia
-          subject_work_tesim: Tema Obra
+          subject_work_tesim: Tema obra
           resource_type_tesim: Tipo de documento
           depositor_tesim: Propietario
           works: Trabajos
@@ -55,10 +55,10 @@ es:
           contributor_tesim: Contribuidor
           creator_tesim: Autor
           date_created_tesim: Año
-          date_modified_dtsi: Fecha Modificada
+          date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
-          file_format_tesim: Formato de Archivo
+          file_format_tesim: Formato de archivo
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
