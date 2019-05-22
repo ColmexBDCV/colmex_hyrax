@@ -7,7 +7,6 @@ class CatalogController < ApplicationController
 
   def self.uploaded_field
     solr_name('system_create', :stored_sortable, type: :date)
-    solr_name('date_created', :facetable, type: :string)
   end
 
   def self.year_field
