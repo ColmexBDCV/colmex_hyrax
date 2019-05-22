@@ -7,6 +7,11 @@ class CatalogController < ApplicationController
 
   def self.uploaded_field
     solr_name('system_create', :stored_sortable, type: :date)
+    solr_name('date_created', :facetable, type: :string)
+  end
+
+  def self.year_field
+    solr_name('date_created', :facetable, type: :string)
   end
 
   def self.modified_field
@@ -308,10 +313,12 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     # label is key, solr field is value
     config.add_sort_field "score desc, #{uploaded_field} desc", label: "relevance"
-    config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
-    config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
-    config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
-    config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
+    # config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
+    # config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
+    config.add_sort_field "#{year_field} desc", label: "date created \u25BC"
+    config.add_sort_field "#{year_field} asc", label: "date created \u25B2"
+    # config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
+    # config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

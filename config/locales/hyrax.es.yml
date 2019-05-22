@@ -75,6 +75,8 @@ es:
         date uploaded ▲: fecha de subida ▲
         date modified ▼: fecha de modificación ▼
         date modified ▲: fecha de modificación ▲
+        date created ▼: Año ▼
+        date created ▲: Año ▲
       view:
         gallery: Galería
         masonry: Mampostería
