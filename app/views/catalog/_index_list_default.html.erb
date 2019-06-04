@@ -10,7 +10,7 @@
             <% if field_render.to_s.include? ", and" %>
               <%= field_render.to_s.gsub(", and", ", ").html_safe %>
             <% elsif field_render.to_s.include? " and" %>
-              <%= field_render.to_s.gsub(" and", ", "+t('hyrax.stopwords.and')).html_safe %>
+              <%= field_render.to_s.gsub(" and", ", ").html_safe %>
             <% else %>
               <%= doc_presenter.field_value field %>
             <%end%>
