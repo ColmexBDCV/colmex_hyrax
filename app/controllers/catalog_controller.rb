@@ -76,7 +76,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("temporary_coverage", :facetable), limit: 5
     # config.add_facet_field solr_name("publisher", :facetable), limit: 5
     config.add_facet_field solr_name("file_format", :facetable), limit: 5
-    # config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
+    config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
     config.add_facet_field solr_name("center", :facetable), limit: 5
     config.add_facet_field solr_name("date_created", :facetable), limit: 5
 
@@ -105,6 +105,8 @@ class CatalogController < ApplicationController
     # config.add_index_field solr_name("depositor"), label: "Owner", helper_method: :link_to_profile
     # config.add_index_field solr_name("publisher", :stored_searchable), itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
     config.add_index_field solr_name("based_near_label", :stored_searchable), itemprop: 'contentLocation', link_to_search: solr_name("based_near_label", :facetable)
+    config.add_index_field solr_name("geographic_coverage", :stored_searchable), itemprop: 'geographic_coverage', link_to_search: solr_name("geographic_coverage", :facetable)
+    config.add_index_field solr_name("temporary_coverage", :stored_searchable), itemprop: 'temporary_coverage', link_to_search: solr_name("temporary_coverage", :facetable)
     # config.add_index_field solr_name("language", :stored_searchable), itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
     # config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), itemprop: 'datePublished', helper_method: :human_readable_date
     # config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), itemprop: 'dateModified', helper_method: :human_readable_date
