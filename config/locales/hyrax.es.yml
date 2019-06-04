@@ -36,6 +36,7 @@ es:
           date_uploaded_dtsi: Fecha de subida
           description_tesim: Descripción
           file_format_tesim: Formato de archivo
+          geographic_coverage_sim: Cobertura geográfica
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
@@ -50,6 +51,7 @@ es:
           depositor_tesim: Propietario
           works: Trabajos
           collections: Colecciones
+          temporary_coverage_sim: Cobertura temporal
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Contribuidor
@@ -59,6 +61,7 @@ es:
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
           file_format_tesim: Formato de archivo
+          geographic_coverage_sim: Cobertura geográfica
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
@@ -68,6 +71,7 @@ es:
           subject_tesim: Tema
           title_tesim: Título
           badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
+          temporary_coverage_sim: Cobertura temporal
       sort:
         label: Ordenar por %{field}
         relevance: relevancia
