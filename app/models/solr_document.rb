@@ -99,6 +99,10 @@ class SolrDocument
   def subject_work
     self[Solrizer.solr_name('subject_work')]
   end
+
+  def subject_corporate
+    self[Solrizer.solr_name('subject_corporate')]
+  end
   
   def alternate_title
     self[Solrizer.solr_name('alternate_title')]

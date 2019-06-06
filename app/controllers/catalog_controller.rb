@@ -69,6 +69,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("subject", :facetable), limit: 5
     config.add_facet_field solr_name("subject_person", :facetable), limit: 5
     config.add_facet_field solr_name("subject_work", :facetable), limit: 5
+    config.add_facet_field solr_name("subject_corporate", :facetable), limit: 5
     # config.add_facet_field solr_name("subject_family", :facetable), limit: 5
     # config.add_facet_field solr_name("language", :facetable), limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), limit: 5
