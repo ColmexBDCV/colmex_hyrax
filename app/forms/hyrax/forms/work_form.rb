@@ -22,7 +22,7 @@ module Hyrax
       attr_reader :agreement_accepted
 
       self.terms = [:title, :alternate_title, :other_title, :creator, 
-                    :contributor, :description, :subject_person, :subject_family, :subject_work, :subject,
+                    :contributor, :description, :subject_person, :subject_family, :subject_work, :subject, :subject_corporate,
                     :keyword, :license, :rights_statement, :publisher, :date_created,
                     :language, :identifier, :doi, :isbn, :based_near, :geographic_coverage ,:temporary_coverage,
                     :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography,

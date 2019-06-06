@@ -31,6 +31,7 @@ module Hyrax
       property :subject_person, predicate: ::Vocab::RDAW.subjectPerson, multiple: true
       property :subject_family, predicate: ::Vocab::RDAW.subjectFamily, multiple: true
       property :subject_work, predicate: ::Vocab::RDAW.subjectWork, multiple: true
+      property :subject_corporate, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
       property :language, predicate: ::Vocab::RDAM.languageOfTheContent
       property :identifier, predicate: ::Vocab::RDAE::identifierForTheManifestation, multiple: false
       property :based_near, predicate: ::RDF::Vocab::BF2.geographicCoverage, class_name: Hyrax::ControlledVocabularies::Location
@@ -50,7 +51,6 @@ module Hyrax
       property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true
       property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
-      property :themes, predicate: ::Vocab::RDAW.subjectCorporateBody, multiple: true
       #property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
    

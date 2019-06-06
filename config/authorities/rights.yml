@@ -2,7 +2,7 @@ terms:
   - id: https://creativecommons.org/licenses/by/2.5/mx/
     term: Atribución by (Creative Commons MX)
     active: false
-  - id: https://creativecommons.org/licenses/by-nd/4.0
+  - id: https://creativecommons.org/licenses/by-nd/4.0/
     term: Atribución- SinDerivadas
     active: false
   - id: https://creativecommons.org/licenses/by-nc/2.5/mx/
@@ -17,22 +17,22 @@ terms:
   - id: https://creativecommons.org/licenses/by-nc-sa/2.5/mx/
     term: Atribución- CompartirIgual (Creative Commons MX)
     active: false
-  - id: http://repositorio.colmex.mx/agreement
+  - id: http://repositorio.colmex.mx/agreement/
     term: Todos los derechos reservados por El Colegio de México
     active: false
-  - id: http://repositorio.colmex.mx/agreement
+  - id: http://repositorio.colmex.mx/agreement/
     term: Algunos derechos reservados por El Colegio de México
     active: false
-  - id: http://repositorio.colmex.mx/agreement
+  - id: http://repositorio.colmex.mx/agreement/
     term: Dominio público
     active: false
-  - id: http://repositorio.colmex.mx/agreement
+  - id: http://repositorio.colmex.mx/agreement/
     term: Carta de transmisión- no exclusiva ( solo tesis COLMEX)
     active: false
-  - id: http://creativecommons.org/licenses/by-nc-nd/4.0
+  - id: http://creativecommons.org/licenses/by-nc-nd/4.0/
     term: Atribución-NoComercial-SinDerivadas
     active: true
-  - id: http://creativecommons.org/licenses/by-nd/4.0
+  - id: http://creativecommons.org/licenses/by-nd/4.0/
     term: Atribución- SinDerivadas (Creative Commons)
     active: true
 

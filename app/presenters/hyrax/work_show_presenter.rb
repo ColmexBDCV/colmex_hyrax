@@ -37,7 +37,7 @@ module Hyrax
 
     # Metadata Methods
    delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
-             :contributor, :subject, :subject_person, :subject_family, :subject_work, 
+             :contributor, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
              :publisher, #:language, 
              :embargo_release_date, :themes,
              :lease_expiration_date, :license, :geographic_coverage, :temporary_coverage,

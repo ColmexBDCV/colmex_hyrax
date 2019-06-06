@@ -26,6 +26,7 @@ es:
           subject_person_sim: Tema persona
           subject_family_sim: Tema familia
           subject_work_sim: Tema obra
+          subject_corporate_sim: Tema organismo
           temporary_coverage_sim: Cobertura temporal
         index:
           based_near_tesim: Ubicación
@@ -47,6 +48,7 @@ es:
           subject_person_tesim: Tema persona
           subject_family_tesim: Tema familia
           subject_work_tesim: Tema obra
+          subject_corporate_tesim: Tema organismo
           resource_type_tesim: Tipo de documento
           depositor_tesim: Propietario
           works: Trabajos
@@ -117,6 +119,7 @@ es:
         subject_work: Tema Obra
         subject_person: Tema persona
         subject_family: Tema familia
+        subject_corporate: Tema organismo
         geographic_coverage: Cobertura geográfica
         temporary_coverage: Cobertura temporal
         gender_or_form: Género o forma
