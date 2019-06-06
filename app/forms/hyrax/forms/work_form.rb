@@ -26,7 +26,7 @@ module Hyrax
                     :keyword, :license, :rights_statement, :publisher, :date_created,
                     :language, :identifier, :doi, :isbn, :based_near, :geographic_coverage ,:temporary_coverage,
                     :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography,
-                    :responsibility_statement, :other_related_persons, :summary, :table_of_contents, :themes,
+                    :responsibility_statement, :other_related_persons, :summary, :table_of_contents,
                     #:type_of_content, 
                     :type_of_illustrations, :center,
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,

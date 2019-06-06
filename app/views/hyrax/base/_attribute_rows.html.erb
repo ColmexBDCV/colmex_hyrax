@@ -10,7 +10,7 @@
 <% [:subject_person, :subject_work, :subject_corporate, :doi, :isbn, :alternate_title, :other_title,   
     :embargo_release_date, :lease_expiration_date, :geographic_coverage, :temporary_coverage,
     :gender_or_form, :notes, :center, :classification, :supplementary_content_or_bibliography,
-    :responsibility_statement, :other_related_persons, :summary, :themes, :table_of_contents, 
+    :responsibility_statement, :other_related_persons, :summary, :table_of_contents, 
     :type_of_illustrations].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  
