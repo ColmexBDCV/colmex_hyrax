@@ -15,7 +15,13 @@ signed in %>
 <!-- Google Scholar metadata -->
 <%= yield :gscholar_meta %>
 
-<title><%= content_for?(:page_title) ? yield(:page_title) : default_page_title %></title>
+<%
+=begin%>
+ <title><%= content_for?(:page_title) ? yield(:page_title) : default_page_title %></title> 
+<%
+=end%>
+
+<title>Repositorio Institucional COLMEX</title>
 
 <!-- application css -->
 <%= stylesheet_link_tag 'application' %>
