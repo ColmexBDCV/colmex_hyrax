@@ -17,7 +17,7 @@ module Hyrax
       property :resource_type, predicate: ::Vocab::RDAE.contentType
       property :creator, predicate: ::Vocab::RDAA.authorOf, multiple: true
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor
-      property :description, predicate: ::RDF::Vocab::DC11.description
+      property :description, predicate: ::Vocab::RDAE.summarizationOfTheContent
       property :keyword, predicate: ::RDF::Vocab::DC11.relation
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
@@ -49,7 +49,7 @@ module Hyrax
       property :supplementary_content_or_bibliography, predicate: ::Vocab::RDAE.supplementaryContent, multiple: true
       property :responsibility_statement, predicate: ::Vocab::RDAM.statementOfResponsibilityRelatingToTitleProper, multiple: false
       property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true
-      property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
+      #property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
       #property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true

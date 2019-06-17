@@ -36,9 +36,14 @@ es:
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de subida
           description_tesim: Descripción
+          degree_program_tesim: Grado
+          center_tesim: Centro
+          director_ tesim: Director
+          type_of_illustrations_tesim: Tipo de ilustraciones
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
+          classification_tesim: Clasificación
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
@@ -83,6 +88,8 @@ es:
         date modified ▲: fecha de modificación ▲
         date created ▼: Año ▼
         date created ▲: Año ▲
+        Title [Z-A]: Título [Z-A]
+        Title [A-Z]: Título [A-Z]
       view:
         gallery: Galería
         masonry: Mampostería
@@ -102,6 +109,7 @@ es:
         last_modified: Última modificación
         creator: Autor
         contributor: Contribuidor
+        description: Resumen
         subject: Tema
         publisher: Editor
         languague: Lenguaje
