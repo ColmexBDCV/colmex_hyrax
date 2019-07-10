@@ -23,4 +23,12 @@ module HyraxHelper
   end
   
 
+  #apply locale config to sort_fields
+  def translate_sort_fields(sort_fields)
+    tsf = []
+    sort_fields.each do |f|
+      tsf.push( [t('blacklight.search.sort.'+f[0]), f[1]])
+    end
+    return tsf
+  end
 end

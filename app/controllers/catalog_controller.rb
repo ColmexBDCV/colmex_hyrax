@@ -1,4 +1,7 @@
 class CatalogController < ApplicationController
+  include BlacklightAdvancedSearch::Controller
+
+  include BlacklightRangeLimit::ControllerOverride
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
   include BlacklightOaiProvider::Controller
@@ -22,17 +25,23 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
     config.view.gallery.partials = [:index_header, :index]
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]
 
     config.oai = {
       provider: {
-        repository_name: 'Test',
+        repository_name: 'Repositorio Institucional Colmex',
         repository_url: 'http://repositorio.colmex.mx/catalog/oai',
-        record_prefix: 'oai:test',
-        admin_email: 'root@localhost',
-        sample_id: '109660'
+        record_prefix: 'http://repositorio.colmex.mx/',
+        admin_email: 'rcuellar@colmex.mx',
       },
       document: {
         limit: 25,            # number of records returned with each request, default: 15
@@ -44,7 +53,7 @@ class CatalogController < ApplicationController
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
-    config.search_builder_class = Hyrax::CatalogSearchBuilder
+    config.search_builder_class = SearchBuilder
 
     # Show gallery view
     config.view.gallery.partials = [:index_header, :index]
@@ -69,7 +78,11 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("creator", :facetable), limit: 5
     config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
     config.add_facet_field solr_name("center", :facetable), limit: 5
-    config.add_facet_field solr_name("date_created", :facetable), limit: 5
+    config.add_facet_field solr_name("date_created", :facetable) do |field|
+      field.label = 'year'
+      field.range = true
+      field.include_in_advanced_search = false
+    end
     
     # config.add_facet_field solr_name("keyword", :facetable), limit: 5
     config.add_facet_field solr_name("subject_work", :facetable), limit: 5
@@ -180,19 +193,8 @@ class CatalogController < ApplicationController
       }
     end
 
-    # Now we see how to over-ride Solr request handler defaults, in this
-    # case for a BL "search field", which is really a dismax aggregate
-    # of Solr search fields.
-    # creator, title, description, publisher, date_created,
-    # subject, language, resource_type, format, identifier, based_near,
-    config.add_search_field('contributor') do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-
-      # :solr_local_parameters will be sent using Solr LocalParams
-      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-      # Solr parameter de-referencing like $title_qf.
-      # See: http://wiki.apache.org/solr/LocalParams
-      solr_name = solr_name("contributor", :stored_searchable)
+    config.add_search_field('title') do |field|
+      solr_name = solr_name("title", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -207,8 +209,19 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('title') do |field|
-      solr_name = solr_name("title", :stored_searchable)
+    # Now we see how to over-ride Solr request handler defaults, in this
+    # case for a BL "search field", which is really a dismax aggregate
+    # of Solr search fields.
+    # creator, title, description, publisher, date_created,
+    # subject, language, resource_type, format, identifier, based_near,
+    config.add_search_field('contributor') do |field|
+      # solr_parameters hash are sent to Solr as ordinary url query params.
+
+      # :solr_local_parameters will be sent using Solr LocalParams
+      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
+      # Solr parameter de-referencing like $title_qf.
+      # See: http://wiki.apache.org/solr/LocalParams
+      solr_name = solr_name("contributor", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -240,6 +253,30 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('subject_work') do |field|
+      solr_name = solr_name("subject_work", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('subject_person') do |field|
+      solr_name = solr_name("subject_person", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('subject_corporate') do |field|
+      solr_name = solr_name("subject_corporate", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('subject') do |field|
       solr_name = solr_name("subject", :stored_searchable)
       field.solr_local_parameters = {
@@ -248,78 +285,102 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('language') do |field|
-      solr_name = solr_name("language", :stored_searchable)
+    config.add_search_field('geographic_coverage') do |field|
+      solr_name = solr_name("geographic_coverage", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-    config.add_search_field('resource_type') do |field|
-      solr_name = solr_name("resource_type", :stored_searchable)
+    config.add_search_field('temporary_coverage') do |field|
+      solr_name = solr_name("temporary_coverage", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end 
+
+    config.add_search_field('director') do |field|
+      solr_name = solr_name("director", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-    config.add_search_field('format') do |field|
-      solr_name = solr_name("format", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('language') do |field|
+    #   solr_name = solr_name("language", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('identifier') do |field|
-      solr_name = solr_name("id", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('resource_type') do |field|
+    #   solr_name = solr_name("resource_type", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('based_near') do |field|
-      field.label = "Location"
-      solr_name = solr_name("based_near_label", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('format') do |field|
+    #   solr_name = solr_name("format", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('keyword') do |field|
-      solr_name = solr_name("keyword", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('identifier') do |field|
+    #   solr_name = solr_name("id", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('depositor') do |field|
-      solr_name = solr_name("depositor", :symbol)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('based_near') do |field|
+    #   field.label = "Location"
+    #   solr_name = solr_name("based_near_label", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('rights_statement') do |field|
-      solr_name = solr_name("rights_statement", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('keyword') do |field|
+    #   solr_name = solr_name("keyword", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
-    config.add_search_field('license') do |field|
-      solr_name = solr_name("license", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('depositor') do |field|
+    #   solr_name = solr_name("depositor", :symbol)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
+
+    # config.add_search_field('rights_statement') do |field|
+    #   solr_name = solr_name("rights_statement", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
+
+    # config.add_search_field('license') do |field|
+    #   solr_name = solr_name("license", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

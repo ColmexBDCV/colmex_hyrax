@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
    #Conacyt Requirements
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/jobs'
 
   mount Blacklight::Engine => '/'
+  mount BlacklightAdvancedSearch::Engine => '/'
+
   
   concern :searchable, Blacklight::Routes::Searchable.new
 
@@ -23,6 +26,8 @@ Rails.application.routes.draw do
 
   
     concerns :searchable
+    concerns :range_searchable
+
   end
 
   devise_for :users
