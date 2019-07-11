@@ -16,23 +16,8 @@
         padding-top: 30px;
     }
 }
-/* dl {
-    width: 100%;
-    overflow: hidden;
 
-    padding: 0 !important;
-    margin: 0
+.input-small {
+    border-radius: 5px;
+    background-color: white;
 }
-
-dt {
-    float: left;
-    width: 30%;
-    padding: 0;
-    margin: 0
-}
-
-dd {
-    float: left;
-    width: 70%;
-    margin: 0
-} */
