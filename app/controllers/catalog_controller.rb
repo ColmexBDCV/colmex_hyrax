@@ -204,7 +204,6 @@ class CatalogController < ApplicationController
 
     config.add_search_field('creator') do |field|
       solr_name = solr_name("creator", :stored_searchable)
-      field.label = "creator_sim"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

@@ -36,7 +36,7 @@ es:
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de subida
-          description_tesim: Descripción
+          description_tesim: Resumen
           degree_program_tesim: Grado
           center_tesim: Centro
           director_tesim: Director
@@ -119,6 +119,7 @@ es:
         mendeley: "La exportación a Mendeley se admite a través de metadatos incrustados. Si mendeley no recoge automáticamente los metadatos de los archivos depositados, por favor reportar el problema a través de "
         mendeley_title: Exportar a Mendeley
       show:
+        abstract or summary: Resumen
         all_fields: Todos los campos
         alternate_title: Título variante
         analitycs: Analíticas
@@ -127,6 +128,8 @@ es:
         creator: Autor
         contributor: Contribuidor
         description: Resumen
+        director: Director
+        degree program: Grado
         subject: Tema
         publisher: Editor
         language: Lenguaje
