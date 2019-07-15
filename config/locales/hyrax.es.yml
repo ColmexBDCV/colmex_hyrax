@@ -13,6 +13,7 @@ es:
           creator_sim: Autor
           contributor_sim: Colaborador
           date_created_sim: Año
+          degree_program_sim: Grado
           director_sim: Director de tesis
           file_format_sim: Formato
           generic_type_sim: Tipo
@@ -98,7 +99,7 @@ es:
       submit_limit: Limitar
       unknown: Sin datos
     advanced_search:
-      link: Busqueda Avanzada
+      link: Búsqueda avanzada
       tips: Consejos de búsqueda
       all: Seleccione "coincidir todos" para requerir todos los campos.
       any: Seleccione "coincidir con cualquiera" para encontrar al menos un campo.

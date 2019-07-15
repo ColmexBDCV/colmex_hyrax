@@ -7,6 +7,7 @@ en:
           center_sim: Center
           creator_sim: Creator
           date_created: Year
+          degree_program_sim: Degree program
           director_sim: Thesis Advisor
           file_format_sim: Format
           generic_type_sim: Type
@@ -21,7 +22,10 @@ en:
           temporary_coverage_sim: Temporary Coverage
         index:
           based_near_tesim: Location
+          classification_tesim: Classification
           contributor_tesim: Contributor
+          director_tesim: Thesis advisor
+          degree_program_tesim: Degree program
           creator_tesim: Creator
           date_created_tesim: Year
           date_modified_dtsi: Date Modified
@@ -64,6 +68,9 @@ en:
       citations:
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
         mendeley_title: Export to Mendeley
+      relationships_parent_row:
+        label: "In %{type}:"
+        Collection: Collection
     product_name: "Institutional Repository COLMEX"
     product_twitter_handle: "@SamveraRepo"
     institution_name: "Institution"

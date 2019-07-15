@@ -99,7 +99,7 @@ class CatalogController < ApplicationController
     #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
    
     config.add_facet_field solr_name("director", :facetable), limit: 5
-
+    config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field solr_name("generic_type", :facetable), if: false
@@ -127,8 +127,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("type_of_illustrations", :stored_searchable), link_to_search: solr_name("type_of_illustrations")
     config.add_index_field solr_name("classification", :stored_searchable), link_to_search: solr_name("classification")
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
-    config.add_index_field solr_name("director", :stored_searchable), helper_method: :link_to_alma, field_name: 'director'
-    config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program")
+    config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
+    config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
 
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
@@ -204,6 +204,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('creator') do |field|
       solr_name = solr_name("creator", :stored_searchable)
+      field.label = "creator_sim"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -304,6 +305,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('director') do |field|
       solr_name = solr_name("director", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('degree_program') do |field|
+      solr_name = solr_name("degree_program", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
