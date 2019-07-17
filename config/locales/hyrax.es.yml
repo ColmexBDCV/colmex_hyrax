@@ -29,6 +29,7 @@ es:
           subject_work_sim: Tema obra
           subject_corporate_sim: Tema organismo
           temporary_coverage_sim: Cobertura temporal
+          type_of_illustrations_sim: Tipo de ilustraciones
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador

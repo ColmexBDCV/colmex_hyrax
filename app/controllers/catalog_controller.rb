@@ -124,8 +124,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("subject", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject", :facetable)
     config.add_index_field solr_name("temporary_coverage", :stored_searchable), itemprop: 'temporary_coverage', link_to_search: solr_name("temporary_coverage", :facetable)
     config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
-    config.add_index_field solr_name("type_of_illustrations", :stored_searchable), link_to_search: solr_name("type_of_illustrations")
-    config.add_index_field solr_name("classification", :stored_searchable), link_to_search: solr_name("classification")
+    config.add_index_field solr_name("type_of_illustrations", :stored_searchable), link_to_search: solr_name("type_of_illustrations", :facetable)
+    config.add_index_field solr_name("classification", :stored_searchable)
     config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
