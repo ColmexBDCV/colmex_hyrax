@@ -96,6 +96,8 @@ es:
         gallery: Galería
         masonry: Mampostería
         slideshow: Diapositivas
+      filters:
+        label: "%{label}: "
     range_limit:
       submit_limit: Limitar
       unknown: Sin datos
@@ -110,8 +112,7 @@ es:
       hyphen: Use "-" antes de una palabra o frase para excluir.
       and_or_not: Use "OR", "AND", y "NOT" para crear una lógica booleana compleja. Puedes usar paréntesis en tus expresiones complejas.
       truncate: "El truncamiento y los comodines no son compatibles: la separación de palabras se realiza automáticamente."
-    filters:
-      label: "%{label}: "
+
   hyrax:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
