@@ -10,3 +10,5 @@ es:
       sort_label: "Ordenar resultados por"
       start_over: "Limpiar"
       search_btn: "Buscar"
+    filters:
+      any_of: "Cualquiera que coincida con:"
