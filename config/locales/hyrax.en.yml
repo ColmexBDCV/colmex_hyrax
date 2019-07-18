@@ -63,16 +63,16 @@ en:
           subject_work_sim: Subject work
           title_tesim: Title
     advanced_search:
-      link: Búsqueda avanzada
-      tips: Consejos de búsqueda
-      all: Seleccione "coincidir todos" para requerir todos los campos.
-      any: Seleccione "coincidir con cualquiera" para encontrar al menos un campo.
-      combine: Combine palabras clave y atributos para encontrar elementos específicos.
-      quotation: Utilice comillas para buscar como una frase.
-      plus: Use "+" antes de un término para hacerlo requerido. (De lo contrario, se pueden incluir los resultados que coincidan solo con algunos de sus términos).
-      hyphen: Use "-" antes de una palabra o frase para excluir.
-      and_or_not: Use "OR", "AND", y "NOT" para crear una lógica booleana compleja. Puedes usar paréntesis en tus expresiones complejas.
-      truncate: "El truncamiento y los comodines no son compatibles: la separación de palabras se realiza automáticamente."
+      link: Advanced search
+      tips: Search tips
+      all: Select "match all" to require all fields.
+      any: Select "match any" to find at least one field.
+      combine: Combine keywords and attributes to find specific items.
+      quotation: Use quotation marks to search as a phrase.
+      plus: Use "+" before a term to make it required. (Otherwise results matching only some of your terms may be included).
+      hyphen: Use "-" before a word or phrase to exclude.
+      and_or_not: Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions.
+      truncate: Truncation and wildcards are not supported - word-stemming is done automatically.
 
   hyrax:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
