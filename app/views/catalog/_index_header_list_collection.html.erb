@@ -1,7 +1,7 @@
 <div class="search-results-title-row">
   <h4 class="search-result-title">
     <%#= link_to document.title_or_label, [hyrax, document] %>
-    <%= link_to document.title_or_label, "catalog?f%5Bmember_of_collections_ssim%5D%5B%5D="+document.title_or_label %>
+    <%= link_to t('hyrax.base.relationships_parent_row.colletion')+ " " + document.title_or_label, "catalog?f%5Bmember_of_collections_ssim%5D%5B%5D="+document.title_or_label %>
   </h4>
-  <%= Hyrax::CollectionPresenter.new(document, current_ability).collection_type_badge %>
+  <%#= Hyrax::CollectionPresenter.new(document, current_ability).collection_type_badge %>
 </div>
