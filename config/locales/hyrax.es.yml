@@ -63,7 +63,7 @@ es:
           temporary_coverage_tesim: Cobertura temporal
         show:
           based_near_tesim: Ubicación
-          contributor_tesim: Contribuidor
+          contributor_tesim: Colaborador
           creator_tesim: Autor
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
@@ -121,15 +121,17 @@ es:
         header: "Citación:"
         mendeley: "La exportación a Mendeley se admite a través de metadatos incrustados. Si mendeley no recoge automáticamente los metadatos de los archivos depositados, por favor reportar el problema a través de "
         mendeley_title: Exportar a Mendeley
+        quote: "Forma de citar (APA):"
       show:
         abstract or summary: Resumen
         all_fields: Todos los campos
         alternate_title: Título variante
         analitycs: Analíticas
+        work_type_Article: Articulo
         work_type_Thesis: Tesis
         last_modified: Última modificación
         creator: Autor
-        contributor: Contribuidor
+        contributor: Colaborador
         description: Resumen
         director: Director
         degree program: Grado

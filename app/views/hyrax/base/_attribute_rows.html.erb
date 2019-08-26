@@ -18,13 +18,13 @@
 <%= presenter.attribute_to_html(:resource_type, label: t('hyrax.base.show.resource_type'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:type_of_illustrations, label: t('hyrax.base.show.type_of_illustrations'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:classification, label: t('hyrax.base.show.classification'), html_dl:true) %>
-<%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :identifier, search_field: 'identifier_tesim', html_dl: true) %>
+<%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :identifier_alma, search_field: 'identifier_tesim', html_dl: true) %>
 <%= presenter.attribute_to_html(:other_related_persons, label: t('hyrax.base.show.other_related_persons'), html_dl: true) %>
 
 <% [ :doi, :isbn, :alternate_title, :other_title,   
     :embargo_release_date, :lease_expiration_date,
-    :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography,
-    :responsibility_statement, :other_related_persons, :table_of_contents, 
+    :gender_or_form, :notes, :supplementary_content_or_bibliography,
+    :responsibility_statement, :table_of_contents, 
     ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  

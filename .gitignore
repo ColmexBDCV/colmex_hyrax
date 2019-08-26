@@ -85,3 +85,4 @@ config/initializers/hyrax.rb
 config/database.yml
 
 
+config/application.rb

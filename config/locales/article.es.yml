@@ -1,4 +1,16 @@
 es:
+  blacklight:
+    search:
+      fields:
+        index:
+          period: Periodo
+          part: Parte
+          year: Año
+          volume: Volumen
+          number: Número
+          pages: Páginas
+          contained_in: Revista
+          mode_of_issuance: Modo de emisión
   hyrax:
     icons:
       article: "fa fa-file-text-o"
@@ -15,4 +27,6 @@ es:
         year: Año
         volume: Volumen
         number: Número
+        pages: Páginas
+        contained_in: Revista
         mode_of_issuance: Modo de emisión

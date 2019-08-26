@@ -18,8 +18,8 @@ class RepresentativeFileValidator < Darlingtonia::Validator
     def run_validation(parser:)
       parser.records.each_with_object([]) do |record, errors|
         if record.representative_file.blank?
-          errors <<
-            Error.new(self, :missing_file, missing_message_for(record: record))
+          # errors <<
+          #   Error.new(self, :missing_file, missing_message_for(record: record))
         else
           filenames = record.representative_file
           # next if File.exist?(path_for(filename: filename))

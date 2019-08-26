@@ -80,6 +80,7 @@ en:
       citations:
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
         mendeley_title: Export to Mendeley
+        quote: "How to quote:"
       relationships_parent_row:
         label: "In %{type}:"
         Collection: Collection

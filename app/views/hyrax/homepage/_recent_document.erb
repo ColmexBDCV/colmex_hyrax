@@ -17,9 +17,12 @@
         <p class="recent-field">
           <span class="recent-label"><%= t('hyrax.base.show.creator') %>:</span> <%= link_to recent_document.creator.first %>
         </p>
-        <p class="recent-field">
-          <span class="recent-label"><%= t('hyrax.base.show.center') %>:</span> <%= link_to recent_document.center.first %>
-        </p>
+
+        <% if !recent_document.center.nil? then %>
+          <p class="recent-field">
+            <span class="recent-label"><%= t('hyrax.base.show.center') %>:</span> <%= link_to recent_document.center.first %>
+          </p>
+        <% end %>
        
         <%
 =begin%>

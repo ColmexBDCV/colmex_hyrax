@@ -11,12 +11,12 @@
         <%
 =begin%>
  <li><%= link_to 'Zotero', hyrax.zotero_path, id: 'zoteroLink', name: 'zotero' %></li> 
+        <li><%= link_to 'Mendeley', hyrax.mendeley_path, id: 'mendeleyLink', name: 'mendeley' %></li> 
 <%
 =end%>
-        <li><%= link_to 'Mendeley', hyrax.mendeley_path, id: 'mendeleyLink', name: 'mendeley' %></li>
       </ul>
     </div>
-  <h3>Forma de Citar:</h3>
+  <h3><%t("hyrax.base.citations.quote")%></h3>
   <div class="citation-way">
     <%= build_citation(presenter)%>
   </div>
