@@ -32,6 +32,6 @@ module Vocab
     term :chronologicalDesignationOfFirstIssueOrPartOfSequence
     term :numberingOfSerials
     term :numberingWithinSubseries
-    term :isssnOfSeries
+    term :issnOfSeries
   end
 end
