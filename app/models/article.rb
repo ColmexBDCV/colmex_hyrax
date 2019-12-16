@@ -48,6 +48,12 @@ class Article < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end 
+
+  property :database, predicate: ::Vocab::RDAZ.sourceConsulted, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+  
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

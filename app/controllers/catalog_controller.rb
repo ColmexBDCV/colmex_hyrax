@@ -100,6 +100,7 @@ class CatalogController < ApplicationController
    
     config.add_facet_field solr_name("director", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
+    config.add_facet_field solr_name("database", :facetable), limit: 5
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field solr_name("generic_type", :facetable), if: false
@@ -129,7 +130,7 @@ class CatalogController < ApplicationController
     # config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
-
+    config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile

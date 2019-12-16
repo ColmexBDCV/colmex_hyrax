@@ -11,6 +11,7 @@ es:
           pages: Páginas
           contained_in: Revista
           mode_of_issuance: Modo de emisión
+          database: Base de Datos
   hyrax:
     icons:
       article: "fa fa-file-text-o"
@@ -30,3 +31,4 @@ es:
         pages: Páginas
         contained_in: Revista
         mode_of_issuance: Modo de emisión
+        database: Base de Datos
