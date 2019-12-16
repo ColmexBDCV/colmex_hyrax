@@ -12,6 +12,7 @@ es:
           contained_in: Revista
           mode_of_issuance: Modo de emisión
           database: Base de Datos
+          issn: ISSN
   hyrax:
     icons:
       article: "fa fa-file-text-o"

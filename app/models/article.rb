@@ -54,6 +54,11 @@ class Article < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
   
+  property :issn, predicate: ::RDF::Vocab::RDAM.issnOfSeries, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

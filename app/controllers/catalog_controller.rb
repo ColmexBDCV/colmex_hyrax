@@ -131,6 +131,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
     config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
+    config.add_index_field solr_name("issn", :stored_searchable), link_to_search: solr_name("issn", :facetable)
+
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
