@@ -26,7 +26,7 @@ module Hyrax
       # This is for the rights statement
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights
       property :publisher, predicate: ::Vocab::RDAM.publicationStatement, multiple: true
-      property :date_created, predicate: ::Vocab::RDAM.dateOfPublication, multiple: false
+      property :date_created, predicate: ::Vocab::RDAM.dateOfPublication, multiple: true
       property :subject, predicate: ::Vocab::RDAW.subjectRelationship, multiple: true
       property :subject_person, predicate: ::Vocab::RDAW.subjectPerson, multiple: true
       property :subject_family, predicate: ::Vocab::RDAW.subjectFamily, multiple: true
