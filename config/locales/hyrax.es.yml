@@ -30,6 +30,7 @@ es:
           subject_corporate_sim: Tema organismo
           temporary_coverage_sim: Cobertura temporal
           type_of_illustrations_sim: Tipo de ilustraciones
+          database_sim: Base de datos
         index:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
