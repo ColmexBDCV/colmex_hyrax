@@ -54,7 +54,7 @@ class Article < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
   
-  property :issn, predicate: ::RDF::Vocab::RDAM.issnOfSeries, multiple: true do |index|
+  property :issn, predicate: ::Vocab::RDAM.issnOfSeries, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end
