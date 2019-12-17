@@ -62,6 +62,8 @@ es:
           works: Trabajos
           collections: Colecciones
           temporary_coverage_tesim: Cobertura temporal
+          database_tesim: Base de datos
+          issn_tesim: ISSN
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
