@@ -283,5 +283,13 @@ class SolrDocument
   def contained_in
     self[Solrizer.solr_name('contained_in')]
   end
+
+  def database
+    self[Solrizer.solr_name('database')]
+  end
+
+  def issn
+    self[Solrizer.solr_name('issn')]
+  end
   
 end
