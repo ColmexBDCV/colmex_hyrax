@@ -20,7 +20,7 @@ class SolrDocument
                          creator_conacyt:    Solrizer.solr_name('creator_conacyt'),
                          contributor_conacyt:    Solrizer.solr_name('contributor_conacyt'),
                          publisher:   Solrizer.solr_name('publisher'),
-                         rights:      Solrizer.solr_name('rights_statement'),
+                         rights:      Solrizer.solr_name('license'),
                          source:      Solrizer.solr_name('source'),
                          subject:     Solrizer.solr_name('subject'),
                          subject_person:     Solrizer.solr_name('subject_person'),

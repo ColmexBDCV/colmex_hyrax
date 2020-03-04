@@ -90,16 +90,17 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("subject_corporate", :facetable), limit: 5
     config.add_facet_field solr_name("subject", :facetable), limit: 5
     # config.add_facet_field solr_name("subject_family", :facetable), limit: 5
-    # config.add_facet_field solr_name("language", :facetable), limit: 5
+    config.add_facet_field solr_name("language", :facetable), limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), limit: 5
     config.add_facet_field solr_name("geographic_coverage", :facetable), limit: 5
     config.add_facet_field solr_name("temporary_coverage", :facetable), limit: 5
     # config.add_facet_field solr_name("publisher", :facetable), limit: 5
-    config.add_facet_field solr_name("file_format", :facetable), limit: 5
+    #config.add_facet_field solr_name("file_format", :facetable), limit: 5
     #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
    
     config.add_facet_field solr_name("director", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
+    config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
     config.add_facet_field solr_name("database", :facetable), limit: 5
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile

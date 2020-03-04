@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -16,7 +16,7 @@ gem 'puma'
 #Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0' 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -35,6 +35,8 @@ gem 'redis'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'iso-639', git: 'https://github.com/ColmexBDCV/iso-639.git', branch: 'master'
 
 gem 'hydra-role-management'
 gem 'sidekiq'

@@ -58,6 +58,10 @@ module Blacklight::Document::DublinCore
             xml.tag! "dc:rights", v
           elsif field == :description || field == :subject || field == :subject_work || field == :subject_person || field == :subject_family || field == :themes
             xml.tag! "dc:description", v
+          elsif field == :audience
+            xml.tag! "dc:audience", v.downcase
+          elsif field == :language
+            xml.tag! "dc:language", ISO_639.find_by_spanish_name(v)[0]
           else
             xml.tag! "dc:#{field}", v
           end

@@ -4,7 +4,7 @@ module HyraxHelper
   include Hyrax::HyraxHelperBehavior
   
   def build_citation(presenter)
-    if presenter.resource_type.first.include? "Tesis" then
+    if presenter.resource_type.include? "Tesis" then
       "#{build_authors(presenter)} (#{presenter.date_created.first}), #{presenter} (#{presenter.resource_type.first}), El Colegio de México, México"
     end
   end
