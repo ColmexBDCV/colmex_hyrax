@@ -8,7 +8,9 @@ Rails.application.routes.draw do
    get 'ranking/articulos', to: 'conacyt_stats#articulos'
    get 'ranking/autores', to: 'conacyt_stats#autores'
    get 'descargas', to: 'conacyt_stats#descargas'
- 
+
+   get 'oai/conacyt' => redirect( path: '/catalog/oai?verb=ListRecords&metadataPrefix=oai_dc&set=collection:Conacyt') 
+  
    #End Conacyt Requirements
      
   require 'sidekiq/web'

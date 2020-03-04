@@ -10,15 +10,16 @@ default: &default
   timeout: 5000
 
 development:
-  #<<: *default
-  adapter: mysql2
-  encoding: utf8
-  min_messages: warning
-  host: 127.0.0.1
-  database: development
-  username: root
-  password: 123456
-  socket: /var/run/mysqld/mysqld.sock
+  <<: *default
+  database: db/development.sqlite3
+  # adapter: mysql2
+  # encoding: utf8
+  # min_messages: warning
+  # host: 127.0.0.1
+  # database: development
+  # username: root
+  # password: 123456
+  # socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
