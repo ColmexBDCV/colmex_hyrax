@@ -84,7 +84,7 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  config.fits_path = ENV['FITS_PATH'] || "/home/rod/fits-1.2.0/fits.sh"
+  config.fits_path = ENV['FITS_PATH'] || "/fits/fits.sh"
 
   # Path to the file derivatives creation tool
   config.libreoffice_path = "soffice"
@@ -223,6 +223,7 @@ Hyrax.config do |config|
   # mount point.
   #
   # config.whitelisted_ingest_dirs = []
+  
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"

@@ -131,6 +131,11 @@ module Hyrax
       safe_join(links, ", ")
     end
 
+    def link_to_url(args)
+      links = args[:value].map { |item| link_to item} 
+      safe_join(links, ", ")
+    end
+
     # A Blacklight helper_method
     #
     # @example

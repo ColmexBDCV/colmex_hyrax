@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -37,7 +37,6 @@ gem 'redis'
 # gem 'capistrano-rails', group: :development
 
 gem 'iso-639', git: 'https://github.com/ColmexBDCV/iso-639.git', branch: 'master'
-
 gem 'hydra-role-management'
 gem 'sidekiq'
 gem 'sidekiq-failures'

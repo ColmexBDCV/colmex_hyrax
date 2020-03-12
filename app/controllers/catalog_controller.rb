@@ -101,6 +101,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("director", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
+    config.add_facet_field solr_name("container_in", :facetable), limit: 5
     config.add_facet_field solr_name("database", :facetable), limit: 5
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
@@ -118,6 +119,9 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
     config.add_index_field solr_name("description", :stored_searchable), itemprop: 'description', helper_method: :iconify_auto_link
     config.add_index_field solr_name("center", :stored_searchable), link_to_search: solr_name("center", :facetable)
+    config.add_index_field solr_name("contained_in", :stored_searchable), link_to_search: solr_name("contained_in", :facetable)
+    config.add_index_field solr_name("volume", :stored_searchable)
+    config.add_index_field solr_name("number", :stored_searchable)
     config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated', link_to_search: solr_name("date_created", :facetable)
     config.add_index_field solr_name("geographic_coverage", :stored_searchable), itemprop: 'geographic_coverage', link_to_search: solr_name("geographic_coverage", :facetable)
     config.add_index_field solr_name("subject_work", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_work", :facetable)
@@ -128,12 +132,14 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
     config.add_index_field solr_name("type_of_illustrations", :stored_searchable), link_to_search: solr_name("type_of_illustrations", :facetable)
     config.add_index_field solr_name("classification", :stored_searchable)
+
+    config.add_index_field solr_name("pages", :stored_searchable)
+    config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     # config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
     config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
-    config.add_index_field solr_name("issn", :stored_searchable), link_to_search: solr_name("issn", :facetable)
-
+    config
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
