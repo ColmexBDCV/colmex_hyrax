@@ -33,37 +33,38 @@ es:
           database_sim: Base de datos
         index:
           based_near_tesim: Ubicación
+          classification_tesim: Clasificación
+          collections: Colecciones
           contributor_tesim: Colaborador
+          center_tesim: Centro
           creator_tesim: Autor
+          database_tesim: Base de datos
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de subida
           description_tesim: Resumen
           degree_program_tesim: Grado
-          center_tesim: Centro
+          depositor_tesim: Propietario
           director_tesim: Director
-          type_of_illustrations_tesim: Tipo de ilustraciones
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
-          classification_tesim: Clasificación
+          issn_tesim: ISSN
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
           publisher_tesim: Editor
+          related_url_tesim: URL relacionada
+          resource_type_tesim: Tipo de documento
           rights_statement_tesim: Declaración de derechos
+          type_of_illustrations_tesim: Tipo de ilustraciones
           subject_tesim: Tema
           subject_person_tesim: Tema persona
           subject_family_tesim: Tema familia
           subject_work_tesim: Tema obra
           subject_corporate_tesim: Tema organismo
-          resource_type_tesim: Tipo de documento
-          depositor_tesim: Propietario
-          works: Trabajos
-          collections: Colecciones
           temporary_coverage_tesim: Cobertura temporal
-          database_tesim: Base de datos
-          issn_tesim: ISSN
+          works: Trabajos
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador

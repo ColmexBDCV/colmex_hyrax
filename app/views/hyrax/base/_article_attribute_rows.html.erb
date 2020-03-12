@@ -1,3 +1,5 @@
-<% [:year, :volume, :number, :pages, :period, :part, :mode_of_issuance, :contained_in, :database, :issn].each do |a| %>
+<% [:year, :volume, :number, :pages, :period, :part, :mode_of_issuance, :issn].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %> 
+<%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.director'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:database, label: t('hyrax.base.show.director'), render_as: :faceted, html_dl: true) %>
