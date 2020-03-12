@@ -11,6 +11,7 @@ es:
             Collection: Colección
             Article: Artículo
           creator_sim: Autor
+          contained_in_sim: Revista
           contributor_sim: Colaborador
           date_created_sim: Año
           degree_program_sim: Grado
@@ -35,6 +36,7 @@ es:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
           collections: Colecciones
+          contained_in_tesim: Revista
           contributor_tesim: Colaborador
           center_tesim: Centro
           creator_tesim: Autor
@@ -53,6 +55,8 @@ es:
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
+          number_tesim: Número
+          pages_tesim: Páginas
           publisher_tesim: Editor
           related_url_tesim: URL relacionada
           resource_type_tesim: Tipo de documento
@@ -64,6 +68,7 @@ es:
           subject_work_tesim: Tema obra
           subject_corporate_tesim: Tema organismo
           temporary_coverage_tesim: Cobertura temporal
+          volume_tesim: Volumen
           works: Trabajos
         show:
           based_near_tesim: Ubicación
