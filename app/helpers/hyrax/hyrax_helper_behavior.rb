@@ -132,7 +132,7 @@ module Hyrax
     end
 
     def link_to_url(args)
-      links = args[:value].map { |item| link_to nil, item} 
+      links = args[:value].map { |item| link_to nil, item, target: "_blank"} 
       safe_join(links, ", ")
     end
 
