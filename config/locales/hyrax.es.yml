@@ -136,6 +136,9 @@ es:
         all_fields: Todos los campos
         alternate_title: Título variante
         analitycs: Analíticas
+        contained_in: Revista
+        database: Base de datos
+        
         work_type_Article: Articulo
         work_type_Thesis: Tesis
         last_modified: Última modificación

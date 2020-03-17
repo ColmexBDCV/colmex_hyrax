@@ -85,3 +85,4 @@ group :development, :test do
 end
 
 gem 'riiif'
+gem 'hyrax-iiif_av'
