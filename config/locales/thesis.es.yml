@@ -12,6 +12,7 @@ es:
       show:
         director: Director
         awards: Premios/Reconocimientos
+        reviewer: Lector
         item_access_restrictions: Restricción de acceso del ítem
         item_use_restrictions: Restricción de uso del ítem
         edition: Edición

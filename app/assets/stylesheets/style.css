@@ -25,3 +25,17 @@
 ul.navbar-nav>li>a {
     text-align: center;
 }
+
+#pdf_modal .modal-dialog { 
+    width: 95%;
+    height: 100%;
+
+}
+
+#pdf_modal .modal-content {
+    height: 95%;
+}
+
+#pdf_modal .modal-body {
+    height: 95%;
+}

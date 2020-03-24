@@ -98,6 +98,7 @@ class CatalogController < ApplicationController
     #config.add_facet_field solr_name("file_format", :facetable), limit: 5
     #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
     config.add_facet_field solr_name("director", :facetable), limit: 5
+    config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
     config.add_facet_field solr_name("contained_in", :facetable), limit: 5
@@ -136,6 +137,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     # config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
+    config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
     config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
     config

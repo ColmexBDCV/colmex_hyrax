@@ -1,0 +1,37 @@
+<% if Hyrax.config.display_media_download_link? %>
+    <div>
+      <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
+      <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
+        <source src="<%= hyrax.download_path(file_set, file: 'webm') %>" type="video/webm" />
+        <source src="<%= hyrax.download_path(file_set, file: 'mp4') %>" type="video/mp4" />
+
+        Your browser does not support the video tag.
+      </video>
+      <%= link_to t('hyrax.file_set.show.downloadable_content.video_link'),
+                  hyrax.download_path(file_set),
+                  data: { label: file_set.id },
+                  target: :_blank,
+                  id: "file_download" %>
+    </div>
+<% else %>
+    <div>
+      <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
+        <source src="<%= hyrax.download_path(file_set, file: 'webm') %>" type="video/webm" />
+        <source src="<%= hyrax.download_path(file_set, file: 'mp4') %>" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  $('video').mediaelementplayer({
+    // Do not forget to put a final slash (/)
+    stretching: 'responsive',
+    pluginPath: 'https://cdnjs.com/libraries/mediaelement/',
+    // this will allow the CDN to use Flash without restrictions
+    // (by default, this is set as `sameDomain`)
+    shimScriptAccess: 'always'
+    // more configuration
+  });
+
+</script>

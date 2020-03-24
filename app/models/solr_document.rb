@@ -291,5 +291,9 @@ class SolrDocument
   def issn
     self[Solrizer.solr_name('issn')]
   end
+
+  def reviewer
+    self[Solrizer.solr_name('reviewer')]
+  end
   
 end

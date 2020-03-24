@@ -24,6 +24,7 @@ es:
           language_sim: Idioma
           publisher_sim: Editor
           resource_type_sim: Tipo de documento
+          reviewer_sim: Lector
           subject_sim: Tema
           subject_person_sim: Tema persona
           subject_family_sim: Tema familia
@@ -58,8 +59,9 @@ es:
           number_tesim: Número
           pages_tesim: Páginas
           publisher_tesim: Editor
-          related_url_tesim: URL relacionada
+          related_url_tesim: URL
           resource_type_tesim: Tipo de documento
+          reviewer_tesim: Lector
           rights_statement_tesim: Declaración de derechos
           type_of_illustrations_tesim: Tipo de ilustraciones
           subject_tesim: Tema
@@ -155,7 +157,7 @@ es:
         date_created: Año
         languague: Lenguaje
         loation: Ubicación
-        related_url: URL relacionada
+        related_url: URL
         resource_type: Tipo de documento
         source: Fuente
         rights_statement: Declaración de derechos

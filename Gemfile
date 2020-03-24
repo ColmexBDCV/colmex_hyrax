@@ -84,5 +84,5 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-gem 'riiif'
-gem 'hyrax-iiif_av'
+gem 'pdfjs_viewer-rails'
+gem 'riiif', '~> 2.0'
