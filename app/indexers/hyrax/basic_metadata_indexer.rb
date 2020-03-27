@@ -4,8 +4,8 @@ module Hyrax
     class_attribute :stored_and_facetable_fields, :stored_fields, :symbol_fields
     self.stored_and_facetable_fields = %i[other_title alternate_title resource_type creator contributor keyword publisher language based_near geographic_coverage
        temporary_coverage gender_or_form subject_person subject_family subject_work subject subject_corporate notes classification
-       supplementary_content_or_bibliography responsibility_statement other_related_persons table_of_contents
-       type_of_illustrations center license rights_statement date_created bibliographic_citation source]
+       supplementary_content_or_bibliography responsibility_statement other_related_persons table_of_contents type_of_content
+       type_of_illustrations center license rights_statement date_created bibliographic_citation source reviewer mode_of_issuance]
     self.stored_fields = %i[description identifier doi isbn related_url]
     self.symbol_fields = %i[import_url]
 

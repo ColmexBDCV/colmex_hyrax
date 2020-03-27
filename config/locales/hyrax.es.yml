@@ -24,7 +24,7 @@ es:
           language_sim: Idioma
           publisher_sim: Editor
           resource_type_sim: Tipo de documento
-          reviewer_sim: Lector
+          reviewer_sim: Lector/Revisor
           subject_sim: Tema
           subject_person_sim: Tema persona
           subject_family_sim: Tema familia
@@ -33,6 +33,8 @@ es:
           temporary_coverage_sim: Cobertura temporal
           type_of_illustrations_sim: Tipo de ilustraciones
           database_sim: Base de datos
+          mode_of_issuance_sim: Modo de emisión
+
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -56,12 +58,13 @@ es:
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
+          mode_of_issuance_tesim: Modo de emisión
           number_tesim: Número
           pages_tesim: Páginas
           publisher_tesim: Editor
           related_url_tesim: URL
           resource_type_tesim: Tipo de documento
-          reviewer_tesim: Lector
+          reviewer_tesim: Lector/Revisor
           rights_statement_tesim: Declaración de derechos
           type_of_illustrations_tesim: Tipo de ilustraciones
           subject_tesim: Tema
@@ -140,7 +143,7 @@ es:
         analitycs: Analíticas
         contained_in: Revista
         database: Base de datos
-        
+        mode_of_issuance: Modo de emisión
         work_type_Article: Articulo
         work_type_Thesis: Tesis
         last_modified: Última modificación
@@ -159,6 +162,7 @@ es:
         loation: Ubicación
         related_url: URL
         resource_type: Tipo de documento
+        reviewer: Lector/Revisor
         source: Fuente
         rights_statement: Declaración de derechos
         license: Licencia

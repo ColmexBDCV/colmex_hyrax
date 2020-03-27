@@ -51,9 +51,11 @@ module Hyrax
       property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true
       #property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
-      #property :type_of_content, predicate: ::Vocab::RDAE.contentType, multiple: true
+      property :type_of_content, predicate: ::Vocab::RDAU.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
-   
+      property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true 
+      property :mode_of_issuance, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: true
+
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties

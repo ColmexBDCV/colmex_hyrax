@@ -34,11 +34,6 @@ class Article < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end 
 
-  property :mode_of_issuance, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end 
-
   property :pages, predicate: ::RDF::Vocab::SCHEMA.pagination, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable

@@ -138,6 +138,7 @@ class CatalogController < ApplicationController
     # config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
+    config.add_index_field solr_name("mode_of_issuance", :stored_searchable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
     config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
     config

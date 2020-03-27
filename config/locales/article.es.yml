@@ -10,7 +10,6 @@ es:
           number: Número
           pages: Páginas
           contained_in: Revista
-          mode_of_issuance: Modo de emisión
           database: Base de Datos
           issn: ISSN
   hyrax:
@@ -31,5 +30,4 @@ es:
         number: Número
         pages: Páginas
         contained_in: Revista
-        mode_of_issuance: Modo de emisión
         database: Base de Datos

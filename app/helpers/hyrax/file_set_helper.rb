@@ -16,7 +16,7 @@ module Hyrax::FileSetHelper
   end
 
   def media_display_partial(file_set)
-    # file_set = FileSet.find(file_set.id)
+    #file_set = FileSet.find(file_set.id)
     'hyrax/file_sets/media_display/' +
       if file_set.image?
         'image'

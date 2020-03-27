@@ -1,4 +1,20 @@
 <% provide :page_title, @presenter.page_title %>
+<% if @presenter.representative_presenter.nil? || 
+    !(@presenter.representative_presenter.video? || 
+      @presenter.representative_presenter.audio? || 
+      @presenter.representative_presenter.pdf? || 
+      @presenter.representative_presenter.image? ) then
+
+    first = 3
+    second = 9
+    third = 12
+   else 
+    first = 10
+    second = 2
+    third = 6
+   end
+%>
+
 
 <%= render 'shared/citations' %>
 
@@ -15,19 +31,19 @@
       <div class="panel-body">
         <div class="row">
           <%= render 'workflow_actions_widget', presenter: @presenter %>
-          <% if @presenter.iiif_viewer?  || (@presenter.representative_presenter.respond_to?("video?") && @presenter.representative_presenter.video?) %>
+          <div class="col-sm-<%= first%> text-center">
             <div class="col-sm-12">
               <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
-              <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer? %>
-
+              <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
             </div>
-          <% end %>
-          <div class="col-sm-3 text-center">
-            <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer? || (@presenter.representative_presenter.respond_to?("video?") && @presenter.representative_presenter.video?) %>
-            <%= render 'citations', presenter: @presenter %>
-            <%= render 'social_media' %>
+            <div class="col-sm-<%= third%>">
+              <%= render 'citations', presenter: @presenter %>
+            </div>
+            <div class="col-sm-6<%= third%>">
+              <%= render 'social_media' %>
+            </div>
           </div>
-          <div class="col-sm-9">
+          <div class="col-sm-<%= second%>">
             <%= render 'metadata', presenter: @presenter %>
           </div>
           <div class="col-sm-12">
@@ -42,3 +58,8 @@
     </div>
   </div>
 </div>
+<% unless @presenter.representative_presenter.respond_to?('image?') && @presenter.representative_presenter.image? %>
+<script type="text/javascript">
+  $( "#file_download" ).prependTo( ".citations" );
+</script>
+<% end %>

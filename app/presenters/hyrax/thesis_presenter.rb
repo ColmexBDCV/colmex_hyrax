@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work Thesis`
 module Hyrax
   class ThesisPresenter < Hyrax::WorkShowPresenter
-    delegate :director, :reviewer, :awards,  
+    delegate :director, :awards,  
     :item_access_restrictions, :item_use_restrictions, 
     :edition, :encoding_format_details, :file_type_details, :digital_resource_generation_information, 
     :file_details, :dimensions, :system_requirements, :exemplar_of_manifestation, :extension, :type_of_file, 

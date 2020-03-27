@@ -123,12 +123,7 @@ class Thesis < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end
-  
-  property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
+    
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata
