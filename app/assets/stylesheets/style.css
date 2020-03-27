@@ -39,3 +39,17 @@ ul.navbar-nav>li>a {
 #pdf_modal .modal-body {
     height: 95%;
 }
+
+.navbar-nav {
+    margin: 7.5px;
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        height: 300px;
+    }
+}
+
+ul.tabular {
+    padding-inline-start: 0px;
+}

@@ -8,6 +8,7 @@
       </audio>
       <%= link_to t('hyrax.file_set.show.downloadable_content.audio_link'),
                   hyrax.download_path(file_set),
+                  class: "btn btn-default",
                   data: { label: file_set.id },
                   target: :_blank,
                   id: "file_download" %>
