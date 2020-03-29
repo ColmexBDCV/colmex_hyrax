@@ -98,7 +98,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         gw.save
          info_stream << "\nRecord #{record.identifier} is updated"
       else
-        info_stream << "\nRecord #{record.title} fail to update"
+        info_stream << "\nRecord #{record.identifier} fail to update"
       end  
     end
 
