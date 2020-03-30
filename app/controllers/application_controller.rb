@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
   with_themed_layout '1_column'
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
+  def guest_user
+    @guest_user ||= User.where(guest: true).first || super
+  end
+  
   protected
 
     #Allows new fields in sign_up an update an account
