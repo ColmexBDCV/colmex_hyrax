@@ -53,3 +53,7 @@ ul.navbar-nav>li>a {
 ul.tabular {
     padding-inline-start: 0px;
 }
+
+.work-show dd {
+    margin-left: 0px;
+}
