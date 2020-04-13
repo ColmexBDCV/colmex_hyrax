@@ -79,10 +79,10 @@ class Thesis < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
   
-  property :mode_of_publication, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: false do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
+  # property :mode_of_publication, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: false do |index|
+  #   index.type :text
+  #   index.as :stored_searchable, :facetable
+  # end
 
   property :other_formats, predicate: ::Vocab::RDAM.relatedManifestation, multiple: true do |index|
     index.type :text

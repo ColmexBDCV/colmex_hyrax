@@ -35,11 +35,11 @@ Hyrax.config do |config|
   # config.max_days_between_fixity_checks = 7
 
   # Options to control the file uploader
-  # config.uploader = {
-  #   limitConcurrentUploads: 6,
-  #   maxNumberOfFiles: 100,
-  #   maxFileSize: 500.megabytes
-  # }
+  config.uploader = {
+    limitConcurrentUploads: 6,
+    maxNumberOfFiles: 100,
+    maxFileSize: 4.gigabytes
+  }
 
   # Enable displaying usage statistics in the UI
   # Defaults to false
@@ -47,7 +47,7 @@ Hyrax.config do |config|
   config.analytics = true
 
   # Google Analytics tracking ID to gather usage statistics
-  config.google_analytics_id = 'UA-13170057-8'
+  config.google_analytics_id = 'UA-13170057-11'
 
   # Date you wish to start collecting Google Analytic statistics for
   # Leaving it blank will set the start date to when ever the file was uploaded by
