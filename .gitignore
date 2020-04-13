@@ -83,9 +83,5 @@ digital_objects/*
 config/ga.key
 config/initializers/hyrax.rb
 config/database.yml
-
-
-config/application.rb
-config/initializers/hyrax.rb
 log/production.log.0
 TAGS

@@ -47,7 +47,7 @@ Hyrax.config do |config|
   config.analytics = true
 
   # Google Analytics tracking ID to gather usage statistics
-  config.google_analytics_id = 'UA-13170057-11'
+  config.google_analytics_id = ENV['GA_TRACKING_ID']
 
   # Date you wish to start collecting Google Analytic statistics for
   # Leaving it blank will set the start date to when ever the file was uploaded by
@@ -105,7 +105,7 @@ Hyrax.config do |config|
 
   # Location autocomplete uses geonames to search for named regions
   # Username for connecting to geonames
-  config.geonames_username = 'rcuellar'
+  config.geonames_username = ENV['GEONAMES'] || "rcuellar"
 
   # Should the acceptance of the licence agreement be active (checkbox), or
   # implied when the save button is pressed? Set to true for active
