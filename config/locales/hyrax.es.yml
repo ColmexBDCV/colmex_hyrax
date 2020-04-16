@@ -215,6 +215,8 @@ es:
     product_name: Repositorio Institucional COLMEX
     product_twitter_handle: "@SamveraRepo"
     search:
+      button:
+        html: <span class="glyphicon glyphicon-search"></span>
       form:
         q:
           label_alt: "Buscar: "
