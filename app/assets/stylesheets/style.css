@@ -70,6 +70,21 @@ ul.navbar-nav>li>a {
     font-size: 64px;
 }
 
+#world {
+    font-size: 30px;
+    margin-top: -20px;
+}
+
+#top-navbar-collapse{
+    padding-left: 3%;
+}
+
+.navbar-inverse .navbar-nav > .actives > a {
+    text-decoration: underline;
+}
+
+
+
 @media (min-width: 768px) {
     #content-wrapper {
         padding-top: 30px;
@@ -80,10 +95,18 @@ ul.navbar-nav>li>a {
         height: 0px;
     }
 
+    #content, #sidebar {
+        margin-top: -15%;
+    }
     
+    .home-content > .col-sm-6 {
+        margin-top: -5%;
+    }
 }
-
 @media (max-width: 768px) {
+    
+    
+    
     .site-footer {
         height: 300px;
     }
@@ -94,5 +117,19 @@ ul.navbar-nav>li>a {
 
     .searchup {
         visibility: hidden;
+        height: 0px;
+    }
+
+    .menu {
+        visibility: hidden;
+        height: 0px;
+    }
+
+    /* #logo>img{
+        max-width: none;
+    } */
+
+    .image-masthead h1 {
+        font-size: 52px;
     }
 }

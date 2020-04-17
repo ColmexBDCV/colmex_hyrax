@@ -224,3 +224,5 @@ es:
       and: "y"
       or: "o"
       not: "no"
+    toolbar:
+      language_code: ES

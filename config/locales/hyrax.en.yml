@@ -103,3 +103,5 @@ en:
       and: "and"
       or: "or"
       not: "not"
+    toolbar:
+      language_code: EN

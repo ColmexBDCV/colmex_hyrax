@@ -1,7 +1,8 @@
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-dropdown-menu">
+     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-dropdown-menu">
+        <b class="fa fa-globe " id="world"></b>
         <span class="sr-only"><%= t('hyrax.toolbar.language_switch') %></span>
-        <span title="<%= t('hyrax.toolbar.language_switch') %>"><%= available_translations[I18n.locale.to_s] %></span>
+        <span title="<%= t('hyrax.toolbar.language_switch') %>"> <%= t('hyrax.toolbar.language_code') %></span>
         <b class="caret"></b>
     </a>
     <ul id="language-dropdown-menu" class="dropdown-menu" role="menu">
