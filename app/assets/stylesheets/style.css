@@ -41,10 +41,6 @@ ul.navbar-nav>li>a {
     margin: 7.5px;
 }
 
-/* ul.tabular {
-    padding-inline-start: 0px;
-} */
-
 .work-show dd {
     margin-left: 0px;
 }
@@ -83,7 +79,40 @@ ul.navbar-nav>li>a {
     text-decoration: underline;
 }
 
+#masthead a:hover{
+    color: #000000;
+    font-weight: bolder ;
 
+}
+
+ .site-footer {
+    height: auto;
+}
+
+.container-fluid{
+    margin-top: -10px;
+    
+} 
+
+.navbar-header > .navbar-toggle {
+    background-color: black;
+}
+
+footer img{
+    vertical-align:top;
+}
+
+.navbar-inverse {
+    border: 0px;
+}
+
+footer.navbar-inverse {
+    border-top: 3px solid #6b163a;
+}
+
+#masthead.navbar-inverse {
+    border-bottom: 3px solid #6b163a;
+}
 
 @media (min-width: 768px) {
     #content-wrapper {
@@ -102,14 +131,31 @@ ul.navbar-nav>li>a {
     .home-content > .col-sm-6 {
         margin-top: -5%;
     }
+
+    #content-wrapper > .alert {
+        margin-top: 0px;
+        margin-bottom: 80px ;
+        
+    }
+    
+    #content-wrapper > .alert-dismissable > .close {
+        left: 65% !important;
+    }
+
+    footer #cc_logo {
+        width: 15%;
+    }
+    
+    footer #samvera_logo {
+        width: 10%;
+    }
 }
 @media (max-width: 768px) {
     
-    
-    
     .site-footer {
-        height: 300px;
+        height: 310px;
     }
+    
     #content-wrapper {
         padding-bottom: 20%;
         
@@ -125,9 +171,10 @@ ul.navbar-nav>li>a {
         height: 0px;
     }
 
-    /* #logo>img{
-        max-width: none;
-    } */
+    
+    .navbar-toggle {
+        margin-top: 6%;
+    }
 
     .image-masthead h1 {
         font-size: 52px;
