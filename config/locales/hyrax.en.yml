@@ -75,7 +75,7 @@ en:
       truncate: Truncation and wildcards are not supported - word-stemming is done automatically.
 
   hyrax:
-    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal. Delegación Tlalpan C.P. 14110 Ciudad de México, México. <br> Teléfono: +52 55 54493000"
+    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br>. Delegación Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 55 54493000"
     base:
       citations:
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
@@ -96,7 +96,12 @@ en:
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    search:
+      button:
+        html: <span class="glyphicon glyphicon-search"></span>
     stopwords:
       and: "and"
       or: "or"
       not: "not"
+    toolbar:
+      language_code: EN

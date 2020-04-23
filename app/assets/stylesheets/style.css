@@ -3,7 +3,8 @@
 }
 
 #logo>img {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
 }
 
 .citation-way {
@@ -11,11 +12,7 @@
     text-justify: inter-word;
 }
 
-@media (min-width: 768px) {
-    #content-wrapper {
-        padding-top: 30px;
-    }
-}
+
 
 .input-small {
     border-radius: 5px;
@@ -44,16 +41,279 @@ ul.navbar-nav>li>a {
     margin: 7.5px;
 }
 
-@media (max-width: 768px) {
-    .site-footer {
-        height: 300px;
-    }
-}
-
-ul.tabular {
-    padding-inline-start: 0px;
-}
-
 .work-show dd {
     margin-left: 0px;
+}
+
+#search-form-header{
+    padding-top: 15px;
+}
+
+#user_utility_links{
+    padding-top: 8px;
+}
+
+#user_utility_links a{
+    padding: 15px 5px;
+}
+
+
+.image-masthead h1 {
+    margin-top: 5%;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    font-size: 64px;
+}
+
+.image-masthead > .background-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    width: auto;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-position: center center !important;
+    -webkit-filter: none;
+    filter: none;
+}
+
+#world {
+    font-size: 30px;
+    margin-top: -20px;
+}
+
+#top-navbar-collapse{
+    padding-left: 3%;
+}
+
+.navbar-inverse .navbar-nav > .actives > a {
+    text-decoration: underline;
+}
+
+#masthead a:hover{
+    color: #000000;
+    font-weight: bolder ;
+
+}
+
+ /* .site-footer {
+    height: auto;
+} */
+
+.container-fluid{
+    margin-top: -10px;
+    
+} 
+
+.navbar-header > .navbar-toggle {
+    background-color: black;
+}
+
+footer img{
+    vertical-align:top;
+}
+
+.navbar-inverse {
+    border: 0px;
+}
+
+footer.navbar-inverse {
+    border-top: 3px solid #6b163a;
+}
+
+#masthead.navbar-inverse {
+    border-bottom: 3px solid #6b163a;
+}
+
+.centros >.row > div {
+    padding: 15px;
+}
+
+.centros img{
+    width: 100%; 
+    height: 200px;
+}
+
+.centros .row div:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    
+}
+.centros span{
+
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #6b1639bd;
+    font-size: medium;
+}
+
+.menu-home{
+    background-color: #e8e3e3;
+    
+
+}
+
+#recently_uploaded_title{
+    margin-top: 50px;
+}
+
+body{
+    background-color: #e8e3e3
+}
+#masthead > .container-fluid > .row
+{
+    margin-top: 10px;
+}
+
+#content-wrapper {
+    background-color: white;
+    padding-right: 20px;
+    padding-left: 30px;
+
+}
+
+footer .container-fluid {
+    background-color: white;
+}
+
+.site-footer {
+    padding: 10px 0px;
+    margin-top: 0px;
+    height: 132px;
+}
+
+.home-content > .row{
+    padding-bottom: 30px;
+}
+
+.menu-home .list-inline li{
+    display: block;
+}
+
+#content-wrapper {
+    padding: 0px !important;
+}
+
+#content-wrapper .row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.menu-home {
+    padding:  20px;
+   
+}
+
+#recent_docs li{
+    background-color: #e8e3e3;
+}
+
+#form-container {
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+#user-util-links span{
+    padding-left: 5px;
+}
+
+.explore-collections a{
+    font-weight: bolder;
+}
+
+@media (min-width: 768px) {
+
+    .searchdown {
+        display: none
+    }
+
+    #content, #sidebar {
+        margin-top: 5%;
+    }
+    
+    .home-content > .col-sm-6 {
+        margin-top: -5%;
+    }
+
+    #content-wrapper > .alert {
+        margin-top: 0px;
+        margin-bottom: 80px ;
+        
+    }
+    
+    footer #cc_logo {
+        width: 15%;
+    }
+    
+    footer #samvera_logo {
+        width: 10%;
+    }
+
+    .image-masthead {
+        height: 200px;
+    }
+
+    .centros > .row > div {
+        padding-top: 0px !important;
+        margin-bottom: 15px;
+    }
+    
+}   
+@media (max-width: 768px) {
+    
+    .site-footer {
+        height: 280px;
+    }
+    
+    .searchup {
+        display: none;
+    }
+
+    .work-show dd {
+        margin-left: 0px;
+    }
+    
+    .menu {
+        visibility: hidden;
+        height: 0px;
+    }
+
+    
+    .navbar-toggle {
+        margin-top: 6%;
+    }
+
+    .image-masthead h1 {
+        font-size: 52px;
+    }
+
+    footer #cc_logo {
+        width: 45%;
+    }
+    
+    footer #samvera_logo {
+        width: 30%;
+        
+    }
+
+    .image-masthead ul{
+
+        padding-right: 0px;
+
+    }
+
+    body{
+        background-color: #fff
+    }
+    
 }

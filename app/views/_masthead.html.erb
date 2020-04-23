@@ -1,0 +1,73 @@
+<header>
+  <nav id="masthead" class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="row">
+        <div class="navbar-header col-sm-2">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= render '/logo' %>
+        </div>
+        
+        <div class="col-sm-6 searchup">
+
+          <% unless show_search  %>
+            <%= form_tag search_form_action, method: :get, class: "form-horizontal search-form searchup", id: "search-form-header", role: "search" do %>
+              <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
+              <%= hidden_field_tag :search_field, 'all_fields' %>
+              <div class="form-group">
+
+                <div class="input-group">
+                  <%= text_field_tag :q, current_search_parameters , class: "q form-control", id: "search-field-header", placeholder: t("hyrax.search.form.q.placeholder") %>
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" id="search-submit-header">
+                      <%= t('hyrax.search.button.html') %>
+                    </button>
+                    <% if current_user %>
+                      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+
+                        <span class="sr-only" data-search-element="label"><%= t("hyrax.search.form.option.all.label_long", application_name: application_name) %></span>
+                        <span aria-hidden="true"><%= t("hyrax.search.form.option.all.label_short") %></span>
+                        <span class="caret"></span>
+                      </button>
+
+                      <ul class="dropdown-menu pull-right">
+                        <li>
+                          <%= link_to t("hyrax.search.form.option.all.label_long", application_name: application_name), "#",
+                              data: { "search-option" => main_app.search_catalog_path, "search-label" => t("hyrax.search.form.option.all.label_short") } %>
+                        </li>
+                        <li>
+                          <%= link_to t("hyrax.search.form.option.my_works.label_long"), "#",
+                              data: { "search-option" => hyrax.my_works_path, "search-label" => t("hyrax.search.form.option.my_works.label_short") } %>
+                        </li>
+                        <li>
+                          <%= link_to t("hyrax.search.form.option.my_collections.label_long"), "#",
+                              data: { "search-option" => hyrax.my_collections_path, "search-label" => t("hyrax.search.form.option.my_collections.label_short") } %>
+                        </li>
+                      </ul>  
+
+                    <% end %>
+                    <%= link_to t('blacklight.advanced_search.link'), blacklight_advanced_search_engine.advanced_search_path(search_state.to_h.except(:search_field, :page)), class: 'advanced_search btn' %>
+
+                    
+                  </div><!-- /.input-group-btn -->
+                </div><!-- /.input-group -->
+                
+              </div><!-- /.form-group -->
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <div class="collapse navbar-collapse" id="top-navbar-collapse" >
+            <%= render '/user_util_links' %>
+          </div>
+        </div>          
+    </div>
+  </nav>
+</header>
+

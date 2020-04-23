@@ -5,6 +5,15 @@ module ApplicationHelper
         safe_join(options[:value].map { |i| is_in_alma?(i).html_safe }, ", ".html_safe)
     end
 
+    def get_segment(number)
+      request.path.split("/")[number]
+    end
+
+    def show_search
+      segment = ['dashboard', 'lease', 'admin', 'embargoes', 'content_blocks', 'pages']
+      segment.include? get_segment(1)
+    end
+
     def is_in_alma?(value)
       conn = Faraday.new :headers => { :accept => "application/json"}
       begin          

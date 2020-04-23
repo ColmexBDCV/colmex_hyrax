@@ -1,28 +1,16 @@
-<table class="table table-striped collection-highlights">
-  <tbody>
-    <% collections.each do |collection| %>
-      <tr>
-        <td>
-          <div class="media">
-            <div class="media-body">
-              <div class="media-heading">
-                <%#= link_to [hyrax, collection] do %>
-                <%= link_to("catalog?f%5Bmember_of_collections_ssim%5D%5B%5D=" + collection.title_or_label, html_options = {}) do%>
-                  <%= render_thumbnail_tag(collection, { class: 'hidden-xs file_listing_thumbnail' },
-                                           { suppress_link: true }) + collection.title_or_label %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <ul class="list-inline collection-highlights-list">
+  <% collections.each do |collection| %>
+    <li> 
+      <%= link_to(collection.title_or_label, "catalog?f%5Bmember_of_collections_ssim%5D%5B%5D=" + collection.title_or_label, html_options = {})  %>
+    </li>
+  <% end %>
+ 
+</ul>
+<ul class="list-inline collection-highlights-list explore-collections">
+
   <li>
     <%= link_to t('hyrax.homepage.admin_sets.link'),
                 main_app.search_catalog_path(f: { human_readable_type_sim: ["Collection"]}),
-                class: 'btn btn-default' %>
+                class: '' %>
   </li>
 </ul>

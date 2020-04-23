@@ -1,19 +1,18 @@
 <footer class="navbar navbar-inverse site-footer">
   <div class="container-fluid">
     <div class="navbar-text text-left">
-        <p><%= t('hyrax.footer.service_html') %></p>
-        <%
-=begin%>
- <p><%= t('hyrax.product_name') %> </p> 
-<%
-=end%>
-        <p style="font-size:12px"><%= t('hyrax.adress_html') %> </p>
+        <p><%= t('hyrax.footer.service_html') %></br>
+        <i style="font-size:12px"><%= t('hyrax.adress_html') %> </i> </p>
     </div>
     <div class="navbar-right">
-      <div class="navbar-text text-right">
-        <p><%= t('hyrax.footer.copyright_html') %></p>
-        <p><%= t('hyrax.background_attribution_html') %></p>
-        
+     
+      <div class="navbar-text text-right" >
+        <img id="cc_logo" src="/img/cc.png" alt="CC">
+        <img id="samvera_logo" src="/img/samvera.png" alt="samvera">
+        <i style="font-size:12px; display:inline-block">
+          <p><%= t('hyrax.footer.copyright_html') %></p>
+          <p><%= t('hyrax.background_attribution_html') %></p>
+        </i>
       </div>
     </div>
   </div>
