@@ -27,8 +27,10 @@
   </div>
 <% end %>
 
-<div class="row home-content">
-  <%= render 'home_content' %>
+<div class="home-content">
+  <div class="row">
+    <%= render 'home_content' %>
+  </div>
 </div>
 
 <%= render '/shared/select_work_type_modal', create_work_presenter: @presenter.create_work_presenter if @presenter.draw_select_work_modal? %>

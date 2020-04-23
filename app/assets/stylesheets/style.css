@@ -66,6 +66,20 @@ ul.navbar-nav>li>a {
     font-size: 64px;
 }
 
+.image-masthead > .background-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    width: auto;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-position: center center !important;
+    -webkit-filter: none;
+    filter: none;
+}
+
 #world {
     font-size: 30px;
     margin-top: -20px;
@@ -85,9 +99,9 @@ ul.navbar-nav>li>a {
 
 }
 
- .site-footer {
+ /* .site-footer {
     height: auto;
-}
+} */
 
 .container-fluid{
     margin-top: -10px;
@@ -114,18 +128,117 @@ footer.navbar-inverse {
     border-bottom: 3px solid #6b163a;
 }
 
+.centros >.row > div {
+    padding: 15px;
+}
+
+.centros img{
+    width: 100%; 
+    height: 200px;
+}
+
+.centros .row div:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    
+}
+.centros span{
+
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #6b1639bd;
+    font-size: medium;
+}
+
+.menu-home{
+    background-color: #e8e3e3;
+    
+
+}
+
+#recently_uploaded_title{
+    margin-top: 50px;
+}
+
+body{
+    background-color: #e8e3e3
+}
+#masthead > .container-fluid > .row
+{
+    margin-top: 10px;
+}
+
+#content-wrapper {
+    background-color: white;
+    padding-right: 20px;
+    padding-left: 30px;
+
+}
+
+footer .container-fluid {
+    background-color: white;
+}
+
+.site-footer {
+    padding: 10px 0px;
+    margin-top: 0px;
+    height: 132px;
+}
+
+.home-content > .row{
+    padding-bottom: 30px;
+}
+
+.menu-home .list-inline li{
+    display: block;
+}
+
+#content-wrapper {
+    padding: 0px !important;
+}
+
+#content-wrapper .row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.menu-home {
+    padding:  20px;
+   
+}
+
+#recent_docs li{
+    background-color: #e8e3e3;
+}
+
+#form-container {
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+#user-util-links span{
+    padding-left: 5px;
+}
+
+.explore-collections a{
+    font-weight: bolder;
+}
+
 @media (min-width: 768px) {
-    #content-wrapper {
-        padding-top: 30px;
-    }
 
     .searchdown {
-        visibility: hidden;
-        height: 0px;
+        display: none
     }
 
     #content, #sidebar {
-        margin-top: -15%;
+        margin-top: 5%;
     }
     
     .home-content > .col-sm-6 {
@@ -138,10 +251,6 @@ footer.navbar-inverse {
         
     }
     
-    #content-wrapper > .alert-dismissable > .close {
-        left: 65% !important;
-    }
-
     footer #cc_logo {
         width: 15%;
     }
@@ -149,21 +258,25 @@ footer.navbar-inverse {
     footer #samvera_logo {
         width: 10%;
     }
-}
+
+    .image-masthead {
+        height: 200px;
+    }
+
+    .centros > .row > div {
+        padding-top: 0px !important;
+        margin-bottom: 15px;
+    }
+    
+}   
 @media (max-width: 768px) {
     
     .site-footer {
-        height: 310px;
+        height: 280px;
     }
     
-    #content-wrapper {
-        padding-bottom: 20%;
-        
-    }
-
     .searchup {
-        visibility: hidden;
-        height: 0px;
+        display: none;
     }
 
     .menu {
@@ -179,4 +292,24 @@ footer.navbar-inverse {
     .image-masthead h1 {
         font-size: 52px;
     }
+
+    footer #cc_logo {
+        width: 45%;
+    }
+    
+    footer #samvera_logo {
+        width: 30%;
+        
+    }
+
+    .image-masthead ul{
+
+        padding-right: 0px;
+
+    }
+
+    body{
+        background-color: #fff
+    }
+    
 }

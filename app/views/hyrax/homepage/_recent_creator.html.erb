@@ -1,0 +1,7 @@
+<% @recent_documents.each do |recent_document| %>
+  <li>
+    <p class="recent-field">
+      <%= link_to_facet_list(recent_document.creator, 'creator') %>
+    </p>
+  </li>
+<%end%>
