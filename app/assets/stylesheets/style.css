@@ -231,6 +231,14 @@ footer .container-fluid {
     font-weight: bolder;
 }
 
+.breadcrumb {
+    margin: 25px;
+}
+
+
+ul.tabular {
+    padding-left: 0px;
+}
 @media (min-width: 768px) {
 
     .searchdown {
@@ -282,7 +290,7 @@ footer .container-fluid {
     .work-show dd {
         margin-left: 0px;
     }
-    
+
     .menu {
         visibility: hidden;
         height: 0px;
