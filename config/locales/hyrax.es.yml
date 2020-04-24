@@ -213,7 +213,8 @@ es:
         creator: Nuevos
     institution_name: institución
     institution_name_full: El nombre de la institución
-    product_name: Repositorio Institucional COLMEX
+    product_name: "Repositorio de El Colegio de México"
+    product_name_html: "Repositorio de <br> El Colegio de México"
     product_twitter_handle: "@SamveraRepo"
     search:
       button:
