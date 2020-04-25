@@ -325,11 +325,11 @@ ul.tabular {
     }
     
     #content-wrapper .sidebar{
-        margin-top: 2.5%;
+       top: 83px;
     }
 
     #content-wrapper .main-content{
-        margin-top: 2.5%;
+        top: 83px;
     }
 }   
 @media (max-width: 768px) {
