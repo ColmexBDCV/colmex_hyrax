@@ -1,10 +1,12 @@
  
 <ul id="user_utility_links" class="nav navbar-nav navbar-right">
-  <%= render 'shared/locale_picker' if available_translations.size > 1 %>
   <li class="dropdown">
-    <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Menu
-    </a>
+      <button id="square-menu" type="button" class="navbar-toggle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <div class='menu dropdown-item <%= 'actives' if current_page?(hyrax.root_path) %>'>
         <%= link_to t(:'hyrax.controls.home'), hyrax.root_path, aria: current_page?(hyrax.root_path) ? {current: 'page'} : nil %></div>
@@ -16,6 +18,7 @@
         <%= link_to t(:'hyrax.controls.contact'), hyrax.contact_path, aria: current_page?(hyrax.contact_path) ? {current: 'page'} : nil %></div>
     </div>
   </li>
+  <%= render 'shared/locale_picker' if available_translations.size > 1 %>
   <% if user_signed_in? %>
     <li>
       <%= render_notifications(user: current_user) %>

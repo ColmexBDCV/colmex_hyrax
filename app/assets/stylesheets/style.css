@@ -86,7 +86,7 @@ ul.navbar-nav>li>a {
 }
 
 #world {
-    font-size: 30px;
+    font-size: 20px;
     margin-top: -20px;
 }
 
@@ -94,7 +94,7 @@ ul.navbar-nav>li>a {
     padding-left: 3%;
 }
 
-.navbar-inverse .navbar-nav > .actives > a {
+.navbar-inverse .navbar-nav .actives > a {
     text-decoration: underline;
 }
 
@@ -176,9 +176,10 @@ footer.navbar-inverse {
     margin-top: 50px;
 }
 
-body{
+/* body{
     background-color: #e8e3e3
-}
+} */
+
 #masthead > .container-fluid > .row
 {
     margin-top: 10px;
@@ -209,9 +210,7 @@ footer .container-fluid {
     display: block;
 }
 
-#content-wrapper {
-    padding: 0px !important;
-}
+
 
 #content-wrapper .row {
     margin-left: 10px;
@@ -248,6 +247,37 @@ footer .container-fluid {
 ul.tabular {
     padding-left: 0px;
 }
+
+.menu > a{
+    cursor: default;
+    padding: 2px !important;
+}
+
+#content-wrapper {
+    padding: 0px !important;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #000000;
+}
+
+#square-menu {
+    display: inline;
+    border: none !important;
+    background-color: white !important;
+
+}
+
+#square-menu:hover {
+    background-color: white;
+}
+
+#square-menu .icon-bar{
+    background-color: black;
+    width: 10px;
+    height: 1px;
+}
+
 @media (min-width: 768px) {
 
     .navbar-header {
@@ -294,6 +324,13 @@ ul.tabular {
         margin-bottom: 15px;
     }
     
+    #content-wrapper .sidebar{
+        margin-top: 2.5%;
+    }
+
+    #content-wrapper .main-content{
+        margin-top: 2.5%;
+    }
 }   
 @media (max-width: 768px) {
     
@@ -338,8 +375,15 @@ ul.tabular {
 
     }
 
-    body{
+    /* body{
         background-color: #fff
-    }
+    } */
     
+}
+
+@media (max-width: 1280px) {
+    .container{
+        width: 100%;
+    }
+
 }
