@@ -336,7 +336,7 @@ ul.tabular {
         display: none;
     }
 
-    .navbar-right {
+    footer .navbar-right {
         width: 50%;
     }
 }   
