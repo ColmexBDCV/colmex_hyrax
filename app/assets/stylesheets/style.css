@@ -331,6 +331,14 @@ ul.tabular {
     #content-wrapper .main-content{
         top: 83px;
     }
+
+    .panel-body > table {
+        display: none;
+    }
+
+    .navbar-right {
+        width: 50%;
+    }
 }   
 @media (max-width: 768px) {
     
