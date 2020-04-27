@@ -32,3 +32,14 @@
 // this:
 //= require 'blacklight_range_limit'
 
+var appReady = function() {
+    // $('.centros .row div').hover(function() {
+    //     $('.centros .row div span').css('background-color', '#E8E3E3bd');
+    //     $('.centros .row div span').css('color', '#000');
+    //   }, function() {
+    //     // on mouseout, reset the background colour
+    //     $('.centros .row div span').css('background-color', '');
+    //     $('.centros .row div span').css('color', '');
+    //   });
+}
+  $(document).on('turbolinks:load', appReady);
