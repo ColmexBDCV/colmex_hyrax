@@ -1,23 +1,7 @@
 <div class="citations">
-    <% if Hyrax.config.citations? %>
-      <%= link_to "Citations", hyrax.citations_work_path(presenter), id: 'citations', class: 'btn btn-default' %>
-    <% end %>
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= t('.header') %> <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><%= link_to 'EndNote', polymorphic_path([main_app, presenter], format: 'endnote') %></li>
-        <%
-=begin%>
- <li><%= link_to 'Zotero', hyrax.zotero_path, id: 'zoteroLink', name: 'zotero' %></li> 
-        <li><%= link_to 'Mendeley', hyrax.mendeley_path, id: 'mendeleyLink', name: 'mendeley' %></li> 
-<%
-=end%>
-      </ul>
-    </div>
-  <h3><%t("hyrax.base.citations.quote")%></h3>
-  <div class="citation-way">
-    <%= build_citation(presenter)%>
-  </div>
+  <% if Hyrax.config.citations? %>
+    <%= link_to "Citations", hyrax.citations_work_path(presenter), id: 'citations', class: 'btn btn-default' %>
+  <% end %>
+  <%= link_to content_tag(:i, '', class:'fa fa-list-alt') + " " + t('.header'), polymorphic_path([main_app, presenter], format: 'endnote') %>
 </div>
+

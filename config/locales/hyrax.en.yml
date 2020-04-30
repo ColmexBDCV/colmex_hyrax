@@ -84,6 +84,8 @@ en:
       relationships_parent_row:
         label: "In %{type}:"
         Collection: Collection
+      social_media:
+        link: copied to clipboard
     product_name: "Institutional Repository COLMEX"
     product_twitter_handle: "@SamveraRepo"
     institution_name: "Institution"

@@ -1,0 +1,7 @@
+<%= link_to content_tag(:i, '', class:'fa fa-download') + " " + t('hyrax.file_set.show.downloadable_content.download'),
+hyrax.download_path(file_set),
+class: "",
+data: { label: file_set.id },
+target: :_blank,
+id: "file_download" %>
+

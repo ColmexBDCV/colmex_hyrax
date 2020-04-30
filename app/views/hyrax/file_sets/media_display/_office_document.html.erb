@@ -5,12 +5,8 @@
                     class: "representative-media",
                     alt: "",
                     role: "presentation" %>
-      <%= link_to t('hyrax.file_set.show.downloadable_content.office_link'),
-                  hyrax.download_path(file_set),
-                  class: "btn btn-default",
-                  target: :_blank,
-                  id: "file_download",
-                  data: { label: file_set.id } %>
+      <%= render "shared/download_link", file_set: file_set  %>
+
     </div>
 <% else %>
     <div>

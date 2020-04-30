@@ -132,10 +132,12 @@ es:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal.<br> Delegación Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 55 54493000"
     base:
       citations:
-        header: "Citación:"
+        header: "Citar"
         mendeley: "La exportación a Mendeley se admite a través de metadatos incrustados. Si mendeley no recoge automáticamente los metadatos de los archivos depositados, por favor reportar el problema a través de "
         mendeley_title: Exportar a Mendeley
         quote: "Forma de citar (APA):"
+      social_media:
+        link: copiado en portapapeles
       show:
         abstract or summary: Resumen
         all_fields: Todos los campos
@@ -185,7 +187,8 @@ es:
         title: Título
         table_of_contents: Tabla de contenidos
         type_of_illustrations: Tipo de ilustraciones
-      relationships_parent_row:
+      
+        relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
     collections:
@@ -203,6 +206,10 @@ es:
       thanks: Gracias por su mensaje
     directory:
       suffix: "@example.org"
+    file_set:
+      show:
+        downloadable_content:
+          download: Descargar
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> bajo licencia de Apache, Version 2.0 <br> Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by/4.0/deed.es'>Licencia Internacional de Creative Commons Attribution 4.0.</a>"
       service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.

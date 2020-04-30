@@ -280,7 +280,54 @@ ul.tabular {
     height: 1px;
 }
 
+h2, .modal-title, .h2{
+    font-size: 1.5em;
+} 
+
+.centros span { 
+    font-size: inherit; 
+}  
+
+.social-media{
+    text-align: right;
+    padding-right: 0px;
+}
+
+.social-media > a{
+    margin-right: 0px;
+}
+
+.citations{
+    text-align: left;
+    padding-left: 0px;
+}
+
+.citations > a{
+    margin-left: 0px;
+}
+
+.resp-sharing-button__link{
+    color: #6b163a;
+}
+
+.citations i, .social-media i{
+    font-size: 20px;
+}
+
+.citations a{
+    margin-right: 20px;
+}
+
+.social-media i{
+    margin-left: 20px;
+    color: #6b163a;
+}
+
 @media (min-width: 768px) {
+
+    div.facets h3{
+        font-size: 1.0em;
+    }
 
     .main-home{
         display: flex;
@@ -336,7 +383,7 @@ ul.tabular {
     }
 
     #content-wrapper > .alert {
-        margin-top: 0px;
+        margin-top: 10px;
         margin-bottom: 80px ;
         
     }

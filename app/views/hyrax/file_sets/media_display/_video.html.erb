@@ -7,12 +7,7 @@
 
         Your browser does not support the video tag.
       </video>
-      <%= link_to t('hyrax.file_set.show.downloadable_content.video_link'),
-                  hyrax.download_path(file_set),
-                  class: "btn btn-default",
-                  data: { label: file_set.id },
-                  target: :_blank,
-                  id: "file_download" %>
+      <%= render "shared/download_link", file_set: file_set  %>
     </div>
 <% else %>
     <div>
