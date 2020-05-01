@@ -187,8 +187,7 @@ es:
         title: Título
         table_of_contents: Tabla de contenidos
         type_of_illustrations: Tipo de ilustraciones
-      
-        relationships_parent_row:
+      relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
     collections:
