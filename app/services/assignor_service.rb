@@ -6,15 +6,24 @@ module AssignorService
     end
   end
 
-  def self.process(gw)
+  def self.format_name(name)
+    n = name.split(', ')
+
+    if n[1][-2] == " " || n[1][-3] == " " || n[1][-1] == "." then
+      *n[1], remove = n[1].split(" ")
+    end
+    [ n[1], n[0] ].join(" ")
+  end 
+  
+  def self.get_conacyt_authors(gw)
     creator = []
     contributor = []
     [:creator, :contributor].each do |p|
       unless gw.send(p).empty?
         gw.send(p).each do |c|
-          n = c.split(', ')
+          break unless c.include? "," 
 
-          nombre = [ n[1], n[0] ].join(" ")
+          nombre = format_name c
 
           buscar = I18n.transliterate(nombre).gsub(/[^0-9A-Za-z  ]/, '').gsub(" ", "%20")
 
@@ -52,19 +61,23 @@ module AssignorService
         end
       end
     end
+    [creator, contributor]
+  end
+
+  def self.process(gw)
+    puts gw.id
+    creator, contributor = get_conacyt_authors(gw)
+    puts gw.creator
+    gw.creator_conacyt = nil
+    gw.contributor_conacyt = nil
+    gw.save  
     unless creator.empty?
       gw.creator_conacyt = creator
       gw.save
-    else
-      gw.creator_conacyt = nil
-      gw.save  
     end
     unless contributor.empty?
       gw.contributor_conacyt = contributor
       gw.save
-    else
-      gw.contributor_conacyt = nil
-      gw.save 
     end
     # puts "\n\n\n\n"
     # puts creator
