@@ -7,13 +7,17 @@
 
     <div class="container site-title-container">
       <div class="site-title h1" style="text-align: center;">
-      <h1><%= t('hyrax.product_name_html')%></h1>
+      <h1 class="name_html"><%= t('hyrax.product_name_html')%></h1>
+      <h1 class="name_movil"><%= t('hyrax.product_name_movil')%></h1>
 
         <%= render "hyrax/homepage/marketing" if controller_name == 'homepage' %>
       </div>
     </div>
 
-    <%= render '/controls' %>
+    <%#= render '/controls' %>
+    <div class="searchbar-right navbar-right col-sm-7 search_movil">
+      <%= render partial: 'catalog/search_form' %>
+    </div>
   </div>
 <% end %>
 <% content_for(:precontainer_content) do %>

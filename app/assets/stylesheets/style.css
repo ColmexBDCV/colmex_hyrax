@@ -322,8 +322,25 @@ h2, .modal-title, .h2{
     margin-left: 20px;
     color: #6b163a;
 }
+/************************************************ Inicio Cambios EJCB *************************************************/
+.btn-search{
+    padding: 4px;
+    width: 100%;
+    background: black;
+    color: white;
+    font-size: 20px;
+    border: 0px solid #000000;
+}
 
-@media (min-width: 768px) {
+.custom-form{
+    display: flex;
+}
+
+.custom-form input{
+    border-radius: 0px !important;
+}
+/************************************************* Fin Cambios ********************************************************/
+@media (min-width: 769px) { /** Se aumenta un pixel para hacer la transicion de escritorio a tablet ***/
 
     div.facets h3{
         font-size: 1.0em;
@@ -332,8 +349,6 @@ h2, .modal-title, .h2{
     .main-home{
         display: flex;
         flex-wrap: wrap;
-
-
     }
 
     .menu-home{
@@ -435,6 +450,15 @@ h2, .modal-title, .h2{
         margin-left: 10px !important; 
         margin-right: 0 !important; 
     }
+/************************************************ Inicio Cambios EJCB *************************************************/
+    .search_movil{
+        display: none;
+    }
+    
+    .name_movil{
+        display: none;
+    }
+/************************************************* Fin Cambios ********************************************************/
 }   
 @media (max-width: 768px) {
     
@@ -482,7 +506,67 @@ h2, .modal-title, .h2{
     /* body{
         background-color: #fff
     } */
+
+/************************************************ Inicio Cambios EJCB *************************************************/
+    /*Cambio para quitar el background*/
+    .background-container{
+        display: none !important;
+    }
+
+    .site-title h1{
+        color: #6b163a;
+        font-size: 15px;
+    }
+    .menu-home {
+        display: none;
+    }
+
+    .navbar-form{
+        display: none;
+    }
+
+    #square-menu{
+        display: none;
+    }
+
+    .name_html{
+        display: none;
+    }
+
+    .centros{
+        padding: 0px;
+    }
     
+    .centros .row{
+        margin: 0px;
+    }
+
+    .navbar-inverse {
+        background-color: #FFFFFF !important;
+    }
+
+    .image-masthead .site-title {
+        min-height: 0px;
+        padding-bottom: 0px;
+    }
+
+    .navbar-default{
+        background-color: #FFFFFF;
+    }
+
+    .container-fluid{
+        margin-top: 0px;
+    }
+
+    .navbar-inverse .navbar-nav > li > a{
+        color: black !important;
+    }
+
+    .navbar-inverse .navbar-nav > .active > a{
+        color: #FFFFFF !important;
+    }
+
+    /************************************************* Fin Cambios ********************************************************/
 }
 
 @media (max-width: 1280px) {
