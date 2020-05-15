@@ -221,6 +221,7 @@ es:
     institution_name_full: El nombre de la institución
     product_name: "Repositorio de El Colegio de México"
     product_name_html: "Repositorio de <br> El Colegio de México"
+    product_name_movil: "Repositorio de El Colegio de México"
     product_twitter_handle: "@SamveraRepo"
     search:
       button:
