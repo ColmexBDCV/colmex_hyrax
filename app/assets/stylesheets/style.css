@@ -538,7 +538,8 @@ h2, .modal-title, .h2{
     }
     
     .centros .row{
-        margin: 0px;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
 
     .navbar-inverse {
@@ -564,6 +565,11 @@ h2, .modal-title, .h2{
 
     .navbar-inverse .navbar-nav > .active > a{
         color: #FFFFFF !important;
+    }
+
+    .searchbar-right {
+        margin-right: 2px !important;
+        margin-left: 3px !important;
     }
 
     /************************************************* Fin Cambios ********************************************************/

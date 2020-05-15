@@ -5,7 +5,7 @@
 
     <div class="input-group custom-form">
       <%= text_field_tag :q, current_search_parameters , class: "q form-control", id: "search-field-header", placeholder: t("hyrax.search.form.q.placeholder") %>
-
+      <% if current_user %>
       <div class="input-group-btn">
         <% if current_user %>
           <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -32,6 +32,7 @@
 
         </ul>
       </div><!-- /.input-group-btn -->
+      <% end %>
     </div><!-- /.input-group -->
     <button type="submit" class="btn-search" id="search-submit-header">
           <%#= t('hyrax.search.button.html') %>
