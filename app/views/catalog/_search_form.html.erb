@@ -2,20 +2,18 @@
   <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
   <%= hidden_field_tag :search_field, 'all_fields' %>
   <div class="form-group">
-
     <div class="input-group custom-form">
       <%= text_field_tag :q, current_search_parameters , class: "q form-control", id: "search-field-header", placeholder: t("hyrax.search.form.q.placeholder") %>
       <% if current_user %>
-      <div class="input-group-btn">
-        <% if current_user %>
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      <div class="input-group-btn btn-search-movil">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="width: 68.26px">
 
             <span class="sr-only" data-search-element="label"><%= t("hyrax.search.form.option.all.label_long", application_name: application_name) %></span>
             <span aria-hidden="true"><%= t("hyrax.search.form.option.all.label_short") %></span>
             <span class="caret"></span>
           </button>
 
-          <ul class="dropdown-menu pull-right">
+          <ul class="dropdown-menu pull-right" style="margin-right: -67px;">
             <li>
               <%= link_to t("hyrax.search.form.option.all.label_long", application_name: application_name), "#",
                   data: { "search-option" => main_app.search_catalog_path, "search-label" => t("hyrax.search.form.option.all.label_short") } %>
@@ -28,7 +26,6 @@
               <%= link_to t("hyrax.search.form.option.my_collections.label_long"), "#",
                   data: { "search-option" => hyrax.my_collections_path, "search-label" => t("hyrax.search.form.option.my_collections.label_short") } %>
             </li>
-          <% end %>
 
         </ul>
       </div><!-- /.input-group-btn -->

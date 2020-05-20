@@ -339,6 +339,14 @@ h2, .modal-title, .h2{
 .custom-form input{
     border-radius: 0px !important;
 }
+
+.btn-search-movil{
+    margin-right: 46px;
+}
+
+.btn-search-movil button{
+    border-radius: 0px;
+}
 /************************************************* Fin Cambios ********************************************************/
 @media (min-width: 769px) { /** Se aumenta un pixel para hacer la transicion de escritorio a tablet ***/
 
@@ -572,7 +580,17 @@ h2, .modal-title, .h2{
         margin-left: 3px !important;
     }
 
+    .btn-search-movil{
+        margin-right: 61px;
+    }
+
     /************************************************* Fin Cambios ********************************************************/
+}
+
+@media (max-width: 430px){
+    .btn-search-movil{
+        margin-right: 65px;
+    }
 }
 
 @media (max-width: 1280px) {
