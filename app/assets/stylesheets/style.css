@@ -347,6 +347,10 @@ h2, .modal-title, .h2{
 .btn-search-movil button{
     border-radius: 0px;
 }
+ footer img{
+     padding: 0px 5px;
+ }
+
 /************************************************* Fin Cambios ********************************************************/
 @media (min-width: 769px) { /** Se aumenta un pixel para hacer la transicion de escritorio a tablet ***/
 
