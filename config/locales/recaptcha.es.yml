@@ -1,0 +1,5 @@
+es:
+    recaptcha:
+        errors:
+            verification_failed: La verificación reCAPTCHA ha fallado, por favor intente de nuevo.
+            recaptcha_unreachable: Oops, la validación de su respuesta reCAPTCHA ha fallado, por favor intente de nuevo.
