@@ -3,7 +3,7 @@
 # The file_system provider can be a path to any directory on the server where your application is running.
 #
 file_system:
-  home: /home/rod/repo_docker/hyrax
+  home: <%= ENV['BROWSE_PATH'] || "/home/rod/repo_docker/colmex_hyrax" %>
 # dropbox:
 #   client_id: YOUR_DROPBOX_APP_KEY
 #   client_secret: YOUR_DROPBOX_APP_SECRET
