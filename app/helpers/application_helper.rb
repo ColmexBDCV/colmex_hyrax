@@ -20,7 +20,11 @@ module ApplicationHelper
         #a = conn.get "action/dlSearch.do?search_scope=52COLMEX_ALL&institution=52COLMEX&vid=52COLMEX_INST&query=any,contains,#{value}"
         url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs?mms_id=#{value}&view=full&expand=p_avail&apikey=l7xx5066e7c1fe3e4d549f87aac7e976440e"
         a = conn.get url
-        data = JSON.parse(a.body.force_encoding('utf-8'))
+        begin
+          data = JSON.parse(a.body.force_encoding('utf-8'))
+        rescue 
+          return value
+        end 
         if data.key?("bib") then
           %(<a href=http://colmex-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do?search_scope=52COLMEX_ALL&institution=52COLMEX&vid=52COLMEX_INST&query=any,contains,#{value} target="_blank">#{value}</a>)
         else
