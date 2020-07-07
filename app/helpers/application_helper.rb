@@ -18,7 +18,7 @@ module ApplicationHelper
       conn = Faraday.new :headers => { :accept => "application/json"}
       begin          
         #a = conn.get "action/dlSearch.do?search_scope=52COLMEX_ALL&institution=52COLMEX&vid=52COLMEX_INST&query=any,contains,#{value}"
-        url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs?mms_id=#{value}&view=full&expand=p_avail&apikey=l7xx5066e7c1fe3e4d549f87aac7e976440e"
+        url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs?mms_id=#{value}&view=full&expand=p_avail&apikey=l8xx839588162ee7496e8b0e9e6c7fec4a89"
         a = conn.get url
         begin
           data = JSON.parse(a.body.force_encoding('utf-8'))
