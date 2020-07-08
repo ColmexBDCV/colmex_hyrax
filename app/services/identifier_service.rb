@@ -1,7 +1,7 @@
-module AssignorService
+module IdentifierService
   
-  def self.work
-    Thesis.all.each do |gw| 
+  def self.work(work)
+    work.singularize.classify.constantize.all.each do |gw| 
       process(gw)
     end
   end
@@ -79,11 +79,7 @@ module AssignorService
       gw.contributor_conacyt = contributor
       gw.save
     end
-    # puts "\n\n\n\n"
-    # puts creator
-    # puts "\n\n\n\n"
-    # puts contributor
-    # puts "\n\n\n\n"
+    
   end
   
 
