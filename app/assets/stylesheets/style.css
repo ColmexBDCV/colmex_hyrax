@@ -322,6 +322,11 @@ h2, .modal-title, .h2{
     margin-left: 20px;
     color: #6b163a;
 }
+
+a.navbar-brand {
+    padding: 9px 15px;
+}
+
 /************************************************ Inicio Cambios EJCB *************************************************/
 .btn-search{
     padding: 4px;
