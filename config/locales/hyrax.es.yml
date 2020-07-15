@@ -126,7 +126,14 @@ es:
       hyphen: Use "-" antes de una palabra o frase para excluir.
       and_or_not: Use "OR", "AND", y "NOT" para crear una lógica booleana compleja. Puedes usar paréntesis en tus expresiones complejas.
       truncate: "El truncamiento y los comodines no son compatibles: la separación de palabras se realiza automáticamente."
-
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: 'Imagen ausente'
+      document_slideshow:
+        header: "Seleccione una imagen para comenzar la presentación de diapositivas"
+      modal_slideshow:
+        counter: "%{counter} de %{count}"   
   hyrax:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal.<br> Delegación Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 55 54493000"
