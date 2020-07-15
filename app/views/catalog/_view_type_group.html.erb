@@ -3,10 +3,12 @@
   <span class="sr-only"><%= t('blacklight.search.view_title') %></span>
   <div class="view-type-group btn-group">
     <%  document_index_view_controls.each do |view, config| %>
-      <%= link_to url_for(search_state.to_h.merge(view: view)), title: t('blacklight.search.view.'+view.to_s, :default => view_label(view)), class: "btn btn-default view-type-#{ view.to_s.parameterize } #{"active" if document_index_view_type == view}" do %>
-        <%= render_view_type_group_icon view %>
-        <span class="caption"><%= view_label(view) %></span>
-      <% end %>
+      <% if view != :masonry and view != :slideshow then %>
+        <%= link_to url_for(search_state.to_h.merge(view: view)), title: t('blacklight.search.view.'+view.to_s, :default => view_label(view)), class: "btn btn-default view-type-#{ view.to_s.parameterize } #{"active" if document_index_view_type == view}" do %>
+          <%= render_view_type_group_icon view %>
+          <span class="caption"><%= view_label(view) %></span>
+        <% end %>
+      <%end%>
     <% end %>
   </div>
 </div>
