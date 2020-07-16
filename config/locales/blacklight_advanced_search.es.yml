@@ -1,7 +1,7 @@
 es:
   blacklight_advanced_search:
     all: todos
-    any: algunos
+    any: cualquiera
     form:
       title: Más opciones de búsqueda
       search_context: Dentro de la búsqueda

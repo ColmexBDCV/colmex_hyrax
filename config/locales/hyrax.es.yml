@@ -116,11 +116,10 @@ es:
       submit_limit: Limitar
       unknown: Sin datos
     advanced_search:
-      link: Búsqueda avanzada
+      link: Buscar en metadatos
       tips: Consejos de búsqueda
-      all: Seleccione "coincidir todos" para requerir todos los campos.
-      any: Seleccione "coincidir con cualquiera" para encontrar al menos un campo.
-      combine: Combine palabras clave y atributos para encontrar elementos específicos.
+      all: Seleccione "coincidir todos" para encontrar recursos que continen todos los términos.
+      any: Seleccione "coincidir con cualquiera" para encontrar recursos que contienen al menos un término.
       quotation: Utilice comillas para buscar como una frase.
       plus: Use "+" antes de un término para hacerlo requerido. (De lo contrario, se pueden incluir los resultados que coincidan solo con algunos de sus términos).
       hyphen: Use "-" antes de una palabra o frase para excluir.

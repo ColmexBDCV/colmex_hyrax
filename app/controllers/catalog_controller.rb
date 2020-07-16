@@ -32,9 +32,10 @@ class CatalogController < ApplicationController
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
 
+    # Show gallery view
     config.view.gallery.partials = [:index_header, :index]
-    config.view.masonry.partials = [:index]
-    config.view.slideshow.partials = [:index]
+    # config.view.masonry.partials = [:index]
+    # config.view.slideshow.partials = [:index]
 
     config.oai = {
       provider: {
@@ -55,9 +56,7 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     config.search_builder_class = SearchBuilder
 
-    # Show gallery view
-    config.view.gallery.partials = [:index_header, :index]
-    config.view.slideshow.partials = [:index]
+       
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
