@@ -332,6 +332,9 @@ h4.search-result-title {
     line-height: 1.5em;
 }
 
+footer li{
+    list-style-type: none;
+}
 /************************************************ Inicio Cambios EJCB *************************************************/
 .btn-search{
     padding: 4px;
