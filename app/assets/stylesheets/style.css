@@ -327,6 +327,11 @@ a.navbar-brand {
     padding: 9px 15px;
 }
 
+h4.search-result-title {
+    font-size: 1.55em;
+    line-height: 1.5em;
+}
+
 /************************************************ Inicio Cambios EJCB *************************************************/
 .btn-search{
     padding: 4px;
