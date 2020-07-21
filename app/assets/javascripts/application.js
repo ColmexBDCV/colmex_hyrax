@@ -34,11 +34,11 @@
 
 var appReady = function() {
   
-  const queryString = window.location.search;
+  var queryString = window.location.search;
   
-  const urlParams = new URLSearchParams(queryString);
+  var urlParams = new URLSearchParams(queryString);
 
-  const entries = urlParams.entries();
+  var entries = urlParams.entries();
 
   
   
@@ -51,8 +51,8 @@ var appReady = function() {
         if ( $(this).children().length < 1 ) {
           console.log($(this).html())
           txt = $(this).text()
-          for(const en of entry[1].split(" ")) {
-            $(this).html(txt.split(entry[1]).join("<mark>"+entry[1]+"</mark>"))
+          for(var ent of entry[1].split(" ")) {
+            $(this).html(txt.split(ent).join("<mark>"+ent+"</mark>"))
           }
         }
       });  
