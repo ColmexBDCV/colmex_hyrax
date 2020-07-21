@@ -34,15 +34,15 @@
 
 var appReady = function() {
   
-  var queryString = window.location.search;
+  const queryString = window.location.search;
   
-  var urlParams = new URLSearchParams(queryString);
+  const urlParams = new URLSearchParams(queryString);
 
-  var entries = urlParams.entries();
+  const entries = urlParams.entries();
 
   
   
-  for(var entry of entries) {
+  for(const entry of entries) {
     if(entry[0].includes("_sim") || entry[0].includes("_tesim") || entry[0] == "q") {
       console.log("chale")
       $("#search-results a, #search-results dd, .work-type h2, .work-type dd a").each(function(){
@@ -51,8 +51,8 @@ var appReady = function() {
         if ( $(this).children().length < 1 ) {
           console.log($(this).html())
           txt = $(this).text()
-          for(var ent of entry[1].split(" ")) {
-            $(this).html(txt.split(ent).join("<mark>"+ent+"</mark>"))
+          for(const en of entry[1].split(" ")) {
+            $(this).html(txt.split(entry[1]).join("<mark>"+entry[1]+"</mark>"))
           }
         }
       });  
