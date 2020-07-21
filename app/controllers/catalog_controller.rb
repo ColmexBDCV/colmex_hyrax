@@ -97,7 +97,7 @@ class CatalogController < ApplicationController
     # config.add_facet_field solr_name("publisher", :facetable), limit: 5
     #config.add_facet_field solr_name("file_format", :facetable), limit: 5
     config.add_facet_field solr_name("director", :facetable), limit: 5
-    config.add_facet_field solr_name("reviewer", :facetable), limit: 5
+    # config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
     config.add_facet_field solr_name("contained_in", :facetable), limit: 5

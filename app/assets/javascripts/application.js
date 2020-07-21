@@ -33,13 +33,38 @@
 //= require 'blacklight_range_limit'
 
 var appReady = function() {
-    // $('.centros .row div').hover(function() {
-    //     $('.centros .row div span').css('background-color', '#E8E3E3bd');
-    //     $('.centros .row div span').css('color', '#000');
-    //   }, function() {
-    //     // on mouseout, reset the background colour
-    //     $('.centros .row div span').css('background-color', '');
-    //     $('.centros .row div span').css('color', '');
-    //   });
+  
+  const queryString = window.location.search;
+  
+  const urlParams = new URLSearchParams(queryString);
+
+  const entries = urlParams.entries();
+
+  
+  
+  for(const entry of entries) {
+    if(entry[0].includes("_sim") || entry[0].includes("_tesim") || entry[0] == "q") {
+      console.log("chale")
+      $("#search-results a, #search-results dd, .work-type h2, .work-type dd a").each(function(){
+        //console.log($(this).prop("tagName"))
+        
+        if ( $(this).children().length < 1 ) {
+          console.log($(this).html())
+          txt = $(this).text()
+          for(const en of entry[1].split(" ")) {
+            $(this).html(txt.split(entry[1]).join("<mark>"+entry[1]+"</mark>"))
+          }
+        }
+      });  
+    }
+  }
+    
+ 
+
+  $(".search-result-title > a").each(function () {
+    var oldUrl = $(this).attr("href").split("?"); // Get current url
+    var newUrl = oldUrl[0]+queryString; // Create new url
+    $(this).attr("href", newUrl); // Set herf value
+  });
 }
   $(document).on('turbolinks:load', appReady);

@@ -335,6 +335,11 @@ h4.search-result-title {
 footer li{
     list-style-type: none;
 }
+
+mark{
+    padding: 0px;
+    background-color: yellow;
+}
 /************************************************ Inicio Cambios EJCB *************************************************/
 .btn-search{
     padding: 4px;
