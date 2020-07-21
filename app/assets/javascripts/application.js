@@ -42,7 +42,7 @@ var appReady = function() {
 
   
   
-  for(const entry of entries) {
+  for(var entry of entries) {
     if(entry[0].includes("_sim") || entry[0].includes("_tesim") || entry[0] == "q") {
       console.log("chale")
       $("#search-results a, #search-results dd, .work-type h2, .work-type dd a").each(function(){
