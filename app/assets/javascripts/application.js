@@ -50,19 +50,30 @@ var appReady = function() {
         
         if ( $(this).children().length < 1 ) {
           
-          
-          for(const ent of entry[1].split(" ")) {
-            // console.log("busco: "+ent)
-            // console.log("en: "+$(this).html())
+          if (entry[0] == "q"){
+            for(const ent of entry[1].split(" ")) {
+              // console.log("busco: "+ent)
+              // console.log("en: "+$(this).html())
+              txt = $(this).html()
+              word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+              if (word_position.length > 0)
+              {
+                var word = txt.substring(word_position[0], word_position[0]+ ent.length)
+                
+                $(this).html(txt.split(word).join("<mark>"+word+"</mark>"))
+              }
+            }
+          }else{
             txt = $(this).html()
-            word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+            word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),entry[1].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
             if (word_position.length > 0)
             {
-              var word = txt.substring(word_position[0], word_position[0]+ ent.length)
+              var word = txt.substring(word_position[0], word_position[0]+ entry[1].length)
               
               $(this).html(txt.split(word).join("<mark>"+word+"</mark>"))
             }
           }
+
         }
       });  
     }
