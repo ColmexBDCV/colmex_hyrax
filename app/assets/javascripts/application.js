@@ -43,17 +43,36 @@ var appReady = function() {
 
   const entries = urlParams.entries();
 
+  const parameters = [
+    "all_fields",
+    "title",
+    "creator",
+    "contributor",
+    "description",
+    "publisher",
+    "date_created",
+    "subject_work",
+    "subject_person",
+    "subject_corporate",
+    "subject_family",
+    "subject",
+    "geographic_coverage",
+    "temporary_coverage",
+    "director",
+    "degree_program",
+    "q"    
+  ]
+
   for(const entry of entries) {
-    if(entry[0].includes("_sim") || entry[0].includes("_tesim") || entry[0] == "q") {
+    if((entry[0].includes("_sim") || parameters.includes(entry[0])) && entry[1] != "") {
+      
       $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a").each(function(){
-        //console.log($(this).prop("tagName"))
         
         if ( $(this).children().length < 1 ) {
           
-          if (entry[0] == "q"){
+          if (parameters.includes(entry[0])){
+            console.log(entry[1])
             for(const ent of entry[1].split(" ")) {
-              // console.log("busco: "+ent)
-              // console.log("en: "+$(this).html())
               txt = $(this).html()
               word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
               if (word_position.length > 0)
