@@ -32,6 +32,9 @@
 // this:
 //= require 'blacklight_range_limit'
 
+// String.prototype.replaceAt=function(index, char) {return this.substr(0, index) + char + this.substr(index+char.length);}
+
+
 var appReady = function() {
   
   const queryString = window.location.search;
@@ -40,26 +43,53 @@ var appReady = function() {
 
   const entries = urlParams.entries();
 
-  
-  
   for(const entry of entries) {
     if(entry[0].includes("_sim") || entry[0].includes("_tesim") || entry[0] == "q") {
-      console.log("chale")
-      $("#search-results a, #search-results dd, .work-type h2, .work-type dd a").each(function(){
+      $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a").each(function(){
         //console.log($(this).prop("tagName"))
         
         if ( $(this).children().length < 1 ) {
-          console.log($(this).html())
-          txt = $(this).text()
-          for(const en of entry[1].split(" ")) {
-            $(this).html(txt.split(entry[1]).join("<mark>"+entry[1]+"</mark>"))
+          
+          
+          for(const ent of entry[1].split(" ")) {
+            // console.log("busco: "+ent)
+            // console.log("en: "+$(this).html())
+            txt = $(this).html()
+            word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+            if (word_position.length > 0)
+            {
+              var word = txt.substring(word_position[0], word_position[0]+ ent.length)
+              
+              $(this).html(txt.split(word).join("<mark>"+word+"</mark>"))
+            }
           }
         }
       });  
     }
   }
     
- 
+    
+  function indexes(source, find) {
+    if (!source) {
+      return [];
+    }
+    if (!find) {
+        return source.split('').map(function(_, i) { return i; });
+    }
+    var result = [];
+    var i = 0;
+    while(i < source.length) {
+      if (source.substring(i, i + find.length) == find) {
+        result.push(i);
+        i += find.length;
+      } else {
+        i++;
+      }
+    }
+    return result;
+  }
+
+    
 
   $(".search-result-title > a").each(function () {
     var oldUrl = $(this).attr("href").split("?"); // Get current url
@@ -67,4 +97,6 @@ var appReady = function() {
     $(this).attr("href", newUrl); // Set herf value
   });
 }
-  $(document).on('turbolinks:load', appReady);
+
+
+$(document).on('turbolinks:load', appReady);
