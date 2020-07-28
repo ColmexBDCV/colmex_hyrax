@@ -122,7 +122,7 @@ en:
         geographic_coverage: Geographic_coverage
         temporary_coverage: Temporary_coverage
         gender_or_form: Gender or form
-        notes: Not2s
+        notes: Notas
         center: Center
         classification: Clasification
         supplementary_content_or_bibliography: Supplementary content or bibliography
@@ -132,6 +132,27 @@ en:
         title: Title
         table_of_contents: Table of contents
         type_of_illustrations: Type of illustrations
+        extension: Extension
+        institution: Institution
+        director: Director
+        awards: Awards
+        item_access_restrictions: Item access restrictions
+        item_use_restrictions: Item use restrictions
+        edition: Edition
+        encoding_format_details: Encoding format details
+        file_type_details: File type details
+        digital_resource_generation_information: Digital resource generation information
+        file_details: File details
+        dimensions: Dimensions
+        system_requirements: System requirements
+        exemplar_of_manifestation: exemplar of manifestation
+        type_of_file: Type of file
+        mode_of_publication: Mode ofpublication
+        other_formats: Other formats
+        access_restrictions: Access restritions
+        use_restrictions: Use restritions
+        academic_degree: Academix degree
+        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
     product_name: "Institutional Repository COLMEX"
     product_twitter_handle: "@SamveraRepo"
     institution_name: "Institution"
