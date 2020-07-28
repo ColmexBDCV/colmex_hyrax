@@ -86,6 +86,52 @@ en:
         Collection: Collection
       social_media:
         link: copied to clipboard
+      show:
+        description: Abstract or Summary 
+        all_fields: All fields
+        alternate_title: Alternate title
+        analitycs: Analitycs
+        contained_in: Contained in
+        database: Database
+        mode_of_issuance: Mode of issuance
+        work_type_Article: Article
+        work_type_Thesis: Thesis
+        last_modified: Last modified
+        creator: Creator
+        contributor: Contributor
+        director: Director
+        degree_program: Degree program
+        subject: Subject
+        publisher: Publisher
+        language: Language
+        identifier: Identifier
+        keyword: Keywords
+        date_created: Date created
+        location: Location
+        related_url: URL related
+        resource_type: Resource type
+        reviewer: Reviewer
+        source: Source
+        rights_statement: Rights statement
+        license: License
+        other_title: Other title
+        subject_work: Subject work
+        subject_person: Subject person
+        subject_family: Subject family
+        subject_corporate: Subject corporate
+        geographic_coverage: Geographic_coverage
+        temporary_coverage: Temporary_coverage
+        gender_or_form: Gender or form
+        notes: Not2s
+        center: Center
+        classification: Clasification
+        supplementary_content_or_bibliography: Supplementary content or bibliography
+        responsibility_statement: Responsibility statement
+        other_related_persons: Other related persons
+        themes: Themes
+        title: Title
+        table_of_contents: Table of contents
+        type_of_illustrations: Type of illustrations
     product_name: "Institutional Repository COLMEX"
     product_twitter_handle: "@SamveraRepo"
     institution_name: "Institution"

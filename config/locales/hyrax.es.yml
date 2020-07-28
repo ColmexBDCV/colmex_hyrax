@@ -146,7 +146,7 @@ es:
       social_media:
         link: copiado en portapapeles
       show:
-        abstract or summary: Resumen
+        description: Resumen
         all_fields: Todos los campos
         alternate_title: Título variante
         analitycs: Analíticas
@@ -160,15 +160,14 @@ es:
         contributor: Colaborador
         description: Resumen
         director: Director
-        degree program: Grado
+        degree_program: Grado
         subject: Tema
         publisher: Editor
         language: Lenguaje
         identifier: Identificador
         keyword: Palabras clave
         date_created: Año
-        languague: Lenguaje
-        loation: Ubicación
+        location: Ubicación
         related_url: URL
         resource_type: Tipo de documento
         reviewer: Lector/Revisor
