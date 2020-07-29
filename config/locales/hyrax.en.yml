@@ -200,7 +200,7 @@ en:
       suffix: "@example.org"
     footer:
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
-      copyright_html: "Unless otherwise indicated, all content is subject to: <br> Licensed under the Creative Commons Attribution 4.0"
+      copyright_html: "Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by/4.0/deed.es'>Licensed under the Creative Commons Attribution 4.0</a>"
     search:
       button:
         html: <span class="glyphicon glyphicon-search"></span>
