@@ -6,7 +6,7 @@ en:
           based_near_label_sim: Location
           center_sim: Center
           creator_sim: Creator
-          date_created: Year
+          date_created_sim: Year
           degree_program_sim: Degree program
           director_sim: Thesis Advisor
           file_format_sim: Format
@@ -94,6 +94,13 @@ en:
           subject_family_sim: Subject family
           subject_work_sim: Subject work
           title_tesim: Title
+      sort:
+        label: Order by %{field}
+        relevance: Relevance
+        date created ▼: Year ▼
+        date created ▲: Year ▲
+        Title [Z-A]: Title [Z-A]
+        Title [A-Z]: Title [A-Z]  
     advanced_search:
       link: Advanced search
       tips: Search tips
@@ -107,7 +114,7 @@ en:
       truncate: Truncation and wildcards are not supported - word-stemming is done automatically.
 
   hyrax:
-    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br>. Delegación Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 55 54493000"
+    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
     base:
       citations:
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
@@ -151,8 +158,8 @@ en:
         subject_person: Subject person
         subject_family: Subject family
         subject_corporate: Corporate name
-        geographic_coverage: Geographic_coverage
-        temporary_coverage: Temporary_coverage
+        geographic_coverage: Geographic coverage
+        temporary_coverage: Temporary coverage
         gender_or_form: Gender or form
         notes: Notas
         center: Center
@@ -192,10 +199,8 @@ en:
     directory:
       suffix: "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0 <br> Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by/4.0'> Creative Commons Attribution International License 4.0. </a>"
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
-      copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
-      service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+      copyright_html: "Licensed under the Creative Commons Attribution 4.0"
     search:
       button:
         html: <span class="glyphicon glyphicon-search"></span>

@@ -3,10 +3,10 @@ es:
     all: todos los
     any: cualquiera de los
     form:
-      title: Búsqueda avanzada
+      title: Advanced Search
       search_context: Dentro de la búsqueda
       limit_criteria_heading_html: "<strong>Y</strong> tiene estos atributos"
-      query_criteria_heading_html: "Encuentra recursos que coincidan con %{select_menu} términos:"
+      query_criteria_heading_html: "Find itmes that match %{select_menu} of the search terms:"
       sort_label: "Ordenar resultados por"
       start_over: "Limpiar"
       search_btn: "Buscar"
