@@ -20,6 +20,20 @@ en:
           subject_family_sim: Subject Family
           subject_work_sim: Subject Work
           temporary_coverage_sim: Temporary Coverage
+          content:
+            Thesis: Thesis
+            Collection: Collection
+            Article: Article
+          contained_in_sim: Journal
+          contributor_sim: Contributor
+          human_readable_type_sim: Object type
+          resource_type_sim: Resource type
+          reviewer_sim: Reviewer
+          subject_corporate_sim: Corporate name
+          temporary_coverage_sim: Temporary coverage
+          type_of_illustrations_sim: Illustrations
+          database_sim: Database source
+          mode_of_issuance_sim: Mode of issuance
         index:
           based_near_tesim: Location
           classification_tesim: Classification
