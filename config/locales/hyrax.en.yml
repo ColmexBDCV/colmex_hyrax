@@ -24,6 +24,7 @@ en:
           based_near_tesim: Location
           classification_tesim: Classification
           contributor_tesim: Contributor
+          collections: Collections
           director_tesim: Thesis advisor
           degree_program_tesim: Degree program
           creator_tesim: Creator
@@ -42,6 +43,23 @@ en:
           subject_person_tesim: Subject Person
           subject_family_tesim: Subject Family
           subject_work_tesim: Subject Work
+          subject_corporate: Corporate name
+          contained_in_tesim: Journal
+          center_tesim: Center
+          database_tesim: Database source
+          depositor_tesim: Depositor
+          geographic_coverage_tesim: Geographic coverage
+          issn_tesim: ISSN
+          mode_of_issuance_tesim: Mode of issuance
+          number_tesim: Number
+          pages_tesim: Pages
+          related_url_tesim: URL
+          resource_type_tesim: Resource type
+          reviewer_tesim: Reviewer
+          type_of_illustrations_tesim: Illustrations
+          temporary_coverage_tesim: Temporary coverage
+          volume_tesim: Volume
+          works: Works
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -91,22 +109,22 @@ en:
         all_fields: All fields
         alternate_title: Alternate title
         analitycs: Analitycs
-        contained_in: Contained in
-        database: Database
+        contained_in: Journal
+        database: Database Source
         mode_of_issuance: Mode of issuance
         work_type_Article: Article
         work_type_Thesis: Thesis
         last_modified: Last modified
         creator: Creator
         contributor: Contributor
-        director: Director
+        director: Thesis advisor
         degree_program: Degree program
         subject: Subject
         publisher: Publisher
         language: Language
         identifier: Identifier
         keyword: Keywords
-        date_created: Date created
+        date_created: Year
         location: Location
         related_url: URL related
         resource_type: Resource type
@@ -118,7 +136,7 @@ en:
         subject_work: Subject work
         subject_person: Subject person
         subject_family: Subject family
-        subject_corporate: Subject corporate
+        subject_corporate: Corporate name
         geographic_coverage: Geographic_coverage
         temporary_coverage: Temporary_coverage
         gender_or_form: Gender or form
@@ -131,7 +149,7 @@ en:
         themes: Themes
         title: Title
         table_of_contents: Table of contents
-        type_of_illustrations: Type of illustrations
+        type_of_illustrations: Illustrations
         extension: Extension
         institution: Institution
         awards: Awards
