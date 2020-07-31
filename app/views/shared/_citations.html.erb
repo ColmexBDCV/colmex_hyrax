@@ -7,13 +7,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="<%= @presenter.title.first %>" />
   <meta property="og:description" content="<%= @presenter.description.first.truncate(200) rescue @presenter.title.first %>" />
-  <meta property="og:image" content="<%= request.base_url %>/img/logo_biblio.png?123456789" />
+  <meta property="og:image" content="<%= @presenter.download_url %>?file=thumbnail&<%=rand(100000..999999)%>" />
   <meta property="og:url" content="<%= polymorphic_url([main_app, @presenter]) %>" />
   <meta name="twitter:data1" content="<%= @presenter.keyword.join(', ') %>" />
   <meta name="twitter:label1" content="Keywords" />
   <meta name="twitter:data2" content="<%= @presenter.rights_statement.first %>" />
   <meta name="twitter:label2" content="Rights Statement" />
-  <meta name="twitter:image" content="<%= request.base_url %>/img/logo_biblio.png?123456789" />
+  <meta name="twitter:image" content="<%= @presenter.download_url %>?file=thumbnail&<%=rand(100000..999999)%>"  />
   
   
 <% end %>
