@@ -228,7 +228,7 @@ es:
     product_name: "Repositorio de El Colegio de México"
     product_name_html: "Repositorio de <br> El Colegio de México"
     product_name_movil: "Repositorio de El Colegio de México"
-    product_twitter_handle: "@SamveraRepo"
+    product_twitter_handle: "@BiblioColmex"
     search:
       button:
         html: <span class="glyphicon glyphicon-search"></span>

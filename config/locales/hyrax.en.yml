@@ -117,6 +117,7 @@ en:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
     base:
       citations:
+        header: "Export citation"
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
         mendeley_title: Export to Mendeley
         quote: "How to quote:"
@@ -192,7 +193,7 @@ en:
         academic_degree: Academix degree
         date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
     product_name: "Institutional Repository COLMEX"
-    product_twitter_handle: "@SamveraRepo"
+    product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"
     institution_name_full: "The Institution Name"
     account_name: "My Institution Account Id"
