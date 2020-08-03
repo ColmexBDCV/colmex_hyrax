@@ -220,7 +220,7 @@ es:
       service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
     homepage:
       recently_uploaded:
-        tab_label: Nuevos Documentos #Integrados recientemente
+        tab_label: Añadidos recientemente #Integrados recientemente
         title: Nuevos Documentos #Integrados recientemente
         creator: Añadidos recientemente
     institution_name: institución

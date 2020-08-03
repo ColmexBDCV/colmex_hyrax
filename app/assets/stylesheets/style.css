@@ -492,8 +492,18 @@ mark{
 }   
 @media (max-width: 768px) {
     
+    .text-center, .text-center > .col-sm-12, .panel-body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .work-type, .panel-body > .row{
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+
     .site-footer {
-        height: 280px;
+        height: 250px;
     }
     
     .searchup {
