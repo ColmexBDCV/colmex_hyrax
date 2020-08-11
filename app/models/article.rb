@@ -19,10 +19,10 @@ class Article < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end  
 
-  property :year, predicate: ::Vocab::RDAM.chronologicalDesignationOfFirstIssueOrPartOfSequence, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end 
+  # property :year, predicate: ::Vocab::RDAM.chronologicalDesignationOfFirstIssueOrPartOfSequence, multiple: true do |index|
+  #   index.type :text
+  #   index.as :stored_searchable, :facetable
+  # end 
 
   property :volume, predicate: ::Vocab::RDAM.numberingOfSerials, multiple: true do |index|
     index.type :text
@@ -34,11 +34,6 @@ class Article < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end 
 
-  property :pages, predicate: ::RDF::Vocab::SCHEMA.pagination, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end 
-  
   property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable

@@ -29,7 +29,7 @@
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  
 <%= presenter.attribute_to_html(:publisher, label: t('hyrax.base.show.publisher'), render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:language, label: t('hyrax.base.show.languague'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:language, label: t('hyrax.base.show.language'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:keyword, label: t('hyrax.base.show.keyword'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), html_dl: true) %>
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>

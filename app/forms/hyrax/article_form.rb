@@ -5,7 +5,7 @@ module Hyrax
   class ArticleForm < Hyrax::Forms::WorkForm
     self.model_class = ::Article
     self.terms += [:resource_type, 
-      :period, :part, :year, :volume, :number, :pages, :contained_in, :database, :issn]
+      :period, :part, :volume, :number, :contained_in, :database, :issn]
      # This must be included at the end,
       self.terms += ConacytForm.special_fields
   end

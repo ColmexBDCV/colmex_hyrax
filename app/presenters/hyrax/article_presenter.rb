@@ -3,7 +3,7 @@
 module Hyrax
   class ArticlePresenter < Hyrax::WorkShowPresenter
 
-    delegate :contained_in, :volume, :number, :year, :pages, :period, :part, :database, :issn, to: :solr_document
+    delegate :contained_in, :volume, :number, :period, :part, :database, :issn, to: :solr_document
 
     include Hyrax::ConacytPresenter
 

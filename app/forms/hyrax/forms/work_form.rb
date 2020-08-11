@@ -21,19 +21,19 @@ module Hyrax
 
       attr_reader :agreement_accepted
 
-      self.terms = [:title, :alternate_title, :other_title, :creator, 
-                    :contributor, :description, :subject_person, :subject_family, :subject_work, :subject, :subject_corporate,
-                    :keyword, :license, :rights_statement, :publisher, :date_created,
-                    :language, :identifier, :doi, :isbn, :based_near, :geographic_coverage ,:temporary_coverage,
-                    :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography,
-                    :responsibility_statement, :other_related_persons, #:summary, 
-                    :table_of_contents, :mode_of_issuance,
-                    :type_of_content, 
-                    :type_of_illustrations, :center, :reviewer, 
+      self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator, 
+                    :contributor, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
+                    :publisher, :language, :reviewer,
+                    :license, :geographic_coverage, :temporary_coverage,
+                    :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
+                    :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,
+                    :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
+                    :type_of_content, :editor, :compiler, :comentator, :translator, :digital_resource_generation_information,
+                    :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease,
-                    :visibility, :ordered_member_ids, :source, :in_works_ids,
+                    :visibility, :ordered_member_ids, :in_works_ids,
                     :member_of_collection_ids, :admin_set_id]
 
       self.required_fields = [:title, 

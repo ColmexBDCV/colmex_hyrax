@@ -8,5 +8,9 @@ module Vocab
     term :identifierForThePerson
     term :degreeSupervisorOf
     term :otherPFCWorkOf
+    term :isEditorPersonOfTextOf
+    term :isCompilerAgentFor
+    term :isCommentatorAgentOf
+    term :isTranslatorAgentOf
   end
 end

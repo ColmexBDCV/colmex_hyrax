@@ -33,7 +33,7 @@ en:
           temporary_coverage_sim: Temporary coverage
           type_of_illustrations_sim: Illustrations
           database_sim: Database source
-          mode_of_issuance_sim: Mode of issuance
+          mode_of_issuance_sim: Mode of publication
         index:
           based_near_tesim: Location
           classification_tesim: Classification
@@ -64,7 +64,7 @@ en:
           depositor_tesim: Depositor
           geographic_coverage_tesim: Geographic coverage
           issn_tesim: ISSN
-          mode_of_issuance_tesim: Mode of issuance
+          mode_of_issuance_tesim: Mode of publication
           number_tesim: Number
           pages_tesim: Pages
           related_url_tesim: URL
@@ -133,7 +133,6 @@ en:
         analitycs: Analitycs
         contained_in: Journal
         database: Database Source
-        mode_of_issuance: Mode of issuance
         work_type_Article: Article
         work_type_Thesis: Thesis
         last_modified: Last modified
@@ -186,13 +185,13 @@ en:
         system_requirements: System requirements
         exemplar_of_manifestation: exemplar of manifestation
         type_of_file: Type of file
-        mode_of_publication: Mode ofpublication
+        mode_of_issuance: Mode of publication
         other_formats: Other formats
         access_restrictions: Access restritions
         use_restrictions: Use restritions
         academic_degree: Academix degree
         date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
-    product_name: "Institutional Repository COLMEX"
+    product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"
     institution_name_full: "The Institution Name"

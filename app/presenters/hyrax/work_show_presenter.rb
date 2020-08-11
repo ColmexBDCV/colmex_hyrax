@@ -38,15 +38,14 @@ module Hyrax
     # Metadata Methods
    delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
              :contributor, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
-             :publisher, :language, 
-             :embargo_release_date, :reviewer,
-             :lease_expiration_date, :license, :geographic_coverage, :temporary_coverage,
-             :gender_or_form, :notesIIIF, :classification, :supplementary_content_or_bibliography,
-             :responsibility_statement, :other_related_persons, #:summary, 
-             :table_of_contents, 
-             #:type_of_content, 
-             :type_of_illustrations, :center, :mode_of_issuance,
-             :source, :rights_statement, :thumbnail_id, :representative_id,
+             :publisher, :language, :reviewer,
+             :license, :geographic_coverage, :temporary_coverage,
+             :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
+             :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,
+             :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
+             :type_of_content, :editor, :compiler, :comentator, :translator, :digital_resource_generation_information,
+             :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
+             :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id,
              :rendering_ids, :member_of_collection_ids, to: :solr_document
 
     def workflow

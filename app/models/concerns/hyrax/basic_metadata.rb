@@ -18,7 +18,7 @@ module Hyrax
       property :creator, predicate: ::Vocab::RDAA.authorOf, multiple: true
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor
       property :description, predicate: ::Vocab::RDAE.summarizationOfTheContent
-      property :keyword, predicate: ::RDF::Vocab::DC11.relation
+      property :keyword, predicate: ::RDF::Vocab::SCHEMA.keywords
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
 
@@ -49,13 +49,25 @@ module Hyrax
       property :supplementary_content_or_bibliography, predicate: ::Vocab::RDAE.supplementaryContent, multiple: true
       property :responsibility_statement, predicate: ::Vocab::RDAM.statementOfResponsibilityRelatingToTitleProper, multiple: false
       property :other_related_persons, predicate: ::Vocab::RDAA.otherPFCWorkOf, multiple: true
-      #property :summary, predicate: ::Vocab::RDAE.summarizationOfTheContent, multiple: true
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
       property :type_of_content, predicate: ::Vocab::RDAU.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
       property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true 
+      property :editor, predicate: ::Vocab::RDAA.isEditorPersonOfTextOf, multiple: true
+      property :compiler, predicate: ::Vocab::RDAA.isCompilerAgentFor, multiple: true
+      property :commentator, predicate: ::Vocab::RDAA.isCommentatorAgentOf, multiple: true
+      property :translator, predicate: ::Vocab::RDAA.isTranslatorAgentOf, multiple: true
       property :mode_of_issuance, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: true
+      property :edition, predicate: ::Vocab::RDAM.designationOfEdition, multiple: true
+      property :dimensions, predicate: ::Vocab::RDAM.dimensions, multiple: false
+      property :extension, predicate: ::Vocab::RDAM.extent, multiple: false
+      property :system_requirements, predicate: ::Vocab::RDAM.equipmentOrSystemRequirement, multiple: true
 
+      property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
+      property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
+      property :encoding_format_details, predicate: ::Vocab::RDAM.detailsOfEncodingFormat, multiple: true
+      property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
+      
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties

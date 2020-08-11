@@ -16,13 +16,14 @@ es:
           date_created_sim: Año
           degree_program_sim: Grado
           director_sim: Director de tesis
+          extension_sim: Páginas
           file_format_sim: Formato
           generic_type_sim: Tipo
           geographic_coverage_sim: Cobertura geográfica
           human_readable_type_sim: Tipo de objeto
           keyword_sim: Palabras clave
           language_sim: Idioma
-          publisher_sim: Editor
+          notes_sim: Notas
           resource_type_sim: Tipo de documento
           reviewer_sim: Lector/Revisor
           subject_sim: Tema
@@ -30,11 +31,21 @@ es:
           subject_family_sim: Tema familia
           subject_work_sim: Tema obra
           subject_corporate_sim: Tema organismo
+          supplementary_content_or_bibliography_sim: Bibliografía  
           temporary_coverage_sim: Cobertura temporal
           type_of_illustrations_sim: Tipo de ilustraciones
           database_sim: Base de datos
-          mode_of_issuance_sim: Modo de emisión
-
+          mode_of_issuance_sim: Modo de publicación
+          edition_sim: Edición
+          system_requirements_sim: Requerimientos de sistema
+          table_of_contents_sim: Tabla de contenidos
+          item_access_restrictions_sim: Restricción de acceso del ítem
+          item_use_restrictions_sim: Restricción de uso del ítem
+          editor_sim: Editor
+          publisher_sim: Editorial
+          compiler_sim: Compilador
+          commentator_sim: Reseñista/Comentarista
+          translator_sim: Traductor   
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -51,17 +62,20 @@ es:
           degree_program_tesim: Grado
           depositor_tesim: Propietario
           director_tesim: Director
+          edition_tesim: Edición
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
+          item_access_restrictions_tesim: Restricción de acceso del ítem
+          item_use_restrictions_tesim: Restricción de uso del ítem
           issn_tesim: ISSN
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
-          mode_of_issuance_tesim: Modo de emisión
+          mode_of_issuance_tesim: Modo de publicación
+          notes_tesim: Notas
           number_tesim: Número
           pages_tesim: Páginas
-          publisher_tesim: Editor
           related_url_tesim: URL
           resource_type_tesim: Tipo de documento
           reviewer_tesim: Lector/Revisor
@@ -74,6 +88,14 @@ es:
           subject_corporate_tesim: Tema organismo
           temporary_coverage_tesim: Cobertura temporal
           volume_tesim: Volumen
+          system_requirements_tesim: Requerimientos de sistema
+          supplementary_content_or_bibliography_tesim: Bibliografía  
+          table_of_contents_tesim: Tabla de contenidos
+          editor_tesim: Editor
+          publisher_tesim: Editorial
+          compiler_tesim: Compilador
+          commentator_tesim: Reseñista/Comentarista
+          translator_tesim: Traductor
           works: Trabajos
         show:
           based_near_tesim: Ubicación
@@ -83,13 +105,14 @@ es:
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
+          extension_tesim: Páginas
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
-          publisher_tesim: Editor
+          publisher_tesim: Datos de publicación/producción
           rights_statement_tesim: Declaración de derechos
           subject_tesim: Tema
           title_tesim: Título
@@ -152,7 +175,7 @@ es:
         analitycs: Analíticas
         contained_in: Revista
         database: Base de datos
-        mode_of_issuance: Modo de emisión
+        mode_of_issuance: Modo de publicación
         work_type_Article: Artículo
         work_type_Thesis: Tesis
         last_modified: Última modificación
@@ -161,9 +184,10 @@ es:
         description: Resumen
         director: Director
         degree_program: Grado
+        edition: Edición
+        extension: Páginas
         subject: Tema
-        publisher: Editor
-        language: Lenguaje
+        language: Idioma
         identifier: Identificador
         keyword: Palabras clave
         date_created: Año
@@ -185,7 +209,7 @@ es:
         notes: Notas
         center: Centro
         classification: Clasificación de la biblioteca
-        supplementary_content_or_bibliography: Contenido suplementario o bibliografía
+        supplementary_content_or_bibliography: Bibliografía
         responsibility_statement: Declaración de responsabilidad
         other_related_persons: Otras personas relacionadas
         summary: Resumen
@@ -193,6 +217,14 @@ es:
         title: Título
         table_of_contents: Tabla de contenidos
         type_of_illustrations: Tipo de ilustraciones
+        system_requirements: Requerimientos de sistema
+        item_access_restrictions: Restricción de acceso del ítem
+        item_use_restrictions: Restricción de uso del ítem
+        editor: Editor
+        publisher: Editorial
+        compiler: Compilador
+        commentator: Reseñista/Comentarista
+        translator: Traductor
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
