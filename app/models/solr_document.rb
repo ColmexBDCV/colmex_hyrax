@@ -132,10 +132,6 @@ class SolrDocument
     self[Solrizer.solr_name('type_of_illustrations')]
   end
 
-  def summary
-    self[Solrizer.solr_name('summary')]
-  end
-
   def supplementary_content_or_bibliography
     self[Solrizer.solr_name('supplementary_content_or_bibliography')]
   end

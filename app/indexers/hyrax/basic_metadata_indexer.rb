@@ -8,7 +8,7 @@ module Hyrax
        subject_work subject subject_corporate notes classification 
        item_access_restrictions digital_resource_generation_information
        supplementary_content_or_bibliography responsibility_statement 
-       other_related_persons table_of_contents type_of_content summary 
+       other_related_persons table_of_contents type_of_content 
        item_use_restrictions encoding_format_details type_of_illustrations 
        center license rights_statement date_created bibliographic_citation
         source reviewer mode_of_issuance edition dimensions extension system_requirements
