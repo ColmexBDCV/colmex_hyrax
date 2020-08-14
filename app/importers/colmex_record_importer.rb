@@ -96,7 +96,17 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           gw.send("#{key}=",val)
         end
         gw.save
-         info_stream << "\nRecord #{record.identifier} is updated"
+
+        if record.representative_file
+          gw.file_set_ids.each do |fsid|
+            FileSet.find(fsid).destroy
+          end
+          record.representative_file.each do |f|
+            replace_file_set(f, gw)
+          end  
+        end  
+
+        info_stream << "\nRecord #{record.identifier} is updated"
       else
         info_stream << "\nRecord #{record.identifier} fail to update"
       end  
@@ -122,4 +132,15 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       end
     end
 
+    def replace_file_set(f, gw)
+      now = Time.now
+      file = Hyrax::UploadedFile.create(file: File.open(file_path + f), user: creator)
+      file_set = ::FileSet.new(depositor: creator.user_key, 
+                               date_uploaded: now, 
+                               date_modified: now, 
+                               creator: [creator.user_key])
+      file_actor = ::Hyrax::Actors::FileSetActor.new(file_set, creator)
+      file_actor.create_content(file) 
+      file_actor.attach_to_work(gw)
+    end
 end
