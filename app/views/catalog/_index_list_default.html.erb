@@ -5,16 +5,12 @@
     <% index_fields(document).each do |field_name, field| -%>
       <% if should_render_index_field? document, field %>
           <dt><%= render_index_field_label document, field: field_name %></dt>
-          <dd>
-            <% field_render = doc_presenter.field_value field_name %>
-            <% if field_render.to_s.include? ", and" %>
-              <%= field_render.to_s.gsub(", and", ", ").html_safe %>
-            <% elsif field_render.to_s.include? " and" %>
-              <%= field_render.to_s.gsub(" and", ", ").html_safe %>
-            <% else %>
-              <%= doc_presenter.field_value field %>
-            <%end%>
-          </dd>
+          <% field_render = doc_presenter.field_value field_name %>
+          <% field_render = field_render.to_s.gsub(", and", " | ")%>
+          <% field_render = field_render.to_s.gsub(" and ", " | ")%>
+          <% field_render = field_render.to_s.gsub('</span>, <span', '</span> | <span')%>
+
+          <dd><%= field_render.html_safe  %></dd>
       <% end %>
     <% end %>
     </dl>
