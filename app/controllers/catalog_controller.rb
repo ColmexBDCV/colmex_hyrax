@@ -78,6 +78,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("creator", :facetable), limit: 5
     config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
     config.add_facet_field solr_name("center", :facetable), limit: 5
+    config.add_facet_field solr_name("director", :facetable), limit: 5
+    config.add_facet_field solr_name("editor", :facetable), limit: 5
+    config.add_facet_field solr_name("compiler", :facetable), limit: 5
+    config.add_facet_field solr_name("commentator", :facetable), limit: 5
+    config.add_facet_field solr_name("reviewer", :facetable), limit: 5
+    config.add_facet_field solr_name("traslator", :facetable), limit: 5
+    
     config.add_facet_field solr_name("date_created", :facetable) do |field|
       field.label = 'year'
       field.range = true
@@ -96,7 +103,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("temporary_coverage", :facetable), limit: 5
     # config.add_facet_field solr_name("publisher", :facetable), limit: 5
     #config.add_facet_field solr_name("file_format", :facetable), limit: 5
-    config.add_facet_field solr_name("director", :facetable), limit: 5
+    
     # config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
