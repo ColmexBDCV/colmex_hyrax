@@ -1,48 +1,49 @@
 # Generated via
-#  `rails generate hyrax:work Article`
-class Article < ActiveFedora::Base
+#  `rails generate hyrax:work Book`
+class Book < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include Conacyt
 
-  self.indexer = ArticleIndexer
+
+  self.indexer = BookIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
 
-  property :period, predicate: ::Vocab::RDAM.alternativeNumericAndOrAlphabeticDesignationOfLastIssueOrPartOfSequence, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
-  property :part, predicate: ::Vocab::RDAM.alternativeNumericAndOrAlphabeticDesignationOfFirstIssueOrPartOfSequence, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end  
-
-  property :volume, predicate: ::Vocab::RDAM.numberingOfSerials, multiple: true do |index|
+  property :corporate_body, predicate: ::Vocab::RDAC.corporateBody, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end 
 
-  property :number, predicate: ::Vocab::RDAM.numberingWithinSubseries, multiple: true do |index|
+  property :collective_agent, predicate: ::Vocab::RDAC.collectiveAgent, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end 
 
-  property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true do |index|
+  property :organizer_author, predicate: ::Vocab::RDAA.organizerAgentOf, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end 
 
-  property :database, predicate: ::Vocab::RDAZ.sourceConsulted, multiple: true do |index|
+  property :place_of_publication, predicate: ::Vocab::RDAM.placeOfPublication, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
-  end
-  
-  property :issn, predicate: ::Vocab::RDAM.issnOfSeries, multiple: true do |index|
+  end 
+
+  property :copyright, predicate: ::Vocab::RDAM.copyrightDate, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
-  end
+  end 
+
+  property :title_of_series, predicate: ::Vocab::RDAM.titleOfSeries, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end 
+
+  property :numbering_within_sequence, predicate: ::Vocab::RDAM.numberingOfSequence, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end 
 
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)

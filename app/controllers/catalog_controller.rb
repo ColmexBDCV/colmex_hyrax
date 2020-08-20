@@ -84,6 +84,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("commentator", :facetable), limit: 5
     config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("traslator", :facetable), limit: 5
+    config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
     
     config.add_facet_field solr_name("date_created", :facetable) do |field|
       field.label = 'year'
@@ -162,7 +163,13 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("file_format", :stored_searchable), link_to_search: solr_name("file_format", :facetable)
     config.add_index_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
-
+    config.add_index_field solr_name("corporate_body", :stored_searchable)
+    config.add_index_field solr_name("collective_agent", :stored_searchable)
+    config.add_index_field solr_name("organizer_author", :stored_searchable)
+    config.add_index_field solr_name("copyright", :stored_searchable)
+    config.add_index_field solr_name("title_of_series", :stored_searchable)
+    config.add_index_field solr_name("numbering_within_sequence", :stored_searchable)
+    config.add_index_field solr_name("place_of_publication", :stored_searchable), itemprop: 'place_of_publication', link_to_search: solr_name("place_of_publication", :facetable)
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

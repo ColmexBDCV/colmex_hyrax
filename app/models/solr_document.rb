@@ -144,10 +144,6 @@ class SolrDocument
     self[Solrizer.solr_name('item_use_restrictions')]
   end
 
-  def edition
-    self[Solrizer.solr_name('edition')]
-  end
-
   def encoding_format_details
     self[Solrizer.solr_name('encoding_format_details')]
   end
@@ -292,4 +288,48 @@ class SolrDocument
     self[Solrizer.solr_name('reviewer')]
   end
   
+  def editor
+    self[Solrizer.solr_name('editor')]
+  end
+
+  def compiler
+    self[Solrizer.solr_name('compiler')]
+  end
+  
+  def commentator
+    self[Solrizer.solr_name('commentator')]
+  end 
+  
+  def edition
+    self[Solrizer.solr_name('edition')]
+  end
+
+  def corporate_body
+    self[Solrizer.solr_name('corporate_body')]
+  end
+
+  def collective_agent
+    self[Solrizer.solr_name('collective_agent')]
+  end
+
+  def organizer_author
+    self[Solrizer.solr_name('organizer_author')]
+  end
+
+  def place_of_publication
+    self[Solrizer.solr_name('place_of_publication')]
+  end
+
+  def copyright
+    self[Solrizer.solr_name('copyright')]
+  end
+
+  def title_of_series
+    self[Solrizer.solr_name('title_of_series')]
+  end
+
+  def numbering_within_sequence
+    self[Solrizer.solr_name('numbering_within_sequence')]
+  end
+    
 end

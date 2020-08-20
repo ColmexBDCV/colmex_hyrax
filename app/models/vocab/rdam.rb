@@ -33,5 +33,10 @@ module Vocab
     term :numberingOfSerials
     term :numberingWithinSubseries
     term :issnOfSeries
+    term :placeOfPublication
+    term :copyrightDate
+    term :titleOfSeries
+    term :numberingOfSequence
+
   end
 end

@@ -20,6 +20,13 @@ en:
           subject_family_sim: Subject Family
           subject_work_sim: Subject Work
           temporary_coverage_sim: Temporary Coverage
+          corporate_body_sim: Corporate body
+          collective_agent_sim: Collective agent
+          organizer_author_sim: Organizer author
+          place_of_publication_sim: Place of publication
+          copyright_sim: Copyright
+          title_of_series_sim: Title of series
+          numbering_within_sequence_sim: Sequence
           content:
             Thesis: Thesis
             Collection: Collection
@@ -57,7 +64,7 @@ en:
           subject_person_tesim: Subject Person
           subject_family_tesim: Subject Family
           subject_work_tesim: Subject Work
-          subject_corporate: Corporate name
+          subject_corporate_tesim: Corporate name
           contained_in_tesim: Journal
           center_tesim: Center
           database_tesim: Database source
@@ -74,6 +81,13 @@ en:
           temporary_coverage_tesim: Temporary coverage
           volume_tesim: Volume
           works: Works
+          corporate_body_tesim: Corporate body
+          collective_agent_tesim: Collective agent
+          organizer_author_tesim: Organizer author
+          place_of_publication_tesim: Place of publication
+          copyright_tesim: Copyright
+          title_of_series_tesim: Title of series
+          numbering_within_sequence_tesim: Sequence
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor

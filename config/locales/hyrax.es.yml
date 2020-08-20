@@ -46,6 +46,13 @@ es:
           compiler_sim: Compilador
           commentator_sim: Reseñista/Comentarista
           translator_sim: Traductor   
+          corporate_body_sim: Autor corporativo
+          collective_agent_sim: Autor congreso
+          organizer_author_sim: Coordinador / Organizador
+          place_of_publication_sim: Lugar de publicación
+          copyright_sim: Copyright
+          title_of_series_sim: Serie
+          numbering_within_sequence_sim: Volumen/número
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -97,6 +104,13 @@ es:
           commentator_tesim: Reseñista/Comentarista
           translator_tesim: Traductor
           works: Trabajos
+          corporate_body_tesim: Autor corporativo
+          collective_agent_tesim: Autor congreso
+          organizer_author_tesim: Coordinador / Organizador
+          place_of_publication_tesim: Lugar de publicación
+          copyright_tesim: Copyright
+          title_of_series_tesim: Serie
+          numbering_within_sequence_tesim: Volumen/número
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador

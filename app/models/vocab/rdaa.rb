@@ -12,5 +12,6 @@ module Vocab
     term :isCompilerAgentFor
     term :isCommentatorAgentOf
     term :isTranslatorAgentOf
+    term :organizerAgentOf
   end
 end

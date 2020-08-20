@@ -1,0 +1,19 @@
+es:
+  hyrax:
+    icons:
+      book:     'fa fa-file-text-o'
+    select_type:
+      book:
+        # TODO: translate `human_name` into Spanish
+        description:        "Libros trabajos"
+        name:               "Libros"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        corporate_body: Autor corporativo
+        collective_agent: Autor congreso
+        organizer_author: Coordinador / Organizador
+        place_of_publication: Lugar de publicación
+        copyright: Copyright
+        title_of_series: Serie
+        numbering_within_sequence: Volumen/número
