@@ -299,6 +299,10 @@ class SolrDocument
   def commentator
     self[Solrizer.solr_name('commentator')]
   end 
+
+  def translator
+    self[Solrizer.solr_name('translator')]
+  end 
   
   def edition
     self[Solrizer.solr_name('edition')]

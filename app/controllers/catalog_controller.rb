@@ -139,12 +139,10 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
     config.add_index_field solr_name("type_of_illustrations", :stored_searchable), link_to_search: solr_name("type_of_illustrations", :facetable)
     config.add_index_field solr_name("classification", :stored_searchable)
-
     config.add_index_field solr_name("pages", :stored_searchable)
     config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     # config.add_index_field solr_name("identifier", :stored_searchable), helper_method: :link_to_alma, field_name: 'identifier'
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
-    config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
     config.add_index_field solr_name("mode_of_issuance", :stored_searchable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
     config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
@@ -170,7 +168,11 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("title_of_series", :stored_searchable)
     config.add_index_field solr_name("numbering_within_sequence", :stored_searchable)
     config.add_index_field solr_name("place_of_publication", :stored_searchable), itemprop: 'place_of_publication', link_to_search: solr_name("place_of_publication", :facetable)
-
+    config.add_index_field solr_name("editor", :stored_searchable), link_to_search: solr_name("editor", :facetable)
+    config.add_index_field solr_name("compiler", :stored_searchable), link_to_search: solr_name("compiler", :facetable)
+    config.add_index_field solr_name("commentator", :stored_searchable), link_to_search: solr_name("commentator", :facetable)
+    config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
+    config.add_index_field solr_name("traslator", :stored_searchable), link_to_search: solr_name("traslator", :facetable)
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)
