@@ -67,12 +67,12 @@ var appReady = function() {
     if((entry[0].includes("_sim") || parameters.includes(entry[0])) && entry[1] != "") {
       
       $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a, .work-type dd li").each(function(){
-        
+        value = entry[1].split('"').join("")
         if ( $(this).children().length < 1 ) {
           
           if (parameters.includes(entry[0])){
-            console.log(entry[1])
-            for(const ent of entry[1].split(" ")) {
+            console.log(entry[0], entry[1], value)
+            for(const ent of value.split(" ")) {
               txt = $(this).html()
               word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
               if (word_position.length > 0)
@@ -84,10 +84,10 @@ var appReady = function() {
             }
           }else{
             txt = $(this).html()
-            word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),entry[1].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+            word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
             if (word_position.length > 0)
             {
-              var word = txt.substring(word_position[0], word_position[0]+ entry[1].length)
+              var word = txt.substring(word_position[0], word_position[0]+ value.length)
               
               $(this).html(txt.split(word).join("<mark>"+word+"</mark>"))
             }
