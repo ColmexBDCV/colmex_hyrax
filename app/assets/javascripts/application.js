@@ -71,7 +71,6 @@ var appReady = function() {
         if ( $(this).children().length < 1 ) {
           
           if (parameters.includes(entry[0])){
-            console.log(entry[0], entry[1], value)
             for(const ent of value.split(" ")) {
               txt = $(this).html()
               word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
