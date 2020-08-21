@@ -66,7 +66,7 @@ var appReady = function() {
   for(const entry of entries) {
     if((entry[0].includes("_sim") || parameters.includes(entry[0])) && entry[1] != "") {
       
-      $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a").each(function(){
+      $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a, .work-type dd li").each(function(){
         
         if ( $(this).children().length < 1 ) {
           
