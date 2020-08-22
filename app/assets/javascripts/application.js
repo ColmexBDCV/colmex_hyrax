@@ -43,6 +43,8 @@ var appReady = function() {
 
   const entries = urlParams.entries();
 
+  const entries_ = urlParams.entries();
+
   const parameters = [
     "all_fields",
     "title",
@@ -62,15 +64,41 @@ var appReady = function() {
     "degree_program",
     "q"    
   ]
+  range_dates = []
+  for(const e of entries_) {
+    if(e[0].includes("begin")){
+      range_dates.push(e[1])
+    }
+    if(e[0].includes("end")){
+      range_dates.push(e[1])
+    }
+  }
 
-  for(const entry of entries) {
+  highlight_years = false
+
+  if(range_dates.length > 1){
+    highlight_years = numberRange(parseInt(range_dates[0]), parseInt(range_dates[1]))
+    
+    $('span[itemprop="dateCreated"] a').html("<mark>"+$('span[itemprop="dateCreated"] a').html()+"</mark>")
+
+  }
+
+
+
+  for(const entry of entries) {    
     if((entry[0].includes("_sim") || parameters.includes(entry[0])) && entry[1] != "") {
-      
+      if(entry[0].includes("begin")){
+        continue
+      }
+      if(entry[0].includes("end")){
+        continue
+      }
       $("#search-results a, #search-results dd, .work-type .panel-heading h2, .work-type dd a, .work-type dd li").each(function(){
         value = entry[1].split('"').join("")
         if ( $(this).children().length < 1 ) {
           
           if (parameters.includes(entry[0])){
+            console.log("if")
             for(const ent of value.split(" ")) {
               txt = $(this).html()
               word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),ent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
@@ -82,6 +110,7 @@ var appReady = function() {
               }
             }
           }else{
+            console.log("else")
             txt = $(this).html()
             word_position = indexes(txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
             if (word_position.length > 0)
@@ -91,12 +120,16 @@ var appReady = function() {
               $(this).html(txt.split(word).join("<mark>"+word+"</mark>"))
             }
           }
-
         }
       });  
     }
   }
-    
+  
+  
+
+  function numberRange (start, end) {
+    return new Array((end + 1) - start).fill().map((d, i) => i + start);
+  }
     
   function indexes(source, find) {
     if (!source) {
