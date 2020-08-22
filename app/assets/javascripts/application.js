@@ -79,8 +79,9 @@ var appReady = function() {
   if(range_dates.length > 1){
     highlight_years = numberRange(parseInt(range_dates[0]), parseInt(range_dates[1]))
     
-    $('span[itemprop="dateCreated"] a').html("<mark>"+$('span[itemprop="dateCreated"] a').html()+"</mark>")
-
+    $('span[itemprop="dateCreated"] a').each(function(){
+      $(this).html("<mark>"+$(this).html()+"</mark>")
+    })
   }
 
 
