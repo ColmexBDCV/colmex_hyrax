@@ -10,6 +10,7 @@ es:
             Thesis: Tesis
             Collection: Colección
             Article: Artículo
+            Book: Libro
           creator_sim: Autor
           contained_in_sim: Revista
           contributor_sim: Colaborador
@@ -192,6 +193,7 @@ es:
         mode_of_issuance: Modo de publicación
         work_type_Article: Artículo
         work_type_Thesis: Tesis
+        work_type_Book: Libro
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador
