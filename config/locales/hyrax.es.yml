@@ -264,7 +264,7 @@ es:
         downloadable_content:
           download: Descargar recurso
     footer:
-      copyright_html: "Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by/4.0/deed.es'>Licencia Internacional de Creative Commons Attribution 4.0</a>"
+      copyright_html: "Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licencia Internacional de Creative Commons Attribution 4.0</a>"
       service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
     homepage:
       recently_uploaded:
