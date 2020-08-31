@@ -426,7 +426,7 @@ var HighLight = function() {
     txt = txt.split(" ")
     val = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 \-]/g, "").split(" ")
     for (index = 0; index < txt.length; index++) { 
-        if(isInArray(txt_mod[index], val) && !isInArray(txt_mod[index], stopwords) && txt_mod[index] != "" ) {
+        if(isInArray(txt_mod[index], val) /*&& !isInArray(txt_mod[index], stopwords)*/ && txt_mod[index] != "" ) {
            
           txt[index] = "<mark>"+txt[index]+"</mark>"
         }
