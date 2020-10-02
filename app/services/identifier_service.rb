@@ -2,7 +2,9 @@ module IdentifierService
   
   def self.work(work)
     work.singularize.classify.constantize.all.each do |gw| 
-      process(gw)
+      unless gw.creator.empty? then
+        process(gw)
+      end
     end
   end
 

@@ -41,6 +41,18 @@ en:
           type_of_illustrations_sim: Illustrations
           database_sim: Database source
           mode_of_issuance_sim: Mode of publication
+          interviewer_sim: Interviewer
+          interviewee_sim: Interviewee
+          organizer_collective_agent_sim: Organize collective agent
+          photographer_sim: photographer
+          collective_title_sim: Collective title
+          part_of_place_sim: part of place
+          provenance_sim: Provenance
+          curator_collective_agent_of_sim: Curator collec agent
+          project_sim: Project
+          owner_agent_of_sim: Owner agent
+          custodian_agent_of_sim: Custodian agent
+          file_type_details_sim: File type details
         index:
           based_near_tesim: Location
           classification_tesim: Classification
@@ -88,6 +100,18 @@ en:
           copyright_tesim: Copyright
           title_of_series_tesim: Title of series
           numbering_within_sequence_tesim: Sequence
+          interviewer_tesim: Interviewer
+          interviewee_tesim: Interviewee
+          organizer_collective_agent_tesim: Organize collective agent
+          photographer_tesim: photographer
+          collective_title_tesim: Collective title
+          part_of_place_tesim: part of place
+          provenance_tesim: Provenance
+          curator_collective_agent_of_tesim: Curator collec agent
+          project_tesim: Project
+          owner_agent_of_tesim: Owner agent
+          custodian_agent_of_tesim: Custodian agent
+          file_type_details_tesim: File type details
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -204,7 +228,19 @@ en:
         access_restrictions: Access restritions
         use_restrictions: Use restritions
         academic_degree: Academix degree
-        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
+        date_of_presentation_of_the_thesis: Date of presentation of the Thesis
+        interviewer: Interviewer
+        interviewee: Interviewee
+        organizer_collective_agent: Organize collective agent
+        photographer: photographer
+        collective_title: Collective title
+        part_of_place: part of place
+        provenance: Provenance
+        curator_collective_agent_of: Curator collec agent
+        project: Project
+        owner_agent_of: Owner agent
+        custodian_agent_of: Custodian agent
+        file_type_details: File type details
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"

@@ -27,16 +27,20 @@
 <%= presenter.attribute_to_html(:translator, label: t('hyrax.base.show.translator'), html_dl: true) %>
 
 <% [ :doi, :isbn, :alternate_title, :other_title, :issn, :system_requirements,
-    :embargo_release_date, :lease_expiration_date, :dimensions,
+    :embargo_release_date, :lease_expiration_date, :dimensions, :extension,
     :gender_or_form, :notes, :supplementary_content_or_bibliography,
     :responsibility_statement, :table_of_contents, :mode_of_issuance,
-    :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information
+    :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place, 
+    :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details
     ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  
-<%= presenter.attribute_to_html(:publisher, label: t('hyrax.base.show.publisher'), render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:language, label: t('hyrax.base.show.language'), render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:keyword, label: t('hyrax.base.show.keyword'), render_as: :faceted, html_dl: true) %>
+
+<% [ :interviewer, :interviewee, :organizer_collective_agent, :photographer, :publisher, :language, :keyword ].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %>  
+
+
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), html_dl: true) %>
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
 <%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>

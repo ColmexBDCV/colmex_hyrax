@@ -37,6 +37,10 @@ module Vocab
     term :copyrightDate
     term :titleOfSeries
     term :numberingOfSequence
+    term :videoFormat
+    term :videoCharacteristic
+    term :noteOnStatementOfResposibility
 
+    
   end
 end

@@ -67,6 +67,21 @@ module Hyrax
       property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
       property :encoding_format_details, predicate: ::Vocab::RDAM.detailsOfEncodingFormat, multiple: true
       property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
+
+      property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
+      property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true
+      property :organizer_collective_agent, predicate: ::Vocab::RDAA.organizerCollectiveAgent, multiple: true
+      property :photographer, predicate: ::Vocab::RDAA.photographerAgnteOf, multiple: true
+      property :collective_title, predicate: ::RDF::Vocab::BF2.CollectiveTitle, multiple: true
+      property :part_of_place, predicate: ::Vocab::RDAC.partOfPlace, multiple: true
+      property :provenance, predicate: ::RDF::Vocab::DC.provenance, multiple: true
+      property :curator_collective_agent_of, predicate: ::Vocab::RDAA.curatorCollectiveAgentOf, multiple: true
+      property :project, predicate: ::RDF::Vocab::FOAF.Project, multiple: true
+      property :owner_agent_of, predicate: ::Vocab::RDAA.ownerAgentOf, multiple: true
+      property :custodian_agent_of, predicate: ::Vocab::RDAA.custodianAgentOf, multiple: true
+      property :file_type_details, predicate: ::Vocab::RDAM.detailsOfFileType, multiple: true
+
+
       
       id_blank = proc { |attributes| attributes[:id].blank? }
 

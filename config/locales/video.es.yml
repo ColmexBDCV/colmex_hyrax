@@ -1,0 +1,26 @@
+es:
+  blacklight:
+    search:
+      fields:
+        facet:
+          video_format_sim: Formato del video
+          video_characteristic_sim: Características del archivo digital
+          note_on_statement_of_resposibility_sim: Participantes
+        index:
+          video_format_tesim: Formato del video
+          video_characteristic_tesim: Características del archivo digital
+          note_on_statement_of_resposibility_tesim: Participantes
+  hyrax:
+    icons:
+      video:     'fa fa-file-text-o'
+    select_type:
+      video:
+        # TODO: translate `human_name` into Spanish
+        description:        "Videos trabajos"
+        name:               "Videos"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        video_format: Formato del video
+        video_characteristic: Características del archivo digital
+        note_on_statement_of_resposibility: Participantes

@@ -84,7 +84,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("commentator", :facetable), limit: 5
     config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("traslator", :facetable), limit: 5
+    config.add_facet_field solr_name("interviewer", :facetable), limit: 5
+    config.add_facet_field solr_name("interviewee", :facetable), limit: 5
+    config.add_facet_field solr_name("organizer_collective_agent", :facetable), limit: 5
+    config.add_facet_field solr_name("photographer", :facetable), limit: 5
     config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
+    config.add_facet_field solr_name("part_of_place", :facetable), limit: 5
+
     
     config.add_facet_field solr_name("date_created", :facetable) do |field|
       field.label = 'year'
@@ -167,12 +173,29 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("copyright", :stored_searchable)
     config.add_index_field solr_name("title_of_series", :stored_searchable)
     config.add_index_field solr_name("numbering_within_sequence", :stored_searchable)
-    config.add_index_field solr_name("place_of_publication", :stored_searchable), itemprop: 'place_of_publication', link_to_search: solr_name("place_of_publication", :facetable)
+    config.add_index_field solr_name("video_format", :stored_searchable)
+    config.add_index_field solr_name("video_characteristic", :stored_searchable)
+    config.add_index_field solr_name("note_on_statement_of_resposibility", :stored_searchable)
     config.add_index_field solr_name("editor", :stored_searchable), link_to_search: solr_name("editor", :facetable)
     config.add_index_field solr_name("compiler", :stored_searchable), link_to_search: solr_name("compiler", :facetable)
     config.add_index_field solr_name("commentator", :stored_searchable), link_to_search: solr_name("commentator", :facetable)
     config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
     config.add_index_field solr_name("traslator", :stored_searchable), link_to_search: solr_name("traslator", :facetable)
+    config.add_index_field solr_name("interviewer", :stored_searchable)
+    config.add_index_field solr_name("interviewee", :stored_searchable)
+    config.add_index_field solr_name("organizer_collective_agent", :stored_searchable)
+    config.add_index_field solr_name("photographer", :stored_searchable)
+    config.add_index_field solr_name("place_of_publication", :stored_searchable)
+    config.add_index_field solr_name("collective_title", :stored_searchable)
+    config.add_index_field solr_name("part_of_place", :stored_searchable)
+    config.add_index_field solr_name("provenance", :stored_searchable)
+    config.add_index_field solr_name("curator_collective_agent_of", :stored_searchable)
+    config.add_index_field solr_name("project", :stored_searchable)
+    config.add_index_field solr_name("owner_agent_of", :stored_searchable)
+    config.add_index_field solr_name("custodian_agent_of", :stored_searchable)
+    config.add_index_field solr_name("file_type_details", :stored_searchable)
+
+
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)
@@ -192,7 +215,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
-    config.add_show_field solr_name("author", :stored_searchable)
+    config.add_show_field solr_name("interviewer", :stored_searchable)
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

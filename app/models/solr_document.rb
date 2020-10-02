@@ -335,5 +335,54 @@ class SolrDocument
   def numbering_within_sequence
     self[Solrizer.solr_name('numbering_within_sequence')]
   end
-    
+
+  def video_format
+    self[Solrizer.solr_name('video_format')]
+  end
+
+  def video_characteristic
+    self[Solrizer.solr_name('video_characteristic')]
+  end
+
+  def note_on_statement_of_resposibility
+    self[Solrizer.solr_name('note_on_statement_of_resposibility')]
+  end
+  
+  def interviewer
+    self[Solrizer.solr_name('interviewer')]
+end
+def interviewee
+    self[Solrizer.solr_name('interviewee')]
+end
+def organizer_collective_agent
+    self[Solrizer.solr_name('organizer_collective_agent')]
+end
+def photographer
+    self[Solrizer.solr_name('photographer')]
+end 
+def collective_title
+    self[Solrizer.solr_name('collective_title')]
+end
+def part_of_place
+    self[Solrizer.solr_name('part_of_place')]
+end
+def provenance
+    self[Solrizer.solr_name('provenance')]
+end
+def curator_collective_agent_of
+    self[Solrizer.solr_name('curator_collective_agent_of')]
+end
+def project
+    self[Solrizer.solr_name('project')]
+end 
+def owner_agent_of
+    self[Solrizer.solr_name('owner_agent_of')]
+end
+def custodian_agent_of
+    self[Solrizer.solr_name('custodian_agent_of')]
+end
+def file_type_details
+    self[Solrizer.solr_name('file_type_details')]
+end
+
 end

@@ -29,6 +29,8 @@ module Hyrax
                     :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,
                     :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
                     :type_of_content, :editor, :compiler, :commentator, :translator, :digital_resource_generation_information,
+                    :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
+                    :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
                     :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo,

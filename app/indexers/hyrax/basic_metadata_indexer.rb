@@ -7,6 +7,9 @@ module Hyrax
        temporary_coverage gender_or_form subject_person subject_family 
        subject_work subject subject_corporate notes classification 
        item_access_restrictions digital_resource_generation_information
+       interviewer interviewee organizer_collective_agent photographer 
+       collective_title part_of_place provenance curator_collective_agent_of
+       project owner_agent_of custodian_agent_of file_type_details
        supplementary_content_or_bibliography responsibility_statement 
        other_related_persons table_of_contents type_of_content 
        item_use_restrictions encoding_format_details type_of_illustrations 

@@ -54,6 +54,18 @@ es:
           copyright_sim: Copyright
           title_of_series_sim: Serie
           numbering_within_sequence_sim: Volumen/número
+          interviewer_sim: Entrevistado
+          interviewee_sim: Entrevistador
+          organizer_collective_agent_sim: Seminario
+          photographer_sim: Fotográfo
+          collective_title_sim: Título colectivo
+          part_of_place_sim: Ciudad/Municipio/Localidad
+          provenance_sim: Procedencia
+          curator_collective_agent_of_sim: Entidad que aporta el recurso
+          project_sim: Proyecto
+          owner_agent_of_sim: Propietario
+          custodian_agent_of_sim: Custodio
+          file_type_details_sim: Detalles del Archivo
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -112,6 +124,18 @@ es:
           copyright_tesim: Copyright
           title_of_series_tesim: Serie
           numbering_within_sequence_tesim: Volumen/número
+          interviewer_tesim: Entrevistado
+          interviewee_tesim: Entrevistador
+          organizer_collective_agent_tesim: Seminario
+          photographer_tesim: Fotográfo
+          collective_title_tesim: Título colectivo
+          part_of_place_tesim: Ciudad/Municipio/Localidad
+          provenance_tesim: Procedencia
+          curator_collective_agent_of_tesim: Entidad que aporta el recurso
+          project_tesim: Proyecto
+          owner_agent_of_tesim: Propietario
+          custodian_agent_of_tesim: Custodio
+          file_type_details_tesim: Detalles del Archivo
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -133,6 +157,18 @@ es:
           title_tesim: Título
           badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
           temporary_coverage_tesim: Cobertura temporal
+          interviewer: Entrevistado
+          interviewee: Entrevistador
+          organizer_collective_agent: Seminario
+          photographer: Fotográfo
+          collective_title: Título colectivo
+          part_of_place: Ciudad/Municipio/Localidad
+          provenance: Procedencia
+          curator_collective_agent_of: Entidad que aporta el recurso
+          project: Proyecto
+          owner_agent_of: Propietario
+          custodian_agent_of: Custodio
+          file_type_details: Detalles del Archivo
       sort:
         label: Ordenar por %{field}
         relevance: Relevancia
@@ -241,6 +277,18 @@ es:
         compiler: Compilador
         commentator: Reseñista/Comentarista
         translator: Traductor
+        interviewer: Entrevistado
+        interviewee: Entrevistador
+        organizer_collective_agent: Seminario
+        photographer: Fotográfo
+        collective_title: Título colectivo
+        part_of_place: Ciudad/Municipio/Localidad
+        provenance: Procedencia
+        curator_collective_agent_of: Entidad que aporta el recurso
+        project: Proyecto
+        owner_agent_of: Propietario
+        custodian_agent_of: Custodio
+        file_type_details: Detalles del Archivo
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección

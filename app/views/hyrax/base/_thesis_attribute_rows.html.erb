@@ -2,12 +2,7 @@
 <%= presenter.attribute_to_html(:reviewer, label: t('hyrax.base.show.reviewer'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:degree_program, label: t('hyrax.base.show.degree_program'), render_as: :faceted, html_dl: true) %>
 
-<% [:awards, :item_access_restrictions, :item_use_restrictions, 
-    :edition, :encoding_format_details, :file_type_details, 
-    :digital_resource_generation_information, :file_details, :dimensions, 
-    :system_requirements, :exemplar_of_manifestation, :extension, 
-    :type_of_file, #:mode_of_publication, :other_formats, 
-    :access_restrictions, :use_restrictions, :academic_degree, 
+<% [:awards, :academic_degree,   
     :type_of_thesis, :institution,
     :date_of_presentation_of_the_thesis].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>

@@ -13,5 +13,12 @@ module Vocab
     term :isCommentatorAgentOf
     term :isTranslatorAgentOf
     term :organizerAgentOf
+    term :curatorCollectiveAgentOf
+    term :ownerAgentOf
+    term :custodianAgentOf
+    term :interviewerAgentOf
+    term :intervieweeAgentOf
+    term :organizerCollectiveAgent
+    term :photographerAgnteOf
   end
 end
