@@ -3,13 +3,13 @@ es:
     search:
       fields:
         facet:
+          note_on_statement_of_resposibility_sim: Participantes
           video_format_sim: Formato del video
           video_characteristic_sim: Características del archivo digital
-          note_on_statement_of_resposibility_sim: Participantes
         index:
+          note_on_statement_of_resposibility_tesim: Participantes
           video_format_tesim: Formato del video
           video_characteristic_tesim: Características del archivo digital
-          note_on_statement_of_resposibility_tesim: Participantes
   hyrax:
     icons:
       video:     'fa fa-file-text-o'
@@ -21,6 +21,6 @@ es:
         # TODO: translate `human_name` into Spanish
     base:
       show:
+        note_on_statement_of_resposibility: Participantes
         video_format: Formato del video
         video_characteristic: Características del archivo digital
-        note_on_statement_of_resposibility: Participantes

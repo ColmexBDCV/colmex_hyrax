@@ -1,4 +1,24 @@
 en:
+  blacklight:
+    search:
+      fields:
+          facet:
+            collective_agent_sim: Collective agent
+            copyright_sim: Copyright
+            corporate_body_sim: Corporate body
+            numbering_within_sequence_sim: Sequence
+            organizer_author_sim: Organizer author
+            place_of_publication_sim: Place of publication
+            title_of_series_sim: Title of series
+          index:
+            collective_agent_tesim: Collective agent
+            copyright_tesim: Copyright
+            corporate_body_tesim: Corporate body
+            numbering_within_sequence_tesim: Sequence
+            organizer_author_tesim: Organizer author
+            place_of_publication_tesim: Place of publication
+            title_of_series_tesim: Title of series
+
   hyrax:
     icons:
       book:     'fa fa-file-text-o'
@@ -6,3 +26,12 @@ en:
       book:
         description:        "Book works"
         name:               "Book"
+    base:
+      show:
+        collective_agent: Collective agent
+        copyright: Copyright
+        corporate_body: Corporate body
+        numbering_within_sequence: Sequence
+        organizer_author: Organizer author
+        place_of_publication: Place of publication
+        title_of_series: Title of series

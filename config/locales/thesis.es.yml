@@ -1,4 +1,25 @@
 es:
+  blacklight:
+    search:
+      fields:
+        facet:
+          degree_program_sim: Grado
+          director_sim: Director de Tesis
+          edition_sim: Edición
+          extension_sim: Páginas
+          file_type_details_sim: Detalles del Archivo
+          item_access_restrictions_sim: Restricción de acceso del ítem
+          item_use_restrictions_sim: Restricción de uso del ítem
+          system_requirements_sim: Requerimientos de sistema
+        index:
+          degree_program_tesim: Grado
+          director_tesim: Director de Tesis
+          edition_tesim: Edición
+          extension_tesim: Páginas
+          file_type_details_tesim: Detalles del Archivo
+          item_access_restrictions_tesim: Restricción de acceso del ítem
+          item_use_restrictions_tesim: Restricción de uso del ítem
+          system_requirements_tesim: Requerimientos de sistema
   hyrax:
     icons:
       thesis: "fa fa-file-text-o"
@@ -10,25 +31,28 @@ es:
         # TODO: translate `human_name` into Spanish
     base:
       show:
-        director: Director
+        access_restrictions: Restricciones de acceso
+        academic_degree: Grado Académico
         awards: Premios/Reconocimientos
-        item_access_restrictions: Restricción de acceso del ítem
-        item_use_restrictions: Restricción de uso del ítem
+        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
+        degree_program: Grado
+        digital_resource_generation_information: Información de generación de recursos digitales
+        dimensions: Dimensiones
+        director: Director
         edition: Edición
         encoding_format_details: Detalles de codificación del formato
-        file_type_details: Detalles del tipo de archivo
-        digital_resource_generation_information: Información de generación de recursos digitales
-        file_details: Detalles del archivo
-        dimensions: Dimensiones
-        system_requirements: Requerimientos de sistema
         exemplar_of_manifestation: Ejemplar de manifestación
-        extension: Extensión
+        extension: Páginas
+        file_details: Detalles del archivo
+        file_type_details: Detalles del tipo de archivo
+        institution: Institución
+        item_access_restrictions: Restricción de acceso del ítem
+        item_use_restrictions: Restricción de uso del ítem
+        system_requirements: Requerimientos de sistema
         type_of_file: Tipo de archivo
         other_formats: Otros formatos
-        access_restrictions: Restricciones de acceso
         use_restrictions: Restricciones de uso
-        academic_degree: Grado Académico
+        
+        #No se encontraron en Hyrax.es.yml pero pertenecen al modelo
         type_of_thesis: Tipo de tesis
-        degree_program: Grado
-        institution: Institución
-        date_of_presentation_of_the_thesis: Fecha de presentación de la tesis
+

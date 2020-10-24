@@ -1,0 +1,41 @@
+<% if messages.present? %>
+  <div class="table-responsive">
+    <table class="table table-striped datatable">
+      <thead>
+        <tr>
+          <th><%= t('hyrax.mailbox.date') %></th>
+          <th><%= t('hyrax.mailbox.subject') %></th>
+          <th><%= t('hyrax.mailbox.message') %></th>
+          <th><span class="sr-only"><%= t('hyrax.mailbox.delete') %></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% messages.each do |msg| %>
+          <tr>
+            <td data-sort="<%= msg.last_message.created_at.getutc.iso8601(5) %>">
+              <relative-time datetime="<%= msg.last_message.created_at.getutc.iso8601 %>" title="<%= msg.last_message.created_at.to_formatted_s(:standard) %>">
+                <%= msg.last_message.created_at.to_formatted_s(:long_ordinal) %>
+              </relative-time>
+            </td>
+            <% message_subject= t('hyrax.notifications.' + msg.last_message.subject.split(" ").join("_"))%>
+            <td><%= sanitize message_subject %></td>
+            <% array2=sanitize msg.last_message.body %>
+            <%array = array2.split(" ")%>
+            <td><%= t('hyrax.notifications.'+array.slice(0,4).join("_")) + ' '+ array[4] + ' ' + t('hyrax.notifications.'+array[5])%></td>
+            <td>
+              <%= link_to hyrax.notification_path(msg.id),
+                      class: "itemicon itemtrash",
+                      title: t('hyrax.mailbox.delete'),
+                      method: :delete do %>
+                  <span class="sr-only"><%= I18n.t('hyrax.dashboard.delete_notification') %></span>
+                <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p><%= t('hyrax.mailbox.empty') %></p>
+<% end %>

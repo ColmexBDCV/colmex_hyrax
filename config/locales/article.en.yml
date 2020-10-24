@@ -1,4 +1,17 @@
 en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          contained_in_sim: Journal
+          database_sim: Database Source
+        index:
+          volume_tesim: Volume
+          contained_in_tesim: Journal
+          database_tesim: Database Source
+          issn_tesim: ISSN
+          number_tesim: Number
+          pages_tesim: Pages
   hyrax:
     icons:
       article:     'fa fa-file-text-o'
@@ -6,3 +19,12 @@ en:
       article:
         description:        "Article works"
         name:               "Article"
+    base:
+      show:
+        contained_in: Journal
+        database: Database Source
+        number: Number
+        part: Part
+        pages: Pages
+        period: Period
+        volume: Volume
