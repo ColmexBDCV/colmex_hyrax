@@ -7,8 +7,6 @@ en:
           center_sim: Center
           creator_sim: Creator
           date_created_sim: Year
-          degree_program_sim: Degree program
-          director_sim: Thesis Advisor
           file_format_sim: Format
           generic_type_sim: Type
           geographic_coverage_sim: Geographic Coverage
@@ -20,18 +18,10 @@ en:
           subject_family_sim: Subject Family
           subject_work_sim: Subject Work
           temporary_coverage_sim: Temporary Coverage
-          corporate_body_sim: Corporate body
-          collective_agent_sim: Collective agent
-          organizer_author_sim: Organizer author
-          place_of_publication_sim: Place of publication
-          copyright_sim: Copyright
-          title_of_series_sim: Title of series
-          numbering_within_sequence_sim: Sequence
           content:
             Thesis: Thesis
             Collection: Collection
             Article: Article
-          contained_in_sim: Journal
           contributor_sim: Contributor
           human_readable_type_sim: Object type
           resource_type_sim: Resource type
@@ -39,7 +29,6 @@ en:
           subject_corporate_sim: Corporate name
           temporary_coverage_sim: Temporary coverage
           type_of_illustrations_sim: Illustrations
-          database_sim: Database source
           mode_of_issuance_sim: Mode of publication
           interviewer_sim: Interviewer
           interviewee_sim: Interviewee
@@ -58,8 +47,6 @@ en:
           classification_tesim: Classification
           contributor_tesim: Contributor
           collections: Collections
-          director_tesim: Thesis advisor
-          degree_program_tesim: Degree program
           creator_tesim: Creator
           date_created_tesim: Year
           date_modified_dtsi: Date Modified
@@ -77,29 +64,16 @@ en:
           subject_family_tesim: Subject Family
           subject_work_tesim: Subject Work
           subject_corporate_tesim: Corporate name
-          contained_in_tesim: Journal
           center_tesim: Center
-          database_tesim: Database source
           depositor_tesim: Depositor
           geographic_coverage_tesim: Geographic coverage
-          issn_tesim: ISSN
           mode_of_issuance_tesim: Mode of publication
-          number_tesim: Number
-          pages_tesim: Pages
           related_url_tesim: URL
           resource_type_tesim: Resource type
           reviewer_tesim: Reviewer
           type_of_illustrations_tesim: Illustrations
           temporary_coverage_tesim: Temporary coverage
-          volume_tesim: Volume
           works: Works
-          corporate_body_tesim: Corporate body
-          collective_agent_tesim: Collective agent
-          organizer_author_tesim: Organizer author
-          place_of_publication_tesim: Place of publication
-          copyright_tesim: Copyright
-          title_of_series_tesim: Title of series
-          numbering_within_sequence_tesim: Sequence
           interviewer_tesim: Interviewer
           interviewee_tesim: Interviewee
           organizer_collective_agent_tesim: Organize collective agent
@@ -153,6 +127,9 @@ en:
 
   hyrax:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
+    #Metadatos del archivo JS manage_repeating_fields en assets/javascript/
+    add_another: Add another
+    remove: Remove
     base:
       citations:
         header: "Export citation"
@@ -164,20 +141,58 @@ en:
         Collection: Collection
       social_media:
         link: copied to clipboard
+      #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
+      who_should: Who should be able to view or download this content?
+      #metadatos de la vista file_manager y sus partials derivados
+      back_to:  Back to
+      toolbar: Toolbar
+      save: Save
+      sort_alphabetically: Sort alphabetically
+      thumbnail: Thumbnail
+      representative_media: Representative Media
+      add_this: Add this
+      add_this_group: Add this group
+      #metadatos de la vista _form_visibility_component.html.er
+      visibility: Visibility
+      #metadatos para la vista _form_member_of_collections.html.erb
+      add: Add
+      #metadato de la vista de form_child_work
+      find_child_work: Find Child Work
+      #Metadato para la vista _form_files
+      add_files: Add Files ...
+      add_folder: Add Folder ...
+      cancel_upload: Cancel Upload
+      #metadatos para la vista _form_share
+      save_note_html: Permissions are <strong>not</strong> saved until the &quot;Save&quot; button is pressed at the bottom of the page.
+      give_note_html: Use the add button to give access to one user at a time (it will be added to the list below). Select the user, by name or user. Then select the access level you wish to grant and click on Add this user to complete adding the permission.
+      access_type:  Access type to grant
+      this_group: this group
+      this: this
+      select_a_group: Select a group
+      search_for_a_user: Search for a user
       show:
+        #metadatos de la vista _show_actions.html.erb
+        edit: Edit
+        delete: Delete
+        attach_child: Attach Child
+        attach_child_Thesis: Attach Thesis
+        attach_child_Article: Attach Article
+        attach_child_Book: Attach Book
+        attach_child_Video: Attach Video
+        delete_this_Thesis: Delete this Thesis
+        delete_this_Article: Delete this Article
+        delete_this_Book: Delete this Book
+        delete_this_Video: Delete this Video
+        ###
         description: Abstract or Summary 
         all_fields: All fields
         alternate_title: Alternate title
-        analitycs: Analitycs
-        contained_in: Journal
-        database: Database Source
+        analitycs: Analytics
         work_type_Article: Article
         work_type_Thesis: Thesis
         last_modified: Last modified
         creator: Creator
         contributor: Contributor
-        director: Thesis advisor
-        degree_program: Degree program
         subject: Subject
         publisher: Publisher
         language: Language
@@ -209,26 +224,8 @@ en:
         title: Title
         table_of_contents: Table of contents
         type_of_illustrations: Illustrations
-        extension: Extension
-        institution: Institution
-        awards: Awards
-        item_access_restrictions: Item access restrictions
-        item_use_restrictions: Item use restrictions
-        edition: Edition
-        encoding_format_details: Encoding format details
-        file_type_details: File type details
-        digital_resource_generation_information: Digital resource generation information
-        file_details: File details
-        dimensions: Dimensions
         system_requirements: System requirements
-        exemplar_of_manifestation: exemplar of manifestation
-        type_of_file: Type of file
         mode_of_issuance: Mode of publication
-        other_formats: Other formats
-        access_restrictions: Access restritions
-        use_restrictions: Use restritions
-        academic_degree: Academix degree
-        date_of_presentation_of_the_thesis: Date of presentation of the Thesis
         interviewer: Interviewer
         interviewee: Interviewee
         organizer_collective_agent: Organize collective agent
@@ -240,14 +237,88 @@ en:
         project: Project
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
-        file_type_details: File type details
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"
     institution_name_full: "The Institution Name"
     account_name: "My Institution Account Id"
+    #metadatos del controlador fixity_status_persenter app/presenters/hyrax/
+    fixity_status:  Fixity checks have not yet been run on this object
+    #metadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
+    View/Download: View/Download
+    Edit: Edit
+    Edit_Access: Edit Access
+    Choose_Access: Choose Access
+    ####
+    days_ago: days ago
+    dashboard:
+      profiles:
+        change_picture: Change picture
+        less_than: less than
+        delete_picture: Delete picture
+        if_you_would_like: If you would like to remove your picture entirely, check the box and save your profile.
+        first_name: First Name
+        paternal_surname: Paternal Surname
+        maternal_surname: Maternal Surname
+        phone: Phone
+        save_profile: Save Profile
     directory:
       suffix: "@example.org"
+    file_set:
+      # metadatos de la vista de show_actions en filesets
+      edit_this: Edit this
+      delete_this: Delete this
+      #
+      file_details: File Details
+      depositor: Depositor
+      date_uploaded: Date Uploaded
+      date_modified: Date Modified
+      fixity_check: Fixity Check
+      characterization: Characterization
+      not_yet_characterized: Not yet characterized
+    homepage:
+      centre_economic_studies: Centre Economic Studies
+      centre_linguistic_and_literary_studies: Centre Linguistic and Literary Studies
+      center_for_asian_and_african_studies: Center for Asian and African Studies
+      centre_for_demographic__urban_and_environmental_studies: Centre for Demographic, Urban and Environmental Studies
+      centre_historical_studies: Centre Historical Studies
+      centre_international_studies: Centre International Studies
+      centre_sociological_studies: Centre Sociological Studies
+    my:
+      show: Show
+      per_page: per page
+    notifications:
+      delete_all: Borrar todo
+      delete_all_user_notifications: Borrar todas las notificaciones del Usuario
+    permissions:
+      apply_changes_to_contents: Apply changes to contents?
+    stats:
+      file_analytics: File Analytics
+      views_and:  views and
+      downloads_since: downloads since
+      January: January
+      February: February
+      March: March
+      April: April
+      May: May
+      June: June
+      July: July
+      August: August
+      September: September
+      October: October
+      November: November
+      December: December
+    users:
+      user_activity: User Activity
+      website: Website(s)
+      title: Title
+      administrative_area: Administrative Area
+      department: Department
+      office: Office
+      address: Address
+      affiliation: Affiliation
+      telephone: Telephone
+      joined_on: Joined on
     footer:
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
       copyright_html: "Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licensed under the Creative Commons Attribution 4.0</a>"

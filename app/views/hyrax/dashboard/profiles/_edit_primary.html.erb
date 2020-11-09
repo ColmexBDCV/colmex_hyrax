@@ -2,46 +2,47 @@
              url: hyrax.dashboard_profile_path(@user.to_param),
              html: { multipart: true, class: 'form-horizontal' } do |f| %>
   <div class="form-group">
-    <%= f.label :avatar, '<i class="glyphicon glyphicon-camera"></i> Change picture'.html_safe, class: "col-xs-4 control-label" %>
+    <%= f.label :avatar, '<i class="glyphicon glyphicon-camera"></i> '.html_safe + t('hyrax.dashboard.profiles.change_picture').html_safe, class: "col-xs-4 control-label" %>
     <div class="col-xs-8">
       <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
-      <span class="help-block">JPG, GIF, or PNG (less than 2MB)</span>
+      <span class="help-block">JPG, GIF, or PNG (<%= t('hyrax.dashboard.profiles.less_than')%> 2MB)</span>
 
       <div class="checkbox">
         <%= f.label :remove_avatar do %>
           <%= f.check_box :remove_avatar %>
-          Delete picture
-          <a href="#" id="delete_picture_help" data-toggle="popover" data-content="If you would like to remove your picture entirely, check the box and save your profile." data-original-title="Delete Picture"><i class="glyphicon glyphicon-question-sign"></i></a>
+          <%= t('hyrax.dashboard.profiles.delete_picture')%>
+          <% suggestion= t('hyrax.dashboard.profiles.if_you_would_like').html_safe%>
+          <a href="#" id="delete_picture_help" data-toggle="popover" data-content="<%= suggestion%>" data-original-title="<%= t('hyrax.dashboard.profiles.delete_picture').html_safe%>"><i class="glyphicon glyphicon-question-sign"></i></a>
         <% end %>
       </div>
     </div>
   </div><!-- .form-group -->
 
    <div class="form-group">
-    <%= f.label :firstname, '<i class="fa fa-user"></i> First Name'.html_safe, class: 'col-xs-4 control-label' %>
+    <%= f.label :firstname, '<i class="fa fa-user"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.first_name').html_safe, class: 'col-xs-4 control-label' %>
     <div class="col-xs-8">
        <%= f.text_field :firstname, class: "form-control" %>
     </div>
   </div><!-- .form-group -->
 
   <div class="form-group">
-    <%= f.label :paternal_surname, '<i class="fa fa-user"></i> Paternal Surname'.html_safe, class: 'col-xs-4 control-label' %>
+    <%= f.label :paternal_surname, '<i class="fa fa-user"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.paternal_surname').html_safe, class: 'col-xs-4 control-label' %>
     <div class="col-xs-8">
        <%= f.text_field :paternal_surname, class: "form-control" %>
     </div>
   </div><!-- .form-group -->
 
   <div class="form-group">
-    <%= f.label :maternal_surname, '<i class="fa fa-user"></i> Maternal Surname'.html_safe, class: 'col-xs-4 control-label' %>
+    <%= f.label :maternal_surname, '<i class="fa fa-user"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.maternal_surname').html_safe, class: 'col-xs-4 control-label' %>
     <div class="col-xs-8">
        <%= f.text_field :maternal_surname, class: "form-control" %>
     </div>
   </div><!-- .form-group -->
 
   <div class="form-group">
-    <%= f.label :phone, '<i class="fa fa-phone"></i> Phone'.html_safe, class: 'col-xs-4 control-label' %>
+    <%= f.label :phone, '<i class="fa fa-phone"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.phone').html_safe, class: 'col-xs-4 control-label' %>
     <div class="col-xs-8">
        <%= f.text_field :phone, class: "form-control" %>
     </div>
@@ -83,7 +84,7 @@
 
   <%= render 'trophy_edit', trophies: @trophies %>
 
-  <%= f.button '<i class="glyphicon glyphicon-save"></i> Save Profile'.html_safe, type: 'submit', class: "btn btn-primary" %>
+  <%= f.button '<i class="glyphicon glyphicon-save"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.save_profile').html_safe, type: 'submit', class: "btn btn-primary" %>
 <% end %>
 
 <% if Flipflop.proxy_deposit? %>
