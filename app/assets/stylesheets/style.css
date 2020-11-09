@@ -340,6 +340,15 @@ mark{
     padding: 0px;
     background-color: yellow;
 }
+
+.easy-autocomplete-container ul{
+    top: 35px;
+}
+
+.input-group .form-control{
+    z-index: 1;
+}
+
 /************************************************ Inicio Cambios EJCB *************************************************/
 .btn-search{
     padding: 4px;

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
    #Conacyt Requirements
+   get 'persona_name', to: 'authority#person'
 
    get 'padron', to: 'conacyt_stats#padron'
    get 'ranking/articulos', to: 'conacyt_stats#articulos'
