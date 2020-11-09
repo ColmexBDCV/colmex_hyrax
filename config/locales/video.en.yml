@@ -1,4 +1,15 @@
 en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          note_on_statement_of_resposibility_sim: Participants
+          video_characteristic_sim: Video Characteristics
+          video_format_sim: Video Format
+        index:
+          note_on_statement_of_resposibility_tesim: Participants
+          video_characteristic_tesim: Video Characteristics
+          video_format_tesim: Video Format
   hyrax:
     icons:
       video:     'fa fa-file-text-o'
@@ -6,3 +17,8 @@ en:
       video:
         description:        "Video works"
         name:               "Video"
+    base:
+      show:
+        note_on_statement_of_responsability:  Participants
+        video_characteristic: Video Characteristics
+        video_format: Video Format

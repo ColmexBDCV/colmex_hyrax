@@ -34,19 +34,19 @@
   <dd><%= mail_to user.email %></dd>
   
   <% unless user.firstname == "" %>
-    <dt><i class="fa fa-user"></i> First Name</dt>
+    <dt><i class="fa fa-user"></i> <%= t('hyrax.dashboard.profiles.first_name')%></dt>
     <dd><%= user.firstname %></dd>
   <% end %>
   <% unless user.paternal_surname == "" %>  
-    <dt><i class="fa fa-user"></i> Paternal Surname</dt>
+    <dt><i class="fa fa-user"></i> <%= t('hyrax.dashboard.profiles.paternal_surname') %></dt>
     <dd><%= user.paternal_surname %></dd>
   <% end %>
   <% unless user.maternal_surname == "" %>
-    <dt><i class="fa fa-user"></i> Maternal Surname</dt>
+    <dt><i class="fa fa-user"></i> <%= t('hyrax.dashboard.profiles.maternal_surname') %></dt>
     <dd><%= user.maternal_surname %></dd>
   <% end %>
   <% unless user.phone == "" %>
-    <dt><i class="fa fa-phone"></i> Phone</dt>
+    <dt><i class="fa fa-phone"></i> <%= t('hyrax.dashboard.profiles.phone') %></dt>
     <dd><%= user.phone %></dd>
   <% end %>
   <% if user.chat_id %>
@@ -55,42 +55,42 @@
   <% end %>
 
   <% if user.website %>
-    <dt><i class="glyphicon glyphicon-globe"></i> Website(s)</dt>
+    <dt><i class="glyphicon glyphicon-globe"></i> <%= t('hyrax.users.website')%></dt>
     <dd><%= iconify_auto_link(user.website) %></dd>
   <% end %>
 
   <% if user.title %>
-    <dt>Title</dt>
+    <dt><%= t('hyrax.users.title')%></dt>
     <dd><%= user.title %></dd>
   <% end %>
 
   <% if user.admin_area %>
-    <dt>Administrative Area</dt>
+    <dt><%= t('hyrax.users.administrative_area')%></dt>
     <dd><%= user.admin_area %></dd>
   <% end %>
 
   <% if user.department %>
-    <dt>Department</dt>
+    <dt><%= t('hyrax.users.department')%></dt>
     <dd><%= user.department %></dd>
   <% end %>
 
   <% if user.office %>
-    <dt>Office</dt>
+    <dt><%= t('hyrax.users.office')%></dt>
     <dd><%= user.office %></dd>
   <% end %>
 
   <% if user.address %>
-    <dt><i class="glyphicon glyphicon-map-marker"></i> Address</dt>
+    <dt><i class="glyphicon glyphicon-map-marker"></i><%= t('hyrax.users.address')%></dt>
     <dd><%= user.address %></dd>
   <% end %>
 
   <% if user.affiliation %>
-    <dt>Affiliation</dt>
+    <dt><%= t('hyrax.users.affiliation')%></dt>
     <dd><%= user.affiliation %></dd>
   <% end %>
 
   <% if user.telephone %>
-    <dt><i class="glyphicon glyphicon-earphone"></i> Telephone</dt>
+    <dt><i class="glyphicon glyphicon-earphone"></i> <%= t('hyrax.users.telephone')%></dt>
     <dd><%= link_to_telephone(user) %></dd>
   <% end %>
 

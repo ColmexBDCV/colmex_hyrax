@@ -1,4 +1,14 @@
 en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          degree_program_sim: Degree program
+          director_sim: Thesis Advisor
+          #existen apartados de sim y tesim en .es que no estan en .en
+        index:
+          degree_program_tesim: Degree program
+          director_tesim: Thesis Advisor
   hyrax:
     icons:
       thesis:     'fa fa-file-text-o'
@@ -6,3 +16,29 @@ en:
       thesis:
         description:        "Thesis works"
         name:               "Thesis"
+    base:
+      show:
+        access_restrictions: Access restritions
+        awards: Awards
+        academic_degree: Academic degree
+        date_of_presentation_of_the_thesis: Date of presentation of the Thesis
+        degree_program: Degree program
+        digital_resource_generation_information: Digital resource generation information
+        dimensions: Dimensions
+        director: Thesis advisor
+        edition: Edition
+        encoding_format_details: Encoding format details
+        exemplar_of_manifestation: exemplar of manifestation
+        extension: Extension
+        file_details: File details
+        file_type_details: File type details
+        institution: Institution
+        item_access_restrictions: Item access restrictions
+        item_use_restrictions: Item use restrictions
+        type_of_file: Type of file
+        other_formats: Other formats
+        use_restrictions: Use restritions
+
+        #not found in hyrax.en and hyrax.es
+        type_of_thesis: Tipo de tesis
+        system_requirements: Requerimientos de sistema

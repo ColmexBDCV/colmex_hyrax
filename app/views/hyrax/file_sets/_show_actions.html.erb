@@ -1,0 +1,15 @@
+<div class="form-actions">
+  <% if Hyrax.config.analytics? %>
+    <%= link_to t('hyrax.base.show.analitycs'), @presenter.stats_path, id: 'stats', class: 'btn btn-default' %>
+  <% end %>
+
+  <% if @presenter.editor? %>
+      <%= link_to t('hyrax.file_set.edit_this') +" #{@presenter.human_readable_type}", edit_polymorphic_path([main_app, @presenter]),
+                  class: 'btn btn-default' %>
+      <%= link_to t('hyrax.file_set.delete_this') +" #{@presenter.human_readable_type}", [main_app, @presenter],
+                  class: 'btn btn-danger', data: { confirm: "Delete this #{@presenter.human_readable_type}?" },
+                  method: :delete %>
+  <% end %>
+
+  <%= render 'social_media' %>
+</div>

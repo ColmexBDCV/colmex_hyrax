@@ -1,0 +1,15 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-bell"></span>  <%= t("hyrax.admin.sidebar.notifications") %></h1>
+  <%= link_to hyrax.delete_all_notifications_path,
+              method: :delete,
+              class: 'btn btn-danger pull-right',
+              title: t('hyrax.notifications.delete_all_user_notifications') do %>
+    <i class="glyphicon glyphicon-trash"></i> <%= t('hyrax.notifications.delete_all') %>
+  <% end %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= render "notifications", messages: @messages %>
+  </div>
+</div>

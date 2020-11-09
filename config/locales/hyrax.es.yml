@@ -12,12 +12,8 @@ es:
             Article: Artículo
             Book: Libro
           creator_sim: Autor
-          contained_in_sim: Revista
           contributor_sim: Colaborador
           date_created_sim: Año
-          degree_program_sim: Grado
-          director_sim: Director de tesis
-          extension_sim: Páginas
           file_format_sim: Formato
           generic_type_sim: Tipo
           geographic_coverage_sim: Cobertura geográfica
@@ -35,13 +31,8 @@ es:
           supplementary_content_or_bibliography_sim: Bibliografía  
           temporary_coverage_sim: Cobertura temporal
           type_of_illustrations_sim: Tipo de ilustraciones
-          database_sim: Base de datos
           mode_of_issuance_sim: Modo de publicación
-          edition_sim: Edición
-          system_requirements_sim: Requerimientos de sistema
           table_of_contents_sim: Tabla de contenidos
-          item_access_restrictions_sim: Restricción de acceso del ítem
-          item_use_restrictions_sim: Restricción de uso del ítem
           editor_sim: Editor
           publisher_sim: Editorial
           compiler_sim: Compilador
@@ -65,37 +56,26 @@ es:
           project_sim: Proyecto
           owner_agent_of_sim: Propietario
           custodian_agent_of_sim: Custodio
-          file_type_details_sim: Detalles del Archivo
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
           collections: Colecciones
-          contained_in_tesim: Revista
           contributor_tesim: Colaborador
           center_tesim: Centro
           creator_tesim: Autor
-          database_tesim: Base de datos
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de subida
           description_tesim: Resumen
-          degree_program_tesim: Grado
           depositor_tesim: Propietario
-          director_tesim: Director
-          edition_tesim: Edición
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
-          item_access_restrictions_tesim: Restricción de acceso del ítem
-          item_use_restrictions_tesim: Restricción de uso del ítem
-          issn_tesim: ISSN
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
           mode_of_issuance_tesim: Modo de publicación
           notes_tesim: Notas
-          number_tesim: Número
-          pages_tesim: Páginas
           related_url_tesim: URL
           resource_type_tesim: Tipo de documento
           reviewer_tesim: Lector/Revisor
@@ -107,8 +87,6 @@ es:
           subject_work_tesim: Tema obra
           subject_corporate_tesim: Tema organismo
           temporary_coverage_tesim: Cobertura temporal
-          volume_tesim: Volumen
-          system_requirements_tesim: Requerimientos de sistema
           supplementary_content_or_bibliography_tesim: Bibliografía  
           table_of_contents_tesim: Tabla de contenidos
           editor_tesim: Editor
@@ -135,7 +113,6 @@ es:
           project_tesim: Proyecto
           owner_agent_of_tesim: Propietario
           custodian_agent_of_tesim: Custodio
-          file_type_details_tesim: Detalles del Archivo
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -144,7 +121,6 @@ es:
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de Subida
           description_tesim: Descripción
-          extension_tesim: Páginas
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           identifier_tesim: Identificador
@@ -168,7 +144,6 @@ es:
           project: Proyecto
           owner_agent_of: Propietario
           custodian_agent_of: Custodio
-          file_type_details: Detalles del Archivo
       sort:
         label: Ordenar por %{field}
         relevance: Relevancia
@@ -211,6 +186,17 @@ es:
   hyrax:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
+    #Metadatos del archivo JS manage_repeating_fields en assets/javascript/
+    add_another: Añadir otro
+    remove: Quitar
+    #metadatos del controlador fixity_status_persenter app/presenters/hyrax/
+    fixity_status:  Aún no se han realizado controles de fijeza en este objeto
+    #metadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
+    Edit: Editar
+    View/Download: Ver/Descargar
+    Edit_access: Editar acceso
+    Choose_Access: Elegir acceso
+    ####
     base:
       citations:
         header: "Exportar cita"
@@ -219,13 +205,53 @@ es:
         quote: "Forma de citar (APA):"
       social_media:
         link: copiado en portapapeles
+      #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
+      who_should: Quién debe ser capaz para ver o descargar este contenido?
+      ##metadatos de la vista file_manager.html.erb
+      back_to: Regresar a
+      toolbar: Barra de Herramientas
+      save: Guardar
+      sort_alphabetically: Ordenar alfabéticamente
+      thumbnail: Miniatura
+      representative_media: Media Representativo
+      add_this: Agrega esto
+      add_this_group: Agrega este grupo
+      #metadatos de la vista _form_visibility_component.html.er
+      visibility: Visibilidad
+      #metadatos para la vista _form_member_of_collections.html.erb
+      add: Añadir
+      #metadatos de la vista de form_child_work
+      find_child_work: Busque un trabajo ...
+      #Metadatos para la vista _form_files
+      add_files: Agregar Archivos ...
+      add_folder: Agregar Carpeta ...
+      cancel_upload: Cancela Carga
+      #metadatos para la vista _form_share
+      save_note_html: Los permisos <strong>no se</strong> guardan hasta que se presiona el botón "Guardar" en la parte inferior de la página.
+      give_note_html: Usa el boton de añadir para dar acceso a un usuario a la vez (Se agregará a la lista a continuación). Seleciona el usuario, por nombre o usuario. Después selecciona el nivel de acceso que tu deseas otorgar y da click en añadir este usuario para completar los permisos agregados.
+      access_type: Tipo de acceso a otorgar
+      this_group: este grupo
+      this: este
+      select_a_group: Seleccione un grupo
+      search_for_a_user: Buscar a un usuario
       show:
+        #metadatos de la vista _show_actions.html.erb
+        edit: Editar
+        delete: Borrar
+        attach_child: Agregar Documento
+        attach_child_Thesis: Adjuntar Tesis
+        attach_child_Article: Adjuntar Artículo
+        attach_child_Book: Adjuntar Libro
+        attach_child_Video: Adjuntar Video
+        delete_this_Thesis: Borrar esta Tesis
+        delete_this_Article: Borrar este Artículo
+        delete_this_Book: Borrar este Libro
+        delete_this_Video: Borrar este Video
+        ###
         description: Resumen
         all_fields: Todos los campos
-        alternate_title: Título variante
+        alternate_title: Título alterno
         analitycs: Analíticas
-        contained_in: Revista
-        database: Base de datos
         mode_of_issuance: Modo de publicación
         work_type_Article: Artículo
         work_type_Thesis: Tesis
@@ -234,10 +260,6 @@ es:
         creator: Autor
         contributor: Colaborador
         description: Resumen
-        director: Director
-        degree_program: Grado
-        edition: Edición
-        extension: Páginas
         subject: Tema
         language: Idioma
         identifier: Identificador
@@ -269,9 +291,6 @@ es:
         title: Título
         table_of_contents: Tabla de contenidos
         type_of_illustrations: Tipo de ilustraciones
-        system_requirements: Requerimientos de sistema
-        item_access_restrictions: Restricción de acceso del ítem
-        item_use_restrictions: Restricción de uso del ítem
         editor: Editor
         publisher: Editorial
         compiler: Compilador
@@ -288,7 +307,6 @@ es:
         project: Proyecto
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
-        file_type_details: Detalles del Archivo
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
@@ -305,20 +323,87 @@ es:
       subject_label: Asunto
       email_label: Correo Electrónico
       thanks: Gracias por su mensaje
+    dashboard:
+      profiles:
+        change_picture: Cambiar fotografía
+        less_than: menor que
+        delete_picture: Borrar fotografía
+        if_you_would_like: Si desea eliminar su imagen por completo, marque la casilla y guarde su perfil.
+        first_name: Primer nombre
+        paternal_surname: Apellido paterno
+        maternal_surname: Apellido materno
+        phone: Celular
+        save_profile: Guardar Perfil
     directory:
       suffix: "@example.org"
     file_set:
       show:
         downloadable_content:
           download: Descargar recurso
-    footer:
-      copyright_html: "Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licencia Internacional de Creative Commons Atribución-NoComercial-SinDerivadas 4.0</a>"
-      service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
+      file_details: Detalles de archivo
+      #metadatos de la vista de show_actions en filesets
+      edit_this: Editar este
+      delete_this: Eliminar este
+      #
+      depositor: Creador
+      date_uploaded: Fecha de Subida
+      date_modified: Fecha Modifición
+      fixity_check: Controles de Fijeza
+      characterization: Caracterización
+      not_yet_characterized: Aun no caracterizado
     homepage:
+      centre_economic_studies: Centro de Estudios Económicos
+      centre_linguistic_and_literary_studies: Centro de Estudios Lingüísticos y Literarios
+      center_for_asian_and_african_studies: Centro de Estudios de Asia y África
+      centre_for_demographic__urban_and_environmental_studies: Centro de Estudios Demográficos, Urbanos y Ambientales
+      centre_historical_studies: Centro de Estudios Históricos
+      centre_international_studies: Centro de Estudios Internacionales
+      centre_sociological_studies: Centro de Estudios Sociológicos
+    my:
+      show: Mostrar
+      per_page: por página
+    notifications:
+      delete_all: Borrar todo
+      delete_all_user_notifications: Borrar todas las notificaciones del Usuario
+      Passing_batch_create: Pasando creación de lotes
+      The_batch_create_for: El lote creado por
+      passed: pasó
+    permissions:
+      apply_changes_to_contents: Aplicar los cambios al contenido?
+    stats:
+      file_analytics: Análisis de archivo
+      views_and: vistas y
+      downloads_since:  Descargas desde
+      January: Enero
+      February: Febrero
+      March: Marzo
+      April: Abril
+      May: Mayo
+      June: Junio
+      July: Julio
+      August: Agosto
+      September: Septiembre
+      October: Octubre
+      November: Noviembre
+      December: Diciembre
+    users:
+      user_activity: Actividad de Usuario
+      website: Sitios de internet
+      title: Título
+      administrative_area: Área de administración
+      department: Departamento
+      office: Oficina
+      address: Dirección
+      affiliation: Afiliación
+      telephone: Teléfono
+      joined_on: Se unió en
       recently_uploaded:
         tab_label: Añadidos recientemente #Integrados recientemente
         title: Nuevos Documentos #Integrados recientemente
         creator: Añadidos recientemente
+    footer:
+      copyright_html: "Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licencia Internacional de Creative Commons Atribución-NoComercial-SinDerivadas 4.0</a>"
+      service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
     institution_name: institución
     institution_name_full: El nombre de la institución
     product_name: "Repositorio de El Colegio de México"
@@ -339,3 +424,67 @@ es:
       language_code: ES
       profile: 
         login: Administrador
+  simple_form:
+    labels:
+      defaults:
+        date_created: Fecha de creación
+        alternate_title: Título Alternativo
+        other_title: Otro Título
+        contributor: Colaborador
+        subject: Tema
+        subject_work: Tema obra
+        subject_person: Tema persona
+        subject_family: Tema familia
+        subject_corporate: Tema organismo
+        publisher: Editorial
+        language: Idioma
+        reviewer: Lector/Revisor
+        identifier: Identificador
+        resource_type: Tipo de Documento
+        geographic_coverage: Cobertura geográfica
+        temporary_coverage: Cobertura temporal
+        gender_or_form: Género o forma
+        notes: Notas
+        classification: Clasificación de la biblioteca
+        supplementary_content_or_bibliography: Bibliografía
+        bibliographic_citation: Citas Blibliográficas
+        responsibility_statement: Declaración de responsabilidad
+        other_related_persons: Otras personas relacionadas
+        system_requirements: Requerimientos de sistema
+        item_access_restrictions: Restricciones de acceso al artículo
+        table_of_contents: Tabla de contenidos
+        edition: Edición
+        dimensions: Dimensión
+        extension: Extensión
+        item_use_restrictions: Restricciones de uso del artículo
+        encoding_format_details: Detalles del formato de codificación
+        type_of_content: Tipo de contenido
+        editor: Editor
+        compiler: Compilador
+        commentator: Reseñista/Comentarista
+        translator: Traductor
+        digital_resource_generation_information: Información de generación de recursos digitales
+        interviewer: Entrevistado
+        interviewee: Entrevistador
+        organizer_collective_agent: Seminario
+        photographer: Fotográfo
+        collective_title: Título colectivo
+        part_of_place: Ciudad/Municipio/Localidad
+        provenance: Procedencia
+        curator_collective_agent_of: Entidad que aporta el recurso
+        project: Proyecto
+        owner_agent_of: Propietario
+        custodian_agent_of: Custodio
+        file_type_details: Detalles del tipo de archivo
+        type_of_illustrations: Tipo de ilustraciones
+        center: Centro
+        mode_of_issuance: Modo de publicación
+        source: Fuente
+        period: Periodo
+        part: Parte
+        volume: Volumen
+        number: Número
+        contained_in: Contenido en
+        database: Base de Datos
+        subject_conacyt: Persona del CONACYT        
+        

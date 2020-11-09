@@ -1,4 +1,24 @@
 es:
+  blacklight:
+    search:
+      fields:
+          facet:
+            collective_agent_sim: Autor Corporativo
+            copyright_sim: Copyright
+            corporate_body_sim: Cuerpo Corporativo
+            numbering_within_sequence_sim: Volumen/Número
+            organizer_author_sim: Coordinador / Organizador
+            place_of_publication_sim: Lugar de Publicación
+            title_of_series_sim: Serie
+          index:
+            collective_agent_tesim: Autor Coporativo
+            copyright_tesim: Copyright
+            corporate_body_tesim: Cuerpo Corporativo
+            numbering_within_sequence_tesim: Volumen/Número
+            organizer_author_tesim: Coordinador / Organizador
+            place_of_publication_tesim: Lugar de Publicación
+            title_of_series_tesim: Serie
+
   hyrax:
     icons:
       book:     'fa fa-file-text-o'
@@ -10,10 +30,10 @@ es:
         # TODO: translate `human_name` into Spanish
     base:
       show:
-        corporate_body: Autor corporativo
-        collective_agent: Autor congreso
+        collective_agent: Autor corporativo
+        copyright: Copyright
+        corporate_body: Cuerpo corporativo
+        numbering_within_sequence: Volumen/número
         organizer_author: Coordinador / Organizador
         place_of_publication: Lugar de publicación
-        copyright: Copyright
         title_of_series: Serie
-        numbering_within_sequence: Volumen/número
