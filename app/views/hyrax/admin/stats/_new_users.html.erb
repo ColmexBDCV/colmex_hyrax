@@ -1,0 +1,22 @@
+<h3><%= t('hyrax.dashboard.stats.newest_users')%>(<%= t('hyrax.dashboard.stats.'+@presenter.date_filter_string) %>)</h3>
+<h4>
+<%- if !@presenter.start_date.blank? %>
+  Total: <%= @presenter.recent_users.count %></div>
+<%- else %>
+    <%= @presenter.recent_users.count %> <%= t('hyrax.dashboard.stats.most_recent_users')%>
+<%- end %>
+</h4>
+<ul>
+  <% @presenter.recent_users.each do |usr| %>
+    <li>
+      <%= link_to usr.name, hyrax.user_path(usr), title: "View user's profile" %>
+      <%- if usr.department %>
+        <%= t('hyrax.dashboard.stats.of')%> <%= usr.department %>
+      <%- end %>
+      <%= t('hyrax.dashboard.stats.registered')%>
+      <span class="date">
+        <%= usr.created_at.to_time.strftime("%m/%d/%Y") %>
+      </span>
+    </li>
+  <% end %>
+</ul>

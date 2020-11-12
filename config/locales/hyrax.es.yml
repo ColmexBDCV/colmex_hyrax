@@ -196,6 +196,43 @@ es:
     View/Download: Ver/Descargar
     Edit_access: Editar acceso
     Choose_Access: Elegir acceso
+    admin:
+      collection_types:
+        in_this_repository: en este repositorio
+        collection_type: Tipo(s) de colección
+        submit: Confirmar
+        apply_to_new_works: APLICAR A NUEVOS TRABAJOS
+        search_for_a_group: Buscar un grupo...
+        search_for_a_user: Buscar un usuario...
+        as: como
+        select_a_role: Seleccione un Rol...
+        Manager: Manejador
+        Creator: Creador
+        Group: Grupal
+      features:
+        feature: Características
+        enabled: Habilitado
+        disabled: Deshabilitado
+        onn: encendido
+        offf: apagado
+        Proxy_deposit: Depósito de poder
+        Transfer_works: Transferencia de obras
+        Assign_admin_set: Asignar conjunto de administración
+        Show_deposit_agreement: Mostrar acuerdo de depósito
+        Active_deposit_agreement acceptance: Aceptación del acuerdo de depósito activo
+        Batch_upload: Carga por lotes
+        Analitycs_redesign: Rediseño de Analíticas
+        Hide_private_items: Ocultar ítems privados
+        Hide_users_list: Ocultar lista de usuarios
+        Depositors_may_designate_proxies: Los depositantes pueden designar apoderados para depositar obras en su nombre
+        Depositors_may_transfer_their: Los depositantes pueden transferir sus obras a otro usuario
+        Ability_to_assign_uploaded: Posibilidad de asignar elementos cargados a un conjunto de administradores
+        Show_a_deposit_agreement: Muestra un acuerdo de depósito a los usuarios que crean obras.
+        Require_an_active_acceptance: Exija una aceptación activa del acuerdo de depósito marcando una casilla de verificación
+        Enable_uploading_batches_of: Habilita el cargado por lotes de obras
+        Display_new_reporting_features: Muestra nuevas funciones de informes. * Muy experimental *
+        Do_not_show_the: No muestra los ítems privados
+        Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
     ####
     base:
       citations:
@@ -236,6 +273,7 @@ es:
       search_for_a_user: Buscar a un usuario
       show:
         #metadatos de la vista _show_actions.html.erb
+        unfeature: Sin Características
         edit: Editar
         delete: Borrar
         attach_child: Agregar Documento
@@ -334,8 +372,39 @@ es:
         maternal_surname: Apellido materno
         phone: Celular
         save_profile: Guardar Perfil
+      stats:
+        file_views: Vistas
+        file_downloads: Descargas
+        statistics_by_date: Estadísticas por fecha
+        statistics_in_this_section: Las estadísticas de esta sección se filtran por las fechas ingresadas en el formulario a continuación.
+                                    Los datos no se filtran a menos que se haya completado el formulario de fecha. Se requiere la fecha de inicio y el final predeterminado es ahora.
+        start_*: Empieza *
+        end_[]: Finalizar [Predeterminado ahora]
+        load_stats: Cargar Estadísticas
+        unfiltered: sin filtrar
+        newest_users: Nuevos Usuarios
+        most_recent_users: "Usuarios recientes:"
+        of: de
+        registered: registrado
+        deposits_by_users: Depositados por los usuarios
+        deposited: depositó
+        file: Archivo(s)
+        top_file: Principales formatos de archivo y usuarios
+        statistics_in_this_section_shows: 'Las Estadísticas de esta sección muestra los principales '
+        items_for: ítems para cada categoría
+        view_top: Ver los principales
+        top_file_formats: Principales formatos de archivo (Principales
+        most_active_users: Usuarios más activos (Top
+      workflows:
+        work: Trabajo
+        depositor: Creador
+        submission_date: Dia de Entrega
+        status: Estado
+        deposited: depositado
     directory:
       suffix: "@example.org"
+    embargoes:
+      desactivated: Embargos Desactivados
     file_set:
       show:
         downloadable_content:
@@ -359,7 +428,11 @@ es:
       centre_historical_studies: Centro de Estudios Históricos
       centre_international_studies: Centro de Estudios Internacionales
       centre_sociological_studies: Centro de Estudios Sociológicos
+    leases:
+      desactivated: Arrendamientos Desactivados
     my:
+      previous: Anterior
+      next: Siguiente
       show: Mostrar
       per_page: por página
     notifications:
@@ -367,7 +440,7 @@ es:
       delete_all_user_notifications: Borrar todas las notificaciones del Usuario
       Passing_batch_create: Pasando creación de lotes
       The_batch_create_for: El lote creado por
-      passed: pasó
+      passed: pasó.
     permissions:
       apply_changes_to_contents: Aplicar los cambios al contenido?
     stats:
