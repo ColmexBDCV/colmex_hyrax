@@ -18,7 +18,6 @@ module Hydra::Derivatives::Processors
           else
             output_options += " #{@directives[:bitrate].nil? ? config.video_attributes : "-g 30 -b:v "+@directives[:bitrate]} #{config.audio_attributes}"
           end
-          byebug
           { Ffmpeg::OUTPUT_OPTIONS => output_options, Ffmpeg::INPUT_OPTIONS => input_options }
         end
 
