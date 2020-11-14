@@ -78,8 +78,8 @@ module Hyrax
       def create_video_derivatives(filename)
         Hydra::Derivatives::VideoDerivatives.create(filename,
                                                     outputs: [{ label: :thumbnail, format: 'jpg', url: derivative_url('thumbnail') },
-                                                              { label: 'webm', size:'1280x720', format: 'webm', url: derivative_url('webm') },
-                                                              { label: 'mp4', size:'1280x720', format: 'mp4', url: derivative_url('mp4') }])
+                                                              { label: 'webm', size: '1280x720', bitrate: '1500k', format: 'webm', url: derivative_url('webm') },
+                                                              { label: 'mp4', size: '1280x720', bitrate: '1500k', format: 'mp4', url: derivative_url('mp4') }])
       end
 
       def create_image_derivatives(filename)
