@@ -19,7 +19,7 @@
         addText:           'Add another',
 
         removeHtml:        '<button type=\"button\" class=\"btn btn-link remove\"><span class=\"glyphicon glyphicon-remove\"></span><span class="controls-remove-text"></span> <span class=\"sr-only\"> previous <span class="controls-field-name-text">field</span></span></button>',
-        removeText:         'Remove',
+        removeText:        'Remove',
 
         labelControls:      true,
     }

@@ -1,0 +1,27 @@
+<% provide :page_header do %>
+  <h1><span class="fa fa-paint-brush" aria-hidden="true"></span> <%= t('.header') %></h1>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= simple_form_for @form, url: admin_appearance_path do |f| %>
+    <!-- En caso de fallar la traducción regresar al default -->
+      <!-- f.input :header_background_color, required: false, input_html: { type: 'color' } -->
+      <!-- f.input :header_text_color, required: false, input_html: { type: 'color' } -->
+      <!-- f.input :link_color, required: false, input_html: { type: 'color' } -->
+      <!-- f.input :footer_link_color, required: false, input_html: { type: 'color' } -->
+      <!-- f.input :primary_button_background_color, required: false, input_html: { type: 'color' } -->
+      <% html = f.input :header_background_color, required: false, input_html: { type: 'color' } %>
+      <%= html.to_s.gsub("Header background color", t('hyrax.admin.appearances.header_background')).html_safe %>
+      <%html2 = f.input :header_text_color, required: false, input_html: { type: 'color' } %>
+      <%= html2.to_s.gsub("Header text color", t('hyrax.admin.appearances.header_text')).html_safe %>
+      <%html3 = f.input :link_color, required: false, input_html: { type: 'color' } %>
+      <%= html3.to_s.gsub("Link color", t('hyrax.admin.appearances.link_color')).html_safe%>
+      <% html4 = f.input :footer_link_color, required: false, input_html: { type: 'color' } %>
+      <%= html4.to_s.gsub("Footer link color", t('hyrax.admin.appearances.footer_link')).html_safe%>
+      <% html5 = f.input :primary_button_background_color, required: false, input_html: { type: 'color' } %>
+      <%= html5.to_s.gsub("Primary button background color", t('hyrax.admin.appearances.primary_button_background')).html_safe%>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

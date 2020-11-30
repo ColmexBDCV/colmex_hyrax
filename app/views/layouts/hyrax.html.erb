@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale.to_s %>" prefix="og:http://ogp.me/ns#">
   <head>
+    <%= javascript_tag "var current_locale = '#{I18n.locale.to_s}';" %>
+    <script type="text/javascript">
+        window.Locale = current_locale
+    </script>
+    <script type="text/javascript">
+      window.I18n = <%= current_translations.to_json.html_safe %>
+    </script>
     <%= render partial: 'layouts/head_tag_content' %>
     <%= content_for(:head) %>
   </head>

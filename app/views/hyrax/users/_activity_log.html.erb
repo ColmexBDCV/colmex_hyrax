@@ -9,7 +9,15 @@
   <% events.each do |event| %>
     <% next if event[:action].blank? or event[:timestamp].blank? %>
     <tr>
-      <td class="ensure-wrapped"><%= sanitize event[:action] %></td>
+    <% msg = sanitize sanitize event[:action]%>
+      <% msg = msg.split(" ") %>
+      <% msg2 = msg.slice(0,1) + msg.slice(3,2)%>
+      <% msg2 = t('views.' + msg2.join("_"))%>
+      <% html1 = msg.slice(1,2).join(" ")%>
+      <% html2 = msg.slice(5,6).join(" ") %>
+      <% msg2 = msg2.split(" ").insert(1,html1)%>
+      <% msg2 = msg2.push(html2)%>
+      <td class="ensure-wrapped"><%=sanitize msg2.join(" ")%> </td>
       <% time = Time.zone.at(event[:timestamp].to_i) %>
       <td data-sort="<%= time.getutc.iso8601(5) %>">
         <relative-time datetime="<%= time.getutc.iso8601 %>" title="<%= time.to_formatted_s(:standard) %>">

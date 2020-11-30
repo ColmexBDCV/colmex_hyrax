@@ -124,13 +124,34 @@ en:
       hyphen: Use "-" before a word or phrase to exclude.
       and_or_not: Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions.
       truncate: Truncation and wildcards are not supported - word-stemming is done automatically.
-
+  js:
+    hydra_editor:
+      add_another: Add Another
+      remove: Remove
+    jquery_datatables_rails_3_4_0:
+      show: Show
+      entries: entries
+      showing: Showing
+      to: to
+      of: of
+      search: "Search:"
+      previous: Previous
+      next: Next
+      no_data_available: No data available in table
+  views:
+    the_file: The file 
+    has_been_updated: has been updated.
+    User_has_updated: User has updated
+    User_has_attached: User has attached
   hyrax:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
-    #Metadatos del archivo JS manage_repeating_fields en assets/javascript/
-    add_another: Add another
-    remove: Remove
     admin:
+      appearances:
+        header_background: Header background color
+        header_text: Header text color
+        link_color: Link color
+        footer_link: Footer link color
+        primary_button_background: Primary button background color
       collection_types:
         in_this_repository: in this repository
         collection_type: Collection type
@@ -166,6 +187,9 @@ en:
         Display_new_reporting_features: Display new reporting features. *Very Experimental*
         Do_not_show_the: Do not show the private items.
         Do_not_show_users: Do not show users list unless user has authenticated.
+      workflow_roles:
+        user: User
+        workflow_role: Workflow role
     base:
       citations:
         header: "Export citation"
@@ -289,7 +313,10 @@ en:
     ####
     days_ago: days ago
     dashboard:
+      past_30_days: Past 30 days
+      current: Current
       profiles:
+        your_profile_has_been_updated: You profile has been updated
         change_picture: Change picture
         less_than: less than
         delete_picture: Delete picture
@@ -331,6 +358,12 @@ en:
     embargoes:
       desactivated: Desactivated Embargoes
     file_set:
+      #metadatos de show_characterization_details
+      width: Width
+      height: Height
+      file_format: File Format
+      original_checksum: Original Checksum
+      mime_type: Mime Type
       # metadatos de la vista de show_actions en filesets
       edit_this: Edit this
       delete_this: Delete this

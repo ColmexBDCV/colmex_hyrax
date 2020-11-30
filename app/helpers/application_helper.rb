@@ -5,6 +5,12 @@ module ApplicationHelper
         safe_join(options[:value].map { |i| is_in_alma?(i).html_safe }, ", ".html_safe)
     end
 
+
+    def current_translations
+      @translations ||= I18n.backend.send(:translations)
+      @translations[I18n.locale].with_indifferent_access
+    end
+
     def get_segment(number)
       request.path.split("/")[number]
     end

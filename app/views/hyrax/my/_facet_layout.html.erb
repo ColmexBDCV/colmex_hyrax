@@ -1,0 +1,13 @@
+<fieldset class="btn-group">
+  <legend class="sr-only"><%= facet_field_label(facet_field.field) %></legend>
+  <button class="btn btn-default dropdown-toggle" type="button" id="<%= facet_field.field.parameterize %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-controls="<%= facet_field.field.parameterize + '-dropdown-options' %>">
+    <% if facet_field_label(facet_field.field) == 'Visibility'
+        facetable = t('hyrax.base.visibility')
+    else
+        facetable = facet_field_label(facet_field.field)
+    end %>
+    <%= facetable %>
+    <span class="caret"></span>
+  </button>
+  <%= yield %>
+</fieldset>

@@ -182,13 +182,29 @@ es:
       document_slideshow:
         header: "Seleccione una imagen para comenzar la presentación de diapositivas"
       modal_slideshow:
-        counter: "%{counter} de %{count}"   
+        counter: "%{counter} de %{count}"  
+  js:
+    hydra_editor:
+      add_another: Añadir otro 
+      remove: Eliminar
+    jquery_datatables_rails_3_4_0:
+      show: Mostrar
+      entries: entradas
+      showing: Proyectando
+      to: a
+      of: de
+      search: "Buscar:"
+      previous: Anterior
+      next: Siguiente
+      no_data_available: No hay datos disponibles en la tabla
+  views:
+    the_file: El archivo 
+    has_been_updated: ha sido actualizado.
+    User_has_updated: Usuario ha actualizado
+    User_has_attached: Usuario ha adjuntado
   hyrax:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
-    #Metadatos del archivo JS manage_repeating_fields en assets/javascript/
-    add_another: Añadir otro
-    remove: Quitar
     #metadatos del controlador fixity_status_persenter app/presenters/hyrax/
     fixity_status:  Aún no se han realizado controles de fijeza en este objeto
     #metadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
@@ -197,6 +213,12 @@ es:
     Edit_access: Editar acceso
     Choose_Access: Elegir acceso
     admin:
+      appearances:
+        header_background: Color de fondo de la cabecera
+        header_text: Color del texto de la cabecera
+        link_color: Color del link
+        footer_link: Color del link del pie de página
+        primary_button_background: Color de fondo del botón primario
       collection_types:
         in_this_repository: en este repositorio
         collection_type: Tipo(s) de colección
@@ -233,6 +255,9 @@ es:
         Display_new_reporting_features: Muestra nuevas funciones de informes. * Muy experimental *
         Do_not_show_the: No muestra los ítems privados
         Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
+      workflow_roles:
+        user: Usuario
+        workflow_role: Rol del flujo de trabajo
     ####
     base:
       citations:
@@ -265,12 +290,12 @@ es:
       cancel_upload: Cancela Carga
       #metadatos para la vista _form_share
       save_note_html: Los permisos <strong>no se</strong> guardan hasta que se presiona el botón "Guardar" en la parte inferior de la página.
-      give_note_html: Usa el boton de añadir para dar acceso a un usuario a la vez (Se agregará a la lista a continuación). Seleciona el usuario, por nombre o usuario. Después selecciona el nivel de acceso que tu deseas otorgar y da click en añadir este usuario para completar los permisos agregados.
+      give_note_html: Usa el botón de añadir para dar acceso a un usuario a la vez (Se agregará a la lista a continuación). Seleciona el usuario, por nombre o usuario. Después selecciona el nivel de acceso que tu deseas otorgar y da click en añadir este usuario para completar los permisos agregados.
       access_type: Tipo de acceso a otorgar
       this_group: este grupo
       this: este
       select_a_group: Seleccione un grupo
-      search_for_a_user: Buscar a un usuario
+      search_for_a_user: Buscar un usuario
       show:
         #metadatos de la vista _show_actions.html.erb
         unfeature: Sin Características
@@ -362,7 +387,10 @@ es:
       email_label: Correo Electrónico
       thanks: Gracias por su mensaje
     dashboard:
+      past_30_days: Últimos 30 dias
+      current: Actual
       profiles:
+        your_profile_has_been_updated: Tu perfil ha sido actualizado
         change_picture: Cambiar fotografía
         less_than: menor que
         delete_picture: Borrar fotografía
@@ -410,6 +438,12 @@ es:
         downloadable_content:
           download: Descargar recurso
       file_details: Detalles de archivo
+      #metadatos de show_characterization_details
+      width: Ancho
+      height: Altura
+      file_format: Formato de Archivo
+      original_checksum: Verificación de suma original
+      mime_type: Tipo de Mímica
       #metadatos de la vista de show_actions en filesets
       edit_this: Editar este
       delete_this: Eliminar este
