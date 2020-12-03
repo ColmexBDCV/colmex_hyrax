@@ -1,5 +1,5 @@
 <li>
   <p class="recent-field">
-    <%= link_to recent_document.title_or_label, "concern/#{recent_document.human_readable_type.pluralize.downcase}/#{recent_document.id}" %>
+    <%= link_to [main_app, recent_document] do recent_document.to_s end %>
   </p>
 </li>
