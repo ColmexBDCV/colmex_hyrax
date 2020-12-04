@@ -3,7 +3,6 @@
 var options = {
 
   url: function(phrase) {
-    console.log(phrase)
     return "/persona_name?person="+phrase;
     // return "/client/persona_name";
 
@@ -19,25 +18,29 @@ var options = {
 };
 
 
+var autofill = '[name*="creator]"], [name*="contributor]"]'
+
 $(document).on('turbolinks:load',function(){
-
-  load_autofill();
-
-  $(".multi_value .btn.add").click(function (){ 
-    console.log("add field")
+  
+  load_autofill()
+  
+  $(".multi_value .btn.add").click(function () { 
+    element = $(this)
     setTimeout(
       function() 
       {
-        load_autofill()
-      }, 5000);
-     
-  });
+        let id_input = element.parent().children("ul").children("li:last-child").children("div").children("input").attr("id")
+        element.parent().children("ul").children("li:last-child").children("div").children("input").attr("id",id_input+0)
 
+        let id_div = element.parent().children("ul").children("li:last-child").children("div").children("div").attr("id")
+        element.parent().children("ul").children("li:last-child").children("div").children("div").attr("id",id_div+0)
+        load_autofill()
+      }, 500);
+    
+  });
 });
 
-function load_autofill(){
-  console.log("load EAC");
-  $('[name*="creator]"], [name*="contributor]"]').easyAutocomplete(options);
 
-  $('.easy-autocomplete').removeAttr('style');
+function load_autofill(){
+  $(autofill).easyAutocomplete(options);  
 }
