@@ -138,11 +138,49 @@ en:
       previous: Previous
       next: Next
       no_data_available: No data available in table
+    tinymce_rails_4_9_0:
+      file: File
+      new_document: New Document
+      edit: Edit
+      undo: Undo
+      redo: Redo
+      cut: Cut
+      copy: Copy
+      paste: Paste
+      select_all: Select all
+      view: View
+      visual_aids: Visual aids
+      format: Format
+      bold: Bolt
+      italic: Italic
+      underline: Underline
+      strikethrough: Strikethrough
+      superscript: Superscript
+      subscript: Subscript
+      code: Code
+      blocks: Blocks
+      paragraph: Paragraph
+      headings: Headings
+      heading: Heading
+      preformatted: Preformatted
+      inline: Inline
+      align: Align
+      left: Left
+      center: Center
+      right: Right
+      justify: Justify
+      clear_formatting: Clear formatting
+      formats: Formats
+      alignment: Alignment
+      decrease_indent: Decrease indent
+      increase_indent: Increase indent
   views:
     the_file: The file 
     has_been_updated: has been updated.
     User_has_updated: User has updated
     User_has_attached: User has attached
+    User_has_deposited: Usuario ha creado
+    User_has_deleted: Usuario ha borrado
   hyrax:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
     admin:
@@ -312,6 +350,10 @@ en:
     Choose_Access: Choose Access
     ####
     days_ago: days ago
+    content_blocks:
+      announcement: Announcement
+      marketing: Marketing
+      researcher: Researcher
     dashboard:
       past_30_days: Past 30 days
       current: Current
@@ -391,8 +433,13 @@ en:
       show: Show
       per_page: per page
     notifications:
-      delete_all: Borrar todo
-      delete_all_user_notifications: Borrar todas las notificaciones del Usuario
+      delete_all: Delete all
+      delete_all_user_notifications: Delete all user notifications
+    pages:
+      about: About
+      help: Help
+      agreement: Agreement
+      terms: Terms
     permissions:
       apply_changes_to_contents: Apply changes to contents?
     stats:
@@ -412,6 +459,13 @@ en:
       November: November
       December: December
     users:
+      search_users: Search Users...
+      go: Go
+      users: Users
+      user_name: User Name
+      user_id: User Id
+      department: Department
+      works_created: Works Created
       user_activity: User Activity
       website: Website(s)
       title: Title
@@ -422,6 +476,8 @@ en:
       affiliation: Affiliation
       telephone: Telephone
       joined_on: Joined on
+      view_users: View Users
+      has_no_highlighted_works: has no highlighted works.
     footer:
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
       copyright_html: "Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licensed under the Creative Commons Attribution 4.0</a>"

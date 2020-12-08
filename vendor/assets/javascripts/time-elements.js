@@ -2,8 +2,14 @@
   'use strict';
 
   // Shout out to https://github.com/basecamp/local_time/blob/master/app/assets/javascripts/local_time.js.coffee
-  var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  if (Locale == 'es') {
+    var weekdays = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  } else {
+    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  }
 
   function pad(num) {
     return ('0' + num).slice(-2);
@@ -109,7 +115,12 @@
       if (ahead) {
         return ahead;
       } else {
-        return 'on ' + this.formatDate();
+        if (Locale == 'es') {
+          var traducción = this.formatDate().replace(" "," de ");
+          return traducción;
+        } else {
+          return 'on ' + this.formatDate();
+        }
       }
     }
   };
@@ -347,7 +358,7 @@
   }
 
   RelativeTime.prototype.formatDate = function() {
-    var format = isDayFirst() ? '%e %b' : '%b %e';
+    var format = isDayFirst() ? '%e %B' : '%B %e';
     if (!isThisYear(this.date)) {
       format += isYearSeparator() ? ', %Y': ' %Y';
     }

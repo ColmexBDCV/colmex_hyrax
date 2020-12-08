@@ -197,11 +197,49 @@ es:
       previous: Anterior
       next: Siguiente
       no_data_available: No hay datos disponibles en la tabla
+    tinymce_rails_4_9_0:
+      file: Archivo
+      new_document: Nuevo Documento
+      edit: Editar
+      undo: Deshacer
+      redo: Rehacer
+      cut: Cortar
+      copy: Copiar
+      paste: Pegar
+      select_all: Seleccionar todo
+      view: Ver
+      visual_aids: Ayudas Visuales
+      format: Formato
+      bold: Negrita
+      italic: Curvado
+      underline: Subrayado
+      strikethrough: Tachado
+      superscript: Superíndice
+      subscript: Subíndice
+      code: Código
+      blocks: Bloques
+      paragraph: Párrafo
+      headings: Encabezados
+      heading: Encabezado
+      preformatted: Preformateado
+      inline: Texto
+      align: Alinear
+      left: A la Izquierda
+      center: Centrado
+      right: A la Derecha
+      justify: Justificado
+      clear_formatting: Borrar Formato
+      formats: Formatos
+      alignment: Alineación
+      decrease_indent: Decrementar Indentado
+      increase_indent: Incrementar Indentado
   views:
     the_file: El archivo 
     has_been_updated: ha sido actualizado.
     User_has_updated: Usuario ha actualizado
     User_has_attached: Usuario ha adjuntado
+    User_has_deposited: Usuario ha creado
+    User_has_deleted: Usuario ha borrado
   hyrax:
     account_name: Mi identificador de cuenta institucional
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
@@ -386,6 +424,10 @@ es:
       subject_label: Asunto
       email_label: Correo Electrónico
       thanks: Gracias por su mensaje
+    content_blocks:
+      announcement: Anuncio
+      marketing: Márketing
+      researcher: Investigador
     dashboard:
       past_30_days: Últimos 30 dias
       current: Actual
@@ -475,6 +517,11 @@ es:
       Passing_batch_create: Pasando creación de lotes
       The_batch_create_for: El lote creado por
       passed: pasó.
+    pages:
+      about: Acerca de
+      help: Ayuda
+      agreement: Acuerdo
+      terms: Términos
     permissions:
       apply_changes_to_contents: Aplicar los cambios al contenido?
     stats:
@@ -494,6 +541,13 @@ es:
       November: Noviembre
       December: Diciembre
     users:
+      search_users: Busca usuarios...
+      go: Buscar
+      users: Usuarios
+      user_name: Nombre de Usuario
+      user_id: Id de Usuario
+      department: Departamento
+      works_created: Trabajos creados
       user_activity: Actividad de Usuario
       website: Sitios de internet
       title: Título
@@ -504,6 +558,8 @@ es:
       affiliation: Afiliación
       telephone: Teléfono
       joined_on: Se unió en
+      view_users: Ver Usuarios
+      has_no_highlighted_works: no tiene trabajos destacados.
       recently_uploaded:
         tab_label: Añadidos recientemente #Integrados recientemente
         title: Nuevos Documentos #Integrados recientemente
