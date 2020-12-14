@@ -2,9 +2,6 @@ es:
   blacklight:
     search:
       fields:
-        facet:
-          contained_in_sim: Revista
-          database_sim: Base de Datos
         index:
           period: Periodo
           part: Parte
@@ -12,8 +9,6 @@ es:
           volume_tesim: Volumen
           number_tesim: Número
           pages_tesim: Páginas
-          contained_in_tesim: Revista
-          database_tesim: Base de Datos
           issn_tesim: ISSN
   hyrax:
     icons:
@@ -31,5 +26,4 @@ es:
         volume: Volumen
         number: Número
         pages: Páginas
-        contained_in: Revista
-        database: Base de Datos
+        

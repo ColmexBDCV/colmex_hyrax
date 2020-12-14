@@ -46,6 +46,7 @@ module Hyrax
              :type_of_content, :editor, :compiler, :commentator, :translator, :digital_resource_generation_information,
              :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
              :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
+             :depository_collective_agent, :depository_agent, :corporate_body, :collective_agent,
              :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
              :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id,
              :rendering_ids, :member_of_collection_ids, to: :solr_document

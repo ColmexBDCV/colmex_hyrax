@@ -44,15 +44,17 @@ gem 'hydra-role-management'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'blacklight_oai_provider'
-gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'xray-rails'
+  #To envolve the variables in you envoriments
+  gem 'figaro'
 end
 
 group :development do
@@ -69,10 +71,11 @@ end
 gem 'blacklight_range_limit', '6.3.3'
 gem 'blacklight_advanced_search'
 
-gem 'hyrax', '2.8.0'
+gem 'hyrax', '2.9.0'
 gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls'
+gem 'streamio-ffmpeg'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
 end

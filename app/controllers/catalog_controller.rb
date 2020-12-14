@@ -194,6 +194,9 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("owner_agent_of", :stored_searchable)
     config.add_index_field solr_name("custodian_agent_of", :stored_searchable)
     config.add_index_field solr_name("file_type_details", :stored_searchable)
+    config.add_index_field solr_name("depository_collective_agent", :stored_searchable)
+    config.add_index_field solr_name("depository_agent", :stored_searchable)
+    config.add_index_field solr_name("is_part_or_work", :stored_searchable)
 
 
     # solr fields to be displayed in the show (single result) view

@@ -22,6 +22,9 @@ en:
             Thesis: Thesis
             Collection: Collection
             Article: Article
+            Book: Book
+            Book_Chapter: Book Chapter
+            Video: Video
           contributor_sim: Contributor
           human_readable_type_sim: Object type
           resource_type_sim: Resource type
@@ -86,9 +89,13 @@ en:
           owner_agent_of_tesim: Owner agent
           custodian_agent_of_tesim: Custodian agent
           file_type_details_tesim: File type details
+          depository_collective_agent_tesim: Depository collective agent
+          depository_agent_tesim: Depository agent
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
+          corporate_body: Corporate body
+          collective_agent: Collective agent
           creator_tesim: Creator
           date_created_tesim: Date Created
           date_modified_dtsi: Date Modified
@@ -99,6 +106,9 @@ en:
           keyword_tesim: Keyword
           language_tesim: Language
           license_tesim: License
+          numbering_within_sequence: Numbering within sequence
+          organizer_author: Organizer author
+          place_of_publication: Place of publication
           publisher_tesim: Publisher
           rights_statement_tesim: Rights Statement
           subject_tesim: Subject
@@ -106,6 +116,7 @@ en:
           subject_family_sim: Subject family
           subject_work_sim: Subject work
           title_tesim: Title
+          title_of_series: Title of series
       sort:
         label: Order by %{field}
         relevance: Relevance
@@ -225,6 +236,25 @@ en:
         Display_new_reporting_features: Display new reporting features. *Very Experimental*
         Do_not_show_the: Do not show the private items.
         Do_not_show_users: Do not show users list unless user has authenticated.
+      sidebar:
+        validation_csv: Validation CSV
+        validate_csv: Validate your CSV
+      validations:
+        are_you_sure: Are you sure to delete this file?
+        user: User
+        original_name: Original name
+        new_name: New name
+        type_work: Tipe work
+        path_file_csv: Path file CSV
+        created_at: Created date
+        show_already_validated_csv_files: Show already validated CSV files
+        check_your_file: This module will validate your file CSV before importaing it.
+        choose_options: Choose type work
+        article: Article
+        thesis: Thesis
+        book: Book
+        video: Video
+        book_chapter: Book Chapter
       workflow_roles:
         user: User
         workflow_role: Workflow role
@@ -239,6 +269,9 @@ en:
         Collection: Collection
       social_media:
         link: copied to clipboard
+      to_create_a_separate: To create a separate work for each of the files, go to 
+      #metadata from view _form_progress
+      saving_your_work: Saving your work. This may take a few moments.
       #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
       who_should: Who should be able to view or download this content?
       #metadatos de la vista file_manager y sus partials derivados
@@ -278,10 +311,12 @@ en:
         attach_child_Article: Attach Article
         attach_child_Book: Attach Book
         attach_child_Video: Attach Video
+        attach_child_Book_Chapter: Attach Book Chapter
         delete_this_Thesis: Delete this Thesis
         delete_this_Article: Delete this Article
         delete_this_Book: Delete this Book
         delete_this_Video: Delete this Video
+        delete_this_Book_Chapter: Delete this Book Chapter
         ###
         description: Abstract or Summary 
         all_fields: All fields
@@ -289,6 +324,7 @@ en:
         analitycs: Analytics
         work_type_Article: Article
         work_type_Thesis: Thesis
+        work_type_Book_Chapter: Book Chapter
         last_modified: Last modified
         creator: Creator
         contributor: Contributor
@@ -336,6 +372,8 @@ en:
         project: Project
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
+        depository_collective_agent_tesim: Depository collective agent
+        depository_agent_tesim: Depository agent
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"
@@ -389,6 +427,8 @@ en:
         view_top: View top 
         top_file_formats: Top File Formats (top
         most_active_users: Most Active Users (top
+      works:
+        deposited: Deposited
       workflows:
         work: Work
         depositor: Depositor
@@ -411,6 +451,7 @@ en:
       delete_this: Delete this
       #
       file_details: File Details
+      page_count: Page count
       depositor: Depositor
       date_uploaded: Date Uploaded
       date_modified: Date Modified
@@ -432,6 +473,8 @@ en:
       next: Next
       show: Show
       per_page: per page
+      works:
+        deleted: Deleted
     notifications:
       delete_all: Delete all
       delete_all_user_notifications: Delete all user notifications
@@ -442,6 +485,9 @@ en:
       terms: Terms
     permissions:
       apply_changes_to_contents: Apply changes to contents?
+    records:
+      edit_fields:
+        search_for_a_location: Search for a location
     stats:
       file_analytics: File Analytics
       views_and:  views and

@@ -61,6 +61,8 @@ db/*.sqlite3
 /.yardoc
 /doc
 
+#ignore your keys on config/application.yml
+/config/application.yml
 ## PROJECT::SPECIFIC
 
 .internal_test_app
@@ -81,7 +83,6 @@ solr/*
 digital_objects/*
 *.csv
 config/ga.key
-config/initializers/hyrax.rb
 config/database.yml
 log/production.log.0
 TAGS

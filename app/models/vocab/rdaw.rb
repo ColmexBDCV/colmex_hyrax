@@ -20,5 +20,6 @@ module Vocab
     term :dissertationOrThesisInformation
     term :containedInWork
     term :numberingOfPart
+    term :hasRelatedWorkOfWork
   end
 end

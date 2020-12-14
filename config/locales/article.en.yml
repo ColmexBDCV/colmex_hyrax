@@ -7,7 +7,7 @@ en:
           database_sim: Database Source
         index:
           volume_tesim: Volume
-          contained_in_tesim: Journal
+          contained_in_tesim: "Contained in"
           database_tesim: Database Source
           issn_tesim: ISSN
           number_tesim: Number
@@ -21,7 +21,7 @@ en:
         name:               "Article"
     base:
       show:
-        contained_in: Journal
+        contained_in: "Containe in:"
         database: Database Source
         number: Number
         part: Part

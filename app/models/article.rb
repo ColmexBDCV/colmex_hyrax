@@ -3,6 +3,7 @@
 class Article < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include Conacyt
+  include ArticlesAndChapters
 
   self.indexer = ArticleIndexer
   # Change this to restrict which works can be added as a child.
@@ -28,18 +29,8 @@ class Article < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end 
-
-  property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end 
-
-  property :database, predicate: ::Vocab::RDAZ.sourceConsulted, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
   
-  property :issn, predicate: ::Vocab::RDAM.issnOfSeries, multiple: true do |index|
+    property :issn, predicate: ::Vocab::RDAM.issnOfSeries, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end

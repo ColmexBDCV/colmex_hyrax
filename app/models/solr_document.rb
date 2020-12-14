@@ -152,6 +152,18 @@ class SolrDocument
     self[Solrizer.solr_name('file_type_details')]
   end
 
+  def depository_collective_agent
+    self[Solrizer.solr_name('depository_collective_agent')]
+  end
+
+  def depository_agent
+    self[Solrizer.solr_name('depository_agent')]
+  end
+
+  def is_part_or_work
+    self[Solrizer.solr_name('is_part_or_work')]
+  end
+  
   def digital_resource_generation_information
     self[Solrizer.solr_name('digital_resource_generation_information')]
   end

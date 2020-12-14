@@ -20,7 +20,7 @@
 <%= presenter.attribute_to_html(:classification, label: t('hyrax.base.show.classification'), html_dl:true) %>
 <%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :identifier_alma, search_field: 'identifier_tesim', html_dl: true) %>
 <%= presenter.attribute_to_html(:other_related_persons, label: t('hyrax.base.show.other_related_persons'), html_dl: true) %>
-<%= presenter.attribute_to_html(:reviewer, label: t('hyrax.base.show.reviewer'), html_dl: true) %>
+<%= presenter.attribute_to_html(:reviewer, label: t('hyrax.base.show.reviewer'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:editor, label: t('hyrax.base.show.editor'), html_dl: true) %>
 <%= presenter.attribute_to_html(:compiler, label: t('hyrax.base.show.compiler'), html_dl: true) %>
 <%= presenter.attribute_to_html(:commentator, label: t('hyrax.base.show.commentator'), html_dl: true) %>
@@ -31,7 +31,7 @@
     :gender_or_form, :notes, :supplementary_content_or_bibliography,
     :responsibility_statement, :table_of_contents, :mode_of_issuance,
     :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place, 
-    :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details
+    :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :depository_collective_agent, :depository_agent, :corporate_body, :collective_agent
     ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  

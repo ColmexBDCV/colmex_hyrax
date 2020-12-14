@@ -9,6 +9,8 @@ Hyrax.config do |config|
   config.register_curation_concern :book
   # Injected via `rails g hyrax:work Video`
   config.register_curation_concern :video
+  # Injected via `rails g hyrax:work BookChapter`
+  config.register_curation_concern :book_chapter
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

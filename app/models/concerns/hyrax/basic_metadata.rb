@@ -80,8 +80,10 @@ module Hyrax
       property :owner_agent_of, predicate: ::Vocab::RDAA.ownerAgentOf, multiple: true
       property :custodian_agent_of, predicate: ::Vocab::RDAA.custodianAgentOf, multiple: true
       property :file_type_details, predicate: ::Vocab::RDAM.detailsOfFileType, multiple: true
-
-
+      property :depository_collective_agent, predicate: ::Vocab::RDAI.depositoryCollectiveAgent, multiple: true
+      property :depository_agent, predicate: ::Vocab::RDAI.depositoryAgent, multiple: true
+      property :corporate_body, predicate: ::Vocab::RDAC.corporateBody, multiple: true
+      property :collective_agent, predicate: ::Vocab::RDAC.collectiveAgent, multiple: true
       
       id_blank = proc { |attributes| attributes[:id].blank? }
 
