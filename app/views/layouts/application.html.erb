@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- esto es application -->
+    <script type="text/javascript">
+      window.Locale = "<%= I18n.locale.to_s %>"
+      window.I18n = <%= current_translations.to_json.html_safe %>
+    </script>
     <title><%=t('hyrax.product_name')%></title>
     <%= csrf_meta_tags %>
 

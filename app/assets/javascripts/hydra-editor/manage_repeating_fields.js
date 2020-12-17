@@ -16,10 +16,10 @@
         inputTypeClass:    '.multi_value',
 
         addHtml:           '<button type=\"button\" class=\"btn btn-link add\"><span class=\"glyphicon glyphicon-plus\"></span><span class="controls-add-text"></span></button>',
-        addText:           'Add another',
+        addText:           I18n.js.hydra_editor.add_another,
 
         removeHtml:        '<button type=\"button\" class=\"btn btn-link remove\"><span class=\"glyphicon glyphicon-remove\"></span><span class="controls-remove-text"></span> <span class=\"sr-only\"> previous <span class="controls-field-name-text">field</span></span></button>',
-        removeText:         'Remove',
+        removeText:        I18n.js.hydra_editor.remove,
 
         labelControls:      true,
     }

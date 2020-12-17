@@ -1,0 +1,24 @@
+<h3><%= t('hyrax.dashboard.stats.top_file')%></h3>
+<h4><%= t('hyrax.dashboard.stats.statistics_in_this_section_shows')%> <%= @presenter.limit %> <%= t('hyrax.dashboard.stats.items_for')%></h4>
+<% if @presenter.limit == 5 %>
+  <p><%= link_to t('hyrax.dashboard.stats.view_top')+' 20' , hyrax.admin_stats_path(limit: '20') %> </p>
+<% else %>
+  <p><%= link_to t('hyrax.dashboard.stats.view_top')+' 5' , hyrax.admin_stats_path %> </p>
+<% end %>
+
+<h3><%= t('hyrax.dashboard.stats.top_file_formats')%> <%= @presenter.top_formats.count %>)</h3>
+<ul>
+  <% @presenter.top_formats.each do |fmt| %>
+    <li><%= fmt.label %> <span class="count">(<%= fmt.value %>)</span></li>
+  <% end %>
+</ul>
+
+<br />
+<h3><%= t('hyrax.dashboard.stats.most_active_users')%> <%= @presenter.active_users.count %>)</h3>
+<ul>
+  <% @presenter.active_users.each do |user| %>
+    <li>
+      <%= link_to_profile(user.label) %> <span class="count">(<%= user.value %>)</span>
+    </li>
+  <% end %>
+</ul>

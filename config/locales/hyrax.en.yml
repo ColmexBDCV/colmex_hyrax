@@ -124,12 +124,110 @@ en:
       hyphen: Use "-" before a word or phrase to exclude.
       and_or_not: Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions.
       truncate: Truncation and wildcards are not supported - word-stemming is done automatically.
-
+  js:
+    hydra_editor:
+      add_another: Add Another
+      remove: Remove
+    jquery_datatables_rails_3_4_0:
+      show: Show
+      entries: entries
+      showing: Showing
+      to: to
+      of: of
+      search: "Search:"
+      previous: Previous
+      next: Next
+      no_data_available: No data available in table
+    tinymce_rails_4_9_0:
+      file: File
+      new_document: New Document
+      edit: Edit
+      undo: Undo
+      redo: Redo
+      cut: Cut
+      copy: Copy
+      paste: Paste
+      select_all: Select all
+      view: View
+      visual_aids: Visual aids
+      format: Format
+      bold: Bolt
+      italic: Italic
+      underline: Underline
+      strikethrough: Strikethrough
+      superscript: Superscript
+      subscript: Subscript
+      code: Code
+      blocks: Blocks
+      paragraph: Paragraph
+      headings: Headings
+      heading: Heading
+      preformatted: Preformatted
+      inline: Inline
+      align: Align
+      left: Left
+      center: Center
+      right: Right
+      justify: Justify
+      clear_formatting: Clear formatting
+      formats: Formats
+      alignment: Alignment
+      decrease_indent: Decrease indent
+      increase_indent: Increase indent
+  views:
+    the_file: The file 
+    has_been_updated: has been updated.
+    User_has_updated: User has updated
+    User_has_attached: User has attached
+    User_has_deposited: Usuario ha creado
+    User_has_deleted: Usuario ha borrado
   hyrax:
     adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
-    #Metadatos del archivo JS manage_repeating_fields en assets/javascript/
-    add_another: Add another
-    remove: Remove
+    admin:
+      appearances:
+        header_background: Header background color
+        header_text: Header text color
+        link_color: Link color
+        footer_link: Footer link color
+        primary_button_background: Primary button background color
+      collection_types:
+        in_this_repository: in this repository
+        collection_type: Collection type
+        submit: Submit
+        apply_to_new_works: APPLY TO NEW WORKS
+        search_for_a_group: Search for a group...
+        as: as
+        select_a_role: Select a role...
+        Manager: Manager
+        Creator: Creator
+        Group: Group
+      features:
+        feature: Features
+        enabled: enabled
+        disabled: disabled
+        onn: "on"
+        offf: "off"
+        Proxy_deposit: Proxy deposit
+        Transfer_works: Transfer works
+        Assign_admin_set: Assign admin set
+        Show_deposit_agreement: Show deposit agreement
+        Active_deposit_agreement_acceptance: Active deposit agreement acceptance
+        Batch_upload: Batch upload
+        Analitycs_redesign: Analitycs redesign
+        Hide_private_items: Hide private items
+        Hide_users_list: Hide users list
+        Depositors_may_designate_proxies: Depositors may designate proxies to deposit works on their behalf
+        Depositors_may_transfer_their: Depositors may transfer their works to another user
+        Ability_to_assign_uploaded: Ability to assign uploaded items to an admin set
+        Show_a_deposit_agreement: Show a deposit agreement to users creating works
+        Require_an_active_acceptance: Require an active acceptance of the deposit agreement by checking a checkbox
+        Enable_uploading_batches_of: Enable uploading batches of works
+        Display_new_reporting_features: Display new reporting features. *Very Experimental*
+        Do_not_show_the: Do not show the private items.
+        Do_not_show_users: Do not show users list unless user has authenticated.
+      workflow_roles:
+        user: User
+        workflow_role: Workflow role
     base:
       citations:
         header: "Export citation"
@@ -172,6 +270,7 @@ en:
       search_for_a_user: Search for a user
       show:
         #metadatos de la vista _show_actions.html.erb
+        unfeature: Unfeature
         edit: Edit
         delete: Delete
         attach_child: Attach Child
@@ -251,8 +350,15 @@ en:
     Choose_Access: Choose Access
     ####
     days_ago: days ago
+    content_blocks:
+      announcement: Announcement
+      marketing: Marketing
+      researcher: Researcher
     dashboard:
+      past_30_days: Past 30 days
+      current: Current
       profiles:
+        your_profile_has_been_updated: You profile has been updated
         change_picture: Change picture
         less_than: less than
         delete_picture: Delete picture
@@ -262,9 +368,44 @@ en:
         maternal_surname: Maternal Surname
         phone: Phone
         save_profile: Save Profile
+      stats:
+        statistics_by_date: Statistics by date.
+        statistics_in_this_section: Statistics in this section are filtered by the dates entered in the form below.
+                                    The data is unfiltered unless the date form has been filled in. Start date is required and the default end is now.
+        start_*: Start *
+        end_[]: End [Defaults to now]
+        load_stats: Load Stats
+        unfiltered: unfiltered
+        newest_users: Newest Users
+        most_recent_users: "most recent users:"
+        of: of
+        registered: registered
+        deposists_by_users: Deposits by users
+        deposited: deposited
+        file: file
+        top_file: Top File Formats and Users
+        statistics_in_this_section_shows: "Statistics in this section show the top "
+        items_for: items for each category
+        view_top: View top 
+        top_file_formats: Top File Formats (top
+        most_active_users: Most Active Users (top
+      workflows:
+        work: Work
+        depositor: Depositor
+        submission_date: Submission Date
+        status: Status
+        deposited: deposited
     directory:
       suffix: "@example.org"
+    embargoes:
+      desactivated: Desactivated Embargoes
     file_set:
+      #metadatos de show_characterization_details
+      width: Width
+      height: Height
+      file_format: File Format
+      original_checksum: Original Checksum
+      mime_type: Mime Type
       # metadatos de la vista de show_actions en filesets
       edit_this: Edit this
       delete_this: Delete this
@@ -284,12 +425,21 @@ en:
       centre_historical_studies: Centre Historical Studies
       centre_international_studies: Centre International Studies
       centre_sociological_studies: Centre Sociological Studies
+    leases:
+      desactivated: Desactivated Leases
     my:
+      previous: Previous
+      next: Next
       show: Show
       per_page: per page
     notifications:
-      delete_all: Borrar todo
-      delete_all_user_notifications: Borrar todas las notificaciones del Usuario
+      delete_all: Delete all
+      delete_all_user_notifications: Delete all user notifications
+    pages:
+      about: About
+      help: Help
+      agreement: Agreement
+      terms: Terms
     permissions:
       apply_changes_to_contents: Apply changes to contents?
     stats:
@@ -309,6 +459,13 @@ en:
       November: November
       December: December
     users:
+      search_users: Search Users...
+      go: Go
+      users: Users
+      user_name: User Name
+      user_id: User Id
+      department: Department
+      works_created: Works Created
       user_activity: User Activity
       website: Website(s)
       title: Title
@@ -319,6 +476,8 @@ en:
       affiliation: Affiliation
       telephone: Telephone
       joined_on: Joined on
+      view_users: View Users
+      has_no_highlighted_works: has no highlighted works.
     footer:
       service_html: A service of <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
       copyright_html: "Unless otherwise indicated, all content is subject to: <br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licensed under the Creative Commons Attribution 4.0</a>"

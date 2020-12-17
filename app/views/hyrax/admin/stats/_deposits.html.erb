@@ -1,0 +1,9 @@
+<h3><%= t('hyrax.dashboard.stats.deposits_by_users')%> (<%= t('hyrax.dashboard.stats.'+@presenter.date_filter_string) %>)</h3>
+<ul>
+  <% @presenter.depositors.each do |usr| %>
+    <li>
+      <%= link_to usr[:user].name, hyrax.user_path(usr[:user]), title: "View user's profile" %>
+      <%= t('hyrax.dashboard.stats.deposited')%> <%= pluralize(usr[:deposits], t('hyrax.dashboard.stats.file')) %>
+    </li>
+  <% end %>
+</ul>

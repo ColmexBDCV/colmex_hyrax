@@ -33,6 +33,9 @@ gem 'redis'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Use i18n-js to translate text in JS
+gem 'i18n-js'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

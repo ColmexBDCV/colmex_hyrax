@@ -2,7 +2,7 @@ module Hyrax
   module Dashboard
     ## Shows and edit the profile of the current_user
     class ProfilesController < Hyrax::UsersController
-      layout 'dashboard'
+      with_themed_layout 'dashboard'
       before_action :find_user
       authorize_resource class: '::User', instance_name: :user
 
@@ -27,7 +27,7 @@ module Hyrax
       def update
         if conditionally_update
           handle_successful_update
-          redirect_to hyrax.dashboard_profile_path(@user.to_param), notice: "Your profile has been updated"
+          redirect_to hyrax.dashboard_profile_path(@user.to_param), notice: t('hyrax.dashboard.profiles.your_profile_has_been_updated')
         else
           redirect_to hyrax.edit_dashboard_profile_path(@user.to_param), alert: @user.errors.full_messages
         end
