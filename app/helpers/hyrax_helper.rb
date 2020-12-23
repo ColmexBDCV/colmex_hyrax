@@ -2,6 +2,7 @@ module HyraxHelper
   include ::BlacklightHelper
   include Hyrax::BlacklightOverride
   include Hyrax::HyraxHelperBehavior
+  include Hyrax::WorkFormHelper
   
   def build_citation(presenter)
     if presenter.resource_type.include? "Tesis" then
