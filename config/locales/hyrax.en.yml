@@ -86,6 +86,8 @@ en:
           owner_agent_of_tesim: Owner agent
           custodian_agent_of_tesim: Custodian agent
           file_type_details_tesim: File type details
+          depository_collective_agent_tesim: Depository collective agent
+          depository_agent_tesim: Depository agent
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -336,6 +338,8 @@ en:
         project: Project
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
+        depository_collective_agent_tesim: Depository collective agent
+        depository_agent_tesim: Depository agent
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"

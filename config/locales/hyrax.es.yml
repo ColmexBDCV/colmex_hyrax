@@ -56,6 +56,8 @@ es:
           project_sim: Proyecto
           owner_agent_of_sim: Propietario
           custodian_agent_of_sim: Custodio
+          contained_in_sim: "Incluido en:"
+          database_sim: Base de Datos
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -113,6 +115,8 @@ es:
           project_tesim: Proyecto
           owner_agent_of_tesim: Propietario
           custodian_agent_of_tesim: Custodio
+          contained_in_tesim: "Incluido en"
+          database_tesim: Base de Datos
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -408,6 +412,10 @@ es:
         project: Proyecto
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
+        depository_collective_agent: Agente colectivo depositario
+        depository_agent: Agente depositario
+        contained_in: "Incluido en:"
+        database: Base de Datos
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
@@ -639,6 +647,8 @@ es:
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
         file_type_details: Detalles del tipo de archivo
+        depository_collective_agent: Agente colectivo depositario
+        depository_agent: Agente depositario
         type_of_illustrations: Tipo de ilustraciones
         center: Centro
         mode_of_issuance: Modo de publicación
@@ -647,7 +657,7 @@ es:
         part: Parte
         volume: Volumen
         number: Número
-        contained_in: Contenido en
+        contained_in: "Incluido en:"
         database: Base de Datos
         subject_conacyt: Persona del CONACYT        
         

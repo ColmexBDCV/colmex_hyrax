@@ -81,7 +81,6 @@ solr/*
 digital_objects/*
 *.csv
 config/ga.key
-config/initializers/hyrax.rb
 config/database.yml
 log/production.log.0
 TAGS
