@@ -58,6 +58,8 @@ es:
           custodian_agent_of_sim: Custodio
           contained_in_sim: "Incluido en:"
           database_sim: Base de Datos
+          depository_collective_agent_sim: Organismo depositante
+        depositor_agent_sim: Persona depositante
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -117,6 +119,8 @@ es:
           custodian_agent_of_tesim: Custodio
           contained_in_tesim: "Incluido en"
           database_tesim: Base de Datos
+          depository_collective_agent_tesim: Organismo depositante
+          depositor_agent_tesim: Persona depositante
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -416,6 +420,8 @@ es:
         depository_agent: Agente depositario
         contained_in: "Incluido en:"
         database: Base de Datos
+        depository_collective_agent: Organismo depositante
+        depositor_agent: Persona depositante
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
