@@ -11,6 +11,8 @@ es:
             Collection: Colección
             Article: Artículo
             Book: Libro
+            Book_Chapter: Capítulo del libro
+            Video: Video
           creator_sim: Autor
           contributor_sim: Colaborador
           date_created_sim: Año
@@ -125,6 +127,8 @@ es:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
           creator_tesim: Autor
+          corporate_body: Autor corporativo
+          collective_agent: Autor congreso
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de Subida
@@ -135,15 +139,19 @@ es:
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
+          numbering_within_sequence: Volumen/número
           publisher_tesim: Datos de publicación/producción
           rights_statement_tesim: Declaración de derechos
           subject_tesim: Tema
           title_tesim: Título
+          title_of_series: Serie
           badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
           temporary_coverage_tesim: Cobertura temporal
           interviewer: Entrevistado
           interviewee: Entrevistador
           organizer_collective_agent: Seminario
+          organizer_author: Coordinador / Organizador
+          place_of_publication: Lugar de publicación
           photographer: Fotográfo
           collective_title: Título colectivo
           part_of_place: Ciudad/Municipio/Localidad
@@ -313,6 +321,7 @@ es:
         quote: "Forma de citar (APA):"
       social_media:
         link: copiado en portapapeles
+      to_create_a_separate: Para crear un trabajo separado para cada uno de los archivos, vaya a
       #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
       who_should: Quién debe ser capaz para ver o descargar este contenido?
       ##metadatos de la vista file_manager.html.erb
@@ -324,6 +333,8 @@ es:
       representative_media: Media Representativo
       add_this: Agrega esto
       add_this_group: Agrega este grupo
+      #metadata from view _form_progress
+      saving_your_work: Guardando tú trabajo. Esto puede tardar un poco.
       #metadatos de la vista _form_visibility_component.html.er
       visibility: Visibilidad
       #metadatos para la vista _form_member_of_collections.html.erb
@@ -352,10 +363,12 @@ es:
         attach_child_Article: Adjuntar Artículo
         attach_child_Book: Adjuntar Libro
         attach_child_Video: Adjuntar Video
+        attach_child_Book_Chapter: Adjuntar Capítulo de libro
         delete_this_Thesis: Borrar esta Tesis
         delete_this_Article: Borrar este Artículo
         delete_this_Book: Borrar este Libro
         delete_this_Video: Borrar este Video
+        delete_this_Book_Chapter: Borrar este Capítulo de libro
         ###
         description: Resumen
         all_fields: Todos los campos
@@ -365,6 +378,7 @@ es:
         work_type_Article: Artículo
         work_type_Thesis: Tesis
         work_type_Book: Libro
+        work_type_Book_Chapter: Capítulo de Libro
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador
@@ -479,6 +493,8 @@ es:
         view_top: Ver los principales
         top_file_formats: Principales formatos de archivo (Principales
         most_active_users: Usuarios más activos (Top
+      works:
+        deposited: Depositado
       workflows:
         work: Trabajo
         depositor: Creador
@@ -498,6 +514,7 @@ es:
       width: Ancho
       height: Altura
       file_format: Formato de Archivo
+      page_count: Recuento de páginas
       original_checksum: Verificación de suma original
       mime_type: Tipo de Mímica
       #metadatos de la vista de show_actions en filesets
@@ -525,6 +542,10 @@ es:
       next: Siguiente
       show: Mostrar
       per_page: por página
+      works:
+        deleted: Borrado
+        work: El trabajo
+        successfully_updated: actualizado exitosamente.
     notifications:
       delete_all: Borrar todo
       delete_all_user_notifications: Borrar todas las notificaciones del Usuario
@@ -538,6 +559,9 @@ es:
       terms: Términos
     permissions:
       apply_changes_to_contents: Aplicar los cambios al contenido?
+    records:
+      edit_fields:
+        search_for_a_location: Buscar una ubicación
     stats:
       file_analytics: Análisis de archivo
       views_and: vistas y
@@ -666,4 +690,10 @@ es:
         contained_in: "Incluido en:"
         database: Base de Datos
         subject_conacyt: Persona del CONACYT        
-        
+        corporate_body: Autor corporativo
+        collective_agent: Autor congreso
+        organizer_author: Coordinador / Organizador
+        place_of_publication: Lugar de publicación
+        title_of_series: Serie
+        numbering_within_sequence: Volumen/número
+        is_part_or_work: Es parte o trabajo

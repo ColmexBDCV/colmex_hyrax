@@ -1,4 +1,4 @@
 <h1 class="work-type-tag">
   <span class="<%= Hyrax::ModelIcon.css_class_for(presenter.model) %>" aria-hidden="true"></span>
-  <%= t('hyrax.base.show.work_type_'+presenter.human_readable_type, :default => presenter.human_readable_type) %>
+  <%= t('hyrax.base.show.work_type_' + presenter.human_readable_type.split(" ").join("_"), :default => presenter.human_readable_type) %>
 </h1>
