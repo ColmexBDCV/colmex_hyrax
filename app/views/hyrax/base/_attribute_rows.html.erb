@@ -20,7 +20,7 @@
 <%= presenter.attribute_to_html(:classification, label: t('hyrax.base.show.classification'), html_dl:true) %>
 <%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :identifier_alma, search_field: 'identifier_tesim', html_dl: true) %>
 <%= presenter.attribute_to_html(:other_related_persons, label: t('hyrax.base.show.other_related_persons'), html_dl: true) %>
-<%= presenter.attribute_to_html(:reviewer, label: t('hyrax.base.show.reviewer'), html_dl: true) %>
+<%= presenter.attribute_to_html(:reviewer, label: t('hyrax.base.show.reviewer'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:editor, label: t('hyrax.base.show.editor'), html_dl: true) %>
 <%= presenter.attribute_to_html(:compiler, label: t('hyrax.base.show.compiler'), html_dl: true) %>
 <%= presenter.attribute_to_html(:commentator, label: t('hyrax.base.show.commentator'), html_dl: true) %>
