@@ -18,7 +18,7 @@ class Video < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
   
-  property :note_on_statement_of_resposibility, predicate: ::Vocab::RDAM.noteOnStatementOfResposibility, multiple: true do |index|
+  property :note_on_statement_of_responsibility, predicate: ::Vocab::RDAM.noteOnStatementOfResposibility, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end

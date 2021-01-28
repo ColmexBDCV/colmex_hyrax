@@ -224,8 +224,9 @@ en:
         Show_deposit_agreement: Show deposit agreement
         Active_deposit_agreement_acceptance: Active deposit agreement acceptance
         Batch_upload: Batch upload
-        Analitycs_redesign: Analitycs redesign
-        Hide_private_items: Hide private items
+        Analytics_redesign: Analitycs redesign
+        Cache_work_iiif_manifest: Cache work liif manifest
+        Hide_private1_items: Hide private items
         Hide_users_list: Hide users list
         Depositors_may_designate_proxies: Depositors may designate proxies to deposit works on their behalf
         Depositors_may_transfer_their: Depositors may transfer their works to another user
@@ -236,6 +237,7 @@ en:
         Display_new_reporting_features: Display new reporting features. *Very Experimental*
         Do_not_show_the: Do not show the private items.
         Do_not_show_users: Do not show users list unless user has authenticated.
+        Use: Use Rails.cache to cache the JSON document for IIIF manifests
       workflow_roles:
         user: User
         workflow_role: Workflow role

@@ -357,7 +357,7 @@ class SolrDocument
   end
 
   def note_on_statement_of_resposibility
-    self[Solrizer.solr_name('note_on_statement_of_resposibility')]
+    self[Solrizer.solr_name('note_on_statement_of_responsibility')]
   end
   
   def interviewer

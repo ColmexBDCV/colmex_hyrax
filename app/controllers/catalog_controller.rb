@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("numbering_within_sequence", :stored_searchable)
     config.add_index_field solr_name("video_format", :stored_searchable)
     config.add_index_field solr_name("video_characteristic", :stored_searchable)
-    config.add_index_field solr_name("note_on_statement_of_resposibility", :stored_searchable)
+    config.add_index_field solr_name("note_on_statement_of_responsibility", :stored_searchable)
     config.add_index_field solr_name("editor", :stored_searchable), link_to_search: solr_name("editor", :facetable)
     config.add_index_field solr_name("compiler", :stored_searchable), link_to_search: solr_name("compiler", :facetable)
     config.add_index_field solr_name("commentator", :stored_searchable), link_to_search: solr_name("commentator", :facetable)

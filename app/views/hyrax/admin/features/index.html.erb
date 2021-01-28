@@ -34,7 +34,11 @@
                 </td>
                 <% characteristics= feature.name.humanize.split(" ").join("_")%>
                 <td class="name"><%= t("hyrax.admin.features."+characteristics) -%></td>
-                <% descriptions= feature.description.split(" ").slice(0,4).join("_")%>
+                <%if !feature.description.include? "Use"%>
+                      <% descriptions= feature.description.split(" ").slice(0,4).join("_")%>
+                <%else%>
+                      <% descriptions= feature.description.split(" ").slice(0,1).join("_")%>
+                <%end%>
                 <td class="description"><%= t('hyrax.admin.features.'+descriptions) -%></td>
 
                 <% @feature_set.strategies.each do |strategy| -%>

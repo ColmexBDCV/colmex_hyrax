@@ -293,9 +293,11 @@ es:
         offf: apagado
         Proxy_deposit: Depósito de poder
         Transfer_works: Transferencia de obras
+        Analytics_redesign: Rediseño de análisis
+        Cache_work_iiif_manifest: Caché trabajo IIIF manifiesto
         Assign_admin_set: Asignar conjunto de administración
         Show_deposit_agreement: Mostrar acuerdo de depósito
-        Active_deposit_agreement acceptance: Aceptación del acuerdo de depósito activo
+        Active_deposit_agreement_acceptance: Aceptación del acuerdo de depósito activo
         Batch_upload: Carga por lotes
         Analitycs_redesign: Rediseño de Analíticas
         Hide_private_items: Ocultar ítems privados
@@ -309,6 +311,7 @@ es:
         Display_new_reporting_features: Muestra nuevas funciones de informes. * Muy experimental *
         Do_not_show_the: No muestra los ítems privados
         Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
+        Use: Usar Rails.cache para almacenar en caché el documento JSON para los manifiestos IIIF
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de trabajo
@@ -627,7 +630,7 @@ es:
         login: Administrador
   simple_form:
     labels:
-      defaults:
+      defaults: #Aquí va la traducción de los metadatos de la paǵina de crear un trabajo de tipo XXXXX
         date_created: Fecha de creación
         alternate_title: Título Alternativo
         other_title: Otro Título
@@ -697,3 +700,16 @@ es:
         title_of_series: Serie
         numbering_within_sequence: Volumen/número
         is_part_or_work: Es parte o trabajo
+        awards: Premios
+        academic_degree: Título Académico
+        type_of_thesis: Tipo de Tesis
+        degree_program: Programa de Estudios
+        institution: Institución
+        date_of_presentation_of_the_thesis: Fecha de presentación de la Tesis
+        creator_conacyt: Creador CONACYT
+        pub_conacyt: Pub CONACYT
+        contributor_conacyt: Colaborador CONACYT
+        type_conacyt: Tipo CONACYT
+        video_format: Formato del video
+        video_characteristic: Características del video
+        note_on_statement_of_responsibility: Nota sobre declaración de responsabilidad
