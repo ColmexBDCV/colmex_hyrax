@@ -313,6 +313,7 @@ es:
         validation_csv: Validación CSV
         validate_csv: Validá tu CSV
       validations:
+        view_options: Ver opciones
         are_you_sure: Estás seguro de eliminar este archivo?
         user: Usuario
         original_name: Nombre original

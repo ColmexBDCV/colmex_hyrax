@@ -62,7 +62,7 @@
                     <%= f.file_field :file, accept: '.csv', id: 'csvFileInput', class: ["form-control-file",'inline-block'] %>
                     <div class="select-work inline_block contenedor-oculto">
                         <%= f.label :type_work, t('hyrax.admin.validations.choose_options'), class: 'time-new-roman' %>
-                        <%= f.select :type_work , [[t('hyrax.admin.validations.thesis'),'thesis'],[t('hyrax.admin,validations.article'),'article'],
+                        <%= f.select :type_work , [[t('hyrax.admin.validations.view_options'), ''],[t('hyrax.admin.validations.thesis'),'thesis'],[t('hyrax.admin,validations.article'),'article'],
                                                 [t('hyrax.admin,validations.book'),'book'],[t('hyrax.admin,validations.video'),'video'],
                                                 [t('hyrax.admin,validations.book_chapter'),'book_chapter']] %>
                     </div>

@@ -37,7 +37,7 @@ let registrosDateCreatedNull = [];
 let registrosDateCreatedString = [];
 let registrosFileNameErroneos = [];
 let ValorTextArea = [];
-const TableCsv = {
+/*const TableCsv = {
     root: HTMLTableElement,
     constructor: root => this.root = root,
     setHeader: headerColumns => this.root.insertAdjacentHTML("afterbegin",`
@@ -59,25 +59,66 @@ const TableCsv = {
             </tbody>
         `);
     }
+}*/
+
+function creadTH(text) {
+    const th = document.createElement('th');
+    th.textContent = text
+    return th;
+}
+function creaTR() {
+    const tr = document.createElement('tr');
+    tr.classList.add('correct');
+    return tr;
+}
+function creaTD(headerColumns,index,text) {
+    const td = document.createElement('td')
+    td.classList.add(headerColumns[index%headerColumns.length] === '' ? 'vacio' : headerColumns[index%headerColumns.length]);
+    td.textContent = text
+    return td;
+}
+
+const TableCsv = {
+    root: HTMLTableElement,
+    constructor: (root) => this.root = root,
+    setheader: (headerColumns) => {setHeader(headerColumns,this.root)},
+    setbody: (data,headerColumns) => {setBody(headerColumns,data,this.root)}
+}
+
+function setHeader(headerColumns,root) {
+    const header = document.createElement('thead');
+    headerColumns.forEach( head => {
+        header.appendChild(creadTH(head))
+    })
+    root.appendChild(header);
+}
+
+function setBody(headerColumns,data,root) {
+    const body = document.createElement('tbody');
+    data.forEach( row => {
+        const tr = creaTR();
+        row.forEach((text,index) => {
+            tr.appendChild(creaTD(headerColumns,index,text));
+        })
+        body.appendChild(tr);
+    })
+    root.appendChild(body);
 }
 
 cargaListeners();
 
 function cargaListeners() {
     
-    //csvFileInput.addEventListener('change', creaTablaDelCsv)
 
     targetDivContenedor.addEventListener('click', e => {
         if (e.target.classList.contains('form-control-file')) {
             e.stopImmediatePropagation();
-            console.log('diste click al file')
             iniciaApp();
-            //creaTablaDelCsv();
         }
         if (e.target.classList.contains('validador')) {
             e.stopImmediatePropagation();
-            validadorBtn();
             deshabilitaBtnValidador(e.target);
+            validadorBtn();
         }
 
     });
@@ -108,7 +149,8 @@ function quitarSpinnerVisualizarTabla() {
     setTimeout(() =>{
         document.querySelector('.spinner').remove();
         document.querySelector('.table-sm').classList.remove('visibility-hide');
-    },3000);
+        targetDivContenedor.appendChild(creaBoton('validador','Validar archivo'));
+    },2000);
 }
 /**
  * @param {HTMLElement} target 
@@ -120,6 +162,19 @@ function deshabilitaBtnValidador(target) {
 }
 
 function iniciaApp() {
+    limpiaValoresArreglos(ValorTextArea);
+    limpiaValoresArreglos(campostoValidateNotExist);
+    limpiaValoresArreglos(camposHeaderNull);
+    //limpiaValoresArreglos(camposHyraxNotFound); Agregar si se añade la funcionalidad de comparar campos hyrax
+    limpiaValoresArreglos(resgistrosTitleNull);
+    limpiaValoresArreglos(registrosIdentifierNull);
+    limpiaValoresArreglos(registrosDateCreatedNoInteger);
+    limpiaValoresArreglos(registrosDateCreatedNull);
+    limpiaValoresArreglos(registrosDateCreatedString);
+    limpiaValoresArreglos(registrosFileNameErroneos);
+    if(document.querySelector('#csvRoot') !== null){
+        document.querySelector('#csvRoot').remove();
+    }
     if(document.querySelector('.contenedor-tabla') !== null){
         document.querySelector('.contenedor-tabla').remove();
     }
@@ -157,7 +212,6 @@ function creaTablaDelCsv() {
             update(results.data.slice(1), results.data[0]);
         }
     });
-    targetDivContenedor.appendChild(creaBoton('validador','Validar archivo'));
     creandoSpinnerAnimado(targetDiv.children[1]);
 }
 
@@ -216,8 +270,8 @@ function mostrarContenedorOculto(nameClassElementoHtml) {
  * @param {string[]} headerColumns Son los encabezados del archivo CSV
  */
 function update(data,headerColumns = []){
-    TableCsv.setHeader(headerColumns);
-    TableCsv.setBody(data,headerColumns);
+    TableCsv.setheader(headerColumns);
+    TableCsv.setbody(data,headerColumns);
 }
 /**
  * 
@@ -283,16 +337,6 @@ function limpiaValoresArreglos(arreglo) {
  */
 function validadorCsvCampos() {
     const registros = document.querySelectorAll('.table-csv tbody tr');
-    limpiaValoresArreglos(ValorTextArea);
-    limpiaValoresArreglos(campostoValidateNotExist);
-    limpiaValoresArreglos(camposHeaderNull);
-    //limpiaValoresArreglos(camposHyraxNotFound); Agregar si se añade la funcionalidad de comparar campos hyrax
-    limpiaValoresArreglos(resgistrosTitleNull);
-    limpiaValoresArreglos(registrosIdentifierNull);
-    limpiaValoresArreglos(registrosDateCreatedNoInteger);
-    limpiaValoresArreglos(registrosDateCreatedNull);
-    limpiaValoresArreglos(registrosDateCreatedString);
-    limpiaValoresArreglos(registrosFileNameErroneos);
     validarCamposNullNotExistDeleteToValidate();
     conjuntoValidadoresACampos(registros);
     agregandoMensajesATextArea();
@@ -329,7 +373,7 @@ function eliminaColumnaRegistro() {
         registro.remove();
     });
 
-    document.querySelector('thead th').remove();
+    document.querySelector('.table-csv thead th').remove();
 }
 /**
  * @param {HTMLElement} registros Conjuto de tr en el tbody de la tabla
@@ -366,7 +410,7 @@ function validaCamposExistentes(campotoValidate,registro,index) {
  * no validar ese campo que no existe en el archivo
  */
 function validarCamposNullNotExistDeleteToValidate() {
-    const camposHeaderTable = document.querySelectorAll('.table-csv thead tr th');
+    const camposHeaderTable = document.querySelectorAll('.table-csv thead th');
     let valorCamposHeaderTextContent = [];
     camposHeaderTable.forEach( (campo,index) => {
         if (campo.textContent.trim() === '') {
@@ -423,7 +467,7 @@ function MarcaRegistrosErroneos(registro) {
  * @param {integer} index 
  * @param {string[]} campotoValidate 
  * 
- * Verifíca si en el campo del registro contiene un null, espacio, vació o doble espacio en cas de que si, marca el registro con wrong
+ * Verifíca si en el campo del registro contiene un null, espacio, vació o doble espacio en caso de que si contenga eso, marca el registro con wrong
  */
 function validaCamposNull(registro,index,campotoValidate) {
     if (registro.querySelector(`.${campotoValidate}`).textContent === null || registro.querySelector(`.${campotoValidate}`).textContent === '' || registro.querySelector(`.${campotoValidate}`).textContent === '  '){

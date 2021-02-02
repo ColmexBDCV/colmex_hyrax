@@ -240,6 +240,7 @@ en:
         validation_csv: Validation CSV
         validate_csv: Validate your CSV
       validations:
+        view_options: View options
         are_you_sure: Are you sure to delete this file?
         user: User
         original_name: Original name

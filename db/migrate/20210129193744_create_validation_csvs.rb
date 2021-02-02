@@ -1,4 +1,4 @@
-class CreateValidationCsvs < ActiveRecord::Migration[5.2]
+class CreateValidationCsvs < ActiveRecord::Migration[5.1]
   def change
     create_table :validation_csvs do |t|
       t.string :user, limit: 50
