@@ -61,6 +61,8 @@ db/*.sqlite3
 /.yardoc
 /doc
 
+#ignore your keys on config/application.yml
+/config/application.yml
 ## PROJECT::SPECIFIC
 
 .internal_test_app

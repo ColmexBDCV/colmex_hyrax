@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
+  #Validation CSV requeriments
+  get '/validations', to: 'validations#index'
+  post '/validations', to: 'validations#create'
+  delete '/validations.:id', to: 'validations#destroy'
+  #End Validation CSV Requeriments
    #Conacyt Requirements
    get 'persona_name', to: 'authority#person'
 

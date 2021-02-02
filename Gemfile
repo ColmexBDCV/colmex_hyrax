@@ -53,6 +53,8 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'xray-rails'
+  #To envolve the variables in you envoriments
+  gem 'figaro'
 end
 
 group :development do

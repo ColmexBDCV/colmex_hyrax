@@ -1,0 +1,2 @@
+class ValidationCsv < ApplicationRecord
+end
