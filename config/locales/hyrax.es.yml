@@ -312,6 +312,27 @@ es:
         Do_not_show_the: No muestra los ítems privados
         Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
         Use: Usar Rails.cache para almacenar en caché el documento JSON para los manifiestos IIIF
+      sidebar:
+        validation_csv: Validación CSV
+        validate_csv: Validá tu CSV
+      validations:
+        save_and_notificate: Guardar y Notificar
+        view_options: Ver opciones
+        are_you_sure: Estás seguro de eliminar este archivo?
+        user: Usuario
+        original_name: Nombre original
+        new_name: Nuevo nombre
+        type_work: Tipo de trabajo
+        path_file_csv: Ruta del archivo CSV
+        created_at: Fecha de creación
+        show_already_validated_csv_files: Mostrar archivos CSV ya validados
+        check_your_file: Este módulo validará su achivo CSV antes de su importación.
+        choose_options: Escoge el tipo de trabajo.
+        article: Artículo
+        thesis: Tesis
+        book: Libro
+        video: Video
+        book_Chapter: Capítulo de libro
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de trabajo

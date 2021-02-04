@@ -70,7 +70,7 @@
                     <%= f.text_field :new_name, class: ['new_name','contenedor-oculto'] %>
                     <%= f.hidden_field :user, value: @user %>
                     <%= f.hidden_field :path_file_csv, class:['path_file'], value: @path %>
-                    <%= f.submit "Guardar y Notificar", class: ['importar','contenedor-oculto'] %>
+                    <%= f.submit t('hyrax.admin.validations.save_and_notificate'), class: ['importar','contenedor-oculto'] %>
                 <% end %>
                 
             </div>

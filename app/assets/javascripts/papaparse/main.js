@@ -143,13 +143,18 @@ function cargaListeners() {
         mostrarContenedorOculto('importar');
     })
 }
-
+let validar = '';
+if (Locale === 'es') {
+    validar = 'Validar archivo';
+}else{
+    validar = 'Validate'
+}
 function quitarSpinnerVisualizarTabla() {
     //setTimeout se ejecuta después de 3 segundos cada 1000 es un segundo.
     setTimeout(() =>{
         document.querySelector('.spinner').remove();
         document.querySelector('.table-sm').classList.remove('visibility-hide');
-        targetDivContenedor.appendChild(creaBoton('validador','Validar archivo'));
+        targetDivContenedor.appendChild(creaBoton('validador',validar));
     },2000);
 }
 /**

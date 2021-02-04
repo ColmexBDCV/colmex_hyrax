@@ -238,6 +238,27 @@ en:
         Do_not_show_the: Do not show the private items.
         Do_not_show_users: Do not show users list unless user has authenticated.
         Use: Use Rails.cache to cache the JSON document for IIIF manifests
+      sidebar:
+        validation_csv: Validation CSV
+        validate_csv: Validate your CSV
+      validations:
+        save_and_notificate: Save and Notificate
+        view_options: View options
+        are_you_sure: Are you sure to delete this file?
+        user: User
+        original_name: Original name
+        new_name: New name
+        type_work: Tipe work
+        path_file_csv: Path file CSV
+        created_at: Created date
+        show_already_validated_csv_files: Show already validated CSV files
+        check_your_file: This module will validate your file CSV before importaing it.
+        choose_options: Choose type work
+        article: Article
+        thesis: Thesis
+        book: Book
+        video: Video
+        book_chapter: Book Chapter
       workflow_roles:
         user: User
         workflow_role: Workflow role
