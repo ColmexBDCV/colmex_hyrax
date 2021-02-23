@@ -463,13 +463,14 @@ en:
       characterization: Characterization
       not_yet_characterized: Not yet characterized
     homepage:
-      centre_economic_studies: Centre Economic Studies
-      centre_linguistic_and_literary_studies: Centre Linguistic and Literary Studies
+      center_economic_studies: Center Economic Studies
+      center_linguistic_and_literary_studies: Center Linguistic and Literary Studies
       center_for_asian_and_african_studies: Center for Asian and African Studies
-      centre_for_demographic__urban_and_environmental_studies: Centre for Demographic, Urban and Environmental Studies
-      centre_historical_studies: Centre Historical Studies
-      centre_international_studies: Centre International Studies
-      centre_sociological_studies: Centre Sociological Studies
+      center_for_demographic_urban_and_environmental_studies: Center for Demographic, Urban and Environmental Studies
+      center_historical_studies: Center Historical Studies
+      center_international_studies: Center International Studies
+      center_sociological_studies: Center Sociological Studies
+      library: Daniel Cosío Villegas Library
     leases:
       desactivated: Desactivated Leases
     my:

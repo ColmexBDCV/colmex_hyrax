@@ -5,52 +5,70 @@
     <%= render 'recently_uploaded', recent_documents: @recent_documents %>
   </div>
   <% locale = (request.query_parameters.key?("locale") ? "&locale="+request.query_parameters["locale"] : "" )%>
+  <% centers = [
+                ["/img/cee.png","Centro+de+Estudios+Económicos","center_economic_studies"],
+                ["/img/cell.png","Centro+de+Estudios+Lingüísticos+y+Literarios","center_linguistic_and_literary_studies"],
+                ["/img/ceaa.png","Centro+de+Estudios+de+Asia+y+África","center_for_asian_and_african_studies"],
+                ["/img/cedua.png","Centro+de+Estudios+Demográficos%2C+Urbanos+y+Ambientales","center_for_demographic_urban_and_environmental_studies"],
+                ["/img/ceh.png","Centro+de+Estudios+Históricos","center_historical_studies"],
+                ["/img/cei.png","Centro+de+Estudios+Internacionales","center_international_studies"],
+                ["/img/ces.png","Centro+de+Estudios+Sociológicos","center_sociological_studies"],
+                ["/img/bdcv.png","Biblioteca Daniel Cosío Villegas","library"]
+               ]
+    centers.shuffle!
+  %>
   <div class="col-md-9 centros">
     <div class="row">
       <div class="col-md-6">
-          <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Económicos<%=locale%>">
-            <img src="/img/cee.png" alt="cee">
-            <span><%= t('hyrax.homepage.centre_economic_studies')%></span>
-          </a>
-      </div>
-      <div class="col-md-3">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Lingüísticos+y+Literarios<%=locale%>">
-          <img src="/img/cell.png" alt="cell">
-          <span><%= t('hyrax.homepage.centre_linguistic_and_literary_studies')%></span>
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[0][1]%><%=locale%>">
+          <img src="<%=centers[0][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[0][2])%></span>
         </a>
       </div>
       <div class="col-md-3">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+de+Asia+y+África<%=locale%>">
-          <img src="/img/ceaa.png" alt="ceaa">
-          <span><%= t('hyrax.homepage.center_for_asian_and_african_studies')%></span>
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[1][1]%><%=locale%>">
+          <img src="<%=centers[1][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[1][2])%></span>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[2][1]%><%=locale%>">
+          <img src="<%=centers[2][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[2][2])%></span>
         </a>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Demográficos%2C+Urbanos+y+Ambientales<%=locale%>">
-          <img src="/img/cedua.png" alt="cedua">
-          <span><%= t('hyrax.homepage.centre_for_demographic__urban_and_environmental_studies')%></span>
+      <div class="col-md-4">
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[3][1]%><%=locale%>">
+          <img src="<%=centers[3][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[3][2])%></span>
         </a>
       </div>
       <div class="col-md-4">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Históricos<%=locale%>">
-          <img src="/img/ceh.png" alt="ceh">
-          <span><%= t('hyrax.homepage.centre_historical_studies')%></span>
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[4][1]%><%=locale%>">
+          <img src="<%=centers[4][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[4][2])%></span>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[5][1]%><%=locale%>">
+          <img src="<%=centers[5][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[5][2])%></span>
         </a>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Internacionales<%=locale%>">
-          <img src="/img/cei.png" alt="cei">
-          <span><%= t('hyrax.homepage.centre_international_studies')%></span>
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[6][1]%><%=locale%>">
+          <img src="<%=centers[6][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[6][2])%></span>
         </a>
       </div>
       <div class="col-md-6">
-        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=Centro+de+Estudios+Sociológicos<%=locale%>">
-          <img src="/img/ces.png" alt="ces">
-          <span><%= t('hyrax.homepage.centre_sociological_studies')%></span>
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[7][1]%><%=locale%>">
+          <img src="<%=centers[7][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[7][2])%></span>
         </a>
       </div>
     </div>

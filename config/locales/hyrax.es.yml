@@ -552,13 +552,14 @@ es:
       characterization: Caracterización
       not_yet_characterized: Aun no caracterizado
     homepage:
-      centre_economic_studies: Centro de Estudios Económicos
-      centre_linguistic_and_literary_studies: Centro de Estudios Lingüísticos y Literarios
+      center_economic_studies: Centro de Estudios Económicos
+      center_linguistic_and_literary_studies: Centro de Estudios Lingüísticos y Literarios
       center_for_asian_and_african_studies: Centro de Estudios de Asia y África
-      centre_for_demographic__urban_and_environmental_studies: Centro de Estudios Demográficos, Urbanos y Ambientales
-      centre_historical_studies: Centro de Estudios Históricos
-      centre_international_studies: Centro de Estudios Internacionales
-      centre_sociological_studies: Centro de Estudios Sociológicos
+      center_for_demographic_urban_and_environmental_studies: Centro de Estudios Demográficos, Urbanos y Ambientales
+      center_historical_studies: Centro de Estudios Históricos
+      center_international_studies: Centro de Estudios Internacionales
+      center_sociological_studies: Centro de Estudios Sociológicos
+      library: Bibliteca Daniel Cosío Villegas
     leases:
       desactivated: Arrendamientos Desactivados
     my:
