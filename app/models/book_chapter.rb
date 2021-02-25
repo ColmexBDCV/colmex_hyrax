@@ -4,6 +4,8 @@ class BookChapter < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include BooksAndChapters
   include ArticlesAndChapters
+  include Conacyt
+
 
 
   self.indexer = BookChapterIndexer

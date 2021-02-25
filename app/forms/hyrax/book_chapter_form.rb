@@ -6,6 +6,6 @@ module Hyrax
     self.model_class = ::BookChapter
     self.terms += BooksAndChaptersForm.shared_fields
     self.terms += ArticlesAndChaptersForm.shared_fields
-   
+    self.terms += ConacytForm.special_fields
   end
-end
+end  
