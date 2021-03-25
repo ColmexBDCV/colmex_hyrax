@@ -9,6 +9,11 @@ module IdentifierService
   end
 
   def self.format_name(name)
+
+    unless name.include?(", ") then
+      name.gsub!(",", ", ")
+    end
+    
     n = name.split(', ')
 
     if n[1][-2] == " " || n[1][-3] == " " || n[1][-1] == "." then
