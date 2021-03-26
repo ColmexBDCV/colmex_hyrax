@@ -11,7 +11,7 @@ module IdentifierService
   def self.format_name(name)
 
     unless name.include?(", ") then
-      name.gsub!(",", ", ")
+      name = name.gsub(",", ", ")
     end
     
     n = name.split(', ')
