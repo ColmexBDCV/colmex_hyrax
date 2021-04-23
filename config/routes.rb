@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
   #Validation CSV requeriments
-  get '/validations', to: 'validations#index'
-  post '/validations', to: 'validations#create'
+  resources :validations, only: [:index,:show,:create]
+  #get '/validations', to: 'validations#index'
+  #get '/validations.:id', to: 'validations#show'
+  #post '/validations', to: 'validations#create'
   delete '/validations.:id', to: 'validations#destroy'
   #End Validation CSV Requeriments
    #Conacyt Requirements

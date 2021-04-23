@@ -1,0 +1,42 @@
+<div class='"row work-type"'>
+    <div class="col-xs-12">
+        <h1 class="work-type-tag">
+           <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            <%= t('hyrax.admin.validations.' + @validation.type_work, :default => @validation.type_work) %>
+        </h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class='row'>
+                <div class="col-sm-8 text-left">
+                    <h2><%= @validation.new_name%></h2>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <%= link_to "Back", :back ,class: 'btn btn-default'%>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class='contenedor-tabla table-responsive'>
+                    <table id="csvRoot" class='table-sm'>
+                        <thead>
+                            <% @headers.each do |head| %>
+                                <th> <%= head %> </th>
+                            <%end%>
+                        </thead>
+                        <tbody>
+                            <% @body.each do |tr| %>
+                                <tr>
+                                    <% tr.each do |td| %>
+                                        <td><%= td %></td>
+                                    <%end%>
+                                </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

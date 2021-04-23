@@ -10,9 +10,6 @@ class ValidationsController < ApplicationController
     end
     skip_before_action :verify_authenticity_token
     def create
-        add_breadcrumb t(:'hyrax.controls.home'), root_path
-        add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
-        add_breadcrumb t(:'hyrax.admin.sidebar.validation_csv'), request.path
         users = ['rod.youkai@gmail.com',params[:validations][:user]]
         type_work = params[:validations][:type_work]
         path = params[:validations][:file].path
@@ -35,11 +32,26 @@ class ValidationsController < ApplicationController
         end
     end
 
+    def show
+        @validation = ValidationCsv.find(params[:id])
+        @csv = CSV.parse(File.read(@validation.path_file_csv))
+        @body = []
+        @headers = @csv[0]
+        @csv.each_with_index do |line,index|
+            if index != 0
+                @body.push(line)
+            end
+        end
+        add_breadcrumb t(:'hyrax.controls.home'), root_path
+        add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
+        add_breadcrumb t(:'hyrax.admin.sidebar.validation_csv'), request.path
+    end
+    
     def destroy
         @validations = ValidationCsv.find(params[:id])
         deleteFileOfRoot @validations.path_file_csv
         @validations.destroy
-        flash[:notice] = "Archivo que se quiere borrar #{@validations.new_name}"
+        flash[:notice] = "Se eliminó el archivo #{@validations.new_name}"
         redirect_to validations_path
         
     end

@@ -1,9 +1,6 @@
 function TableView() {
 
     $('#csvFileInput').on('click', function() {
-
-        $(".contenedor-tabla").remove();    
-
         const csvFileInput = document.querySelector("#csvFileInput");
         const select_work = document.querySelector('#validations_type_work');
         const targetDiv = document.querySelector('.contenido');
@@ -31,6 +28,8 @@ function TableView() {
         let type_work = '';
         let campostoValidateNotExist = [];
         let camposHeaderNull = [];
+        let registrosCampoFileName = [];
+        let fileNameFromEndPoint = [];
         //let camposHyraxNotFound = [];  Guarda el nombre de los campos del header que no están declarados en el proyecto Colmex_Hyax
         let resgistrosTitleNull = [];
         let registrosIdentifierNull = [];
@@ -39,29 +38,7 @@ function TableView() {
         let registrosDateCreatedString = [];
         let registrosFileNameErroneos = [];
         let ValorTextArea = [];
-        /*const TableCsv = {
-            root: HTMLTableElement,
-            constructor: root => this.root = root,
-            setHeader: headerColumns => this.root.insertAdjacentHTML("afterbegin",`
-                <thead>
-                    ${ headerColumns.map(text => `<th> ${text}</th>`).join("") }
-                </thead>
-            `),
-            setBody: (data,headerColumns) => {
-                const rowsHtml = data.map(row => {
-                    return `
-                    <tr class="correct">
-                        ${ row.map((text,index) => `<td class="${headerColumns[index%headerColumns.length]}" > ${text} </td>`).join("") }
-                    </tr>
-                    `
-                });
-                this.root.insertAdjacentHTML("beforeend",`
-                    <tbody>
-                        ${rowsHtml.join("")}
-                    </tbody>
-                `);
-            }
-        }*/
+        let flagNotConectEndPoint = false;
 
         function creadTH(text) {
             const th = document.createElement('th');
@@ -179,6 +156,7 @@ function TableView() {
             limpiaValoresArreglos(registrosDateCreatedNull);
             limpiaValoresArreglos(registrosDateCreatedString);
             limpiaValoresArreglos(registrosFileNameErroneos);
+            flagNotConectEndPoint = false;
             if(document.querySelector('#csvRoot') !== null){
                 document.querySelector('#csvRoot').remove();
             }
@@ -256,9 +234,6 @@ function TableView() {
         function validadorBtn() {
             targetDiv.appendChild(creaDiv(['contenedor-report']));
             validadorCsvCampos();
-            ValorTextArea.forEach( msgError => {
-                targetDiv.children[2].appendChild(creaSpan('reporte',msgError));
-            });
         }
         /**
          * 
@@ -345,29 +320,65 @@ function TableView() {
         function validadorCsvCampos() {
             const registros = document.querySelectorAll('.table-csv tbody tr');
             validarCamposNullNotExistDeleteToValidate();
-            conjuntoValidadoresACampos(registros);
-            agregandoMensajesATextArea();
-
+            if ( campostoValidate.includes("file_name") ) {
+                getFileNameNotEXistOFEndPoint(registros);
+            }
+        }
+        /**
+         * Dependiendo si existen errores es como maneja la tabla y el text Area, si no existen errores solo elimina la columna de registro de la tabla
+         * Si existen errores elimina las filas que estan correctas dejando solo las erroneas.
+         */
+        function RenderizaLosErroresSiExisten() {
             //DEPENDIENDO SI EXISTEN ERRORES O CAMPOS NO IDENTIFICADOS EN HYRAX ES EL MENSAJE QUE MUESTRA EN EL TEXT AREA SI NO HAY REGISTROS ERRONEOS NO ELIMINA LAS FILAS CORRECTAS
 
-            if (!document.querySelector('.wrong') && !ValorTextArea.length) {
-                ValorTextArea.unshift('No existen registros erroneos en el archivo');
-                eliminaColumnaRegistro();
-                rellenarTextField(document.querySelector('.original_name'), csvFileInput.files[0].name);
-                mostrarContenedorOculto('select-work');
+            if (!document.querySelector('.wrong')) {
+                if (!ValorTextArea.length){
+                    ValorTextArea.unshift('No existen registros erroneos en el archivo');
+                    eliminaColumnaRegistro();
+                    rellenarTextField(document.querySelector('.original_name'), csvFileInput.files[0].name);
+                    mostrarContenedorOculto('select-work');
+                }else{
+                    ValorTextArea.unshift('No existen registros erroneos en el archivo en title, date_created, identifier, pero no se puede verificar la columna file_name')
+                    eliminaColumnaRegistro();
+                }
                 // no se eliminan los registros correctos y se muestra el boton de importar en la raíz
             }else{
                 /*
-                Si se agrega la modalida que compare los cmapos hyrax del proyecto en el header, se añade estas condiciones y se elima la llamada
-                de la funcion eliminaRegistrosCorrectos(); que está debajo de estos comentarios
-                if (!document.querySelector('.wrong') && ValorTextArea.length) {
-                    ValorTextArea.unshift('No existen registros erroneos pero existen nombres de campos que no estan registrados en el proyecto');
-                    creaBtnImportacion();
-                    // No se eliminan los registros correctos y se muestra el boton de importar en la raíz pero con un aviso de que los campos serán ignorados
-                } else {
-                    eliminaRegistrosCorrectos();
+                function creaInput(clase,tipoInput, value) {
+                    const creaInput = document.createElement('input');
+                    creaInput.type = tipoInput;
+                    agregaClasesElmentosHTML(clase,creaInput);
+                    creaInput.value = value;
+                    return creaInput;
                 }*/
                 eliminaRegistrosCorrectos();
+            }
+        }
+
+        async function getFileNameNotEXistOFEndPoint(registros) {
+            document.querySelectorAll(".file_name").forEach( registro => {
+                registrosCampoFileName.push(registro.textContent);// CREA UN ARREGLO CON LOS NOMBRES DE LOS ARCHIVOS REFERENCIADOS
+            });
+            //función await para detener la ejecución para esperar los datos obtenidos del End Point
+            try {
+                const respuesta = await fetch("http://192.168.100.7/info.php?",{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/json',
+                        'Accept': 'text/json'
+                    },
+                    body: JSON.stringify(registrosCampoFileName)
+                })
+                //fileNameFromEndPoint = await respuesta.json();  AGREGAR CUANDO YA SE APUNTE AL END POINT CORRECTO
+                const datos = await respuesta.json();
+                //fileNameFromEndPoint = datos.map( objeto => objeto.title ); AGREGAR SI REGRESA UN ARREGLO DE OBJETOS
+                //console.log(fileNameFromEndPoint); VER QUE REGRESA EL END POINT
+                conjuntoValidadoresACampos(registros,fileNameFromEndPoint)
+            } catch (error) {
+                console.log(error)
+                flagNotConectEndPoint = true;
+                campostoValidate.pop('file_name');
+                conjuntoValidadoresACampos(registros);
             }
         }
 
@@ -383,16 +394,20 @@ function TableView() {
             document.querySelector('.table-csv thead th').remove();
         }
         /**
-         * @param {HTMLElement} registros Conjuto de tr en el tbody de la tabla
+         * @param {HTMLElement} registros Conjuto de tr en el tbody de la tabla.
+         * @param {ArrayObject} FileNames no encontrados en la base de datos.
          * 
          * Itera los tr o filas de la tabla para verificar en cada campo del arreglo campotoValidate y llama a cada validador dependiendo del campo
          */
-        function conjuntoValidadoresACampos(registros) {
+        function conjuntoValidadoresACampos(registros,datos) {
             registros.forEach( (registro, index) => {
                 campostoValidate.forEach( campotoValidate => {
-                    validaCamposExistentes(campotoValidate,registro,index);
+                    validaCamposExistentes(campotoValidate,registro,index,datos);
                 })
             })
+            agregandoMensajesATextArea();
+            RenderizaLosErroresSiExisten();
+            AgregaMsgAlTextArea();
         }
         /**
          * 
@@ -400,9 +415,15 @@ function TableView() {
          * @param {HTMLTableRowElement} registro 
          * @param {integer} index 
          */
-        function validaCamposExistentes(campotoValidate,registro,index) {
-            if (campotoValidate === 'file_name') {
-                        
+        function validaCamposExistentes(campotoValidate,registro,index,datos) {
+            if (campotoValidate === 'file_name' && datos.length != 0) {
+                //Aquí va a marcar los registros de los fil_name no existentes del end point, pregunta si en los archivos recibidos del endpoint incluye el nombre del archivo
+                // de la fila de la tabla, si lo incluye ese registro tiene un file_name no existente en la base de datos.
+                if ( fileNameFromEndPoint.includes(registro.querySelector(`.${campotoValidate}`).textContent) ){
+                    registrosFileNameErroneos = [...registrosFileNameErroneos, index + 2];
+                    MarcaRegistrosErroneos(registro.querySelector(`.${campotoValidate}`));
+                    MarcaRegistrosErroneos(registro);
+                }      
             } else {
                 validaCamposNull(registro,index,campotoValidate);
                 if (campotoValidate === 'date_created') {
@@ -504,7 +525,7 @@ function TableView() {
          * Valida si el contenido del campo del registro date_created si primero es un string y después si cumple con ser 4 dígitos
          */
         function validaDateCreatedStringOrFormatoCuatro(registroDateCreated,index,registro) {
-            if (!Number.isInteger(parseInt(registroDateCreated.textContent.trim(),10)) && registroDateCreated.textContent !== '  ') {
+            if (!Number.isInteger(parseInt(registroDateCreated.textContent.trim(),10)) && registroDateCreated.textContent.trim() !== '') {
                 registrosDateCreatedString = [...registrosDateCreatedString,index + 2];
                 MarcaRegistrosErroneos(registroDateCreated);
                 MarcaRegistrosErroneos(registro);
@@ -521,9 +542,11 @@ function TableView() {
          * Funcion que agrega los mensajes de error al text area
          */
         function agregandoMensajesATextArea() {
+            valorTextArea(flagNotConectEndPoint, 'No es posible validar la presencia de los archivos referenciados, intentar más tarde de favor.')
             valorTextArea(campostoValidateNotExist, campostoValidateNotExist.length != 1 ? 'Los campos que son validados en el programa no existen en el archivo son los siguientes: ' : 'El campo que se valida en el programa no existe en el archivo, es el siguiente: ')
             valorTextArea(camposHeaderNull, camposHeaderNull.length != 1 ? 'Esta vació el encabezado en las columnas: ' : 'Esta vació el encabezado en la columna: ');
             //valorTextArea(camposHyraxNotFound, camposHyraxNotFound.length != 1 ? 'Los campos no existentes en el proyecto son: ' : 'El campo no existe en el proyecto es: '); Agregar si se validan los campos hyrax
+            valorTextArea(registrosFileNameErroneos, registrosFileNameErroneos.length != 1 ? 'No se encontraron los archivos referenciados de los siguientes registros: ' : 'No se encontró el archivo referenciado del siguiente registro: ');
             valorTextArea(resgistrosTitleNull, resgistrosTitleNull.length != 1 ? 'En el campo title estan vacios los registros: ' : 'En el campo title está vació en el registro: ');
             valorTextArea(registrosIdentifierNull, registrosIdentifierNull.length != 1 ? 'En el campo identifier estan vacios los registros: ' : 'En el campo identifier está vació en el registro: ');
             valorTextArea(registrosDateCreatedNull, registrosDateCreatedNull.length != 1 ? 'En el campo date_created estan vacios los registros: ' : 'En el campo date_created está vació en el registro: ');
@@ -537,9 +560,17 @@ function TableView() {
          * Se va agregando cada registro de error para el reporte
          */
         function valorTextArea(tipoError, msg) {
-            if (tipoError.length !== 0) {
-                ValorTextArea = [...ValorTextArea, msg + tipoError];
+            if (tipoError.length > 0 || tipoError === true) {
+                ValorTextArea = [...ValorTextArea, msg.includes('intentar') ? msg : msg + tipoError];
             }
+        }
+        /**
+         * Agrega los mensajes del array ValorTextArea al text area del documento HTML
+         */
+        function AgregaMsgAlTextArea() {
+            ValorTextArea.forEach( msgError => {
+                targetDiv.children[2].appendChild(creaSpan('reporte',msgError));
+            });
         }
         /**
          * Elimina los registros correctos después de validar el archivo

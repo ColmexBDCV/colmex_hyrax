@@ -332,7 +332,7 @@ es:
         thesis: Tesis
         book: Libro
         video: Video
-        book_Chapter: Capítulo de libro
+        book_chapter: Capítulo de libro
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de trabajo

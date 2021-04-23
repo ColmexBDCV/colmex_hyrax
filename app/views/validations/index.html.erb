@@ -36,7 +36,7 @@
                                             <%= file.original_name %>
                                         </td>
                                         <td>
-                                            <%= file.new_name %>
+                                            <%= link_to file.new_name, validation_path(file.id)%>
                                         </td>
                                         <td>
                                             <%= file.type_work %>
@@ -74,7 +74,6 @@
                 <% end %>
                 
             </div>
-            
         </div>
     </div>
 </div>
