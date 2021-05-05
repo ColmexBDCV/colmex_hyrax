@@ -1,0 +1,20 @@
+en:
+  blacklight:
+    search:
+      fields:
+          index:
+            is_lyricist_person_of_tesim: Lyricist
+            is_composer_person_of_tesim: Composer
+            
+
+  hyrax:
+    icons:
+      music:     'fa fa-file-text-o'
+    select_type:
+      music:
+        description:        "Music works"
+        name:               "Music"
+    base:
+      show:
+        is_lyricist_person_of: Lyricist
+        is_composer_person_of: Composer

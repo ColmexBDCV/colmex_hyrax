@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      database:     'fa fa-file-text-o'
+    select_type:
+      database:
+        description:        "Data base opere"
+        name:               "Data Base"

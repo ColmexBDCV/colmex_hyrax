@@ -1,0 +1,7 @@
+<% [:summary_of_work, :nature_of_content, :analysis_of_work, :complemented_by_work].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
+<% end %> 
+<%= presenter.attribute_to_html(:researcher_agent_of, label: t('hyrax.base.show.researcher_agent_of'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:guide_to_work, label: t('hyrax.base.show.guide_to_work'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:production_method, label: t('hyrax.base.show.production_method'), render_as: :faceted, html_dl: true) %>
+

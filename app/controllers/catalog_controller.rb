@@ -116,6 +116,9 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
     config.add_facet_field solr_name("contained_in", :facetable), limit: 5
     config.add_facet_field solr_name("database", :facetable), limit: 5
+    config.add_facet_field solr_name("researcher_agent_of", :facetable), limit: 5
+    config.add_facet_field solr_name("guide_to_work", :facetable), limit: 5
+    config.add_facet_field solr_name("production_method", :facetable), limit: 5
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field solr_name("generic_type", :facetable), if: false
@@ -197,6 +200,15 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("depository_collective_agent", :stored_searchable)
     config.add_index_field solr_name("depository_agent", :stored_searchable)
     config.add_index_field solr_name("is_part_or_work", :stored_searchable)
+    config.add_index_field solr_name("is_lyricist_person_of", :stored_searchable)
+    config.add_index_field solr_name("is_composer_person_of", :stored_searchable)
+    config.add_index_field solr_name("researcher_agent_of", :stored_searchable)
+    config.add_index_field solr_name("summary_of_work", :stored_searchable)
+    config.add_index_field solr_name("nature_of_content", :stored_searchable)
+    config.add_index_field solr_name("guide_to_work", :stored_searchable)
+    config.add_index_field solr_name("analysis_of_work", :stored_searchable)
+    config.add_index_field solr_name("complemented_by_work", :stored_searchable)
+    config.add_index_field solr_name("production_method", :stored_searchable)
 
 
     # solr fields to be displayed in the show (single result) view

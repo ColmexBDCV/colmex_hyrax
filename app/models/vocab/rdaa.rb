@@ -20,5 +20,20 @@ module Vocab
     term :intervieweeAgentOf
     term :organizerCollectiveAgent
     term :photographerAgnteOf
+    term :isWriterOfSuplementaryTextualContent
+    term :isOrganizerCollectiveAgentOf
+    term :enacting_juridiction_of
+    term :PhotographerCorporateBodyOfWork
+    term :hierarchical_superior
+    term :hierarchical_inferior
+    term :period_of_activity_of_corporate_body
+    term :speaker_agent_of
+    term :assistant
+    term :criminalDefendantCorporateBodyOf
+    term :criminalDefendantPersonOf
+    term :researcher_agent_of
+    term :isLyricistPersonOf
+    term :isComposerPersonOf
+
   end
 end

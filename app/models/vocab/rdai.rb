@@ -8,5 +8,6 @@ module Vocab
     term :restrictionsOnUseOfItem
     term :depositoryCollectiveAgent
     term :depositoryAgent
+    term :hasIdentifierForItem
   end
 end

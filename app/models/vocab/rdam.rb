@@ -40,7 +40,12 @@ module Vocab
     term :videoFormat
     term :videoCharacteristic
     term :noteOnStatementOfResposibility
-
-    
+    term :isFacsimilOfManifestationOf
+    term :dateOfManifestation
+    term :has_video_charasteristic
+    term :DimensionsOfStillImage
+    term :longitud_latitud
+    term :digital_representation_of_cartographic_content
+    term :production_method
   end
 end

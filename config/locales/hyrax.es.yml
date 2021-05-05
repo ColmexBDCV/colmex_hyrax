@@ -735,3 +735,12 @@ es:
         video_format: Formato del video
         video_characteristic: Características del video
         note_on_statement_of_responsibility: Nota sobre declaración de responsabilidad
+        is_lyricist_person_of: Autor de la letra
+        is_composer_person_of: Compositor
+        researcher_agent_of: Investigador
+        summary_of_work: Resumen del proyecto
+        nature_of_content: Naturaleza del contenido
+        guide_to_work: Protocolo o guia
+        analysis_of_work: Análisis
+        complemented_by_work: Documentos complementarios
+        production_method: Medio de producción

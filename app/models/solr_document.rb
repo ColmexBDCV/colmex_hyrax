@@ -362,39 +362,87 @@ class SolrDocument
   
   def interviewer
     self[Solrizer.solr_name('interviewer')]
-end
-def interviewee
+  end
+
+  def interviewee
     self[Solrizer.solr_name('interviewee')]
-end
-def organizer_collective_agent
+  end
+
+  def organizer_collective_agent
     self[Solrizer.solr_name('organizer_collective_agent')]
-end
-def photographer
+  end
+
+  def photographer
     self[Solrizer.solr_name('photographer')]
-end 
-def collective_title
+  end 
+
+  def collective_title
     self[Solrizer.solr_name('collective_title')]
-end
-def part_of_place
+  end
+
+  def part_of_place
     self[Solrizer.solr_name('part_of_place')]
-end
-def provenance
+  end
+
+  def provenance
     self[Solrizer.solr_name('provenance')]
-end
-def curator_collective_agent_of
+  end
+
+  def curator_collective_agent_of
     self[Solrizer.solr_name('curator_collective_agent_of')]
-end
-def project
+  end
+
+  def project
     self[Solrizer.solr_name('project')]
-end 
-def owner_agent_of
+  end 
+
+  def owner_agent_of
     self[Solrizer.solr_name('owner_agent_of')]
-end
-def custodian_agent_of
+  end
+
+  def custodian_agent_of
     self[Solrizer.solr_name('custodian_agent_of')]
-end
-def file_type_details
+  end
+
+  def file_type_details
     self[Solrizer.solr_name('file_type_details')]
-end
+  end
+
+  def is_lyricist_person_of 
+    self[Solrizer.solr_name('is_lyricist_person_of')]
+  end
+  
+  def is_composer_person_of
+    self[Solrizer.solr_name('is_composer_person_of')]
+  end
+  
+  def researcher_agent_of
+    self[Solrizer.solr_name('researcher_agent_of')]
+  end
+
+  def summary_of_work
+    self[Solrizer.solr_name('summary_of_work')]
+  end
+
+  def nature_of_content
+    self[Solrizer.solr_name('nature_of_content')]
+  end
+
+  def guide_to_work
+    self[Solrizer.solr_name('guide_to_work')]
+  end
+
+  def analysis_of_work
+    self[Solrizer.solr_name('analysis_of_work')]
+  end
+
+  def complemented_by_work
+    self[Solrizer.solr_name('complemented_by_work')]
+  end
+
+  def production_method
+    self[Solrizer.solr_name('production_method')]
+  end
+
 
 end

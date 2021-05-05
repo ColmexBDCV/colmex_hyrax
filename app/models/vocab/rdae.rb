@@ -11,5 +11,6 @@ module Vocab
     term :illustrativeContent
     term :contentType
     term :noteOnExpression
+    term :scale
   end
 end

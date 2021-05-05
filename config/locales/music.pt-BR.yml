@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      music:     'fa fa-file-text-o'
+    select_type:
+      music:
+        description:        "Music trabalhos"
+        name:               "Music"

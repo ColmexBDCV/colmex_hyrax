@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      music:     'fa fa-file-text-o'
+    select_type:
+      music:
+        description:        "Music opere"
+        name:               "Music"

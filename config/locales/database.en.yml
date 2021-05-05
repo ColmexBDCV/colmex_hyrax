@@ -1,0 +1,32 @@
+en:
+  blacklight:
+    search:
+      fields:
+          facet:
+            researcher_agent_of_sim: Research agent
+            guide_to_work_sim: Guide to work
+            production_method_sim: Production method 
+          index:
+            researcher_agent_of_tesim: Research agent
+            summary_of_work_tesim: Summaru of work
+            nature_of_content_tesim: Nature of content
+            guide_to_work_tesim: Guide to work
+            analysis_of_work_tesim: Analysis of work
+            complemented_by_work_tesim: Complemented by work
+            production_method_tesim: Production method
+  hyrax:
+    icons:
+      database:     'fa fa-file-text-o'
+    select_type:
+      database:
+        description:        "Data base works"
+        name:               "Data Base"
+    base:
+      show:
+        researcher_agent_of: Research agent
+        summary_of_work: Summaru of work
+        nature_of_content: Nature of content
+        guide_to_work: Guide to work
+        analysis_of_work: Analysis of work
+        complemented_by_work: Complemented by work
+        production_method: Production method

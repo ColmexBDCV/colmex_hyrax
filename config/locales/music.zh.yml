@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      music:     'fa fa-file-text-o'
+    select_type:
+      music:
+        # TODO: translate `human_name` into Chinese
+        description:        "Music 作品"
+        name:               "Music"
+        # TODO: translate `human_name` into Chinese

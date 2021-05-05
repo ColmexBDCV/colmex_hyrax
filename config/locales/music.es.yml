@@ -1,0 +1,20 @@
+es:
+  blacklight:
+    search:
+      fields:
+          index:
+            is_lyricist_person_of_tesim: Autor de la letra
+            is_composer_person_of_tesim: Compositor
+  hyrax:
+    icons:
+      music:     'fa fa-file-text-o'
+    select_type:
+      music:
+        # TODO: translate `human_name` into Spanish
+        description:        "Music trabajos"
+        name:               "Music"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        is_lyricist_person_of: Autor de la letra
+        is_composer_person_of: Compositor

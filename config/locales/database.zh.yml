@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      database:     'fa fa-file-text-o'
+    select_type:
+      database:
+        # TODO: translate `human_name` into Chinese
+        description:        "Data base 作品"
+        name:               "Data Base"
+        # TODO: translate `human_name` into Chinese
