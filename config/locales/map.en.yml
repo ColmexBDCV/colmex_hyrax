@@ -1,0 +1,26 @@
+en:
+  blacklight:
+    search:
+      fields:
+          facet:
+            scale_sim: Scale
+            longitud_and_latitud_sim: Longitud and Latitud
+            digital_representation_of_cartographic_content_sim: Digital representation of cartographic content
+          index:
+            scale_tesim: Scale
+            longitud_and_latitud_tesim: Longitud and Latitud
+            digital_representation_of_cartographic_content_tesim: Digital representation of cartographic content
+  hyrax:
+    icons:
+      map:     'fa fa-file-text-o'
+    select_type:
+      map:
+        # TODO: translate `human_name` into Spanish
+        description:        "Map trabajos"
+        name:               "Map"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        scale: Scale
+        longitud_and_latitud: Longitud and Latitud
+        digital_representation_of_cartographic_content: Digital representation of cartographic content

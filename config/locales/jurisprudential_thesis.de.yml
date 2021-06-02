@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      jurisprudential_thesis:     'fa fa-file-text-o'
+    select_type:
+      jurisprudential_thesis:
+        description:        "Jurisprudential thesis Werke"
+        name:               "Jurisprudential Thesis"

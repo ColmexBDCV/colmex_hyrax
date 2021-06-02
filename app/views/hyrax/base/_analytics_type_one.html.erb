@@ -1,0 +1,7 @@
+<% [:is_part_or_work].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %>
+
+<% [:alternative_numeric_and_or_alphabethic_designation].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
+<% end %>

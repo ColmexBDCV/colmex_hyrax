@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      map:     'fa fa-file-text-o'
+    select_type:
+      map:
+        # TODO: translate `human_name` into Chinese
+        description:        "Map 作品"
+        name:               "Map"
+        # TODO: translate `human_name` into Chinese

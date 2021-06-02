@@ -67,6 +67,7 @@ module Hyrax
       property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
       property :encoding_format_details, predicate: ::Vocab::RDAM.detailsOfEncodingFormat, multiple: true
       property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
+      property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
 
       property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
       property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true

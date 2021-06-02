@@ -1,0 +1,5 @@
+<%= presenter.attribute_to_html(:period_of_activity_of_corporate_body, label: t('hyrax.base.show.period_of_activity_of_corporate_body'), html_dl: true) %>
+<% [:speaker_agent_of, :assistant, :preceded_by_work].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %> 
+<%= render 'legal_documents', presenter: presenter rescue nil%>

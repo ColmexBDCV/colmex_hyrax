@@ -1,6 +1,4 @@
-<% [:corporate_body, :collective_agent, :organizer_author, :copyright, :title_of_series, :numbering_within_sequence, :database, :is_part_or_work].each do |a| %>
-    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
-<% end %> 
-<%= presenter.attribute_to_html(:place_of_publication, label: t('hyrax.base.show.place_of_publication'), render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.contained_in'), render_as: :faceted, html_dl: true) %>
+<%= render 'analytics_type_one', presenter: presenter rescue nil%>
+<%= render 'books_and_chapters', presenter: presenter rescue nil%>
 
+ 

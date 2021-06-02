@@ -1,5 +1,19 @@
 es:
-  hyrax:
+  blacklight:
+    search:
+      fields:
+        facet:
+          contained_in_sim: Contenido en
+          is_part_or_work_sim: Sección o suplemento
+          
+        index:
+          contained_in_tesim: Contained in
+          is_part_or_work_tesim: Sección o suplemento
+          alternative_numeric_and_or_alphabethic_designation_tesim: Númeración o designación alternativa
+          copyright_tesim: Copyright
+          title_of_series_tesim: Serie
+          numbering_within_sequence_tesim: Número
+  hyrax:  
     icons:
       book_chapter:     'fa fa-file-text-o'
     select_type:
@@ -8,3 +22,11 @@ es:
         description:        "Trabajos del Capítulo del libro"
         name:               "Capítulo del libro"
         # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        contained_in: Contenido en
+        is_part_or_work: Sección o suplemento
+        alternative_numeric_and_or_alphabethic_designation: Númeración o designación alternativa
+        copyright: Copyright
+        title_of_series: Serie
+        numbering_within_sequence: Número

@@ -1,6 +1,2 @@
-<% [:year, :volume, :number, :pages, :period, :part, :issn, :database, :is_part_or_work].each do |a| %>
-    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>0
-<% end %> 
-<%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.contained_in'), render_as: :faceted, html_dl: true) %>
-
-
+<%= render 'analytics_type_one', presenter: presenter rescue nil%>
+<%= render 'analytics_type_two', presenter: presenter rescue nil%>

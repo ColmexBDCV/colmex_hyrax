@@ -3,28 +3,33 @@ en:
     search:
       fields:
         facet:
-          contained_in_sim: Journal
-          database_sim: Database Source
+          contained_in_sim: Contained in
+          is_part_or_work_sim: Is part or work
+          volume_sim: Volume
+          number_sim: Number 
         index:
-          volume_tesim: Volume
-          contained_in_tesim: "Contained in"
-          database_tesim: Database Source
+          contained_in_tesim: Contained in
+          is_part_or_work_tesim: Is part or work
+          alternative_numeric_and_or_alphabethic_designation_tesim: alternative numeric and or alphabethic desiganition
           issn_tesim: ISSN
+          volume_tesim: Volume
           number_tesim: Number
-          pages_tesim: Pages
+          
+          
   hyrax:
     icons:
-      article:     'fa fa-file-text-o'
+      article: "fa fa-file-text-o"
     select_type:
       article:
-        description:        "Article works"
-        name:               "Article"
+        # TODO: translate `human_name` into Spanish
+        description: "Artículos trabajos"
+        name: "Artículos"
+        # TODO: translate `human_name` into Spanish
     base:
       show:
-        contained_in: "Containe in:"
-        database: Database Source
-        number: Number
-        part: Part
-        pages: Pages
-        period: Period
+        contained_in: Contained in
+        is_part_or_work: Is part or work
+        alternative_numeric_and_or_alphabethic_designation: alternative numeric and or alphabethic desiganition
+        issn: ISSN
         volume: Volume
+        number: Number

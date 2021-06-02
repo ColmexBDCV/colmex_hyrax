@@ -1,0 +1,23 @@
+es:
+  blacklight:
+    search:
+      fields:
+          facet:
+            photographer_corporate_body_of_work_sim: Agencia fotográfica
+            dimensions_of_still_image_sim: Dimensiones de la fotografía
+          index:
+            photographer_corporate_body_of_work_tesim: Agencia fotográfica
+            dimensions_of_still_image_tesim: Dimensiones de la fotografía
+  hyrax:
+    icons:
+      photography:     'fa fa-file-text-o'
+    select_type:
+      photography:
+        # TODO: translate `human_name` into Spanish
+        description:        "Fotografía trabajos"
+        name:               "Fotografía"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        photographer_corporate_body_of_work: Agencia fotográfica
+        dimensions_of_still_image: Dimensiones de la fotografía

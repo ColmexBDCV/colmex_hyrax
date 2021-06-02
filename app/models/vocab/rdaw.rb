@@ -21,14 +21,14 @@ module Vocab
     term :containedInWork
     term :numberingOfPart
     term :hasRelatedWorkOfWork
-    term :identifier_of_work
-    term :has_related_work_of_work
-    term :preceded_by_work
+    term :identifierOfWork
+    term :hasRelatedWorkOfWork
+    term :precededByWork
     term :subjectTimeSpan
-    term :summary_of_work
-    term :nature_of_content
-    term :guide_to_work
-    term :analysis_of_work
-    term :complemented_by_work
+    term :summaryOfWork
+    term :natureOfContent
+    term :guideToWork
+    term :analysisOfWork
+    term :complementedByWork
   end
 end

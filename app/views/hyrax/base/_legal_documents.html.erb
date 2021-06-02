@@ -1,0 +1,11 @@
+<%= presenter.attribute_to_html(:identifier_of_work, label: t('hyrax.base.show.identifier_of_work'), html_dl: true) %>
+<% [:primary_topic, :enacting_juridiction_of,
+                :hierarchical_superior, :hierarchical_inferior, 
+                :subject_timespan,
+                :is_title_of_item_of,
+                :timespan_described_in,
+                :related_person_of,
+                :related_corporate_body_of_timespan,
+                :related_family_timespan].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %> 

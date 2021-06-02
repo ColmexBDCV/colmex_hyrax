@@ -32,7 +32,7 @@ module Hyrax
                     :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
                     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
                     :depository_collective_agent, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
-                    :corporate_body, :collective_agent,
+                    :corporate_body, :collective_agent, :contained_in,
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease,
@@ -40,7 +40,7 @@ module Hyrax
                     :member_of_collection_ids, :admin_set_id]
 
       self.required_fields = [:title, 
-                              :creator, 
+                              # :creator, 
                               # :keyword, 
                               # :rights_statement
                             ]

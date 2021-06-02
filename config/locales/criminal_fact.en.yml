@@ -1,0 +1,21 @@
+en:
+  blacklight:
+    search:
+      fields:
+          facet:
+            related_place_of_timespan_sim: Related place of timespan
+            note_of_timespan_sim: Note of timespan
+          index:
+            related_place_of_timespan_tesim: Related place of timespan
+            note_of_timespan_tesim: Note of timespan
+  hyrax:
+    icons:
+      criminal_fact:     'fa fa-file-text-o'
+    select_type:
+      criminal_fact:
+        description:        "Criminal fact trabajos"
+        name:               "Criminal Fact"
+    base:
+      show:
+        related_place_of_timespan: Related place of timespan
+        note_of_timespan: Note of timespan

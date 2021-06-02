@@ -1,0 +1,7 @@
+<% [:volume, :number].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %>
+
+<% [:issn].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
+<% end %>

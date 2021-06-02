@@ -13,7 +13,7 @@ class Video < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
   
-  property :video_characteristic, predicate: ::Vocab::RDAM.videoCharacteristic, multiple: true do |index|
+  property :video_characteristic, predicate: ::Vocab::RDAM.hasVideoCharacteristic, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end

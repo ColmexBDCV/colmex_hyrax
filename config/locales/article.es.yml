@@ -2,14 +2,20 @@ es:
   blacklight:
     search:
       fields:
+        facet:
+          contained_in_sim: Publicado en
+          is_part_or_work_sim: Sección o suplemento
+          volume_sim: Volumen
+          number_sim: Número 
         index:
-          period: Periodo
-          part: Parte
-          year: Año
+          contained_in_tesim: Publicado en
+          is_part_or_work_tesim: Sección o suplemento
+          alternative_numeric_and_or_alphabethic_designation_tesim: Númeración o designación alternativa
+          issn_tesim: ISSN
           volume_tesim: Volumen
           number_tesim: Número
-          pages_tesim: Páginas
-          issn_tesim: ISSN
+          
+          
   hyrax:
     icons:
       article: "fa fa-file-text-o"
@@ -21,9 +27,9 @@ es:
         # TODO: translate `human_name` into Spanish
     base:
       show:
-        period: Periodo
-        part: Parte
+        contained_in: Publicado en
+        is_part_or_work: Sección o suplemento
+        alternative_numeric_and_or_alphabethic_designation: Númeración o designación alternativa
+        issn: ISSN
         volume: Volumen
         number: Número
-        pages: Páginas
-        

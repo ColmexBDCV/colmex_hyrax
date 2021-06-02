@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      jurisprudential_thesis:     'fa fa-file-text-o'
+    select_type:
+      jurisprudential_thesis:
+        # TODO: translate `human_name` into Chinese
+        description:        "Jurisprudential thesis 作品"
+        name:               "Jurisprudential Thesis"
+        # TODO: translate `human_name` into Chinese

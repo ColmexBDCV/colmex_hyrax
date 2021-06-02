@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      map:     'fa fa-file-text-o'
+    select_type:
+      map:
+        description:        "Map opere"
+        name:               "Map"

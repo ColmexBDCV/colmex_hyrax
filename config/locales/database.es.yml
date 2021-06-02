@@ -20,8 +20,8 @@ es:
     select_type:
       database:
         # TODO: translate `human_name` into Spanish
-        description:        "Data base trabajos"
-        name:               "Data Base"
+        description:        "Base de datos trabajos"
+        name:               "Base de datos"
         # TODO: translate `human_name` into Spanish
     base:
       show:

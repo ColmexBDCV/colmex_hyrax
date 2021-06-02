@@ -444,5 +444,96 @@ class SolrDocument
     self[Solrizer.solr_name('production_method')]
   end
 
+  def scale
+    self[Solrizer.solr_name('scale')]
+  end
+
+  def longitud_and_latitud
+    self[Solrizer.solr_name('longitud_and_latitud')]
+  end
+
+  def digital_representation_of_cartographic_content
+    self[Solrizer.solr_name('digital_representation_of_cartographic_content')]
+  end
+
+  def related_place_of_timespan
+    self[Solrizer.solr_name('related_place_of_timespan')]
+  end
+
+  def note_of_timespan
+    self[Solrizer.solr_name('note_of_timespan')]
+  end
+
+  def alternative_numeric_and_or_alphabethic_designation
+    self[Solrizer.solr_name('alternative_numeric_and_or_alphabethic_designation')]
+  end
+
+  def photographer_corporate_body_of_work
+    self[Solrizer.solr_name('photographer_corporate_body_of_work')]
+  end
+
+  def dimensions_of_still_image
+    self[Solrizer.solr_name('dimensions_of_still_image')]
+  end
+
+  def period_of_activity_of_corporate_body
+    self[Solrizer.solr_name('period_of_activity_of_corporate_body')]
+  end
+
+  def speaker_agent_of
+    self[Solrizer.solr_name('speaker_agent_of')]
+  end
+
+  def assistant
+    self[Solrizer.solr_name('assistant')]
+  end
+
+  def preceded_by_work
+    self[Solrizer.solr_name('preceded_by_work')]
+  end
+
+  def primary_topic
+    self[Solrizer.solr_name('primary_topic')]
+  end
+
+  def enacting_juridiction_of
+    self[Solrizer.solr_name('enacting_juridiction_of')]
+  end
+
+  def hierarchical_superior
+    self[Solrizer.solr_name('hierarchical_superior')]
+  end
+
+  def hierarchical_inferior
+    self[Solrizer.solr_name('hierarchical_inferior')]
+  end
+
+  def subject_timespan
+    self[Solrizer.solr_name('subject_timespan')]
+  end
+
+  def identifier_of_work
+    self[Solrizer.solr_name('identifier_of_work')]
+  end
+
+  def is_title_of_item_of
+    self[Solrizer.solr_name('is_title_of_item_of')]
+  end
+
+  def timespan_described_in
+    self[Solrizer.solr_name('timespan_described_in')]
+  end
+
+  def related_person_of
+    self[Solrizer.solr_name('related_person_of')]
+  end
+
+  def related_corporate_body_of_timespan
+    self[Solrizer.solr_name('related_corporate_body_of_timespan')]
+  end
+
+  def related_family_timespan
+    self[Solrizer.solr_name('related_family_timespan')]
+  end
 
 end

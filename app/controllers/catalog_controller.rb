@@ -32,6 +32,8 @@ class CatalogController < ApplicationController
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
 
+    config.crawler_detector = ->(req) { req.env['HTTP_USER_AGENT'] =~ /Googlebot/ }
+
     # Show gallery view
     config.view.gallery.partials = [:index_header, :index]
     # config.view.masonry.partials = [:index]
@@ -72,7 +74,7 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
-    # config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
+    config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
     config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field solr_name("creator", :facetable), limit: 5
@@ -115,10 +117,36 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
     config.add_facet_field solr_name("contained_in", :facetable), limit: 5
-    config.add_facet_field solr_name("database", :facetable), limit: 5
+    # config.add_facet_field solr_name("database", :facetable), limit: 5
     config.add_facet_field solr_name("researcher_agent_of", :facetable), limit: 5
     config.add_facet_field solr_name("guide_to_work", :facetable), limit: 5
     config.add_facet_field solr_name("production_method", :facetable), limit: 5
+    config.add_facet_field solr_name("longitud_and_latitud", :facetable), limit: 5
+    config.add_facet_field solr_name("digital_representation_of_cartographic_content", :facetable), limit: 5
+    config.add_facet_field solr_name("related_place_of_timespan", :facetable), limit: 5
+    config.add_facet_field solr_name("note_of_timespan", :facetable), limit: 5
+    config.add_facet_field solr_name("is_part_or_work", :facetable), limit: 5
+    config.add_facet_field solr_name("alternative_numeric_and_or_alphabethic_designation_and_or_alphabethic_designation", :facetable), limit: 5
+    config.add_facet_field solr_name("volume", :facetable), limit: 5
+    config.add_facet_field solr_name("number", :facetable), limit: 5
+    config.add_facet_field solr_name("photographer_corporate_body_of_work", :facetable), limit: 5
+    config.add_facet_field solr_name("dimensions_of_still_image", :facetable), limit: 5
+    
+    config.add_facet_field solr_name("speaker_agent_of", :facetable), limit: 5
+    config.add_facet_field solr_name("assistant", :facetable), limit: 5
+    config.add_facet_field solr_name("preceded_by_work", :facetable), limit: 5
+    config.add_facet_field solr_name("primary_topic", :facetable), limit: 5
+    config.add_facet_field solr_name("enacting_juridiction_of", :facetable), limit: 5
+    config.add_facet_field solr_name("hierarchical_superior", :facetable), limit: 5
+    config.add_facet_field solr_name("hierarchical_inferior", :facetable), limit: 5
+    config.add_facet_field solr_name("subject_timespan", :facetable), limit: 5
+    config.add_facet_field solr_name("is_title_of_item_of", :facetable), limit: 5
+    config.add_facet_field solr_name("timespan_described_in", :facetable), limit: 5
+    config.add_facet_field solr_name("related_person_of", :facetable), limit: 5
+    config.add_facet_field solr_name("related_corporate_body_of_timespan", :facetable), limit: 5
+    config.add_facet_field solr_name("related_family_timespan", :facetable), limit: 5
+
+
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field solr_name("generic_type", :facetable), if: false
@@ -154,8 +182,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("mode_of_issuance", :stored_searchable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
-    config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
-    config
+    # config.add_index_field solr_name("database", :stored_searchable), link_to_search: solr_name("database", :facetable)
+    config.add_index_field solr_name("alternative_numeric_and_or_alphabethic_designation", :stored_searchable), link_to_search: solr_name("alternative_numeric_and_or_alphabethic_designation", :facetable)
     # config.add_index_field solr_name("keyword", :stored_searchable), itemprop: 'keywords', link_to_search: solr_name("keyword", :facetable)
     # config.add_index_field solr_name("subject_family", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_family", :facetable)
     config.add_index_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
@@ -199,7 +227,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("file_type_details", :stored_searchable)
     config.add_index_field solr_name("depository_collective_agent", :stored_searchable)
     config.add_index_field solr_name("depository_agent", :stored_searchable)
-    config.add_index_field solr_name("is_part_or_work", :stored_searchable)
+    config.add_index_field solr_name("is_part_or_work", :stored_searchable), link_to_search: solr_name("is_part_or_work", :facetable)
+    config.add_index_field solr_name("issn", :stored_searchable)
     config.add_index_field solr_name("is_lyricist_person_of", :stored_searchable)
     config.add_index_field solr_name("is_composer_person_of", :stored_searchable)
     config.add_index_field solr_name("researcher_agent_of", :stored_searchable)
@@ -209,8 +238,28 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("analysis_of_work", :stored_searchable)
     config.add_index_field solr_name("complemented_by_work", :stored_searchable)
     config.add_index_field solr_name("production_method", :stored_searchable)
-
-
+    config.add_index_field solr_name("scale", :stored_searchable)
+    config.add_index_field solr_name("longitud_and_latitud", :stored_searchable)
+    config.add_index_field solr_name("digital_representation_of_cartographic_content", :stored_searchable), itemprop: 'digital_representation_of_cartographic_content', link_to_search: solr_name("digital_representation_of_cartographic_content", :facetable)
+    config.add_index_field solr_name("related_place_of_timespan", :stored_searchable), itemprop: 'related_place_of_timespan', link_to_search: solr_name("related_place_of_timespan", :facetable)
+    config.add_index_field solr_name("note_of_timespan", :stored_searchable), itemprop: 'note_of_timespan', link_to_search: solr_name("note_of_timespan", :facetable)
+    config.add_index_field solr_name("photographer_corporate_body_of_work", :stored_searchable), itemprop: 'photographer_corporate_body_of_work', link_to_search: solr_name("photographer_corporate_body_of_work", :facetable)
+    config.add_index_field solr_name("dimensions_of_still_image", :stored_searchable), itemprop: 'dimensions_of_still_image', link_to_search: solr_name("dimensions_of_still_image", :facetable)
+    config.add_index_field solr_name("period_of_activity_of_corporate_body", :stored_searchable)
+    config.add_index_field solr_name("speaker_agent_of", :stored_searchable), itemprop: 'speaker_agent_of', link_to_search: solr_name("speaker_agent_of", :facetable)
+    config.add_index_field solr_name("assistant", :stored_searchable), itemprop: 'assistant', link_to_search: solr_name("assistant", :facetable)
+    config.add_index_field solr_name("preceded_by_work", :stored_searchable), itemprop: 'preceded_by_work', link_to_search: solr_name("preceded_by_work", :facetable)
+    config.add_index_field solr_name("primary_topic", :stored_searchable), itemprop: 'primary_topic', link_to_search: solr_name("primary_topic", :facetable)
+    config.add_index_field solr_name("enacting_juridiction_of", :stored_searchable), itemprop: 'enacting_juridiction_of', link_to_search: solr_name("enacting_juridiction_of", :facetable)
+    config.add_index_field solr_name("hierarchical_superior", :stored_searchable), itemprop: 'hierarchical_superior', link_to_search: solr_name("hierarchical_superior", :facetable)
+    config.add_index_field solr_name("hierarchical_inferior", :stored_searchable), itemprop: 'hierarchical_inferior', link_to_search: solr_name("hierarchical_inferior", :facetable)
+    config.add_index_field solr_name("subject_timespan", :stored_searchable), itemprop: 'subject_timespan', link_to_search: solr_name("subject_timespan", :facetable)
+    config.add_index_field solr_name("identifier_of_work", :stored_searchable)
+    config.add_index_field solr_name("is_title_of_item_of", :stored_searchable), itemprop: 'is_title_of_item_of', link_to_search: solr_name("is_title_of_item_of", :facetable)
+    config.add_index_field solr_name("timespan_described_in", :stored_searchable), itemprop: 'timespan_described_in', link_to_search: solr_name("timespan_described_in", :facetable)
+    config.add_index_field solr_name("related_person_of", :stored_searchable), itemprop: 'related_person_of', link_to_search: solr_name("related_person_of", :facetable)
+    config.add_index_field solr_name("related_corporate_body_of_timespan", :stored_searchable), itemprop: 'related_corporate_body_of_timespan', link_to_search: solr_name("related_corporate_body_of_timespan", :facetable)
+    config.add_index_field solr_name("related_family_timespan", :stored_searchable), itemprop: 'related_family_timespan', link_to_search: solr_name("related_family_timespan", :facetable)
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)

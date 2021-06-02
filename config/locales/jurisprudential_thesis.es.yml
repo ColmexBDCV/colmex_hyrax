@@ -1,0 +1,61 @@
+es:
+  blacklight:
+    search:
+      fields:
+          facet:
+            speaker_agent_of_sim: Conferencista/ponente
+            assistant_sim: Secretario
+            preceded_by_work_sim: Precedentes
+            primary_topic_sim: Materia
+            enacting_juridiction_of_sim: Instancia emisora, pleno o sala
+            hierarchical_superior_sim: Instancia superior
+            hierarchical_inferior_sim: Instancia subordinada
+            subject_timespan_sim: Tema del hecho criminal
+            is_title_of_item_of_sim: Asunto
+            timespan_described_in_sim: Descripción de hechos
+            related_person_of_sim: Persona relacionada o tercero interesado
+            related_corporate_body_of_timespan_sim: Organización relacionada
+            related_family_timespan_sim: Familia relacionada
+            
+          index:
+            period_of_activity_of_corporate_body_tesim: Epoca
+            speaker_agent_of_tesim: Conferencista/ponente
+            assistant_tesim: Secretario
+            preceded_by_work_tesim: Precedentes
+            primary_topic_tesim: Materia
+            enacting_juridiction_of_tesim: Instancia emisora, pleno o sala
+            hierarchical_superior_tesim: Instancia superior
+            hierarchical_inferior_tesim: Instancia subordinada
+            subject_timespan_tesim: Tema del hecho criminal
+            identifier_of_work_tesim: Identificador específico
+            is_title_of_item_of_tesim: Asunto
+            timespan_described_in_tesim: Descripción de hechos
+            related_person_of_tesim: Persona relacionada o tercero interesado
+            related_corporate_body_of_timespan_tesim: Organización relacionada
+            related_family_timespan_tesim: Familia relacionada
+  hyrax:
+    icons:
+      jurisprudential_thesis:     'fa fa-file-text-o'
+    select_type:
+      jurisprudential_thesis:
+        # TODO: translate `human_name` into Spanish
+        description:        "Jurisprudential thesis trabajos"
+        name:               "Jurisprudential Thesis"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        period_of_activity_of_corporate_body: Epoca
+        speaker_agent_of: Conferencista/ponente
+        assistant: Secretario
+        preceded_by_work: Precedentes
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada

@@ -1,4 +1,18 @@
 en:
+  blacklight:
+    search:
+      fields:
+        facet:
+          contained_in_sim: Contained in
+          is_part_or_work_sim: Is part or work
+          
+        index:
+          contained_in_tesim: Contained in
+          is_part_or_work_tesim: Is part or work
+          alternative_numeric_and_or_alphabethic_designation_tesim: Alternative numeric and or alphabethic desiganition
+          copyright_tesim: Copyright
+          title_of_series_tesim: Title of Series
+          numbering_within_sequence_tesim: Numbering within sequence
   hyrax:
     icons:
       book_chapter:     'fa fa-file-text-o'
@@ -6,3 +20,11 @@ en:
       book_chapter:
         description:        "Book chapter works"
         name:               "Book Chapter"
+    base:
+      show:
+        contained_in: Contained in
+        is_part_or_work: Is part or work
+        alternative_numeric_and_or_alphabethic_designation: Alternative numeric and or alphabethic desiganition
+        copyright: Copyright
+        title_of_series: Title of Series
+        numbering_within_sequence: Numbering within sequence

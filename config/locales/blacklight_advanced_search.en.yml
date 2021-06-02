@@ -1,14 +1,14 @@
-es:
+en:
   blacklight_advanced_search:
-    all: todos los
-    any: cualquiera de los
+    all: All
+    any: Any
     form:
-      title: Advanced Search
-      search_context: Dentro de la búsqueda
-      limit_criteria_heading_html: "<strong>Y</strong> tiene estos atributos"
+      title: Title
+      search_context: Search context
+      limit_criteria_heading_html: "<strong>And</strong> has these attributes"
       query_criteria_heading_html: "Find itmes that match %{select_menu} of the search terms:"
-      sort_label: "Ordenar resultados por"
-      start_over: "Limpiar"
-      search_btn: "Buscar"
+      sort_label: "Order by"
+      start_over: "Clean"
+      search_btn: "Search"
     filters:
-      any_of: "Cualquiera que coincida con:"
+      any_of: "Any mach with:"

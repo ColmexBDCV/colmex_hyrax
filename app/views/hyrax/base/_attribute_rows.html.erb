@@ -26,7 +26,7 @@
 <%= presenter.attribute_to_html(:commentator, label: t('hyrax.base.show.commentator'), html_dl: true) %>
 <%= presenter.attribute_to_html(:translator, label: t('hyrax.base.show.translator'), html_dl: true) %>
 
-<% [ :doi, :isbn, :alternate_title, :other_title, :issn, :system_requirements,
+<% [ :doi, :isbn, :alternate_title, :other_title, :system_requirements,
     :embargo_release_date, :lease_expiration_date, :dimensions, :extension,
     :gender_or_form, :notes, :supplementary_content_or_bibliography,
     :responsibility_statement, :table_of_contents, :mode_of_issuance,
@@ -36,7 +36,7 @@
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  
 
-<% [ :interviewer, :interviewee, :organizer_collective_agent, :photographer, :publisher, :language, :keyword ].each do |a| %>
+<% [ :interviewer, :interviewee, :organizer_collective_agent, :photographer, :publisher, :language, :keyword, :contained_in ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 

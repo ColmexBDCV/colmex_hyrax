@@ -16,7 +16,7 @@ module Hyrax
        item_use_restrictions encoding_format_details type_of_illustrations 
        center license rights_statement date_created bibliographic_citation
         source reviewer mode_of_issuance edition dimensions extension system_requirements
-       editor translator compiler commentator]
+       editor translator compiler commentator contained_in]
 
     self.stored_fields = %i[description identifier doi isbn related_url]
     self.symbol_fields = %i[import_url]

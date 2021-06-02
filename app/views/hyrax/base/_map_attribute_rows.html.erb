@@ -1,0 +1,6 @@
+<%= presenter.attribute_to_html(:scale, label: t('hyrax.base.show.scale'), html_dl: true) %>
+<% [:longitud_and_latitud, :digital_representation_of_cartographic_content].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %> 
+
+

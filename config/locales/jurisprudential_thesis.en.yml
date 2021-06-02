@@ -1,0 +1,61 @@
+en:
+  blacklight:
+    search:
+      fields:
+          facet:
+            speaker_agent_of_sim: Speaker agent
+            assistant_sim: Assistant
+            preceded_by_work_sim: Preceded by work
+            primary_topic_sim:	Primary topic
+            enacting_juridiction_of_sim: Enacting jurisdiction
+            hierarchical_superior_sim: Hierarchical superior
+            hierarchical_inferior_sim: Hierarchical inferior
+            subject_timespan_sim: Subject timespan
+            is_title_of_item_of_sim: Is title of item of
+            timespan_described_in_sim: Timespan person of
+            related_person_of_sim: Related perso of
+            related_corporate_body_of_timespan_sim: related corporate body of timespan 
+            related_family_timespan_sim: Related family timespan
+            
+          index:
+            period_of_activity_of_corporate_body_tesim: Period of activity of corporate body
+            speaker_agent_of_tesim: Speaker agent
+            assistant_tesim: Assistant
+            preceded_by_work_tesim: Preceded by work
+            primary_topic_tesim: Primary topic
+            enacting_juridiction_of_tesim: Enacting jurisdiction
+            hierarchical_superior_tesim: Hierarchical superior
+            hierarchical_inferior_tesim: Hierarchical inferiora
+            subject_timespan_tesim: Subject timespan
+            identifier_of_work_tesim: Identificador específico
+            is_title_of_item_of_tesim: Is title of item of
+            timespan_described_in_tesim: Timespan person of
+            related_person_of_tesim: Related perso of
+            related_corporate_body_of_timespan_tesim: Related corporate body of timespan
+            related_family_timespan_tesim: Related family timespan
+  hyrax:
+    icons:
+      jurisprudential_thesis:     'fa fa-file-text-o'
+    select_type:
+      jurisprudential_thesis:
+        # TODO: translate `human_name` into Spanish
+        description:        "Jurisprudential thesis trabajos"
+        name:               "Jurisprudential Thesis"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        period_of_activity_of_corporate_body: Period of activity of corporate body 
+        speaker_agent_of: Speaker agent
+        assistant: Asisstant
+        preceded_by_work: Preceded by work
+        primary_topic: Primary topic
+        enacting_juridiction_of: Enacting jurisdiction
+        hierarchical_superior: Hierarchical superior
+        hierarchical_inferior: Hierarchical inferiora
+        subject_timespan: Subject timespan
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Is title of item of
+        timespan_described_in: Timespan person of
+        related_person_of: Related perso of
+        related_corporate_body_of_timespan: Related corporate body of timespan
+        related_family_timespan: Related family timespan

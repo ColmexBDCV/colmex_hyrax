@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      photography:     'fa fa-file-text-o'
+    select_type:
+      photography:
+        description:        "Photography trabalhos"
+        name:               "Photography"

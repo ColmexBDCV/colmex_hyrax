@@ -1,0 +1,3 @@
+<% [:photographer_corporate_body_of_work, :dimensions_of_still_image].each do |a| %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
+<% end %> 

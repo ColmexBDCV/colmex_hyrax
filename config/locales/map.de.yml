@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      map:     'fa fa-file-text-o'
+    select_type:
+      map:
+        description:        "Map Werke"
+        name:               "Map"

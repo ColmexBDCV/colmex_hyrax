@@ -15,6 +15,14 @@ Hyrax.config do |config|
   config.register_curation_concern :music
   # Injected via `rails g hyrax:work DataBase`
   config.register_curation_concern :database
+  # Injected via `rails g hyrax:work Map`
+  config.register_curation_concern :map
+  # Injected via `rails g hyrax:work CriminalFact`
+  config.register_curation_concern :criminal_fact
+  # Injected via `rails g hyrax:work Photography`
+  config.register_curation_concern :photography
+  # Injected via `rails g hyrax:work JurisprudentialThesis`
+  config.register_curation_concern :jurisprudential_thesis
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

@@ -744,3 +744,27 @@ es:
         analysis_of_work: Análisis
         complemented_by_work: Documentos complementarios
         production_method: Medio de producción
+        scale: Escala
+        longitud_and_latitud: Coordenadas
+        digital_representation_of_cartographic_content: Datos geoespaciales
+        related_place_of_timespan: Lugar del hecho criminal
+        note_of_timespan: Nota del hecho criminal
+        photographer_corporate_body_of_work: Agencia fotográfica
+        dimensions_of_still_image: Dimensiones de la fotografía
+        period_of_activity_of_corporate_body: Epoca
+        speaker_agent_of: Conferencista/ponente
+        assistant: Secretario
+        preceded_by_work: Precedentes
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada
+       
+

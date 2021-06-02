@@ -3,9 +3,9 @@
 module Hyrax
   class ArticlePresenter < Hyrax::WorkShowPresenter
 
-    delegate :volume, :number, :period, :part, :issn, to: :solr_document
-    include Hyrax::ArticlesAndChaptersPresenter
+    include Hyrax::AnalyticsTypeOnePresenter
+    include Hyrax::AnalyticsTypeTwoPresenter
     include Hyrax::ConacytPresenter
-
+   
   end
 end

@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      photography:     'fa fa-file-text-o'
+    select_type:
+      photography:
+        description:        "Photography œuvres"
+        name:               "Photography"
