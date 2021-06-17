@@ -71,7 +71,7 @@ end
 gem 'blacklight_range_limit', '6.3.3'
 gem 'blacklight_advanced_search'
 
-gem 'hyrax', '2.9.0'
+gem 'hyrax', '2.9.5'
 gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls'
