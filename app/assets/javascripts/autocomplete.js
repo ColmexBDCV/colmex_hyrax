@@ -23,6 +23,8 @@ var autofill = '[name*="creator]"], [name*="contributor]"]'
 $(document).on('turbolinks:load',function(){
   
   load_autofill()
+  $(".easy-autocomplete").removeAttr( 'style' );
+    
   
   $(".multi_value .btn.add").click(function () { 
     element = $(this)
@@ -35,6 +37,7 @@ $(document).on('turbolinks:load',function(){
         let id_div = element.parent().children("ul").children("li:last-child").children("div").children("div").attr("id")
         element.parent().children("ul").children("li:last-child").children("div").children("div").attr("id",id_div+0)
         load_autofill()
+       
       }, 500);
     
   });
