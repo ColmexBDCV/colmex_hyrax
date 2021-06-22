@@ -448,6 +448,7 @@ en:
       width: Width
       height: Height
       file_format: File Format
+      file_size: File Size
       original_checksum: Original Checksum
       mime_type: Mime Type
       # metadatos de la vista de show_actions en filesets

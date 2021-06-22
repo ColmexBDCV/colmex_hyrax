@@ -535,6 +535,7 @@ es:
           download: Descargar recurso
       file_details: Detalles de archivo
       #metadatos de show_characterization_details
+      file_size: Tamaño de archivo
       width: Ancho
       height: Altura
       file_format: Formato de Archivo
