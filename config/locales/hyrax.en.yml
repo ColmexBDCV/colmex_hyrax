@@ -23,7 +23,7 @@ en:
             Collection: Collection
             Article: Article
             Book: Book
-            Book_Chapter: Book Chapter
+            Book Chapter: Book Chapter
             Video: Video
           contributor_sim: Contributor
           human_readable_type_sim: Object type

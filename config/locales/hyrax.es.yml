@@ -11,7 +11,7 @@ es:
             Collection: Colección
             Article: Artículo
             Book: Libro
-            Book_Chapter: Capítulo del libro
+            Book Chapter: Capítulo de libro
             Video: Video
           creator_sim: Autor
           contributor_sim: Colaborador
@@ -100,7 +100,7 @@ es:
           compiler_tesim: Compilador
           commentator_tesim: Reseñista/Comentarista
           translator_tesim: Traductor
-          works: Trabajos
+          works: Obras
           corporate_body_tesim: Autor corporativo
           collective_agent_tesim: Autor congreso
           organizer_author_tesim: Coordinador / Organizador
@@ -275,9 +275,9 @@ es:
         primary_button_background: Color de fondo del botón primario
       collection_types:
         in_this_repository: en este repositorio
-        collection_type: Tipo(s) de colección
+        collection_type: Tipo(s) de es
         submit: Confirmar
-        apply_to_new_works: APLICAR A NUEVOS TRABAJOS
+        apply_to_new_works: APLICAR A NUEVOS OBRASS
         search_for_a_group: Buscar un grupo...
         search_for_a_user: Buscar un usuario...
         as: como
@@ -294,7 +294,7 @@ es:
         Proxy_deposit: Depósito de poder
         Transfer_works: Transferencia de obras
         Analytics_redesign: Rediseño de análisis
-        Cache_work_iiif_manifest: Caché trabajo IIIF manifiesto
+        Cache_work_iiif_manifest: Caché obra IIIF manifiesto
         Assign_admin_set: Asignar conjunto de administración
         Show_deposit_agreement: Mostrar acuerdo de depósito
         Active_deposit_agreement_acceptance: Aceptación del acuerdo de depósito activo
@@ -322,12 +322,12 @@ es:
         user: Usuario
         original_name: Nombre original
         new_name: Nuevo nombre
-        type_work: Tipo de trabajo
+        type_work: Tipo de obra
         path_file_csv: Ruta del archivo CSV
         created_at: Fecha de creación
         show_already_validated_csv_files: Mostrar archivos CSV ya validados
         check_your_file: Este módulo validará su achivo CSV antes de su importación.
-        choose_options: Escoge el tipo de trabajo.
+        choose_options: Escoge el tipo de obra.
         article: Artículo
         thesis: Tesis
         book: Libro
@@ -345,7 +345,7 @@ es:
         quote: "Forma de citar (APA):"
       social_media:
         link: copiado en portapapeles
-      to_create_a_separate: Para crear un trabajo separado para cada uno de los archivos, vaya a
+      to_create_a_separate: Para crear una obra separado para cada uno de los archivos, vaya a
       #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
       who_should: Quién debe ser capaz para ver o descargar este contenido?
       ##metadatos de la vista file_manager.html.erb
@@ -358,13 +358,13 @@ es:
       add_this: Agrega esto
       add_this_group: Agrega este grupo
       #metadata from view _form_progress
-      saving_your_work: Guardando tú trabajo. Esto puede tardar un poco.
+      saving_your_work: Guardando tú obra. Esto puede tardar un poco.
       #metadatos de la vista _form_visibility_component.html.er
       visibility: Visibilidad
       #metadatos para la vista _form_member_of_collections.html.erb
       add: Añadir
       #metadatos de la vista de form_child_work
-      find_child_work: Busque un trabajo ...
+      find_child_work: Busque una obra ...
       #Metadatos para la vista _form_files
       add_files: Agregar Archivos ...
       add_folder: Agregar Carpeta ...
@@ -462,7 +462,7 @@ es:
         depositor_agent: Persona depositante
       relationships_parent_row:
         label: "En %{type}:"
-        Collection: Colección
+        Collection: es
     collections:
       show:
         last_updated: "Ultima Actualización"
@@ -520,7 +520,7 @@ es:
       works:
         deposited: Depositado
       workflows:
-        work: Trabajo
+        work: Obra
         depositor: Creador
         submission_date: Dia de Entrega
         status: Estado
@@ -570,7 +570,7 @@ es:
       per_page: por página
       works:
         deleted: Borrado
-        work: El trabajo
+        work: La Obra
         successfully_updated: actualizado exitosamente.
     notifications:
       delete_all: Borrar todo
@@ -611,7 +611,7 @@ es:
       user_name: Nombre de Usuario
       user_id: Id de Usuario
       department: Departamento
-      works_created: Trabajos creados
+      works_created: Obras creadas
       user_activity: Actividad de Usuario
       website: Sitios de internet
       title: Título
@@ -623,7 +623,7 @@ es:
       telephone: Teléfono
       joined_on: Se unió en
       view_users: Ver Usuarios
-      has_no_highlighted_works: no tiene trabajos destacados.
+      has_no_highlighted_works: no tiene obras destacadas.
       recently_uploaded:
         tab_label: Añadidos recientemente #Integrados recientemente
         title: Nuevos Documentos #Integrados recientemente
@@ -653,7 +653,7 @@ es:
         login: Administrador
   simple_form:
     labels:
-      defaults: #Aquí va la traducción de los metadatos de la paǵina de crear un trabajo de tipo XXXXX
+      defaults: #Aquí va la traducción de los metadatos de la paǵina de crear una obra de tipo XXXXX
         date_created: Fecha de creación
         alternate_title: Título Alternativo
         other_title: Otro Título
