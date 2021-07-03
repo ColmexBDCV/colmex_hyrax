@@ -28,6 +28,7 @@ function TableView() {
             'member_of_collection_ids', 'admin_set_id'];*/
         //campostoValidate: contiene campos que tienen sus propias validaciones en el código
         const campostoValidate = ['title','date_created','identifier','file_name'];
+        const  camposObligatorios =['title','identifier'];
         let type_work = '';
         let campostoValidateNotExist = [];
         let camposHeaderNull = [];
@@ -39,6 +40,9 @@ function TableView() {
         let registrosDateCreatedString = [];
         let registrosFileNameErroneos = [];
         let ValorTextArea = [];
+        let camposExist = [];
+        let camposNotExist = [];
+        
         /*const TableCsv = {
             root: HTMLTableElement,
             constructor: root => this.root = root,
@@ -344,8 +348,13 @@ function TableView() {
          */
         function validadorCsvCampos() {
             const registros = document.querySelectorAll('.table-csv tbody tr');
-            validarCamposNullNotExistDeleteToValidate();
-            conjuntoValidadoresACampos(registros);
+            var x = validarCamposNullNotExistDeleteToValidate();
+            console.log(x)
+            console.log(camposNotExist)
+            if(x){
+                conjuntoValidadoresACampos(registros);
+            }
+            
             agregandoMensajesATextArea();
 
             //DEPENDIENDO SI EXISTEN ERRORES O CAMPOS NO IDENTIFICADOS EN HYRAX ES EL MENSAJE QUE MUESTRA EN EL TEXT AREA SI NO HAY REGISTROS ERRONEOS NO ELIMINA LAS FILAS CORRECTAS
@@ -420,14 +429,33 @@ function TableView() {
             const camposHeaderTable = document.querySelectorAll('.table-csv thead th');
             let valorCamposHeaderTextContent = [];
             camposHeaderTable.forEach( (campo,index) => {
-                if (campo.textContent.trim() === '') {
-                    camposHeaderNull = [...camposHeaderNull, index + 1];
-                } else {
-                    valorCamposHeaderTextContent = [...valorCamposHeaderTextContent, campo.textContent.trim() ];
-                    //validadorCamposHyrax(campo);
+                if (camposObligatorios.includes(campo.textContent.trim()) && !camposExist.includes(campo.textContent.trim())) {
+                    camposExist.push(campo.textContent.trim())
                 }
             });
-            eliminaCampostoValidate(valorCamposHeaderTextContent);
+            if (camposExist.lenght == camposObligatorios.length) {
+                camposHeaderTable.forEach( (campo,index) => {
+
+                    if (campo.textContent.trim() === '') {
+                        camposHeaderNull = [...camposHeaderNull, index + 1];
+                    } else {
+                        valorCamposHeaderTextContent = [...valorCamposHeaderTextContent, campo.textContent.trim() ];
+                        //validadorCamposHyrax(campo);
+                    }
+                });
+                eliminaCampostoValidate(valorCamposHeaderTextContent);
+                return true
+            }else{
+                
+                camposObligatorios.forEach((campo, index)=> {
+                    if(!camposExist.includes(campo)){
+                        camposNotExist.push(campo)
+                    }
+
+                });
+                return false
+            }
+            
         }
         /**
          * 
@@ -529,6 +557,7 @@ function TableView() {
             valorTextArea(registrosDateCreatedNull, registrosDateCreatedNull.length != 1 ? 'En el campo date_created estan vacios los registros: ' : 'En el campo date_created está vació en el registro: ');
             valorTextArea(registrosDateCreatedString, registrosDateCreatedString.length != 1 ? 'Registros date_created que son letras: ': 'Registro date_created que son letras: ');
             valorTextArea(registrosDateCreatedNoInteger, registrosDateCreatedNoInteger.length != 1 ? 'Registros date_created que no cumplen con el formato de año con 4 dígitos son: ' : 'Registro date_created que no cumple con el formato de año con 4 dígitos es: ');
+            valorTextArea(camposNotExist, camposNotExist.length != 1 ? 'No existe el campo el campo obligatorio: ' : 'No existe el campo obligatorio: '  )
         }
         /**
          * @param {integer[]} tipoError Conjunto de registros erroneos del campo
