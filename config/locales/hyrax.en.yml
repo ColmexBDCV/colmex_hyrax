@@ -26,6 +26,7 @@ en:
             Book Chapter: Book Chapter
             Video: Video
           contributor_sim: Contributor
+          has_creator_sim: Has creator
           human_readable_type_sim: Object type
           resource_type_sim: Resource type
           reviewer_sim: Reviewer
@@ -36,7 +37,9 @@ en:
           interviewer_sim: Interviewer
           interviewee_sim: Interviewee
           organizer_collective_agent_sim: Organize collective agent
-          photographer_sim: photographer
+          photographer_sim: Photographer
+          narrator_sim: Narrator
+          writer_of_suplementary_textual_content_sim: Writer of suplementary textual content
           collective_title_sim: Collective title
           part_of_place_sim: part of place
           provenance_sim: Provenance
@@ -45,6 +48,10 @@ en:
           owner_agent_of_sim: Owner agent
           custodian_agent_of_sim: Custodian agent
           file_type_details_sim: File type details
+          organizer_collective_agent_sim: Organizer collective agent
+          place_of_publication_sim: Place of publication
+          beginning_sim: Beginning
+          ending_sim: Ending
         index:
           based_near_tesim: Location
           classification_tesim: Classification
@@ -56,6 +63,8 @@ en:
           date_uploaded_dtsi: Date Uploaded
           description_tesim: Description
           file_format_tesim: File Format
+          handle_tesim: Handle
+          has_creator_tesim: Has creator
           identifier_tesim: Identifier
           keyword_tesim: Keyword
           language_tesim: Language
@@ -80,7 +89,9 @@ en:
           interviewer_tesim: Interviewer
           interviewee_tesim: Interviewee
           organizer_collective_agent_tesim: Organize collective agent
-          photographer_tesim: photographer
+          photographer_tesim: Photographer
+          narrator_tesim: Narrator
+          writer_of_suplementary_textual_content_tesim: Writer of suplementary textual content
           collective_title_tesim: Collective title
           part_of_place_tesim: part of place
           provenance_tesim: Provenance
@@ -91,6 +102,13 @@ en:
           file_type_details_tesim: File type details
           depository_collective_agent_tesim: Depository collective agent
           depository_agent_tesim: Depository agent
+          organizer_collective_agent_tesim: Organizer collective agent
+          place_of_publication_tesim: Place of publication
+          beginning_tesim: Beginning
+          ending_tesim: Ending
+          has_field_activity_of_agent_tesim: Has field activity of agent
+          is_facsimile_of_manifestation_of_tesim: Is facsimile of manifestation of
+          date_of_manifestation_tesim: Date of manifestation
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -368,7 +386,9 @@ en:
         interviewer: Interviewer
         interviewee: Interviewee
         organizer_collective_agent: Organize collective agent
-        photographer: photographer
+        photographer: Photographer
+        narrator: Narrator
+        writer_of_suplementary_textual_content: Writer of suplementary textual content
         collective_title: Collective title
         part_of_place: part of place
         provenance: Provenance
@@ -376,8 +396,15 @@ en:
         project: Project
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
-        depository_collective_agent_tesim: Depository collective agent
-        depository_agent_tesim: Depository agent
+        depository_collective_agent: Depository collective agent
+        depository_agent: Depository agent
+        organizer_collective_agent: Organizer collective agent
+        place_of_publication: Place of publication
+        beginning: Beginning
+        ending: Ending
+        has_field_activity_of_agent: Has field activity of agent
+        is_facsimile_of_manifestation_of: Is facsimile of manifestation of
+        date_of_manifestation: Date of manifestation
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"

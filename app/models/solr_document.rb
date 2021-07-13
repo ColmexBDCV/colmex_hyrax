@@ -536,4 +536,51 @@ class SolrDocument
     self[Solrizer.solr_name('related_family_timespan')]
   end
 
+  def handle
+    self[Solrizer.solr_name('handle')]
+  end
+
+  def digital_file_characteristics
+    self[Solrizer.solr_name('digital_file_characteristics')]
+  end
+
+  def has_creator
+    self[Solrizer.solr_name('has_creator')]
+  end
+
+  def narrator
+    self[Solrizer.solr_name('narrator')]
+  end
+
+  def writer_of_suplementary_textual_content
+    self[Solrizer.solr_name('writer_of_suplementary_textual_content')]
+  end
+
+  def organizer_collective_agent
+    self[Solrizer.solr_name('organizer_collective_agent')]
+  end 
+
+  def has_field_activity_of_agent
+    self[Solrizer.solr_name('has_field_activity_of_agent')]
+  end
+
+  def place_of_publication
+    self[Solrizer.solr_name('place_of_publication')]
+  end
+
+  def is_facsimile_of_manifestation_of
+    self[Solrizer.solr_name('is_facsimile_of_manifestation_of')]
+  end
+
+  def beginning
+    self[Solrizer.solr_name('beginning')]
+  end
+
+  def ending
+    self[Solrizer.solr_name('ending')]
+  end
+
+  def date_of_manifestation
+    self[Solrizer.solr_name('date_of_manifestation')]
+  end
 end

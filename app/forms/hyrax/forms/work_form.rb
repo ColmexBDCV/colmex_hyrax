@@ -22,21 +22,21 @@ module Hyrax
       attr_reader :agreement_accepted
 
       self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator, 
-                    :contributor, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
+                    :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
                     :publisher, :language, :reviewer, :identifier, :resource_type, :keyword, :based_near,
-                    :license, :geographic_coverage, :temporary_coverage,
+                    :license, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
                     :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
                     :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,
                     :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
-                    :type_of_content, :editor, :compiler, :commentator, :translator, :digital_resource_generation_information,
+                    :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
                     :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
                     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
                     :depository_collective_agent, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
-                    :corporate_body, :collective_agent, :contained_in,
-                    :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files,
-                    :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo,
+                    :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
+                    :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending, 
+                    :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease,
-                    :visibility, :ordered_member_ids, :in_works_ids,
+                    :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent,
                     :member_of_collection_ids, :admin_set_id]
 
       self.required_fields = [:title, 

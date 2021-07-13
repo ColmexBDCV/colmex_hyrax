@@ -18,8 +18,6 @@ module Vocab
     term :custodianAgentOf
     term :interviewerAgentOf
     term :intervieweeAgentOf
-    term :organizerCollectiveAgent
-    term :photographerAgnteOf
     term :isWriterOfSuplementaryTextualContent
     term :isOrganizerCollectiveAgentOf
     term :enactingJuridictionOf
@@ -35,5 +33,6 @@ module Vocab
     term :isLyricistPersonOf
     term :isComposerPersonOf
     term :isPhotographerAgentOf
+    term :isNarratorAgentOf
   end
 end

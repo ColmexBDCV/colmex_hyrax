@@ -19,6 +19,7 @@ es:
           file_format_sim: Formato
           generic_type_sim: Tipo
           geographic_coverage_sim: Cobertura geográfica
+          has_creator_sim: Creador
           human_readable_type_sim: Tipo de objeto
           keyword_sim: Palabras clave
           language_sim: Idioma
@@ -34,7 +35,7 @@ es:
           temporary_coverage_sim: Cobertura temporal
           type_of_illustrations_sim: Tipo de ilustraciones
           mode_of_issuance_sim: Modo de publicación
-          table_of_contents_sim: Tabla de contenidos
+          table_of_contents_sim: Contenido
           editor_sim: Editor
           publisher_sim: Editorial
           compiler_sim: Compilador
@@ -49,8 +50,9 @@ es:
           numbering_within_sequence_sim: Volumen/número
           interviewer_sim: Entrevistado
           interviewee_sim: Entrevistador
-          organizer_collective_agent_sim: Seminario
           photographer_sim: Fotográfo
+          narrator_sim: Narrador
+          writer_of_suplementary_textual_content_sim: Prologuista
           collective_title_sim: Título colectivo
           part_of_place_sim: Ciudad/Municipio/Localidad
           provenance_sim: Procedencia
@@ -61,11 +63,16 @@ es:
           contained_in_sim: "Incluido en:"
           database_sim: Base de Datos
           depository_collective_agent_sim: Organismo depositante
-        depositor_agent_sim: Persona depositante
+          depositor_agent_sim: Persona depositante
+          organizer_collective_agent_sim: Autor congreso o reunión
+          place_of_publication_sim: Lugar de publicación
+          beginning_sim: Inicio del hecho
+          ending_sim: Fin del hecho
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
           collections: Colecciones
+          has_creator_tesim: Creador
           contributor_tesim: Colaborador
           center_tesim: Centro
           creator_tesim: Autor
@@ -76,6 +83,7 @@ es:
           depositor_tesim: Propietario
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
+          handle_tesim: Handle
           identifier_tesim: Identificador
           keyword_tesim: Palabra clave
           language_tesim: Idioma
@@ -94,7 +102,7 @@ es:
           subject_corporate_tesim: Tema organismo
           temporary_coverage_tesim: Cobertura temporal
           supplementary_content_or_bibliography_tesim: Bibliografía  
-          table_of_contents_tesim: Tabla de contenidos
+          table_of_contents_tesim: Contenido
           editor_tesim: Editor
           publisher_tesim: Editorial
           compiler_tesim: Compilador
@@ -110,8 +118,9 @@ es:
           numbering_within_sequence_tesim: Volumen/número
           interviewer_tesim: Entrevistado
           interviewee_tesim: Entrevistador
-          organizer_collective_agent_tesim: Seminario
           photographer_tesim: Fotográfo
+          narrator_tesim: Narrador
+          writer_of_suplementary_textual_content_tesim: Prologuista
           collective_title_tesim: Título colectivo
           part_of_place_tesim: Ciudad/Municipio/Localidad
           provenance_tesim: Procedencia
@@ -123,6 +132,13 @@ es:
           database_tesim: Base de Datos
           depository_collective_agent_tesim: Organismo depositante
           depositor_agent_tesim: Persona depositante
+          organizer_collective_agent_tesim: Autor congreso o reunión
+          place_of_publication_tesim: Lugar de publicación
+          beginning_tesim: Inicio del hecho
+          ending_tesim: Fin del hecho
+          has_field_activity_of_agent_tesim: Función
+          is_facsimile_of_manifestation_of_tesim: Facsímil de
+          date_of_manifestation_tesim: Fecha
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -149,7 +165,6 @@ es:
           temporary_coverage_tesim: Cobertura temporal
           interviewer: Entrevistado
           interviewee: Entrevistador
-          organizer_collective_agent: Seminario
           organizer_author: Coordinador / Organizador
           place_of_publication: Lugar de publicación
           photographer: Fotográfo
@@ -379,6 +394,7 @@ es:
       search_for_a_user: Buscar un usuario
       show:
         #metadatos de la vista _show_actions.html.erb
+        has_creator: Creador
         unfeature: Sin Características
         edit: Editar
         delete: Borrar
@@ -436,16 +452,17 @@ es:
         summary: Resumen
         themes: Temas
         title: Título
-        table_of_contents: Tabla de contenidos
+        table_of_contents: Contenido
         type_of_illustrations: Tipo de ilustraciones
         editor: Editor
         publisher: Editorial
         compiler: Compilador
         commentator: Reseñista/Comentarista
+        narrator: Narrador
+        writer_of_suplementary_textual_content: Prologuista
         translator: Traductor
         interviewer: Entrevistado
         interviewee: Entrevistador
-        organizer_collective_agent: Seminario
         photographer: Fotográfo
         collective_title: Título colectivo
         part_of_place: Ciudad/Municipio/Localidad
@@ -460,6 +477,13 @@ es:
         database: Base de Datos
         depository_collective_agent: Organismo depositante
         depositor_agent: Persona depositante
+        organizer_collective_agent: Autor congreso o reunión
+        place_of_publication: Lugar de publicación
+        beginning: Inicio del hecho
+        ending: Fin del hecho
+        has_field_activity_of_agent: Función
+        is_facsimile_of_manifestation_of: Facsímil de
+        date_of_manifestation: Fecha
       relationships_parent_row:
         label: "En %{type}:"
         Collection: es
@@ -657,6 +681,8 @@ es:
         date_created: Fecha de creación
         alternate_title: Título Alternativo
         other_title: Otro Título
+        creator: Autor
+        has_creator: Creador
         contributor: Colaborador
         subject: Tema
         subject_work: Tema obra
@@ -679,7 +705,7 @@ es:
         other_related_persons: Otras personas relacionadas
         system_requirements: Requerimientos de sistema
         item_access_restrictions: Restricciones de acceso al artículo
-        table_of_contents: Tabla de contenidos
+        table_of_contents: Contenido
         edition: Edición
         dimensions: Dimensión
         extension: Extensión
@@ -693,8 +719,8 @@ es:
         digital_resource_generation_information: Información de generación de recursos digitales
         interviewer: Entrevistado
         interviewee: Entrevistador
-        organizer_collective_agent: Seminario
         photographer: Fotográfo
+        narrator: Narador
         collective_title: Título colectivo
         part_of_place: Ciudad/Municipio/Localidad
         provenance: Procedencia
@@ -767,5 +793,14 @@ es:
         related_person_of: Persona relacionada o tercero interesado
         related_corporate_body_of_timespan: Organización relacionada
         related_family_timespan: Familia relacionada
+        writer_of_suplementary_textual_content: Prologuista
+        organizer_collective_agent: Autor congreso o reunión
+        place_of_publication: Lugar de publicación
+        beginning: Inicio del hecho
+        ending: Fin del hecho
+        has_field_activity_of_agent: Función
+        is_facsimile_of_manifestation_of: Facsímil de
+        date_of_manifestation: Fecha
+
        
 

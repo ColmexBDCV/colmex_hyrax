@@ -348,13 +348,9 @@ function TableView() {
          */
         function validadorCsvCampos() {
             const registros = document.querySelectorAll('.table-csv tbody tr');
-            var x = validarCamposNullNotExistDeleteToValidate();
-            console.log(x)
-            console.log(camposNotExist)
-            if(x){
-                conjuntoValidadoresACampos(registros);
-            }
-            
+            validarCamposNullNotExistDeleteToValidate();
+            conjuntoValidadoresACampos(registros);
+                        
             agregandoMensajesATextArea();
 
             //DEPENDIENDO SI EXISTEN ERRORES O CAMPOS NO IDENTIFICADOS EN HYRAX ES EL MENSAJE QUE MUESTRA EN EL TEXT AREA SI NO HAY REGISTROS ERRONEOS NO ELIMINA LAS FILAS CORRECTAS
@@ -433,28 +429,26 @@ function TableView() {
                     camposExist.push(campo.textContent.trim())
                 }
             });
-            if (camposExist.lenght == camposObligatorios.length) {
-                camposHeaderTable.forEach( (campo,index) => {
+                       
+            camposHeaderTable.forEach( (campo,index) => {
 
-                    if (campo.textContent.trim() === '') {
-                        camposHeaderNull = [...camposHeaderNull, index + 1];
-                    } else {
-                        valorCamposHeaderTextContent = [...valorCamposHeaderTextContent, campo.textContent.trim() ];
-                        //validadorCamposHyrax(campo);
-                    }
-                });
-                eliminaCampostoValidate(valorCamposHeaderTextContent);
-                return true
-            }else{
+                if (campo.textContent.trim() === '') {
+                    camposHeaderNull = [...camposHeaderNull, index + 1];
+                } else {
+                    valorCamposHeaderTextContent = [...valorCamposHeaderTextContent, campo.textContent.trim() ];
+                    //validadorCamposHyrax(campo);
+                }
+            });
+            eliminaCampostoValidate(valorCamposHeaderTextContent);
+            
+            
+            camposObligatorios.forEach((campo, index)=> {
+                if(!camposExist.includes(campo)){
+                    camposNotExist.push(campo)
+                }
+
+            });
                 
-                camposObligatorios.forEach((campo, index)=> {
-                    if(!camposExist.includes(campo)){
-                        camposNotExist.push(campo)
-                    }
-
-                });
-                return false
-            }
             
         }
         /**

@@ -16,11 +16,13 @@ module Hyrax
       property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false
       property :resource_type, predicate: ::RDF::Vocab::DC.DCMIType
       property :creator, predicate: ::Vocab::RDAA.authorOf, multiple: true
-      property :contributor, predicate: ::RDF::Vocab::DC11.contributor
+      property :contributor, predicate: ::RDF::Vocab::DC11.contributor, multiple: true
+      property :has_creator, predicate: ::Vocab::RDAU.hasCreator, multiple: true
       property :description, predicate: ::Vocab::RDAE.summarizationOfTheContent
       property :keyword, predicate: ::RDF::Vocab::SCHEMA.keywords
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
+      property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: true 
 
       
       # This is for the rights statement
@@ -72,7 +74,8 @@ module Hyrax
       property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
       property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true
       property :organizer_collective_agent, predicate: ::Vocab::RDAA.organizerCollectiveAgent, multiple: true
-      property :photographer, predicate: ::Vocab::RDAA.photographerAgnteOf, multiple: true
+      property :photographer, predicate: ::Vocab::RDAA.isPhotographerAgentOf, multiple: true
+      property :narrator, predicate: ::Vocab::RDAA.isNarratorAgentOf, multiple: true
       property :collective_title, predicate: ::RDF::Vocab::BF2.CollectiveTitle, multiple: true
       property :part_of_place, predicate: ::Vocab::RDAC.partOfPlace, multiple: true
       property :provenance, predicate: ::RDF::Vocab::DC.provenance, multiple: true
@@ -85,7 +88,17 @@ module Hyrax
       property :depository_agent, predicate: ::Vocab::RDAI.depositoryAgent, multiple: true
       property :corporate_body, predicate: ::Vocab::RDAC.corporateBody, multiple: true
       property :collective_agent, predicate: ::Vocab::RDAC.collectiveAgent, multiple: true
-      
+      property :digital_file_characteristics, predicate: ::Vocab::RDAM.digitalFileCharacteristic, multiple: true
+      property :writer_of_suplementary_textual_content, predicate: ::Vocab::RDAA.isWriterOfSuplementaryTextualContent, multiple: true
+      property :organizer_collective_agent, predicate: ::Vocab::RDAA.isOrganizerCollectiveAgentOf, multiple: true
+      property :has_field_activity_of_agent, predicate: ::Vocab::RDAU.hasFieldOfActivityofAgent, multiple: true
+      property :place_of_publication, predicate: ::Vocab::RDAM.placeOfPublication, multiple: true
+      property :is_facsimile_of_manifestation_of, predicate: ::Vocab::RDAM.isFacsimilOfManifestationOf, multiple: true
+      property :beginning, predicate: ::Vocab::RDAT.hasBeginning, multiple: true
+      property :ending, predicate: ::Vocab::RDAT.hasEnding, multiple: true
+      property :date_of_manifestation, predicate: ::Vocab::RDAM.dateOfManifestation, multiple: true
+
+     
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties

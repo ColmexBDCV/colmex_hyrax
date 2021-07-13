@@ -6,6 +6,7 @@
 =end%>
 <%= presenter.attribute_to_html(:creator, label: t('hyrax.base.show.creator'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contributor, label: t('hyrax.base.show.contributor'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:has_creator, label: t('hyrax.base.show.has_creator'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:description, label: t('hyrax.base.show.description'), html_dl: true) %>
 <%= presenter.attribute_to_html(:center, label: t('hyrax.base.show.center'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:date_created, label: t('hyrax.base.show.date_created'), render_as: :faceted, html_dl: true) %>
@@ -26,17 +27,18 @@
 <%= presenter.attribute_to_html(:commentator, label: t('hyrax.base.show.commentator'), html_dl: true) %>
 <%= presenter.attribute_to_html(:translator, label: t('hyrax.base.show.translator'), html_dl: true) %>
 
-<% [ :doi, :isbn, :alternate_title, :other_title, :system_requirements,
+<% [:handle, :doi, :isbn, :alternate_title, :other_title, :system_requirements,
     :embargo_release_date, :lease_expiration_date, :dimensions, :extension,
-    :gender_or_form, :notes, :supplementary_content_or_bibliography,
-    :responsibility_statement, :table_of_contents, :mode_of_issuance,
+    :gender_or_form, :notes, :supplementary_content_or_bibliography, :has_field_activity_of_agent,
+    :responsibility_statement, :table_of_contents, :mode_of_issuance, :is_facsimile_of_manifestation_of, :date_of_manifestation,
     :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place, 
     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :depository_collective_agent, :depository_agent, :corporate_body, :collective_agent
     ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %>  
 
-<% [ :interviewer, :interviewee, :organizer_collective_agent, :photographer, :publisher, :language, :keyword, :contained_in ].each do |a| %>
+<% [:interviewer, :interviewee, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content, 
+     :place_of_publication, :contained_in, :beginning, :ending].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 

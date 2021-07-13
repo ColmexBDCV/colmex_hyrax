@@ -3,22 +3,22 @@ module Hyrax
   class BasicMetadataIndexer < ActiveFedora::RDF::IndexingService
     class_attribute :stored_and_facetable_fields, :stored_fields, :symbol_fields
     self.stored_and_facetable_fields = %i[other_title alternate_title resource_type creator
-       contributor keyword publisher language based_near geographic_coverage
+       contributor has_creator keyword publisher language based_near geographic_coverage
        temporary_coverage gender_or_form subject_person subject_family 
-       subject_work subject subject_corporate notes classification 
-       item_access_restrictions digital_resource_generation_information
-       interviewer interviewee organizer_collective_agent photographer 
+       subject_work subject subject_corporate notes classification has_field_activity_of_agent
+       item_access_restrictions digital_resource_generation_information place_of_publication
+       interviewer interviewee organizer_collective_agent photographer narrator
        collective_title part_of_place provenance curator_collective_agent_of
-       project owner_agent_of custodian_agent_of file_type_details
+       project owner_agent_of custodian_agent_of file_type_details is_facsimile_of_manifestation_of
        depository_collective_agent depository_agent corporate_body collective_agent
-       supplementary_content_or_bibliography responsibility_statement 
-       other_related_persons table_of_contents type_of_content 
+       supplementary_content_or_bibliography responsibility_statement beginning ending
+       other_related_persons table_of_contents type_of_content organizer_collective_agent
        item_use_restrictions encoding_format_details type_of_illustrations 
-       center license rights_statement date_created bibliographic_citation
+       center license rights_statement date_created bibliographic_citation date_of_manifestation
         source reviewer mode_of_issuance edition dimensions extension system_requirements
-       editor translator compiler commentator contained_in]
+       editor translator compiler commentator contained_in writer_of_suplementary_textual_content]
 
-    self.stored_fields = %i[description identifier doi isbn related_url]
+    self.stored_fields = %i[description identifier doi isbn related_url handle digital_file_characteristics]
     self.symbol_fields = %i[import_url]
 
     private
