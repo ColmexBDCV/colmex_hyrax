@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      amparo:     'fa fa-file-text-o'
+    select_type:
+      amparo:
+        description:        "Amparo opere"
+        name:               "Amparo"

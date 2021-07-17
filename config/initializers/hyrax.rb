@@ -17,12 +17,26 @@ Hyrax.config do |config|
   config.register_curation_concern :database
   # Injected via `rails g hyrax:work Map`
   config.register_curation_concern :map
-  # Injected via `rails g hyrax:work CriminalFact`
-  config.register_curation_concern :criminal_fact
+  # Injected via `rails g hyrax:work Fact`
+  config.register_curation_concern :fact
   # Injected via `rails g hyrax:work Photography`
   config.register_curation_concern :photography
   # Injected via `rails g hyrax:work JurisprudentialThesis`
   config.register_curation_concern :jurisprudential_thesis
+  # Injected via `rails g hyrax:work ArchivalDocument`
+  config.register_curation_concern :archival_document
+  # Injected via `rails g hyrax:work Case`
+  config.register_curation_concern :case
+  # Injected via `rails g hyrax:work Request`
+  config.register_curation_concern :request
+  # Injected via `rails g hyrax:work Judgment`
+  config.register_curation_concern :judgment
+  # Injected via `rails g hyrax:work Recomendation`
+  config.register_curation_concern :recomendation
+  # Injected via `rails g hyrax:work Resolution`
+  config.register_curation_concern :resolution
+  # Injected via `rails g hyrax:work Amparo`
+  config.register_curation_concern :amparo
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

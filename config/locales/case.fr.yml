@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      case:     'fa fa-file-text-o'
+    select_type:
+      case:
+        description:        "Case œuvres"
+        name:               "Case"

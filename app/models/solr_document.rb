@@ -583,4 +583,60 @@ class SolrDocument
   def date_of_manifestation
     self[Solrizer.solr_name('date_of_manifestation')]
   end
+
+  def resource_access_restrictions
+    self[Solrizer.solr_name('resource_access_restrictions')]
+  end
+
+  def resource_use_restrictions
+    self[Solrizer.solr_name('resource_use_restrictions')]
+  end
+
+  def manifestation_access_restrictions
+    self[Solrizer.solr_name('manifestation_access_restrictions')]
+  end
+
+  def manifestation_use_restrictions
+    self[Solrizer.solr_name('manifestation_use_restrictions')]
+  end
+
+  def item_access_restrictions
+    self[Solrizer.solr_name('item_access_restrictions')]
+  end
+
+  def item_use_restrictions
+    self[Solrizer.solr_name('item_use_restrictions')]
+  end
+
+  def complainant
+    self[Solrizer.solr_name('complainant')]
+  end
+
+  def contestee
+    self[Solrizer.solr_name('contestee')]
+  end
+
+  def witness
+    self[Solrizer.solr_name('witness')]
+  end
+
+  def witness
+    self[Solrizer.solr_name('witness')]
+  end
+
+  def is_criminal_defendant_person_of
+    self[Solrizer.solr_name('is_criminal_defendant_person_of')]
+  end
+
+  def is_criminal_defendant_corporate_body_of
+    self[Solrizer.solr_name('is_criminal_defendant_corporate_body_of')]
+  end
+
+  def has_identifier_for_item
+    self[Solrizer.solr_name('has_identifier_for_item')]
+  end
+
+  def is_finding_aid_for
+    self[Solrizer.solr_name('is_finding_aid_for')]
+  end
 end

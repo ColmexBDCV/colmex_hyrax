@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      request:     'fa fa-file-text-o'
+    select_type:
+      request:
+        # TODO: translate `human_name` into Chinese
+        description:        "Request 作品"
+        name:               "Request"
+        # TODO: translate `human_name` into Chinese

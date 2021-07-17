@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      request:     'fa fa-file-text-o'
+    select_type:
+      request:
+        # TODO: translate `human_name` into Spanish
+        description:        "Solicitud trabajos"
+        name:               "Solicitud"
+        # TODO: translate `human_name` into Spanish

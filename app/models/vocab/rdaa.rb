@@ -34,5 +34,7 @@ module Vocab
     term :isComposerPersonOf
     term :isPhotographerAgentOf
     term :isNarratorAgentOf
+    term :isCriminalDefendantCorporateBodyOf
+    term :isCriminalDefendantPersonOf
   end
 end

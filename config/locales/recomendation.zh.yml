@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      recomendation:     'fa fa-file-text-o'
+    select_type:
+      recomendation:
+        # TODO: translate `human_name` into Chinese
+        description:        "Recomendation 作品"
+        name:               "Recomendation"
+        # TODO: translate `human_name` into Chinese

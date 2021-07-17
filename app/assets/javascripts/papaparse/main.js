@@ -543,7 +543,7 @@ function TableView() {
          * Funcion que agrega los mensajes de error al text area
          */
         function agregandoMensajesATextArea() {
-            valorTextArea(campostoValidateNotExist, campostoValidateNotExist.length != 1 ? 'Los campos que son validados en el programa no existen en el archivo son los siguientes: ' : 'El campo que se valida en el programa no existe en el archivo, es el siguiente: ')
+            // valorTextArea(campostoValidateNotExist, campostoValidateNotExist.length != 1 ? 'Los campos que son validados en el programa no existen en el archivo son los siguientes: ' : 'El campo que se valida en el programa no existe en el archivo, es el siguiente: ')
             valorTextArea(camposHeaderNull, camposHeaderNull.length != 1 ? 'Esta vació el encabezado en las columnas: ' : 'Esta vació el encabezado en la columna: ');
             //valorTextArea(camposHyraxNotFound, camposHyraxNotFound.length != 1 ? 'Los campos no existentes en el proyecto son: ' : 'El campo no existe en el proyecto es: '); Agregar si se validan los campos hyrax
             valorTextArea(resgistrosTitleNull, resgistrosTitleNull.length != 1 ? 'En el campo title estan vacios los registros: ' : 'En el campo title está vació en el registro: ');

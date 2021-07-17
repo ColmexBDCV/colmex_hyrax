@@ -68,6 +68,21 @@ es:
           place_of_publication_sim: Lugar de publicación
           beginning_sim: Inicio del hecho
           ending_sim: Fin del hecho
+          primary_topic_sim: Materia
+          enacting_juridiction_of_sim: Instancia emisora, pleno o sala
+          hierarchical_superior_sim: Instancia superior
+          hierarchical_inferior_sim: Instancia subordinada
+          subject_timespan_sim: Tema del hecho criminal
+          is_title_of_item_of_sim: Asunto
+          timespan_described_in_sim: Descripción de hechos
+          related_person_of_sim: Persona relacionada o tercero interesado
+          related_corporate_body_of_timespan_sim: Organización relacionada
+          related_family_timespan_sim: Familia relacionada
+          complainant_sim: Quejoso (víctima y ofendido)
+          contestee_sim: Representante legal, defensor, etc.
+          witness_sim: Testigo
+          is_criminal_defendant_corporate_body_of_sim: Organismo acusado o demandado
+          is_criminal_defendant_person_of_sim: Persona acusada o demandada
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -139,6 +154,23 @@ es:
           has_field_activity_of_agent_tesim: Función
           is_facsimile_of_manifestation_of_tesim: Facsímil de
           date_of_manifestation_tesim: Fecha
+          primary_topic_tesim: Materia
+          enacting_juridiction_of_tesim: Instancia emisora, pleno o sala
+          hierarchical_superior_tesim: Instancia superior
+          hierarchical_inferior_tesim: Instancia subordinada
+          subject_timespan_tesim: Tema del hecho criminal
+          identifier_of_work_tesim: Identificador específico
+          is_title_of_item_of_tesim: Asunto
+          timespan_described_in_tesim: Descripción de hechos
+          related_person_of_tesim: Persona relacionada o tercero interesado
+          related_corporate_body_of_timespan_tesim: Organización relacionada
+          related_family_timespan_tesim: Familia relacionada
+          complainant_tesim: Quejoso (víctima y ofendido)
+          contestee_tesim: Representante legal, defensor, etc.
+          witness_tesim: Testigo
+          is_criminal_defendant_corporate_body_of_tesim: Organismo acusado o demandado
+          is_criminal_defendant_person_of_tesim: Persona acusada o demandada
+          has_identifier_for_item_tesim: Número de expediente o caso
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -419,6 +451,20 @@ es:
         work_type_Thesis: Tesis
         work_type_Book: Libro
         work_type_Book_Chapter: Capítulo de Libro
+        work_type_Music: Música
+        work_type_Map: Mapa
+        work_type_Data_Base: Base de Datos
+        work_type_Photography: Fotografía
+        work_type_Jurisprudential_Thesis: Tesis Jurisprudencial
+        work_type_Video: Vídeo
+        work_type_Fact: Hecho
+        work_type_Archival_Document: Documento Archivístico
+        work_type_Case: Caso
+        work_type_Request: Solicitud
+        work_type_Judgment: Sentencia
+        work_type_Recomendation: Recomendación
+        work_type_Resolution: Resolución
+        work_type_Amparo: Amparo
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador
@@ -484,6 +530,23 @@ es:
         has_field_activity_of_agent: Función
         is_facsimile_of_manifestation_of: Facsímil de
         date_of_manifestation: Fecha
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada
+        complainant: Quejoso (víctima y ofendido)
+        contestee: Representante legal, defensor, etc.
+        witness: Testigo
+        is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
+        is_criminal_defendant_person_of: Persona acusada o demandada
+        has_identifier_for_item: Número de expediente o caso
       relationships_parent_row:
         label: "En %{type}:"
         Collection: es
@@ -801,6 +864,25 @@ es:
         has_field_activity_of_agent: Función
         is_facsimile_of_manifestation_of: Facsímil de
         date_of_manifestation: Fecha
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada
+        complainant: Quejoso (víctima y ofendido)
+        contestee: Representante legal, defensor, etc.
+        witness: Testigo
+        is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
+        is_criminal_defendant_person_of: Persona acusada o demandada
+        has_identifier_for_item: Número de expediente o caso
+        is_finding_aid_for: Instrumento de descripción archivística
+
 
        
 

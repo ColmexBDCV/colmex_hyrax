@@ -10,5 +10,6 @@ module Vocab
     term :depositoryAgent
     term :hasIdentifierForItem
     term :collectorCollectiveAgent
+    term :hasIdentifierForItem
   end
 end

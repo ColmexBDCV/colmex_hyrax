@@ -1,0 +1,18 @@
+es:
+  blacklight:
+    search:
+      fields:
+        index:
+          is_finding_aid_for_tesim: Instrumento de descripción archivística
+  hyrax:
+    icons:
+      archival_document:     'fa fa-file-text-o'
+    select_type:
+      archival_document:
+        # TODO: translate `human_name` into Spanish
+        description:        "Documento archivistíco trabajos"
+        name:               "Documento archivistíco"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        is_finding_aid_for: Instrumento de descripción archivística

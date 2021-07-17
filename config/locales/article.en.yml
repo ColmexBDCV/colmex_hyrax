@@ -22,8 +22,8 @@ en:
     select_type:
       article:
         # TODO: translate `human_name` into Spanish
-        description: "Artículos trabajos"
-        name: "Artículos"
+        description: "Articles works"
+        name: "Articles"
         # TODO: translate `human_name` into Spanish
     base:
       show:

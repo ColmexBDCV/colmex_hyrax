@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      judgment:     'fa fa-file-text-o'
+    select_type:
+      judgment:
+        # TODO: translate `human_name` into Chinese
+        description:        "Judgment 作品"
+        name:               "Judgment"
+        # TODO: translate `human_name` into Chinese

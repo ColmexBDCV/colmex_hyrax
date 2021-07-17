@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      resolution:     'fa fa-file-text-o'
+    select_type:
+      resolution:
+        # TODO: translate `human_name` into Chinese
+        description:        "Resolution 作品"
+        name:               "Resolution"
+        # TODO: translate `human_name` into Chinese

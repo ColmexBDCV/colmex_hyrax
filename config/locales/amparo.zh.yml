@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      amparo:     'fa fa-file-text-o'
+    select_type:
+      amparo:
+        # TODO: translate `human_name` into Chinese
+        description:        "Amparo 作品"
+        name:               "Amparo"
+        # TODO: translate `human_name` into Chinese

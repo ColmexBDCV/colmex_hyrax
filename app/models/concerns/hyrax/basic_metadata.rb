@@ -64,9 +64,6 @@ module Hyrax
       property :dimensions, predicate: ::Vocab::RDAM.dimensions, multiple: false
       property :extension, predicate: ::Vocab::RDAM.extent, multiple: false
       property :system_requirements, predicate: ::Vocab::RDAM.equipmentOrSystemRequirement, multiple: true
-
-      property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
-      property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
       property :encoding_format_details, predicate: ::Vocab::RDAM.detailsOfEncodingFormat, multiple: true
       property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
       property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
@@ -97,6 +94,13 @@ module Hyrax
       property :beginning, predicate: ::Vocab::RDAT.hasBeginning, multiple: true
       property :ending, predicate: ::Vocab::RDAT.hasEnding, multiple: true
       property :date_of_manifestation, predicate: ::Vocab::RDAM.dateOfManifestation, multiple: true
+
+      property :resource_access_restrictions, predicate: ::Vocab::RDAM.resourceAccessRestrictions, multiple: true
+      property :resource_use_restrictions, predicate: ::Vocab::RDAM.restrictionsOnUseOfResource, multiple: true
+      property :manifestation_access_restrictions, predicate: ::Vocab::RDAM.restrictionsOnAccessToManifestation, multiple: true
+      property :manifestation_use_restrictions, predicate: ::Vocab::RDAM.restrictionsOnUseOfManifestation, multiple: true
+      property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
+      property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
 
      
       id_blank = proc { |attributes| attributes[:id].blank? }

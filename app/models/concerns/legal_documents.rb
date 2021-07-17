@@ -56,5 +56,36 @@ module LegalDocuments
         index.type :text
         index.as :stored_searchable, :facetable
       end 
+
+      property :complainant, predicate: ::RDF::Vocab::MARCRelators.cpl, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+      
+      property :contestee, predicate: ::RDF::Vocab::MARCRelators.cts, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+
+      property :witness, predicate: ::RDF::Vocab::MARCRelators.wit, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+
+      property :is_criminal_defendant_corporate_body_of, predicate: ::Vocab::RDAA.isCriminalDefendantCorporateBodyOf, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+
+      property :is_criminal_defendant_person_of, predicate: ::Vocab::RDAA.isCriminalDefendantPersonOf, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+
+      property :has_identifier_for_item, predicate: ::Vocab::RDAI.hasIdentifierForItem, multiple: true do |index|
+        index.type :text
+        index.as :stored_searchable, :facetable
+      end 
+
     end
 end

@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      archival_document:     'fa fa-file-text-o'
+    select_type:
+      archival_document:
+        description:        "Archival document œuvres"
+        name:               "Archival Document"

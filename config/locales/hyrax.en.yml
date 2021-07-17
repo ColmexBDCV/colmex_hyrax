@@ -52,6 +52,21 @@ en:
           place_of_publication_sim: Place of publication
           beginning_sim: Beginning
           ending_sim: Ending
+          primary_topic_sim:	Primary topic
+          enacting_juridiction_of_sim: Enacting jurisdiction
+          hierarchical_superior_sim: Hierarchical superior
+          hierarchical_inferior_sim: Hierarchical inferior
+          subject_timespan_sim: Subject timespan
+          is_title_of_item_of_sim: Is title of item of
+          timespan_described_in_sim: Timespan person of
+          related_person_of_sim: Related person of
+          related_corporate_body_of_timespan_sim: related corporate body of timespan 
+          related_family_timespan_sim: Related family timespan
+          complainant_sim: Complainant
+          contestee_sim: Contestee
+          witness_sim: Witness
+          is_criminal_defendant_corporate_body_of_sim: Is criminal defendant corporate body of
+          is_criminal_defendant_person_of_sim: Is criminal defendant person of
         index:
           based_near_tesim: Location
           classification_tesim: Classification
@@ -109,6 +124,23 @@ en:
           has_field_activity_of_agent_tesim: Has field activity of agent
           is_facsimile_of_manifestation_of_tesim: Is facsimile of manifestation of
           date_of_manifestation_tesim: Date of manifestation
+          primary_topic_tesim: Primary topic
+          enacting_juridiction_of_tesim: Enacting jurisdiction
+          hierarchical_superior_tesim: Hierarchical superior
+          hierarchical_inferior_tesim: Hierarchical inferior
+          subject_timespan_tesim: Subject timespan
+          identifier_of_work_tesim: Identificador específico
+          is_title_of_item_of_tesim: Is title of item of
+          timespan_described_in_tesim: Timespan person of
+          related_person_of_tesim: Related person of
+          related_corporate_body_of_timespan_tesim: Related corporate body of timespan
+          related_family_timespan_tesim: Related family timespan
+          complainant_tesim: Complainant
+          contestee_tesim: Contestee
+          witness_tesim: Witness
+          is_criminal_defendant_corporate_body_of_tesim: Is criminal defendant corporate body of
+          is_criminal_defendant_person_of_tesim: Is criminal defendant person of
+          has_identifier_for_item_tesim: Has identifier for item
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -405,6 +437,23 @@ en:
         has_field_activity_of_agent: Has field activity of agent
         is_facsimile_of_manifestation_of: Is facsimile of manifestation of
         date_of_manifestation: Date of manifestation
+        primary_topic: Primary topic
+        enacting_juridiction_of: Enacting jurisdiction
+        hierarchical_superior: Hierarchical superior
+        hierarchical_inferior: Hierarchical inferior
+        subject_timespan: Subject timespan
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Is title of item of
+        timespan_described_in: Timespan person of
+        related_person_of: Related perso of
+        related_corporate_body_of_timespan: Related corporate body of timespan
+        related_family_timespan: Related family timespan
+        complainant: Complainant
+        contestee: Contestee
+        witness: Witness
+        is_criminal_defendant_corporate_body_of: Is criminal defendant corporate body of
+        is_criminal_defendant_person_of: Is criminal defendant person of
+        has_identifier_for_item: Has identifier for item
     product_name: "COLMEX Repository"
     product_twitter_handle: "@BiblioColmex"
     institution_name: "Institution"

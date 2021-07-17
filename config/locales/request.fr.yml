@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      request:     'fa fa-file-text-o'
+    select_type:
+      request:
+        description:        "Request œuvres"
+        name:               "Request"

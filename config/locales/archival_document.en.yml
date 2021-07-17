@@ -1,0 +1,16 @@
+en:
+  blacklight:
+    search:
+      fields:
+        index:
+          is_finding_aid_for_tesim: Is finding aid for
+  hyrax:
+    icons:
+      archival_document:     'fa fa-file-text-o'
+    select_type:
+      archival_document:
+        description:        "Archival document works"
+        name:               "Archival Document"
+    base:
+      show:
+        is_finding_aid_for: Is finding aid for

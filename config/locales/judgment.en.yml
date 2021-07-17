@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      judgment:     'fa fa-file-text-o'
+    select_type:
+      judgment:
+        description:        "Judgment works"
+        name:               "Judgment"

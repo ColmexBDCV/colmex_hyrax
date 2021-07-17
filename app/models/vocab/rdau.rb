@@ -7,5 +7,6 @@ module Vocab
     term :contentType
     term :hasFieldOfActivityofAgent
     term :hasCreator
+    term :isFindingAidFor
   end
 end

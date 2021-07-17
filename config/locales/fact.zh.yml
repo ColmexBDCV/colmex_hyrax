@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      fact:     'fa fa-file-text-o'
+    select_type:
+      fact:
+        # TODO: translate `human_name` into Chinese
+        description:        "Criminal fact 作品"
+        name:               "Criminal Fact"
+        # TODO: translate `human_name` into Chinese

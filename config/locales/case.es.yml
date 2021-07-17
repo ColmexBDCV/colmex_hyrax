@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      case:     'fa fa-file-text-o'
+    select_type:
+      case:
+        # TODO: translate `human_name` into Spanish
+        description:        "Caso trabajos"
+        name:               "Caso"
+        # TODO: translate `human_name` into Spanish

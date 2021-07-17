@@ -1,0 +1,25 @@
+es:
+  blacklight:
+    search:
+      fields:
+          facet:
+            related_place_of_timespan_sim: Lugar del hecho criminal
+            note_of_timespan_sim: Nota del hecho criminal
+          index:
+            related_place_of_timespan_tesim: Lugar del hecho criminal
+            note_of_timespan_tesim: Nota del hecho criminal
+
+            
+  hyrax:
+    icons:
+      fact:     'fa fa-file-text-o'
+    select_type:
+      fact:
+        # TODO: translate `human_name` into Spanish
+        description:        "Hecho trabajos"
+        name:               "Hecho"
+        # TODO: translate `human_name` into Spanish
+    base:
+      show:
+        related_place_of_timespan: Lugar del hecho criminal
+        note_of_timespan: Nota del hecho criminal

@@ -1,8 +1,0 @@
-it:
-  hyrax:
-    icons:
-      criminal_fact:     'fa fa-file-text-o'
-    select_type:
-      criminal_fact:
-        description:        "Criminal fact opere"
-        name:               "Criminal Fact"

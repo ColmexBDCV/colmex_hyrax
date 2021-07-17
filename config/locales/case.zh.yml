@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      case:     'fa fa-file-text-o'
+    select_type:
+      case:
+        # TODO: translate `human_name` into Chinese
+        description:        "Case 作品"
+        name:               "Case"
+        # TODO: translate `human_name` into Chinese

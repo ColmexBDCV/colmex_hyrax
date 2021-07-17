@@ -148,6 +148,15 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("related_person_of", :facetable), limit: 5
     config.add_facet_field solr_name("related_corporate_body_of_timespan", :facetable), limit: 5
     config.add_facet_field solr_name("related_family_timespan", :facetable), limit: 5
+    config.add_facet_field solr_name("complainant", :facetable), limit: 5
+    config.add_facet_field solr_name("contestee", :facetable), limit: 5
+    config.add_facet_field solr_name("witness", :facetable), limit: 5
+    config.add_facet_field solr_name("is_criminal_defendant_corporate_body_of", :facetable), limit: 5
+    config.add_facet_field solr_name("is_criminal_defendant_person_of", :facetable), limit: 5
+    
+    
+    
+    
     config.add_facet_field solr_name("beginning", :facetable), limit: 5
     config.add_facet_field solr_name("ending", :facetable), limit: 5
 
@@ -268,12 +277,19 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("related_person_of", :stored_searchable), itemprop: 'related_person_of', link_to_search: solr_name("related_person_of", :facetable)
     config.add_index_field solr_name("related_corporate_body_of_timespan", :stored_searchable), itemprop: 'related_corporate_body_of_timespan', link_to_search: solr_name("related_corporate_body_of_timespan", :facetable)
     config.add_index_field solr_name("related_family_timespan", :stored_searchable), itemprop: 'related_family_timespan', link_to_search: solr_name("related_family_timespan", :facetable)
+    config.add_index_field solr_name("complainant", :stored_searchable), itemprop: 'complainant', link_to_search: solr_name("complainant", :facetable)
+    config.add_index_field solr_name("contestee", :stored_searchable), itemprop: 'contestee', link_to_search: solr_name("contestee", :facetable)
+    config.add_index_field solr_name("witness", :stored_searchable), itemprop: 'witness', link_to_search: solr_name("witness", :facetable)
+    config.add_index_field solr_name("is_criminal_defendant_corporate_body_of", :stored_searchable), itemprop: 'is_criminal_defendant_corporate_body_of', link_to_search: solr_name("is_criminal_defendant_corporate_body_of", :facetable)
+    config.add_index_field solr_name("is_criminal_defendant_person_of", :stored_searchable), itemprop: 'is_criminal_defendant_person_of', link_to_search: solr_name("is_criminal_defendant_person_of", :facetable)
+    config.add_index_field solr_name("has_identifier_for_item", :stored_searchable)
     config.add_index_field solr_name("place_of_publication", :stored_searchable), itemprop: 'place_of_publication', link_to_search: solr_name("place_of_publication", :facetable)
     config.add_index_field solr_name("beginning", :stored_searchable), itemprop: 'beginning', link_to_search: solr_name("beginning", :facetable)
     config.add_index_field solr_name("ending", :stored_searchable), itemprop: 'ending', link_to_search: solr_name("ending", :facetable)
     config.add_index_field solr_name("has_field_activity_of_agent", :stored_searchable)
     config.add_index_field solr_name("is_facsimile_of_manifestation_of", :stored_searchable)
     config.add_index_field solr_name("date_of_manifestation", :stored_searchable)
+    config.add_index_field solr_name("is_finding_aid_for", :stored_searchable)
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

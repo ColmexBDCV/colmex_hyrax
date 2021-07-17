@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      request:     'fa fa-file-text-o'
+    select_type:
+      request:
+        description:        "Request trabalhos"
+        name:               "Request"

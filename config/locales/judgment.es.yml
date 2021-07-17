@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      judgment:     'fa fa-file-text-o'
+    select_type:
+      judgment:
+        # TODO: translate `human_name` into Spanish
+        description:        "Sentencia trabajos"
+        name:               "Sentencia"
+        # TODO: translate `human_name` into Spanish

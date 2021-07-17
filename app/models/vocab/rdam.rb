@@ -46,5 +46,9 @@ module Vocab
     term :longitud_latitud
     term :digitalRepresentationOfCartographicContent
     term :productionMethod
+    term :resourceAccessRestrictions
+    term :restrictionsOnUseOfResource
+    term :restrictionsOnAccessToManifestation
+    term :restrictionsOnUseOfManifestation
   end
 end

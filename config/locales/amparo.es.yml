@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      amparo:     'fa fa-file-text-o'
+    select_type:
+      amparo:
+        # TODO: translate `human_name` into Spanish
+        description:        "Amparo trabajos"
+        name:               "Amparo"
+        # TODO: translate `human_name` into Spanish

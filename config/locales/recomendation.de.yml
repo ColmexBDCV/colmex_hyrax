@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      recomendation:     'fa fa-file-text-o'
+    select_type:
+      recomendation:
+        description:        "Recomendation Werke"
+        name:               "Recomendation"

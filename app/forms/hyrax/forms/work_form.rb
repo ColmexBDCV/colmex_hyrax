@@ -36,7 +36,8 @@ module Hyrax
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending, 
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease,
-                    :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent,
+                    :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
+                    :manifestation_access_restrictions, :manifestation_use_restrictions, :item_access_restrictions, :item_use_restrictions,
                     :member_of_collection_ids, :admin_set_id]
 
       self.required_fields = [:title, 

@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      fact:     'fa fa-file-text-o'
+    select_type:
+      fact:
+        description:        "Criminal fact Werke"
+        name:               "Criminal Fact"

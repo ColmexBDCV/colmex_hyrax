@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      resolution:     'fa fa-file-text-o'
+    select_type:
+      resolution:
+        # TODO: translate `human_name` into Spanish
+        description:        "Resolución trabajos"
+        name:               "Resolución"
+        # TODO: translate `human_name` into Spanish

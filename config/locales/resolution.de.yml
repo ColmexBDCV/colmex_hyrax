@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      resolution:     'fa fa-file-text-o'
+    select_type:
+      resolution:
+        description:        "Resolution Werke"
+        name:               "Resolution"
