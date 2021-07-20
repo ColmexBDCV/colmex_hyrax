@@ -549,7 +549,7 @@ es:
         has_identifier_for_item: Número de expediente o caso
       relationships_parent_row:
         label: "En %{type}:"
-        Collection: es
+        Collection: Colección
     collections:
       show:
         last_updated: "Ultima Actualización"

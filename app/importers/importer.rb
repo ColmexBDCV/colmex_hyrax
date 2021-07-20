@@ -40,7 +40,7 @@ class Importer < Darlingtonia::Importer
     works = []
     records.each do |record|  
       wt = work.singularize.classify.constantize.where(identifier: record.identifier).first
-      works << wt
+      works << wt if wt.count > 1
     end
     return works
   end
