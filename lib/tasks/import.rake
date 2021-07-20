@@ -29,5 +29,33 @@ namespace :colmex do
         puts "Invalid CSV"
       end
     end
+  end  
+  namespace :collection do
+    desc 'add works to collection'
+    task :add_works, [:filename, :work, :collection] => [:environment]  do |_task, args|
+
+        parser = ColmexCsvParser.new(file: File.open(args[:filename]), work: args[:work] )
+
+        if parser.validate then
+            puts "Add works to collection has started\n\n"
+            
+            AddToCollectionJob.perform_later(args[:filename], args[:work], args[:collection])
+        else
+            puts "Invalid CSV"
+        end
+    end
+    desc 'remove works from collection'
+    task :remove_works, [:filename, :work, :collection] => [:environment]  do |_task, args|
+
+        parser = ColmexCsvParser.new(file: File.open(args[:filename]), work: args[:work] )
+
+        if parser.validate then
+            puts "Remove works from collection has started\n\n"
+
+            RemoveFromCollectionJob.perform_later(args[:filename], args[:work], args[:collection])
+        else
+            puts "Invalid CSV"
+        end
+    end
   end
 end

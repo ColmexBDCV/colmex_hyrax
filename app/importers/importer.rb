@@ -31,6 +31,41 @@ class Importer < Darlingtonia::Importer
 
   end
 
+  def initialize_collection()
+    self.collection = Collection.where(title: collection)
+  end
+
+  def get_record_objects()
+    
+    works = []
+    records.each do |record|  
+      wt = work.singularize.classify.constantize.where(identifier: record.identifier).first
+      works << wt
+    end
+    return works
+  end
+
+  def get_record_ids()
+    work_ids = []
+    get_record_objects.each do |w|
+      work_ids << w.id
+    end
+    return work_ids
+  end
+
+  def to_collection_add()
+    initialize_collection
+    collection.first.add_member_objects(get_record_ids)
+  end
+
+  def from_collection_remove()
+    initialize_collection
+    get_record_objects.each do |r|
+      r.member_of_collections.delete(collection)
+      r.save
+    end
+  end
+
   private
 
     def default_creator

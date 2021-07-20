@@ -25,8 +25,6 @@ Hyrax.config do |config|
   config.register_curation_concern :jurisprudential_thesis
   # Injected via `rails g hyrax:work ArchivalDocument`
   config.register_curation_concern :archival_document
-  # Injected via `rails g hyrax:work Case`
-  config.register_curation_concern :case
   # Injected via `rails g hyrax:work Request`
   config.register_curation_concern :request
   # Injected via `rails g hyrax:work Judgment`
