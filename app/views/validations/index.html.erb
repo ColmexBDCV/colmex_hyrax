@@ -65,7 +65,7 @@
                         <%
                             workTypes = []
                             Hyrax::config.registered_curation_concern_types.each do |wt|
-                                workTypes.append ([t('hyrax.admin,validations.'+wt.underscore), wt])
+                                workTypes.append ([t('hyrax.admin.validations.'+wt.underscore.downcase), wt])
                             end
                         
                         %>

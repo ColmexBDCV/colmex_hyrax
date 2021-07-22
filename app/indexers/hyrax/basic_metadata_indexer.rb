@@ -13,12 +13,12 @@ module Hyrax
        depository_collective_agent depository_agent corporate_body collective_agent
        supplementary_content_or_bibliography responsibility_statement beginning ending
        other_related_persons table_of_contents type_of_content organizer_collective_agent
-       item_use_restrictions encoding_format_details type_of_illustrations 
+       item_use_restrictions encoding_format_details type_of_illustrations subject_uniform_title
        center license rights_statement date_created bibliographic_citation date_of_manifestation
        source reviewer mode_of_issuance edition dimensions extension system_requirements
        editor translator compiler commentator contained_in writer_of_suplementary_textual_content
        resource_access_restrictions resource_use_restrictions manifestation_access_restrictions
-       manifestation_use_restrictions item_access_restrictions item_use_restrictions]
+       manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent]
 
     self.stored_fields = %i[description identifier doi isbn related_url handle digital_file_characteristics]
     self.symbol_fields = %i[import_url]

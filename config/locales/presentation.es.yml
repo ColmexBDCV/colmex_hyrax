@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      presentation:     'fa fa-file-text-o'
+    select_type:
+      presentation:
+        # TODO: translate `human_name` into Spanish
+        description:        "Ponencia trabajos"
+        name:               "Ponencia"
+        # TODO: translate `human_name` into Spanish

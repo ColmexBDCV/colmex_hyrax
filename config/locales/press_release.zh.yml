@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      press_release:     'fa fa-file-text-o'
+    select_type:
+      press_release:
+        # TODO: translate `human_name` into Chinese
+        description:        "Press release 作品"
+        name:               "Press Release"
+        # TODO: translate `human_name` into Chinese

@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      press_release:     'fa fa-file-text-o'
+    select_type:
+      press_release:
+        # TODO: translate `human_name` into Spanish
+        description:        "Nota de prensa trabajos"
+        name:               "Nota de prensa"
+        # TODO: translate `human_name` into Spanish

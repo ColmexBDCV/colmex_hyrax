@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      legal_case:     'fa fa-file-text-o'
+    select_type:
+      legal_case:
+        # TODO: translate `human_name` into Chinese
+        description:        "Legal case 作品"
+        name:               "Legal Case"
+        # TODO: translate `human_name` into Chinese

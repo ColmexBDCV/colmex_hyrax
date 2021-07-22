@@ -153,7 +153,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("witness", :facetable), limit: 5
     config.add_facet_field solr_name("is_criminal_defendant_corporate_body_of", :facetable), limit: 5
     config.add_facet_field solr_name("is_criminal_defendant_person_of", :facetable), limit: 5
-    
+    config.add_facet_field solr_name("collector_collective_agent", :facetable), limit: 5   
+    config.add_facet_field solr_name("subject_uniform_title", :facetable), limit: 5
     
     
     
@@ -290,6 +291,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_facsimile_of_manifestation_of", :stored_searchable)
     config.add_index_field solr_name("date_of_manifestation", :stored_searchable)
     config.add_index_field solr_name("is_finding_aid_for", :stored_searchable)
+    config.add_index_field solr_name("collector_collective_agent", :stored_searchable), itemprop: 'collector_collective_agent', link_to_search: solr_name("collector_collective_agent", :facetable)
+    config.add_index_field solr_name("subject_uniform_title", :stored_searchable), itemprop: 'subject_uniform_title', link_to_search: solr_name("subject_uniform_title", :facetable)
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

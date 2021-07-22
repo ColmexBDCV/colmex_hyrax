@@ -35,6 +35,14 @@ Hyrax.config do |config|
   config.register_curation_concern :resolution
   # Injected via `rails g hyrax:work Amparo`
   config.register_curation_concern :amparo
+  # Injected via `rails g hyrax:work PressRelease`
+  config.register_curation_concern :press_release
+  # Injected via `rails g hyrax:work Presentation`
+  config.register_curation_concern :presentation
+  # Injected via `rails g hyrax:work Journal`
+  config.register_curation_concern :journal
+  # Injected via `rails g hyrax:work LegalCase`
+  config.register_curation_concern :legal_case
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

@@ -65,7 +65,6 @@ es:
           depository_collective_agent_sim: Organismo depositante
           depositor_agent_sim: Persona depositante
           organizer_collective_agent_sim: Autor congreso o reunión
-          place_of_publication_sim: Lugar de publicación
           beginning_sim: Inicio del hecho
           ending_sim: Fin del hecho
           primary_topic_sim: Materia
@@ -83,6 +82,8 @@ es:
           witness_sim: Testigo
           is_criminal_defendant_corporate_body_of_sim: Organismo acusado o demandado
           is_criminal_defendant_person_of_sim: Persona acusada o demandada
+          collector_collective_agent_sim: Repositorio
+          subject_uniform_title_sim: Título uniforme u original
         index:
           based_near_tesim: Ubicación
           classification_tesim: Clasificación
@@ -127,7 +128,6 @@ es:
           corporate_body_tesim: Autor corporativo
           collective_agent_tesim: Autor congreso
           organizer_author_tesim: Coordinador / Organizador
-          place_of_publication_tesim: Lugar de publicación
           copyright_tesim: Copyright
           title_of_series_tesim: Serie
           numbering_within_sequence_tesim: Volumen/número
@@ -171,6 +171,8 @@ es:
           is_criminal_defendant_corporate_body_of_tesim: Organismo acusado o demandado
           is_criminal_defendant_person_of_tesim: Persona acusada o demandada
           has_identifier_for_item_tesim: Número de expediente o caso
+          collector_collective_agent_tesim: Repositorio
+          subject_uniform_title_tesim: Título uniforme u original
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -379,7 +381,23 @@ es:
         thesis: Tesis
         book: Libro
         video: Video
-        book_Chapter: Capítulo de libro
+        book_chapter: Capítulo de libro
+        music: Música
+        map: Mapa
+        database: Base de Datos
+        photography: Fotografía
+        jurisprudential_thesis: Tesis Jurisprudencial
+        fact: Hecho
+        archival_document: Documento Archivístico
+        request: Solicitud
+        judgment: Sentencia
+        recomendation: Recomendación
+        resolution: Resolución
+        amparo: Amparo
+        press_release: Nota de Prensa
+        presentation: Ponencia
+        legal_case: Caso
+        journal: Revista
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de trabajo
@@ -441,8 +459,6 @@ es:
         delete_this_Book: Borrar este Libro
         delete_this_Video: Borrar este Video
         delete_this_Book_Chapter: Borrar este Capítulo de libro
-        ###
-        description: Resumen
         all_fields: Todos los campos
         alternate_title: Título alterno
         analitycs: Analíticas
@@ -459,12 +475,15 @@ es:
         work_type_Video: Vídeo
         work_type_Fact: Hecho
         work_type_Archival_Document: Documento Archivístico
-        work_type_Case: Caso
         work_type_Request: Solicitud
         work_type_Judgment: Sentencia
         work_type_Recomendation: Recomendación
         work_type_Resolution: Resolución
         work_type_Amparo: Amparo
+        work_type_Press_Release: Nota de Prensa
+        work_type_Presentation: Ponencia
+        work_type_Legal_case: Caso
+        work_type_Journal: Revista
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador
@@ -517,7 +536,6 @@ es:
         project: Proyecto
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
-        depository_collective_agent: Agente colectivo depositario
         depository_agent: Agente depositario
         contained_in: "Incluido en:"
         database: Base de Datos
@@ -547,6 +565,8 @@ es:
         is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
         is_criminal_defendant_person_of: Persona acusada o demandada
         has_identifier_for_item: Número de expediente o caso
+        collector_collective_agent: Repositorio
+        subject_uniform_title: Título uniforme u original
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
@@ -697,7 +717,6 @@ es:
       users: Usuarios
       user_name: Nombre de Usuario
       user_id: Id de Usuario
-      department: Departamento
       works_created: Obras creadas
       user_activity: Actividad de Usuario
       website: Sitios de internet
@@ -845,20 +864,8 @@ es:
         speaker_agent_of: Conferencista/ponente
         assistant: Secretario
         preceded_by_work: Precedentes
-        primary_topic: Materia
-        enacting_juridiction_of: Instancia emisora, pleno o sala
-        hierarchical_superior: Instancia superior
-        hierarchical_inferior: Instancia subordinada
-        subject_timespan: Tema del hecho criminal
-        identifier_of_work: Identificador específico
-        is_title_of_item_of: Asunto
-        timespan_described_in: Descripción de hechos
-        related_person_of: Persona relacionada o tercero interesado
-        related_corporate_body_of_timespan: Organización relacionada
-        related_family_timespan: Familia relacionada
         writer_of_suplementary_textual_content: Prologuista
         organizer_collective_agent: Autor congreso o reunión
-        place_of_publication: Lugar de publicación
         beginning: Inicio del hecho
         ending: Fin del hecho
         has_field_activity_of_agent: Función
@@ -882,6 +889,8 @@ es:
         is_criminal_defendant_person_of: Persona acusada o demandada
         has_identifier_for_item: Número de expediente o caso
         is_finding_aid_for: Instrumento de descripción archivística
+        collector_collective_agent: Repositorio
+        subject_uniform_title: Título uniforme u original
 
 
        

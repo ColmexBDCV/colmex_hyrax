@@ -1,6 +1,5 @@
 <ul class="list-inline collection-highlights-list">
   <% locale = (request.query_parameters.key?("locale") ? "&locale="+request.query_parameters["locale"] : "" )%>
-
   <% collections.each do |collection| %>
     <li> 
       <%= link_to(collection.title_or_label, "catalog?f%5Bmember_of_collections_ssim%5D%5B%5D=" + collection.title_or_label+locale, html_options = {})  %>

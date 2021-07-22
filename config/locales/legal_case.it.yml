@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      legal_case:     'fa fa-file-text-o'
+    select_type:
+      legal_case:
+        description:        "Legal case opere"
+        name:               "Legal Case"

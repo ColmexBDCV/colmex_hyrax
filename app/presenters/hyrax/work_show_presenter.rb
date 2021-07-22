@@ -36,7 +36,7 @@ module Hyrax
              to: :solr_document
 
     # Metadata Methods
-   delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, 
+   delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, :subject_uniform_title,
              :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
              :publisher, :language, :reviewer, :handle, :narrator, :writer_of_suplementary_textual_content, :place_of_publication,
              :license, :geographic_coverage, :temporary_coverage, :organizer_collective_agent, :has_field_activity_of_agent,
@@ -49,7 +49,7 @@ module Hyrax
              :depository_collective_agent, :depository_agent, :corporate_body, :collective_agent, :contained_in,
              :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, :is_facsimile_of_manifestation_of,
              :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation,
-             :rendering_ids, :member_of_collection_ids, to: :solr_document
+             :rendering_ids, :member_of_collection_ids, :collector_collective_agent, to: :solr_document
 
     def workflow
       @workflow ||= WorkflowPresenter.new(solr_document, current_ability)

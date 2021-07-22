@@ -620,8 +620,8 @@ class SolrDocument
     self[Solrizer.solr_name('witness')]
   end
 
-  def witness
-    self[Solrizer.solr_name('witness')]
+  def subject_uniform_title
+    self[Solrizer.solr_name('subject_uniform_title')]
   end
 
   def is_criminal_defendant_person_of
@@ -638,5 +638,9 @@ class SolrDocument
 
   def is_finding_aid_for
     self[Solrizer.solr_name('is_finding_aid_for')]
+  end
+
+  def collector_collective_agent
+    self[Solrizer.solr_name('collector_collective_agent')]
   end
 end

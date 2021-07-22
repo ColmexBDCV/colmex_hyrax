@@ -29,8 +29,8 @@
 
 <% [:handle, :doi, :isbn, :alternate_title, :other_title, :system_requirements,
     :embargo_release_date, :lease_expiration_date, :dimensions, :extension,
-    :gender_or_form, :notes, :supplementary_content_or_bibliography, :has_field_activity_of_agent,
-    :responsibility_statement, :table_of_contents, :mode_of_issuance, :is_facsimile_of_manifestation_of, :date_of_manifestation,
+    :gender_or_form, :notes, :supplementary_content_or_bibliography, :has_field_activity_of_agent, :subject_uniform_title,
+    :responsibility_statement, :table_of_contents, :mode_of_issuance, :is_facsimile_of_manifestation_of, :date_of_manifestation, 
     :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place, 
     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :depository_collective_agent, :depository_agent, :corporate_body, :collective_agent
     ].each do |a| %>
@@ -38,7 +38,7 @@
 <% end %>  
 
 <% [:interviewer, :interviewee, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content, 
-     :place_of_publication, :contained_in, :beginning, :ending].each do |a| %>
+     :place_of_publication, :contained_in, :beginning, :ending, :subject_uniform_title, :collector_collective_agent].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 

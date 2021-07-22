@@ -36,3 +36,15 @@
 
 $(document).on('turbolinks:load', HighLight);
 $(document).on('turbolinks:load', TableView);
+$(document).on('turbolinks:load', function(){
+
+    $('h4.search-result-title > a').each(function(){
+        if($(this).attr("href").includes("/collections/")) {
+            console.log($(this).attr("href"))
+            $(this).attr("href", "/catalog?f%5Bmember_of_collections_ssim%5D%5B%5D="+$(this).text())
+        }
+        
+      }); 
+
+
+});

@@ -50,5 +50,6 @@ module Vocab
     term :restrictionsOnUseOfResource
     term :restrictionsOnAccessToManifestation
     term :restrictionsOnUseOfManifestation
+    term :collectorCollectiveAgent
   end
 end

@@ -9,5 +9,6 @@ module Hyrax
     self.terms += AnalyticsTypeTwoForm.shared_fields
     # This must be included at the end,
     self.terms += ConacytForm.special_fields
+    self.terms += [:resource_type]
   end
 end

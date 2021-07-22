@@ -30,5 +30,6 @@ module Vocab
     term :guideToWork
     term :analysisOfWork
     term :complementedByWork
+    term :subjectUniformTitle
   end
 end

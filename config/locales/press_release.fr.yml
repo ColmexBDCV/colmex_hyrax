@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      press_release:     'fa fa-file-text-o'
+    select_type:
+      press_release:
+        description:        "Press release œuvres"
+        name:               "Press Release"
