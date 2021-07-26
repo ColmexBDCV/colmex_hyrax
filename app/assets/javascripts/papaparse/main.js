@@ -342,7 +342,7 @@ function TableView() {
         }
         /**
          * La función hara las validaciones de acuerdo a nuestras necesidades, en caso de
-         * no tener algún error se podra descargaar el archivo, sino se le notificara al usuario en que campos esta mal
+         * no tener algún error se podra descargar el archivo, sino se le notificara al usuario en que campos esta mal
          * false esta correcto todo
          * true esta incorrecto un campo
          */
@@ -363,7 +363,7 @@ function TableView() {
                 // no se eliminan los registros correctos y se muestra el boton de importar en la raíz
             }else{
                 /*
-                Si se agrega la modalida que compare los cmapos hyrax del proyecto en el header, se añade estas condiciones y se elima la llamada
+                Si se agrega la modalida que compare los campos hyrax del proyecto en el header, se añade estas condiciones y se elimina la llamada
                 de la funcion eliminaRegistrosCorrectos(); que está debajo de estos comentarios
                 if (!document.querySelector('.wrong') && ValorTextArea.length) {
                     ValorTextArea.unshift('No existen registros erroneos pero existen nombres de campos que no estan registrados en el proyecto');
@@ -509,15 +509,17 @@ function TableView() {
                         resgistrosTitleNull = [...resgistrosTitleNull, index + 2];
                         MarcaRegistrosErroneos(registro.querySelector(`.${campotoValidate}`));
                         break;
-                    case 'date_created':
-                        registrosDateCreatedNull = [...registrosDateCreatedNull, index + 2];
-                        MarcaRegistrosErroneos(registro.querySelector(`.${campotoValidate}`));
-                        break;
+                    // case 'date_created':
+                    //     registrosDateCreatedNull = [...registrosDateCreatedNull, index + 2];
+                    //     MarcaRegistrosErroneos(registro.querySelector(`.${campotoValidate}`));
+                    //     break;
                     default:
                         break;
                 }
-                MarcaRegistrosErroneos(registro);
-            }
+                if(campotoValidate !== "date_created") {
+                    MarcaRegistrosErroneos(registro);
+                }
+            }   
         }
         /**
          * @param {HTMLElement} registroDateCreated Elemento HTML que apunta a la fila de la tabla
@@ -527,9 +529,12 @@ function TableView() {
          */
         function validaDateCreatedStringOrFormatoCuatro(registroDateCreated,index,registro) {
             if (!Number.isInteger(parseInt(registroDateCreated.textContent.trim(),10)) && registroDateCreated.textContent !== '  ') {
-                registrosDateCreatedString = [...registrosDateCreatedString,index + 2];
-                MarcaRegistrosErroneos(registroDateCreated);
-                MarcaRegistrosErroneos(registro);
+                if(registroDateCreated.textContent !== '')
+                {
+                    registrosDateCreatedString = [...registrosDateCreatedString,index + 2];
+                    MarcaRegistrosErroneos(registroDateCreated);
+                    MarcaRegistrosErroneos(registro);
+                }
             }
             else{
                 if(registroDateCreated.textContent.trim().length !== 4 && registroDateCreated.textContent !== '  '){

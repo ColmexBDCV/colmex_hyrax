@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      legaslation:     'fa fa-file-text-o'
+    select_type:
+      legaslation:
+        description:        "Legaslation Werke"
+        name:               "Legaslation"

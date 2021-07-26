@@ -398,6 +398,7 @@ es:
         presentation: Ponencia
         legal_case: Caso
         journal: Revista
+        legislation: Legislación
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de trabajo
@@ -484,6 +485,7 @@ es:
         work_type_Presentation: Ponencia
         work_type_Legal_case: Caso
         work_type_Journal: Revista
+        work_type_Legislation: Legislación
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador

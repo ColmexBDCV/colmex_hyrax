@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      legaslation:     'fa fa-file-text-o'
+    select_type:
+      legaslation:
+        # TODO: translate `human_name` into Chinese
+        description:        "Legaslation 作品"
+        name:               "Legaslation"
+        # TODO: translate `human_name` into Chinese

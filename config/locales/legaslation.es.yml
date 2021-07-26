@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      legaslation:     'fa fa-file-text-o'
+    select_type:
+      legaslation:
+        # TODO: translate `human_name` into Spanish
+        description:        "Legislación trabajos"
+        name:               "Legislación"
+        # TODO: translate `human_name` into Spanish
