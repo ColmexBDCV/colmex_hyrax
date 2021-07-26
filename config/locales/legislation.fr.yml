@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      legislation:     'fa fa-file-text-o'
+    select_type:
+      legislation:
+        description:        "Legislation œuvres"
+        name:               "Legislation"

@@ -1,9 +1,9 @@
 # Generated via
-#  `rails generate hyrax:work Legaslation`
-class Legaslation < ActiveFedora::Base
+#  `rails generate hyrax:work Legislation`
+class Legislation < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
-  self.indexer = LegaslationIndexer
+  self.indexer = LegislationIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }

@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      legislation:     'fa fa-file-text-o'
+    select_type:
+      legislation:
+        description:        "Legislation trabalhos"
+        name:               "Legislation"

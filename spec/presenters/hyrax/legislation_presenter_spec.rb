@@ -1,8 +1,8 @@
 # Generated via
-#  `rails generate hyrax:work Legaslation`
+#  `rails generate hyrax:work Legislation`
 require 'rails_helper'
 
-RSpec.describe Legaslation do
+RSpec.describe Hyrax::LegislationPresenter do
   it "has tests" do
     skip "Add your tests here"
   end

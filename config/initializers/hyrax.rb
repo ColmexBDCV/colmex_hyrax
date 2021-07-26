@@ -43,8 +43,8 @@ Hyrax.config do |config|
   config.register_curation_concern :journal
   # Injected via `rails g hyrax:work LegalCase`
   config.register_curation_concern :legal_case
-  # Injected via `rails g hyrax:work Legaslation`
-  config.register_curation_concern :legaslation
+  # Injected via `rails g hyrax:work Legislation`
+  config.register_curation_concern :legislation
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

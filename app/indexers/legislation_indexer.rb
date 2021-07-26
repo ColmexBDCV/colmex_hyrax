@@ -1,6 +1,6 @@
 # Generated via
-#  `rails generate hyrax:work Legaslation`
-class LegaslationIndexer < Hyrax::WorkIndexer
+#  `rails generate hyrax:work Legislation`
+class LegislationIndexer < Hyrax::WorkIndexer
   # This indexes the default metadata. You can remove it if you want to
   # provide your own metadata and indexing.
   include Hyrax::IndexesBasicMetadata

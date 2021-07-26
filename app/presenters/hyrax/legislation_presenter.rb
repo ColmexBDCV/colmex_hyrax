@@ -1,7 +1,7 @@
 # Generated via
-#  `rails generate hyrax:work Legaslation`
+#  `rails generate hyrax:work Legislation`
 module Hyrax
-  class LegaslationPresenter < Hyrax::WorkShowPresenter
+  class LegislationPresenter < Hyrax::WorkShowPresenter
     include Hyrax::AnalyticsTypeOnePresenter
     include Hyrax::AnalyticsTypeTwoPresenter
   end
