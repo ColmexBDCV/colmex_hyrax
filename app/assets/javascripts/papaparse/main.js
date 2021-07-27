@@ -394,7 +394,8 @@ function TableView() {
          */
         function conjuntoValidadoresACampos(registros) {
             registros.forEach( (registro, index) => {
-                campostoValidate.forEach( campotoValidate => {
+                //campostoValidate.forEach( campotoValidate => {
+                camposExist.forEach( campotoValidate => {
                     validaCamposExistentes(campotoValidate,registro,index);
                 })
             })
