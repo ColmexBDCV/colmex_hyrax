@@ -9,7 +9,6 @@ module Hydra::Derivatives::Processors
       protected
 
         def options_for(format)
-          byebug
           input_options = ""
           # output_options = "-s #{@directives[:size].nil? ? config.size_attributes : directives[:size]} #{codecs(format)} "
           output_options = "#{codecs(format)} "
