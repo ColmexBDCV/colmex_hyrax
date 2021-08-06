@@ -22,7 +22,7 @@ module Hyrax
       property :keyword, predicate: ::RDF::Vocab::SCHEMA.keywords
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
-      property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: true 
+      property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: false 
 
       
       # This is for the rights statement
