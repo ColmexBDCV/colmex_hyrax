@@ -593,6 +593,7 @@ es:
       past_30_days: Últimos 30 dias
       current: Actual
       profiles:
+        please_login_again: Por favor inicia sesión con tu nueva contraseña
         your_profile_has_been_updated: Tu perfil ha sido actualizado
         change_picture: Cambiar fotografía
         less_than: menor que
@@ -603,6 +604,7 @@ es:
         maternal_surname: Apellido materno
         phone: Celular
         save_profile: Guardar Perfil
+        save_password: Cambiar contraseña
       stats:
         file_views: Vistas
         file_downloads: Descargas

@@ -17,7 +17,6 @@ en:
           subject_person_sim: Subject Person
           subject_family_sim: Subject Family
           subject_work_sim: Subject Work
-          temporary_coverage_sim: Temporary Coverage
           content:
             Thesis: Thesis
             Collection: Collection
@@ -36,7 +35,6 @@ en:
           mode_of_issuance_sim: Mode of publication
           interviewer_sim: Interviewer
           interviewee_sim: Interviewee
-          organizer_collective_agent_sim: Organize collective agent
           photographer_sim: Photographer
           narrator_sim: Narrator
           writer_of_suplementary_textual_content_sim: Writer of suplementary textual content
@@ -52,7 +50,7 @@ en:
           place_of_publication_sim: Place of publication
           beginning_sim: Beginning
           ending_sim: Ending
-          primary_topic_sim:	Primary topic
+          primary_topic_sim: Primary topic
           enacting_juridiction_of_sim: Enacting jurisdiction
           hierarchical_superior_sim: Hierarchical superior
           hierarchical_inferior_sim: Hierarchical inferior
@@ -103,7 +101,6 @@ en:
           works: Works
           interviewer_tesim: Interviewer
           interviewee_tesim: Interviewee
-          organizer_collective_agent_tesim: Organize collective agent
           photographer_tesim: Photographer
           narrator_tesim: Narrator
           writer_of_suplementary_textual_content_tesim: Writer of suplementary textual content
@@ -417,7 +414,6 @@ en:
         mode_of_issuance: Mode of publication
         interviewer: Interviewer
         interviewee: Interviewee
-        organizer_collective_agent: Organize collective agent
         photographer: Photographer
         narrator: Narrator
         writer_of_suplementary_textual_content: Writer of suplementary textual content
@@ -461,7 +457,7 @@ en:
     account_name: "My Institution Account Id"
     #metadatos del controlador fixity_status_persenter app/presenters/hyrax/
     fixity_status:  Fixity checks have not yet been run on this object
-    #metadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
+    #please_login_again: Por favor inicia sesión con tu nueva contraseñametadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
     View/Download: View/Download
     Edit: Edit
     Edit_Access: Edit Access
@@ -476,6 +472,7 @@ en:
       past_30_days: Past 30 days
       current: Current
       profiles:
+        please_login_again: Please log in again with your new password
         your_profile_has_been_updated: You profile has been updated
         change_picture: Change picture
         less_than: less than
@@ -598,7 +595,6 @@ en:
       website: Website(s)
       title: Title
       administrative_area: Administrative Area
-      department: Department
       office: Office
       address: Address
       affiliation: Affiliation

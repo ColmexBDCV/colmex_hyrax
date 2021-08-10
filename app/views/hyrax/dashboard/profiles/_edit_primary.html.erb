@@ -1,6 +1,27 @@
 <%= form_for @user,
              url: hyrax.dashboard_profile_path(@user.to_param),
              html: { multipart: true, class: 'form-horizontal' } do |f| %>
+ <div class="form-group">
+    <%= f.label :password, '<i class="fa fa-user-lock"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.password').html_safe, class: 'col-xs-4 control-label' %>
+    <div class="col-xs-8">
+       <%= f.text_field :password, class: "form-control" , type: "password" %>
+    </div>
+  </div><!-- .form-group -->
+  <div class="form-group">
+    <%= f.label :password_confirmation, '<i class="fa fa-user-lock"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.password_confirmation').html_safe, class: 'col-xs-4 control-label' %>
+    <div class="col-xs-8">
+       <%= f.text_field :password_confirmation, class: "form-control", type: "password" %>
+    </div>
+  </div><!-- .form-group -->
+  <%= f.button '<i class="glyphicon glyphicon-save"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.save_password').html_safe, type: 'submit', class: "btn btn-primary" %>
+
+<% end %>
+
+
+<hr>
+<%= form_for @user,
+             url: hyrax.dashboard_profile_path(@user.to_param),
+             html: { multipart: true, class: 'form-horizontal' } do |f| %>
   <div class="form-group">
     <%= f.label :avatar, '<i class="glyphicon glyphicon-camera"></i> '.html_safe + t('hyrax.dashboard.profiles.change_picture').html_safe, class: "col-xs-4 control-label" %>
     <div class="col-xs-8">
@@ -20,7 +41,8 @@
     </div>
   </div><!-- .form-group -->
 
-   <div class="form-group">
+ 
+  <div class="form-group">
     <%= f.label :firstname, '<i class="fa fa-user"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.first_name').html_safe, class: 'col-xs-4 control-label' %>
     <div class="col-xs-8">
        <%= f.text_field :firstname, class: "form-control" %>
@@ -86,7 +108,8 @@
 
   <%= f.button '<i class="glyphicon glyphicon-save"></i>'.html_safe + ' ' + t('hyrax.dashboard.profiles.save_profile').html_safe, type: 'submit', class: "btn btn-primary" %>
 <% end %>
-
 <% if Flipflop.proxy_deposit? %>
   <%= render 'hyrax/dashboard/_index_partials/proxy_rights', user: @user %>
 <% end %>
+
+

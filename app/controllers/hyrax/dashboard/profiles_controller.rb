@@ -27,7 +27,12 @@ module Hyrax
       def update
         if conditionally_update
           handle_successful_update
-          redirect_to hyrax.dashboard_profile_path(@user.to_param), notice: t('hyrax.dashboard.profiles.your_profile_has_been_updated')
+
+          if params[:user].key?(:password)
+            redirect_to("/users/sign_in", notice: t('hyrax.dashboard.profiles.please_login_again'))
+          else  
+            redirect_to hyrax.dashboard_profile_path(@user.to_param), notice: t('hyrax.dashboard.profiles.your_profile_has_been_updated')
+          end
         else
           redirect_to hyrax.edit_dashboard_profile_path(@user.to_param), alert: @user.errors.full_messages
         end
@@ -59,7 +64,7 @@ module Hyrax
 
         def user_params
           params.require(:user).permit(:avatar, :facebook_handle, :twitter_handle,
-                                       :googleplus_handle, :linkedin_handle, :remove_avatar, :orcid, :firstname, :paternal_surname, :maternal_surname, :phone)
+                                       :googleplus_handle, :linkedin_handle, :remove_avatar, :orcid, :firstname, :paternal_surname, :maternal_surname, :phone,:password, :password_confirmation)
         end
 
         def find_user
