@@ -43,9 +43,11 @@ module HandleService
         Hyrax::config.registered_curation_concern_types.each do |wt|
             wt.singularize.classify.constantize.where(handle: nil).each do |row|
                 if row.member_ids.count > 0
-                    handle = self.create("#{url}#{row.human_readable_type.underscore}/#{row.id}")
-                    row.handle = handle["url"] if handle["handleDesc"] == "SUCCESS"
-                    row.save
+                    handle = self.create("#{url}#{row.human_readable_type.underscore.pluralize}/#{row.id}")
+                    if handle["handleDesc"] == "SUCCESS"
+                        row.handle = handle["url"] 
+                        row.save
+                    end
                 end
             end
         end
