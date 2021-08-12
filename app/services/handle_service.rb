@@ -14,7 +14,7 @@ module HandleService
         end  
     end
    
-    def update(url, handle_id)
+    def self.update(url, handle_id)
         handle_id.slice!("http://hdl.handle.net")
         handle_id.slice!("https://hdl.handle.net")
         begin    
@@ -26,7 +26,7 @@ module HandleService
         end  
     end
 
-    def delete(handle_id)
+    def self.delete(handle_id)
         begin    
             
             handle_obj = @@conn.delete("handle/delete/#{handle_id}")
@@ -66,4 +66,4 @@ module HandleService
         end
     end
 
-end
+endH
