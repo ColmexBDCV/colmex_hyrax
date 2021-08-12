@@ -43,12 +43,25 @@ module HandleService
         Hyrax::config.registered_curation_concern_types.each do |wt|
             wt.singularize.classify.constantize.where(handle: nil).each do |row|
                 if row.member_ids.count > 0
-                    handle = self.create("#{url}#{row.human_readable_type.underscore.pluralize.gsub!('_', '%5f')}/#{row.id}")
+                    handle = self.create("#{url}#{row.human_readable_type.underscore.pluralize.gsub('_', '%5f')}/#{row.id}")
                     if handle["handleDesc"] == "SUCCESS"
                         row.handle = handle["url"] 
                         row.save
                     end
                 end
+            end
+        end
+    end
+
+    def self.destroy_handle_for(work)
+        
+        url = ENV['HANDLE_OBJ_URL'] || "https://repositorio.colmex.mx/concern/"
+        
+        work.singularize.classify.constantize.where('handle_tesim:[* TO *]-handle_tesim:””').each do |row|
+            handle = self.delete(row.handle.gsub(url,""))
+            if handle["handleDesc"] == "SUCCESS"
+                row.handle = nil
+                row.save
             end
         end
     end
