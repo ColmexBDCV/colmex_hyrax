@@ -14,7 +14,7 @@
 //= require turbolinks
 //
 // Required by Blacklight
-//= require jquery
+//= require jquery3
 //= require 'blacklight_advanced_search'
 
 
@@ -33,6 +33,8 @@
 //= require 'blacklight_range_limit'
 
 // String.prototype.replaceAt=function(index, char) {return this.substr(0, index) + char + this.substr(index+char.length);}
+jQuery.noConflict();
+
 
 $(document).on('turbolinks:load', HighLight);
 $(document).on('turbolinks:load', TableView);
