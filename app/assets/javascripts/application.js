@@ -10,15 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= 
 //= require turbolinks
 //
 // Required by Blacklight
 //= require jquery3
+//= require jquery_ujs
+
 //= require 'blacklight_advanced_search'
 
 
-//= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require blacklight/blacklight
@@ -33,7 +33,8 @@
 //= require 'blacklight_range_limit'
 
 // String.prototype.replaceAt=function(index, char) {return this.substr(0, index) + char + this.substr(index+char.length);}
-jQuery.noConflict();
+
+// jQuery.noConflict();
 
 
 $(document).on('turbolinks:load', HighLight);
