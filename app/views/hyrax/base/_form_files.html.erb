@@ -24,7 +24,7 @@
                     <span><%= t('hyrax.base.add_folder')%></span>
                     <input type="file" name="files[]" multiple directory webkitdirectory />
                 </span>
-                <% if Hyrax.config.browse_everything? %>
+                <% unless Hyrax.config.browse_everything? %>
                   <%= button_tag(type: 'button', class: 'btn btn-success', id: "browse-btn",
                     'data-toggle' => 'browse-everything', 'data-route' => browse_everything_engine.root_path,
                     'data-target' => "#{f.object.persisted? ? "#edit_#{f.object.model.model_name.param_key}_#{f.object.model.id}" : "#new_#{f.object.model.model_name.param_key}"}" ) do %>
