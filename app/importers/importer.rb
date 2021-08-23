@@ -32,7 +32,7 @@ class Importer < Darlingtonia::Importer
   end
 
   def initialize_collection()
-    coll = Collection.where(title: collection)
+    coll = Collection.where(title: collection).first
     self.collection = coll.reindex_extent = Hyrax::Adapters::NestingIndexAdapter::LIMITED_REINDEX
   end
 
@@ -56,7 +56,7 @@ class Importer < Darlingtonia::Importer
 
   def to_collection_add()
     initialize_collection
-    collection.first.add_member_objects(get_record_ids) unless collection.empty?
+    collection.add_member_objects(get_record_ids) unless collection.empty?
   end
 
   def from_collection_remove()
