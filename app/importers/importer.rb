@@ -28,7 +28,7 @@ class Importer < Darlingtonia::Importer
     records.each { |record| record_importer.import(record: record) }
     #@info_stream << "event: finish_import, batch_id: #{record_importer.batch_id}, successful_record_count: #{record_importer.success_count}, failed_record_count: #{record_importer.failure_count}"
     @info_stream << "\n\nFinish\n\n"
-
+    CreateHandleJob.perform_later()
   end
 
   def initialize_collection()
@@ -40,7 +40,7 @@ class Importer < Darlingtonia::Importer
     works = []
     records.each do |record|  
       wt = work.singularize.classify.constantize.where(identifier: record.identifier).first
-      works << wt if wt.count > 1
+      works << wt unless wt.nil?
     end
     return works
   end
