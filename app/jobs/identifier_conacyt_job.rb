@@ -1,7 +1,7 @@
 class IdentifierConacytJob < ApplicationJob
   queue_as :default
 
-  def perform(work)
-    IdentifierService.work(work)
+  def perform()
+    IdentifierService.for_all()
   end
 end

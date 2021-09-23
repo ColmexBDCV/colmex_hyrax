@@ -1,5 +1,11 @@
 module IdentifierService
   
+  def self.for_all
+    ["Thesis", "Book", "Article", "BookChapter"].each do |w|
+      self.work(w)
+    end
+  end
+
   def self.work(work)
     work.singularize.classify.constantize.all.each do |gw| 
       unless gw.creator.empty? then

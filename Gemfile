@@ -82,6 +82,7 @@ end
 
 gem 'rsolr', '>= 1.0'
 gem 'jquery-rails'
+gem 'jquery-migrate-rails'
 gem 'devise'
 gem 'devise-guests'
 gem 'devise-i18n'

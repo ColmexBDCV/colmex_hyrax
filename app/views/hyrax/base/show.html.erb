@@ -13,7 +13,15 @@
       <div class="panel-body">
         <div class="row">
           <%= render 'workflow_actions_widget', presenter: @presenter %>
+          <% 
+            
+            unless @presenter.representative_presenter.nil? then
+              fs = FileSet.find(@presenter.representative_presenter.id).visibility
+            end
+
+          %>
           <% if @presenter.representative_presenter.nil? || 
+                fs == "restricted" ||
               !(@presenter.representative_presenter.video? || 
                 @presenter.representative_presenter.audio? || 
                 @presenter.representative_presenter.pdf? || 
@@ -21,13 +29,15 @@
               
               <%# first = 3 second = 9 third = 4 %>
               <div class="col-sm-3 text-center">
-                <div class="col-sm-12">
-                  <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
-                  <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
-                </div>
-                <div class="col-sm-12">
-                  <%= render 'citations', presenter: @presenter %>
-                </div>
+                <%if fs != "restricted" then %>
+                  <div class="col-sm-12">
+                    <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
+                    <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= render 'citations', presenter: @presenter %>
+                  </div>
+                <%end%>
                 <style>
                   .social-media{
                     text-align: left;
@@ -48,6 +58,7 @@
           <% else %>
               <%# First = 9 second = 3 third = 6 %>
               <div class="col-sm-9 text-center">
+               
                 <div class="col-sm-12">
                   <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
                   <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
@@ -58,6 +69,7 @@
                 <div class="col-sm-6">
                   <%= render 'social_media' %>
                 </div>
+                
               </div>
               <div class="col-sm-3">
                 <%= render 'metadata', presenter: @presenter %>
