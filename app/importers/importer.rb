@@ -28,7 +28,7 @@ class Importer < Darlingtonia::Importer
     records.each { |record| record_importer.import(record: record) }
     #@info_stream << "event: finish_import, batch_id: #{record_importer.batch_id}, successful_record_count: #{record_importer.success_count}, failed_record_count: #{record_importer.failure_count}"
     @info_stream << "\n\nFinish\n\n"
-    CreateHandleJob.perform_later()
+    # CreateHandleJob.perform_later()
   end
 
   def initialize_collection()
