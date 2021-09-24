@@ -21,7 +21,7 @@
 
           %>
           <% if @presenter.representative_presenter.nil? || 
-                fs == "restricted" ||
+                (fs == "restricted" && !user_signed_in?)|| 
               !(@presenter.representative_presenter.video? || 
                 @presenter.representative_presenter.audio? || 
                 @presenter.representative_presenter.pdf? || 

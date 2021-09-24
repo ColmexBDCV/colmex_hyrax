@@ -77,15 +77,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         
         Hyrax::CurationConcern.actor.create(actor_env)
         
-        if attributes[:item_access_restrictions].include?("Acceso restringido") then
-          
-          created.class.find(created.id).file_set_ids.each do |id| 
-            fileset = FileSet.find(id)
-            fileset.visibility = "restricted"
-            fileset.save
-          end
-        end
-
         info_stream << "\nRecord created at: #{created.id} \n"
         
       else  
