@@ -23,30 +23,30 @@ module ExporterService
         work_ids = Collection.where(title: coll)[0].member_work_ids
         keys = []
         data = []
-        CSV.open("export_#{coll}.csv", "wb") do |csv|
-            work_ids.each do |id|
-                obj = ActiveFedora::Base.find(id)
-                
-                keys = keys + obj.attributes.keys
-                
-                keys = keys.to_set.to_a;
-                values = []
-                obj.attributes.values.each do |o|
-                   
-                    if o.is_a?(ActiveTriples::Resource) || o.is_a?(ActiveTriples::Relation) then
-                        values << o.to_a.join(" | ")
-                    else
-                        values << o
-                    end
-                end
-                data << values
-                
-            end
-                       
-            csv << keys
+        
+        work_ids.each do |id|
+            obj = ActiveFedora::Base.find(id)
             
+            keys = keys + obj.attributes.keys
+            
+            keys = keys.to_set.to_a;
+            row = {}
+            obj.attributes.each do |key, value|
+                
+                if value.is_a?(ActiveTriples::Resource) || value.is_a?(ActiveTriples::Relation) then
+                    row[key] =  value.to_a.join(" | ")
+                else
+                    row[key] = value
+                end
+           end
+            
+            data << row
+            
+        end
+        
+        CSV.open("export_#{coll}.csv", "wb", :headers => keys, :write_headers => true) do |csv|               
             data.each do|v|
-                csv << v
+                csv << v.to_h
             end          
         end
     end 
