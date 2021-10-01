@@ -6,8 +6,8 @@ namespace :export do
     end
 
     desc "Export all metadata by collection"
-    task :collection, [:collection] => [:environment]  do |_task, args|
-        ExportByCollectionJob.perform_later(args[:collection])
+    task :collection, [:collection, :keys] => [:environment]  do |_task, args|
+        ExportByCollectionJob.perform_later(args[:collection], args[:keys])
         puts "La exportación por colección ha iniciado"
     end
 end

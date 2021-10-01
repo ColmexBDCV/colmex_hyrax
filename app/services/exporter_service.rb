@@ -19,17 +19,20 @@ module ExporterService
             end
         end
     end 
-    def self.by_collection(coll)
+    def self.by_collection(coll, fields)
         work_ids = Collection.where(title: coll)[0].member_work_ids
+        data=[]       
         keys = []
-        data = []
-        
+        keys.push("filenames")
+        keys.push("identifier")
+        keys.push("title")
         work_ids.each do |id|
             obj = ActiveFedora::Base.find(id)
             
             keys = keys + obj.attributes.keys
             
             keys = keys.to_set.to_a;
+            
             row = {}
             obj.attributes.each do |key, value|
                 
@@ -38,12 +41,25 @@ module ExporterService
                 else
                     row[key] = value
                 end
-           end
+            end
+            
+           
+
+            if obj.file_sets.count > 0 then
+                filenames = ""
+                obj.file_sets.each do |fs|
+                    filenames += fs.title.first + " | "
+                end
+
+                
+                row["filenames"] = filenames.chomp(" | ")
+            end
             
             data << row
             
         end
-        
+        keys = fields.split if fields.split.count > 0
+
         CSV.open("export_#{coll}.csv", "wb", :headers => keys, :write_headers => true) do |csv|               
             data.each do|v|
                 csv << v.to_h
