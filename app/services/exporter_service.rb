@@ -48,7 +48,9 @@ module ExporterService
             if obj.file_sets.count > 0 then
                 filenames = ""
                 obj.file_sets.each do |fs|
-                    filenames += fs.title.first + " | "
+                    unless fs.title.first.nil? then
+                        filenames += fs.title.first + " | "
+                    end
                 end
 
                 
