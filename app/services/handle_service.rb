@@ -20,7 +20,7 @@ module HandleService
         begin    
             handle_obj = @@conn.put("handle/update", {name: "#{handle_id}", url: url}.to_json, {'Content-Type'=>'application/json'})
             data = JSON.parse(handle_obj.body.force_encoding('utf-8'))
-            return dataz
+            return data
         rescue Faraday::ConnectionFailed 
             retry
         end  
