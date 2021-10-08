@@ -647,6 +647,7 @@ es:
       file_details: Detalles de archivo
       #metadatos de show_characterization_details
       file_size: Tamaño de archivo
+      file_title: Titulo del archivo
       width: Ancho
       height: Altura
       file_format: Formato de Archivo
