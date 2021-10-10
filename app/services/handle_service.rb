@@ -15,8 +15,8 @@ module HandleService
     end
    
     def self.update(url, handle_id)
-        handle_id = handle_id.sub("http://hdl.handle.net","")
-        handle_id = handle_id.sub("https://hdl.handle.net","")
+        handle_id = handle_id.sub("http://hdl.handle.net/","")
+        handle_id = handle_id.sub("https://hdl.handle.net/","")
         begin    
             handle_obj = @@conn.put("handle/update", {name: "#{handle_id}", url: url}.to_json, {'Content-Type'=>'application/json'})
             data = JSON.parse(handle_obj.body.force_encoding('utf-8'))
