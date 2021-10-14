@@ -1,5 +1,6 @@
 class ValidationsController < ApplicationController
     with_themed_layout 'dashboard'
+    before_action :authenticate_user!
     def index
         @validation_csvs = ValidationCsv.all
         @user = current_user
