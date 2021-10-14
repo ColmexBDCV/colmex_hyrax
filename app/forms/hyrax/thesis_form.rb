@@ -6,7 +6,7 @@ module Hyrax
     include Hyrax::ConacytForm
 
     self.model_class = ::Thesis
-    self.terms += [:director, :awards, 
+    self.terms += [:resource_type, :director, :awards, 
       :academic_degree, :type_of_thesis, :degree_program, :institution,  
       :date_of_presentation_of_the_thesis]
       
