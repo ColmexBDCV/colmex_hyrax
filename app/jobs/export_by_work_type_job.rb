@@ -1,7 +1,7 @@
 class ExportByWorkTypeJob < ApplicationJob
   queue_as :default
   
-  def perform(wt)
-    ExporterService.by_work_type(wt)
+  def perform(wt,keys)
+    ExporterService.by_work_type(wt,keys)
   end
 end

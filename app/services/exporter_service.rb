@@ -1,26 +1,34 @@
 require 'set'
 
 module ExporterService
+            
+    def self.by_work_type(work_type,fields)
+        work_ids = []
+                 
+        work_type.singularize.classify.constantize.all.each do |row|
+            work_ids << row.id
+        end
+        self.export(work_ids, fields, work_type)
+    end
+    
+    def self.by_collection(coll,fields)
+        work_ids = Collection.where(title: coll)[0].member_work_ids
+        self.export(work_ids,fields, coll)
+    end
 
-    def self.by_work_type(work_type)
-        gw = work_type.singularize.classify.constantize         
-        CSV.open("export_#{work_type}.csv", "wb") do |csv|
-            csv << gw.first.attributes.keys
-            gw.all.each do |obj| 
-                values = []
-                obj.attributes.values.each do |o|
-                    if o.is_a?(ActiveTriples::Resource) || o.is_a?(ActiveTriples::Relation) then
-                        values << o.to_a.join(" | ")
-                    else
-                        values << o
-                    end
-                end
-                csv << values
+    def self.all(fields)
+        work_ids = []
+        Hyrax::config.registered_curation_concern_types.each do |wt|
+            wt.singularize.classify.constantize.all.each do |row|
+                work_ids << row.id
             end
         end
-    end 
-    def self.by_collection(coll, fields)
-        work_ids = Collection.where(title: coll)[0].member_work_ids
+        self.export(work_ids, fields)
+    end
+
+
+    def self.export(work_ids, fields,tag = "all")
+        
         data=[]       
         keys = []
         keys.push("filenames")
@@ -60,9 +68,10 @@ module ExporterService
             data << row
             
         end
-        keys = fields.split if fields.split.count > 0
+        
+        keys = fields.split if !fields.nil? && fields.split.count > 0
 
-        CSV.open("export_#{coll}.csv", "wb", :headers => keys, :write_headers => true) do |csv|               
+        CSV.open("export_#{tag}.csv", "wb", :headers => keys, :write_headers => true) do |csv|               
             data.each do|v|
                 csv << v.to_h
             end          
