@@ -24,7 +24,8 @@
                 (fs == "restricted" && !user_signed_in?)|| 
               !(@presenter.representative_presenter.video? || 
                 @presenter.representative_presenter.audio? || 
-                @presenter.representative_presenter.pdf? || 
+                @presenter.representative_presenter.pdf? ||
+                @presenter.representative_presenter.office_document? || 
                 @presenter.representative_presenter.image? ) then %>
               
               <%# first = 3 second = 9 third = 4 %>

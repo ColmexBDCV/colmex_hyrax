@@ -65,7 +65,13 @@ module Hyrax
                                                          size: '200x150>',
                                                          url: derivative_url('thumbnail'),
                                                          layer: 0
-                                                       }])
+                                                       },
+                                                       {
+                                                        label: 'access', 
+                                                        format: 'pdf',
+                                                        url: derivative_url('pdf'),
+                                                        
+                                                       }])                                                
         extract_full_text(filename, uri)
       end
 

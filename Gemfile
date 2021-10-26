@@ -75,6 +75,7 @@ gem 'hyrax', '2.9.6'
 gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls'
+gem 'hydra-derivatives', '3.6.0'
 gem 'streamio-ffmpeg'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
