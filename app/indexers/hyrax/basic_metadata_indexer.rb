@@ -4,7 +4,7 @@ module Hyrax
     class_attribute :stored_and_facetable_fields, :stored_fields, :symbol_fields
     self.stored_and_facetable_fields = %i[other_title alternate_title resource_type creator
        contributor has_creator keyword publisher language based_near geographic_coverage
-       temporary_coverage gender_or_form subject_person subject_family 
+       temporary_coverage gender_or_form subject_person subject_family thematic_collection
        subject_work subject subject_corporate notes classification has_field_activity_of_agent
        item_access_restrictions digital_resource_generation_information place_of_publication
        interviewer interviewee organizer_collective_agent photographer narrator

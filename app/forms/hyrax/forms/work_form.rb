@@ -23,7 +23,7 @@ module Hyrax
 
       self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator, 
                     :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
-                    :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title,
+                    :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
                     :license, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
                     :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
                     :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,

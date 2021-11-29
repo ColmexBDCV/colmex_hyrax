@@ -41,7 +41,7 @@ module Hyrax
              :publisher, :language, :reviewer, :handle, :narrator, :writer_of_suplementary_textual_content, :place_of_publication,
              :license, :geographic_coverage, :temporary_coverage, :organizer_collective_agent, :has_field_activity_of_agent,
              :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
-             :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions,
+             :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :thematic_collection,
              :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
              :type_of_content, :editor, :compiler, :commentator, :translator, :digital_resource_generation_information, :beginning,
              :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, :ending,

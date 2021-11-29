@@ -44,6 +44,7 @@
 
 
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), html_dl: true) %>
+<%= presenter.attribute_to_html(:thematic_collection, label: t('hyrax.base.show.thematic_collection'), html_dl: true) %>
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
 <%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>
 <%

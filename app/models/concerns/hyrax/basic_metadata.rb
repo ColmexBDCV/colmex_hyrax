@@ -23,7 +23,7 @@ module Hyrax
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
       property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: false 
-
+      property :thematic_collection, predicate: ::RDF::Vocab::BF2.Collection, multiple: true
       
       # This is for the rights statement
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights

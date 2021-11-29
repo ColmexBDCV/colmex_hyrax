@@ -643,4 +643,8 @@ class SolrDocument
   def collector_collective_agent
     self[Solrizer.solr_name('collector_collective_agent')]
   end
+  
+  def thematic_collection
+    self[Solrizer.solr_name('thematic_collection')]
+  end
 end

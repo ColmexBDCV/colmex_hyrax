@@ -1,4 +1,3 @@
----
 es:
   blacklight:
     search:
@@ -15,6 +14,7 @@ es:
             Video: Video
           creator_sim: Autor
           contributor_sim: Colaborador
+          thematic_collection_sim: Colección Temática
           date_created_sim: Año
           file_format_sim: Formato
           generic_type_sim: Tipo
@@ -92,6 +92,7 @@ es:
           contributor_tesim: Colaborador
           center_tesim: Centro
           creator_tesim: Autor
+          thematic_collection_tesim: Colección Temática
           date_created_tesim: Año
           date_modified_dtsi: Fecha de modificación
           date_uploaded_dtsi: Fecha de subida
@@ -455,6 +456,7 @@ es:
         attach_child_Book: Adjuntar Libro
         attach_child_Video: Adjuntar Video
         attach_child_Book_Chapter: Adjuntar Capítulo de libro
+        collection: Colección
         delete_this_Thesis: Borrar esta Tesis
         delete_this_Article: Borrar este Artículo
         delete_this_Book: Borrar este Libro
@@ -489,6 +491,7 @@ es:
         last_modified: Última modificación
         creator: Autor
         contributor: Colaborador
+        thematic_collection: Coleción Temática
         description: Resumen
         subject: Tema
         language: Idioma
@@ -896,7 +899,4 @@ es:
         is_finding_aid_for: Instrumento de descripción archivística
         collector_collective_agent: Repositorio
         subject_uniform_title: Título uniforme u original
-
-
-       
-
+        thematic_collection: Colección Temática

@@ -3,6 +3,7 @@ en:
     search:
       fields:
         facet:
+          thematic_collection_sim: Thematic collection
           based_near_label_sim: Location
           center_sim: Center
           creator_sim: Creator
@@ -71,6 +72,7 @@ en:
           contributor_tesim: Contributor
           collections: Collections
           creator_tesim: Creator
+          thematic_collection_tesim: Thematic collection
           date_created_tesim: Year
           date_modified_dtsi: Date Modified
           date_uploaded_dtsi: Date Uploaded
@@ -368,7 +370,7 @@ en:
         delete_this_Book: Delete this Book
         delete_this_Video: Delete this Video
         delete_this_Book_Chapter: Delete this Book Chapter
-        ###
+        collection: Collection
         description: Abstract or Summary 
         all_fields: All fields
         alternate_title: Alternate title
@@ -386,6 +388,7 @@ en:
         keyword: Keywords
         date_created: Year
         location: Location
+        thematic_collection: Coleción Temática
         related_url: URL related
         resource_type: Resource type
         reviewer: Reviewer
