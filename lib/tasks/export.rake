@@ -11,6 +11,12 @@ namespace :export do
         puts "La exportación por colección ha iniciado"
     end
 
+    desc "Export all metadata by thematic_collection"
+    task :collection, [:collection, :keys] => [:environment]  do |_task, args|
+        ExportByThematicCollectionJob.perform_later(args[:collection], args[:keys])
+        puts "La exportación por colección temática ha iniciado"
+    end
+
     desc "Export all metadata"
     task :all, [:keys] => [:environment]  do |_task, args|
         ExportAllJob.perform_later(args[:keys])
