@@ -37,11 +37,13 @@ en:
           interviewer_sim: Interviewer
           interviewee_sim: Interviewee
           photographer_sim: Photographer
+          numbering_of_part_sim: Numbering of part
           narrator_sim: Narrator
           writer_of_suplementary_textual_content_sim: Writer of suplementary textual content
           collective_title_sim: Collective title
           part_of_place_sim: part of place
           provenance_sim: Provenance
+          collector_collective_agent_sim: Collector collective agent
           curator_collective_agent_of_sim: Curator collec agent
           project_sim: Project
           owner_agent_of_sim: Owner agent
@@ -72,6 +74,8 @@ en:
           contributor_tesim: Contributor
           collections: Collections
           creator_tesim: Creator
+          numbering_of_part_tesim: Numbering of part
+          related_work_of_work_tesim: Related work of work
           thematic_collection_tesim: Thematic collection
           date_created_tesim: Year
           date_modified_dtsi: Date Modified
@@ -388,7 +392,7 @@ en:
         keyword: Keywords
         date_created: Year
         location: Location
-        thematic_collection: Coleción Temática
+        thematic_collection: thematic_collection
         related_url: URL related
         resource_type: Resource type
         reviewer: Reviewer
@@ -425,6 +429,8 @@ en:
         provenance: Provenance
         curator_collective_agent_of: Curator collec agent
         project: Project
+        numbering_of_part: Numbering of part
+        related_work_of_work: Related work of work
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
         depository_collective_agent: Depository collective agent

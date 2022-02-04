@@ -90,7 +90,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("interviewee", :facetable), limit: 5
     config.add_facet_field solr_name("organizer_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
-    config.add_facet_field solr_name("part_of_place", :facetable), limit: 5
+    config.add_facet_field solr_name("related_work_of_work", :facetable), limit: 5
 
     
     config.add_facet_field solr_name("date_created", :facetable) do |field|
@@ -135,6 +135,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("photographer_corporate_body_of_work", :facetable), limit: 5
     config.add_facet_field solr_name("dimensions_of_still_image", :facetable), limit: 5
     
+    config.add_facet_field solr_name("numbering_of_part", :facetable), limit: 5
     config.add_facet_field solr_name("speaker_agent_of", :facetable), limit: 5
     config.add_facet_field solr_name("assistant", :facetable), limit: 5
     config.add_facet_field solr_name("preceded_by_work", :facetable), limit: 5
@@ -220,6 +221,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
     config.add_index_field solr_name("corporate_body", :stored_searchable)
     config.add_index_field solr_name("collective_agent", :stored_searchable)
+    config.add_index_field solr_name("related_work_of_work", :stored_searchable)
+    config.add_index_field solr_name("numbering_of_part", :stored_searchable)
     config.add_index_field solr_name("organizer_author", :stored_searchable)
     config.add_index_field solr_name("copyright", :stored_searchable)
     config.add_index_field solr_name("title_of_series", :stored_searchable)

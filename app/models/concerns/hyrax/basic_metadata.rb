@@ -43,6 +43,10 @@ module Hyrax
       property :related_url, predicate: ::RDF::RDFS.seeAlso, multiple: true
       property :bibliographic_citation, predicate: ::Vocab::RDAM.preferredCitation
       property :source, predicate: ::RDF::Vocab::DC.source
+
+      property :related_work_of_work, predicate: ::Vocab::RDAW.hasRelatedWorkOfWork, multiple: true
+      property :numbering_of_part, predicate: ::Vocab::RDAW.hasNumberingOfPart, multiple: false
+
       property :doi, predicate: ::RDF::Vocab::BF2.Doi, multiple: false
       property :isbn, predicate: ::RDF::Vocab::BF2.Isbn, multiple: true 
       property :notes, predicate: ::Vocab::RDAM.noteOnManifestation, multiple: true  

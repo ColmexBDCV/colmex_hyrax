@@ -8,8 +8,8 @@ module Hyrax
        subject_work subject subject_corporate notes classification has_field_activity_of_agent
        item_access_restrictions digital_resource_generation_information place_of_publication
        interviewer interviewee organizer_collective_agent photographer narrator
-       collective_title part_of_place provenance curator_collective_agent_of
-       project owner_agent_of custodian_agent_of file_type_details is_facsimile_of_manifestation_of
+       collective_title part_of_place provenance curator_collective_agent_of related_work_of_work
+       numbering_of_part project owner_agent_of custodian_agent_of file_type_details is_facsimile_of_manifestation_of
        depository_collective_agent depository_agent corporate_body collective_agent
        supplementary_content_or_bibliography responsibility_statement beginning ending
        other_related_persons table_of_contents type_of_content organizer_collective_agent

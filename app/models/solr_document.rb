@@ -647,4 +647,11 @@ class SolrDocument
   def thematic_collection
     self[Solrizer.solr_name('thematic_collection')]
   end
+
+  def related_work_of_work
+    self[Solrizer.solr_name('related_work_of_work')] 
+  end
+  def numbering_of_part
+    self[Solrizer.solr_name('numbering_of_part')] 
+  end
 end

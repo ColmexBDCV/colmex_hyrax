@@ -33,7 +33,7 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields)
+        self.export(work_ids, fields, "thematic_collection")
     end
 
     def self.export(work_ids, fields,tag = "all")

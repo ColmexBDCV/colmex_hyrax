@@ -36,6 +36,8 @@ es:
           type_of_illustrations_sim: Tipo de ilustraciones
           mode_of_issuance_sim: Modo de publicación
           table_of_contents_sim: Contenido
+          numbering_of_part_sim: Número de la parte
+          related_work_of_work_sim: Documento relacionado
           editor_sim: Editor
           publisher_sim: Editorial
           compiler_sim: Compilador
@@ -136,6 +138,8 @@ es:
           interviewee_tesim: Entrevistador
           photographer_tesim: Fotográfo
           narrator_tesim: Narrador
+          numbering_of_part_tesim: Número de la parte
+          related_work_of_work_tesim: Documento relacionado
           writer_of_suplementary_textual_content_tesim: Prologuista
           collective_title_tesim: Título colectivo
           part_of_place_tesim: Ciudad/Municipio/Localidad
@@ -515,6 +519,8 @@ es:
         gender_or_form: Género o forma
         notes: Notas
         center: Centro
+        numbering_of_part: Número de la parte
+        related_work_of_work: Documento relacionado
         classification: Clasificación de la biblioteca
         supplementary_content_or_bibliography: Bibliografía
         responsibility_statement: Declaración de responsabilidad
@@ -900,3 +906,5 @@ es:
         collector_collective_agent: Repositorio
         subject_uniform_title: Título uniforme u original
         thematic_collection: Colección Temática
+        numbering_of_part: Número de la parte
+        related_work_of_work: Documento relacionado

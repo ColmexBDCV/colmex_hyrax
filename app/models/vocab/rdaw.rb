@@ -19,10 +19,8 @@ module Vocab
     term :yearDegreeGranted
     term :dissertationOrThesisInformation
     term :containedInWork
-    term :numberingOfPart
     term :hasRelatedWorkOfWork
     term :identifierOfWork
-    term :hasRelatedWorkOfWork
     term :precededByWork
     term :subjectTimeSpan
     term :summaryOfWork
@@ -31,5 +29,6 @@ module Vocab
     term :analysisOfWork
     term :complementedByWork
     term :subjectUniformTitle
+    term :hasNumberingOfPart
   end
 end

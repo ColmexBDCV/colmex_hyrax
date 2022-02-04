@@ -78,6 +78,9 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         Hyrax::CurationConcern.actor.create(actor_env)
         
         info_stream << "\nRecord created at: #{created.id} \n"
+        created.class.find(created.id).file_set_ids.each do |f_id|
+          access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+        end
         
       else  
         info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
@@ -130,6 +133,14 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         if tw.name == work
           return Hyrax.config.curation_concerns[i]
         end
+      end
+    end
+
+    def access_file_set(f_id,permit)
+      if permit != "" && !permit.nil? then
+        fs = FileSet.find f_id
+        fs.visibility = "restricted"
+        fs.save
       end
     end
 
