@@ -109,6 +109,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end  
         end  
 
+        gw.file_set_ids.each do |f_id|
+          access_file_set(f_id,attrs[:item_access_restrictions].to_s)
+        end
+
         info_stream << "\nRecord #{record.identifier} is updated"
       else
         info_stream << "\nRecord #{record.identifier} fail to update"
