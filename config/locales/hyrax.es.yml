@@ -753,9 +753,9 @@ es:
       service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
     institution_name: institución
     institution_name_full: El nombre de la institución
-    product_name: "Repositorio de El Colegio de México"
-    product_name_html: "Repositorio de <br> El Colegio de México"
-    product_name_movil: "Repositorio de El Colegio de México"
+    product_name: "Colecciones Digitales de El Colegio de México"
+    product_name_html: "Colecciones Digitales de <br> El Colegio de México"
+    product_name_movil: "Colecciones Digitales de El Colegio de México"
     product_twitter_handle: "@BiblioColmex"
     search:
       button:
