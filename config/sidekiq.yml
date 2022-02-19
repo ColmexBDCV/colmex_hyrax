@@ -7,6 +7,6 @@ development:
   :timeout: 3
   :logfile: ./log/sidekiq.log
 production:
-  :concurrency: 10
+  :concurrency: 5
   :timeout: 5
   :logfile: ./log/sidekiq.log
