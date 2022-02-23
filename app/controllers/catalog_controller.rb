@@ -127,8 +127,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("note_of_timespan", :facetable), limit: 5
     config.add_facet_field solr_name("is_part_or_work", :facetable), limit: 5
     config.add_facet_field solr_name("alternative_numeric_and_or_alphabethic_designation_and_or_alphabethic_designation", :facetable), limit: 5
-    config.add_facet_field solr_name("volume", :facetable), limit: 5
-    config.add_facet_field solr_name("number", :facetable), limit: 5
+    # config.add_facet_field solr_name("volume", :facetable), limit: 5
+    # config.add_facet_field solr_name("number", :facetable), limit: 5
     config.add_facet_field solr_name("photographer", :facetable), limit: 5
     config.add_facet_field solr_name("narrator", :facetable), limit: 5
     config.add_facet_field solr_name("writer_of_suplementary_textual_content", :facetable), limit: 5
