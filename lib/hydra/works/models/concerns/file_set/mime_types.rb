@@ -44,6 +44,7 @@ module Hydra::Works
 
       def office_document_mime_types
         ['text/rtf',
+          'text/csv',
          'application/msword',
          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
          'application/vnd.oasis.opendocument.text',
