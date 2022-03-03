@@ -30,5 +30,6 @@ module Vocab
     term :complementedByWork
     term :subjectUniformTitle
     term :hasNumberingOfPart
+    term :hasSystemOfOrganization
   end
 end

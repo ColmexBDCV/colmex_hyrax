@@ -38,7 +38,7 @@
 <% end %>  
 
 <% [:interviewer, :interviewee, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content, 
-     :place_of_publication, :contained_in, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part].each do |a| %>
+     :place_of_publication, :contained_in, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, :has_system_of_organization, :is_subcollection_of].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 

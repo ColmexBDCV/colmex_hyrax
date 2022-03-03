@@ -73,6 +73,9 @@ module Hyrax
       property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
       property :collector_collective_agent, predicate: ::Vocab::RDAM.collectorCollectiveAgent, multiple: true
 
+      property :has_system_of_organization, predicate: ::Vocab::RDAW.hasSystemOfOrganization, multiple: true
+      property :is_subcollection_of, predicate: ::Vocab::RDAU.isSubCollection, multiple: true
+
       property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
       property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true
       property :organizer_collective_agent, predicate: ::Vocab::RDAA.organizerCollectiveAgent, multiple: true

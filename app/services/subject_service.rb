@@ -6,7 +6,7 @@ module SubjectService
         conn = Faraday.new :url =>'http://catalogs.repositorionacionalcti.mx/webresources/'
         areas = conn.get 'areacono'
         data = JSON.parse(areas.body.force_encoding('utf-8'))
-      rescue Faraday::ConnectionFailed 
+      rescue 
         data = SubjectService::areas_data
       end  
         

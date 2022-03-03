@@ -8,5 +8,6 @@ module Vocab
     term :hasFieldOfActivityofAgent
     term :hasCreator
     term :isFindingAidFor
+    term :isSubcollectionOf
   end
 end

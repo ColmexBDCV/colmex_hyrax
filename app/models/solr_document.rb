@@ -651,7 +651,16 @@ class SolrDocument
   def related_work_of_work
     self[Solrizer.solr_name('related_work_of_work')] 
   end
+  
   def numbering_of_part
     self[Solrizer.solr_name('numbering_of_part')] 
+  end
+
+  def has_system_of_organization
+    self[Solrizer.solr_name('has_system_of_organization')] 
+  end
+
+  def is_subcollection_of
+    self[Solrizer.solr_name('is_subcollection_of')] 
   end
 end

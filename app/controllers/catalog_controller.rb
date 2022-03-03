@@ -157,6 +157,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("collector_collective_agent", :facetable), limit: 5   
     config.add_facet_field solr_name("subject_uniform_title", :facetable), limit: 5
     config.add_facet_field solr_name("thematic_collection", :facetable), limit: 5
+    config.add_facet_field solr_name("has_system_of_organization", :facetable), limit: 5
+    config.add_facet_field solr_name("is_subcollection_of", :facetable), limit: 5
     
     
     
