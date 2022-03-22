@@ -220,7 +220,8 @@ es:
           custodian_agent_of: Custodio
       sort:
         label: Ordenar por %{field}
-        relevance: Relevancia
+        relevance ▼: Relevancia ▼
+        relevance ▲: Relevancia ▲
         date uploaded ▼: fecha de subida ▼
         date uploaded ▲: fecha de subida ▲
         date modified ▼: fecha de modificación ▼
