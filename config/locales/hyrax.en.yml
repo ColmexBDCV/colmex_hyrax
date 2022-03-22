@@ -120,7 +120,7 @@ en:
           owner_agent_of_tesim: Owner agent
           custodian_agent_of_tesim: Custodian agent
           file_type_details_tesim: File type details
-          depository_collective_agent_tesim: Depository collective agent
+          depository_collective_agent_of_tesim: Depository collective agent
           depository_agent_tesim: Depository agent
           organizer_collective_agent_tesim: Organizer collective agent
           place_of_publication_tesim: Place of publication
@@ -437,7 +437,7 @@ en:
         related_work_of_work: Related work of work
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
-        depository_collective_agent: Depository collective agent
+        depository_collective_agent_of: Depository collective agent
         depository_agent: Depository agent
         organizer_collective_agent: Organizer collective agent
         place_of_publication: Place of publication

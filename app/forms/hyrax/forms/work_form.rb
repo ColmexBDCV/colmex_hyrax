@@ -31,7 +31,7 @@ module Hyrax
                     :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
                     :interviewer, :interviewee, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
                     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :has_system_of_organization,
-                    :is_subcollection_of, :depository_collective_agent, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
+                    :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, 
                     :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending, 
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation,

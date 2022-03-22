@@ -152,8 +152,8 @@ class SolrDocument
     self[Solrizer.solr_name('file_type_details')]
   end
 
-  def depository_collective_agent
-    self[Solrizer.solr_name('depository_collective_agent')]
+  def depository_collective_agent_of
+    self[Solrizer.solr_name('depository_collective_agent_of')]
   end
 
   def depository_agent

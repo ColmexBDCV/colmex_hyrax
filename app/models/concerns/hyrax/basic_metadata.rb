@@ -88,7 +88,7 @@ module Hyrax
       property :project, predicate: ::RDF::Vocab::FOAF.Project, multiple: true
       property :owner_agent_of, predicate: ::Vocab::RDAA.ownerAgentOf, multiple: true
       property :custodian_agent_of, predicate: ::Vocab::RDAA.custodianAgentOf, multiple: true
-      property :depository_collective_agent, predicate: ::Vocab::RDAI.depositoryCollectiveAgent, multiple: true
+      property :depository_collective_agent_of, predicate: ::Vocab::RDAI.depositoryCollectiveAgent, multiple: true
       property :depository_agent, predicate: ::Vocab::RDAI.depositoryAgent, multiple: true
       property :file_type_details, predicate: ::Vocab::RDAM.detailsOfFileType, multiple: true
       property :corporate_body, predicate: ::Vocab::RDAC.corporateBody, multiple: true

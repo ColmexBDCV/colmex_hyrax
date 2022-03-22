@@ -64,7 +64,7 @@ es:
           custodian_agent_of_sim: Custodio
           contained_in_sim: "Incluido en:"
           database_sim: Base de Datos
-          depository_collective_agent_sim: Organismo depositante
+          depository_collective_agent_of_sim: Organismo depositante
           depositor_agent_sim: Persona depositante
           organizer_collective_agent_sim: Autor congreso o reunión
           beginning_sim: Inicio del hecho
@@ -152,7 +152,7 @@ es:
           custodian_agent_of_tesim: Custodio
           contained_in_tesim: "Incluido en"
           database_tesim: Base de Datos
-          depository_collective_agent_tesim: Organismo depositante
+          depository_collective_agent_of_tesim: Organismo depositante
           depositor_agent_tesim: Persona depositante
           organizer_collective_agent_tesim: Autor congreso o reunión
           place_of_publication_tesim: Lugar de publicación
@@ -555,7 +555,7 @@ es:
         depository_agent: Agente depositario
         contained_in: "Incluido en:"
         database: Base de Datos
-        depository_collective_agent: Organismo depositante
+        depository_collective_agent_of: Organismo depositante
         depositor_agent: Persona depositante
         organizer_collective_agent: Autor congreso o reunión
         place_of_publication: Lugar de publicación
@@ -832,7 +832,7 @@ es:
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
         file_type_details: Detalles del tipo de archivo
-        depository_collective_agent: Agente colectivo depositario
+        depository_collective_agent_of: Agente colectivo depositario
         depository_agent: Agente depositario
         type_of_illustrations: Tipo de ilustraciones
         center: Centro

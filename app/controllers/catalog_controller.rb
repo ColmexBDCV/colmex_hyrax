@@ -159,6 +159,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("thematic_collection", :facetable), limit: 5
     config.add_facet_field solr_name("has_system_of_organization", :facetable), limit: 5
     config.add_facet_field solr_name("is_subcollection_of", :facetable), limit: 5
+    config.add_facet_field solr_name("depository_collective_agent_of", :facetable), limit: 5
     
     
     
@@ -250,7 +251,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("owner_agent_of", :stored_searchable)
     config.add_index_field solr_name("custodian_agent_of", :stored_searchable)
     config.add_index_field solr_name("file_type_details", :stored_searchable)
-    config.add_index_field solr_name("depository_collective_agent", :stored_searchable)
+    config.add_index_field solr_name("depository_collective_agent_of", :stored_searchable)
     config.add_index_field solr_name("depository_agent", :stored_searchable)
     config.add_index_field solr_name("is_part_or_work", :stored_searchable), link_to_search: solr_name("is_part_or_work", :facetable)
     config.add_index_field solr_name("issn", :stored_searchable)
