@@ -1,8 +1,8 @@
 
-blacklight-related_person_of_sim,
-blacklight-complainant_sim,
-blacklight-is_criminal_defendant_corporate_body_of_sim,
-blacklight-collector_collective_agent_sim,
-blacklight-enacting_juridiction_of_sim {
+.blacklight-related_person_of_sim,
+.blacklight-complainant_sim,
+.blacklight-is_criminal_defendant_corporate_body_of_sim,
+.blacklight-collector_collective_agent_sim,
+.blacklight-enacting_juridiction_of_sim {
     display: none;
 }
