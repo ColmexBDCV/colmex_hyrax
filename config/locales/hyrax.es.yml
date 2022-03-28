@@ -832,7 +832,7 @@ es:
         owner_agent_of: Propietario
         custodian_agent_of: Custodio
         file_type_details: Detalles del tipo de archivo
-        depository_collective_agent_of: Agente colectivo depositario
+        depository_collective_agent_of: Organismo depositante
         depository_agent: Agente depositario
         type_of_illustrations: Tipo de ilustraciones
         center: Centro
