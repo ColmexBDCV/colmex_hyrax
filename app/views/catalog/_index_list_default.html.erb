@@ -2,15 +2,27 @@
   <div class="metadata">
     <dl class="dl-horizontal">
     <% doc_presenter = index_presenter(document) %>
+    <% num  = 0%>
     <% index_fields(document).each do |field_name, field| -%>
+      
       <% if should_render_index_field? document, field %>
+          
           <dt><%= render_index_field_label document, field: field_name %></dt>
           <% field_render = doc_presenter.field_value field_name %>
           <% field_render = field_render.to_s.gsub(", and", " | ")%>
           <% field_render = field_render.to_s.gsub(" and ", " | ")%>
           <% field_render = field_render.to_s.gsub('</span>, <span', '</span> | <span')%>
+          <% field_render_array = field_render.split("|")%>
+          <% field_render = [] %>
+          <% num=0 %>
+          <% field_render_array.each do |fr| %>
+            <% break if num > 9 %>
+            <% num += 1 %>
+            <% field_render.push(fr) %>
+          <% end %>
+          
 
-          <dd><%= field_render.html_safe  %></dd>
+          <dd><%= field_render.join("|").html_safe  %></dd>
       <% end %>
     <% end %>
     </dl>
