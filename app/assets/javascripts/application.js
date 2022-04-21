@@ -37,7 +37,7 @@
 // jQuery.noConflict();
 
 //= require clipboard
-$(document).ready(function(){  
+$(document).on('turbolinks:load',function(){  
     var clipboard = new Clipboard('.clipboard-btn');
     console.log(clipboard);
   });
