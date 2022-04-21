@@ -18,7 +18,7 @@ tracking_id = Hyrax.config.google_analytics_id
   <% end %>
     ga('send', 'pageview');
 
-  $(document).on('turbolinks:load',function(){
+  $(document).on('.ready(',function(){
 
     $("a[href*='downloads']").click(function(event){
       var href = this.href;

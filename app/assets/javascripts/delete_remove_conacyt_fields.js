@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load',function(){
+$(document).on('.ready(',function(){
 
     $('textarea[disabled="disabled"]').siblings('span').remove();
     $('textarea[disabled="disabled"]').parent('li').width('100%');

@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
-//
 // Required by Blacklight
 //= require jquery3
 //= require jquery_ujs
@@ -37,13 +35,13 @@
 // jQuery.noConflict();
 
 //= require clipboard
-$(document).on('turbolinks:load',function(){  
+$(document).ready(function(){  
     var clipboard = new Clipboard('.clipboard-btn');
     console.log(clipboard);
   });
-$(document).on('turbolinks:load', HighLight);
-$(document).on('turbolinks:load', TableView);
-$(document).on('turbolinks:load', function(){
+$(document).ready(HighLight);
+$(document).ready(TableView);
+$(document).ready(function(){
 
     $('h4.search-result-title > a').each(function(){
         if($(this).attr("href").includes("/collections/")) {
