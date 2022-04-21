@@ -86,5 +86,5 @@ config/ga.key
 config/database.yml
 log/production.log.0
 TAGS
-repositorio-170205-2ac86eea3b25.p12
+*.p12
 config/ga.key
