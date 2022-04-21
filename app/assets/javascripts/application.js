@@ -36,7 +36,11 @@
 
 // jQuery.noConflict();
 
-
+//= require clipboard
+$(document).ready(function(){  
+    var clipboard = new Clipboard('.clipboard-btn');
+    console.log(clipboard);
+  });
 $(document).on('turbolinks:load', HighLight);
 $(document).on('turbolinks:load', TableView);
 $(document).on('turbolinks:load', function(){
