@@ -32,7 +32,6 @@ module Hyrax
         analitycs_yml.fetch('analytics').each do |key, value|
           yaml[key] = eval(value)
         end if File.exists?(filename)
-        byebug
         new yaml
         
       end
