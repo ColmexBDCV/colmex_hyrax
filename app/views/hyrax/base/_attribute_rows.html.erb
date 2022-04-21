@@ -38,13 +38,14 @@
 <% end %>  
 <%= presenter.attribute_to_html(:table_of_contents, label: t('hyrax.base.show.table_of_contents'), render_as: :table_content) %>
 <% [:interviewer, :interviewee, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content, 
-     :place_of_publication, :contained_in, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, :has_system_of_organization, :is_subcollection_of].each do |a| %>
+     :place_of_publication, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, :has_system_of_organization, :is_subcollection_of].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 
 
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), html_dl: true) %>
 <%= presenter.attribute_to_html(:thematic_collection, label: t('hyrax.base.show.thematic_collection'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.contained_in'), html_dl: true) %>
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
 <%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>
 <%
