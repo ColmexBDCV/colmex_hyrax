@@ -1,10 +1,6 @@
 <div class="show-actions">
   <% if Hyrax.config.analytics? %>
-    <%
-=begin%>
- <%= link_to t('hyrax.base.show.analitycs' ,:default =>"Analytics"), presenter.stats_path, id: 'stats', class: 'btn btn-default' %> 
-<%
-=end%>
+    <%= link_to t('hyrax.base.show.analitycs' ,:default =>"Analytics"), presenter.stats_path, id: 'stats', class: 'btn btn-default' %> 
   <% end %>
   <% if presenter.editor? %>
       <%= link_to t('hyrax.base.show.edit'), edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
