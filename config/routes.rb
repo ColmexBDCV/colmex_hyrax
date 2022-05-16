@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #End Validation CSV Requeriments
    #Conacyt Requirements
    get 'persona_name', to: 'authority#person'
+   get 'all_coordinates', to: 'all_coordinates#fetch_docs' 
 
    get 'padron', to: 'conacyt_stats#padron'
    get 'ranking/articulos', to: 'conacyt_stats#articulos'
