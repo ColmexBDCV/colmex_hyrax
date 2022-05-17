@@ -40,7 +40,7 @@ class AllCoordinatesController < ApplicationController
                         coordinates.push(get_coordinates(c.split("/").last))
                     end
                     doc["coordinates"] = coordinates
-                    docs.push(*doc)
+                    docs.push(doc)
                 end
                 
             end
