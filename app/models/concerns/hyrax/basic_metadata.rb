@@ -4,6 +4,7 @@ module Hyrax
   # be defined once  accepts_nested_attributes_for is called
   module BasicMetadata
     extend ActiveSupport::Concern
+    include Coordinates
 
     included do
       property :alternate_title, predicate: ::Vocab::RDAM.variantTitle, multiple: true

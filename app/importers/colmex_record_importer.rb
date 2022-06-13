@@ -67,8 +67,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         created    = import_type.new
         attributes = record.attributes
         attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
+        
         embargo_attributes(attributes, record)
-
+        locations = get_genomanes_data(attributes[:based_near]) if attributes.key? :based_near
+        
         attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
         
         actor_env = Hyrax::Actors::Environment.new(created,
@@ -77,6 +79,12 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         
         Hyrax::CurationConcern.actor.create(actor_env)
         
+        unless locations.nil?
+          w = created.class.find(created.id)  
+          w.based_near = locations
+          w.save!
+        end
+
         info_stream << "\nRecord created at: #{created.id} \n"
         created.class.find(created.id).file_set_ids.each do |f_id|
           access_file_set(f_id,attributes[:item_access_restrictions].to_s)
@@ -98,6 +106,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         attrs.each do |key, val|
           gw.send("#{key}=",val)
         end
+        
+
+        locations = get_genomanes_data(attrs[:based_near]) if attrs.key? :based_near
+        gw.based_near = locations unless locations.nil?
         gw.save
 
         if record.representative_file
@@ -146,6 +158,14 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         fs.visibility = "restricted"
         fs.save
       end
+    end
+
+    def get_genomanes_data(based_near)
+      locations = []
+      based_near.each do |bn|
+        locations.push Hyrax::ControlledVocabularies::Location.new(::RDF::URI(bn))
+      end
+      return locations
     end
 
     def replace_file_set(f, gw)
