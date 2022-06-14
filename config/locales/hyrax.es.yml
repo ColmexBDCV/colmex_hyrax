@@ -90,6 +90,7 @@ es:
           is_subcollection_of_sim: Subcolección temática
         index:
           based_near_tesim: Ubicación
+          based_near_label_tesim: Ubicación
           classification_tesim: Clasificación
           collections: Colecciones
           has_creator_tesim: Creador

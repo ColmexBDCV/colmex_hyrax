@@ -9,8 +9,6 @@ class AllCoordinatesController < ApplicationController
         @num_pages = get_num_pages
         docs = get_docs
         render :json => docs
-       
-        
     end
   
     def get_num_pages
@@ -22,7 +20,6 @@ class AllCoordinatesController < ApplicationController
         num = num_docs/10
         num +=1 if num_docs%10 > 0
         return num
-
     end
 
     def get_docs
