@@ -20,8 +20,8 @@ var options = {
 
 var autofill = '[name*="creator]"], [name*="contributor]"]'
 
-// $(document).on('turbolinks:load',function(){
-$( document ).ready(function() {
+$(document).on('turbolinks:load',function(){
+// $( document ).ready(function() {
 
   load_autofill()
   $(".easy-autocomplete").removeAttr( 'style' );
