@@ -23,7 +23,7 @@ class ColmexCsvParser < Darlingtonia::CsvParser
     end
 
   DEFAULT_VALIDATORS = [Darlingtonia::CsvFormatValidator.new,
-                        Darlingtonia::TitleValidator.new,
+                        # Darlingtonia::TitleValidator.new,
                         RepresentativeFileValidator.new].freeze
 
       
