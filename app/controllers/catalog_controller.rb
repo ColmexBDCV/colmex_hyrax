@@ -160,6 +160,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("has_system_of_organization", :facetable), limit: 5
     config.add_facet_field solr_name("is_subcollection_of", :facetable), limit: 5
     config.add_facet_field solr_name("depository_collective_agent_of", :facetable), limit: 5
+    config.add_facet_field solr_name("corporate_body", :facetable), limit: 5
     
     
     
@@ -468,6 +469,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('degree_program') do |field|
       solr_name = solr_name("degree_program", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('corporate_body') do |field|
+      solr_name = solr_name("corporate_body", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

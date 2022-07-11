@@ -585,6 +585,7 @@ es:
         subject_uniform_title: Título uniforme u original
         has_system_of_organization: Colección
         is_subcollection_of: Subcolección temática
+        corporate_body: Autor corporativo
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección

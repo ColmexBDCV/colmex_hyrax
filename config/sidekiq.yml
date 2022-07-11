@@ -7,6 +7,6 @@ development:
   :timeout: 3
   :logfile: ./log/sidekiq.log
 production:
-  :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 20 %>
+  :concurrency: 10
   :timeout: 5
   :logfile: ./log/sidekiq.log
