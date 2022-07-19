@@ -2,9 +2,14 @@
     <div>
       <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
       <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
-        <source src="<%= hyrax.download_path(file_set, file: 'webm') %>" type="video/webm" />
-        <source src="<%= hyrax.download_path(file_set, file: 'mp4') %>" type="video/mp4" />
-
+        <% if file_set.height >= 1080 then %>
+          <source id="fullhd" src="<%= hyrax.download_path(file_set, file: 'fhd') %>" type="video/mp4" />
+        <% end %>
+        <% if file_set.height >= 720 then %>
+          <source id="hd" src="<%= hyrax.download_path(file_set, file: 'hd') %>" type="video/mp4" />
+        <% end %>
+        <source src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" />
+        
         Your browser does not support the video tag.
       </video>
       <%= render "shared/download_link", file_set: file_set  %>
@@ -12,22 +17,38 @@
 <% else %>
     <div>
       <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
-        <source src="<%= hyrax.download_path(file_set, file: 'webm') %>" type="video/webm" />
-        <source src="<%= hyrax.download_path(file_set, file: 'mp4') %>" type="video/mp4" />
+        <% if file_set.height >= 1080 then %>
+          <source src="<%= hyrax.download_path(file_set, file: 'fhd') %>" type="video/mp4" />
+        <% end %>
+        <% if file_set.height >= 720 then %>
+          <source src="<%= hyrax.download_path(file_set, file: 'hd') %>" type="video/mp4" />
+        <% end %>
+        <source src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
 <% end %>
 
 <script type="text/javascript">
+
+  if (screen.height < 1080) { $("#fullhd").remove(); }
+  if (screen.height < 720) { $("#hd").remove(); }
+
+
+
+
   $('video').mediaelementplayer({
     // Do not forget to put a final slash (/)
     stretching: 'responsive',
     pluginPath: 'https://cdnjs.com/libraries/mediaelement/',
     // this will allow the CDN to use Flash without restrictions
     // (by default, this is set as `sameDomain`)
-    shimScriptAccess: 'always'
+    shimScriptAccess: 'always',
     // more configuration
-  });
+    features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'], 
+    
+
+  })
+
 
 </script>

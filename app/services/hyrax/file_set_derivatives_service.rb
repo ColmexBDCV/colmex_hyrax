@@ -76,10 +76,23 @@ module Hyrax
       end
 
       def create_video_derivatives(filename)
+
+        outputs = [{ label: :thumbnail, format: 'jpg', url: derivative_url('thumbnail') },
+          { label: 'fhd', size: '1920x1080', bitrate: '3400k', format: 'mp4', url: derivative_url('fhd') },
+          { label: 'hd', size: '1280x720', bitrate: '2000k', format: 'mp4', url: derivative_url('hd') },
+          { label: 'sd', size: '854x480', bitrate: '1000k', format: 'mp4', url: derivative_url('sd') }]
+
+        
+        outputs.delete_at(1) if @file_set.height.first.to_i < 1080
+        outputs.delete_at(1) if @file_set.height.first.to_i < 720
+        outputs.delete_at(1) if @file_set.height.first.to_i < 480
+        
+
+        
         Hydra::Derivatives::VideoDerivatives.create(filename,
-                                                    outputs: [{ label: :thumbnail, format: 'jpg', url: derivative_url('thumbnail') },
-                                                              { label: 'webm', size: '1280x720', bitrate: '4000k', format: 'webm', url: derivative_url('webm') },
-                                                              { label: 'mp4', size: '1280x720', bitrate: '4000k', format: 'mp4', url: derivative_url('mp4') }])
+                                                    outputs: outputs)
+
+        
       end
 
       def create_image_derivatives(filename)
