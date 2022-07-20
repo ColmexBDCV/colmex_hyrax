@@ -52,7 +52,7 @@ es:
           numbering_within_sequence_sim: Volumen/número
           interviewer_sim: Entrevistado
           interviewee_sim: Entrevistador
-          photographer_sim: Fotográfo
+          photographer_sim: Fotógrafo
           narrator_sim: Narrador
           writer_of_suplementary_textual_content_sim: Prologuista
           collective_title_sim: Título colectivo
@@ -139,7 +139,7 @@ es:
           numbering_within_sequence_tesim: Volumen/número
           interviewer_tesim: Entrevistado
           interviewee_tesim: Entrevistador
-          photographer_tesim: Fotográfo
+          photographer_tesim: Fotógrafo
           narrator_tesim: Narrador
           numbering_of_part_tesim: Número de la parte
           related_work_of_work_tesim: Documento relacionado
@@ -211,7 +211,7 @@ es:
           interviewee: Entrevistador
           organizer_author: Coordinador / Organizador
           place_of_publication: Lugar de publicación
-          photographer: Fotográfo
+          photographer: Fotógrafo
           collective_title: Título colectivo
           part_of_place: Ciudad/Municipio/Localidad
           provenance: Procedencia
@@ -544,7 +544,7 @@ es:
         translator: Traductor
         interviewer: Entrevistado
         interviewee: Entrevistador
-        photographer: Fotográfo
+        photographer: Fotógrafo
         collective_title: Título colectivo
         part_of_place: Ciudad/Municipio/Localidad
         provenance: Procedencia
@@ -823,7 +823,7 @@ es:
         digital_resource_generation_information: Información de generación de recursos digitales
         interviewer: Entrevistado
         interviewee: Entrevistador
-        photographer: Fotográfo
+        photographer: Fotógrafo
         narrator: Narador
         collective_title: Título colectivo
         part_of_place: Ciudad/Municipio/Localidad
