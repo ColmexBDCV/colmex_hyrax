@@ -11,7 +11,7 @@
         <% if file_set.height >= 480 then %>
           <source id="sd" src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="SD" />
         <% end %>
-        <source src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="OD" />
+        <source src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="OD" />
         
 
         
@@ -31,7 +31,7 @@
         <% if file_set.height >= 480 then %>
           <source id="sd" src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="SD" />
         <% end %>
-        <source src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="OD" />
+        <source src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="OD" />
 
         Your browser does not support the video tag.
       </video>
