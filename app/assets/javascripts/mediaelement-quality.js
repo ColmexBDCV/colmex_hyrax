@@ -250,8 +250,9 @@ Object.assign(MediaElementPlayer.prototype, {
 					if (!paused) {
 						media.pause();
 					}
+					
 					t.updateVideoSource(media, qualityMap, currentQuality);
-					media.setSrc(qualityMap.get(currentQuality)[0].src);
+					media.setSrc(qualityMap.get(this.value)[0].src);
 					media.load();
 					media.dispatchEvent(mejs.Utils.createEvent('seeking', media));
 					if (!paused) {

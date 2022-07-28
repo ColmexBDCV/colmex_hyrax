@@ -2,18 +2,22 @@
     <div>
       <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
       <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
-        <% if file_set.height >= 1080 then %>
-          <source id="fullhd" src="<%= hyrax.download_path(file_set, file: 'fhd') %>" type="video/mp4" data-quality="FHD" />
-        <% end %>
-        <% if file_set.height >= 720 then %>
-          <source id="hd" src="<%= hyrax.download_path(file_set, file: 'hd') %>" type="video/mp4" data-quality="HD" />
-        <% end %>
-        <% if file_set.height >= 480 then %>
-          <source id="sd" src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="SD" />
-        <% end %>
-        <source src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="OD" />
         
+        <%  sizes = ["360p","480p","720p","1080p","2160p"]
+            derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set)
+            tags = []
+            derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
+            tags.delete("thumbnail")
+            size_index = sizes.find_index(tags.last)+1 
+            byebug
+        %>
+        <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
 
+
+        <% tags.reverse.each do |tag|%>
+          <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
+        <% end %>
+                
         
         Your browser does not support the video tag.
       </video>
@@ -22,16 +26,20 @@
 <% else %>
     <div>
       <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
+       <% if file_set.height >= 2160 then %>
+          <source id="4k" src="<%= hyrax.download_path(file_set, file: '2160p') %>" type="video/mp4" data-quality="2160p" />
+        <% end %>
         <% if file_set.height >= 1080 then %>
-          <source id="fullhd" src="<%= hyrax.download_path(file_set, file: 'fhd') %>" type="video/mp4" data-quality="FHD" />
+          <source id="fullhd" src="<%= hyrax.download_path(file_set, file: '1080p') %>" type="video/mp4" data-quality="1080p" />
         <% end %>
         <% if file_set.height >= 720 then %>
-          <source id="hd" src="<%= hyrax.download_path(file_set, file: 'hd') %>" type="video/mp4" data-quality="HD" />
+          <source id="hd" src="<%= hyrax.download_path(file_set, file: '720p') %>" type="video/mp4" data-quality="720p" />
         <% end %>
         <% if file_set.height >= 480 then %>
-          <source id="sd" src="<%= hyrax.download_path(file_set, file: 'sd') %>" type="video/mp4" data-quality="SD" />
+          <source id="sd" src="<%= hyrax.download_path(file_set, file: '480p') %>" type="video/mp4" data-quality="480p" />
         <% end %>
-        <source src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="OD" />
+        
+        <source id="ld" src="<%= hyrax.download_path(file_set, file: '360p') %>" type="video/mp4" data-quality="360p" /> 
 
         Your browser does not support the video tag.
       </video>
@@ -39,26 +47,6 @@
 <% end %>
 
 <script type="text/javascript">
-
-  if (screen.height < 1080) {$("#mep_1-qualities-HD").click(); }
-  if (screen.height < 720) { $("#mep_1-qualities-SD").click(); }
-  if (screen.height < 480) { $("#mep_1-qualities-OD").click(); }
-
-
-
-
-  // $('video').mediaelementplayer({
-  //   // Do not forget to put a final slash (/)
-  //   stretching: 'responsive',
-  //   pluginPath: 'https://cdnjs.com/libraries/mediaelement/',
-  //   // this will allow the CDN to use Flash without restrictions
-  //   // (by default, this is set as `sameDomain`)
-  //   shimScriptAccess: 'always',
-  //   // more configuration
-  //   features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'], 
-    
-
-  // })
 
   var mediaElements = document.querySelectorAll('video, audio');
 
@@ -69,5 +57,10 @@
 		});
 	}
 
-
+  if (screen.height < 2160) {$("#mep_0-qualities-1080p").click(); }
+  if (screen.height < 1080) {$("#mep_0-qualities-720p").click(); }
+  if (screen.height < 720) { $("#mep_0-qualities-480p").click(); }
+  if (screen.height < 480) { $("#mep_0-qualities-360p").click(); }
+ 
+  
 </script>

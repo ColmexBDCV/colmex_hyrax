@@ -78,17 +78,18 @@ module Hyrax
       def create_video_derivatives(filename)
 
         outputs = [{ label: :thumbnail, format: 'jpg', url: derivative_url('thumbnail') },
-          { label: 'fhd', size: '1920x1080', bitrate: '3400k', format: 'mp4', url: derivative_url('fhd') },
-          { label: 'hd', size: '1280x720', bitrate: '2000k', format: 'mp4', url: derivative_url('hd') },
-          { label: 'sd', size: '854x480', bitrate: '1000k', format: 'mp4', url: derivative_url('sd') }]
+          { label: '2160p', size: '3840x2160', bitrate: '15000k', format: 'mp4', url: derivative_url('2160p') },
+          { label: '1080p', size: '1920x1080', bitrate: '4000k', format: 'mp4', url: derivative_url('1080p') },
+          { label: '720p', size: '1280x720', bitrate: '2000k', format: 'mp4', url: derivative_url('720p') },
+          { label: '480p', size: '854x480', bitrate: '1000k', format: 'mp4', url: derivative_url('480p') },
+          { label: '360p ', size: '640x360', bitrate: '600k', format: 'mp4', url: derivative_url('360p') }]
 
         
-        outputs.delete_at(1) if @file_set.height.first.to_i < 1080
-        outputs.delete_at(1) if @file_set.height.first.to_i < 720
-        outputs.delete_at(1) if @file_set.height.first.to_i < 480
-        
+        outputs.delete_at(1) if @file_set.height.first.to_i <= 2160
+        outputs.delete_at(1) if @file_set.height.first.to_i <= 1080
+        outputs.delete_at(1) if @file_set.height.first.to_i <= 720
+        outputs.delete_at(1) if @file_set.height.first.to_i <= 480
 
-        
         Hydra::Derivatives::VideoDerivatives.create(filename,
                                                     outputs: outputs)
 

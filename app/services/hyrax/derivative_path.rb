@@ -60,11 +60,15 @@ module Hyrax
             
           when 'thumbnail'
             ".#{MIME::Types.type_for('jpg').first.extensions.first}"
-          when 'sd'
+          when '360p'
+            ".#{MIME::Types.type_for('mp4').first.extensions.first}"  
+          when '480p'
             ".#{MIME::Types.type_for('mp4').first.extensions.first}"
-          when 'hd'
+          when '720p'
             ".#{MIME::Types.type_for('mp4').first.extensions.first}"
-          when 'fhd'
+          when '1080p'
+            ".#{MIME::Types.type_for('mp4').first.extensions.first}"
+          when '2160p'
             ".#{MIME::Types.type_for('mp4').first.extensions.first}"
           else
             ".#{destination_name}"

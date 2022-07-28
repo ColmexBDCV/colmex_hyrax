@@ -13,8 +13,8 @@
     color: #fff;
     font-size: 1.0rem;
     font-weight: 700;
-    /* margin: 0.563rem 0 0; */
-    /* width: 2.25rem; */
+    margin: 1rem 0 0 0;
+    width: 3.5rem;
 }
 
 .mejs__qualities-selector,
@@ -47,7 +47,7 @@
     display: block;
     list-style-type: none!important;
     overflow: hidden;
-    padding: 0 0.625rem;
+    padding: 0 0.1rem;
     border: 0.06rem solid transparent;
 }
 
