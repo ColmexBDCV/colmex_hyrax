@@ -9,7 +9,6 @@
             derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
             tags.delete("thumbnail")
             size_index = sizes.find_index(tags.last)+1 
-            byebug
         %>
         <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
 
