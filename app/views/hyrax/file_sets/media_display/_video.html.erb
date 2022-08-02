@@ -12,9 +12,9 @@
               size_index = tags.count
           %>
           <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
-
-
-          <% tags.reverse.each do |tag|%>
+         
+          <% tags.reverse! if tags.first == "360p" %>
+          <% tags.each do |tag|%>
             <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
           <% end %>
         <% else %>        
@@ -38,9 +38,9 @@
               size_index = tags.count 
           %>
           <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
-
-
-          <% tags.reverse.each do |tag|%>
+          
+          <% tags.reverse! if tags.first == "360p" %>
+          <% tags.each do |tag|%>
             <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
           <% end %>
         <% else %>        
@@ -67,6 +67,11 @@
   if (screen.height < 1080) {$('[id*="qualities-720p"]').click(); }
   if (screen.height < 720) { $('[id*="qualities-480p"]').click(); }
   if (screen.height < 480) { $('[id*="qualities-360p"]').click(); }
+
+  // if ($(".mejs__mediaelement").height() < 2160) {$('[id*="qualities-1080p"]').click(); }
+  // if ($(".mejs__mediaelement").height() < 1080) {$('[id*="qualities-720p"]').click(); }
+  // if ($(".mejs__mediaelement").height() < 720) { $('[id*="qualities-480p"]').click(); }
+  // if ($(".mejs__mediaelement").height() < 480) { $('[id*="qualities-360p"]').click(); }
  
   
 </script>
