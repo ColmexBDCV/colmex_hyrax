@@ -493,13 +493,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('type_of_illustrations') do |field|
-  #     solr_name = solr_name('type_of_illustrations', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('type_of_illustrations') do |field|
+      solr_name = solr_name('type_of_illustrations', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('classification') do |field|
       solr_name = solr_name('classification', :stored_searchable)
@@ -996,6 +996,22 @@ class CatalogController < ApplicationController
           pf: solr_name
       }
   end
+
+  config.add_search_field('director') do |field|
+      solr_name = solr_name('director', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
+
+  config.add_search_field('academic_degree') do |field|
+    solr_name = solr_name('academic_degree', :stored_searchable)
+    field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+    }
+end
    
   config.add_search_field('thematic_collection') do |field|
       solr_name = solr_name('thematic_collection', :stored_searchable)
