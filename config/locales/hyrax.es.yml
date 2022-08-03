@@ -586,6 +586,7 @@ es:
         has_system_of_organization: Colección
         is_subcollection_of: Subcolección temática
         corporate_body: Autor corporativo
+        based_near_label: Ubicación
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
