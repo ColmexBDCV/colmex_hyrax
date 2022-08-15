@@ -33,7 +33,7 @@ module Hydra::Works
       end
 
       def video_mime_types
-        ['video/mpeg', 'video/mp4', 'video/webm', 'video/x-msvideo', 'video/avi', 'video/quicktime', 'application/mxf', 'video/x-ms-wmv']
+        ['video/mpeg', 'video/mp4', 'video/webm', 'video/x-msvideo', 'video/avi', 'video/quicktime', 'application/mxf', 'video/x-ms-wmv', 'video/vnd.objectvideo']
       end
 
       def audio_mime_types
