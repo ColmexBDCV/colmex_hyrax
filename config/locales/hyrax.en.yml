@@ -298,6 +298,7 @@ en:
       sidebar:
         validation_csv: Validation CSV
         validate_csv: Validate your CSV
+        imports: Imports
       validations:
         save_and_notificate: Save and Notificate
         view_options: View options

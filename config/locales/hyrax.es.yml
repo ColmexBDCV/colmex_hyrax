@@ -371,9 +371,15 @@ es:
         Do_not_show_the: No muestra los ítems privados
         Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
         Use: Usar Rails.cache para almacenar en caché el documento JSON para los manifiestos IIIF
+      imports:
+        new_import: Nueva Importación
+        history: Historial
       sidebar:
         validation_csv: Validación CSV
         validate_csv: Validá tu CSV
+        imports: Importaciones
+        new_import: Nueva Importación
+        history: Historial
       validations:
         save_and_notificate: Guardar y Notificar
         view_options: Ver opciones

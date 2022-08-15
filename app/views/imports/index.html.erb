@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
+    </div>
+    <div class="panel panel-body">
+         <h1>Paquetes por procesar</h1>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Nombre del paquete </th>
+              <th> Fecha de Ingreso </th>
+              <th> Peso (GB) </th>
+              <th> Depositante </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> TesisColmexMarzo2022 </td>
+              <td> 30/05/2022 </td>
+              <td> 20 </td>
+              <td> guvega </td>
+              <td> 
+                <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Seleccionar tipo de obra
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Libro</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tesis</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Articulo</a></li>
+                </ul>
+                <a id="modal-614541" href="#modal-container-614541" role="button" class="btn btn-primary" data-toggle="modal">Procesar</a>
+			
+                
+              </div> 
+            </tr>
+            <tr>
+              <td> CERVANTES </td>
+              <td> 19/05/2022 </td>
+              <td> 10 </td>
+              <td> rcuellar </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Seleccionar tipo de obra
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Libro</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tesis</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Articulo</a></li>
+                  </ul>
+                  <a id="modal-614541" href="#modal-container-614541" role="button" class="btn btn-primary" data-toggle="modal">Procesar</a>
+                </div> 
+               </td>
+                
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
