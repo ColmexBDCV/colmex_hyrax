@@ -2,7 +2,7 @@ class CreateImports < ActiveRecord::Migration[5.2]
   def change
     create_table :imports do |t|
       t.string :name
-      t.string :string
+      t.string :object_type
       t.string :depositor
       t.datetime :date
       t.string :storage_size

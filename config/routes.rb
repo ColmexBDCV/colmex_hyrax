@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/imports/validate', to: 'imports#validate'
   resources :imports
   mount BrowseEverything::Engine => '/browse'
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?

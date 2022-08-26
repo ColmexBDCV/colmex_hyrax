@@ -1,5 +1,50 @@
-<h1>New Import</h1>
-
-<%= render 'form', import: @import %>
-
-<%= link_to 'Back', imports_path %>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
+            </div>
+            <div class="panel panel-body">
+                <h1>Paquetes por procesar</h1>
+            <div>
+            <%
+                workTypes = []
+                Hyrax::config.registered_curation_concern_types.each do |wt|
+                    workTypes.append ([t('hyrax.admin.validations.'+wt.underscore.downcase), wt])
+                end
+            %>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th> Nombre del paquete </th>
+                    
+                    <th> Peso (MB) </th>
+                    <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @sips.each do |s| %>
+                        <tr>
+                        <td> <%=s[:sip]%> </td>
+                        <td> <%=s[:size]%> </td>
+                        <td> 
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Validar pertinencia para el RepNal
+                            </label>
+                            <select class="form-select btn btn-default dropdown-toggle" aria-label="Default select example">
+                                <option value="" selected>Seleccionar tipo de obra</option>
+                                <%= render partial: "work_types", locals: {work_types: workTypes} %>
+                            </select>
+                            <a id="modal-614541" href="#modal-container-614541" role="button" class="btn btn-primary" data-toggle="modal">Procesar</a>
+                        </td>
+                        </tr>
+                    <% end %>
+                                
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

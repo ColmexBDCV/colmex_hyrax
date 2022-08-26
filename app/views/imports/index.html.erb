@@ -1,9 +1,10 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
+<div class="row">
+    <div class="col-md-12">
+      <div class="panel-heading">
+        <h1><span class="fa fa-check" aria-hidden="true"></span> Historial</h1>
     </div>
     <div class="panel panel-body">
-         <h1>Paquetes por procesar</h1>
+      <h1>Paquetes procesados</h1>
       <div>
         <table class="table">
           <thead>
@@ -12,6 +13,9 @@
               <th> Fecha de Ingreso </th>
               <th> Peso (GB) </th>
               <th> Depositante </th>
+              <th> Estado </th>
+              <th> Tipo de objeto </th>
+              <th> # de Registros</th>
               <th> </th>
             </tr>
           </thead>
@@ -21,42 +25,25 @@
               <td> 30/05/2022 </td>
               <td> 20 </td>
               <td> guvega </td>
-              <td> 
-                <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Seleccionar tipo de obra
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Libro</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tesis</a></li>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Articulo</a></li>
-                </ul>
-                <a id="modal-614541" href="#modal-container-614541" role="button" class="btn btn-primary" data-toggle="modal">Procesar</a>
-			
-                
-              </div> 
+              <td> <span class="label label-danger">Cancelado</span></td>
+              <td>Tesis</td>
+              <td>2500</td>
+              <td> <button disabled class="btn btn -primary">Deshacer</button></td>
             </tr>
             <tr>
               <td> CERVANTES </td>
-              <td> 19/05/2022 </td>
-              <td> 10 </td>
-              <td> rcuellar </td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">Seleccionar tipo de obra
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="menu2">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Libro</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tesis</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Articulo</a></li>
-                  </ul>
-                  <a id="modal-614541" href="#modal-container-614541" role="button" class="btn btn-primary" data-toggle="modal">Procesar</a>
-                </div> 
-               </td>
-                
+              <td> 30/05/2022 </td>
+              <td> 25 </td>
+              <td> asmartinez </td>
+              <td> <span class="label label-success">Procesado</span></td>
+              <td>Libros</td>
+              <td>500</td>
+              <td> <button class="btn btn -primary">Deshacer</button></td>
             </tr>
             
           </tbody>
         </table>
       </div>
     </div>
+  </div>
 </div>

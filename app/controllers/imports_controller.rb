@@ -1,6 +1,9 @@
 class ImportsController < ApplicationController
   with_themed_layout 'dashboard'
+  before_action :authenticate_user!
   before_action :set_import, only: %i[ show edit update destroy ]
+
+  include ImporterService
 
   # GET /imports or /imports.json
   def index
@@ -11,6 +14,10 @@ class ImportsController < ApplicationController
     add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
     add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
   end
+  
+  def validate
+    render :json => validate_csv(params[:sip], params[:work], params[:repnal])
+  end
 
   # GET /imports/1 or /imports/1.json
   def show
@@ -18,6 +25,12 @@ class ImportsController < ApplicationController
 
   # GET /imports/new
   def new
+    @sips = list_sips
+    @user = current_user
+    @path = Rails.root
+    add_breadcrumb t(:'hyrax.controls.home'), root_path
+    add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
+    add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
     @import = Import.new
   end
 
@@ -71,6 +84,6 @@ class ImportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def import_params
-      params.require(:import).permit(:name, :string, :depositor, :date, :storage_size, :status, :object_ids, :num_records)
+      params.require(:import).permit(:name, :object_type, :depositor, :date, :storage_size, :status, :object_ids, :num_records)
     end
 end
