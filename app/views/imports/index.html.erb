@@ -11,7 +11,7 @@
             <tr>
               <th> Nombre del paquete </th>
               <th> Fecha de Ingreso </th>
-              <th> Peso (GB) </th>
+              <th> Peso (MB) </th>
               <th> Depositante </th>
               <th> Estado </th>
               <th> Tipo de objeto </th>
@@ -20,30 +20,64 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td> TesisColmexMarzo2022 </td>
-              <td> 30/05/2022 </td>
-              <td> 20 </td>
-              <td> guvega </td>
-              <td> <span class="label label-danger">Cancelado</span></td>
-              <td>Tesis</td>
-              <td>2500</td>
-              <td> <button disabled class="btn btn -primary">Deshacer</button></td>
-            </tr>
-            <tr>
-              <td> CERVANTES </td>
-              <td> 30/05/2022 </td>
-              <td> 25 </td>
-              <td> asmartinez </td>
-              <td> <span class="label label-success">Procesado</span></td>
-              <td>Libros</td>
-              <td>500</td>
-              <td> <button class="btn btn -primary">Deshacer</button></td>
-            </tr>
-            
+            <% @imports.each do |import| %>
+              <tr>
+                <td><%= import.name %></td>
+                <td><%= import.date %></td>
+                <td><%= import.storage_size %></td>
+                <td><%= import.depositor %></td>
+                <td> <span class="label label-danger"><%= import.status %></span></td>
+                <td><%= import.object_type %></td>
+                <td>
+                  <button id="<%= import.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal">
+                    <%= import.num_records %>
+                  </button>
+                  <div hidden><%= import.object_ids %></div>
+                </td>
+                <td>
+                  <%= form_with(model: import, local: true) do |f| %>
+                    <%= f.hidden_field :object_type, :value => import.object_type %>
+                    <%= f.hidden_field :object_ids, :value => import.object_ids %>
+                    <%= f.hidden_field :id, :value => import.id %>
+                    <%= f.submit 'Deshacer Importación', data: { confirm: 'Confirmar (Esta acción no se puede deshacer)' }, class: "btn btn-danger" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>            
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">
+          
+        </h2> 
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+    
+  </div>
+
+<script>
+   
+  $('.custom-modal').click(function(e){
+      e.preventDefault();
+      var sip = $(this).attr('id');
+      var ids = $(this).next().text()     
+      var mymodal = $('#myModal');
+      mymodal.find('#myModalLabel').text("Identificadores del SIP "+sip);
+      mymodal.find(".modal-body").text(ids)
+           
+      mymodal.modal('show');
+
+  });
+    
+</script>

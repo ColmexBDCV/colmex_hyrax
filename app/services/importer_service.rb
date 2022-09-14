@@ -32,10 +32,6 @@ module ImporterService
         ]        
     end
 
-    def get_files_in_folder(sip)
-        
-    end
-
     def metadata_exists?(sip)
         File.exists?("digital_objects/#{sip}/metadatos/metadatos.csv")       
     end
@@ -81,10 +77,12 @@ module ImporterService
 
     # report = ImporterService.validate_csv("TesisColmexMarzo2022","Video", true)
     def validate_csv(sip, work, repnal = false)
-        # return "No existe carpeta metadatos o archivo de metadatos.csv no existe" unless metadata_exists?(sip)
-        # return "No existe carpeta documentos_de_acceso o está esta vacia" unless documents_exists?(sip)
+
+        return { error: "No existe carpeta metadatos o archivo de metadatos.csv no existe"} unless metadata_exists?(sip)
+        return { error: "No existe carpeta documentos_de_acceso o está esta vacia"} unless documents_exists?(sip)
         
         parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work)
+        
         begin
             parser.validate 
         rescue
@@ -100,13 +98,38 @@ module ImporterService
         
 
         records = Importer.new(parser: parser, work: work).records.to_a
-        
-        files_csv=records.map { |r| r.representative_file }.flatten
-        files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
-        
+        csv = CSV.table("digital_objects/#{sip}/metadatos/metadatos.csv", {:headers => :first_row})
+        headers = csv.headers
+        bad_fields = []
+
+        headers.each do |h|
+            bad_fields << h unless wt.new.respond_to?(h)
+        end
+
+        bad_fields.delete(:file_name)
+
         report = Hash.new
+        begin
+            files_csv = records.map { |r| r.representative_file }.flatten
+            identifiers = records.map { |r| r.identifier }
+            i_d = (identifiers.select { |i| identifiers.count(i) > 1 }).to_set.to_a
+            files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
+            identifiers_d = {}
+            identifiers.each_with_index do |identifier, index| 
+                if i_d.include?(identifier) then
+                    identifiers_d[identifier] = ( identifiers_d[identifier] || []) << index +2
+                end
+
+            end
+            report["files_not_found"] = files_csv - files_folder unless (files_csv - files_folder).empty?
+            # report["files_not_referenced"] = files_folder - files_csv unless (files_folder - files_csv).empty?
+            report["identifiers_duplicate"] = identifiers_d unless identifiers_d.empty?
+            report["bad_fields"] = bad_fields if bad_fields.count > 0
+        rescue Exception => e
+            return e
+        end
+     
         records.each_with_index do |record,index|
-            
             report["identifier"] = (report["identifier"] || []) << index + 2 unless record.respond_to?("identifier")
             report["title"] = (report["title"] || []) << index + 2 unless record.respond_to?("title")
             report["rights_statement"] = (report["rights_statement"] || []) << [index + 2, record.rights_statement] if record.respond_to?("rights_statement") && (record.rights_statement & rights).count == 0
@@ -117,7 +140,7 @@ module ImporterService
                 report["license"] = (report["license"] || []) << [index + 2] if !record.respond_to?("license") || (record.license & licenses).count == 0
                 report["license"] << record.license if record.respond_to?("license") && report.respond_to?("license")
                 report["type_conacyt"] = (report["type_conacyt"] || []) << [index + 2] unless record.respond_to?("type_conacyt") || (record.respond_to?("type_conacyt") && !(types_conacyt.include? record.type_conacyt))
-                report["type_conacyt"] << record.type_conacyt if record.respond_to?("type_conacyt") && report.respond_to?("type_conacyt")
+                report["type_conacyt"] << record.identifier if record.respond_to?("type_conacyt") && report.respond_to?("type_conacyt")
                 report["subject_conacyt"] = (report["subject_conacyt"] || []) << [index + 2] unless record.respond_to?("subject_conacyt") || (record.respond_to?("subject_conacyt") && !((1..7).include? record.type_conacyt))
                 report["subject_conacyt"] << record.subject_conacyt if record.respond_to?("subject_conacyt") && report.respond_to?("subject_conacyt")
                 report["pub_conacyt"] = (report["pub_conacyt"] || []) << [index + 2, record.pub_conacyt] if record.respond_to?("pub_conacyt") && (record.pub_conacyt & pub_conacyt).count == 0
@@ -127,10 +150,10 @@ module ImporterService
             end
 
         end
-         report["files_not_found"] = files_csv - files_folder
-         report["files_not_referenced"] = files_folder - files_csv
-
-        
+              
+        if report.empty?
+            report["success"] = identifiers
+        end
 
         return report
     end
@@ -146,4 +169,28 @@ module ImporterService
         based_near.each { |bn| match = false unless bn.match?(/https:\/\/sws\.geonames\.org\/[0-9]*\//) }
         return match
     end
+
+    def self.delete_records_by_identifiers(id_import, work, identifiers)
+        
+        identifiers = JSON.parse identifiers
+        wt = work.singularize.classify.constantize
+        identifiers.each do |i| 
+            begin
+                w = wt.where(identifier: i)
+                
+                if w.count > 0 then
+                    filesets = w.first.members
+                    w.first.destroy
+                    fileset.each { |f| f.destroy }
+                    
+                end
+            rescue Exception => e
+                puts e
+            end
+        end
+        i = Import.find(id_import)
+        i.status = "Cancelado"
+        i.save
+    end
+
 end

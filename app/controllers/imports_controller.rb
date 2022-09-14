@@ -26,6 +26,13 @@ class ImportsController < ApplicationController
   # GET /imports/new
   def new
     @sips = list_sips
+    imports = Import.where.not(status: "Cancelado").pluck(:name)
+    @sips.each do |s|
+      if imports.include?(s[:sip]) then
+        @sips.delete(s)
+      end 
+    end
+    
     @user = current_user
     @path = Rails.root
     add_breadcrumb t(:'hyrax.controls.home'), root_path
@@ -40,11 +47,19 @@ class ImportsController < ApplicationController
 
   # POST /imports or /imports.json
   def create
+    params["import"]["num_records"] = params["import"]["identifiers"].count
+    params["import"]["depositor"] = current_user.email
+    params["import"]["status"] = "Procesando..."
+    params["import"]["object_ids"] = params["import"]["identifiers"].to_json
+    params["import"]["date"] = DateTime.now.strftime("%d/%m/%Y %H:%M")
+    params["import"]["repnal"] = params["import"].key?("repnal") ? "Si" : "No"
     @import = Import.new(import_params)
-
     respond_to do |format|
       if @import.save
         format.html { redirect_to import_url(@import), notice: "Import was successfully created." }
+
+        ImportCreateJob.perform_later("digital_objects/#{params["import"]["name"]}/metadatos/metadatos.csv", params["import"]["object_type"])
+
         format.json { render :show, status: :created, location: @import }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,9 +70,13 @@ class ImportsController < ApplicationController
 
   # PATCH/PUT /imports/1 or /imports/1.json
   def update
+    params[:import][:status] = "Cancelando..."
+    params["import"]["depositor"] = current_user.email
     respond_to do |format|
       if @import.update(import_params)
-        format.html { redirect_to import_url(@import), notice: "Import was successfully updated." }
+        ImportUndoJob.perform_later(params[:import][:id],params[:import][:object_type],params[:import][:object_ids])
+        # format.html { redirect_to import_url(@import), notice: "Import was successfully updated." }
+        format.html { redirect_to imports_url, notice: "Import was successfully destroyed." }
         format.json { render :show, status: :ok, location: @import }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -84,6 +103,6 @@ class ImportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def import_params
-      params.require(:import).permit(:name, :object_type, :depositor, :date, :storage_size, :status, :object_ids, :num_records)
+      params.require(:import).permit(:id, :name, :object_type, :depositor, :date, :storage_size, :status, :object_ids, :num_records, :repnal)
     end
 end
