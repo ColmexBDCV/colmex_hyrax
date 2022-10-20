@@ -1,78 +1,154 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
-            </div>
-            <div class="panel panel-body">
-                <h1>Paquetes por procesar</h1>
-            <div>
-            <%
-                workTypes = []
-                Hyrax::config.registered_curation_concern_types.each do |wt|
-                    workTypes.append ([t('hyrax.admin.validations.'+wt.underscore.downcase), wt])
-                end
-            %>
-                <table class="table">
-                <thead>
-                    <tr>
-                    <th> Nombre del paquete </th>
-                    
-                    <th> Peso (MB) </th>
-                    <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @sips.each do |s| %>
-                        <tr>
-                        <td><%= s[:sip] %></td>
-                        <td><%= s[:size] %></td>
-                        <td> 
-                            <input class="form-check-input" type="checkbox">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Validar pertinencia para el RepNal
-                            </label>
-                            <select class="form-select btn btn-default dropdown-toggle" aria-label="Default select example">
-                                <option value="" selected>Seleccionar tipo de obra</option>
-                                <%= render partial: "work_types", locals: {work_types: workTypes} %>
-                            </select>
-                            <button id="<%=s[:sip]%>" role="button" class="btn btn-primary custom-modal" disabled data-toggle="modal">Procesar</button>
-                        </td>
-                        </tr>
-                    <% end %>
-                                
-                </tbody>
-                </table>
-            </div>
-            </div>
+<div id="app">
+  <div class="row" >
+      {{message}}
+      <div class="col-md-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
+              </div>
+              <div class="panel panel-body">
+                  <h1>Paquetes por procesar</h1>
+              <div>
+              <%
+                  workTypes = []
+                  Hyrax::config.registered_curation_concern_types.each do |wt|
+                      workTypes.append ([t('hyrax.admin.validations.'+wt.underscore.downcase), wt])
+                  end
+              %>
+                  <table class="table">
+                  <thead>
+                      <tr>
+                      <th> Nombre del paquete </th>
+                      
+                      <th> Peso (MB) </th>
+                      <th> </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% @sips.each_with_index do |s, index| %>
+                          <tr>
+                          <td><%= s[:sip] %></td>
+                          <td><%= s[:size] %></td>
+                          <td> 
+                              <input class="form-check-input" type="checkbox" id="chk_<%=index%>">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                  Validar pertinencia para el RepNal
+                              </label>
+                              <select class="form-select btn btn-default dropdown-toggle" id="select_<%=index%>" @change="change_select('select_<%=index%>')" aria-label="Default select example">
+                                  <option value="" selected>Seleccionar tipo de obra</option>
+                                  <%= render partial: "work_types", locals: {work_types: workTypes} %>
+                              </select>
+                              <button id="<%=s[:sip]%>" role="button" class="btn btn-primary custom-modal" 
+                                  @click="validar('<%=s[:sip]%>', '<%=index%>', 's[:size]' )" disabled data-toggle="modal">Procesar</button>
+                          </td>
+                          </tr>
+                      <% end %>
+                                  
+                  </tbody>
+                  </table>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h2 class="modal-title" id="myModalLabel">
+            Reporte del SIP&nbsp;{{modal_text}}
+          </h2>           
         </div>
-    </div>
-</div>
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">
-          
-        </h2> 
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">×</span>
-        </button>
+        <div class="modal-body">
+          <div v-if="is_success">
+            
+          </div>
+          <div v-else>
+            <div><h4>Se encontraron los siguientes errores al procesar la petición.</h4></div>
+            <ul>
+              <div v-for="error in result">
+                <li><i class="fa fa-times"></i>&nbsp;&nbsp;{{error}}</li>
+              </div>
+            </ul>
+          </div>          
+        </div>
+        <div class="modal-footer">
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
       </div>
-      <div class="modal-body">
-        
-      </div>
+      
     </div>
     
   </div>
-  
-</div> 
-
+</div>
+<style>
+    .fa-times{
+      color: red;
+    }
+    ul {
+      list-style: none;
+    }
+</style>
 <script>
+  
+  var app = new Vue({
+    el: '#app',
+    data() {
+        return {
+          message: 'Hello Vue!',
+          modal_text: '',
+          modal_resp: '',
+          modalShow: false,
+          result: '',
+          import_sip: '',
+          is_success: false,
+        }
+      },
+    methods: {
+      validar(sip, id, size){
+        var that = this;
+        var worktype = $('#select_'+id).val();
+        var repnal = $('#chk_'+id).is(":checked");
+        var params = { sip: sip, work: worktype};
+        if (repnal) {
+          params["repnal"] = "true"
+        }
+        that.modal_text = sip;
+        $.post("/imports/validate",
+          params,
+          function(data, status, xhr) {
+            if (data.hasOwnProperty('success')) {
+              mymodal.find(".modal-body").text("La validación ha sido existosa, puede iniciar la importación")
+              $("#import").prop('disabled', false)
+              import_sip = {import:{ name: sip, object_type: worktype, identifiers: result["success"], storage_size: size }}
+              if (repnal) {
+                import_sip["import"]["repnal"] = "true"
+              }
+              that.is_success = true;
+          } else {
+            that.result = eval(data);
+            that.is_success = false;
+          }   
+        }).fail(function(jqxhr, settings, ex) { console.log('failed, ' + ex); });
+        $('#myModal').modal('show');
+      },
+      change_select(select_index){
+        if ($('#'+select_index).val() != '')  {
+          $('#'+select_index).next().prop('disabled', false)      
+        }else{
+          $('#'+select_index).next().prop('disabled', true)
+        }
+      }
+    }
+  })
      
   var import_sip = {import: {}}
 
-    $(".form-select").on('change', function() {
+    /*$(".form-select").on('change', function() {
         if ($(this).val() != '')  {
             $(this).next().prop('disabled', false)
         
@@ -81,7 +157,7 @@
         }
         
 
-    });
+    });*/
     
     $('#import').click(function(){
       $.ajax({url: "/imports.json",
@@ -100,7 +176,7 @@
     });
 
 
-    $('.custom-modal').click(function(e){
+    /*$('.custom-modal').click(function(e){
         import_sip = {import: {}};
         e.preventDefault();
         $("#import").prop('disabled', true)
@@ -149,6 +225,6 @@
         
         mymodal.modal('show');
 
-    });
+    });*/
     
 </script>
