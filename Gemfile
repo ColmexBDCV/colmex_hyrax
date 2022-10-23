@@ -16,7 +16,8 @@ gem 'puma'
 #Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0' 
+gem 'sass-rails', '5.0.7' 
+gem 'sassc', '2.2.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -29,7 +30,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
-gem 'redis'
+gem 'redis', '4.8.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -44,7 +45,6 @@ gem 'hydra-role-management'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'blacklight_oai_provider'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

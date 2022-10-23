@@ -46,7 +46,7 @@ module HandleService
                     puts "#{url}#{wt.underscore.pluralize}/#{row.id}"
                     handle = self.create("#{url}#{wt.underscore.pluralize}/#{row.id}")
                     if handle["handleDesc"] == "SUCCESS"
-                        row.handle = handle["url"] 
+                        row.handle = handle["url"].sub("http","https")
                         row.save
                     end
                 end
@@ -56,7 +56,7 @@ module HandleService
 
     def self.destroy_handle_for(work)
         
-        url = "http://hdl.handle.net/"
+        url = "https://hdl.handle.net/"
         
         work.singularize.classify.constantize.where('handle_tesim:[* TO *]-handle_tesim:””').each do |row|
             puts row.handle.gsub(url,"")

@@ -640,3 +640,8 @@ mark{
     }
 
 }
+
+
+select.dropdown-toggle{
+    text-align: left;
+}

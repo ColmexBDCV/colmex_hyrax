@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @import.name %>
+</p>
+
+<p>
+  <strong>Object type:</strong>
+  <%= @import.object_type %>
+</p>
+
+<p>
+  <strong>Depositor:</strong>
+  <%= @import.depositor %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @import.date %>
+</p>
+
+<p>
+  <strong>Storage size:</strong>
+  <%= @import.storage_size %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @import.status %>
+</p>
+
+<p>
+  <strong>Object ids:</strong>
+  <%= @import.object_ids %>
+</p>
+
+<p>
+  <strong>Num records:</strong>
+  <%= @import.num_records %>
+</p>
+
+<%= link_to 'Edit', edit_import_path(@import) %> |
+<%= link_to 'Back', imports_path %>

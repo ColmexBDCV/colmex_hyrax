@@ -27,6 +27,15 @@ class Importer < Darlingtonia::Importer
   def import
     records.each { |record| record_importer.import(record: record) }
     #@info_stream << "event: finish_import, batch_id: #{record_importer.batch_id}, successful_record_count: #{record_importer.success_count}, failed_record_count: #{record_importer.failure_count}"
+    
+    imports = Import.where name: self.parser.file.path.gsub("digital_objects/", '').gsub("/metadatos/metadatos.csv","")
+     
+    if imports.count > 0 then 
+      i=imports.last
+      i.status = "Procesado"
+      i.save
+    end
+   
     @info_stream << "\n\nFinish\n\n"
     # CreateHandleJob.perform_later()
   end
