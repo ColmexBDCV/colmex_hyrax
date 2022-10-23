@@ -1,6 +1,5 @@
 <div id="app">
   <div class="row" >
-      {{message}}
       <div class="col-md-12">
           <div class="panel panel-default">
               <div class="panel-heading">
@@ -39,11 +38,10 @@
                                   <%= render partial: "work_types", locals: {work_types: workTypes} %>
                               </select>
                               <button id="<%=s[:sip]%>" role="button" class="btn btn-primary custom-modal" 
-                                  @click="validar('<%=s[:sip]%>', '<%=index%>', 's[:size]' )" disabled data-toggle="modal">Procesar</button>
+                                  @click="validar('<%=s[:sip]%>', '<%=index%>', '<%=s[:size]%>' )" disabled data-toggle="modal">Procesar</button>
                           </td>
                           </tr>
-                      <% end %>
-                                  
+                      <% end %>                                  
                   </tbody>
                   </table>
               </div>
@@ -51,8 +49,8 @@
           </div>
       </div>
   </div>
-  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">
@@ -64,51 +62,106 @@
         </div>
         <div class="modal-body">
           <div v-if="is_success">
-            
+            <div class="success">
+              <h3 v-if="!import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La validación ha sido existosa, puede iniciar la importación.</h3>
+              <h3 v-if="import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La importación ha comenzado...
+                <div class="progress" style="margin-top: 10px;">
+                  <div class="progress-bar progress-bar-striped active" aria-pressed="true" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    <span class="sr-only"></span>
+                  </div>
+                </div>
+              </h3>
+            </div>
           </div>
           <div v-else>
-            <div><h4>Se encontraron los siguientes errores al procesar la petición.</h4></div>
-            <ul>
-              <div v-for="error in result">
-                <li><i class="fa fa-times"></i>&nbsp;&nbsp;{{error}}</li>
+            <div class="error">
+              <h3><i class="fa fa-times-circle"></i>&nbsp;&nbsp;Se encontraron los siguientes errores al procesar la petición.</h3>
+            </div>
+            <div class="list-group">
+              <div v-for="(errors, key) in result">
+                <div v-if="error_size > 1">
+                  <div>
+                    <a href="#" class="list-group-item active">
+                      <span class="badge">{{errors.length}}</span>
+                      {{key}}
+                    </a>
+                  </div>
+                  <div v-for="value in errors">
+                    <div v-if="get_type(value) == 'object'">
+                        <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
+                    </div>
+                    <div v-else>
+                      <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</a>
+                    </div>
+                  </div>
+                </div>
+                <div v-else>
+                  <a href="#" class="list-group-item active">
+                    {{key}}
+                  </a>
+                  <div v-if="get_type(errors) == 'object'">
+                    <div v-for="value in errors">
+                      <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
+                    </div>                   
+                  </div>
+                  <div v-else>
+                    <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{errors}}</a>
+                  </div>                  
+                </div>
               </div>
-            </ul>
+            </div>
           </div>          
         </div>
         <div class="modal-footer">
-          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" v-show="is_success && !import_success" @click="send_import" class="btn btn-lg btn-primary">Importar</button>
+           <button type="button" v-show="import_success" @click="history_redirect" class="btn btn-lg btn-primary">Ir a historial</button>
+          <button type="button" v-show="!is_success" class="btn btn-lg btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
-      
     </div>
-    
   </div>
 </div>
 <style>
     .fa-times{
-      color: red;
+      color: rgb(184, 72, 72);
     }
-    ul {
-      list-style: none;
+    .fa-times-circle{
+      color: rgb(184, 72, 72);
+      font-size: 24px;
+    }
+    .fa-check-circle{
+      color: rgb(22, 128, 18);
+      font-size: 24px;
+    }
+    .success{
+      border-top: rgb(22, 128, 18) solid 1px;
+      border-bottom: rgb(22, 128, 18) solid 1px;
+    } 
+    .error{
+      border-top: rgb(184, 72, 72) solid 1px;
+      border-bottom: rgb(184, 72, 72) solid 1px;
     }
 </style>
 <script>
-  
   var app = new Vue({
     el: '#app',
     data() {
         return {
-          message: 'Hello Vue!',
           modal_text: '',
           modal_resp: '',
           modalShow: false,
           result: '',
           import_sip: '',
           is_success: false,
+          error_size: 1,
+          name: '',
+          import_success: false,
         }
       },
     methods: {
+      /**
+       * Envia lo datos para validar la informacion y obtiene si estan correctos o no.
+       **/ 
       validar(sip, id, size){
         var that = this;
         var worktype = $('#select_'+id).val();
@@ -122,109 +175,53 @@
           params,
           function(data, status, xhr) {
             if (data.hasOwnProperty('success')) {
-              mymodal.find(".modal-body").text("La validación ha sido existosa, puede iniciar la importación")
-              $("#import").prop('disabled', false)
-              import_sip = {import:{ name: sip, object_type: worktype, identifiers: result["success"], storage_size: size }}
+              that.import_sip = {import:{ name: sip, object_type: worktype, identifiers: data["success"], storage_size: size }}
               if (repnal) {
                 import_sip["import"]["repnal"] = "true"
               }
+              console.log(that.import_sip);
               that.is_success = true;
           } else {
             that.result = eval(data);
+            that.error_size = Object.keys(that.result).length;
             that.is_success = false;
           }   
         }).fail(function(jqxhr, settings, ex) { console.log('failed, ' + ex); });
         $('#myModal').modal('show');
       },
+      /**
+       * Habilita y deshabilita el select al cambiar de valor para efectuar la validacion
+       **/ 
       change_select(select_index){
         if ($('#'+select_index).val() != '')  {
           $('#'+select_index).next().prop('disabled', false)      
         }else{
           $('#'+select_index).next().prop('disabled', true)
         }
+      },
+      /**
+       * Evalua el tipo de dato para saber si volver a iterar o imprimir
+       **/ 
+      get_type(value){
+        return typeof value;
+      },
+      /**
+       * Metodo para enviar la peticion de importacion
+       **/ 
+      send_import(){
+        var that = this;
+        //that.import_success = true;     
+        $.post("/imports.json",
+          that.import_sip,
+          function(data, status, xhr) {
+            if(data.hasOwnProperty('id')) {
+              that.import_success = true;              
+            }
+        }).fail(function(jqxhr, settings, ex) { console.log('failed, ' + ex); });
+      },
+      history_redirect(){
+        window.location.replace("/imports");
       }
     }
-  })
-     
-  var import_sip = {import: {}}
-
-    /*$(".form-select").on('change', function() {
-        if ($(this).val() != '')  {
-            $(this).next().prop('disabled', false)
-        
-        }else{
-            $(this).next().prop('disabled', true)
-        }
-        
-
-    });*/
-    
-    $('#import').click(function(){
-      $.ajax({url: "/imports.json",
-                type: "post",
-                data: import_sip,
-                success: function(result){
-                   if (result.hasOwnProperty('id')) {
-                     alert("La importación ha comenzado...")
-                     window.location.replace("/imports");
-                   }
-                },
-                error: function(xhr, status, error) {
-                  console.log(xhr,status,error)
-                }
-           })
-    });
-
-
-    /*$('.custom-modal').click(function(e){
-        import_sip = {import: {}};
-        e.preventDefault();
-        $("#import").prop('disabled', true)
-        var sip = $(this).attr('id');
-        var td = $(this).parent();
-        var worktype = td.children("select").val()
-        var repnal = td.children("input").is(":checked")
-        var params = { sip: sip, work: worktype}
-        var size = td.prev().text()
-
-        if (repnal) {
-          params["repnal"] = "true"
-        } 
-        
-        
-        var mymodal = $('#myModal');
-        mymodal.find('#myModalLabel').text("Reporte del SIP "+sip);
-        mymodal.find(".modal-body").text("")
-        $.ajax({url: "/imports/validate",
-                type: "post",
-                data: params,
-                success: function(result){
-                        
-                        if (result.hasOwnProperty('success')) {
-
-                            mymodal.find(".modal-body").text("La validación ha sido existosa, puede iniciar la importación")
-                            $("#import").prop('disabled', false)
-                            import_sip = {import:{ name: sip, object_type: worktype, identifiers: result["success"], storage_size: size }}
-                            if (repnal) {
-                             import_sip["import"]["repnal"] = "true"
-                            } 
-                        } else {
-
-                            mymodal.find(".modal-body").text(JSON.stringify(result))
-
-                        }
-
-
-
-                        
-                      }, 
-                error: function(xhr, status, error) {
-                        console.log(xhr,status,error)
-                      }
-          });
-        
-        mymodal.modal('show');
-
-    });*/
-    
+  })    
 </script>
