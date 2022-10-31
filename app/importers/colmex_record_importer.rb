@@ -24,8 +24,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
   end
 
   def import(record:)
-    create_for(record: record) if update.nil?
-    update_for(record: record) unless update.nil?
+    return create_for(record: record) if update.nil?
+    return update_for(record: record) unless update.nil?
     
   rescue Faraday::ConnectionFailed, Ldp::HttpError => e
     error_stream << e
@@ -89,12 +89,14 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         created.class.find(created.id).file_set_ids.each do |f_id|
           access_file_set(f_id,attributes[:item_access_restrictions].to_s)
         end
-        
+        return [record.identifier, "Importado exitosamente"] 
       else  
         info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
+        
       end
       rescue Errno::ENOENT => e
           error_stream << e.message
+          return [record.identifier, "Error: #{e.to_s}"]
     end
 
     def update_for(record:)

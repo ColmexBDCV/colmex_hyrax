@@ -6,13 +6,14 @@ class Importer < Darlingtonia::Importer
     Rails.application.config_for(:importer)
   end
 
-  attr_accessor :parser, :record_importer, :work, :collection, :update
+  attr_accessor :parser, :record_importer, :work, :collection, :update, :import_id
 
-  def initialize(parser:, work:, collection: nil, update: nil, info_stream: Darlingtonia.config.default_info_stream, error_stream: Darlingtonia.config.default_error_stream )
+  def initialize(parser:, work:, collection: nil, import_id: nil,update: nil, info_stream: Darlingtonia.config.default_info_stream, error_stream: Darlingtonia.config.default_error_stream )
     self.work = work
     self.collection = collection.nil? ? "" : collection 
     self.parser          = parser
     self.update = update ? true : nil
+    self.import_id = import_id.nil? ? nil : import_id 
     self.record_importer = default_record_importer
     @info_stream = info_stream
     @error_stream = error_stream
@@ -25,16 +26,19 @@ class Importer < Darlingtonia::Importer
   end
 
   def import
-    records.each { |record| record_importer.import(record: record) }
+    import_log = []
+    records.each { |record| import_log << record_importer.import(record: record) }
     #@info_stream << "event: finish_import, batch_id: #{record_importer.batch_id}, successful_record_count: #{record_importer.success_count}, failed_record_count: #{record_importer.failure_count}"
     
-    imports = Import.where name: self.parser.file.path.gsub("digital_objects/", '').gsub("/metadatos/metadatos.csv","")
-     
-    if imports.count > 0 then 
-      i=imports.last
-      i.status = "Procesado"
-      i.save
-    end
+    # imports = Import.where name: self.parser.file.path.gsub("digital_objects/", '').gsub("/metadatos/metadatos.csv","")
+    
+    unless self.import_id.nil?
+      import_record = Import.find self.import_id
+      import_record.object_ids = import_log.to_json
+      import_record.status = "Procesado"
+      import_record.save
+    end 
+    
    
     @info_stream << "\n\nFinish\n\n"
     # CreateHandleJob.perform_later()

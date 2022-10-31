@@ -25,6 +25,7 @@ class ImportsController < ApplicationController
 
   # GET /imports/new
   def new
+    # @qa = get_qa
     @sips = list_sips
     imports = Import.where.not(status: "Cancelado").pluck(:name)
     @sips.each do |s|
@@ -54,11 +55,12 @@ class ImportsController < ApplicationController
     params["import"]["date"] = DateTime.now.strftime("%d/%m/%Y %H:%M")
     params["import"]["repnal"] = params["import"].key?("repnal") ? "Si" : "No"
     @import = Import.new(import_params)
+    
     respond_to do |format|
       if @import.save
         format.html { redirect_to import_url(@import), notice: "Import was successfully created." }
 
-        ImportCreateJob.perform_later("digital_objects/#{params["import"]["name"]}/metadatos/metadatos.csv", params["import"]["object_type"])
+        ImportCreateJob.perform_later("digital_objects/#{params["import"]["name"]}/metadatos/metadatos.csv", params["import"]["object_type"], nil, @import.id )
 
         format.json { render :show, status: :created, location: @import }
       else

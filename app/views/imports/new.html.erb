@@ -1,4 +1,5 @@
-<div id="app">
+
+<div id="app">    
   <div class="row" >
       <div class="col-md-12">
           <div class="panel panel-default">
@@ -61,56 +62,81 @@
           </h2>           
         </div>
         <div class="modal-body">
-          <div v-if="is_success">
-            <div class="success">
-              <h3 v-if="!import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La validación ha sido existosa, puede iniciar la importación.</h3>
-              <h3 v-if="import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La importación ha comenzado...
-                <div class="progress" style="margin-top: 10px;">
-                  <div class="progress-bar progress-bar-striped active" aria-pressed="true" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                    <span class="sr-only"></span>
-                  </div>
-                </div>
-              </h3>
+          <div v-if="is_loading">
+            <h3 v-if="!import_success"><i class="fa fa-cogs"></i>&nbsp;&nbsp;Procesando Paquete (puede tardar varios minutos)...</h3>
+            <div class="progress" style="margin-top: 10px;">
+              <div class="progress-bar progress-bar-striped active" aria-pressed="true" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only"></span>
+              </div>
             </div>
           </div>
-          <div v-else>
-            <div class="error">
-              <h3><i class="fa fa-times-circle"></i>&nbsp;&nbsp;Se encontraron los siguientes errores al procesar la petición.</h3>
+          <div v-else>          
+            <div v-if="is_success">
+              <div class="success">
+                <h3 v-if="!import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La validación ha sido existosa, puede iniciar la importación.</h3>
+                <h3 v-if="import_success"><i class="fa fa-check-circle"></i>&nbsp;&nbsp;La importación ha comenzado...
+                  <div class="progress" style="margin-top: 10px;">
+                    <div class="progress-bar progress-bar-striped active" aria-pressed="true" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                      <span class="sr-only"></span>
+                    </div>
+                  </div>
+                </h3>
+              </div>
             </div>
-            <div class="list-group">
-              <div v-for="(errors, key) in result">
-                <div v-if="error_size > 1">
-                  <div>
-                    <a href="#" class="list-group-item active">
-                      <span class="badge">{{errors.length}}</span>
-                      {{key}}
-                    </a>
-                  </div>
-                  <div v-for="value in errors">
-                    <div v-if="get_type(value) == 'object'">
-                        <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
+            <div v-else>
+              <div class="error">
+                <h3><i class="fa fa-times-circle"></i>&nbsp;&nbsp;Se encontraron los siguientes errores al procesar la petición.</h3>
+              </div>
+              <div class="list-group">
+                <div v-for="(errors, key) in result">
+                  <div v-if="error_size > 1">
+                    <div>
+                      <div class="list-group-item active">
+                        <span class="badge">{{errors.length}}</span>
+                        {{key}}
+                      </div>
                     </div>
-                    <div v-else>
-                      <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</a>
-                    </div>
-                  </div>
-                </div>
-                <div v-else>
-                  <a href="#" class="list-group-item active">
-                    {{key}}
-                  </a>
-                  <div v-if="get_type(errors) == 'object'">
                     <div v-for="value in errors">
-                      <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
-                    </div>                   
+                      <div v-if="get_type(value) == 'object'">
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;<b>Fila:</b> {{value[0]}}&nbsp;&nbsp;<b>Valor:</b>&nbsp;{{value[1].join(" | ")}}</div>
+                      </div>
+                      <div v-else>
+                        <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</div>
+                      </div>
+                    </div>
                   </div>
                   <div v-else>
-                    <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{errors}}</a>
-                  </div>                  
+                    <div v-if="get_type(errors) == 'object'">
+                      <div>
+                        <div class="list-group-item active">
+                          <span class="badge">{{errors.length}}</span>
+                          {{key}}
+                        </div>
+                      </div>
+                      <div v-for="value in errors">
+                        <div v-if="get_type(value) == 'object'">
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;<b>Fila:</b> {{value[0]}}&nbsp;&nbsp;<b>Valor:</b>&nbsp;{{value[1][0]}}</div>
+                        </div>
+                        <div v-else>
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</div>
+                        </div>                      
+                      </div>                   
+                    </div>
+                    <div v-else>
+                      <div>
+                        <div class="list-group-item active">
+                          {{key}}
+                        </div>
+                      </div>
+                      <div>
+                        <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{errors}}</div>
+                      </div>
+                    </div>                  
+                  </div>
                 </div>
               </div>
             </div>
-          </div>          
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" v-show="is_success && !import_success" @click="send_import" class="btn btn-lg btn-primary">Importar</button>
@@ -121,6 +147,7 @@
     </div>
   </div>
 </div>
+
 <style>
     .fa-times{
       color: rgb(184, 72, 72);
@@ -143,6 +170,8 @@
     }
 </style>
 <script>
+
+  Vue.config.devtools = true
   var app = new Vue({
     el: '#app',
     data() {
@@ -156,6 +185,7 @@
           error_size: 1,
           name: '',
           import_success: false,
+          is_loading: true,
         }
       },
     methods: {
@@ -163,6 +193,7 @@
        * Envia lo datos para validar la informacion y obtiene si estan correctos o no.
        **/ 
       validar(sip, id, size){
+        this.is_loading = true;
         var that = this;
         var worktype = $('#select_'+id).val();
         var repnal = $('#chk_'+id).is(":checked");
@@ -179,12 +210,15 @@
               if (repnal) {
                 import_sip["import"]["repnal"] = "true"
               }
-              console.log(that.import_sip);
+              //console.log(that.import_sip);
               that.is_success = true;
+              that.is_loading = false;
           } else {
+            // console.log(data)
             that.result = eval(data);
             that.error_size = Object.keys(that.result).length;
             that.is_success = false;
+            that.is_loading = false;
           }   
         }).fail(function(jqxhr, settings, ex) { console.log('failed, ' + ex); });
         $('#myModal').modal('show');
@@ -203,19 +237,22 @@
        * Evalua el tipo de dato para saber si volver a iterar o imprimir
        **/ 
       get_type(value){
+        //console.log("Tipo: " + typeof value + "  Valor: "+ value);
         return typeof value;
       },
       /**
        * Metodo para enviar la peticion de importacion
        **/ 
       send_import(){
+        this.is_loading = true;
         var that = this;
         //that.import_success = true;     
         $.post("/imports.json",
           that.import_sip,
           function(data, status, xhr) {
             if(data.hasOwnProperty('id')) {
-              that.import_success = true;              
+              that.import_success = true;
+              that.is_loading = false;
             }
         }).fail(function(jqxhr, settings, ex) { console.log('failed, ' + ex); });
       },

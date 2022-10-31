@@ -317,6 +317,7 @@ en:
         book: Book
         video: Video
         book_chapter: Book Chapter
+        database: Database
       workflow_roles:
         user: User
         workflow_role: Workflow role
@@ -630,6 +631,7 @@ en:
       language_code: EN
     product_name_html: "Digital Collections of El Colegio de Mexico"
     product_name_movil: "Digital Collections of El Colegio de Mexico"
+    
   
 
   
