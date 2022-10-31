@@ -1,4 +1,5 @@
-<div id="app">
+
+<div id="app">    
   <div class="row" >
       <div class="col-md-12">
           <div class="panel panel-default">
@@ -62,7 +63,7 @@
         </div>
         <div class="modal-body">
           <div v-if="is_loading">
-            <h3 v-if="!import_success"><i class="fa fa-cogs"></i>&nbsp;&nbsp;Procesando Paquete ...</h3>
+            <h3 v-if="!import_success"><i class="fa fa-cogs"></i>&nbsp;&nbsp;Procesando Paquete (puede tardar varios minutos)...</h3>
             <div class="progress" style="margin-top: 10px;">
               <div class="progress-bar progress-bar-striped active" aria-pressed="true" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                 <span class="sr-only"></span>
@@ -90,45 +91,45 @@
                 <div v-for="(errors, key) in result">
                   <div v-if="error_size > 1">
                     <div>
-                      <a href="#" class="list-group-item active">
+                      <div class="list-group-item active">
                         <span class="badge">{{errors.length}}</span>
                         {{key}}
-                      </a>
+                      </div>
                     </div>
                     <div v-for="value in errors">
                       <div v-if="get_type(value) == 'object'">
-                          <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;<b>Fila:</b> {{value[0]}}&nbsp;&nbsp;<b>Valor:</b>&nbsp;{{value[1].join(" | ")}}</div>
                       </div>
                       <div v-else>
-                        <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</a>
+                        <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</div>
                       </div>
                     </div>
                   </div>
                   <div v-else>
                     <div v-if="get_type(errors) == 'object'">
                       <div>
-                        <a href="#" class="list-group-item active">
+                        <div class="list-group-item active">
                           <span class="badge">{{errors.length}}</span>
                           {{key}}
-                        </a>
+                        </div>
                       </div>
                       <div v-for="value in errors">
-                        <div v-if="get_type(value) == 'string'">
-                          <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</a>
+                        <div v-if="get_type(value) == 'object'">
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;<b>Fila:</b> {{value[0]}}&nbsp;&nbsp;<b>Valor:</b>&nbsp;{{value[1][0]}}</div>
                         </div>
                         <div v-else>
-                          <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;Fila: {{value[0]}}&nbsp;&nbsp;Valor:&nbsp;{{value[1][0]}}</a>
+                          <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{value}}</div>
                         </div>                      
                       </div>                   
                     </div>
                     <div v-else>
                       <div>
-                        <a href="#" class="list-group-item active">
+                        <div class="list-group-item active">
                           {{key}}
-                        </a>
+                        </div>
                       </div>
                       <div>
-                        <a href="#" class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{errors}}</a>
+                        <div class="list-group-item"><i class="fa fa-times"></i>&nbsp;&nbsp;{{errors}}</div>
                       </div>
                     </div>                  
                   </div>
@@ -146,6 +147,7 @@
     </div>
   </div>
 </div>
+
 <style>
     .fa-times{
       color: rgb(184, 72, 72);
@@ -168,6 +170,8 @@
     }
 </style>
 <script>
+
+  Vue.config.devtools = true
   var app = new Vue({
     el: '#app',
     data() {
@@ -210,6 +214,7 @@
               that.is_success = true;
               that.is_loading = false;
           } else {
+            // console.log(data)
             that.result = eval(data);
             that.error_size = Object.keys(that.result).length;
             that.is_success = false;

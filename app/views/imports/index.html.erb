@@ -1,3 +1,12 @@
+<style>
+  .label-warning {
+    background-color: #f0ad4e;
+  }
+
+  .label-info {
+    background-color: #5bc0de;
+  }
+</style>
 <div class="row">
     <div class="col-md-12">
       <div class="panel-heading">
@@ -21,12 +30,25 @@
           </thead>
           <tbody>
             <% @imports.each do |import| %>
+              <%
+                case import.status
+
+                  when "Procesado"
+                    label = "success"
+                  when "Cancelado"
+                    label = "danger"
+                  when "Procesando..."
+                    label = "info"
+                  when "Cancelando..."
+                    label = "warning"
+                end
+              %>
               <tr>
                 <td><%= import.name %></td>
                 <td><%= import.date %></td>
                 <td><%= import.storage_size %></td>
                 <td><%= import.depositor %></td>
-                <td> <span class="label label-danger"><%= import.status %></span></td>
+                <td> <span class="label label-<%=label%>"><%= import.status %></span></td>
                 <td><%= import.object_type %></td>
                 <td>
                   <button id="<%= import.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal">
@@ -35,11 +57,12 @@
                   <div hidden><%= import.object_ids %></div>
                 </td>
                 <td>
+                  <% d = import.status != "Procesado" ? true : false %>
                   <%= form_with(model: import, local: true) do |f| %>
                     <%= f.hidden_field :object_type, :value => import.object_type %>
                     <%= f.hidden_field :object_ids, :value => import.object_ids %>
                     <%= f.hidden_field :id, :value => import.id %>
-                    <%= f.submit 'Deshacer Importación', data: { confirm: 'Confirmar (Esta acción no se puede deshacer)' }, class: "btn btn-danger" %>
+                    <%= f.submit 'Deshacer Importación', data: {confirm: 'Confirmar (Esta acción no se puede deshacer)' }, class: "btn btn-default", disabled: d %>
                   <% end %>
                 </td>
               </tr>

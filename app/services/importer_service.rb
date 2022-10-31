@@ -1,7 +1,20 @@
 require 'set'
 
 module ImporterService
+
+    def name_sip(sip)
+        i = Import.where(name:sip).where(status: "Procesado")
+        return true if i.count > 0
+    end
     
+    def get_qa()
+        { licenses: get_licenses,
+          rights: get_rights_statements,
+          types: get_types_conacyt,
+          pub: get_pub_conacyt
+        }
+    end
+
     def get_size_sip(sip)
         size_b = Dir.glob("digital_objects/#{sip}/**/*").select { |f| File.file?(f) }.sum { |f| File.size(f) }
         size_m = size_b.to_f / (1024 * 1024)
@@ -75,18 +88,32 @@ module ImporterService
         ]
     end
 
+    def parse_errors(errors)
+        result = []
+        errors.to_a.each do |e|
+            result << e[:description]
+        end
+        return result
+    end
+
     # report = ImporterService.validate_csv("TesisColmexMarzo2022","Video", true)
     def validate_csv(sip, work, repnal = false)
-
-        return { error: "No existe carpeta metadatos o archivo de metadatos.csv no existe"} unless metadata_exists?(sip)
-        return { error: "No existe carpeta documentos_de_acceso o está esta vacia"} unless documents_exists?(sip)
+               
+        return { Error: "No existe carpeta metadatos o archivo de metadatos.csv no existe"} unless metadata_exists?(sip)
+        return { Error: "No existe carpeta documentos_de_acceso o está esta vacia"} unless documents_exists?(sip)
         
         parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work)
         
+        unless parser.validate then
+            return { Error: "El archivo metadatos.csv es invalido, revisar estructura. SYSTEM_LOG: #{parse_errors(parser.errors).to_s}" }
+        end
+
         begin
-            parser.validate 
-        rescue
-            return "El archivo metadatos.csv es invalido, revisar estructura"
+            
+            records = Importer.new(parser: parser, work: work).records.to_a 
+            csv = CSV.table("digital_objects/#{sip}/metadatos/metadatos.csv", {:headers => :first_row, :liberal_parsing=> true})
+        rescue Exception => e
+            return { Error: "El archivo metadatos.csv es invalido, revisar estructura, SYSTEM_LOG: #{e}"}
         end
 
         licenses = get_licenses
@@ -95,66 +122,79 @@ module ImporterService
         pub_conacyt = get_pub_conacyt if repnal
 
         wt = work.singularize.classify.constantize
-        
-
-        records = Importer.new(parser: parser, work: work).records.to_a
-        csv = CSV.table("digital_objects/#{sip}/metadatos/metadatos.csv", {:headers => :first_row})
+       
         headers = csv.headers
-        bad_fields = []
 
-        headers.each do |h|
-            bad_fields << h unless wt.new.respond_to?(h)
+        # unless headers.include?(:identifier)  then 
+        #     return {Error: "El campo identifier no se encuentra definido en los metadatos"}
+        # end
+
+        # unless headers.include?(:title)  then 
+        #     return {Error: "El campo title no se encuentra definido en los metadatos"}
+        # end
+        
+        bad_fields = []
+        headers.each_with_index do |h,i|
+            bad_fields << h unless wt.new.respond_to?(h) 
         end
 
-        bad_fields.delete(:file_name)
 
+        #Campos permitidos fuera de las plantillas
+        bad_fields.delete(:file_name)
+        bad_fields.delete(:messagedigest)
+        
         report = Hash.new
+            
+       
+     
+        records.each_with_index do |record,index|
+            report["Filas donde el campo identifier esta ausente"] = (report["Filas donde el campo identifier esta ausente"] || []) << index + 2  unless record.respond_to?("identifier")
+            report["Filas donde el campo title esta ausente"] = (report["Filas donde el campo identifier esta ausente"] || []) << index + 2 unless record.respond_to?("title")
+            report["El campo rights_statement no corresponde al vocabulario controlado"] = (report["rights_statement"] || []) << [index + 2, record.rights_statement] if record.respond_to?("rights_statement") && (record.rights_statement & rights).count == 0
+            report["El campo date_created no esta expresado en el formato correcto (yyyy)"] = (report["Filas donde el campo date_created no esta expresado en el formato correcto (yyyy)"] || []) << [index + 2, record.date_created] if record.respond_to?("date_created") && !check_date(record.date_created)
+            report["Filas que contienen un registro ya existente en el sistema (mismo identifier)"] = (report["Filas que contienen un registro ya existente en el sistema (mismo identifier)"] || []) << [index + 2, [record.identifier]] if record.respond_to?("identifier") && wt.where(identifier: record.identifier).count > 0 
+            report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] = (report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] || []) << [index + 2, record.based_near] if record.respond_to?("based_near") && !check_based_near(record.based_near)
+            report["Filas donde el campo license no corresponde con el vocabularo controlado"] = (report["Filas donde el campo license no corresponde con el vocabularo controlado"] || []) << [index + 2, record.license] if record.respond_to?("license") && (record.license & licenses).count == 0
+            if repnal then
+                report["Filas donde el campo license esta ausente"] = (report["Filas donde el campo license esta ausente"] || []) << index + 2 unless record.respond_to?("license")
+                report["El campo type_conacyt no corresponde con el vocabularo controlado"] = (report["Filas donde el campo type_conacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, [record.type_conacyt]] if record.respond_to?("type_conacyt") && !types_conacyt.include?(record.type_conacyt)
+                report["Filas donde el campo type_conacyt esta ausente"] = (report["Filas donde el campo type_conacyt esta ausente"] || []) << index + 2 unless record.respond_to?("type_conacyt") 
+                report["El campo subject_conacyt no corresponde con el vocabularo controlado"] = (report["Filas donde el campo subjectconacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, [record.subject_conacyt]] if record.respond_to?("subject_conacyt")  && !((1..7).include? record.type_conacyt)
+                report["Filas donde el campo subject_conacyt esta ausente"] = (report["Filas donde el campo subject_conacyt esta ausente"] || []) << index + 2 unless record.respond_to?("subject_conacyt")
+                report["El campo pub_conacyt no corresponde con el vocabularo controlado"] = (report["El campo pub_conacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, record.pub_conacyt] if record.respond_to?("pub_conacyt") && (record.pub_conacyt & pub_conacyt).count == 0
+            end
+
+        end
+        
+        # unless report.empty?
+        #     return report
+        # end
+
         begin
             files_csv = records.map { |r| r.representative_file }.flatten
             identifiers = records.map { |r| r.identifier }
             i_d = (identifiers.select { |i| identifiers.count(i) > 1 }).to_set.to_a
             files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
-            identifiers_d = {}
+            identifiers_d = []
             identifiers.each_with_index do |identifier, index| 
                 if i_d.include?(identifier) then
-                    identifiers_d[identifier] = ( identifiers_d[identifier] || []) << index +2
+                    report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] = ( report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] || []) << index +2
                 end
 
             end
-            report["files_not_found"] = files_csv - files_folder unless (files_csv - files_folder).empty?
-            # report["files_not_referenced"] = files_folder - files_csv unless (files_folder - files_csv).empty?
-            report["identifiers_duplicate"] = identifiers_d unless identifiers_d.empty?
-            report["bad_fields"] = bad_fields if bad_fields.count > 0
+            report["Archivos no encontrados en la carpeta documentos_de_acceso"] = files_csv - files_folder unless (files_csv - files_folder).empty?
+            report["Archivos no referenciados en metadatos/metadatos.csv"] = files_folder - files_csv unless (files_folder - files_csv).empty?
+            # report["Registros con información duplicada en el campo identifier"] = identifiers_d unless identifiers_d.empty?
+            report["Campos que no corresponden a la plantilla #{t('hyrax.admin.validations.'+work.underscore.downcase)}"] = bad_fields if bad_fields.count > 0
         rescue Exception => e
-            return e
+            return { Error: "Contactar a la CID"}
         end
-     
-        records.each_with_index do |record,index|
-            report["identifier"] = (report["identifier"] || []) << index + 2 unless record.respond_to?("identifier")
-            report["title"] = (report["title"] || []) << index + 2 unless record.respond_to?("title")
-            report["rights_statement"] = (report["rights_statement"] || []) << [index + 2, record.rights_statement] if record.respond_to?("rights_statement") && (record.rights_statement & rights).count == 0
-            report["date_created"] = (report["date_created"] || []) << [index + 2, record.date_created] if record.respond_to?("date_created") && !check_date(record.date_created)
-            report["exists"] = (report["exist"] || []) << [index + 2, record.identifier] if record.respond_to?("identifier") && wt.where(identifier: record.identifier).count > 0 
-            report["based_near"] = (report["based_near"] || []) << [index + 2, record.based_near] if record.respond_to?("based_near") && !check_based_near(record.based_near)
-            if repnal then
-                report["license"] = (report["license"] || []) << [index + 2] if !record.respond_to?("license") || (record.license & licenses).count == 0
-                report["license"] << record.license if record.respond_to?("license") && report.respond_to?("license")
-                report["type_conacyt"] = (report["type_conacyt"] || []) << [index + 2] unless record.respond_to?("type_conacyt") || (record.respond_to?("type_conacyt") && !(types_conacyt.include? record.type_conacyt))
-                report["type_conacyt"] << record.identifier if record.respond_to?("type_conacyt") && report.respond_to?("type_conacyt")
-                report["subject_conacyt"] = (report["subject_conacyt"] || []) << [index + 2] unless record.respond_to?("subject_conacyt") || (record.respond_to?("subject_conacyt") && !((1..7).include? record.type_conacyt))
-                report["subject_conacyt"] << record.subject_conacyt if record.respond_to?("subject_conacyt") && report.respond_to?("subject_conacyt")
-                report["pub_conacyt"] = (report["pub_conacyt"] || []) << [index + 2, record.pub_conacyt] if record.respond_to?("pub_conacyt") && (record.pub_conacyt & pub_conacyt).count == 0
-            else
-                report["license"] = (report["license"] || []) << [index + 2, record.license] if record.respond_to?("license") && (record.license & licenses).count == 0
 
-            end
 
-        end
-              
         if report.empty?
             report["success"] = identifiers
         end
-
+        # byebug 
         return report
     end
     
