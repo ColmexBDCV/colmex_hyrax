@@ -25,6 +25,7 @@
               <th> Estado </th>
               <th> Tipo de objeto </th>
               <th> # de Registros</th>
+              <th> Validado para RepNal </th>
               <th> </th>
             </tr>
           </thead>
@@ -56,6 +57,7 @@
                   </button>
                   <div hidden><%= import.object_ids %></div>
                 </td>
+                <td><%=import.repnal%></td>
                 <td>
                   <% d = import.status != "Procesado" ? true : false %>
                   <%= form_with(model: import, local: true) do |f| %>

@@ -28,9 +28,9 @@ class ImportsController < ApplicationController
     # @qa = get_qa
     @sips = list_sips
     imports = Import.where.not(status: "Cancelado").pluck(:name)
-    @sips.each do |s|
+    @sips.each_with_index do |s,i|
       if imports.include?(s[:sip]) then
-        @sips.delete(s)
+        @sips.delete_at(i)
       end 
     end
     

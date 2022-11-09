@@ -43,7 +43,7 @@ $(document).on('turbolinks:load',function(){
 
 });
 $(document).on('turbolinks:load', HighLight);
-$(document).on('turbolinks:load', TableView);
+// $(document).on('turbolinks:load', TableView);
 $(document).on('turbolinks:load', function(){
 // $(document).ready(HighLight);
 // $(document).ready(TableView);
