@@ -96,13 +96,22 @@
   $('.custom-modal').click(function(e){
       e.preventDefault();
       var sip = $(this).attr('id');
-      var ids = $(this).next().text()     
+      var ids = JSON.parse($(this).next().text())  
+      console.log(ids)
+      var status = ""
+      ids.forEach(element => status += '<div class="list-group-item"><b>Registro con el Identificador</b>: '+element[0]+' <br><b>Estado</b>: '+element[1]+'</div>')
+
+
       var mymodal = $('#myModal');
+      
       mymodal.find('#myModalLabel').text("Identificadores del SIP "+sip);
-      mymodal.find(".modal-body").text(ids)
+      mymodal.find(".modal-body").html($.parseHTML( status));
            
       mymodal.modal('show');
 
   });
     
+
 </script>
+
+<%# class="list-group-item" %>
