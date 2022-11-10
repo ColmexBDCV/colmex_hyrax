@@ -28,12 +28,8 @@ class ImportsController < ApplicationController
     # @qa = get_qa
     @sips = list_sips
     imports = Import.where.not(status: "Cancelado").pluck(:name)
-    @sips.each_with_index do |s,i|
-      if imports.include?(s[:sip]) then
-        @sips.delete_at(i)
-      end 
-    end
-    
+    @sips.each { |s|  @sips.delete(s) if imports.include?(s[:sip]) }
+
     @user = current_user
     @path = Rails.root
     add_breadcrumb t(:'hyrax.controls.home'), root_path
