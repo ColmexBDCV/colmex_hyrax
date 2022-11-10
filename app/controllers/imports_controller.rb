@@ -26,9 +26,9 @@ class ImportsController < ApplicationController
   # GET /imports/new
   def new
     # @qa = get_qa
-    @sips = list_sips
+    @sips = []
     imports = Import.where.not(status: "Cancelado").pluck(:name)
-    @sips.each { |s|  @sips.delete(s) if imports.include?(s[:sip]) }
+    list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
 
     @user = current_user
     @path = Rails.root
