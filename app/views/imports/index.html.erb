@@ -6,6 +6,10 @@
   .label-info {
     background-color: #5bc0de;
   }
+
+  .label {
+    font-size: 95% !important;
+  }
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -93,15 +97,22 @@
 
 <script>
    
+  
+
   $('.custom-modal').click(function(e){
       e.preventDefault();
       var sip = $(this).attr('id');
-      var ids = JSON.parse($(this).next().text())  
+      var ids = JSON.parse($(this).next().text())
       console.log(ids)
       var status = ""
-      ids.forEach(element => status += '<div class="list-group-item"><b>Registro con el Identificador</b>: '+element[0]+' <br><b>Estado</b>: '+element[1]+'</div>')
+      ids.forEach(function(element) {
 
-
+        label="success"
+        if (element[1].includes("Error:")) { label = " list-group-item-danger"}
+        if (element[1].includes("El identificador ya existe en el sistema")) { label = " list-group-item-warning"}
+        status += '<div class="list-group-item"><b>Registro con el Identificador</b>: '+element[0]+' <br><b>Estado</b>: <b><span class="label label-'+label+'">'+element[1]+'</span></b></div>'
+      })
+      
       var mymodal = $('#myModal');
       
       mymodal.find('#myModalLabel').text("Identificadores del SIP "+sip);

@@ -92,6 +92,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         return [record.identifier, "Importado exitosamente"] 
       else  
         info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
+        return [record.identifier, "El identificador ya existe en el sistema"]
         
       end
       rescue Errno::ENOENT => e
