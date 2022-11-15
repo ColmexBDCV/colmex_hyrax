@@ -149,19 +149,19 @@ module ImporterService
      
         records.each_with_index do |record,index|
             
-            report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del el CSV"] || []) << index + 2  unless record.respond_to?("identifier")
-            report["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del el CSV"] || []) << index + 2 unless record.respond_to?("title")
+            report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del CSV"] || []) << index + 2  unless record.respond_to?("identifier")
+            report["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del CSV"] || []) << index + 2 unless record.respond_to?("title")
             report["El campo rights_statement no corresponde al vocabulario controlado"] = (report["rights_statement"] || []) << [index + 2, record.rights_statement] if record.respond_to?("rights_statement") && (record.rights_statement & rights).count == 0
             report["El campo date_created no esta expresado en el formato correcto (yyyy)"] = (report["El campo date_created no esta expresado en el formato correcto (yyyy)"] || []) << [index + 2, record.date_created] if record.respond_to?("date_created") && !check_date(record.date_created)
             report["Los registros que se encuentran en las siguientes Filas tienen un identificador que ya existe en el sistema  (campo identifier)"] = (report["Filas que contienen un registro ya existente en el sistema (mismo identifier)"] || []) << [index + 2, [record.identifier]] if record.respond_to?("identifier") && wt.where(identifier: record.identifier).count > 0 
             report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] = (report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] || []) << [index + 2, record.based_near] if record.respond_to?("based_near") && !check_based_near(record.based_near)
             report["Los registros de las siguientes filas carecen de la información en el campo license no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo license no corresponde con el vocabularo controlado"] || []) << [index + 2, record.license] if record.respond_to?("license") && (record.license & licenses).count == 0
             if repnal then
-                report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del el CSV"] || []) << index + 2 unless record.respond_to?("license")
+                report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del CSV"] || []) << index + 2 unless record.respond_to?("license")
                 report["El campo type_conacyt no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, [record.type_conacyt]] if record.respond_to?("type_conacyt") && !types_conacyt.include?(record.type_conacyt)
-                report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt o este no se encuentra definido dentro del el CSV"] || []) << index + 2 unless record.respond_to?("type_conacyt") 
+                report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt o este no se encuentra definido dentro del CSV"] || []) << index + 2 unless record.respond_to?("type_conacyt") 
                 report["El campo subject_conacyt no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo subjectconacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, [record.subject_conacyt]] if record.respond_to?("subject_conacyt")  && !((1..7).include? record.subject_conacyt.to_i)
-                report["Los registros de las siguientes filas carecen de la información en el campo subject_conacyt o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo subject_conacyt o este no se encuentra definido dentro del el CSV"] || []) << index + 2 unless record.respond_to?("subject_conacyt")
+                report["Los registros de las siguientes filas carecen de la información en el campo subject_conacyt o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo subject_conacyt o este no se encuentra definido dentro del CSV"] || []) << index + 2 unless record.respond_to?("subject_conacyt")
                 report["El campo pub_conacyt no corresponde con el vocabularo controlado"] = (report["El campo pub_conacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, record.pub_conacyt] if record.respond_to?("pub_conacyt") && (record.pub_conacyt & pub_conacyt).count == 0
             end
 
@@ -182,11 +182,11 @@ module ImporterService
                 end
 
             end
-            report["Archivos no encontrados en la carpeta documentos_de_acceso"] = files_csv - files_folder unless (files_csv - files_folder).empty?
-            report["Archivos no referenciados en metadatos/metadatos.csv"] = files_folder - files_csv unless (files_folder - files_csv).empty?
-            report["Campos que no corresponden a la plantilla #{t('hyrax.admin.validations.'+work.underscore.downcase)}"] = bad_fields if bad_fields.count > 0
+            report["No se encuentran los archivos referenciados, favor de verificar que existan en la carpeta documentos_de_acceso y los nombres sean exactamente iguales"] = files_csv - files_folder unless (files_csv - files_folder).empty?
+            report["Los siguientes archivos no tienen registros asociados a ellos en el campo file_name dentro del CSV"] = files_folder - files_csv unless (files_folder - files_csv).empty?
+            report["Los siguientes campos utilizados, no corresponden a la plantilla seleccionada (#{t('hyrax.admin.validations.'+work.underscore.downcase)})"] = bad_fields if bad_fields.count > 0
         rescue Exception => e
-            return { Error: "Contactar a la CID - #{e.to_s}"}
+            return { Error: "Error de sistema, favor de enviar una captura de pantalla a la CID y - #{e.to_s}"}
         end
 
 
