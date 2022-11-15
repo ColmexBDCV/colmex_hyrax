@@ -188,7 +188,7 @@ module ImporterService
             # report["Registros con información duplicada en el campo identifier"] = identifiers_d unless identifiers_d.empty?
             report["Campos que no corresponden a la plantilla #{t('hyrax.admin.validations.'+work.underscore.downcase)}"] = bad_fields if bad_fields.count > 0
         rescue Exception => e
-            return { Error: "Contactar a la CID"}
+            return { Error: "Contactar a la CID: #{e.to_s}"}
         end
 
 
