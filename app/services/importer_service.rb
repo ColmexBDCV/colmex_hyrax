@@ -148,7 +148,7 @@ module ImporterService
        
      
         records.each_with_index do |record,index|
-            # byebug if index +2 > 4
+            
             report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del el CSV"] || []) << index + 2  unless record.respond_to?("identifier")
             report["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del el CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del el CSV"] || []) << index + 2 unless record.respond_to?("title")
             report["El campo rights_statement no corresponde al vocabulario controlado"] = (report["rights_statement"] || []) << [index + 2, record.rights_statement] if record.respond_to?("rights_statement") && (record.rights_statement & rights).count == 0
@@ -173,10 +173,9 @@ module ImporterService
 
         begin
             files_csv = records.map { |r| r.representative_file }.flatten
-            identifiers = records.map { |r| r.identifier }
+            identifiers = records.map { |r| r.identifier if r.respond_to? :identifier}
             i_d = (identifiers.select { |i| identifiers.count(i) > 1 }).to_set.to_a
             files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
-            identifiers_d = []
             identifiers.each_with_index do |identifier, index| 
                 if i_d.include?(identifier) then
                     report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] = ( report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] || []) << index +2
@@ -185,10 +184,9 @@ module ImporterService
             end
             report["Archivos no encontrados en la carpeta documentos_de_acceso"] = files_csv - files_folder unless (files_csv - files_folder).empty?
             report["Archivos no referenciados en metadatos/metadatos.csv"] = files_folder - files_csv unless (files_folder - files_csv).empty?
-            # report["Registros con información duplicada en el campo identifier"] = identifiers_d unless identifiers_d.empty?
             report["Campos que no corresponden a la plantilla #{t('hyrax.admin.validations.'+work.underscore.downcase)}"] = bad_fields if bad_fields.count > 0
         rescue Exception => e
-            return { Error: "Contactar a la CID: #{e.to_s}"}
+            return { Error: "Contactar a la CID - #{e.to_s}"}
         end
 
 
