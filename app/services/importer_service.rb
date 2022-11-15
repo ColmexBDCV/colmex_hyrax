@@ -177,7 +177,7 @@ module ImporterService
             i_d = (identifiers.select { |i| identifiers.count(i) > 1 }).to_set.to_a
             files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
             identifiers.each_with_index do |identifier, index| 
-                if i_d.include?(identifier) then
+                if i_d.include?(identifier) && headers.include?(:identifier)  then
                     report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] = ( report["El identifier #{identifier} se encuentra duplicado en las siguientes filas"] || []) << index +2
                 end
 
