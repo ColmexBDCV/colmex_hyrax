@@ -50,6 +50,7 @@
                     label = "warning"
                 end
               %>
+              <% d = import.status != "Procesado" ? true : false %>
               <tr>
                 <td><%= import.name %></td>
                 <td><%= import.date %></td>
@@ -58,14 +59,14 @@
                 <td> <span class="label label-<%=label%>"><%= import.status %></span></td>
                 <td><%= import.object_type %></td>
                 <td>
-                  <button id="<%= import.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal">
+                  <button id="<%= import.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal" <%= "disabled" if d %> >
                     <%= import.num_records %>
                   </button>
                   <div hidden><%= import.object_ids %></div>
                 </td>
                 <td><%=import.repnal%></td>
                 <td>
-                  <% d = import.status != "Procesado" ? true : false %>
+                  
                   <%= form_with(model: import, local: true) do |f| %>
                     <%= f.hidden_field :object_type, :value => import.object_type %>
                     <%= f.hidden_field :object_ids, :value => import.object_ids %>
