@@ -88,6 +88,7 @@ es:
           subject_uniform_title_sim: Título uniforme u original
           has_system_of_organization_sim: Colección
           is_subcollection_of_sim: Subcolección temática
+          draftsman_sim: Dibujante
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -183,6 +184,7 @@ es:
           subject_uniform_title_tesim: Título uniforme u original
           has_system_of_organization_tesim: Colección
           is_subcollection_of_tesim: Subcolección temática
+          draftsman_tesim: Dibujante
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -550,6 +552,7 @@ es:
         translator: Traductor
         interviewer: Entrevistado
         interviewee: Entrevistador
+        draftsman: Dibujante
         photographer: Fotógrafo
         collective_title: Título colectivo
         part_of_place: Ciudad/Municipio/Localidad
@@ -925,3 +928,4 @@ es:
         related_work_of_work: Documento relacionado
         has_system_of_organization: Colección
         is_subcollection_of: Subcolección temática
+        draftsman: Dibujante

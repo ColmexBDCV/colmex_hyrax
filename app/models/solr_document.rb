@@ -648,6 +648,10 @@ class SolrDocument
     self[Solrizer.solr_name('thematic_collection')]
   end
 
+  def draftsman
+    self[Solrizer.solr_name('draftsman')]
+  end
+
   def related_work_of_work
     self[Solrizer.solr_name('related_work_of_work')] 
   end

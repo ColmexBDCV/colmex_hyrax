@@ -70,6 +70,7 @@ en:
           is_criminal_defendant_person_of_sim: Is criminal defendant person of
           has_system_of_organization_sim:  Collection
           is_subcollection_of_sim: Subcollecion
+          draftsman_sim: Draftsman
         index:
           based_near_tesim: Location
           classification_tesim: Classification
@@ -148,6 +149,7 @@ en:
           has_identifier_for_item_tesim: Has identifier for item
           has_system_of_organization_tesim:  Collection
           is_subcollection_of_tesim: Subcollecion
+          draftsman_tesim: Draftsman
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor

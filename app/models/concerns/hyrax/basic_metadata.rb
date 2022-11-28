@@ -79,6 +79,7 @@ module Hyrax
 
       property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
       property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true
+      property :draftsman, predicate: ::Vocab::RDAA.isDraftsmanAgentOf, multiple: true
       property :organizer_collective_agent, predicate: ::Vocab::RDAA.organizerCollectiveAgent, multiple: true
       property :photographer, predicate: ::Vocab::RDAA.isPhotographerAgentOf, multiple: true
       property :narrator, predicate: ::Vocab::RDAA.isNarratorAgentOf, multiple: true

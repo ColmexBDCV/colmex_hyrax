@@ -88,6 +88,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("traslator", :facetable), limit: 5
     config.add_facet_field solr_name("interviewer", :facetable), limit: 5
     config.add_facet_field solr_name("interviewee", :facetable), limit: 5
+    config.add_facet_field solr_name("draftsman", :facetable), limit: 5
     config.add_facet_field solr_name("organizer_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
     config.add_facet_field solr_name("related_work_of_work", :facetable), limit: 5

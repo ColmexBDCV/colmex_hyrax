@@ -36,5 +36,6 @@ module Vocab
     term :isNarratorAgentOf
     term :isCriminalDefendantCorporateBodyOf
     term :isCriminalDefendantPersonOf
+    term :isDraftsmanAgentOf
   end
 end
