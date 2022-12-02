@@ -49,7 +49,7 @@
 <%= presenter.attribute_to_html(:thematic_collection, label: t('hyrax.base.show.thematic_collection'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.contained_in'), html_dl: true) %>
 <%= presenter.attribute_to_html(:related_url, label: t('hyrax.base.show.related_url'), render_as: :external_link, html_dl: true) %>
-<%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), html_dl: true) %>
+<%= presenter.attribute_to_html(:source, label: t('hyrax.base.show.source'), render_as: :faceted, html_dl: true) %>
 <%
 =begin%>
  <%= presenter.attribute_to_html(:rights_statement, label: t('hyrax.base.show.rights_statement'), render_as: :rights_statement, html_dl: true) %>
