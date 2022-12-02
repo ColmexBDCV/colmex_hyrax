@@ -114,6 +114,7 @@ es:
           mode_of_issuance_tesim: Modo de publicación
           notes_tesim: Notas
           related_url_tesim: URL
+          source_tesim: Fuente
           resource_type_tesim: Tipo de documento
           reviewer_tesim: Lector/Revisor
           rights_statement_tesim: Declaración de derechos
