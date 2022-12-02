@@ -111,6 +111,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("geographic_coverage", :facetable), limit: 5
     config.add_facet_field solr_name("temporary_coverage", :facetable), limit: 5
     config.add_facet_field solr_name("publisher", :facetable), limit: 5
+    config.add_facet_field solr_name("source", :facetable), limit: 5
     config.add_facet_field solr_name("file_format", :facetable), limit: 5
     
     # config.add_facet_field solr_name("reviewer", :facetable), limit: 5
@@ -205,7 +206,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("thematic_collection", :stored_searchable), link_to_search: solr_name("thematic_collection", :facetable)
     config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     config.add_index_field solr_name("identifier", :stored_searchable)
-    config.add_index_field solr_name("source", :stored_searchable)
+    config.add_index_field solr_name("source", :stored_searchable), link_to_search: solr_name("source", :facetable)
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
     config.add_index_field solr_name("mode_of_issuance", :stored_searchable)
     config.add_index_field solr_name("degree_program", :stored_searchable), link_to_search: solr_name("degree_program", :facetable)
