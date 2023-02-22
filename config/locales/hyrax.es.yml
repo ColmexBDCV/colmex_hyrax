@@ -41,6 +41,7 @@ es:
           editor_sim: Editor
           publisher_sim: Editorial
           compiler_sim: Compilador
+          organizer_sim: Organizador
           commentator_sim: Reseñista/Comentarista
           translator_sim: Traductor   
           corporate_body_sim: Autor corporativo
@@ -131,6 +132,7 @@ es:
           editor_tesim: Editor
           publisher_tesim: Editorial
           compiler_tesim: Compilador
+          organizer_tesim: Organizador
           commentator_tesim: Reseñista/Comentarista
           translator_tesim: Traductor
           works: Obras
@@ -692,6 +694,7 @@ es:
         editor: Editor
         publisher: Editorial
         compiler: Compilador
+        organizer: Organizador
         commentator: Reseñista/Comentarista
         narrator: Narrador
         writer_of_suplementary_textual_content: Prologuista
@@ -1051,6 +1054,7 @@ es:
         type_of_content: Tipo de contenido
         editor: Editor
         compiler: Compilador
+        organizer: Organizador
         commentator: Reseñista/Comentarista
         translator: Traductor
         digital_resource_generation_information: Información de generación de recursos digitales

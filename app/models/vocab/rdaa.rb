@@ -12,7 +12,7 @@ module Vocab
     term :isCompilerAgentFor
     term :isCommentatorAgentOf
     term :isTranslatorAgentOf
-    term :organizerAgentOf
+    term :isOrganizerAgentOf
     term :curatorCollectiveAgentOf
     term :ownerAgentOf
     term :custodianAgentOf

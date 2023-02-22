@@ -288,6 +288,10 @@ class SolrDocument
     self['commentator_tesim']
   end 
 
+  def organizer
+    self['organizer_tesim']
+  end 
+
   def translator
     self['translator_tesim']
   end 
