@@ -30,9 +30,6 @@ signed in %>
 <%= tinymce_assets if can? :update, ContentBlock %>
 <%= render 'shared/appearance_styles' %>
 
-<!-- Google Analytics -->
-<%= render partial: '/ga', formats: [:html] %>
-
 <!-- for extras, e.g., a favicon -->
 <%= render partial: '/head_tag_extras', formats: [:html] %>
 <%= favicon_link_tag asset_path('favicon.ico') %>

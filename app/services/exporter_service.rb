@@ -43,6 +43,7 @@ module ExporterService
         keys.push("filenames")
         keys.push("identifier")
         keys.push("title")
+        keys.push("thumbnail")
         work_ids.each do |id|
             obj = ActiveFedora::Base.find(id)
             
@@ -73,7 +74,7 @@ module ExporterService
                 
                 row["filenames"] = filenames.chomp(" | ")
             end
-            
+                row["thumbnail"] = "https://repositorio.colmex.mx/downloads/#{obj.thumbnail_id}?file=thumbnail" if obj.respond_to?("thumbnail_id")
             data << row
             
         end
