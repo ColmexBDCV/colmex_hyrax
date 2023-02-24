@@ -5,6 +5,6 @@ module Hyrax
   class FactForm < Hyrax::Forms::WorkForm
     self.model_class = ::Fact
     self.terms += LegalDocumentsForm.shared_fields
-    self.terms += [:resource_type, :related_place_of_timespan, :note_of_timespan]
+    self.terms += [:resource_type, :related_place_of_timespan]
   end
 end

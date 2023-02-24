@@ -111,7 +111,7 @@ module Hyrax
       property :manifestation_use_restrictions, predicate: ::Vocab::RDAM.restrictionsOnUseOfManifestation, multiple: true
       property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
       property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
-      
+      property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true 
      
       id_blank = proc { |attributes| attributes[:id].blank? }
 

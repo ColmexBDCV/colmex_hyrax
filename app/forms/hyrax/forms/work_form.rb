@@ -38,7 +38,7 @@ module Hyrax
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease, :collector_collective_agent,
                     :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
                     :manifestation_access_restrictions, :manifestation_use_restrictions,
-                    :member_of_collection_ids, :admin_set_id]
+                    :member_of_collection_ids, :admin_set_id, :note_of_timespan]
 
       self.required_fields = [:title, 
                               # :creator, 

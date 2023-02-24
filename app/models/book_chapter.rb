@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work BookChapter`
 class BookChapter < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-  include BooksAndChapters
+  include Series
   include AnalyticsTypeOne
   include Conacyt
 

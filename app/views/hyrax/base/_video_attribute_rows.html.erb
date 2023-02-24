@@ -2,3 +2,5 @@
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %> 
 
+<%= render 'series', presenter: presenter rescue nil %>
+

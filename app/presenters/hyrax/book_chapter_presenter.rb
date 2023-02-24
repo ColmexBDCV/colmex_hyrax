@@ -3,7 +3,7 @@
 module Hyrax
   class BookChapterPresenter < Hyrax::WorkShowPresenter
     include Hyrax::AnalyticsTypeOnePresenter
-    include Hyrax::BooksAndChaptersPresenter
+    include Hyrax::SeriesPresenter
     include Hyrax::ConacytPresenter
   end
 end

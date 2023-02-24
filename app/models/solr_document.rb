@@ -356,7 +356,7 @@ class SolrDocument
     self[Solrizer.solr_name('video_characteristic')]
   end
 
-  def note_on_statement_of_resposibility
+  def note_on_statement_of_responsibility
     self[Solrizer.solr_name('note_on_statement_of_responsibility')]
   end
   
@@ -602,10 +602,6 @@ class SolrDocument
 
   def item_access_restrictions
     self[Solrizer.solr_name('item_access_restrictions')]
-  end
-
-  def item_use_restrictions
-    self[Solrizer.solr_name('item_use_restrictions')]
   end
 
   def complainant

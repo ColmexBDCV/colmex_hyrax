@@ -13,11 +13,6 @@ class Fact < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
-  property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include LegalDocuments

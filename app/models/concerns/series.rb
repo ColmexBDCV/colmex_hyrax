@@ -1,4 +1,4 @@
-module BooksAndChapters
+module Series
     extend ActiveSupport::Concern
   
     included do

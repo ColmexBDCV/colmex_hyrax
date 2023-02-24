@@ -3,7 +3,7 @@
 class Book < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include Conacyt
-  include BooksAndChapters
+  include Series
 
   self.indexer = BookIndexer
   # Change this to restrict which works can be added as a child.
