@@ -60,6 +60,7 @@ module Hyrax
       property :type_of_content, predicate: ::Vocab::RDAU.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
       property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true 
+      property :organizer, predicate: ::Vocab::RDAA.isOrganizerAgentOf, multiple: true
       property :editor, predicate: ::Vocab::RDAA.isEditorPersonOfTextOf, multiple: true
       property :compiler, predicate: ::Vocab::RDAA.isCompilerAgentFor, multiple: true
       property :commentator, predicate: ::Vocab::RDAA.isCommentatorAgentOf, multiple: true
@@ -80,7 +81,6 @@ module Hyrax
       property :interviewer, predicate: ::Vocab::RDAA.interviewerAgentOf, multiple: true
       property :interviewee, predicate: ::Vocab::RDAA.intervieweeAgentOf, multiple: true
       property :draftsman, predicate: ::Vocab::RDAA.isDraftsmanAgentOf, multiple: true
-      property :organizer_collective_agent, predicate: ::Vocab::RDAA.organizerCollectiveAgent, multiple: true
       property :photographer, predicate: ::Vocab::RDAA.isPhotographerAgentOf, multiple: true
       property :narrator, predicate: ::Vocab::RDAA.isNarratorAgentOf, multiple: true
       property :collective_title, predicate: ::RDF::Vocab::BF2.CollectiveTitle, multiple: true

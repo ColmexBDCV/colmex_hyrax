@@ -556,8 +556,8 @@ class SolrDocument
     self[Solrizer.solr_name('writer_of_suplementary_textual_content')]
   end
 
-  def organizer_collective_agent
-    self[Solrizer.solr_name('organizer_collective_agent')]
+  def organizer
+    self[Solrizer.solr_name('organizer')]
   end 
 
   def has_field_activity_of_agent

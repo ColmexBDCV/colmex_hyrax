@@ -29,7 +29,7 @@ module Hyrax
                     :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work, 
                     :numbering_of_part, :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
                     :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
-                    :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
+                    :interviewer, :interviewee, :draftsman, :organizer, :photographer, :collective_title, :part_of_place, 
                     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :has_system_of_organization,
                     :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,  
                     :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
