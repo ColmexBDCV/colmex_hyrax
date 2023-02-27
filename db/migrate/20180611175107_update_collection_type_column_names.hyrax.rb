@@ -1,4 +1,4 @@
-class UpdateCollectionTypeColumnNames < ActiveRecord::Migration[5.1]
+class UpdateCollectionTypeColumnNames < ActiveRecord::Migration
   def change
     rename_column :hyrax_collection_types, :discovery, :discoverable
     rename_column :hyrax_collection_types, :sharing, :sharable

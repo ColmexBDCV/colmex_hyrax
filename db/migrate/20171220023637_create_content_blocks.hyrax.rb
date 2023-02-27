@@ -1,4 +1,4 @@
-class CreateContentBlocks < ActiveRecord::Migration[5.1]
+class CreateContentBlocks < ActiveRecord::Migration
   def change
     create_table :content_blocks do |t|
       t.string :name

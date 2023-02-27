@@ -1,4 +1,4 @@
-class AddDeviseGuestsToUsers < ActiveRecord::Migration[5.1]
+class AddDeviseGuestsToUsers < ActiveRecord::Migration
 
   def self.up
 

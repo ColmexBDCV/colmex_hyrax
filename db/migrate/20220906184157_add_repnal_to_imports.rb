@@ -1,4 +1,4 @@
-class AddRepnalToImports < ActiveRecord::Migration[5.2]
+class AddRepnalToImports < ActiveRecord::Migration
   def change
     add_column :imports, :repnal, :string
   end

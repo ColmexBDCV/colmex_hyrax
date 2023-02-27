@@ -1,4 +1,4 @@
-class AddLinkedinToUsers < ActiveRecord::Migration[5.1]
+class AddLinkedinToUsers < ActiveRecord::Migration
   def change
     add_column :users, :linkedin_handle, :string
   end
