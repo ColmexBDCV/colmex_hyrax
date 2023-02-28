@@ -63,7 +63,6 @@ module Hyrax
       property :organizer, predicate: ::Vocab::RDAA.isOrganizerAgentOf, multiple: true
       property :editor, predicate: ::Vocab::RDAA.isEditorPersonOfTextOf, multiple: true
       property :compiler, predicate: ::Vocab::RDAA.isCompilerAgentFor, multiple: true
-      property :organizer, predicate: ::Vocab::RDAA.isOrganizerAgentOf, multiple: true
       property :commentator, predicate: ::Vocab::RDAA.isCommentatorAgentOf, multiple: true
       property :translator, predicate: ::Vocab::RDAA.isTranslatorAgentOf, multiple: true
       property :mode_of_issuance, predicate: ::Vocab::RDAM.modeOfIssuance, multiple: false

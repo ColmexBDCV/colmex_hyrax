@@ -536,10 +536,6 @@ class SolrDocument
     self['writer_of_suplementary_textual_content_tesim']
   end
 
-  def organizer_collective_agent
-    self['organizer_collective_agent']
-  end 
-
   def has_field_activity_of_agent
     self['has_field_activity_of_agent_tesim']
   end
