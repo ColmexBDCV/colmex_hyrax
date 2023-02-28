@@ -205,7 +205,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("classification", :stored_searchable)
     config.add_index_field solr_name("pages", :stored_searchable)
     config.add_index_field solr_name("thematic_collection", :stored_searchable), link_to_search: solr_name("thematic_collection", :facetable)
-    config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
+    # config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     config.add_index_field solr_name("identifier", :stored_searchable)
     config.add_index_field solr_name("source", :stored_searchable), link_to_search: solr_name("source", :facetable)
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
