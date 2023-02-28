@@ -14,11 +14,10 @@ module Hydra::Derivatives::Processors
           output_options += "#{codecs(format)}"
           if format == "jpg"
             input_options += " -itsoffset -2"
-            output_options += " -vframes 1 -an -f rawvideo"
+            output_options += " -ss 00:00:14.435 -vframes 1 -an -f rawvideo"
           else
             output_options += " #{@directives[:bitrate].nil? ? config.video_attributes : "-g 30 -b:v "+@directives[:bitrate]} #{config.audio_attributes}"
           end
-
           { Ffmpeg::OUTPUT_OPTIONS => output_options, Ffmpeg::INPUT_OPTIONS => input_options }
         end
 
