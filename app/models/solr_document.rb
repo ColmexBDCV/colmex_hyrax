@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class SolrDocument
+  
   include Blacklight::Solr::Document
   include BlacklightOaiProvider::SolrDocument
 
@@ -7,31 +8,6 @@ class SolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
   include Hyrax::SolrDocumentBehavior
-
-  field_semantics.merge!(
-                         contributor: Solrizer.solr_name('contributor'),
-                         coverage:    Solrizer.solr_name('spatial'),
-                         creator:     Solrizer.solr_name('creator'),
-                         date:        Solrizer.solr_name('date_created'),
-                         description: Solrizer.solr_name('description'),
-                         format:      Solrizer.solr_name('format'),
-                         identifier:  'oai_identifier',
-                         language:    Solrizer.solr_name('language'),
-                         creator_conacyt:    Solrizer.solr_name('creator_conacyt'),
-                         contributor_conacyt:    Solrizer.solr_name('contributor_conacyt'),
-                         publisher:   Solrizer.solr_name('publisher'),
-                         rights:      Solrizer.solr_name('license'),
-                         source:      Solrizer.solr_name('source'),
-                         subject:     Solrizer.solr_name('subject'),
-                         subject_person:     Solrizer.solr_name('subject_person'),
-                         subject_family:     Solrizer.solr_name('subject_family'),
-                         subject_work:     Solrizer.solr_name('subject_work'),
-                         subject_conacyt:     Solrizer.solr_name('subject_conacyt'),
-                         themes:      Solrizer.solr_name('themes'),
-                         audience:     Solrizer.solr_name('pub_conacyt'),
-                         title:       Solrizer.solr_name('title'),
-                         type:        Solrizer.solr_name('type_conacyt'),
-                        )
 
   # self.unique_key = 'id'
 
@@ -53,614 +29,622 @@ class SolrDocument
   use_extension( Hydra::ContentNegotiation )
 
   def identifier
-    self[Solrizer.solr_name('identifier')]
+    self['identifier_tesim']
   end
 
   def notes
-    self[Solrizer.solr_name('notes')]
+    self['notes_tesim']
   end
 
   def geographic_coverage
-    self[Solrizer.solr_name('geographic_coverage')]
+    self['geographic_coverage_tesim']
   end
 
   def temporary_coverage
-    self[Solrizer.solr_name('temporary_coverage')]
+    self['temporary_coverage_tesim']
   end
 
   def gender_or_form
-    self[Solrizer.solr_name('gender_or_form')]
+    self['gender_or_form_tesim']
   end
 
   def subject_conacyt
-    self[Solrizer.solr_name('subject_conacyt')]
+    self['subject_conacyt_tesim']
   end
 
   def pub_conacyt
-    self[Solrizer.solr_name('pub_conacyt')]
+    self['pub_conacyt_tesim']
   end
 
   def contributor_conacyt
-    self[Solrizer.solr_name('contributor_conacyt')]
+    self['contributor_conacyt_tesim']
   end
 
   def other_title
-    self[Solrizer.solr_name('other_title')]
+    self['other_title_tesim']
   end
 
   def subject_person
-    self[Solrizer.solr_name('subject_person')]
+    self['subject_person_tesim']
   end
 
   def subject_family
-    self[Solrizer.solr_name('subject_family')]
+    self['subject_family_tesim']
   end
 
   def subject_work
-    self[Solrizer.solr_name('subject_work')]
+    self['subject_work_tesim']
   end
 
   def subject_corporate
-    self[Solrizer.solr_name('subject_corporate')]
+    self['subject_corporate_tesim']
   end
   
   def alternate_title
-    self[Solrizer.solr_name('alternate_title')]
+    self['alternate_title_tesim']
   end
  
   def creator_conacyt
-    self[Solrizer.solr_name('creator_conacyt')]
+    self['creator_conacyt_tesim']
   end
 
   def director
-    self[Solrizer.solr_name('director')]
+    self['director_tesim']
   end
 
   def other_related_persons
-    self[Solrizer.solr_name('other_related_persons')]
+    self['other_related_persons_tesim']
   end
 
   def awards
-    self[Solrizer.solr_name('awards')]
+    self['awards_tesim']
   end
 
   def type_of_content
-    self[Solrizer.solr_name('type_of_content')]
+    self['type_of_content_tesim']
   end
 
   def type_of_illustrations
-    self[Solrizer.solr_name('type_of_illustrations')]
+    self['type_of_illustrations_tesim']
   end
 
   def supplementary_content_or_bibliography
-    self[Solrizer.solr_name('supplementary_content_or_bibliography')]
+    self['supplementary_content_or_bibliography_tesim']
   end
 
   def item_access_restrictions
-    self[Solrizer.solr_name('item_access_restrictions')]
+    self['item_access_restrictions_tesim']
   end
 
   def item_use_restrictions
-    self[Solrizer.solr_name('item_use_restrictions')]
+    self['item_use_restrictions_tesim']
   end
 
   def encoding_format_details
-    self[Solrizer.solr_name('encoding_format_details')]
+    self['encoding_format_details_tesim']
   end
 
   def file_type_details
-    self[Solrizer.solr_name('file_type_details')]
+    self['file_type_details_tesim']
   end
 
   def depository_collective_agent_of
-    self[Solrizer.solr_name('depository_collective_agent_of')]
+    self['depository_collective_agent_of_tesim']
   end
 
   def depository_agent
-    self[Solrizer.solr_name('depository_agent')]
+    self['depository_agent_tesim']
   end
 
   def is_part_or_work
-    self[Solrizer.solr_name('is_part_or_work')]
+    self['is_part_or_work_tesim']
   end
   
   def digital_resource_generation_information
-    self[Solrizer.solr_name('digital_resource_generation_information')]
+    self['digital_resource_generation_information_tesim']
   end
 
   def file_details
-    self[Solrizer.solr_name('file_details')]
+    self['file_details_tesim']
   end
 
   def dimensions
-    self[Solrizer.solr_name('dimensions')]
+    self['dimensions_tesim']
   end
 
   def system_requirements
-    self[Solrizer.solr_name('system_requirements')]
+    self['system_requirements_tesim']
   end
 
   def exemplar_of_manifestation
-    self[Solrizer.solr_name('exemplar_of_manifestation')]
+    self['exemplar_of_manifestation_tesim']
   end
 
   def extension
-    self[Solrizer.solr_name('extension')]
+    self['extension_tesim']
   end
 
   def type_of_file
-    self[Solrizer.solr_name('type_of_file')]
+    self['type_of_file_tesim']
   end
 
   def doi
-    self[Solrizer.solr_name('doi')]
+    self['doi_tesim']
   end
 
   def isbn
-    self[Solrizer.solr_name('isbn')]
+    self['isbn_tesim']
   end
 
   def mode_of_publication
-    self[Solrizer.solr_name('mode_of_publication')]
+    self['mode_of_publication_tesim']
   end
 
   def other_formats
-    self[Solrizer.solr_name('other_formats')]
+    self['other_formats_tesim']
   end
 
   def access_restrictions
-    self[Solrizer.solr_name('access_restrictions')]
+    self['access_restrictions_tesim']
   end
 
   def use_restrictions
-    self[Solrizer.solr_name('use_restrictions')]
+    self['use_restrictions_tesim']
   end
 
   def responsibility_statement
-    self[Solrizer.solr_name('responsibility_statement')]
+    self['responsibility_statement_tesim']
   end
 
   def academic_degree
-    self[Solrizer.solr_name('academic_degree')]
+    self['academic_degree_tesim']
   end
 
   def type_of_thesis
-    self[Solrizer.solr_name('type_of_thesis')]
+    self['type_of_thesis_tesim']
   end
 
   def degree_program
-    self[Solrizer.solr_name('degree_program')]
+    self['degree_program_tesim']
   end
 
   def institution
-    self[Solrizer.solr_name('institution')]
+    self['institution_tesim']
   end
 
   def center
-    self[Solrizer.solr_name('center')]
+    self['center_tesim']
   end
 
   def classification
-    self[Solrizer.solr_name('classification')]
+    self['classification_tesim']
   end
 
   def table_of_contents
-    self[Solrizer.solr_name('table_of_contents')]
+    self['table_of_contents_tesim']
   end
 
   def date_of_presentation_of_the_thesis
-    self[Solrizer.solr_name('date_of_presentation_of_the_thesis')]
+    self['date_of_presentation_of_the_thesis_tesim']
   end
 
   def themes
-    self[Solrizer.solr_name('themes')]
+    self['themes_tesim']
   end
    
   def period
-    self[Solrizer.solr_name('period')]
+    self['period_tesim']
   end
 
   def part
-    self[Solrizer.solr_name('part')]
+    self['part_tesim']
   end
   
   def year
-    self[Solrizer.solr_name('year')]
+    self['year_tesim']
   end
 
   def volume
-    self[Solrizer.solr_name('volume')]
+    self['volume_tesim']
   end
 
   def number
-    self[Solrizer.solr_name('number')]
+    self['number_tesim']
   end
 
   def mode_of_issuance
-    self[Solrizer.solr_name('mode_of_issuance')]
+    self['mode_of_issuance_tesim']
   end
 
   def pages
-    self[Solrizer.solr_name('pages')]
+    self['pages_tesim']
   end
 
   def contained_in
-    self[Solrizer.solr_name('contained_in')]
+    self['contained_in_tesim']
   end
 
   def database
-    self[Solrizer.solr_name('database')]
+    self['database_tesim']
   end
 
   def issn
-    self[Solrizer.solr_name('issn')]
+    self['issn_tesim']
   end
 
   def reviewer
-    self[Solrizer.solr_name('reviewer')]
+    self['reviewer_tesim']
   end
   
   def editor
-    self[Solrizer.solr_name('editor')]
+    self['editor_tesim']
   end
 
   def compiler
-    self[Solrizer.solr_name('compiler')]
+    self['compiler_tesim']
   end
   
   def commentator
-    self[Solrizer.solr_name('commentator')]
+    self['commentator_tesim']
+  end 
+
+  def organizer
+    self['organizer_tesim']
   end 
 
   def translator
-    self[Solrizer.solr_name('translator')]
+    self['translator_tesim']
   end 
   
   def edition
-    self[Solrizer.solr_name('edition')]
+    self['edition_tesim']
   end
 
   def corporate_body
-    self[Solrizer.solr_name('corporate_body')]
+    self['corporate_body_tesim']
   end
 
   def collective_agent
-    self[Solrizer.solr_name('collective_agent')]
+    self['collective_agent_tesim']
   end
 
   def organizer_author
-    self[Solrizer.solr_name('organizer_author')]
+    self['organizer_author_tesim']
   end
 
   def place_of_publication
-    self[Solrizer.solr_name('place_of_publication')]
+    self['place_of_publication_tesim']
   end
 
   def copyright
-    self[Solrizer.solr_name('copyright')]
+    self['copyright_tesim']
   end
 
   def title_of_series
-    self[Solrizer.solr_name('title_of_series')]
+    self['title_of_series_tesim']
   end
 
   def numbering_within_sequence
-    self[Solrizer.solr_name('numbering_within_sequence')]
+    self['numbering_within_sequence_tesim']
   end
 
   def video_format
-    self[Solrizer.solr_name('video_format')]
+    self['video_format_tesim']
   end
 
   def video_characteristic
-    self[Solrizer.solr_name('video_characteristic')]
+    self['video_characteristic_tesim']
   end
 
   def note_on_statement_of_responsibility
-    self[Solrizer.solr_name('note_on_statement_of_responsibility')]
+    self['note_on_statement_of_responsibility']
   end
   
   def interviewer
-    self[Solrizer.solr_name('interviewer')]
+    self['interviewer_tesim']
   end
 
   def interviewee
-    self[Solrizer.solr_name('interviewee')]
+    self['interviewee_tesim']
   end
 
   def organizer_collective_agent
-    self[Solrizer.solr_name('organizer_collective_agent')]
+    self['organizer_collective_agent_tesim']
   end
 
   def photographer
-    self[Solrizer.solr_name('photographer')]
+    self['photographer_tesim']
   end 
 
   def collective_title
-    self[Solrizer.solr_name('collective_title')]
+    self['collective_title_tesim']
   end
 
   def part_of_place
-    self[Solrizer.solr_name('part_of_place')]
+    self['part_of_place_tesim']
   end
 
   def provenance
-    self[Solrizer.solr_name('provenance')]
+    self['provenance_tesim']
   end
 
   def curator_collective_agent_of
-    self[Solrizer.solr_name('curator_collective_agent_of')]
+    self['curator_collective_agent_of_tesim']
   end
 
   def project
-    self[Solrizer.solr_name('project')]
+    self['project_tesim']
   end 
 
   def owner_agent_of
-    self[Solrizer.solr_name('owner_agent_of')]
+    self['owner_agent_of_tesim']
   end
 
   def custodian_agent_of
-    self[Solrizer.solr_name('custodian_agent_of')]
+    self['custodian_agent_of_tesim']
   end
 
   def file_type_details
-    self[Solrizer.solr_name('file_type_details')]
+    self['file_type_details_tesim']
   end
 
   def is_lyricist_person_of 
-    self[Solrizer.solr_name('is_lyricist_person_of')]
+    self['is_lyricist_person_of_tesim']
   end
   
   def is_composer_person_of
-    self[Solrizer.solr_name('is_composer_person_of')]
+    self['is_composer_person_of_tesim']
   end
   
   def researcher_agent_of
-    self[Solrizer.solr_name('researcher_agent_of')]
+    self['researcher_agent_of_tesim']
   end
 
   def summary_of_work
-    self[Solrizer.solr_name('summary_of_work')]
+    self['summary_of_work_tesim']
   end
 
   def nature_of_content
-    self[Solrizer.solr_name('nature_of_content')]
+    self['nature_of_content_tesim']
   end
 
   def guide_to_work
-    self[Solrizer.solr_name('guide_to_work')]
+    self['guide_to_work_tesim']
   end
 
   def analysis_of_work
-    self[Solrizer.solr_name('analysis_of_work')]
+    self['analysis_of_work_tesim']
   end
 
   def complemented_by_work
-    self[Solrizer.solr_name('complemented_by_work')]
+    self['complemented_by_work_tesim']
   end
 
   def production_method
-    self[Solrizer.solr_name('production_method')]
+    self['production_method_tesim']
   end
 
   def scale
-    self[Solrizer.solr_name('scale')]
+    self['scale_tesim']
   end
 
   def longitud_and_latitud
-    self[Solrizer.solr_name('longitud_and_latitud')]
+    self['longitud_and_latitud_tesim']
   end
 
   def digital_representation_of_cartographic_content
-    self[Solrizer.solr_name('digital_representation_of_cartographic_content')]
+    self['digital_representation_of_cartographic_content_tesim']
   end
 
   def related_place_of_timespan
-    self[Solrizer.solr_name('related_place_of_timespan')]
+    self['related_place_of_timespan_tesim']
   end
 
   def note_of_timespan
-    self[Solrizer.solr_name('note_of_timespan')]
+    self['note_of_timespan_tesim']
   end
 
   def alternative_numeric_and_or_alphabethic_designation
-    self[Solrizer.solr_name('alternative_numeric_and_or_alphabethic_designation')]
+    self['alternative_numeric_and_or_alphabethic_designation_tesim']
   end
 
   def photographer_corporate_body_of_work
-    self[Solrizer.solr_name('photographer_corporate_body_of_work')]
+    self['photographer_corporate_body_of_work_tesim']
   end
 
   def dimensions_of_still_image
-    self[Solrizer.solr_name('dimensions_of_still_image')]
+    self['dimensions_of_still_image_tesim']
   end
 
   def period_of_activity_of_corporate_body
-    self[Solrizer.solr_name('period_of_activity_of_corporate_body')]
+    self['period_of_activity_of_corporate_body_tesim']
   end
 
   def speaker_agent_of
-    self[Solrizer.solr_name('speaker_agent_of')]
+    self['speaker_agent_of_tesim']
   end
 
   def assistant
-    self[Solrizer.solr_name('assistant')]
+    self['assistant_tesim']
   end
 
   def preceded_by_work
-    self[Solrizer.solr_name('preceded_by_work')]
+    self['preceded_by_work_tesim']
   end
 
   def primary_topic
-    self[Solrizer.solr_name('primary_topic')]
+    self['primary_topic_tesim']
   end
 
   def enacting_juridiction_of
-    self[Solrizer.solr_name('enacting_juridiction_of')]
+    self['enacting_juridiction_of_tesim']
   end
 
   def hierarchical_superior
-    self[Solrizer.solr_name('hierarchical_superior')]
+    self['hierarchical_superior_tesim']
   end
 
   def hierarchical_inferior
-    self[Solrizer.solr_name('hierarchical_inferior')]
+    self['hierarchical_inferior_tesim']
   end
 
   def subject_timespan
-    self[Solrizer.solr_name('subject_timespan')]
+    self['subject_timespan_tesim']
   end
 
   def identifier_of_work
-    self[Solrizer.solr_name('identifier_of_work')]
+    self['identifier_of_work_tesim']
   end
 
   def is_title_of_item_of
-    self[Solrizer.solr_name('is_title_of_item_of')]
+    self['is_title_of_item_of_tesim']
   end
 
   def timespan_described_in
-    self[Solrizer.solr_name('timespan_described_in')]
+    self['timespan_described_in_tesim']
   end
 
   def related_person_of
-    self[Solrizer.solr_name('related_person_of')]
+    self['related_person_of_tesim']
   end
 
   def related_corporate_body_of_timespan
-    self[Solrizer.solr_name('related_corporate_body_of_timespan')]
+    self['related_corporate_body_of_timespan_tesim']
   end
 
   def related_family_timespan
-    self[Solrizer.solr_name('related_family_timespan')]
+    self['related_family_timespan_tesim']
   end
 
   def handle
-    self[Solrizer.solr_name('handle')]
+    self['handle_tesim']
   end
 
   def digital_file_characteristics
-    self[Solrizer.solr_name('digital_file_characteristics')]
+    self['digital_file_characteristics_tesim']
   end
 
   def has_creator
-    self[Solrizer.solr_name('has_creator')]
+    self['has_creator_tesim']
   end
 
   def narrator
-    self[Solrizer.solr_name('narrator')]
+    self['narrator_tesim']
   end
 
   def writer_of_suplementary_textual_content
-    self[Solrizer.solr_name('writer_of_suplementary_textual_content')]
+    self['writer_of_suplementary_textual_content_tesim']
   end
 
-  def organizer
-    self[Solrizer.solr_name('organizer')]
+  def organizer_collective_agent
+    self['organizer_collective_agent']
   end 
 
   def has_field_activity_of_agent
-    self[Solrizer.solr_name('has_field_activity_of_agent')]
+    self['has_field_activity_of_agent_tesim']
   end
 
   def place_of_publication
-    self[Solrizer.solr_name('place_of_publication')]
+    self['place_of_publication_tesim']
   end
 
   def is_facsimile_of_manifestation_of
-    self[Solrizer.solr_name('is_facsimile_of_manifestation_of')]
+    self['is_facsimile_of_manifestation_of_tesim']
   end
 
   def beginning
-    self[Solrizer.solr_name('beginning')]
+    self['beginning_tesim']
   end
 
   def ending
-    self[Solrizer.solr_name('ending')]
+    self['ending_tesim']
   end
 
   def date_of_manifestation
-    self[Solrizer.solr_name('date_of_manifestation')]
+    self['date_of_manifestation_tesim']
   end
 
   def resource_access_restrictions
-    self[Solrizer.solr_name('resource_access_restrictions')]
+    self['resource_access_restrictions_tesim']
   end
 
   def resource_use_restrictions
-    self[Solrizer.solr_name('resource_use_restrictions')]
+    self['resource_use_restrictions_tesim']
   end
 
   def manifestation_access_restrictions
-    self[Solrizer.solr_name('manifestation_access_restrictions')]
+    self['manifestation_access_restrictions_tesim']
   end
 
   def manifestation_use_restrictions
-    self[Solrizer.solr_name('manifestation_use_restrictions')]
+    self['manifestation_use_restrictions_tesim']
   end
 
   def item_access_restrictions
-    self[Solrizer.solr_name('item_access_restrictions')]
+    self['item_access_restrictions_tesim']
+  end
+
+  def item_use_restrictions
+    self['item_use_restrictions']
   end
 
   def complainant
-    self[Solrizer.solr_name('complainant')]
+    self['complainant_tesim']
   end
 
   def contestee
-    self[Solrizer.solr_name('contestee')]
+    self['contestee_tesim']
   end
 
   def witness
-    self[Solrizer.solr_name('witness')]
+    self['witness_tesim']
   end
 
   def subject_uniform_title
-    self[Solrizer.solr_name('subject_uniform_title')]
+    self['subject_uniform_title_tesim']
   end
 
   def is_criminal_defendant_person_of
-    self[Solrizer.solr_name('is_criminal_defendant_person_of')]
+    self['is_criminal_defendant_person_of_tesim']
   end
 
   def is_criminal_defendant_corporate_body_of
-    self[Solrizer.solr_name('is_criminal_defendant_corporate_body_of')]
+    self['is_criminal_defendant_corporate_body_of_tesim']
   end
 
   def has_identifier_for_item
-    self[Solrizer.solr_name('has_identifier_for_item')]
+    self['has_identifier_for_item_tesim']
   end
 
   def is_finding_aid_for
-    self[Solrizer.solr_name('is_finding_aid_for')]
+    self['is_finding_aid_for_tesim']
   end
 
   def collector_collective_agent
-    self[Solrizer.solr_name('collector_collective_agent')]
+    self['collector_collective_agent_tesim']
   end
   
   def thematic_collection
-    self[Solrizer.solr_name('thematic_collection')]
+    self['thematic_collection_tesim']
   end
 
   def draftsman
-    self[Solrizer.solr_name('draftsman')]
+    self['draftsman_tesim']
   end
 
   def related_work_of_work
-    self[Solrizer.solr_name('related_work_of_work')] 
+    self['related_work_of_work_tesim'] 
   end
   
   def numbering_of_part
-    self[Solrizer.solr_name('numbering_of_part')] 
+    self['numbering_of_part_tesim'] 
   end
 
   def has_system_of_organization
-    self[Solrizer.solr_name('has_system_of_organization')] 
+    self['has_system_of_organization_tesim'] 
   end
 
   def is_subcollection_of
-    self[Solrizer.solr_name('is_subcollection_of')] 
+    self['is_subcollection_of_tesim'] 
   end
 end
