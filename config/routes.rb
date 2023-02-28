@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   post '/imports/validate', to: 'imports#validate'
   resources :imports
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
 
   #End Conacyt Requirements
      
-  require 'sidekiq/web'
+  
   
   mount Sidekiq::Web => '/jobs'
 
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
-    concerns :oai_provider
+    # concerns :oai_provider
 
   
     concerns :searchable

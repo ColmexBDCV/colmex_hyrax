@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class SearchBuilder < Hyrax::CatalogSearchBuilder
+class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder

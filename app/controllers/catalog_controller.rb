@@ -84,6 +84,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("editor", :facetable), limit: 5
     config.add_facet_field solr_name("organizer", :facetable), limit: 5
     config.add_facet_field solr_name("compiler", :facetable), limit: 5
+    config.add_facet_field solr_name("organizer", :facetable), limit: 5
     config.add_facet_field solr_name("commentator", :facetable), limit: 5
     config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("traslator", :facetable), limit: 5
@@ -205,7 +206,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("classification", :stored_searchable)
     config.add_index_field solr_name("pages", :stored_searchable)
     config.add_index_field solr_name("thematic_collection", :stored_searchable), link_to_search: solr_name("thematic_collection", :facetable)
-    config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
+    # config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
     config.add_index_field solr_name("identifier", :stored_searchable)
     config.add_index_field solr_name("source", :stored_searchable), link_to_search: solr_name("source", :facetable)
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
@@ -241,6 +242,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("editor", :stored_searchable), link_to_search: solr_name("editor", :facetable)
     config.add_index_field solr_name("organizer", :stored_searchable), link_to_search: solr_name("organizer", :facetable)
     config.add_index_field solr_name("compiler", :stored_searchable), link_to_search: solr_name("compiler", :facetable)
+    config.add_index_field solr_name("organizer", :stored_searchable), link_to_search: solr_name("organizer", :facetable)
     config.add_index_field solr_name("commentator", :stored_searchable), link_to_search: solr_name("commentator", :facetable)
     config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
     config.add_index_field solr_name("traslator", :stored_searchable), link_to_search: solr_name("traslator", :facetable)
@@ -547,13 +549,16 @@ class CatalogController < ApplicationController
   end
 
   config.add_search_field('organizer') do |field|
-    solr_name = solr_name('organizer', :stored_searchable)
-    field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-    }
-end
-   
+        solr_name = solr_name('organizer', :stored_searchable)
+        field.solr_local_parameters = {
+            qf: solr_name,
+            pf: solr_name
+        }
+    end
+  
+ 
+
+
   config.add_search_field('commentator') do |field|
       solr_name = solr_name('commentator', :stored_searchable)
       field.solr_local_parameters = {

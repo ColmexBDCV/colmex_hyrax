@@ -62,7 +62,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '< 4.0.0'
   gem 'spring-watcher-listen'
 end
 
@@ -71,7 +71,7 @@ end
 gem 'blacklight_range_limit', '6.3.3'
 gem 'blacklight_advanced_search'
 
-gem 'hyrax', '2.9.6'
+gem 'hyrax', '3.5.0'
 gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls'
@@ -97,3 +97,5 @@ gem 'pdfjs_viewer-rails'
 gem 'riiif', '~> 2.0'
 gem "recaptcha"
 gem 'browse-everything','1.1.2'
+
+gem 'okcomputer'

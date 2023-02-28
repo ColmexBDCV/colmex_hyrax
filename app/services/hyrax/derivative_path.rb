@@ -47,7 +47,12 @@ module Hyrax
         end
   
         def pair_path
-          id.split('').each_slice(2).map(&:join).join('/')
+          begin
+            id.split('').each_slice(2).map(&:join).join('/')
+          rescue => e
+            # puts e
+            id.id.split('').each_slice(2).map(&:join).join('/')
+          end
         end
   
         def file_name

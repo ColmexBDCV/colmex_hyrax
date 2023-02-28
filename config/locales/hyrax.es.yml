@@ -42,6 +42,7 @@ es:
           publisher_sim: Editorial
           organizer_sim: Organizador
           compiler_sim: Compilador
+          organizer_sim: Organizador
           commentator_sim: Reseñista/Comentarista
           translator_sim: Traductor   
           corporate_body_sim: Autor corporativo
@@ -134,6 +135,7 @@ es:
           publisher_tesim: Editorial
           organizer_tesim: Organizador
           compiler_tesim: Compilador
+          organizer_tesim: Organizador
           commentator_tesim: Reseñista/Comentarista
           translator_tesim: Traductor
           works: Obras
@@ -334,6 +336,141 @@ es:
     Edit_access: Editar acceso
     Choose_Access: Elegir acceso
     admin:
+      analytics:
+        collection_reports:
+          custom_range:
+            collection_home_page_views: Vistas de la página de inicio de la colección
+            date_range_heading: Personalizar intervalo de fechas
+            summary_heading: Resumen de la actividad del usuario
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          index:
+            activity: Actividad
+            and: y
+            custom_range: Rango personalizado
+            date_range_heading: Personalizar informe
+            downloads: descargas
+            enable_analytics: Habilitar Analytics para ver informes
+            export: Exportar
+            monthly: Mensual
+            repo_summary: El repositorio contiene
+            repo_summary_2: que colectivamente han tenido
+            report_generated_on: Este informe se generó el
+            report_header: Informe de cobros personalizados
+            summary: Resumen
+            title: Informe de colecciones
+            views: visitas a la página
+          monthly_summary:
+            collection_views: Vistas de la página de inicio de la colección
+            monthly_subtitle: Estado mes a mes durante los últimos 12 meses hasta
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          show:
+            collection_type: Tipo de colección
+            created_by: Creado por
+            custom_range: Rango personalizado
+            last_updated: Ultima actualización en
+            monthly: Mensual
+            return_to_btn: Volver al informe de cobros
+            summary: Resumen
+            title: Informe de cobranza
+            view_collection_btn: Ver colección
+            visibility: Visibilidad
+          summary:
+            all_time: Todo el tiempo
+            collection_home_page_views: Vistas de la página de inicio de la colección
+            date_range: Rango de fechas
+            subtitle: Resumen de la actividad del usuario
+            this_month: Este mes
+            this_week: Esta semana
+            this_year: Este año
+            today: Hoy dia
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          top_collections:
+            collection_page_views: Vistas de la página de la colección
+            collection_title: Título de la colección
+            deleted: Colección eliminada
+            export: Exportar
+            file_downloads_in_collection: Descargas de conjuntos de archivos en esta colección
+            top_collections: Colecciones principales
+            works_in_collection_views: Obras en esta colección Vistas
+        date_range_form:
+          date_range_heading: Personalizar intervalo de fechas
+          end_date: Fecha final
+          reset_date_range: Restablecer rango de fechas
+          set_date_range: Establecer intervalo de fechas del informe
+          start_date: Fecha de inicio
+        work_reports:
+          custom_range:
+            date_range_heading: Personalizar intervalo de fechas
+            file_downloads: Descargas de archivos
+            page_views: Vistas de página
+            summary_heading: Resumen de la actividad del usuario
+            unique_visitors: Visitantes únicos
+          index:
+            access_to: Tienes acceso a
+            activity: Actividad
+            and: y
+            custom_range: Rango personalizado
+            date_range_heading: Personalizar informe
+            downloads: descargas
+            enable_analytics: Habilitar Analytics para ver informes
+            export: Exportar
+            monthly: Mensual
+            repo_summary: en este repositorio que colectivamente han tenido
+            report_generated_on: Este informe se generó el
+            report_header: Informe de trabajos personalizados
+            subtitle: Resumen de la actividad del usuario
+            summary: Resumen
+            title: Informe de obras
+            views: puntos de vista
+            works: obras
+          monthly_summary:
+            file_downloads: Descargas de archivos
+            monthly_subtitle: Estado mes a mes durante los últimos 12 meses hasta
+            page_views: Vistas de página
+          show:
+            custom_range: Rango personalizado
+            deposited_by: Depositado por
+            monthly: Mensual
+            resource_type: Tipo de recurso
+            return_to_btn: Volver al informe de obras
+            status: Estado
+            summary: Resumen
+            title: Reporte de trabajo
+            view_work_btn: Ver trabajo
+            visibility: Visibilidad
+            work_type: Tipo de trabajo
+          summary:
+            all_time: Todo el tiempo
+            date_range: Rango de fechas
+            file_downloads: Descargas de archivos
+            page_views: Vistas de página
+            subtitle: Resumen de la actividad del usuario
+            this_month: Este mes
+            this_week: Esta semana
+            this_year: Este año
+            today: Hoy dia
+            unique_visitors: Visitantes únicos
+          top_file_set_downloads:
+            file: Expediente
+            file_downloads: Descargas de archivos
+            file_name: Nombre del archivo
+            top_downloads: Descargas de archivos principales
+          top_works:
+            export: Exportar
+            file_downloads: Descargas de archivos
+            top_works: Obras Top
+            work_title: Título de trabajo
+            work_views: Vistas de la página de trabajo
+          work_counts:
+            child_works: el niño trabaja
+            files: archivos
+            total_size: tamaño total
+          work_files:
+            title: Archivos
+            total_downloads: Descargas totales
       appearances:
         header_background: Color de fondo de la cabecera
         header_text: Color del texto de la cabecera
@@ -388,6 +525,7 @@ es:
         imports: Importaciones
         new_import: Nueva Importación
         history: Historial
+        collections_report: Informe de colecciones
       validations:
         save_and_notificate: Guardar y Notificar
         view_options: Ver opciones
@@ -467,6 +605,14 @@ es:
       this: este
       select_a_group: Seleccione un grupo
       search_for_a_user: Buscar un usuario
+      show_actions:
+        analytics: Analíticas
+        attach_child: Agregar Documento
+        confirm_delete: Eliminar este %{work_type} ?
+        delete: Eliminar
+        edit: Editar
+        feature: Características
+        unfeature: Sin Características
       show:
         #metadatos de la vista _show_actions.html.erb
         has_creator: Creador
@@ -554,6 +700,7 @@ es:
         publisher: Editorial
         organizer: Organizador
         compiler: Compilador
+        organizer: Organizador
         commentator: Reseñista/Comentarista
         narrator: Narrador
         writer_of_suplementary_textual_content: Prologuista
@@ -711,14 +858,91 @@ es:
     leases:
       desactivated: Arrendamientos Desactivados
     my:
-      previous: Anterior
-      next: Siguiente
-      show: Mostrar
-      per_page: por página
-      works:
-        deleted: Borrado
-        work: La Obra
-        successfully_updated: actualizado exitosamente.
+        action:
+          add_to_collection: Añadir a la colección
+          add_to_collection_only: Las acciones permitidas están limitadas a agregar miembros
+          admin_set_confirmation: La eliminación de un conjunto de administración de %{application_name} es permanente. Haga clic en Aceptar para eliminar este conjunto de administrador de %{application_name}, o en Cancelar para cancelar esta operación
+          collection_create_success: La colección fue creada con éxito.
+          collection_delete_fail: Colección no se pudo eliminar
+          collection_delete_success: Colección fue eliminada exitosamente
+          collection_deny_add_members: No tiene suficientes privilegios para agregar miembros a la colección
+          collection_update_success: La colección fue actualizada con éxito.
+          collections_confirmation_html: Eliminar <span class='pluralized'>esta colección</span> eliminará permanentemente <span class='pluralized'>esta colección</span> del repositorio. Los elementos de <span class='pluralized'>esta colección</span> permanecerán en el repositorio. ¿Seguro que quieres eliminar <span class='pluralized'>esta colección</span> ?
+          collections_confirmation_no_items_html: "¿Seguro que quieres eliminar esta colección? Esta acción no se puede deshacer."
+          collections_confirmation_plural: estas colecciones
+          collections_confirmation_singular: esta colección
+          delete_admin_set: Eliminar colección
+          delete_admin_set_deny: Esta colección se define como Admin Set y no está vacía. Para eliminar este conjunto de administración, primero debe eliminar (eliminar o mover a otra colección del conjunto de administración) todos los elementos del conjunto de administración.
+          delete_collection: Borrar colección
+          delete_collection_deny: No tiene suficientes privilegios para eliminar este documento.
+          delete_collections: Eliminar colecciones
+          delete_collections_deny: Debe seleccionar una o más colecciones para eliminar.
+          delete_work: Borrar trabajo
+          edit_admin_set: Editar colección
+          edit_collection: Editar colección
+          edit_collection_deny: No tienes suficientes privilegios para editar esta colección.
+          edit_selected: Editar Seleccionado
+          edit_work: Editar trabajo
+          highlight: Resalte trabajo en perfil
+          members_no_access: No tiene suficientes privilegios para ninguno de los miembros seleccionados
+          nesting_not_allowed: Las colecciones de este tipo no son compatibles con la anidación.
+          nesting_permission_denied: No tiene suficientes privilegios para agregar esta colección a otra colección.
+          select: Seleccionar
+          select_all: Seleccionar la página actual
+          select_none: Seleccionar ninguno
+          transfer: Cambiar el propietario del trabajo
+          unhighlight: Retire resalte del trabajo
+          view_admin_set: Ver colección
+          view_collection: Ver colección
+          work_confirmation: El borrado de un trabajo de %{application_name} es permanente. Presione OK para borrar este trabajo de %{application_name}, o Cancelar para cancelar esta operación
+        collection_list:
+          description: 'Descripción:'
+          edit_access: 'Editar Acceso:'
+          groups: 'Grupos:'
+          managed_access:
+            deposit: Depositar
+            manage: Gestionar
+            view: Ver
+          users: 'Usuarios:'
+        collections: Mis Colecciones
+        facet_label:
+          collections: 'Filtrar colecciones:'
+          highlighted: 'Filtrar aspectos destacados:'
+          shared: 'Filtrar archivos compartidos:'
+          works: 'Filtrar trabajos:'
+        heading:
+          access: Acceso
+          action: Acciones
+          caption: Lista de artículos en esta colección
+          collection:
+            visibility: Visibilidad de la colección
+          collection_type: Tipo de colección
+          date_modified: Última modificación
+          date_uploaded: Fecha añadida
+          highlighted: Destacado
+          items: Artículos
+          last_modified: Última modificación
+          title: Título
+          type: Tipo
+          visibility: Visibilidad
+          work:
+            visibility: Visibilidad del trabajo
+        highlighted: Mis aspectos destacados
+        shared: Trabajos compartidos conmigo
+        sr:
+          batch_checkbox: Marque para agregar a una colección o editar la lista
+          check_all_label: Seleccione todos los archivos a ser editados o agregados a una colección
+          detail_label: Ver el resumen de
+          listing: Enlistar los items que has depositado
+          number_of_results_to_display_per_page: Número de resultados a mostrar por página
+          press_to: Presionar para
+          results_per_page: Número de resultados para mostrar por página
+          show_label: Ver todos los detalles de
+          thumbnail: miniatura
+        works: Mis Trabajos
+        works_report: Informe de obras
+        your_collections: Tus colecciones
+        your_works: Tus trabajos
     notifications:
       delete_all: Borrar todo
       delete_all_user_notifications: Borrar todas las notificaciones del Usuario
@@ -837,6 +1061,7 @@ es:
         editor: Editor
         organizer: Organizador
         compiler: Compilador
+        organizer: Organizador
         commentator: Reseñista/Comentarista
         translator: Traductor
         digital_resource_generation_information: Información de generación de recursos digitales
