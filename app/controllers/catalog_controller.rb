@@ -84,7 +84,6 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("editor", :facetable), limit: 5
     config.add_facet_field solr_name("organizer", :facetable), limit: 5
     config.add_facet_field solr_name("compiler", :facetable), limit: 5
-    config.add_facet_field solr_name("organizer", :facetable), limit: 5
     config.add_facet_field solr_name("commentator", :facetable), limit: 5
     config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("traslator", :facetable), limit: 5
@@ -242,7 +241,6 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("editor", :stored_searchable), link_to_search: solr_name("editor", :facetable)
     config.add_index_field solr_name("organizer", :stored_searchable), link_to_search: solr_name("organizer", :facetable)
     config.add_index_field solr_name("compiler", :stored_searchable), link_to_search: solr_name("compiler", :facetable)
-    config.add_index_field solr_name("organizer", :stored_searchable), link_to_search: solr_name("organizer", :facetable)
     config.add_index_field solr_name("commentator", :stored_searchable), link_to_search: solr_name("commentator", :facetable)
     config.add_index_field solr_name("reviewer", :stored_searchable), link_to_search: solr_name("reviewer", :facetable)
     config.add_index_field solr_name("traslator", :stored_searchable), link_to_search: solr_name("traslator", :facetable)
