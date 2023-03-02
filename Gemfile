@@ -97,5 +97,5 @@ gem 'pdfjs_viewer-rails'
 gem 'riiif', '~> 2.0'
 gem "recaptcha"
 gem 'browse-everything','1.1.2'
-
+gem 'redlock', '< 2.0'
 gem 'okcomputer'

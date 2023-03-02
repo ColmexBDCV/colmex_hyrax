@@ -61,43 +61,44 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def create_for(record:)
-      if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
-        info_stream << 'Creating record: ' \
-                      "#{record.respond_to?(:title) ? record.title : record}"
-        created    = import_type.new
-        attributes = record.attributes
-        attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
-        
-        embargo_attributes(attributes, record)
-        locations = get_genomanes_data(attributes[:based_near]) if attributes.key? :based_near
-        
-        attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
-        
-        actor_env = Hyrax::Actors::Environment.new(created,
-                                                  ::Ability.new(creator),
-                                                  attributes)
-        
-        Hyrax::CurationConcern.actor.create(actor_env)
-        
-        unless locations.nil?
-          w = created.class.find(created.id)  
-          w.based_near = locations
-          w.save!
-        end
+      begin
+        if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
+          info_stream << 'Creating record: ' \
+                        "#{record.respond_to?(:title) ? record.title : record}"
+          created    = import_type.new
+          attributes = record.attributes
+          attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
+          
+          embargo_attributes(attributes, record)
+          locations = get_genomanes_data(attributes[:based_near]) if attributes.key? :based_near
+          
+          attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
+          
+          actor_env = Hyrax::Actors::Environment.new(created,
+                                                    ::Ability.new(creator),
+                                                    attributes)
+          
+          Hyrax::CurationConcern.actor.create(actor_env)
+          
+          unless locations.nil?
+            w = created.class.find(created.id)  
+            w.based_near = locations
+            w.save!
+          end
 
-        info_stream << "\nRecord created at: #{created.id} \n"
-        created.class.find(created.id).file_set_ids.each do |f_id|
-          access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+          info_stream << "\nRecord created at: #{created.id} \n"
+          created.class.find(created.id).file_set_ids.each do |f_id|
+            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+          end
+          return [record.identifier, "Importado exitosamente"] 
+        else  
+          info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
+          return [record.identifier, "El identificador ya existe en el sistema"]
+          
         end
-        return [record.identifier, "Importado exitosamente"] 
-      else  
-        info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
-        return [record.identifier, "El identificador ya existe en el sistema"]
-        
-      end
-      rescue Errno::ENOENT => e
-          error_stream << e.message
+      rescue  => e
           return [record.identifier, "Error: #{e.to_s}"]
+      end
     end
 
     def update_for(record:)
