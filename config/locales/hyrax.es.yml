@@ -420,7 +420,7 @@ es:
             monthly: Mensual
             repo_summary: en este repositorio que colectivamente han tenido
             report_generated_on: Este informe se generó el
-            report_header: Informe de trabajos personalizados
+            report_header: Informe de obras personalizados
             subtitle: Resumen de la actividad del usuario
             summary: Resumen
             title: Informe de obras
@@ -909,7 +909,7 @@ es:
           collections: 'Filtrar colecciones:'
           highlighted: 'Filtrar aspectos destacados:'
           shared: 'Filtrar archivos compartidos:'
-          works: 'Filtrar trabajos:'
+          works: 'Filtrar obras:'
         heading:
           access: Acceso
           action: Acciones
@@ -928,7 +928,7 @@ es:
           work:
             visibility: Visibilidad del trabajo
         highlighted: Mis aspectos destacados
-        shared: Trabajos compartidos conmigo
+        shared: Obras compartidos conmigo
         sr:
           batch_checkbox: Marque para agregar a una colección o editar la lista
           check_all_label: Seleccione todos los archivos a ser editados o agregados a una colección
@@ -939,10 +939,10 @@ es:
           results_per_page: Número de resultados para mostrar por página
           show_label: Ver todos los detalles de
           thumbnail: miniatura
-        works: Mis Trabajos
+        works: Mis Obras
         works_report: Informe de obras
         your_collections: Tus colecciones
-        your_works: Tus trabajos
+        your_works: Tus obras
     notifications:
       delete_all: Borrar todo
       delete_all_user_notifications: Borrar todas las notificaciones del Usuario

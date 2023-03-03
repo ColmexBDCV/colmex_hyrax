@@ -19,7 +19,7 @@ es:
     select_type:
       book_chapter:
         # TODO: translate `human_name` into Spanish
-        description:        "Trabajos del Capítulo del libro"
+        description:        "Obras del Capítulo del libro"
         name:               "Capítulo del libro"
         # TODO: translate `human_name` into Spanish
     base:

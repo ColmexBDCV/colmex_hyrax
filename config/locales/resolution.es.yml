@@ -5,6 +5,6 @@ es:
     select_type:
       resolution:
         # TODO: translate `human_name` into Spanish
-        description:        "Resolución trabajos"
+        description:        "Resolución obras"
         name:               "Resolución"
         # TODO: translate `human_name` into Spanish

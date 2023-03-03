@@ -16,7 +16,7 @@ es:
     select_type:
       fact:
         # TODO: translate `human_name` into Spanish
-        description:        "Hecho trabajos"
+        description:        "Hecho obras"
         name:               "Hecho"
         # TODO: translate `human_name` into Spanish
     base:

@@ -5,6 +5,6 @@ es:
     select_type:
       journal:
         # TODO: translate `human_name` into Spanish
-        description:        "Revista trabajos"
+        description:        "Revista obras"
         name:               "Revista"
         # TODO: translate `human_name` into Spanish

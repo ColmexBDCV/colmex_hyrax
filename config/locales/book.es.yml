@@ -13,7 +13,7 @@ es:
     select_type:
       book:
         # TODO: translate `human_name` into Spanish
-        description:        "Libros trabajos"
+        description:        "Libros obras"
         name:               "Libros"
         # TODO: translate `human_name` into Spanish
     base:

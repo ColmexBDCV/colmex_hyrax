@@ -22,7 +22,7 @@ es:
     select_type:
       video:
         # TODO: translate `human_name` into Spanish
-        description:        "Videos trabajos"
+        description:        "Videos obras"
         name:               "Videos"
         # TODO: translate `human_name` into Spanish
     base:

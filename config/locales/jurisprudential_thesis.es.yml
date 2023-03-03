@@ -17,7 +17,7 @@ es:
     select_type:
       jurisprudential_thesis:
         # TODO: translate `human_name` into Spanish
-        description:        "Tesis jurisprudencial trabajos"
+        description:        "Tesis jurisprudencial obras"
         name:               "Tesis jurisprudencial"
         # TODO: translate `human_name` into Spanish
     base:

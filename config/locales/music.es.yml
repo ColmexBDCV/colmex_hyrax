@@ -11,7 +11,7 @@ es:
     select_type:
       music:
         # TODO: translate `human_name` into Spanish
-        description:        "Música trabajos"
+        description:        "Música obras"
         name:               "Música"
         # TODO: translate `human_name` into Spanish
     base:

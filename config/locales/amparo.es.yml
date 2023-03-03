@@ -5,6 +5,6 @@ es:
     select_type:
       amparo:
         # TODO: translate `human_name` into Spanish
-        description:        "Amparo trabajos"
+        description:        "Amparo obras"
         name:               "Amparo"
         # TODO: translate `human_name` into Spanish

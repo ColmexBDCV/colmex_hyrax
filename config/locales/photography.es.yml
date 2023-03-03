@@ -14,7 +14,7 @@ es:
     select_type:
       photography:
         # TODO: translate `human_name` into Spanish
-        description:        "Fotografía trabajos"
+        description:        "Fotografía obras"
         name:               "Fotografía"
         # TODO: translate `human_name` into Spanish
     base:

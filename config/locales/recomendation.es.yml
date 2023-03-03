@@ -5,6 +5,6 @@ es:
     select_type:
       recomendation:
         # TODO: translate `human_name` into Spanish
-        description:        "Recomendación trabajos"
+        description:        "Recomendación obras"
         name:               "Recomendación"
         # TODO: translate `human_name` into Spanish

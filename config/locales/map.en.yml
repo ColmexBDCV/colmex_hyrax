@@ -16,7 +16,7 @@ en:
     select_type:
       map:
         # TODO: translate `human_name` into Spanish
-        description:        "Map trabajos"
+        description:        "Map obras"
         name:               "Map"
         # TODO: translate `human_name` into Spanish
     base:

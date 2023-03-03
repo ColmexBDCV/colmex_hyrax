@@ -10,7 +10,7 @@ es:
     select_type:
       archival_document:
         # TODO: translate `human_name` into Spanish
-        description:        "Documento archivistíco trabajos"
+        description:        "Documento archivistíco obras"
         name:               "Documento archivistíco"
         # TODO: translate `human_name` into Spanish
     base:
