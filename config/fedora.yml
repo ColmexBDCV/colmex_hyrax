@@ -13,3 +13,4 @@ production:
   password: fedoraAdmin
   url: <%= ENV['FEDORA_URL'] || "http://127.0.0.1:8983/rest" %>
   base_path: /prod
+  request: { timeout: 7200, open_timeout: 300 }
