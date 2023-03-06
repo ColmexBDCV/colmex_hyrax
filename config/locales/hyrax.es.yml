@@ -567,6 +567,7 @@ es:
     ####
     base:
       citations:
+        button: Citar obra
         header: "Exportar cita"
         mendeley: "La exportación a Mendeley se admite a través de metadatos incrustados. Si mendeley no recoge automáticamente los metadatos de los archivos depositados, por favor reportar el problema a través de "
         mendeley_title: Exportar a Mendeley
