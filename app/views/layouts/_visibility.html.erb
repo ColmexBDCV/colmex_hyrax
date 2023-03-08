@@ -3,12 +3,38 @@
     <h3 class="panel-title"><%= t('hyrax.homepage.visibility') %></h3>
   </div>
   <div class="panel-body">
-      <div id="dashboard-repository-objects" aria-hidden="true" style="height: 200px">
+      <div id="dashboard-visibility" aria-hidden="true" style="height: 200px">
+      <div id="rodetails-item" class="morris-hover morris-default-style" style="position:static">
+        <div class="morris-hover-row-label"></div>
+      </div>
       <% repository_objects = Hyrax::Admin::DashboardPresenter.new.repository_objects.to_json%>
+      
       <script>
-        //<![CDATA[
-        Hyrax.statistics.repositoryObjects = <%== repository_objects %>
-        //]]>
+        
+        var ro = new Morris.Donut({
+            element: 'dashboard-visibility',
+            data: [
+              <% JSON.parse(repository_objects).each do |row| %>
+                { label: "<%= row["label"] %>", value: <%= row["value"].to_i %> },
+              <% end %>
+            ],  
+            colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
+            gridTextSize: '12px',
+            resize: false
+          });
+          $('#dashboard-visibility tspan:first').text("")
+          $('#dashboard-visibility tspan').css("font-size","xx-large")
+          
+          for(i = 0; i < ro.segments.length; i++) {
+              ro.segments[i].handlers['hover'].push( function(i){
+                  $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
+                  $('#dashboard-visibility tspan:first').text("")
+                  $('#dashboard-visibility tspan').css("font-size","xx-large")
+              });
+              if (ro.segments[i].selected) {
+                $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
+              }
+          }
       </script>
       </div>
       <table class="table table-striped sr-only text-left">

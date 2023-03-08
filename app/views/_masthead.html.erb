@@ -26,7 +26,8 @@
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-primary" id="search-submit-header">
-                      <%= t('hyrax.search.button.html') %>
+                      
+                      
                     </button>
                     <% if current_user %>
                       <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -71,4 +72,20 @@
     </div>
   </nav>
 </header>
+<script>
 
+  function check_search_fiedl() {
+      if ($('#search-field-header').val().length == 0) {
+        $('#search-submit-header').html("<b>Buscar todo</b>") 
+      } else {
+        $('#search-submit-header').html('<%= t('hyrax.search.button.html') %>')
+      }
+  }
+
+  check_search_fiedl()
+
+  $("#search-field-header").on("input", function() {
+   check_search_fiedl()
+  });
+
+</script>

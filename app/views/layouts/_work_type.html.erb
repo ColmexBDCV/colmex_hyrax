@@ -4,9 +4,13 @@
   </div>
   <div class="panel-body">
     <div id="dashboard-work-types" aria-hidden="true" style="height: 200px">
+      <div id="wtdetails-item" class="morris-hover morris-default-style" style="position:static">
+        <div class="morris-hover-row-label"></div>
+      </div>
+      
       <% @work_types = Hyrax::Statistic.work_types %>
       <script>
-        Morris.Donut({
+        var wt = new Morris.Donut({
             element: 'dashboard-work-types',
             data: [
               <% @work_types.each do |row| %>
@@ -15,8 +19,21 @@
             ],  
             colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
             gridTextSize: '12px',
-            resize: true
+            resize: false
           });
+          $('#dashboard-work-types tspan:first').text("")
+          $('#dashboard-work-types tspan').css("font-size","xx-large")
+          
+          for(i = 0; i < wt.segments.length; i++) {
+              wt.segments[i].handlers['hover'].push( function(i){
+                  $('#wtdetails-item .morris-hover-row-label').text(wt.data[i].label);
+                  $('#dashboard-work-types tspan:first').text("")
+                  $('#dashboard-work-types tspan').css("font-size","xx-large")
+              });
+              if (wt.segments[i].selected) {
+                $('#wtdetails-item .morris-hover-row-label').text(wt.data[i].label);
+              }
+          }
       </script>
     </div>
     <table aria-label="<%= t('hyrax.homepage.work_type') %>" class="table table-striped sr-only text-left">
@@ -35,6 +52,6 @@
         <% end %>
       </tbody>
     </table>
-
+    
   </div>
 </div>

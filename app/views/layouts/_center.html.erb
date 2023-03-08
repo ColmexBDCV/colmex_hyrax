@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t('hyrax.homepage.center') %></h3>
+  </div>
+  <div class="panel-body">
+    <div id="dashboard-centers" aria-hidden="true" style="height: 200px">
+        <div id="centerdetails-item" class="morris-hover morris-default-style" style="position:static;">
+          <div class="morris-hover-row-label"></div>
+        </div>
+      <% @centers = Hyrax::Statistic.centers %>
+      <script>
+        var center = new Morris.Donut({
+            element: 'dashboard-centers',
+            data: [
+              <% @centers.each do |row| %>
+                { label: "<%= row[0] %>", value: <%= row[1].to_i %> },
+              <% end %>
+            ],  
+            colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
+            gridTextSize: '12px',
+            // resize: false
+          });
+          $('#dashboard-centers tspan:first').text("")
+          $('#dashboard-centers tspan').css("font-size","xx-large")
+          
+          for(i = 0; i < center.segments.length; i++) {
+              center.segments[i].handlers['hover'].push( function(i){
+                  $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
+                  $('#dashboard-centers tspan:first').text("")
+                  $('#dashboard-centers tspan').css("font-size","xx-large")
+              });
+              if (center.segments[i].selected) {
+                $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
+              }
+          }
+      </script>
+    </div>
+                      
+    <table aria-label="<%= t('hyrax.homepage.center') %>" class="table table-striped sr-only text-left">
+      <thead>
+        <tr>
+          <th><%= t('.center') %></th>
+          <th><%= t('.count') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @centers.each do |row| %>
+          <tr>
+            <td><%= row[0] %></td>
+            <td><%= row[1] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
