@@ -9,12 +9,13 @@
       </div>
       
       <% @work_types = Hyrax::Statistic.work_types %>
+      
       <script>
         var wt = new Morris.Donut({
             element: 'dashboard-work-types',
             data: [
               <% @work_types.each do |row| %>
-                { label: "<%= row[0] %>", value: <%= row[1].to_i %> },
+                { label: "<%= t("hyrax.base.show.work_type_#{row[0].sub(" ","_")}") %>", value: <%= row[1].to_i %> },
               <% end %>
             ],  
             colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],

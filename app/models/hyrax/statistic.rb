@@ -50,7 +50,7 @@ module Hyrax
         results = query_works("human_readable_type_tesim")
         results.group_by { |result| result['human_readable_type_tesim'].join('') }.transform_values(&:count)
       end
-
+      
       def resource_types
         results = query_works("resource_type_tesim")
         resource_types = []
@@ -73,7 +73,7 @@ module Hyrax
         centers = []
         results.each do |y|
           if y["center_tesim"].nil? || (y["center_tesim"] == [""])
-            centers.push("Unknown")
+            next
           elsif y["center_tesim"].count > 1
             y["center_tesim"].each do |t|
               centers.push(t)
