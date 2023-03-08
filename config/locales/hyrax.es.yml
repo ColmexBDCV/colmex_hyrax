@@ -647,6 +647,7 @@ es:
         work_type_Jurisprudential_Thesis: Tesis Jurisprudencial
         work_type_Video: Vídeo
         work_type_Fact: Hecho
+        work_type_Database: Base de datos
         work_type_Archival_Document: Documento Archivístico
         work_type_Request: Solicitud
         work_type_Judgment: Sentencia
