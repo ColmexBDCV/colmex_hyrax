@@ -433,7 +433,7 @@ es:
           start_label: Comenzando
         repository_objects:
           series:
-            published: Publicado
+            published: Visible
             unknown: Desconocido
             unpublished: Sin publicar
         user_deposits:
@@ -641,7 +641,7 @@ es:
         relationships: Las relaciones
       show_actions:
         analytics: Analíticas
-        attach_child: Adjuntar Obra
+        attach_child: Adjuntar Niño
         confirm_delete: Eliminar este %{work_type} ?
         delete: Eliminar
         edit: Editar

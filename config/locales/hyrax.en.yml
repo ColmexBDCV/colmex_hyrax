@@ -562,6 +562,9 @@ en:
       center_international_studies: Center International Studies
       center_sociological_studies: Center Sociological Studies
       library: Daniel Cosío Villegas Library
+      work_type: Work type
+      visibility: visibility
+      center: Center
     leases:
       desactivated: Desactivated Leases
     my:
