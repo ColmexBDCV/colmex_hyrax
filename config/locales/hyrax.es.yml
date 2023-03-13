@@ -641,7 +641,7 @@ es:
         relationships: Las relaciones
       show_actions:
         analytics: Analíticas
-        attach_child: Adjuntar Niño
+        attach_child: Adjuntar Obra
         confirm_delete: Eliminar este %{work_type} ?
         delete: Eliminar
         edit: Editar

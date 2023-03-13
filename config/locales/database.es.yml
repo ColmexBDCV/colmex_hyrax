@@ -3,11 +3,9 @@ es:
     search:
       fields:
           facet:
-            researcher_agent_of_sim: Investigador
             guide_to_work_sim: Protocolo o guia
             production_method_sim: Medio de producción
           index:
-            researcher_agent_of_tesim: Investigador
             summary_of_work_tesim: Resumen del proyecto
             nature_of_content_tesim: Naturaleza del contenido
             guide_to_work_tesim: Protocolo o guia
@@ -25,7 +23,6 @@ es:
         # TODO: translate `human_name` into Spanish
     base:
       show:
-        researcher_agent_of: Investigador
         summary_of_work: Resumen del proyecto
         nature_of_content: Naturaleza del contenido
         guide_to_work: Protocolo o guia

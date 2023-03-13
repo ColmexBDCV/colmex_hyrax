@@ -91,6 +91,7 @@ es:
           is_criminal_defendant_corporate_body_of_sim: Organismo acusado o demandado
           is_criminal_defendant_person_of_sim: Persona acusada o demandada
           collector_collective_agent_sim: Repositorio
+          researcher_agent_of_sim: Investigador
           subject_uniform_title_sim: Título uniforme u original
           has_system_of_organization_sim: Colección
           is_subcollection_of_sim: Subcolección temática
@@ -135,6 +136,7 @@ es:
           supplementary_content_or_bibliography_tesim: Bibliografía  
           table_of_contents_tesim: Contenido
           editor_tesim: Editor
+          researcher_agent_of_tesim: Investigador
           publisher_tesim: Editorial
           organizer_tesim: Organizador
           compiler_tesim: Compilador
@@ -672,6 +674,7 @@ es:
         alternate_title: Título alterno
         analitycs: Analíticas
         mode_of_issuance: Modo de publicación
+        researcher_agent_of: Investigador
         work_type_Article: Artículo
         work_type_Thesis: Tesis
         work_type_Book: Libro

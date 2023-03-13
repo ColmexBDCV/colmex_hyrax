@@ -74,7 +74,7 @@ module Hyrax
       property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
       property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
       property :collector_collective_agent, predicate: ::Vocab::RDAM.collectorCollectiveAgent, multiple: true
-      property :researcher_agent_of, predicate: ::Vocab::RDAA.researcher_agent_of, multiple: true
+      property :researcher_agent_of, predicate: ::Vocab::RDAA.researcherAgentOf, multiple: true
       
       property :has_system_of_organization, predicate: ::Vocab::RDAW.hasSystemOfOrganization, multiple: true
       property :is_subcollection_of, predicate: ::Vocab::RDAU.isSubCollection, multiple: true
@@ -115,7 +115,7 @@ module Hyrax
       property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true 
      
       id_blank = proc { |attributes| attributes[:id].blank? }
-
+      
       class_attribute :controlled_properties
       self.controlled_properties = [:based_near]
       accepts_nested_attributes_for :based_near, reject_if: id_blank, allow_destroy: true
