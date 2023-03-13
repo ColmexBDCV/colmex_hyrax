@@ -7,12 +7,7 @@ class Database < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
-
-  property :researcher_agent_of, predicate: ::Vocab::RDAA.researcher_agent_of, multiple: true do |index|
-    index.type :text
-    index.as :stored_searchable, :facetable
-  end
-
+   
   property :summary_of_work, predicate: ::Vocab::RDAW.summary_of_work, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable

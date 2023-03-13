@@ -49,7 +49,7 @@ module Hyrax
              :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
              :depository_collective_agent_of, :depository_agent, :corporate_body, :collective_agent, :contained_in, :related_work_of_work,
              :numbering_of_part, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, :is_facsimile_of_manifestation_of,
-             :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation,
+             :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation, :researcher_agent_of,
              :rendering_ids, :member_of_collection_ids, :collector_collective_agent, :note_of_timespan, to: :solr_document
 
     def workflow

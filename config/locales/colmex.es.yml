@@ -1,0 +1,1207 @@
+es:
+  activefedora:
+    models:
+      batch_upload_item: Obras por Lote
+  blacklight:
+    search:
+      fields:
+        facet:
+          based_near_label_sim: Ubicación
+          center_sim: Centro
+          content:
+            Thesis: Tesis
+            Collection: Colección
+            Article: Artículo
+            Book: Libro
+            Book Chapter: Capítulo de libro
+            Video: Video
+          creator_sim: Autor
+          contributor_sim: Colaborador
+          thematic_collection_sim: Colección Temática
+          date_created_sim: Año
+          file_format_sim: Formato
+          generic_type_sim: Tipo
+          geographic_coverage_sim: Cobertura geográfica
+          has_creator_sim: Creador
+          human_readable_type_sim: Tipo de objeto
+          keyword_sim: Palabras clave
+          language_sim: Idioma
+          notes_sim: Notas
+          resource_type_sim: Tipo de documento
+          reviewer_sim: Lector/Revisor
+          subject_sim: Tema
+          subject_person_sim: Tema persona
+          subject_family_sim: Tema familia
+          subject_work_sim: Tema obra
+          subject_corporate_sim: Tema organismo
+          supplementary_content_or_bibliography_sim: Bibliografía  
+          temporary_coverage_sim: Cobertura temporal
+          type_of_illustrations_sim: Tipo de ilustraciones
+          mode_of_issuance_sim: Modo de publicación
+          table_of_contents_sim: Contenido
+          numbering_of_part_sim: Número de la parte
+          related_work_of_work_sim: Documento relacionado
+          editor_sim: Editor
+          publisher_sim: Editorial
+          organizer_sim: Organizador
+          compiler_sim: Compilador
+          organizer_sim: Organizador
+          commentator_sim: Reseñista/Comentarista
+          translator_sim: Traductor   
+          corporate_body_sim: Autor corporativo
+          collective_agent_sim: Autor congreso
+          organizer_author_sim: Coordinador / Organizador
+          place_of_publication_sim: Lugar de publicación
+          copyright_sim: Copyright
+          title_of_series_sim: Serie
+          numbering_within_sequence_sim: Volumen/número
+          interviewer_sim: Entrevistado
+          interviewee_sim: Entrevistador
+          photographer_sim: Fotógrafo
+          narrator_sim: Narrador
+          writer_of_suplementary_textual_content_sim: Prologuista
+          collective_title_sim: Título colectivo
+          part_of_place_sim: Ciudad/Municipio/Localidad
+          provenance_sim: Procedencia
+          curator_collective_agent_of_sim: Entidad que aporta el recurso
+          project_sim: Proyecto
+          owner_agent_of_sim: Propietario
+          custodian_agent_of_sim: Custodio
+          contained_in_sim: "Incluido en:"
+          database_sim: Base de Datos
+          source_sim: Fuente
+          depository_collective_agent_of_sim: Organismo depositante
+          depositor_agent_sim: Persona depositante
+          organizer_collective_agent_sim: Autor congreso o reunión
+          beginning_sim: Inicio del hecho
+          ending_sim: Fin del hecho
+          primary_topic_sim: Materia
+          enacting_juridiction_of_sim: Instancia emisora, pleno o sala
+          hierarchical_superior_sim: Instancia superior
+          hierarchical_inferior_sim: Instancia subordinada
+          subject_timespan_sim: Tema del hecho criminal
+          is_title_of_item_of_sim: Asunto
+          timespan_described_in_sim: Descripción de hechos
+          related_person_of_sim: Persona relacionada o tercero interesado
+          related_corporate_body_of_timespan_sim: Organización relacionada
+          related_family_timespan_sim: Familia relacionada
+          complainant_sim: Quejoso (víctima y ofendido)
+          contestee_sim: Representante legal, defensor, etc.
+          witness_sim: Testigo
+          is_criminal_defendant_corporate_body_of_sim: Organismo acusado o demandado
+          is_criminal_defendant_person_of_sim: Persona acusada o demandada
+          collector_collective_agent_sim: Repositorio
+          subject_uniform_title_sim: Título uniforme u original
+          has_system_of_organization_sim: Colección
+          is_subcollection_of_sim: Subcolección temática
+          draftsman_sim: Dibujante
+          note_of_timespan_sim: Nota del hecho criminal
+        index:
+          based_near_tesim: Ubicación
+          based_near_label_tesim: Ubicación
+          classification_tesim: Clasificación
+          collections: Colecciones
+          has_creator_tesim: Creador
+          contributor_tesim: Colaborador
+          center_tesim: Centro
+          creator_tesim: Autor
+          thematic_collection_tesim: Colección Temática
+          date_created_tesim: Año
+          date_modified_dtsi: Fecha de modificación
+          date_uploaded_dtsi: Fecha de subida
+          description_tesim: Resumen
+          depositor_tesim: Propietario
+          file_format_tesim: Formato de archivo
+          geographic_coverage_tesim: Cobertura geográfica
+          handle_tesim: Handle
+          identifier_tesim: Identificador
+          keyword_tesim: Palabra clave
+          language_tesim: Idioma
+          license_tesim: Licencia
+          mode_of_issuance_tesim: Modo de publicación
+          notes_tesim: Notas
+          related_url_tesim: URL
+          source_tesim: Fuente
+          resource_type_tesim: Tipo de documento
+          reviewer_tesim: Lector/Revisor
+          rights_statement_tesim: Declaración de derechos
+          type_of_illustrations_tesim: Tipo de ilustraciones
+          subject_tesim: Tema
+          subject_person_tesim: Tema persona
+          subject_family_tesim: Tema familia
+          subject_work_tesim: Tema obra
+          subject_corporate_tesim: Tema organismo
+          temporary_coverage_tesim: Cobertura temporal
+          supplementary_content_or_bibliography_tesim: Bibliografía  
+          table_of_contents_tesim: Contenido
+          editor_tesim: Editor
+          publisher_tesim: Editorial
+          organizer_tesim: Organizador
+          compiler_tesim: Compilador
+          organizer_tesim: Organizador
+          commentator_tesim: Reseñista/Comentarista
+          translator_tesim: Traductor
+          works: Obras
+          corporate_body_tesim: Autor corporativo
+          collective_agent_tesim: Autor congreso
+          organizer_author_tesim: Coordinador / Organizador
+          copyright_tesim: Copyright
+          title_of_series_tesim: Serie
+          numbering_within_sequence_tesim: Volumen/número
+          interviewer_tesim: Entrevistado
+          interviewee_tesim: Entrevistador
+          photographer_tesim: Fotógrafo
+          narrator_tesim: Narrador
+          numbering_of_part_tesim: Número de la parte
+          related_work_of_work_tesim: Documento relacionado
+          writer_of_suplementary_textual_content_tesim: Prologuista
+          collective_title_tesim: Título colectivo
+          part_of_place_tesim: Ciudad/Municipio/Localidad
+          provenance_tesim: Procedencia
+          curator_collective_agent_of_tesim: Entidad que aporta el recurso
+          project_tesim: Proyecto
+          owner_agent_of_tesim: Propietario
+          custodian_agent_of_tesim: Custodio
+          contained_in_tesim: "Incluido en"
+          database_tesim: Base de Datos
+          depository_collective_agent_of_tesim: Organismo depositante
+          depositor_agent_tesim: Persona depositante
+          organizer_collective_agent_tesim: Autor congreso o reunión
+          place_of_publication_tesim: Lugar de publicación
+          beginning_tesim: Inicio del hecho
+          ending_tesim: Fin del hecho
+          has_field_activity_of_agent_tesim: Función
+          is_facsimile_of_manifestation_of_tesim: Facsímil de
+          date_of_manifestation_tesim: Fecha
+          primary_topic_tesim: Materia
+          enacting_juridiction_of_tesim: Instancia emisora, pleno o sala
+          hierarchical_superior_tesim: Instancia superior
+          hierarchical_inferior_tesim: Instancia subordinada
+          subject_timespan_tesim: Tema del hecho criminal
+          identifier_of_work_tesim: Identificador específico
+          is_title_of_item_of_tesim: Asunto
+          timespan_described_in_tesim: Descripción de hechos
+          related_person_of_tesim: Persona relacionada o tercero interesado
+          related_corporate_body_of_timespan_tesim: Organización relacionada
+          related_family_timespan_tesim: Familia relacionada
+          complainant_tesim: Quejoso (víctima y ofendido)
+          contestee_tesim: Representante legal, defensor, etc.
+          witness_tesim: Testigo
+          note_of_timespan_tesim: Nota del hecho criminal
+          is_criminal_defendant_corporate_body_of_tesim: Organismo acusado o demandado
+          is_criminal_defendant_person_of_tesim: Persona acusada o demandada
+          has_identifier_for_item_tesim: Número de expediente o caso
+          collector_collective_agent_tesim: Repositorio
+          subject_uniform_title_tesim: Título uniforme u original
+          has_system_of_organization_tesim: Colección
+          is_subcollection_of_tesim: Subcolección temática
+          draftsman_tesim: Dibujante
+        show:
+          based_near_tesim: Ubicación
+          contributor_tesim: Colaborador
+          creator_tesim: Autor
+          corporate_body: Autor corporativo
+          collective_agent: Autor congreso
+          date_created_tesim: Año
+          date_modified_dtsi: Fecha de modificación
+          date_uploaded_dtsi: Fecha de Subida
+          description_tesim: Descripción
+          file_format_tesim: Formato de archivo
+          geographic_coverage_tesim: Cobertura geográfica
+          identifier_tesim: Identificador
+          keyword_tesim: Palabra clave
+          language_tesim: Idioma
+          license_tesim: Licencia
+          numbering_within_sequence: Volumen/número
+          publisher_tesim: Datos de publicación/producción
+          rights_statement_tesim: Declaración de derechos
+          subject_tesim: Tema
+          title_tesim: Título
+          title_of_series: Serie
+          badge_deposited: "<span class='state state-deposited label label-primary'>Depositado</span>"
+          temporary_coverage_tesim: Cobertura temporal
+          interviewer: Entrevistado
+          interviewee: Entrevistador
+          organizer_author: Coordinador / Organizador
+          place_of_publication: Lugar de publicación
+          photographer: Fotógrafo
+          collective_title: Título colectivo
+          part_of_place: Ciudad/Municipio/Localidad
+          provenance: Procedencia
+          curator_collective_agent_of: Entidad que aporta el recurso
+          project: Proyecto
+          owner_agent_of: Propietario
+          custodian_agent_of: Custodio
+      sort:
+        label: Ordenar por %{field}
+        relevance: Relevancia 
+        date uploaded ▼: Fecha de subida ▼
+        date uploaded ▲: Fecha de subida ▲
+        date modified ▼: Fecha de modificación ▼
+        date modified ▲: Fecha de modificación ▲
+        date created ▼: Año ▼
+        date created ▲: Año ▲
+        Title [Z-A]: Título [Z-A]
+        Title [A-Z]: Título [A-Z]
+      view:
+        gallery: Galería
+        masonry: Mampostería
+        slideshow: Diapositivas
+      filters:
+        label: "%{label}: "
+    range_limit:
+      submit_limit: Limitar
+      unknown: Sin datos
+    advanced_search:
+      link: Buscar en metadatos
+      tips: Consejos de búsqueda
+      all: Seleccione "coincidir todos" para encontrar recursos que continen todos los términos.
+      any: Seleccione "coincidir con cualquiera" para encontrar recursos que contienen al menos un término.
+      combine: Combine términos para encontrar recursos específicos.
+      quotation: Utilice comillas para buscar como una frase.
+      plus: Use "+" antes de un término para hacerlo requerido. (De lo contrario, se pueden incluir los resultados que coincidan solo con algunos de sus términos).
+      hyphen: Use "-" antes de una palabra o frase para excluir.
+      and_or_not: Use "OR", "AND", y "NOT" para crear una lógica booleana compleja. Puedes usar paréntesis en tus expresiones complejas.
+      truncate: "El truncamiento y los comodines no son compatibles: la separación de palabras se realiza automáticamente."
+  blacklight_gallery:
+    catalog:
+      grid_slideshow:
+        missing_image: 'Imagen ausente'
+      document_slideshow:
+        header: "Seleccione una imagen para comenzar la presentación de diapositivas"
+      modal_slideshow:
+        counter: "%{counter} de %{count}"  
+  helpers:
+    batch:
+        new: Crear un lote de trabajos
+    work:
+        new: Añadir un Nuevo Trabajo
+  js:
+    hydra_editor:
+      add_another: Añadir otro 
+      remove: Eliminar
+    jquery_datatables_rails_3_4_0:
+      show: Mostrar
+      entries: entradas
+      showing: Proyectando
+      to: a
+      of: de
+      search: "Buscar:"
+      previous: Anterior
+      next: Siguiente
+      no_data_available: No hay datos disponibles en la tabla
+    tinymce_rails_4_9_0:
+      file: Archivo
+      new_document: Nuevo Documento
+      edit: Editar
+      undo: Deshacer
+      redo: Rehacer
+      cut: Cortar
+      copy: Copiar
+      paste: Pegar
+      select_all: Seleccionar todo
+      view: Ver
+      visual_aids: Ayudas Visuales
+      format: Formato
+      bold: Negrita
+      italic: Curvado
+      underline: Subrayado
+      strikethrough: Tachado
+      superscript: Superíndice
+      subscript: Subíndice
+      code: Código
+      blocks: Bloques
+      paragraph: Párrafo
+      headings: Encabezados
+      heading: Encabezado
+      preformatted: Preformateado
+      inline: Texto
+      align: Alinear
+      left: A la Izquierda
+      center: Centrado
+      right: A la Derecha
+      justify: Justificado
+      clear_formatting: Borrar Formato
+      formats: Formatos
+      alignment: Alineación
+      decrease_indent: Decrementar Indentado
+      increase_indent: Incrementar Indentado
+  views:
+    the_file: El archivo 
+    has_been_updated: ha sido actualizado.
+    User_has_updated: Usuario ha actualizado
+    User_has_attached: Usuario ha adjuntado
+    User_has_deposited: Usuario ha creado
+    User_has_deleted: Usuario ha borrado
+  hyrax:
+    account_name: Mi identificador de cuenta institucional
+    adress_html: "Carretera Picacho Ajusco No. 20. Ampliación Fuentes del Pedregal<br> Alcaldía Tlalpan C.P. 14110<br> Ciudad de México, México. <br> Teléfono: +52 5554493000"
+    #metadatos del controlador fixity_status_persenter app/presenters/hyrax/
+    fixity_status:  Aún no se han realizado controles de fijeza en este objeto
+    #metadatos del inicializador de hyrax onfiguration.rb lib/hyrax/configuration.rb
+    Edit: Editar
+    View/Download: Ver/Descargar
+    Edit_access: Editar acceso
+    Choose_Access: Elegir acceso
+    admin:
+      admin_sets:
+        form:
+          note: Los usuarios a los que se les otorgue un nuevo rol solo obtendrán el rol en los trabajos que se depositen después de que se haya otorgado ese rol.
+          permission_update_notices:
+            workflow: El flujo de trabajo del conjunto administrativo se ha actualizado.
+          tabs:
+            workflow: Flujo de trabajo
+        form_participant_table:
+          viewers:
+            help: Los espectadores de este conjunto administrativo pueden ver los trabajos en el conjunto independientemente de la configuración de visibilidad aplicada a la obra. Por ejemplo, los espectadores pueden ver obras en este conjunto incluso si las obras están actualmente embargadas o restringidas.
+        form_visibility:
+          page_description: Las opciones de liberación y visibilidad controlan cuándo y quiénes pueden descubrir y descargar los trabajos añadidos a este conjunto.
+          release:
+            description: Puede imponer un retraso (embargo) antes de que los trabajos de este conjunto administrativo se liberen para su descubrimiento y descarga.
+            fixed: Fijo -- retrasar la liberación de todos los trabajos hasta
+            no_delay: Sin demora -- liberar todas los trabajos tan pronto como se depositen
+            varies:
+              description: 'Varía -- los depositantes pueden fijar la fecha de lanzamiento para un trabajo individual:'
+          visibility:
+            description: 'Después de su fecha de lanzamiento, los trabajos de este conjunto pueden ser descubiertos y descargados por:'
+            everyone: Todos -- todos los trabajos de este conjunto serán públicos.
+            institution: Institución -- todos los trabajos serán visibles sólo para los usuarios autenticados de esta institución
+            restricted: Restringido -- todos los trabajos serán visibles sólo para los administradores y gestores de repositorios y los revisores de este conjunto administrativo
+        form_workflow:
+          no_workflows: No hay flujos de trabajo que seleccionar.
+          page_description: Cada conjunto administrativo tiene un flujo de trabajo asociado con él. Este flujo de trabajo se aplica a todos los trabajos agregados al conjunto administrativo. Seleccione el flujo de trabajo que se utilizará para este conjunto de administración a continuación.
+        show:
+          item_list_header: Trabajos en este conjunto
+      analytics:
+        collection_reports:
+          custom_range:
+            collection_home_page_views: Vistas de la página de inicio de la colección
+            date_range_heading: Personalizar intervalo de fechas
+            summary_heading: Resumen de la actividad del usuario
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          index:
+            activity: Actividad
+            and: y
+            custom_range: Rango personalizado
+            date_range_heading: Personalizar informe
+            downloads: descargas
+            enable_analytics: Habilitar Analytics para ver informes
+            export: Exportar
+            monthly: Mensual
+            repo_summary: El repositorio contiene
+            repo_summary_2: que colectivamente han tenido
+            report_generated_on: Este informe se generó el
+            report_header: Informe de cobros personalizados
+            summary: Resumen
+            title: Informe de colecciones
+            views: visitas a la página
+          monthly_summary:
+            collection_views: Vistas de la página de inicio de la colección
+            monthly_subtitle: Estado mes a mes durante los últimos 12 meses hasta
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          show:
+            collection_type: Tipo de colección
+            created_by: Creado por
+            custom_range: Rango personalizado
+            last_updated: Ultima actualización en
+            monthly: Mensual
+            return_to_btn: Volver al informe de cobros
+            summary: Resumen
+            title: Informe de cobranza
+            view_collection_btn: Ver colección
+            visibility: Visibilidad
+          summary:
+            all_time: Todo el tiempo
+            collection_home_page_views: Vistas de la página de inicio de la colección
+            date_range: Rango de fechas
+            subtitle: Resumen de la actividad del usuario
+            this_month: Este mes
+            this_week: Esta semana
+            this_year: Este año
+            today: Hoy dia
+            work_downloads: Descargas de obras
+            work_views: Vistas de obras
+          top_collections:
+            collection_page_views: Vistas de la página de la colección
+            collection_title: Título de la colección
+            deleted: Colección eliminada
+            export: Exportar
+            file_downloads_in_collection: Descargas de conjuntos de archivos en esta colección
+            top_collections: Colecciones principales
+            works_in_collection_views: Obras en esta colección Vistas
+        date_range_form:
+          date_range_heading: Personalizar intervalo de fechas
+          end_date: Fecha final
+          reset_date_range: Restablecer rango de fechas
+          set_date_range: Establecer intervalo de fechas del informe
+          start_date: Fecha de inicio
+        work_reports:
+          custom_range:
+            date_range_heading: Personalizar intervalo de fechas
+            file_downloads: Descargas de archivos
+            page_views: Vistas de página
+            summary_heading: Resumen de la actividad del usuario
+            unique_visitors: Visitantes únicos
+          index:
+            access_to: Tienes acceso a
+            activity: Actividad
+            and: y
+            custom_range: Rango personalizado
+            date_range_heading: Personalizar informe
+            downloads: descargas
+            enable_analytics: Habilitar Analytics para ver informes
+            export: Exportar
+            monthly: Mensual
+            repo_summary: en este repositorio que colectivamente han tenido
+            report_generated_on: Este informe se generó el
+            report_header: Informe de obras personalizados
+            subtitle: Resumen de la actividad del usuario
+            summary: Resumen
+            title: Informe de obras
+            views: puntos de vista
+            works: obras
+          monthly_summary:
+            file_downloads: Descargas de archivos
+            monthly_subtitle: Estado mes a mes durante los últimos 12 meses hasta
+            page_views: Vistas de página
+          show:
+            custom_range: Rango personalizado
+            deposited_by: Depositado por
+            monthly: Mensual
+            resource_type: Tipo de recurso
+            return_to_btn: Volver al informe de obras
+            status: Estado
+            summary: Resumen
+            title: Reporte de obra
+            view_work_btn: Ver obra
+            visibility: Visibilidad
+            work_type: Tipo de obra
+          summary:
+            all_time: Todo el tiempo
+            date_range: Rango de fechas
+            file_downloads: Descargas de archivos
+            page_views: Vistas de página
+            subtitle: Resumen de la actividad del usuario
+            this_month: Este mes
+            this_week: Esta semana
+            this_year: Este año
+            today: Hoy dia
+            unique_visitors: Visitantes únicos
+          top_file_set_downloads:
+            file: Expediente
+            file_downloads: Descargas de archivos
+            file_name: Nombre del archivo
+            top_downloads: Descargas de archivos principales
+          top_works:
+            export: Exportar
+            file_downloads: Descargas de archivos
+            top_works: Obras Top
+            work_title: Título de obra
+            work_views: Vistas de la página de obra
+          work_counts:
+            child_works: el niño trabaja
+            files: archivos
+            total_size: tamaño total
+          work_files:
+            title: Archivos
+            total_downloads: Descargas totales
+      appearances:
+        header_background: Color de fondo de la cabecera
+        header_text: Color del texto de la cabecera
+        link_color: Color del link
+        footer_link: Color del link del pie de página
+        primary_button_background: Color de fondo del botón primario
+      collection_types:
+        in_this_repository: en este repositorio
+        collection_type: Tipo(s) de es
+        submit: Confirmar
+        apply_to_new_works: APLICAR A NUEVOS OBRASS
+        search_for_a_group: Buscar un grupo...
+        search_for_a_user: Buscar un usuario...
+        as: como
+        select_a_role: Seleccione un Rol...
+        Manager: Manejador
+        Creator: Creador
+        Group: Grupal
+      features:
+        feature: Características
+        enabled: Habilitado
+        disabled: Deshabilitado
+        onn: encendido
+        offf: apagado
+        Proxy_deposit: Depósito de poder
+        Transfer_works: Transferencia de obras
+        Analytics_redesign: Rediseño de análisis
+        Cache_work_iiif_manifest: Caché obra IIIF manifiesto
+        Assign_admin_set: Asignar conjunto de administración
+        Show_deposit_agreement: Mostrar acuerdo de depósito
+        Active_deposit_agreement_acceptance: Aceptación del acuerdo de depósito activo
+        Batch_upload: Carga por lotes
+        Analitycs_redesign: Rediseño de Analíticas
+        Hide_private_items: Ocultar ítems privados
+        Hide_users_list: Ocultar lista de usuarios
+        Depositors_may_designate_proxies: Los depositantes pueden designar apoderados para depositar obras en su nombre
+        Depositors_may_transfer_their: Los depositantes pueden transferir sus obras a otro usuario
+        Ability_to_assign_uploaded: Posibilidad de asignar elementos cargados a un conjunto de administradores
+        Show_a_deposit_agreement: Muestra un acuerdo de depósito a los usuarios que crean obras.
+        Require_an_active_acceptance: Exija una aceptación activa del acuerdo de depósito marcando una casilla de verificación
+        Enable_uploading_batches_of: Habilita el cargado por lotes de obras
+        Display_new_reporting_features: Muestra nuevas funciones de informes. * Muy experimental *
+        Do_not_show_the: No muestra los ítems privados
+        Do_not_show_users: No muestra la lista de usuarios a menos que el usuario se haya autenticado
+        Use: Usar Rails.cache para almacenar en caché el documento JSON para los manifiestos IIIF
+      imports:
+        new_import: Nueva Importación
+        history: Historial
+      sidebar:
+        validation_csv: Validación CSV
+        validate_csv: Validá tu CSV
+        imports: Importaciones
+        new_import: Nueva Importación
+        history: Historial
+        collections_report: Informe de colecciones
+      validations:
+        save_and_notificate: Guardar y Notificar
+        view_options: Ver opciones
+        are_you_sure: Estás seguro de eliminar este archivo?
+        user: Usuario
+        original_name: Nombre original
+        new_name: Nuevo nombre
+        type_work: Tipo de obra
+        path_file_csv: Ruta del archivo CSV
+        created_at: Fecha de creación
+        show_already_validated_csv_files: Mostrar archivos CSV ya validados
+        check_your_file: Este módulo validará su achivo CSV antes de su importación.
+        choose_options: Escoge el tipo de obra.
+        article: Artículo
+        thesis: Tesis
+        book: Libro
+        video: Video
+        book_chapter: Capítulo de libro
+        music: Música
+        map: Mapa
+        database: Base de Datos
+        photography: Fotografía
+        jurisprudential_thesis: Tesis Jurisprudencial
+        fact: Hecho
+        archival_document: Documento Archivístico
+        request: Solicitud
+        judgment: Sentencia
+        recomendation: Recomendación
+        resolution: Resolución
+        amparo: Amparo
+        press_release: Nota de Prensa
+        presentation: Ponencia
+        legal_case: Caso
+        journal: Revista
+        legislation: Legislación
+      workflow_roles:
+        user: Usuario
+        workflow_role: Rol del flujo de obra
+    ####
+    base:
+      citations:
+        button: Citar obra
+        header: "Exportar cita"
+        mendeley: "La exportación a Mendeley se admite a través de metadatos incrustados. Si mendeley no recoge automáticamente los metadatos de los archivos depositados, por favor reportar el problema a través de "
+        mendeley_title: Exportar a Mendeley
+        quote: "Forma de citar (APA):"
+      social_media:
+        link: copiado en portapapeles
+      to_create_a_separate: Para crear una obra separado para cada uno de los archivos, vaya a
+      #metadatos de la vista _form_permission.html.erb app/views/hyrax/base/
+      who_should: Quién debe ser capaz para ver o descargar este contenido?
+      ##metadatos de la vista file_manager.html.erb
+      back_to: Regresar a
+      toolbar: Barra de Herramientas
+      save: Guardar
+      sort_alphabetically: Ordenar alfabéticamente
+      thumbnail: Miniatura
+      representative_media: Media Representativo
+      add_this: Agrega esto
+      add_this_group: Agrega este grupo
+      #metadata from view _form_progress
+      saving_your_work: Guardando tú obra. Esto puede tardar un poco.
+      #metadatos de la vista _form_visibility_component.html.er
+      visibility: Visibilidad
+      #metadatos para la vista _form_member_of_collections.html.erb
+      add: Añadir
+      #metadatos de la vista de form_child_work
+      find_child_work: Busque una obra ...
+      #Metadatos para la vista _form_files
+      add_files: Agregar Archivos ...
+      add_folder: Agregar Carpeta ...
+      cancel_upload: Cancela Carga
+      #metadatos para la vista _form_share
+      save_note_html: Los permisos <strong>no se</strong> guardan hasta que se presiona el botón "Guardar" en la parte inferior de la página.
+      give_note_html: Usa el botón de añadir para dar acceso a un usuario a la vez (Se agregará a la lista a continuación). Seleciona el usuario, por nombre o usuario. Después selecciona el nivel de acceso que tu deseas otorgar y da click en añadir este usuario para completar los permisos agregados.
+      access_type: Tipo de acceso a otorgar
+      this_group: este grupo
+      this: este
+      select_a_group: Seleccione un grupo
+      search_for_a_user: Buscar un usuario
+      show_actions:
+        analytics: Analíticas
+        attach_child: Adjuntar obra
+        confirm_delete: Eliminar este %{work_type} ?
+        delete: Eliminar
+        edit: Editar
+        feature: Características
+        unfeature: Sin Características
+      show:
+        #metadatos de la vista _show_actions.html.erb
+        has_creator: Creador
+        unfeature: Sin Características
+        edit: Editar
+        delete: Borrar
+        attach_child: Adjuntar obra
+        attach_child_Thesis: Adjuntar Tesis
+        attach_child_Article: Adjuntar Artículo
+        attach_child_Book: Adjuntar Libro
+        attach_child_Video: Adjuntar Video
+        attach_child_Book_Chapter: Adjuntar Capítulo de libro
+        collection: Colección
+        delete_this_Thesis: Borrar esta Tesis
+        delete_this_Article: Borrar este Artículo
+        delete_this_Book: Borrar este Libro
+        delete_this_Video: Borrar este Video
+        delete_this_Book_Chapter: Borrar este Capítulo de libro
+        all_fields: Todos los campos
+        alternate_title: Título alterno
+        analitycs: Analíticas
+        mode_of_issuance: Modo de publicación
+        work_type_Article: Artículo
+        work_type_Thesis: Tesis
+        work_type_Book: Libro
+        work_type_Book_Chapter: Capítulo de Libro
+        work_type_Music: Música
+        work_type_Map: Mapa
+        work_type_Data_Base: Base de Datos
+        work_type_Photography: Fotografía
+        work_type_Jurisprudential_Thesis: Tesis Jurisprudencial
+        work_type_Video: Vídeo
+        work_type_Fact: Hecho
+        work_type_Database: Base de datos
+        work_type_Archival_Document: Documento Archivístico
+        work_type_Request: Solicitud
+        work_type_Judgment: Sentencia
+        work_type_Recomendation: Recomendación
+        work_type_Resolution: Resolución
+        work_type_Amparo: Amparo
+        work_type_Press_Release: Nota de Prensa
+        work_type_Presentation: Ponencia
+        work_type_Legal_case: Caso
+        work_type_Journal: Revista
+        work_type_Legislation: Legislación
+        last_modified: Última modificación
+        creator: Autor
+        contributor: Colaborador
+        thematic_collection: Coleción Temática
+        description: Resumen
+        subject: Tema
+        language: Idioma
+        identifier: Identificador
+        keyword: Palabras clave
+        date_created: Año
+        location: Ubicación
+        related_url: URL
+        resource_type: Tipo de documento
+        reviewer: Lector/Revisor
+        source: Fuente
+        rights_statement: Declaración de derechos
+        license: Licencia
+        other_title: Otro título
+        subject_work: Tema obra
+        subject_person: Tema persona
+        subject_family: Tema familia
+        subject_corporate: Tema organismo
+        geographic_coverage: Cobertura geográfica
+        temporary_coverage: Cobertura temporal
+        gender_or_form: Género o forma
+        notes: Notas
+        note_of_timespan: Nota del hecho criminal
+        center: Centro
+        numbering_of_part: Número de la parte
+        related_work_of_work: Documento relacionado
+        classification: Clasificación de la biblioteca
+        supplementary_content_or_bibliography: Bibliografía
+        responsibility_statement: Declaración de responsabilidad
+        other_related_persons: Otras personas relacionadas
+        summary: Resumen
+        themes: Temas
+        title: Título
+        table_of_contents: Contenido
+        type_of_illustrations: Tipo de ilustraciones
+        editor: Editor
+        publisher: Editorial
+        organizer: Organizador
+        compiler: Compilador
+        organizer: Organizador
+        commentator: Reseñista/Comentarista
+        narrator: Narrador
+        writer_of_suplementary_textual_content: Prologuista
+        translator: Traductor
+        interviewer: Entrevistado
+        interviewee: Entrevistador
+        draftsman: Dibujante
+        photographer: Fotógrafo
+        collective_title: Título colectivo
+        part_of_place: Ciudad/Municipio/Localidad
+        provenance: Procedencia
+        curator_collective_agent_of: Entidad que aporta el recurso
+        project: Proyecto
+        owner_agent_of: Propietario
+        custodian_agent_of: Custodio
+        depository_agent: Agente depositario
+        contained_in: "Incluido en:"
+        database: Base de Datos
+        depository_collective_agent_of: Organismo depositante
+        depositor_agent: Persona depositante
+        organizer_collective_agent: Autor congreso o reunión
+        place_of_publication: Lugar de publicación
+        beginning: Inicio del hecho
+        ending: Fin del hecho
+        has_field_activity_of_agent: Función
+        is_facsimile_of_manifestation_of: Facsímil de
+        date_of_manifestation: Fecha
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada
+        complainant: Quejoso (víctima y ofendido)
+        contestee: Representante legal, defensor, etc.
+        witness: Testigo
+        is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
+        is_criminal_defendant_person_of: Persona acusada o demandada
+        has_identifier_for_item: Número de expediente o caso
+        collector_collective_agent: Repositorio
+        subject_uniform_title: Título uniforme u original
+        has_system_of_organization: Colección
+        is_subcollection_of: Subcolección temática
+        corporate_body: Autor corporativo
+        based_near_label: Ubicación
+      relationships_parent_row:
+        label: "En %{type}:"
+        Collection: Colección
+    collections:
+      show:
+        last_updated: "Ultima Actualización"
+        refresh: Recargar
+        number_of_results: Número de resultados por página
+        results_per_page: Resultados por página
+        sort: <span>Ordenar por:</span>
+    contact_form:
+      notice: Por favor utilice este formulario para enviar preguntas, reportar problemas, solicitar ayuda o enviar comentarios sobre el sistema.
+      name_label: Nombre
+      subject_label: Asunto
+      email_label: Correo Electrónico
+      thanks: Gracias por su mensaje
+    content_blocks:
+      announcement: Anuncio
+      marketing: Márketing
+      researcher: Investigador
+    dashboard:
+      past_30_days: Últimos 30 dias
+      current: Actual
+      profiles:
+        please_login_again: Por favor inicia sesión con tu nueva contraseña
+        your_profile_has_been_updated: Tu perfil ha sido actualizado
+        change_picture: Cambiar fotografía
+        less_than: menor que
+        delete_picture: Borrar fotografía
+        if_you_would_like: Si desea eliminar su imagen por completo, marque la casilla y guarde su perfil.
+        first_name: Primer nombre
+        paternal_surname: Apellido paterno
+        maternal_surname: Apellido materno
+        phone: Celular
+        save_profile: Guardar Perfil
+        save_password: Cambiar contraseña
+      stats:
+        file_views: Vistas
+        file_downloads: Descargas
+        statistics_by_date: Estadísticas por fecha
+        statistics_in_this_section: Las estadísticas de esta sección se filtran por las fechas ingresadas en el formulario a continuación.
+                                    Los datos no se filtran a menos que se haya completado el formulario de fecha. Se requiere la fecha de inicio y el final predeterminado es ahora.
+        start_*: Empieza *
+        end_[]: Finalizar [Predeterminado ahora]
+        load_stats: Cargar Estadísticas
+        unfiltered: sin filtrar
+        newest_users: Nuevos Usuarios
+        most_recent_users: "Usuarios recientes:"
+        of: de
+        registered: registrado
+        deposits_by_users: Depositados por los usuarios
+        deposited: depositó
+        file: Archivo(s)
+        top_file: Principales formatos de archivo y usuarios
+        statistics_in_this_section_shows: 'Las Estadísticas de esta sección muestra los principales '
+        items_for: ítems para cada categoría
+        view_top: Ver los principales
+        top_file_formats: Principales formatos de archivo (Principales
+        most_active_users: Usuarios más activos (Top
+      works:
+        deposited: Depositado
+      workflows:
+        work: Obra
+        depositor: Creador
+        submission_date: Dia de Entrega
+        status: Estado
+        deposited: depositado
+    directory:
+      suffix: "@example.org"
+    embargoes:
+      desactivated: Embargos Desactivados
+    file_set:
+      show:
+        downloadable_content:
+          download: Descargar recurso
+      file_details: Detalles de archivo
+      #metadatos de show_characterization_details
+      file_size: Tamaño de archivo
+      file_title: Titulo del archivo
+      width: Ancho
+      height: Altura
+      file_format: Formato de Archivo
+      page_count: Recuento de páginas
+      original_checksum: Verificación de suma original
+      mime_type: Tipo de Mímica
+      #metadatos de la vista de show_actions en filesets
+      edit_this: Editar este
+      delete_this: Eliminar este
+      #
+      depositor: Creador
+      date_uploaded: Fecha de Subida
+      date_modified: Fecha Modifición
+      fixity_check: Controles de Fijeza
+      characterization: Caracterización
+      not_yet_characterized: Aun no caracterizado
+    homepage:
+      center_economic_studies: Centro de Estudios Económicos
+      center_linguistic_and_literary_studies: Centro de Estudios Lingüísticos y Literarios
+      center_for_asian_and_african_studies: Centro de Estudios de Asia y África
+      center_for_demographic_urban_and_environmental_studies: Centro de Estudios Demográficos, Urbanos y Ambientales
+      center_historical_studies: Centro de Estudios Históricos
+      center_international_studies: Centro de Estudios Internacionales
+      center_sociological_studies: Centro de Estudios Sociológicos
+      library: Biblioteca Daniel Cosío Villegas
+      work_type: Tipos de Obra
+      visibility: Materiales en acceso abierto
+      center: Obras por Centro de Estudios
+    leases:
+      desactivated: Arrendamientos Desactivados
+    my:
+        action:
+          add_to_collection: Añadir a la colección
+          add_to_collection_only: Las acciones permitidas están limitadas a agregar miembros
+          admin_set_confirmation: La eliminación de un conjunto de administración de %{application_name} es permanente. Haga clic en Aceptar para eliminar este conjunto de administrador de %{application_name}, o en Cancelar para cancelar esta operación
+          collection_create_success: La colección fue creada con éxito.
+          collection_delete_fail: Colección no se pudo eliminar
+          collection_delete_success: Colección fue eliminada exitosamente
+          collection_deny_add_members: No tiene suficientes privilegios para agregar miembros a la colección
+          collection_update_success: La colección fue actualizada con éxito.
+          collections_confirmation_html: Eliminar <span class='pluralized'>esta colección</span> eliminará permanentemente <span class='pluralized'>esta colección</span> del repositorio. Los elementos de <span class='pluralized'>esta colección</span> permanecerán en el repositorio. ¿Seguro que quieres eliminar <span class='pluralized'>esta colección</span> ?
+          collections_confirmation_no_items_html: "¿Seguro que quieres eliminar esta colección? Esta acción no se puede deshacer."
+          collections_confirmation_plural: estas colecciones
+          collections_confirmation_singular: esta colección
+          delete_admin_set: Eliminar colección
+          delete_admin_set_deny: Esta colección se define como Admin Set y no está vacía. Para eliminar este conjunto de administración, primero debe eliminar (eliminar o mover a otra colección del conjunto de administración) todos los elementos del conjunto de administración.
+          delete_collection: Borrar colección
+          delete_collection_deny: No tiene suficientes privilegios para eliminar este documento.
+          delete_collections: Eliminar colecciones
+          delete_collections_deny: Debe seleccionar una o más colecciones para eliminar.
+          delete_work: Borrar obra
+          edit_admin_set: Editar colección
+          edit_collection: Editar colección
+          edit_collection_deny: No tienes suficientes privilegios para editar esta colección.
+          edit_selected: Editar Seleccionado
+          edit_work: Editar obra
+          highlight: Resalte obra en perfil
+          members_no_access: No tiene suficientes privilegios para ninguno de los miembros seleccionados
+          nesting_not_allowed: Las colecciones de este tipo no son compatibles con la anidación.
+          nesting_permission_denied: No tiene suficientes privilegios para agregar esta colección a otra colección.
+          select: Seleccionar
+          select_all: Seleccionar la página actual
+          select_none: Seleccionar ninguno
+          transfer: Cambiar el propietario del obra
+          unhighlight: Retire resalte del obra
+          view_admin_set: Ver colección
+          view_collection: Ver colección
+          work_confirmation: El borrado de un obra de %{application_name} es permanente. Presione OK para borrar este obra de %{application_name}, o Cancelar para cancelar esta operación
+        collection_list:
+          description: 'Descripción:'
+          edit_access: 'Editar Acceso:'
+          groups: 'Grupos:'
+          managed_access:
+            deposit: Depositar
+            manage: Gestionar
+            view: Ver
+          users: 'Usuarios:'
+        collections: Mis Colecciones
+        facet_label:
+          collections: 'Filtrar colecciones:'
+          highlighted: 'Filtrar aspectos destacados:'
+          shared: 'Filtrar archivos compartidos:'
+          works: 'Filtrar obras:'
+        heading:
+          access: Acceso
+          action: Acciones
+          caption: Lista de artículos en esta colección
+          collection:
+            visibility: Visibilidad de la colección
+          collection_type: Tipo de colección
+          date_modified: Última modificación
+          date_uploaded: Fecha añadida
+          highlighted: Destacado
+          items: Artículos
+          last_modified: Última modificación
+          title: Título
+          type: Tipo
+          visibility: Visibilidad
+          work:
+            visibility: Visibilidad del obra
+        highlighted: Mis aspectos destacados
+        shared: Obras compartidos conmigo
+        sr:
+          batch_checkbox: Marque para agregar a una colección o editar la lista
+          check_all_label: Seleccione todos los archivos a ser editados o agregados a una colección
+          detail_label: Ver el resumen de
+          listing: Enlistar los items que has depositado
+          number_of_results_to_display_per_page: Número de resultados a mostrar por página
+          press_to: Presionar para
+          results_per_page: Número de resultados para mostrar por página
+          show_label: Ver todos los detalles de
+          thumbnail: miniatura
+        works: Mis Obras
+        works_report: Informe de obras
+        your_collections: Tus colecciones
+        your_works: Tus obras
+    notifications:
+      delete_all: Borrar todo
+      delete_all_user_notifications: Borrar todas las notificaciones del Usuario
+      Passing_batch_create: Pasando creación de lotes
+      The_batch_create_for: El lote creado por
+      passed: pasó.
+    pages:
+      about: Acerca de
+      help: Ayuda
+      agreement: Acuerdo
+      terms: Términos
+    permissions:
+      apply_changes_to_contents: Aplicar los cambios al contenido?
+    records:
+      edit_fields:
+        search_for_a_location: Buscar una ubicación
+    stats:
+      file_analytics: Análisis de archivo
+      views_and: vistas y
+      downloads_since:  Descargas desde
+      January: Enero
+      February: Febrero
+      March: Marzo
+      April: Abril
+      May: Mayo
+      June: Junio
+      July: Julio
+      August: Agosto
+      September: Septiembre
+      October: Octubre
+      November: Noviembre
+      December: Diciembre
+    users:
+      search_users: Busca usuarios...
+      go: Buscar
+      users: Usuarios
+      user_name: Nombre de Usuario
+      user_id: Id de Usuario
+      works_created: Obras creadas
+      user_activity: Actividad de Usuario
+      website: Sitios de internet
+      title: Título
+      administrative_area: Área de administración
+      department: Departamento
+      office: Oficina
+      address: Dirección
+      affiliation: Afiliación
+      telephone: Teléfono
+      joined_on: Se unió en
+      view_users: Ver Usuarios
+      has_no_highlighted_works: no tiene obras destacadas.
+      recently_uploaded:
+        tab_label: Añadidos recientemente #Integrados recientemente
+        title: Nuevos Documentos #Integrados recientemente
+        creator: Añadidos recientemente
+    footer:
+      copyright_html: "Salvo cuando se indique lo contrario, todo el contenido está sujeto a:<br> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'>Licencia Internacional de Creative Commons Atribución-NoComercial-SinDerivadas 4.0</a>"
+      service_html: Un servicio de la <a href="https://biblioteca.colmex.mx/" class="navbar-link" target="_blank">Biblioteca Daniel Cosío Villegas - El Colegio de México</a>.
+    institution_name: institución
+    institution_name_full: El nombre de la institución
+    product_name: "Colecciones Digitales de El Colegio de México"
+    product_name_html: "Colecciones Digitales de <br> El Colegio de México"
+    product_name_movil: "Colecciones Digitales de El Colegio de México"
+    product_twitter_handle: "@BiblioColmex"
+    search:
+      button:
+        html: <span class="glyphicon glyphicon-search"></span>
+      form:
+        q:
+          label_alt: "Buscar: "
+    stopwords:
+      and: "y"
+      or: "o"
+      not: "no"
+    toolbar:
+      language_code: ES
+      profile: 
+        login: Administrador
+  simple_form:
+    labels:
+      defaults: #Aquí va la traducción de los metadatos de la paǵina de crear una obra de tipo XXXXX
+        date_created: Fecha de creación
+        alternate_title: Título Alternativo
+        other_title: Otro Título
+        creator: Autor
+        has_creator: Creador
+        contributor: Colaborador
+        subject: Tema
+        subject_work: Tema obra
+        subject_person: Tema persona
+        subject_family: Tema familia
+        subject_corporate: Tema organismo
+        publisher: Editorial
+        language: Idioma
+        reviewer: Lector/Revisor
+        identifier: Identificador
+        resource_type: Tipo de Documento
+        geographic_coverage: Cobertura geográfica
+        temporary_coverage: Cobertura temporal
+        gender_or_form: Género o forma
+        notes: Notas
+        classification: Clasificación de la biblioteca
+        supplementary_content_or_bibliography: Bibliografía
+        bibliographic_citation: Citas Blibliográficas
+        responsibility_statement: Declaración de responsabilidad
+        other_related_persons: Otras personas relacionadas
+        system_requirements: Requerimientos de sistema
+        item_access_restrictions: Restricciones de acceso al artículo
+        table_of_contents: Contenido
+        edition: Edición
+        dimensions: Dimensión
+        extension: Extensión
+        item_use_restrictions: Restricciones de uso del artículo
+        encoding_format_details: Detalles del formato de codificación
+        type_of_content: Tipo de contenido
+        editor: Editor
+        organizer: Organizador
+        compiler: Compilador
+        organizer: Organizador
+        commentator: Reseñista/Comentarista
+        translator: Traductor
+        digital_resource_generation_information: Información de generación de recursos digitales
+        interviewer: Entrevistado
+        interviewee: Entrevistador
+        photographer: Fotógrafo
+        narrator: Narador
+        collective_title: Título colectivo
+        part_of_place: Ciudad/Municipio/Localidad
+        provenance: Procedencia
+        curator_collective_agent_of: Entidad que aporta el recurso
+        project: Proyecto
+        owner_agent_of: Propietario
+        custodian_agent_of: Custodio
+        file_type_details: Detalles del tipo de archivo
+        depository_collective_agent_of: Organismo depositante
+        depository_agent: Agente depositario
+        type_of_illustrations: Tipo de ilustraciones
+        center: Centro
+        mode_of_issuance: Modo de publicación
+        source: Fuente
+        period: Periodo
+        part: Parte
+        volume: Volumen
+        number: Número
+        contained_in: "Incluido en:"
+        database: Base de Datos
+        subject_conacyt: Persona del CONACYT        
+        corporate_body: Autor corporativo
+        collective_agent: Autor congreso
+        organizer_author: Coordinador / Organizador
+        place_of_publication: Lugar de publicación
+        title_of_series: Serie
+        numbering_within_sequence: Volumen/número
+        is_part_or_work: Es parte o obra
+        awards: Premios
+        academic_degree: Título Académico
+        type_of_thesis: Tipo de Tesis
+        degree_program: Programa de Estudios
+        institution: Institución
+        date_of_presentation_of_the_thesis: Fecha de presentación de la Tesis
+        creator_conacyt: Creador CONACYT
+        pub_conacyt: Pub CONACYT
+        contributor_conacyt: Colaborador CONACYT
+        type_conacyt: Tipo CONACYT
+        video_format: Formato del video
+        video_characteristic: Características del video
+        note_on_statement_of_responsibility: Nota sobre declaración de responsabilidad
+        is_lyricist_person_of: Autor de la letra
+        is_composer_person_of: Compositor
+        researcher_agent_of: Investigador
+        summary_of_work: Resumen del proyecto
+        nature_of_content: Naturaleza del contenido
+        guide_to_work: Protocolo o guia
+        analysis_of_work: Análisis
+        complemented_by_work: Documentos complementarios
+        production_method: Medio de producción
+        scale: Escala
+        longitud_and_latitud: Coordenadas
+        digital_representation_of_cartographic_content: Datos geoespaciales
+        related_place_of_timespan: Lugar del hecho criminal
+        note_of_timespan: Nota del hecho criminal
+        photographer_corporate_body_of_work: Agencia fotográfica
+        dimensions_of_still_image: Dimensiones de la fotografía
+        period_of_activity_of_corporate_body: Epoca
+        speaker_agent_of: Conferencista/ponente
+        assistant: Secretario
+        preceded_by_work: Precedentes
+        writer_of_suplementary_textual_content: Prologuista
+        organizer_collective_agent: Autor congreso o reunión
+        beginning: Inicio del hecho
+        ending: Fin del hecho
+        has_field_activity_of_agent: Función
+        is_facsimile_of_manifestation_of: Facsímil de
+        date_of_manifestation: Fecha
+        primary_topic: Materia
+        enacting_juridiction_of: Instancia emisora, pleno o sala
+        hierarchical_superior: Instancia superior
+        hierarchical_inferior: Instancia subordinada
+        subject_timespan: Tema del hecho criminal
+        identifier_of_work: Identificador específico
+        is_title_of_item_of: Asunto
+        timespan_described_in: Descripción de hechos
+        related_person_of: Persona relacionada o tercero interesado
+        related_corporate_body_of_timespan: Organización relacionada
+        related_family_timespan: Familia relacionada
+        complainant: Quejoso (víctima y ofendido)
+        contestee: Representante legal, defensor, etc.
+        witness: Testigo
+        is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
+        is_criminal_defendant_person_of: Persona acusada o demandada
+        has_identifier_for_item: Número de expediente o caso
+        is_finding_aid_for: Instrumento de descripción archivística
+        collector_collective_agent: Repositorio
+        subject_uniform_title: Título uniforme u original
+        thematic_collection: Colección Temática
+        numbering_of_part: Número de la parte
+        related_work_of_work: Documento relacionado
+        has_system_of_organization: Colección
+        is_subcollection_of: Subcolección temática
+        draftsman: Dibujante
+  

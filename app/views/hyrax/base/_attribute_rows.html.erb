@@ -45,7 +45,7 @@
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>  
 
-
+<%= presenter.attribute_to_html(:researcher_agent_of, label: t('hyrax.base.show.researcher_agent_of'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:thematic_collection, label: t('hyrax.base.show.thematic_collection'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contained_in, label: t('hyrax.base.show.contained_in'), html_dl: true) %>

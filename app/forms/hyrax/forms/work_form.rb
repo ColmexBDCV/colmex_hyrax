@@ -34,7 +34,7 @@ module Hyrax
                     :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,  
                     :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
                     :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending, 
-                    :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation,
+                    :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation, :researcher_agent_of,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease, :collector_collective_agent,
                     :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
                     :manifestation_access_restrictions, :manifestation_use_restrictions,

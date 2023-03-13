@@ -74,7 +74,8 @@ module Hyrax
       property :digital_resource_generation_information, predicate: ::Vocab::RDAM.detailsOfGenerationOfDigitalResource, multiple: true
       property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
       property :collector_collective_agent, predicate: ::Vocab::RDAM.collectorCollectiveAgent, multiple: true
-
+      property :researcher_agent_of, predicate: ::Vocab::RDAA.researcher_agent_of, multiple: true
+      
       property :has_system_of_organization, predicate: ::Vocab::RDAW.hasSystemOfOrganization, multiple: true
       property :is_subcollection_of, predicate: ::Vocab::RDAU.isSubCollection, multiple: true
 
