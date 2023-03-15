@@ -8,6 +8,7 @@ module Vocab
     term :supplementaryContent
     term :languageOfTheContent
     term :summarizationOfTheContent
+    term :languagueOfExpresion
     term :illustrativeContent
     term :contentType
     term :noteOnExpression

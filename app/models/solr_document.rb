@@ -492,6 +492,10 @@ class SolrDocument
     self['subject_timespan_tesim']
   end
 
+  def language_of_expression
+    self['language_of_expression_tesim']
+  end
+
   def identifier_of_work
     self['identifier_of_work_tesim']
   end

@@ -59,6 +59,7 @@ module Hyrax
       property :table_of_contents, predicate: ::Vocab::RDAW.wholePartWorkRelationship, multiple: true
       property :type_of_content, predicate: ::Vocab::RDAU.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
+      property :language_of_expression, predicate: ::Vocab::RDAE.languagueOfExpresion, multiple: true
       property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true 
       property :organizer, predicate: ::Vocab::RDAA.isOrganizerAgentOf, multiple: true
       property :editor, predicate: ::Vocab::RDAA.isEditorPersonOfTextOf, multiple: true
