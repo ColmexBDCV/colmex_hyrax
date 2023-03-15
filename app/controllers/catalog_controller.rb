@@ -234,6 +234,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("organizer_author", :stored_searchable)
     config.add_index_field solr_name("copyright", :stored_searchable)
     config.add_index_field solr_name("title_of_series", :stored_searchable)
+    config.add_index_field solr_name("notes", :stored_searchable)
     config.add_index_field solr_name("numbering_within_sequence", :stored_searchable)
     config.add_index_field solr_name("video_format", :stored_searchable)
     config.add_index_field solr_name("video_characteristic", :stored_searchable)

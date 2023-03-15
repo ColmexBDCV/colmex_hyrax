@@ -337,7 +337,7 @@ class SolrDocument
   end
 
   def note_on_statement_of_responsibility
-    self['note_on_statement_of_responsibility']
+    self['note_on_statement_of_responsibility_tesim']
   end
   
   def interviewer

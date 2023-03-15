@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work Video`
 module Hyrax
   class VideoPresenter < Hyrax::WorkShowPresenter
-    delegate :video_format, :video_characteristic, :note_on_statement_of_responsibility,
+    delegate :video_format, :video_characteristic,
     to: :solr_document
     
     include Hyrax::SeriesPresenter

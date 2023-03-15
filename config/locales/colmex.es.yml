@@ -97,6 +97,7 @@ es:
           is_subcollection_of_sim: Subcolección temática
           draftsman_sim: Dibujante
           note_of_timespan_sim: Nota del hecho criminal
+          note_on_statement_of_responsibility_sim: Nota sobre declaración de responsabilidad
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -116,6 +117,7 @@ es:
           geographic_coverage_tesim: Cobertura geográfica
           handle_tesim: Handle
           identifier_tesim: Identificador
+          language_of_expression_tesim: Nota de idioma
           keyword_tesim: Palabra clave
           language_tesim: Idioma
           license_tesim: Licencia
@@ -198,6 +200,7 @@ es:
           has_system_of_organization_tesim: Colección
           is_subcollection_of_tesim: Subcolección temática
           draftsman_tesim: Dibujante
+          note_on_statement_of_responsibility_tesim: Nota sobre declaración de responsabilidad
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -742,6 +745,7 @@ es:
         organizer: Organizador
         compiler: Compilador
         organizer: Organizador
+        note_on_statement_of_responsibility: Nota sobre declaración de responsabilidad
         commentator: Reseñista/Comentarista
         narrator: Narrador
         writer_of_suplementary_textual_content: Prologuista
@@ -766,6 +770,7 @@ es:
         place_of_publication: Lugar de publicación
         beginning: Inicio del hecho
         ending: Fin del hecho
+        language_of_expression: Nota de idioma
         has_field_activity_of_agent: Función
         is_facsimile_of_manifestation_of: Facsímil de
         date_of_manifestation: Fecha
@@ -1208,4 +1213,5 @@ es:
         has_system_of_organization: Colección
         is_subcollection_of: Subcolección temática
         draftsman: Dibujante
+        language_of_expression: Nota de idioma
   

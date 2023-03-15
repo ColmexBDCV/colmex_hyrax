@@ -46,7 +46,7 @@ module Hyrax
              :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
              :type_of_content, :editor, :compiler, :commentator, :translator, :digital_resource_generation_information, :beginning,
              :interviewer, :interviewee, :draftsman, :organizer, :photographer, :collective_title, :part_of_place, :ending, :language_of_expression,
-             :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details,
+             :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :note_on_statement_of_responsibility,
              :depository_collective_agent_of, :depository_agent, :corporate_body, :collective_agent, :contained_in, :related_work_of_work,
              :numbering_of_part, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, :is_facsimile_of_manifestation_of,
              :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation, :researcher_agent_of,

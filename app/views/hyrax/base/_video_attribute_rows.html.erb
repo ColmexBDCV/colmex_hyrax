@@ -1,4 +1,4 @@
-<% [:video_format, :video_characteristic, :note_on_statement_of_responsibility].each do |a| %>
+<% [:video_format, :video_characteristic].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
 <% end %> 
 

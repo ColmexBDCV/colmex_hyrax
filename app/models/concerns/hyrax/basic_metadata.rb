@@ -114,7 +114,7 @@ module Hyrax
       property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
       property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
       property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true 
-     
+      property :note_on_statement_of_responsibility, predicate: ::Vocab::RDAM.noteOnStatementOfResposibility, multiple: true
       id_blank = proc { |attributes| attributes[:id].blank? }
       
       class_attribute :controlled_properties
