@@ -645,8 +645,8 @@ es:
         confirm_delete: Eliminar este %{work_type} ?
         delete: Eliminar
         edit: Editar
-        feature: Función
-        unfeature: Unfeature
+        feature: Destacar
+        unfeature: No destacar
       social_media:
         facebook: Facebook
         facebook_share: Compartir en Facebook
