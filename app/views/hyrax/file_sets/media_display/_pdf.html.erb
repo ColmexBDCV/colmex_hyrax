@@ -11,12 +11,18 @@
 
     </div>
     <script>
+
+      $('a.table_of_contents').on('click', function(e) {
+          e.preventDefault();
+      });
+
       function go_to_page(num) {
         document.getElementById("pdfIframe").contentWindow.PDFViewerApplication.page=num
       }
     </script>
-
+<% else %>
     <div>
+        
       <%= image_tag thumbnail_url(file_set),
                     class: "representative-media",
                     alt: "",
