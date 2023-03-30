@@ -7,7 +7,7 @@ class TableContentAttributeRenderer < Hyrax::Renderers::AttributeRenderer
     match = /\[(\d+)\]/.match(value)
     if match
       number = match[1].to_i
-      %(<a onclick="go_to_page(#{match[1]})">#{value.gsub(match[0], "")}</a>)
+      %(<a href="" onclick="go_to_page(#{match[1]})">#{value.gsub(match[0], "")}</a>)
     else
       value.gsub("--", "<br>")
     end
