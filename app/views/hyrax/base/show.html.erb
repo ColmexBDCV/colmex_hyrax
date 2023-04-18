@@ -15,7 +15,6 @@
         <div class="row">
           <%= render 'workflow_actions_widget', presenter: @presenter %>
           <% 
-            
             unless @presenter.representative_presenter.nil? then
               fs = FileSet.find(@presenter.representative_presenter.id).visibility
             end
@@ -91,6 +90,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="alert alert-info">
+      <span class="glyphicon glyphicon-signal large-icon"></span>
+        <%= t('total_view', count: @pageviews.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
+        <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
     </div>
   </div>
 </div>

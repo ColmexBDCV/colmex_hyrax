@@ -1840,4 +1840,4 @@ es:
       html: <span class="label label-info required-tag">obligatorio</span>
   total_view:
     one: Este obra tiene 1 vista total
-    other: Este obra tiene un total de %{count} visualizaciones
+    other: Este obra tiene un total de %{count} vistas
