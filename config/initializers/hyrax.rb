@@ -84,7 +84,7 @@ Hyrax.config do |config|
   #Config Analytics
   config.analytics = ActiveModel::Type::Boolean.new.cast(ENV.fetch('HYRAX_ANALYTICS', 'true'))
   config.analytics_provider = ENV.fetch('HYRAX_ANALYTICS_PROVIDER', 'google')
-
+  config.analytic_start_date = '2018-01-01'
   # Enables a link to the citations page for a work
   # Default is false
   config.citations = true
