@@ -91,11 +91,13 @@
         </div>
       </div>
     </div>
-    <div class="alert alert-info">
-      <span class="glyphicon glyphicon-signal large-icon"></span>
-        <%= t('total_view', count: @pageviews.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
-        <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
-    </div>
+    <% unless @pageviews.nil? || @downloads.nil? %>
+      <div class="alert alert-info">
+        <span class="glyphicon glyphicon-signal large-icon"></span>
+          <%= t('total_view', count: @pageviews.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
+          <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
+      </div>
+    <% end %>
   </div>
 </div>
 <% unless @presenter.representative_presenter.respond_to?('image?') && @presenter.representative_presenter.image? %>
