@@ -67,6 +67,44 @@ module ImporterService
         rights_statement_service.select_active_options.map { |e| e[1] }
     end
 
+    def get_resource_types
+        [
+            "Jurisprudencia",
+            "Trabajo de investigación",
+            "Juicio Oral",
+            "Decreto",
+            "Acción de inconstitucionalidad",
+            "Reglamento estatal",
+            "Ley federal",
+            "Convenio",
+            "Convocatoria Pública",
+            "Acuerdo",
+            "Base de datos",
+            "Bases",
+            "Laudo laboral",
+            "Reiteración",
+            "Tesis jurisprudenciales aisladas",
+            "Tesis Aislada",
+            "Trabajo de investigación de licenciatura",
+            "Documento archivístico",
+            "Nota de prensa",
+            "Libro",
+            "Artículo en revista COLMEX",
+            "Reseña en revista COLMEX",
+            "Artículo de revista",
+            "Tesis de Maestría",
+            "Tesis de Doctorado",
+            "Tesis de Licenciatura",
+            "Trabajo de investigación de Maestría",
+            "Tesis",
+            "Capítulo de libro",
+            "Reglamento municipal",
+            "Recomendaciones",
+            "Video",
+            "Documentos de acceso a la información"
+          ]
+    end
+
     def get_types_conacyt
         [   
             "info:eu-repo/semantics/article",
@@ -118,6 +156,7 @@ module ImporterService
 
         licenses = get_licenses
         rights = get_rights_statements
+        resource_types = get_resource_types
         types_conacyt = get_types_conacyt if repnal
         pub_conacyt = get_pub_conacyt if repnal
 
@@ -156,6 +195,7 @@ module ImporterService
             report["Los registros que se encuentran en las siguientes Filas tienen un identificador que ya existe en el sistema  (campo identifier)"] = (report["Filas que contienen un registro ya existente en el sistema (mismo identifier)"] || []) << [index + 2, [record.identifier]] if record.respond_to?("identifier") && wt.where(identifier: record.identifier).count > 0 
             report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] = (report["El campo based_near no esta expresado en el formato correcto (https://sws.geonames.org/<id>/)"] || []) << [index + 2, record.based_near] if record.respond_to?("based_near") && !check_based_near(record.based_near)
             report["Los registros de las siguientes filas carecen de la información en el campo license no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo license no corresponde con el vocabularo controlado"] || []) << [index + 2, record.license] if record.respond_to?("license") && (record.license & licenses).count == 0
+            report["Los registros de las siguientes filas carecen de la información en el campo resource_type no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo resource_type no corresponde con el vocabularo controlado"] || []) << [index + 2, record.resource_type] if record.respond_to?("resource_type") && (record.resource_type & resource_types).count == 0
             if repnal then
                 report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo license o este no se encuentra definido dentro del CSV"] || []) << index + 2 unless record.respond_to?("license")
                 report["El campo type_conacyt no corresponde con el vocabularo controlado"] = (report["Los registros de las siguientes filas carecen de la información en el campo type_conacyt no corresponde con el vocabularo controlado"] || []) << [index + 2, [record.type_conacyt]] if record.respond_to?("type_conacyt") && !types_conacyt.include?(record.type_conacyt)
