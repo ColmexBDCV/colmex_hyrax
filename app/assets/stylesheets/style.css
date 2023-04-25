@@ -645,3 +645,7 @@ mark{
 select.dropdown-toggle{
     text-align: left;
 }
+
+.resource-type{
+    height: 600px !important;
+}

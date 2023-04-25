@@ -184,7 +184,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_index_field solr_name("title", :stored_searchable), label: "Title", itemprop: 'name', if: false
     config.add_index_field solr_name("creator", :stored_searchable), itemprop: 'creator', link_to_search: solr_name("creator", :facetable)
-    config.add_index_field solr_name("has_creator", :stored_searchable), itemprop: 'creator', link_to_search: solr_name("creator", :facetable)
+    config.add_index_field solr_name("has_creator", :stored_searchable), itemprop: 'has_creator', link_to_search: solr_name("has_creator", :facetable)
     config.add_index_field solr_name("contributor", :stored_searchable), itemprop: 'contributor', link_to_search: solr_name("contributor", :facetable)
     config.add_index_field solr_name("description", :stored_searchable), itemprop: 'description', helper_method: :iconify_auto_link
     config.add_index_field solr_name("center", :stored_searchable), link_to_search: solr_name("center", :facetable)
