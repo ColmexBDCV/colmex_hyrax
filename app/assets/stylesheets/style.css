@@ -649,3 +649,10 @@ select.dropdown-toggle{
 .resource-type{
     height: 600px !important;
 }
+
+.text p {
+    background-color: #5D052B;
+    color: whitesmoke;
+    font-size: 30px;
+    text-align: center;
+}

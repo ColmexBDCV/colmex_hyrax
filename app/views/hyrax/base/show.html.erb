@@ -21,7 +21,7 @@
 
           %>
           <% if @presenter.representative_presenter.nil? || 
-                (fs == "restricted" && !user_signed_in?)|| 
+                # (fs == "restricted" && !user_signed_in?)|| 
                 @presenter.representative_presenter.office_document? || 
               !(@presenter.representative_presenter.video? || 
                 @presenter.representative_presenter.audio? || 
@@ -62,8 +62,19 @@
               <div class="col-sm-9 text-center">
                
                 <div class="col-sm-12">
-                  <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
-                  <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
+                  <% unless fs == "restricted" %>%
+                    <%= render 'representative_media', presenter: @presenter, viewer: true if @presenter.iiif_viewer? %>
+                    <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer?  %>
+                  <% else %>
+
+                    <div class="text">
+                      <p>El documento tiene acceso restringido, contacté biblio2@colmex.mx para obtener acceso.</p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                  <% end %>
                 </div>
                 <div class="col-sm-6">
                   <%= render 'citations', presenter: @presenter %>
