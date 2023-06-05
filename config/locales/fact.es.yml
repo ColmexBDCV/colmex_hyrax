@@ -4,10 +4,10 @@ es:
       fields:
           facet:
             related_place_of_timespan_sim: Lugar del hecho criminal
-            note_of_timespan_sim: Nota del hecho criminal
+            note_of_timespan_sim: Fecha del suceso
           index:
             related_place_of_timespan_tesim: Lugar del hecho criminal
-            note_of_timespan_tesim: Nota del hecho criminal
+            note_of_timespan_tesim: Fecha del suceso
 
             
   hyrax:

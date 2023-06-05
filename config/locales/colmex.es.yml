@@ -96,7 +96,7 @@ es:
           has_system_of_organization_sim: Colección
           is_subcollection_of_sim: Subcolección temática
           draftsman_sim: Dibujante
-          note_of_timespan_sim: Nota del hecho criminal
+          note_of_timespan_sim: Fecha del suceso
           note_on_statement_of_responsibility_sim: Nota sobre declaración de responsabilidad
         index:
           based_near_tesim: Ubicación
@@ -191,7 +191,7 @@ es:
           complainant_tesim: Quejoso (víctima y ofendido)
           contestee_tesim: Representante legal, defensor, etc.
           witness_tesim: Testigo
-          note_of_timespan_tesim: Nota del hecho criminal
+          note_of_timespan_tesim: Fecha del suceso
           is_criminal_defendant_corporate_body_of_tesim: Organismo acusado o demandado
           is_criminal_defendant_person_of_tesim: Persona acusada o demandada
           has_identifier_for_item_tesim: Número de expediente o caso
@@ -727,7 +727,7 @@ es:
         temporary_coverage: Cobertura temporal
         gender_or_form: Género o forma
         notes: Notas
-        note_of_timespan: Nota del hecho criminal
+        note_of_timespan: Fecha del suceso
         center: Centro
         numbering_of_part: Número de la parte
         related_work_of_work: Documento relacionado
