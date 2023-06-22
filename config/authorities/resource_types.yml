@@ -21,8 +21,6 @@ terms:
     term: Acuerdo
   - id: Base de datos
     term: Base de datos
-  - id: Bases
-    term: Bases
   - id: Laudo laboral
     term: Laudo laboral
   - id: Reiteración
@@ -65,3 +63,11 @@ terms:
     term: Video
   - id: Documentos de acceso a la información
     term: Documentos de acceso a la información
+  - id: Mapa
+    term: Mapa
+  - id: Fotografías
+    term: Fotografías
+  - id: Documentos oficiales
+    term: Documentos oficiales
+  - id: Material de referencia
+    term: Material de referencia
