@@ -30,6 +30,8 @@ module Hyrax
 
         def li_value(value)
           result = extract_url(value)
+          
+          return value if result.nil?
 
           if result && result[1] != ""
             "<span class='glyphicon glyphicon-new-window'></span>&nbsp;#{link_to(result[1], result[0], :target => '_blank' ) }"
