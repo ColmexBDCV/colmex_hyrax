@@ -34,8 +34,6 @@ preload_app!
 
 # If you are preloading your application and using Active Record, it's
 # recommended that youbefore_fork do
-  ActiveRecord::Base.connection_pool.disconnect! if defined?(ActiveRecord)
-end close any connections to the database before workers
 # are forked to prevent connection leakage.
 #
 before_fork do
