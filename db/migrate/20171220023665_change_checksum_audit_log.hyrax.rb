@@ -1,4 +1,4 @@
-class ChangeChecksumAuditLog < ActiveRecord::Migration
+class ChangeChecksumAuditLog < ActiveRecord::Migration[5.2]
   def change
     rename_column :checksum_audit_logs, :version, :checked_uri
     add_column    :checksum_audit_logs, :passed, :boolean

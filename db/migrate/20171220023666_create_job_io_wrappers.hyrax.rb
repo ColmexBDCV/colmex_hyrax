@@ -1,4 +1,4 @@
-class CreateJobIoWrappers < ActiveRecord::Migration
+class CreateJobIoWrappers < ActiveRecord::Migration[5.2]
   def change
     create_table :job_io_wrappers do |t|
       t.references :user

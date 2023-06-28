@@ -1,4 +1,4 @@
-class CreateUserStats < ActiveRecord::Migration
+class CreateUserStats < ActiveRecord::Migration[5.2]
   def change
     create_table :user_stats do |t|
       t.integer :user_id

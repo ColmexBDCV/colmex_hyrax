@@ -122,7 +122,7 @@ class CatalogController < ApplicationController
 
     # config.add_facet_field solr_name("database", :facetable), limit: 5
     config.add_facet_field solr_name("researcher_agent_of", :facetable), limit: 5
-    config.add_facet_field solr_name("guide_to_work", :facetable), limit: 5
+    #config.add_facet_field solr_name("guide_to_work", :facetable), limit: 5
     config.add_facet_field solr_name("production_method", :facetable), limit: 5
     config.add_facet_field solr_name("longitud_and_latitud", :facetable), limit: 5
     config.add_facet_field solr_name("digital_representation_of_cartographic_content", :facetable), limit: 5
