@@ -39,7 +39,11 @@
                 <%=l.user.email%>
               </td>
               <td>
-                  <%l.change.each do |key, value| %>
+                  <%
+                    change = JSON.parse(l.change)
+                    change.each do |key, value| 
+                    
+                  %>
                       <p>
                         <span class="badge badge-dark"><%=key%></span>
                         <span style="top:10px" class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>

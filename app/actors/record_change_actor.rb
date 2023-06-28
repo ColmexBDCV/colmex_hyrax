@@ -5,7 +5,7 @@ class RecordChangeActor < Hyrax::Actors::AbstractActor
         changes = get_changes env.curation_concern.attributes.to_h, env.attributes.to_h
         unless changes.empty?
             log = {
-                change:  changes,
+                change:  changes.to_json,
                 user: env.user,
                 template: env.curation_concern.has_model.first,
                 record_id: env.curation_concern.id,
