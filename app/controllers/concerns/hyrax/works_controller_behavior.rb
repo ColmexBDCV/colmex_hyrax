@@ -69,9 +69,11 @@ module Hyrax
     # rubocop:disable Metrics/AbcSize
     def show
       @user_collections = user_collections
+      @log = RecordChangeLog.where(record_id: params[:id])
       begin
         @pageviews = Hyrax::Analytics.daily_events_for_id(params[:id], 'work-view')
         @downloads = Hyrax::Analytics.daily_events_for_id(params[:id], 'file-set-in-work-download')
+        
       rescue => e
         @pageviews = nil
         @downloads = nil

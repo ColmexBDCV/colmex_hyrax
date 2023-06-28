@@ -1,0 +1,66 @@
+<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Bitacora de cambios en el Registro 
+  </button>
+</p>
+
+<style>
+  .badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+  }
+  .badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  .badge-success {
+    color: #fff;
+    background-color: #28a745;
+  }
+  .badge-dark {
+    color: #fff;
+    background-color: #343a40;
+  }
+</style>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Cambios</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @log.each do |l| %>
+            <tr>
+              <td>
+                <%=l.user.email%>
+              </td>
+              <td>
+                  <%l.change.each do |key, value| %>
+                      <p>
+                        <span class="badge badge-dark"><%=key%></span>
+                        <span style="top:10px" class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                        <span class="badge badge-pill badge-danger"><%=value["before"]%></span>
+                        <span style="top:3px" class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                        <span class="badge badge-pill badge-success"><%=value["after"]%></span>
+                      </p>
+                  <%end%>
+              </td> 
+                <td>
+                  <p>
+                    <%=l.created_at.strftime('%d/%m/%Y')%>
+                  </p>
+                  <p>
+                    <%=l.created_at.strftime('%H:%M:%S')%>
+                  </p>
+                  
+              </td>    
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -95,6 +95,7 @@
           <div class="col-sm-12">
             <%= render 'relationships', presenter: @presenter %>
             <%= render 'items', presenter: @presenter %>
+            
             <%# TODO: we may consider adding these partials in the future %>
             <%# = render 'sharing_with', presenter: @presenter %>
             <%# = render 'user_activity', presenter: @presenter %>
@@ -108,6 +109,9 @@
           <%= t('total_view', count: @pageviews.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
           <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
       </div>
+    <% end %>
+    <% if current_user && !@log.nil? %>
+      <%= render 'record_change_log', log: @log%>
     <% end %>
   </div>
 </div>
