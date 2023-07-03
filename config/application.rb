@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module Hyrax
   class Application < Rails::Application
+    #add actor to work with workers
+    
+    config.to_prepare  do
+      Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, RecordChangeActor)
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
