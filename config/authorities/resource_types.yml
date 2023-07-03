@@ -71,3 +71,7 @@ terms:
     term: Documentos oficiales
   - id: Material de referencia
     term: Material de referencia
+  -id: Revista
+    term: Revista
+  -id: Audio
+    term: Audio
