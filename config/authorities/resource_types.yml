@@ -65,10 +65,10 @@ terms:
     term: Documentos de acceso a la información
   - id: Mapa
     term: Mapa
-  - id: Fotografías
-    term: Fotografías
-  - id: Documentos oficiales
-    term: Documentos oficiales
+  - id: Fotografía
+    term: Fotografía
+  - id: Documento oficial
+    term: Documento oficial
   - id: Material de referencia
     term: Material de referencia
   -id: Revista
