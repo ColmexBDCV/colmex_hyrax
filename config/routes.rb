@@ -2,14 +2,14 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   post '/imports/validate', to: 'imports#validate'
-  # resources :imports
-  get '/imports', to: 'imports#index'
-  get '/imports/new', to: 'imports#new'
-  post '/imports', to: 'imports#create'
+  resources :imports
+  # get '/imports', to: 'imports#index'
+  # get '/imports/new', to: 'imports#new'
+  # post '/imports', to: 'imports#create'
   # get '/imports/:id', to: 'imports#show'
   # get '/imports/:id/edit', to: 'imports#edit'
-  patch '/imports/:id', to: 'imports#update'
-  delete '/imports/:id', to: 'imports#destroy'
+  # patch '/imports/:id', to: 'imports#update'
+  # delete '/imports/:id', to: 'imports#destroy'
   mount BrowseEverything::Engine => '/browse'
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
