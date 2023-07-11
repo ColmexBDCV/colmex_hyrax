@@ -57,5 +57,7 @@ $(document).on('turbolinks:load', function(){
         
       }); 
 
-
+    $("#ajax-modal").on('shown.bs.modal', function (e) {
+        $(".sort_change").click();
+      })
 });
