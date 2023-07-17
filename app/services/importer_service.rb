@@ -143,7 +143,7 @@ module ImporterService
         parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work)
         
         unless parser.validate then
-            return { Error: "El archivo metadatos.csv es invalido, revisar estructura. SYSTEM_LOG: #{parse_errors(parser.errors).to_s}" }
+            return { Error: "El archivo metadatos.csv es invalido y no lo puede ser interpretado, una de las causas comunes es que existan columnas vacias o columnas sin nombre del campo. SYSTEM_LOG: #{parse_errors(parser.errors).to_s}" }
         end
 
         begin
@@ -151,7 +151,7 @@ module ImporterService
             records = Importer.new(parser: parser, work: work).records.to_a 
             csv = CSV.table("digital_objects/#{sip}/metadatos/metadatos.csv", {:headers => :first_row, :liberal_parsing=> true})
         rescue Exception => e
-            return { Error: "El archivo metadatos.csv es invalido, revisar estructura, SYSTEM_LOG: #{e}"}
+            return { Error: "El archivo metadatos.csv es invalido y no lo puede ser interpretado, una de las causas comunes es que existan columnas vacias o columnas sin nombre del campo, SYSTEM_LOG: #{e}"}
         end
 
         licenses = get_licenses
