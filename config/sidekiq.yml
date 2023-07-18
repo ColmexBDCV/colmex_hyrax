@@ -3,10 +3,10 @@
   - event
   - ingest
 development:
-  :concurrency: 5
-  :timeout: 3
-  :logfile: ./log/sidekiq.log
+  concurrency: 5
+  timeout: 3
+  logfile: ./log/sidekiq.log
 production:
-  :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 1 %>
-  :timeout:  <%= ENV['SIDEKIQ_TIMEOUT'] || 1 %>
-  :logfile: ./log/sidekiq.log
+  concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 3 %>
+  timeout:  <%= ENV['SIDEKIQ_TIMEOUT'] || 20 %>
+  logfile: ./log/sidekiq.log
