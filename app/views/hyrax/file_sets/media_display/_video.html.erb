@@ -1,56 +1,29 @@
-<% if Hyrax.config.display_media_download_link? %>
-    <div>
-      <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
-      <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
-        <% derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set) %>
-        <% if derivatives.count > 1 then%>
-
-          <%  sizes = ["360p","480p","720p","1080p","2160p"]
-              tags = []
-              derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
-              tags.delete("thumbnail")
-              size_index = tags.count
-          %>
-          <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
-         
-          <% tags.reverse! if tags.first == "360p" %>
-          <% tags.each do |tag|%>
-            <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
-          <% end %>
-        <% else %>        
-          <source id="360p" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="360p" />
-        <% end %>
-        
-        Your browser does not support the video tag.
-      </video>
+  <div>
+    <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
+    <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
+      <% derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set) %>
+      
+      <%  sizes = ["360p","480p","720p","1080p","2160p"]
+          tags = []
+          derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
+          tags.delete("thumbnail")
+          tags.sort!
+          size_index = tags.count
+      %>
+     
+      <% tags.reverse! if tags.first == "360p" %>
+      <% tags.each do |tag|%>
+        <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
+      <% end %>
+      
+      
+      Your browser does not support the video tag.
+    </video>
+    <% if Hyrax.config.display_media_download_link? %>
       <%= render "shared/download_link", file_set: file_set  %>
-    </div>
-<% else %>
-    <div>
-      <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
-        <% derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set) %>
-        <% if derivatives.count > 1 then%>
+    <% end %>
+  </div>
 
-          <%  sizes = ["360p","480p","720p","1080p","2160p"]
-              tags = []
-              derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
-              tags.delete("thumbnail")
-              size_index = tags.count 
-          %>
-          <source id="<%=sizes[size_index]%>" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="<%=sizes[size_index]%>" />
-          
-          <% tags.reverse! if tags.first == "360p" %>
-          <% tags.each do |tag|%>
-            <source id="<%=tag%>" src="<%= hyrax.download_path(file_set, file: tag) %>" type="video/mp4" data-quality="<%=tag%>" />
-          <% end %>
-        <% else %>        
-          <source id="360p" src="<%= hyrax.download_path(file_set) %>" type="video/mp4" data-quality="360p" />
-        <% end %>
-
-        Your browser does not support the video tag.
-      </video>
-    </div>
-<% end %>
 
 <script type="text/javascript">
 

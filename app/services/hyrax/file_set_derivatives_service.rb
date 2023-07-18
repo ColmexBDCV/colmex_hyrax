@@ -85,11 +85,11 @@ module Hyrax
           { label: '360p ', size: '640x360', bitrate: '600k', format: 'mp4', url: derivative_url('360p') }]
 
         
-        outputs.delete_at(1) if @file_set.height.first.to_i <= 2160
-        outputs.delete_at(1) if @file_set.height.first.to_i <= 1080
-        outputs.delete_at(1) if @file_set.height.first.to_i <= 720
-        outputs.delete_at(1) if @file_set.height.first.to_i <= 480
-        outputs.delete_at(1) if @file_set.height.first.to_i <= 360
+        outputs.delete_at(1) if @file_set.height.first.to_i < 2160
+        outputs.delete_at(1) if @file_set.height.first.to_i < 1080
+        outputs.delete_at(1) if @file_set.height.first.to_i < 720
+        outputs.delete_at(1) if @file_set.height.first.to_i < 480
+        outputs.delete_at(1) if @file_set.height.first.to_i < 360
 
         Hydra::Derivatives::VideoDerivatives.create(filename,
                                                     outputs: outputs)
