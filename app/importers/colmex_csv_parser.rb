@@ -34,7 +34,7 @@ class ColmexCsvParser < Darlingtonia::CsvParser
     file.rewind
     csv = CSV.table(file.path, {:headers => :first_row})
     headers = csv.headers
-    
+    raise "El campo identifier no es repetible, por favor solo utilize un identifier por registro" if headers.tally[:identifier] > 1
     csv.each_with_index do |r, i|
       row = {}
       next if r.to_h.values.all?(&:nil?)
@@ -72,6 +72,6 @@ class ColmexCsvParser < Darlingtonia::CsvParser
     end
 
     def is_multiple(field)
-      return work.send(field).respond_to?('count')
+      return work.send(field).instance_of? ActiveTriples::Relation
     end
 end

@@ -68,18 +68,21 @@ module Hyrax
     # @raise CanCan::AccessDenied if the document is not found or the user doesn't have access to it.
     # rubocop:disable Metrics/AbcSize
     def show
-      @user_collections = user_collections
-      @log = RecordChangeLog.where(record_id: params[:id])
-      begin
-        @pageviews = Hyrax::Analytics.daily_events_for_id(params[:id], 'work-view')
-        @downloads = Hyrax::Analytics.daily_events_for_id(params[:id], 'file-set-in-work-download')
-        
-      rescue => e
-        @pageviews = nil
-        @downloads = nil
-      end
+      
       respond_to do |wants|
-        wants.html { presenter && parent_presenter }
+        wants.html do 
+          @user_collections = user_collections
+          @log = RecordChangeLog.where(record_id: params[:id])
+          begin
+            @pageviews = Hyrax::Analytics.daily_events_for_id(params[:id], 'work-view')
+            @downloads = Hyrax::Analytics.daily_events_for_id(params[:id], 'file-set-in-work-download')
+            
+          rescue => e
+            @pageviews = nil
+            @downloads = nil
+          end
+          presenter && parent_presenter 
+        end  
         wants.json do
           # load @curation_concern manually because it's skipped for html
           @curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: params[:id])
