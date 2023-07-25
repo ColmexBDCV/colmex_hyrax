@@ -42,7 +42,8 @@
                   <%
                     change = JSON.parse(l.change)
                     change.each do |key, value| 
-                    
+                    value["before"] = "Campo Vacío" if value["before"] == []
+                    value["after"] = "Campo Vacío" if value["after"] == []
                   %>
                       <p>
                         <span class="badge badge-dark"><%=key%></span>
