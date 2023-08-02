@@ -28,10 +28,12 @@ class Hyrax::HomepageController < ApplicationController
 
     # Return 5 collections
     def collections(rows: 5)
+      
       builder = Hyrax::CollectionSearchBuilder.new(self)
-                                            #  .rows(rows)
+                                              .rows(Collection.where(visibility_ssi: "open").count)
       response = repository.search(builder)
       response.documents
+      
     rescue Blacklight::Exceptions::ECONNREFUSED, Blacklight::Exceptions::InvalidRequest
       []
     end
