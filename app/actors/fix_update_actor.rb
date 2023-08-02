@@ -9,7 +9,7 @@ class FixUpdateActor < Hyrax::Actors::AbstractActor
         attrs.each do |key, val|
            
             next if key == "based_near_attributes"
-
+            next if key == "permissions_attributes"
            
             if work.send(key).respond_to?("to_a") 
                 unless work.send(key).to_a == val.to_a 
