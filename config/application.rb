@@ -12,6 +12,7 @@ module Hyrax
     
     config.to_prepare  do
       Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, RecordChangeActor)
+      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, FixUpdateActor)
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
