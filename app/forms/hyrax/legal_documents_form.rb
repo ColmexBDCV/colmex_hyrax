@@ -1,7 +1,7 @@
 module Hyrax
     module LegalDocumentsForm
         def self.shared_fields
-            [:resource_type,
+            [
              :primary_topic, :enacting_juridiction_of,
              :hierarchical_superior, :hierarchical_inferior, 
              :subject_timespan,
