@@ -11,8 +11,8 @@ class FixUpdateActor < Hyrax::Actors::AbstractActor
             next if key == "based_near_attributes"
             next if key == "permissions_attributes"
            
-            if work.send(key).respond_to?("to_a")
-                byebug 
+            if work.send(key).respond_to?("to_a") && val.instance_of?(Array)
+                 
                 unless work.send(key).to_a == val 
                     work.send("#{key}=", [])
                     work.send("#{key}=",val)
