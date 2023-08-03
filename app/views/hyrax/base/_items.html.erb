@@ -1,6 +1,7 @@
 <h2><%= t('.header') %></h2>
 <%  array_of_ids = presenter.list_of_item_ids_to_display %>
-<%  members = presenter.member_presenters_for(array_of_ids) %>
+<%  members = presenter.member_presenters_for(array_of_ids).sort_by { |presenter| presenter.title } %>
+
 <% if members.present? %>
   <div style="overflow-x:auto;">
     <table class="table table-striped related-files">
