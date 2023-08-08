@@ -1,77 +1,77 @@
 terms:
-  - id: Jurisprudencia
-    term: Jurisprudencia
-  - id: Trabajo de investigación
-    term: Trabajo de investigación
-  - id: Juicio Oral
-    term: Juicio Oral
-  - id: Decreto
-    term: Decreto
   - id: Acción de inconstitucionalidad
     term: Acción de inconstitucionalidad
-  - id: Reglamento estatal
-    term: Reglamento estatal
-  - id: Ley federal
-    term: Ley federal
+  - id: Acuerdo
+    term: Acuerdo
+  - id: Artículo de revista
+    term: Artículo de revista
+  - id: Artículo en revista COLMEX
+    term: Artículo en revista COLMEX
+  - id: Audio
+    term: Audio
+  - id: Base de datos
+    term: Base de datos
+  - id: Capítulo de libro
+    term: Capítulo de libro
   - id: Convenio
     term: Convenio
   - id: Convocatoria Pública
     term: Convocatoria Pública
-  - id: Acuerdo
-    term: Acuerdo
-  - id: Base de datos
-    term: Base de datos
-  - id: Laudo laboral
-    term: Laudo laboral
-  - id: Reiteración
-    term: Reiteración
-  - id: Tesis jurisprudenciales aisladas
-    term: Tesis jurisprudenciales aisladas
-  - id: Tesis Aislada
-    term: Tesis Aislada
-  - id: Trabajo de investigación de licenciatura
-    term: Trabajo de investigación de licenciatura
+  - id: Decreto
+    term: Decreto
   - id: Documento archivístico
     term: Documento archivístico
+  - id: Documento oficial
+    term: Documento oficial
+  - id: Documentos de acceso a la información
+    term: Documentos de acceso a la información
+  - id: Fotografía
+    term: Fotografía
+  - id: Juicio Oral
+    term: Juicio Oral
+  - id: Jurisprudencia
+    term: Jurisprudencia
+  - id: Laudo laboral
+    term: Laudo laboral
+  - id: Ley federal
+    term: Ley federal
+  - id: Libro
+    term: Libro
+  - id: Mapa
+    term: Mapa
+  - id: Material de referencia
+    term: Material de referencia
   - id: Nota de prensa
     term: Nota de prensa
-  - id: libro
-    term: Libro
-  - id: Artículo en revista COLMEX
-    term: Artículo en revista COLMEX
+  - id: Recomendaciones
+    term: Recomendaciones
+  - id: Reglamento estatal
+    term: Reglamento estatal
+  - id: Reglamento municipal
+    term: Reglamento municipal
+  - id: Reiteración
+    term: Reiteración
   - id: Reseña en revista COLMEX
     term: Reseña en revista COLMEX
-  - id: Artículo de revista
-    term: Artículo de revista
-  - id: Tesis de Maestría
-    term: Tesis de Maestría
+  - id: Revista
+    term: Revista
+  - id: Tesis
+    term: Tesis
+  - id: Tesis Aislada
+    term: Tesis Aislada
   - id: Tesis de Doctorado
     term: Tesis de Doctorado
   - id: Tesis de Licenciatura
     term: Tesis de Licenciatura
+  - id: Tesis de Maestría
+    term: Tesis de Maestría
+  - id: Tesis jurisprudenciales aisladas
+    term: Tesis jurisprudenciales aisladas
+  - id: Trabajo de investigación
+    term: Trabajo de investigación
+  - id: Trabajo de investigación de licenciatura
+    term: Trabajo de investigación de licenciatura
   - id: Trabajo de investigación de Maestría
     term: Trabajo de investigación de Maestría
-  - id: Tesis
-    term: Tesis
-  - id: Capítulo de libro
-    term: Capítulo de libro
-  - id: Reglamento municipal
-    term: Reglamento municipal
-  - id: Recomendaciones
-    term: Recomendaciones
   - id: Video
     term: Video
-  - id: Documentos de acceso a la información
-    term: Documentos de acceso a la información
-  - id: Mapa
-    term: Mapa
-  - id: Fotografía
-    term: Fotografía
-  - id: Documento oficial
-    term: Documento oficial
-  - id: Material de referencia
-    term: Material de referencia
-  - id: Revista
-    term: Revista
-  - id: Audio
-    term: Audio
