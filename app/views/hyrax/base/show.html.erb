@@ -2,9 +2,9 @@
 <%= render 'shared/citations' %>
 
 <div class="row work-type">
-  <div class="col-xs-12">
-    <%= render 'work_type', presenter: @presenter %>
-  </div>
+  <!-- <div class="col-xs-12">
+    <%#= render 'work_type', presenter: @presenter %>
+  </div> -->
   <div itemscope itemtype="http://schema.org/CreativeWork" class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -68,7 +68,7 @@
                   <% else %>
 
                     <div class="text">
-                      <p>El documento tiene acceso restringido, contacté biblio2@colmex.mx para obtener acceso.</p>
+                      <p>El documento tiene acceso restringido, contacté mch@colmex.mx para obtener acceso.</p>
                     </div>
                     <br>
                     <br>
@@ -82,7 +82,15 @@
                 <div class="col-sm-6">
                   <%= render 'social_media' %>
                 </div>
-                
+              
+
+                <% if @presenter.representative_presenter.pdf? %>
+                  <div class="col-sm-12">
+                    <%#= render 'playlists', presenter: @presenter %>                    
+                  </div>
+                <% end %>
+
+
               </div>
               <div class="col-sm-3">
                 <%= render 'metadata', presenter: @presenter %>
@@ -118,5 +126,6 @@
 <% unless @presenter.representative_presenter.respond_to?('image?') && @presenter.representative_presenter.image? %>
 <script type="text/javascript">
   $( "#file_download" ).prependTo( ".citations" );
+  
 </script>
 <% end %>
