@@ -4,7 +4,7 @@
 }
 .mejs__container.mejs__audio,
 .mejs-container.mejs-audio {
-    min-height: 200px;
+    min-height: 450px !important;
 }
 .mejs__container.mejs__audio.mejs__no-playlist,
 .mejs-container.mejs-audio.mejs__no-playlist {
@@ -112,7 +112,8 @@
 .mejs-playlist-selector-label {
     cursor: pointer;
     float: left;
-    font-size: 1.3em;
+    font-size: 0.9em;
+    font-weight: norm;
     margin: 0;
 }
 
@@ -202,7 +203,7 @@
 }
 .mejs__playlist-current,
 .mejs-playlist-current {
-    background: #000;
+    background: #181818;
     bottom: 34px;
     height: auto !important;
     left: 0;

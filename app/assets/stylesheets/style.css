@@ -656,3 +656,8 @@ select.dropdown-toggle{
     font-size: 30px;
     text-align: center;
 }
+
+.badge-resource-type {
+    background-color: #691E3E;
+}
+

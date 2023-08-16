@@ -22,7 +22,7 @@
 
     <% if videos.count > 0 %>
         <div class="media-wrapper">
-            <video id="player_video" width="750" height="421" controls preload="none" poster="<%= videos.first[:thumbnail]%>">
+            <video id="player_video" width="100%" height="420px" controls preload="none" poster="<%= videos.first[:thumbnail]%>">
                 <% videos.each do |video| %>
                     <source src="<%= video[:src] %>" data-playlist-thumbnail="<%= video[:thumbnail] %>"
                         title="<%= video[:title] %>"  type="video/mp4">
@@ -34,7 +34,7 @@
     <% if audios.count > 0 %>
         <br>
         <div class="media-wrapper">
-            <audio id="player_audio" preload="none" controls width="750">
+            <audio id="player_audio" preload="none" controls width="100%">
                 <% audios.each do |audio| %>
                     <source src="<%= audio[:src] %>" title="<%= audio[:title] %>"  type="audio/mp3">
                 <% end %>
@@ -54,10 +54,3 @@
 	}
 
 </script>
-<% if audios.count < 2 %>
-    <style>
-        .mejs__container.mejs__audio, .mejs-container.mejs-audio  {
-            min-height: 80px;
-        }
-    </style>
-<% end %>

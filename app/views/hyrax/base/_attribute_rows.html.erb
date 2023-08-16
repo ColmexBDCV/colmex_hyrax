@@ -18,7 +18,7 @@
 <%= presenter.attribute_to_html(:subject, label: t('hyrax.base.show.subject'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:geographic_coverage, label: t('hyrax.base.show.geographic_coverage'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:temporary_coverage, label: t('hyrax.base.show.temporary_coverage'), render_as: :faceted, html_dl: true) %>
-<%= presenter.attribute_to_html(:resource_type, label: t('hyrax.base.show.resource_type'), render_as: :faceted, html_dl: true) %>
+<%#= presenter.attribute_to_html(:resource_type, label: t('hyrax.base.show.resource_type'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:type_of_illustrations, label: t('hyrax.base.show.type_of_illustrations'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:classification, label: t('hyrax.base.show.classification'), html_dl:true) %>
 <%= presenter.attribute_to_html(:identifier, label: t('hyrax.base.show.identifier'), render_as: :identifier_alma, search_field: 'identifier_tesim', html_dl: true) %>

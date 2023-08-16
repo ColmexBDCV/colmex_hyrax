@@ -528,7 +528,7 @@ es:
         as: como
         select_a_role: Seleccione un Rol...
         Manager: Manejador
-        Creator: Creador
+        Creator: Autor
         Group: Grupal
       features:
         feature: Características

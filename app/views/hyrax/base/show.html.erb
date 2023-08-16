@@ -10,7 +10,7 @@
       <div class="panel-heading">
         <%= render 'work_title', presenter: @presenter %>
         <% @presenter.resource_type.each do |p| %>
-          <a class="label label-default" href="/catalog?f%5Bresource_type_sim%5D%5B%5D=<%=p.gsub(" ","+")%>&amp;locale=en"><%=p%></a>
+          <a class="badge-resource-type label label-default" href="/catalog?f%5Bresource_type_sim%5D%5B%5D=<%=p.gsub(" ","+")%>&amp;locale=en"><%=p%></a>
         <% end %>
         <%= render 'show_actions', presenter: @presenter %>
       </div>
