@@ -621,7 +621,8 @@ es:
         actions: Acciones
         date_uploaded: Fecha de subida
         empty: Este %{type} no tiene archivos asociados. Presione "editar" para añadir más archivos.
-        header: Elementos
+        header: Registros asociados
+        header_f: Detalles de archivos
         thumbnail: Miniatura
         title: Título
         unauthorized: No hay elementos disponibles públicamente en este %{type}.
@@ -1220,6 +1221,7 @@ es:
           pdf_link: Descargar PDF
           video_link: Descargar video
           video_tag_not_supported: Su navegador no soporta la etiqueta de vídeo.
+      duration: Duración
     file_sets:
       actions:
         delete: Borrar

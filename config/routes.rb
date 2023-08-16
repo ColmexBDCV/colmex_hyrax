@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
   
+  get 'get_media', to: 'all_media#get_media' 
+
   #Conacyt Requirements
   get 'persona_name', to: 'authority#person'
-  get 'all_coordinates', to: 'all_coordinates#fetch_docs' 
+  
 
   get 'padron', to: 'conacyt_stats#padron'
   get 'ranking/articulos', to: 'conacyt_stats#articulos'

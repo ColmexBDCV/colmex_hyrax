@@ -92,3 +92,4 @@ repositorio-170205-d46a9d945b24.p12
 digital_objects
 node_modules
 *.csv
+.vscode/tasks.json

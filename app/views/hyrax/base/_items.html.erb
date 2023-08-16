@@ -1,8 +1,9 @@
-<h2><%= t('.header') %></h2>
+
 <%  array_of_ids = presenter.list_of_item_ids_to_display %>
 <%  members = presenter.member_presenters_for(array_of_ids).sort_by { |presenter| presenter.title } %>
 
 <% if members.present? %>
+  <h2><%= t('.header_f') %></h2>
   <div style="overflow-x:auto;">
     <table class="table table-striped related-files">
       <thead>
@@ -15,10 +16,28 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'member', collection: members %>
+        <%= render partial: 'member_fileset', collection: members%>
       </tbody>
     </table>
   </div>
+  <h2><%= t('.header') %></h2>
+  <div style="overflow-x:auto;">
+    <table class="table table-striped related-files">
+      <thead>
+        <tr>
+          <th><%= t('.thumbnail') %></th>
+          <th><%= t('.title') %></th>
+          <th><%= t('.date_uploaded') %></th>
+          <th><%= t('.visibility') %></th>
+          <th><%= t('.actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'member', collection: members%>
+      </tbody>
+    </table>
+  </div>
+
   <div class="row">
     <% if presenter.total_pages > 1 %>
         <div class="row record-padding col-md-9">
@@ -31,3 +50,26 @@
 <% else %>
   <div class="alert alert-warning" role="alert"><%= t('.unauthorized', type: t('blacklight.search.fields.facet.content.' + presenter.human_readable_type).downcase) %></div>
 <% end %>
+
+
+<script>
+  $(".file_set_get_media").click( function() {
+     var id = $(this).attr("data-id");
+     
+     $.ajax({
+            url: '/get_media',
+            type: 'GET',
+            data: {
+                id: id
+            },
+            success: function(response) {
+                // Aquí manejas la respuesta. Por ejemplo, si es un JSON:
+                console.log(response);
+            },
+            error: function(error) {
+                console.error("Ha ocurrido un error:", error);
+            }
+        });
+
+   });
+</script>

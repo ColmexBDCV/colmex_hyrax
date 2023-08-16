@@ -277,7 +277,7 @@ module Hyrax
 
     # Uses kaminari to paginate an array to avoid need for solr documents for items here
     def paginated_item_list(page_array:)
-      Kaminari.paginate_array(page_array, total_count: page_array.size).page(current_page).per(rows_from_params)
+      Kaminari.paginate_array(page_array, total_count: page_array.size).page(current_page).per(page_array.count)
     end
 
     def total_items

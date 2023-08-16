@@ -1,0 +1,63 @@
+<%  array_of_ids = presenter.list_of_item_ids_to_display %>
+<%  members = presenter.member_presenters_for(array_of_ids).sort_by { |presenter| presenter.title } %>
+
+<%  
+    audios = []
+    videos = []
+    members.each do |member|
+            
+        if member.model_name.name == "FileSet"
+            tags = []
+            derivatives = Hyrax::DerivativePath.derivatives_for_reference(member)
+            derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
+            tags.delete("thumbnail")
+            tags.sort!
+            
+            videos.push({src: hyrax.download_path(member, file: tags.last), thumbnail: hyrax.download_path(member, file: "thumbnail"), title: member.title.first}) if member.video?
+
+            audios.push ({src: hyrax.download_path(member, file: tags.first), title: member.title.first}) if member.audio?
+        end
+    end
+%>
+
+    <% if videos.count > 0 %>
+        <div class="media-wrapper">
+            <video id="player_video" width="750" height="421" controls preload="none" poster="<%= videos.first[:thumbnail]%>">
+                <% videos.each do |video| %>
+                    <source src="<%= video[:src] %>" data-playlist-thumbnail="<%= video[:thumbnail] %>"
+                        title="<%= video[:title] %>"  type="video/mp4">
+                <% end %>
+            </video>
+        </div>
+    <% end %>
+    
+    <% if audios.count > 0 %>
+        <br>
+        <div class="media-wrapper">
+            <audio id="player_audio" preload="none" controls width="750">
+                <% audios.each do |audio| %>
+                    <source src="<%= audio[:src] %>" title="<%= audio[:title] %>"  type="audio/mp3">
+                <% end %>
+                
+            </audio>
+        </div>
+    <% end %>
+
+
+<script>
+    var mediaElements = document.querySelectorAll('video, audio');
+
+	for (var i = 0, total = mediaElements.length; i < total; i++) {
+		new MediaElementPlayer(mediaElements[i], {
+			features: ['prevtrack', 'playpause', 'nexttrack', 'current', 'progress', 'duration', 'volume', 'playlist', 'shuffle', 'loop', 'fullscreen'],
+		});
+	}
+
+</script>
+<% if audios.count < 2 %>
+    <style>
+        .mejs__container.mejs__audio, .mejs-container.mejs-audio  {
+            min-height: 80px;
+        }
+    </style>
+<% end %>

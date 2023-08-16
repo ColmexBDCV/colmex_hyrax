@@ -325,10 +325,15 @@ en:
         workflow_role: Workflow role
     base:
       citations:
+        button: Cite work
         header: "Export citation"
         mendeley: "Exporting to Mendeley is supported via embedded metadata. If Mendeley does not automatically pick up metadata for deposited files, please report the issue via the "
         mendeley_title: Export to Mendeley
         quote: "How to quote:"
+        
+      items:
+        header: Child records
+        header_f: File details
       relationships_parent_row:
         label: "In %{type}:"
         Collection: Collection
@@ -535,6 +540,7 @@ en:
       desactivated: Desactivated Embargoes
     file_set:
       #metadatos de show_characterization_details
+      duration: Duration
       width: Width
       height: Height
       file_format: File Format

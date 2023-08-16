@@ -9,7 +9,7 @@ module Hyrax
       attr_reader :scope
 
       delegate :id, :depositor, :permissions, :human_readable_type, :member_ids, :nestable?,
-               to: :model
+               :alternative_title, :visibility, to: :model
 
       class_attribute :membership_service_class
 
@@ -22,10 +22,24 @@ module Hyrax
 
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
-      self.terms = [:resource_type, :title, :creator, :contributor, :description,
-                    :keyword, :license, :publisher, :date_created, :subject, :language,
-                    :representative_id, :thumbnail_id, :identifier, :based_near,
-                    :related_url, :visibility, :collection_type_gid]
+      self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator, 
+        :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
+        :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
+        :license, :rights_statement, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
+        :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
+        :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work, 
+        :numbering_of_part, :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
+        :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
+        :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
+        :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :has_system_of_organization,
+        :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,  
+        :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
+        :related_url, :is_facsimile_of_manifestation_of, :beginning, :ending, 
+        :date_of_manifestation, :researcher_agent_of, :thumbnail_id,
+        :collector_collective_agent, :language_of_expression,
+        :visibility, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
+        :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility,
+        :note_of_timespan, :resource_type, :collection_type_gid]
 
       self.required_fields = [:title]
 
@@ -62,18 +76,24 @@ module Hyrax
 
       # Terms that appear within the accordion
       def secondary_terms
-        [:creator,
-         :contributor,
-         :keyword,
-         :license,
-         :publisher,
-         :date_created,
-         :subject,
-         :language,
-         :identifier,
-         :based_near,
-         :related_url,
-         :resource_type]
+        [:alternate_title, :other_title, :date_created, :description, :creator, 
+          :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
+          :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
+          :license, :rights_statement, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
+          :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
+          :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work, 
+          :numbering_of_part, :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
+          :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
+          :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
+          :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :has_system_of_organization,
+          :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,  
+          :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
+          :related_url, :is_facsimile_of_manifestation_of, :beginning, :ending, 
+          :date_of_manifestation, :researcher_agent_of, :thumbnail_id,
+          :collector_collective_agent, :language_of_expression,
+          :visibility, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
+          :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility,
+          :note_of_timespan, :resource_type,]
       end
 
       def banner_info
