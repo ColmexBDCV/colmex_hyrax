@@ -5,5 +5,6 @@ module Hyrax
   class GenericWorkForm < Hyrax::Forms::WorkForm
     self.model_class = ::GenericWork
     self.terms += [:resource_type]
+    self.terms += SeriesForm.shared_fields
   end
 end

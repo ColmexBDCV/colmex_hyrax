@@ -19,6 +19,9 @@
         end
     end
 %>
+    <%if audios.count > 0 || videos.count > 0%>
+        <h2 style="text-align: left;">Multimedia</h2>
+    <% end %>
 
     <% if videos.count > 0 %>
         <div class="media-wrapper">
