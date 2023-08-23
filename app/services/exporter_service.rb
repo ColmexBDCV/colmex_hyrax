@@ -48,7 +48,25 @@ module ExporterService
     end
 
     def self.export(work_ids, fields,tag = "all")
-        
+        remove_fields = ["head",
+               "tail",
+               "depositor",
+               "date_uploaded",
+               "date_modified",
+               "state",
+               "proxy_depositor",
+               "on_behalf_of",
+               "arkivo_checksum",
+               "owner",
+               "access_control_id",
+               "representative_id",
+               "thumbnail_id",
+               "rendering_ids",
+               "admin_set_id",
+               "embargo_id",
+               "lease_id"
+            ]
+
         data=[]       
         keys = []
         keys.push("filenames")
@@ -62,6 +80,10 @@ module ExporterService
             
             keys = keys.to_set.to_a;
             
+            remove_fields.each do |r| 
+                keys.delete(r)
+            end
+           
             row = {}
             obj.attributes.each do |key, value|
                 
@@ -70,6 +92,7 @@ module ExporterService
                 else
                     row[key] = value
                 end
+                
             end
             
            
