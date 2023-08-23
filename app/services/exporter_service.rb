@@ -26,6 +26,17 @@ module ExporterService
         self.export(work_ids, fields)
     end
 
+    def self.by_field(value, key,fields)
+        work_ids = []
+        Hyrax::config.registered_curation_concern_types.each do |wt|
+            wt.singularize.classify.constantize.where(key.to_sym =>  value).each do |row|
+                work_ids << row.id
+            end
+        end
+        self.export(work_ids, fields, key)
+    end
+
+
     def self.by_thematic_collection(coll,fields)
         work_ids = []
         Hyrax::config.registered_curation_concern_types.each do |wt|
