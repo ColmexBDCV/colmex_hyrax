@@ -299,7 +299,13 @@ module Blacklight::BlacklightHelperBehavior
   # @return [Symbol]
   def document_index_view_type query_params=params
     view_param = query_params[:view]
-    view_param ||= :gallery
+    
+    unless query_params[:controller] == "hyrax/collections"
+      view_param ||= :list
+    else
+      view_param ||= :gallery
+    end
+
     if view_param and document_index_views.keys.include? view_param.to_sym
       view_param.to_sym
     else
