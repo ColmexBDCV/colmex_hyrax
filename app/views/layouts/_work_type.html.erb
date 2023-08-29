@@ -7,8 +7,8 @@
       <div id="wtdetails-item" class="morris-hover morris-default-style" style="position:static">
         <div class="morris-hover-row-label"></div>
       </div>
-      
-      <% @work_types = Hyrax::Statistic.work_types %>
+      <%# @work_types = Hyrax::Statistic.work_types %>
+      <% @work_types = Hyrax::Statistic.resource_types %>
       
       <script>
         var wt = new Morris.Donut({
