@@ -76,7 +76,7 @@ module Hyrax
 
       # Terms that appear within the accordion
       def secondary_terms
-        [:alternate_title, :other_title, :date_created, :description, :creator, 
+        [:alternate_title, :other_title, :date_created, :creator, 
           :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
           :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
           :license, :rights_statement, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
