@@ -121,7 +121,7 @@
           <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
       </div>
     <% end %>
-    <% if current_user && !@log.nil? %>
+    <% if current_user.admin? && !@log.nil? %>
       <%= render 'record_change_log', log: @log%>
     <% end %>
   </div>
