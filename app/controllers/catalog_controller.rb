@@ -4,7 +4,6 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
-  include BlacklightOaiProvider::Controller
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
 
@@ -39,20 +38,6 @@ class CatalogController < ApplicationController
     # config.view.masonry.partials = [:index]
     # config.view.slideshow.partials = [:index]
 
-    config.oai = {
-      provider: {
-        repository_name: 'Repositorio Institucional Colmex',
-        repository_url: 'http://repositorio.colmex.mx/catalog/oai',
-        record_prefix: 'http://repositorio.colmex.mx/',
-        admin_email: 'rcuellar@colmex.mx',
-      },
-      document: {
-        limit: 25,            # number of records returned with each request, default: 15
-        set_fields: [        # ability to define ListSets, optional, default: nil
-          {  label: 'collection', solr_field: 'member_of_collections_ssim' }
-        ]
-      }
-    }  
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
