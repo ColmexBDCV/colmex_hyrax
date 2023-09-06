@@ -11,6 +11,7 @@ module Hyrax
     #add actor to work with workers
     
     config.to_prepare  do
+      Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, HandleActor)
       Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, RecordChangeActor)
       Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, FixUpdateActor)
     end

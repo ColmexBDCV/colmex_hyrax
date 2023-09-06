@@ -1,14 +1,13 @@
-<% if show_sort_and_per_page? && active_sort_fields.many? %>
+<% if show_sort_and_per_page? && collection_member_sort_fields.many? %>
   <%= form_tag collection_path(collection), method: :get, class: 'per_page form-horizontal' do %>
     <%= render 'view_type_group' %>
     <fieldset class="pull-left">
       <legend class="sr-only"><%= t('hyrax.sort_label') %></legend>
       <%= label_tag(:sort, t('hyrax.collections.show.sort', :default => "<span>Sort by:</span>").html_safe) %>
       <% 
-        sort = h(params[:sort]) == "" ? "title_sim asc" : h(params[:sort])
         per_page =  h(params[:per_page]) == "" ? "50" : h(params[:per_page])
       %>
-      <%= select_tag(:sort, options_from_collection_for_select(active_sort_fields, 'first', lambda {|field| t('blacklight.search.sort.'+field.last.label,:default => field.last.label)}, sort)) %>
+      <%= select_tag(:sort, options_from_collection_for_select(collection_member_sort_fields, 'first', lambda {|field| field.last.label}, h(params[:sort]))) %>
       <%= label_tag(:per_page) do %>
         <span class="tiny-nudge"><%= t('hyrax.collections.show.results_per_page', :default => "Results per page") %>:</span>
         <%= select_tag(:per_page, options_for_select(['10', '20', '50', '100'], per_page), title: t('hyrax.collections.show.number_of_results', :default => "Number of results to display per pages")) %>
@@ -18,3 +17,4 @@
     </fieldset>
   <% end %>
 <% end %>
+
