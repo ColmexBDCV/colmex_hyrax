@@ -35,7 +35,7 @@ class HandleActor < Hyrax::Actors::AbstractActor
         if Rails.env.production? && host == "https://repositorio.colmex.mx"
             url = "https://hdl.handle.net/"
             
-            handle_id = HandleService.delete(env.curation_concern.handle.gsub(url,""))
+            HandleService.delete(env.curation_concern.handle.gsub(url,""))
         end
 
         next_actor.destroy(env)
