@@ -315,7 +315,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
     config.add_show_field solr_name("interviewer", :stored_searchable)
-
+    
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
@@ -420,6 +420,14 @@ class CatalogController < ApplicationController
           pf: solr_name
       }
   end
+
+  config.add_search_field('title_of_series') do |field|
+    solr_name = solr_name('title_of_series', :stored_searchable)
+    field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+    }
+end
    
   config.add_search_field('subject_work') do |field|
       solr_name = solr_name('subject_work', :stored_searchable)
@@ -493,13 +501,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('identifier') do |field|
-  #     solr_name = solr_name('identifier', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('identifier') do |field|
+      solr_name = solr_name('identifier', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('other_related_persons') do |field|
       solr_name = solr_name('other_related_persons', :stored_searchable)
@@ -560,29 +568,29 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('handle') do |field|
-  #     solr_name = solr_name('handle', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('handle') do |field|
+      solr_name = solr_name('handle', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
-  # config.add_search_field('doi') do |field|
-  #     solr_name = solr_name('doi', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('doi') do |field|
+      solr_name = solr_name('doi', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
-  # config.add_search_field('isbn') do |field|
-  #     solr_name = solr_name('isbn', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('isbn') do |field|
+      solr_name = solr_name('isbn', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('alternate_title') do |field|
       solr_name = solr_name('alternate_title', :stored_searchable)
@@ -680,13 +688,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('subject_uniform_title') do |field|
-  #     solr_name = solr_name('subject_uniform_title', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('subject_uniform_title') do |field|
+      solr_name = solr_name('subject_uniform_title', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('responsibility_statement') do |field|
       solr_name = solr_name('responsibility_statement', :stored_searchable)
@@ -720,21 +728,21 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('item_access_restrictions') do |field|
-  #     solr_name = solr_name('item_access_restrictions', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('item_access_restrictions') do |field|
+      solr_name = solr_name('item_access_restrictions', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
-  # config.add_search_field('item_use_restrictions') do |field|
-  #     solr_name = solr_name('item_use_restrictions', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('item_use_restrictions') do |field|
+      solr_name = solr_name('item_use_restrictions', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('encoding_format_details') do |field|
       solr_name = solr_name('encoding_format_details', :stored_searchable)
@@ -760,13 +768,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('part_of_place') do |field|
-  #     solr_name = solr_name('part_of_place', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('part_of_place') do |field|
+      solr_name = solr_name('part_of_place', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('provenance') do |field|
       solr_name = solr_name('provenance', :stored_searchable)
@@ -808,13 +816,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('file_type_details') do |field|
-  #     solr_name = solr_name('file_type_details', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('file_type_details') do |field|
+      solr_name = solr_name('file_type_details', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('depository_collective_agent_of') do |field|
       solr_name = solr_name('depository_collective_agent_of', :stored_searchable)
@@ -848,13 +856,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('table_of_contents') do |field|
-  #     solr_name = solr_name('table_of_contents', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('table_of_contents') do |field|
+      solr_name = solr_name('table_of_contents', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('interviewer') do |field|
       solr_name = solr_name('interviewer', :stored_searchable)
@@ -912,13 +920,13 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('keyword') do |field|
-  #     solr_name = solr_name('keyword', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('keyword') do |field|
+      solr_name = solr_name('keyword', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('writer_of_suplementary_textual_content') do |field|
       solr_name = solr_name('writer_of_suplementary_textual_content', :stored_searchable)
@@ -936,21 +944,21 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('beginning') do |field|
-  #     solr_name = solr_name('beginning', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('beginning') do |field|
+      solr_name = solr_name('beginning', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
-  # config.add_search_field('ending') do |field|
-  #     solr_name = solr_name('ending', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('ending') do |field|
+      solr_name = solr_name('ending', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('collector_collective_agent') do |field|
       solr_name = solr_name('collector_collective_agent', :stored_searchable)
@@ -960,21 +968,21 @@ class CatalogController < ApplicationController
       }
   end
    
-  # config.add_search_field('numbering_of_part') do |field|
-  #     solr_name = solr_name('numbering_of_part', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('numbering_of_part') do |field|
+      solr_name = solr_name('numbering_of_part', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
-  # config.add_search_field('has_system_of_organization') do |field|
-  #     solr_name = solr_name('has_system_of_organization', :stored_searchable)
-  #     field.solr_local_parameters = {
-  #         qf: solr_name,
-  #         pf: solr_name
-  #     }
-  # end
+  config.add_search_field('has_system_of_organization') do |field|
+      solr_name = solr_name('has_system_of_organization', :stored_searchable)
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+  end
    
   config.add_search_field('is_subcollection_of') do |field|
       solr_name = solr_name('is_subcollection_of', :stored_searchable)
