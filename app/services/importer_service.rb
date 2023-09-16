@@ -184,8 +184,6 @@ module ImporterService
         
         report = Hash.new
             
-       
-     
         records.each_with_index do |record,index|
             
             report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del CSV"] = (report["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del CSV"] || []) << index + 2  unless record.respond_to?("identifier")
@@ -212,7 +210,7 @@ module ImporterService
         # end
 
         begin
-            files_csv = records.map { |r| r.representative_file }.flatten
+            files_csv = records.map { |r| r.representative_file }.flatten.compact
             identifiers = records.map { |r| r.identifier if r.respond_to? :identifier}
             i_d = (identifiers.select { |i| identifiers.count(i) > 1 }).to_set.to_a
             files_folder = Dir["digital_objects/#{sip}/documentos_de_acceso/*"].map { |f| f.gsub("digital_objects/", '') }
@@ -237,13 +235,13 @@ module ImporterService
         return report
     end
     
-   def check_date(date)
+    def check_date(date)
         match = true
         date.each { |d| match = false unless d.match?(/^([0-9]{1,4})?$/) }
         return match
-   end
+    end
 
-   def check_based_near(based_near)
+    def check_based_near(based_near)
         match = true
         based_near.each { |bn| match = false unless bn.match?(/https:\/\/sws\.geonames\.org\/[0-9]*\//) }
         return match
