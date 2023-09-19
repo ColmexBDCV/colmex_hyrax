@@ -147,7 +147,7 @@ module Hyrax
         :beginning,
         :ending,
         :date_of_manifestation,
-        subject_uniform_title,
+        :subject_uniform_title,
         { based_near_attributes: [:id, :_destroy] }
       ]
       end
