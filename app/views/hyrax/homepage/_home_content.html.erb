@@ -14,7 +14,9 @@
                 ["/img/ceh.png","Centro+de+Estudios+Históricos","center_historical_studies"],
                 ["/img/cei.png","Centro+de+Estudios+Internacionales","center_international_studies"],
                 ["/img/ces.png","Centro+de+Estudios+Sociológicos","center_sociological_studies"],
+                ["/img/ceg.png","Centro+de+Estudios+de+Género","center_gender_studies"],
                 ["/img/bdcv.png","Biblioteca Daniel Cosío Villegas","library"]
+                
                ]
     centers.shuffle!
   %>
@@ -60,16 +62,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[6][1]%><%=locale%>">
           <img src="<%=centers[6][0]%>">
           <span><%= t('hyrax.homepage.'+centers[6][2])%></span>
         </a>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[7][1]%><%=locale%>">
           <img src="<%=centers[7][0]%>">
           <span><%= t('hyrax.homepage.'+centers[7][2])%></span>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="catalog?f%5Bcenter_sim%5D%5B%5D=<%=centers[6][1]%><%=locale%>">
+          <img src="<%=centers[6][0]%>">
+          <span><%= t('hyrax.homepage.'+centers[6][2])%></span>
         </a>
       </div>
     </div>
