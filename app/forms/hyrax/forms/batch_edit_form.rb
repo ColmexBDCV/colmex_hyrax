@@ -9,11 +9,12 @@ module Hyrax
         :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
         :language, :based_near, :geographic_coverage, :temporary_coverage,
         :gender_or_form, :related_url, :bibliographic_citation, :source, :related_work_of_work,
-        :isbn, :notes, :center, :classification,
+        :numbering_of_part, :notes, :center, :classification,
         :supplementary_content_or_bibliography, :responsibility_statement, :other_related_persons,
         :table_of_contents, :type_of_content, :type_of_illustrations, :language_of_expression,
         :reviewer, :organizer, :editor, :compiler, :commentator, :translator,
-        :mode_of_issuance, :edition, :encoding_format_details, :digital_resource_generation_information, :contained_in,
+        :mode_of_issuance, :edition, :dimensions, :extension, :system_requirements,
+        :encoding_format_details, :digital_resource_generation_information, :contained_in,
         :collector_collective_agent, :researcher_agent_of, :has_system_of_organization,
         :is_subcollection_of, :interviewer, :interviewee, :draftsman, :photographer,
         :narrator, :collective_title, :part_of_place, :provenance, :curator_collective_agent_of,
@@ -21,7 +22,8 @@ module Hyrax
         :depository_agent, :file_type_details, :corporate_body, :collective_agent,
         :digital_file_characteristics, :writer_of_suplementary_textual_content,
         :organizer_collective_agent, :has_field_activity_of_agent, :place_of_publication,
-        :is_facsimile_of_manifestation_of, :resource_access_restrictions, :resource_use_restrictions,
+        :is_facsimile_of_manifestation_of, :beginning, :ending, :date_of_manifestation,
+        :subject_uniform_title, :resource_access_restrictions, :resource_use_restrictions,
         :manifestation_access_restrictions, :manifestation_use_restrictions, :item_access_restrictions,
         :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility
       ]
@@ -71,7 +73,6 @@ module Hyrax
         { bibliographic_citation: [] },
         { source: [] },
         { related_work_of_work: [] },
-        { isbn: [] },
         { notes: [] },
         { center: [] },
         { classification: [] },
@@ -88,7 +89,6 @@ module Hyrax
         { compiler: [] },
         { commentator: [] },
         { translator: [] },
-        { mode_of_issuance: [] },
         { edition: [] },
         { encoding_format_details: [] },
         { digital_resource_generation_information: [] },
@@ -139,7 +139,17 @@ module Hyrax
          :lease_expiration_date,
          :visibility_after_lease,
          :visibility,
-         { based_near_attributes: [:id, :_destroy] }]
+         mode_of_issuance,
+         dimensions,
+         extension,
+         system_requirements,
+         numbering_of_part,
+         beginning,
+        ending,
+        date_of_manifestation,
+        subject_uniform_title,
+        based_near_attributes
+      ]
       end
       # rubocop:enable Metrics/MethodLength
 
