@@ -78,7 +78,7 @@ en:
           collections: Collections
           creator_tesim: Creator
           numbering_of_part_tesim: Numbering of part
-          related_work_of_work_tesim: Related work of work
+          related_work_of_work_tesim: Related work
           thematic_collection_tesim: Thematic collection
           date_created_tesim: Year
           date_modified_dtsi: Date Modified
@@ -443,7 +443,7 @@ en:
         curator_collective_agent_of: Curator collec agent
         project: Project
         numbering_of_part: Numbering of part
-        related_work_of_work: Related work of work
+        related_work_of_work: Related work
         owner_agent_of: Owner agent
         custodian_agent_of: Custodian agent
         depository_collective_agent_of: Depository collective agent
