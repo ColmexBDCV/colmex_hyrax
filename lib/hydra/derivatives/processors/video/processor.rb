@@ -16,7 +16,7 @@ module Hydra::Derivatives::Processors
             input_options += " -itsoffset -2"
             output_options += " -ss 00:00:14.435 -vframes 1 -an -f rawvideo"
           else
-            output_options += " #{@directives[:bitrate].nil? ? config.video_attributes : "-profile:v high -level 4.0 -g 30 -b:v "+@directives[:bitrate]} #{config.audio_attributes}"
+            output_options += " #{@directives[:bitrate].nil? ? config.video_attributes : "-profile:v high -pix_fmt yuv420p -g 30 -b:v "+@directives[:bitrate]} #{config.audio_attributes}"
           end
           { Ffmpeg::OUTPUT_OPTIONS => output_options, Ffmpeg::INPUT_OPTIONS => input_options }
         end
