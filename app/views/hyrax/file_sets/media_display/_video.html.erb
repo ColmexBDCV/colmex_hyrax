@@ -26,25 +26,27 @@
 
 
 <script type="text/javascript">
+  $(document).on('turbolinks:load',function(){  
+    var mediaElements = document.querySelectorAll('video, audio');
 
-  var mediaElements = document.querySelectorAll('video, audio');
+    for (var i = 0, total = mediaElements.length; i < total; i++) {
+      new MediaElementPlayer(mediaElements[i], {
+        stretching: 'responsive',
+        features: ['playpause', 'current', 'progress', 'duration', 'volume', 'quality', 'fullscreen'],
+      });
+    }
 
-	for (var i = 0, total = mediaElements.length; i < total; i++) {
-		new MediaElementPlayer(mediaElements[i], {
-      stretching: 'responsive',
-			features: ['playpause', 'current', 'progress', 'duration', 'volume', 'quality', 'fullscreen'],
-		});
-	}
+    if (screen.height < 2160) {$('[id*="qualities-1080p"]').click(); }
+    if (screen.height < 1080) {$('[id*="qualities-720p"]').click(); }
+    if (screen.height < 720) { $('[id*="qualities-480p"]').click(); }
+    if (screen.height < 480) { $('[id*="qualities-360p"]').click(); }
 
-  if (screen.height < 2160) {$('[id*="qualities-1080p"]').click(); }
-  if (screen.height < 1080) {$('[id*="qualities-720p"]').click(); }
-  if (screen.height < 720) { $('[id*="qualities-480p"]').click(); }
-  if (screen.height < 480) { $('[id*="qualities-360p"]').click(); }
+    // if ($(".mejs__mediaelement").height() < 2160) {$('[id*="qualities-1080p"]').click(); }
+    // if ($(".mejs__mediaelement").height() < 1080) {$('[id*="qualities-720p"]').click(); }
+    // if ($(".mejs__mediaelement").height() < 720) { $('[id*="qualities-480p"]').click(); }
+    // if ($(".mejs__mediaelement").height() < 480) { $('[id*="qualities-360p"]').click(); }
 
-  // if ($(".mejs__mediaelement").height() < 2160) {$('[id*="qualities-1080p"]').click(); }
-  // if ($(".mejs__mediaelement").height() < 1080) {$('[id*="qualities-720p"]').click(); }
-  // if ($(".mejs__mediaelement").height() < 720) { $('[id*="qualities-480p"]').click(); }
-  // if ($(".mejs__mediaelement").height() < 480) { $('[id*="qualities-360p"]').click(); }
+  });
  
   
 </script>

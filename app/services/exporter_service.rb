@@ -33,7 +33,7 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields, key)
+        self.export(work_ids, fields, value.underscore)
     end
 
 
