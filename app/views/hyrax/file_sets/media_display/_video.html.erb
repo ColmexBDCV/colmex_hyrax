@@ -1,6 +1,6 @@
   <div>
     <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
-    <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="none">
+    <video controls="controls" class="video-js vjs-default-skin" style="width:100%" data-setup="{}" controlsList="nodownload" preload="auto">
       <% derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set) %>
       
       <%  sizes = ["360p","480p","720p","1080p","2160p"]
