@@ -110,10 +110,9 @@
             ...
           </div>
         </div>
-         <div class="collapse" id="errors">
-          <div class="well errors">
-            ...
-          </div>
+        <div class="collapse" id="errors">
+        <div class="well errors">
+          ...
         </div>
       </div>
     </div>
@@ -121,7 +120,12 @@
 </div>
 <script>
    
-  
+  $('#goods').on('show.bs.collapse', function () {
+            $('#errors').collapse('hide');
+  });
+  $('#errors').on('show.bs.collapse', function () {
+      $('#goods').collapse('hide');
+  });
 
   $('.custom-modal').click(function(e){
       e.preventDefault();
