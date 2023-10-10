@@ -666,7 +666,6 @@ select.dropdown-toggle{
  }
 
 @media (min-width: 992px){
-    .search-results-title-row .col-md-6 {
-        width: 50% !important;
+    .search-result-wrapper .col-md-6 {
+        width: 80% !important;
     }
-}
