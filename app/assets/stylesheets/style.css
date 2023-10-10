@@ -664,3 +664,9 @@ select.dropdown-toggle{
 .attribute-table_of_contents {
     padding-bottom:  0.7em;
  }
+
+@media (min-width: 992px){
+    .search-results-title-row .col-md-6 {
+        width: 50% !important;
+    }
+}
