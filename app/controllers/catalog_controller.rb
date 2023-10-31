@@ -78,7 +78,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("organizer_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
     config.add_facet_field solr_name("related_work_of_work", :facetable), limit: 5
-
+    config.add_facet_field solr_name("has_organizer_corporate_body", :facetable), limit: 5
     
     config.add_facet_field solr_name("date_created", :facetable) do |field|
       field.label = 'year'
@@ -294,7 +294,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_finding_aid_for", :stored_searchable)
     config.add_index_field solr_name("collector_collective_agent", :stored_searchable), itemprop: 'collector_collective_agent', link_to_search: solr_name("collector_collective_agent", :facetable)
     config.add_index_field solr_name("subject_uniform_title", :stored_searchable), itemprop: 'subject_uniform_title', link_to_search: solr_name("subject_uniform_title", :facetable)
-
+    config.add_index_field solr_name("has_organizer_corporate_body", :stored_searchable)
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)

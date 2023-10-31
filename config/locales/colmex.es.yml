@@ -98,6 +98,7 @@ es:
           draftsman_sim: Dibujante
           note_of_timespan_sim: Fecha del suceso
           note_on_statement_of_responsibility_sim: Nota sobre declaración de responsabilidad
+          has_organizer_corporate_body_sim: "Conferencia/Evento"
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -116,6 +117,7 @@ es:
           file_format_tesim: Formato de archivo
           geographic_coverage_tesim: Cobertura geográfica
           handle_tesim: Handle
+          has_organizer_corporate_body_tesim: "Conferencia/Evento"
           identifier_tesim: Identificador
           language_of_expression_tesim: Nota de idioma
           keyword_tesim: Palabra clave
@@ -797,6 +799,7 @@ es:
         is_subcollection_of: Subcolección temática
         corporate_body: Autor corporativo
         based_near_label: Ubicación
+        has_organizer_corporate_body: Conferencia/Evento
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
@@ -1215,4 +1218,4 @@ es:
         is_subcollection_of: Subcolección temática
         draftsman: Dibujante
         language_of_expression: Nota de idioma
-  
+        has_organizer_corporate_body: "Conferencia/Evento"

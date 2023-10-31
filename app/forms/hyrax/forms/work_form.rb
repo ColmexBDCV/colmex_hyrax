@@ -25,7 +25,7 @@ module Hyrax
                     :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
                     :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
                     :license, :rights_statement, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
-                    :gender_or_form, :notes, :classification, :supplementary_content_or_bibliography, :bibliographic_citation,
+                    :gender_or_form, :notes, :classification, :has_organizer_corporate_body, :supplementary_content_or_bibliography, :bibliographic_citation,
                     :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work, 
                     :numbering_of_part, :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
                     :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,

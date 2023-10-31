@@ -13,7 +13,7 @@ module Hyrax
        depository_collective_agent_of depository_agent corporate_body collective_agent has_system_of_organization 
        is_subcollection_of draftsman note_of_timespan researcher_agent_of note_on_statement_of_responsibility
        supplementary_content_or_bibliography responsibility_statement beginning ending
-       other_related_persons table_of_contents type_of_content language_of_expression
+       other_related_persons table_of_contents type_of_content language_of_expression has_organizer_corporate_body
        item_use_restrictions encoding_format_details type_of_illustrations subject_uniform_title
        center license rights_statement date_created bibliographic_citation date_of_manifestation
        source reviewer mode_of_issuance edition dimensions extension system_requirements

@@ -647,4 +647,8 @@ class SolrDocument
   def is_subcollection_of
     self['is_subcollection_of_tesim'] 
   end
+
+  def has_organizer_corporate_body
+    self['has_organizer_corporate_body_tesim']
+  end
 end

@@ -9,5 +9,6 @@ module Vocab
     term :hasCreator
     term :isFindingAidFor
     term :isSubcollectionOf
+    term :hasOrganizerCorporateBody
   end
 end
