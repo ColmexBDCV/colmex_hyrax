@@ -115,7 +115,7 @@ module ExporterService
         
         keys = fields.split if !fields.nil? && fields.split.count > 0
 
-        CSV.open("export_#{tag}.csv", "wb", :headers => keys, :write_headers => true) do |csv|               
+        CSV.open("export_#{tag}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|               
             data.each do|v|
                 csv << v.to_h
             end          
