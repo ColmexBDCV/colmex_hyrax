@@ -22,7 +22,11 @@ class HandleActor < Hyrax::Actors::AbstractActor
                     end
                 end
             end  
+        else
+            next_actor.create(env)
         end
+
+
     end
     
     def destroy(env)

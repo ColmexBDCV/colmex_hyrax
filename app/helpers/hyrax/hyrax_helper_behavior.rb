@@ -361,12 +361,24 @@ module Hyrax
       Institution
     end
 
-    def convert_to_link(document, field_config)
-      value = document[field_config.field]
+    def convert_to_link(args)
+      # Asegúrate de extraer correctamente el valor del documento y el nombre del campo
+      # args contiene :document y :field, entre otros valores
+      document = args[:document]
+      field_name = args[:field]
+      value = document[field_name]
+    
+      # Verifica si `value` es una URL válida. 
+      # También, asegúrate de que `value` sea una cadena y no un arreglo,
+      # ya que `document[field_name]` podría devolver un arreglo
+      value = value.first if value.is_a?(Array)
+    
       if value =~ /\A#{URI::regexp(['http', 'https'])}\z/
-        link_to value, "value"
+        # Utiliza `value` directamente como URL del enlace
+        link_to value, value
       else
-        value 
+        # Si no es una URL válida, retorna el valor como texto plano
+        value
       end
     end
 

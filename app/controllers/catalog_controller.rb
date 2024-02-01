@@ -291,7 +291,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_facsimile_of_manifestation_of", :stored_searchable)
     config.add_index_field solr_name("date_of_manifestation", :stored_searchable)
     config.add_index_field solr_name("language_of_expression", :stored_searchable)
-    config.add_index_field solr_name("is_finding_aid_for", :stored_searchable)
+    config.add_index_field solr_name("is_finding_aid_for", :stored_searchable), helper_method: :convert_to_link
     config.add_index_field solr_name("collector_collective_agent", :stored_searchable), itemprop: 'collector_collective_agent', link_to_search: solr_name("collector_collective_agent", :facetable)
     config.add_index_field solr_name("subject_uniform_title", :stored_searchable), itemprop: 'subject_uniform_title', link_to_search: solr_name("subject_uniform_title", :facetable)
     config.add_index_field solr_name("has_organizer_corporate_body", :stored_searchable)
