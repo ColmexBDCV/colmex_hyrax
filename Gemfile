@@ -55,6 +55,7 @@ group :development, :test do
   gem 'xray-rails'
   #To envolve the variables in you envoriments
   gem 'figaro'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -99,3 +100,4 @@ gem "recaptcha"
 gem 'browse-everything','1.1.2'
 gem 'redlock', '< 2.0'
 gem 'okcomputer'
+gem 'simple_form', '5.2.0'

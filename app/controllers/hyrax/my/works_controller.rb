@@ -6,6 +6,7 @@ module Hyrax
       def self.configure_facets
         configure_blacklight do |config|
           config.search_builder_class = Hyrax::My::WorksSearchBuilder
+          config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
           config.add_facet_field "admin_set_sim", limit: 5
           config.add_facet_field "member_of_collections_ssim", limit: 5
           config.add_facet_field "date_created_sim", limit: 5

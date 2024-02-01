@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work DataBase`
 require 'rails_helper'
 
-RSpec.describe Hyrax::Actors::DataBaseActor do
+RSpec.describe Hyrax::Actors::DatabaseActor do
   it "has tests" do
     skip "Add your tests here"
   end

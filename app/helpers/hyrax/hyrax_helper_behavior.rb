@@ -360,5 +360,15 @@ module Hyrax
     def institution
       Institution
     end
+
+    def convert_to_link(document, field_config)
+      value = document[field_config.field]
+      if value =~ /\A#{URI::regexp(['http', 'https'])}\z/
+        link_to value, "value"
+      else
+        value 
+      end
+    end
+
   end
 end
