@@ -54,4 +54,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.before(:each, type: :feature) do
+    # Este bloque se ejecutará solo antes de las pruebas de tipo :feature
+    minter_state = MinterState.find_by(namespace: "default")
+    if minter_state
+      if minter_state.seq % 2 == 0
+        minter_state.seq += 1 
+      else
+        minter_state.seq -= 1
+      end
+      minter_state.save!
+    end
+  end
 end

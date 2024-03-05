@@ -4,7 +4,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a GenericWork', js: false do
+RSpec.feature 'Create a GenericWork', js: true do
   context 'a logged in user' do
     let(:user_attributes) do
       { email: 'test@example.com' }
@@ -12,7 +12,7 @@ RSpec.feature 'Create a GenericWork', js: false do
     let(:user) do
       User.new(user_attributes) { |u| u.save(validate: false) }
     end
-    let(:admin_set_id) { Hyrax::AdminSetCreateService.find_or_create_default_admin_set.id.to_s }
+    let(:admin_set_id) { AdminSet.find_or_create_default_admin_set_id }
     let(:permission_template) { Hyrax::PermissionTemplate.find_or_create_by!(source_id: admin_set_id) }
     let(:workflow) { Sipity::Workflow.create!(active: true, name: 'test-workflow', permission_template: permission_template) }
 
@@ -28,31 +28,30 @@ RSpec.feature 'Create a GenericWork', js: false do
         access: 'deposit'
       )
       login_as user
-    end
+          end
 
     scenario do
-      pending 'Changes may be required for this test to pass.  See TODO in test.'
-
       visit '/dashboard'
       click_link "Works"
-      click_link "Add new work"
+      click_link "Add New Work"
 
-      # TODO: If you generate more than one work uncomment these lines
-      # choose "payload_concern", option: "GenericWork"
-      # click_button "Create work"
-
-      expect(page).to have_content "Add New Generic work"
+      # If you generate more than one work uncomment these lines
+      choose "payload_concern", option: "GenericWork"
+      click_button "Create work"
+      
+      expect(page).to have_content "Add New Generic Work"
       click_link "Files" # switch tab
-      expect(page).to have_content "Add files"
-      expect(page).to have_content "Add folder"
-      within('div#add-files') do
-        attach_file("files[]", "#{Hyrax::Engine.root}/spec/fixtures/image.jp2", visible: false)
-        attach_file("files[]", "#{Hyrax::Engine.root}/spec/fixtures/jp2_fits.xml", visible: false)
+      expect(page).to have_content "Add Files"
+      expect(page).to have_content "Add Folder"
+      within('span#addfiles') do
+        attach_file("files[]", "./spec/fixtures/image.jp2", visible: false)
+        attach_file("files[]", "./spec/fixtures/jp2_fits.xml", visible: false)
       end
       click_link "Descriptions" # switch tab
-      fill_in('Title', with: 'My Test Work')
-      fill_in('Creator', with: 'Doe, Jane')
-      select('In Copyright', from: 'Rights statement')
+      fill_in('Title', with: 'My Test Generic Work')
+      # fill_in('Creator', with: 'Doe, Jane')
+      # fill_in('Keyword', with: 'testing')
+      # select('In Copyright', from: 'Rights statement')
 
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
@@ -63,8 +62,11 @@ RSpec.feature 'Create a GenericWork', js: false do
       check('agreement')
 
       click_on('Save')
-      expect(page).to have_content('My Test Work')
-      expect(page).to have_content "Your files are being processed by Hyrax in the background."
+      sleep 30
+      
+      expect(page).to have_content('My Test Generic Work')
+      expect(page).to have_content "Your files are being processed"
+      
     end
   end
 end

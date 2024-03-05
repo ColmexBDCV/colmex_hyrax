@@ -20,8 +20,8 @@ class ImportsController < ApplicationController
   end
 
   # GET /imports/1 or /imports/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /imports/new
   def new
@@ -39,8 +39,8 @@ class ImportsController < ApplicationController
   end
 
   # GET /imports/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /imports or /imports.json
   def create
@@ -84,14 +84,14 @@ class ImportsController < ApplicationController
   end
 
   # DELETE /imports/1 or /imports/1.json
-  def destroy
-    @import.destroy
+  # def destroy
+  #   @import.destroy
 
-    respond_to do |format|
-      format.html { redirect_to imports_url, notice: "Import was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to imports_url, notice: "Import was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   post '/imports/validate', to: 'imports#validate'
-  resources :imports
+  resources :imports, only: [:new,:index,:create,:update]
   # get '/imports', to: 'imports#index'
   # get '/imports/new', to: 'imports#new'
   # post '/imports', to: 'imports#create'

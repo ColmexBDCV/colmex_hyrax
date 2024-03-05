@@ -10,7 +10,7 @@ class ConacytStatsController < ApplicationController
   end
 
   def padron
-    usuarios = User.select('email, firstname, phone, paternal_surname, maternal_surname').all()
+    usuarios = User.select('email, firstname, phone, paternal_surname, maternal_surname')
 
     d = { depositarios: []}
 

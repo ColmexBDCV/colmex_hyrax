@@ -108,8 +108,15 @@ Hyrax.config do |config|
   # config.noid_template = ".reeddeeddk"
 
   # Use the database-backed minter class
-  # config.noid_minter_class = ActiveFedora::Noid::Minter::Db
-
+  # config.noid_minter_class = ::Noid::Rails::Minter::Db
+  if Rails.env.test?
+    Hyrax.config do |config|
+      # Cambiar a un minter basado en archivos
+      config.noid_minter_class = ::Noid::Rails::Minter::File
+      # Especificar la ubicación del archivo de estado del minter
+      config.minter_statefile = Rails.root.join('tmp', 'minter-state').to_s
+    end
+  end
   # Store identifier minter's state in a file for later replayability
   # config.minter_statefile = '/tmp/minter-state'
 

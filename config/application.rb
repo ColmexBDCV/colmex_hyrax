@@ -14,6 +14,7 @@ module Hyrax
       Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, HandleActor)
       Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, RecordChangeActor)
       Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, FixUpdateActor)
+
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
@@ -36,3 +37,6 @@ module Hyrax
 
   end
 end
+
+Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
+
