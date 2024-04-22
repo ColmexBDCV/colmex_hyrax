@@ -26,7 +26,31 @@ require 'rspec/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration[5.2].maintain_test_schema!
 
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+require 'webmock/rspec'
+
 RSpec.configure do |config|
+
+  config.before(:each) do
+    stub_request(:get, "http://catalogs.repositorionacionalcti.mx/webresources/areacono")
+      .with(
+        headers: {
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent' => 'Faraday v0.17.6'
+        })
+      .to_return(status: 200, body: [
+        {"cveArea":"2","descripcion":"BIOLOGÍA Y QUÍMICA","description":"BIOLOGÍA Y QUÍMICA","idArea":2},
+        {"cveArea":"6","descripcion":"CIENCIAS AGROPECUARIAS Y BIOTECNOLOGÍA","description":"CIENCIAS AGROPECUARIAS Y BIOTECNOLOGÍA","idArea":6},
+        {"cveArea":"1","descripcion":"CIENCIAS FÍSICO MATEMÁTICAS Y CIENCIAS DE LA TIERRA","description":"CIENCIAS FÍSICO MATEMÁTICAS Y CIENCIAS DE LA TIERRA","idArea":1},
+        {"cveArea":"5","descripcion":"CIENCIAS SOCIALES","description":"CIENCIAS SOCIALES","idArea":5},
+        {"cveArea":"4","descripcion":"HUMANIDADES Y CIENCIAS DE LA CONDUCTA","description":"HUMANIDADES Y CIENCIAS DE LA CONDUCTA","idArea":4},
+        {"cveArea":"7","descripcion":"INGENIERÍA Y TECNOLOGÍA","description":"INGENIERÍA Y TECNOLOGÍA","idArea":7},
+        {"cveArea":"3","descripcion":"MEDICINA Y CIENCIAS DE LA SALUD","description":"MEDICINA Y CIENCIAS DE LA SALUD","idArea":3}
+      ].to_json, headers: {})
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

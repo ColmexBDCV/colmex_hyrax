@@ -1,9 +1,15 @@
-# Generated via
-#  `rails generate hyrax:work Article`
 require 'rails_helper'
 
 RSpec.describe Hyrax::ArticleForm do
-  it "has tests" do
-    skip "Add your tests here"
+  describe 'terms' do
+    subject { described_class.terms }
+
+    let(:expected_terms) {
+      Hyrax::AnalyticsTypeOneForm.shared_fields +  Hyrax::AnalyticsTypeTwoForm.shared_fields +  Hyrax::ConacytForm.special_fields + [:resource_type]
+    }
+
+    it 'includes all shared fields and resource_type' do
+      expect(subject).to include(*expected_terms)
+    end
   end
 end

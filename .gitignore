@@ -93,3 +93,4 @@ digital_objects
 node_modules
 *.csv
 .vscode/tasks.json
+log_fedora_startup

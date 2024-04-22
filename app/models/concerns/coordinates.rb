@@ -1,7 +1,7 @@
 module Coordinates
       
     def to_solr(solr_doc={})
-        solr_doc = super
+        solr_doc = super(solr_doc)
         if solr_doc.key?("based_near_tesim") then
             coordinates = []
             solr_doc["based_near_tesim"].each do |c| 

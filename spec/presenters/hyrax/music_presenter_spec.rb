@@ -3,7 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::MusicPresenter do
-  it "has tests" do
-    skip "Add your tests here"
+  describe 'delegation to solr_document' do
+    let(:solr_document) { instance_double(SolrDocument) }
+    let(:ability) { instance_double(Ability) }
+    let(:presenter) { described_class.new(solr_document, ability) }
+    it 'delegates is_lyricist_person_of' do
+      expect(solr_document).to receive(:is_lyricist_person_of)
+      presenter.is_lyricist_person_of
+    end
+
+    it 'delegates is_composer_person_of' do
+      expect(solr_document).to receive(:is_composer_person_of)
+      presenter.is_composer_person_of
+    end
   end
 end

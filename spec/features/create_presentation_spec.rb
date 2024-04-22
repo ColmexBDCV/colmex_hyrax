@@ -62,7 +62,7 @@ RSpec.feature 'Create a Presentation', js: true do
       check('agreement')
 
       click_on('Save')
-      sleep 30
+      sleep 40
       
       expect(page).to have_content('My Test Presentation')
       expect(page).to have_content "Your files are being processed"

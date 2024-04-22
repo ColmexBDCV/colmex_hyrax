@@ -48,8 +48,16 @@ class SolrDocument
     self['gender_or_form_tesim']
   end
 
+  def creator_conacyt
+    self['creator_conacyt_tesim']
+  end
+
   def subject_conacyt
     self['subject_conacyt_tesim']
+  end
+
+  def type_conacyt
+    self['type_conacyt_tesim']
   end
 
   def pub_conacyt
@@ -82,10 +90,6 @@ class SolrDocument
   
   def alternate_title
     self['alternate_title_tesim']
-  end
- 
-  def creator_conacyt
-    self['creator_conacyt_tesim']
   end
 
   def director

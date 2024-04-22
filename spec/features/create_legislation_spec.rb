@@ -62,7 +62,7 @@ RSpec.feature 'Create a Legislation', js: true do
       check('agreement')
 
       click_on('Save')
-      sleep 30
+      sleep 40
       
       expect(page).to have_content('My Test Legislation')
       expect(page).to have_content "Your files are being processed"

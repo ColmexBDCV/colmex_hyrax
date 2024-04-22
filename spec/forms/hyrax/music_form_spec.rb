@@ -1,9 +1,15 @@
-# Generated via
-#  `rails generate hyrax:work Music`
 require 'rails_helper'
 
 RSpec.describe Hyrax::MusicForm do
-  it "has tests" do
-    skip "Add your tests here"
+  describe 'terms' do
+    subject { described_class.terms }
+
+    let(:expected_terms) {
+      [:resource_type, :is_lyricist_person_of, :is_composer_person_of]
+    }
+
+    it 'includes all shared fields and resource_type' do
+      expect(subject).to include(*expected_terms)
+    end
   end
 end

@@ -82,6 +82,12 @@ gem 'hydra-derivatives', '3.7.0'
 gem 'streamio-ffmpeg'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'fcrepo_wrapper'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 gem 'rsolr', '>= 1.0'
@@ -90,10 +96,7 @@ gem 'jquery-migrate-rails'
 gem 'devise'
 gem 'devise-guests'
 gem 'devise-i18n'
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-end
+
 
 gem 'clipboard-rails'
 gem 'pdfjs_viewer-rails'
