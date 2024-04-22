@@ -4,9 +4,9 @@ module HandleService
     @@handle_id = ENV['HANDLE_ID'] || "20.500.11986/COLMEX/"
     @@conn = Faraday.new :url => ENV['HANDLE_URL'] || 'http://sandbox.colmex.mx:8010/'
 
-    def self.create(url)
+    def self.create(url, id=nil)
         begin    
-            handle_obj = @@conn.post("handle/create", {name: "#{@@handle_id}", url: url}.to_json, {'Content-Type'=>'application/json'})
+            handle_obj = @@conn.post("handle/create", {name: "#{@@handle_id}", url: url, idHandle: id}.to_json, {'Content-Type'=>'application/json'})
             data = JSON.parse(handle_obj.body.force_encoding('utf-8'))
             return data
         rescue Faraday::ConnectionFailed 
