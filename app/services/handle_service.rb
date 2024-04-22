@@ -2,7 +2,7 @@ module HandleService
 
     
     @@handle_id = ENV['HANDLE_ID'] || "20.500.11986/COLMEX/"
-    @@conn = Faraday.new :url => ENV['HANDLE_URL'] || 'http://sandbox.colmex.mx:8010/'
+    @@conn = Faraday.new :url => ENV['HANDLE_URL'] || 'http://bibliohandle.colmex.mx:8080/'
 
     def self.create(url, id=nil)
         begin    
