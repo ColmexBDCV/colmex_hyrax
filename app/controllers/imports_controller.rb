@@ -25,19 +25,35 @@ class ImportsController < ApplicationController
 
   # GET /imports/new
   def new
-    # @qa = get_qa
-    @sips = []
-    imports = Import.where.not(status: "Cancelado").pluck(:name)
-    list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
-
-    @user = current_user
-    @path = Rails.root
-    add_breadcrumb t(:'hyrax.controls.home'), root_path
-    add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
-    add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
-    @import = Import.new
+    # URL del servicio web que deseas verificar
+    url = URI.parse('http://biblio-handle.colmex.mx:8080/handle/list')  # Cambia esto por la URL del servicio web que quieres verificar
+  
+    begin
+      # Realiza la solicitud HTTP
+      response = Net::HTTP.get_response(url)
+  
+      # Verifica si el servicio responde con código 200
+      if response.code == "200"
+        # Código existente para ejecutar si el servicio está disponible
+        @sips = []
+        imports = Import.where.not(status: "Cancelado").pluck(:name)
+        list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
+  
+        @user = current_user
+        @path = Rails.root
+        add_breadcrumb t(:'hyrax.controls.home'), root_path
+        add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
+        add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
+        @import = Import.new
+      else
+        # Código para manejar cuando el servicio no está disponible
+        render 'handle_unavailable' # Nombre de tu partial para el servicio no disponible
+      end
+    rescue => e
+      # Código para manejar excepciones como un timeout o problemas de red
+      render 'handle_unavailable', locals: { error: e.message }
+    end
   end
-
   # GET /imports/1/edit
   # def edit
   # end
