@@ -10,7 +10,7 @@
   <!-- <%= link_to "https://twitter.com/intent/tweet/?#{{text: "Repositorio de El Colegio de México - "+ @presenter.title.first, url: polymorphic_url([main_app, @presenter])}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.twitter') do %>
     <i class="fa fa-twitter"></i> 
   <% end %> -->
-  <i id="clipboard-link" class="fa fa-link"  style="cursor: pointer;" data-clipboard-text=<%= request.original_url %> title="<%=t('hyrax.base.social_media.link')%>" data-placement="bottom"> </i> 
+  <i id="clipboard-link" class="fa fa-link"  style="cursor: pointer;" data-clipboard-text="<%= @presenter.handle.first %>" title="<%=t('hyrax.base.social_media.link')%>" data-placement="bottom"> </i> 
 </div>
 
 <script type="text/javascript">
