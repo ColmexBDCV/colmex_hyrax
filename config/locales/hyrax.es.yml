@@ -649,6 +649,8 @@ es:
         feature: Destacar
         unfeature: No destacar
       social_media:
+        url_copied: ¡URL copiada!
+        url_copied_fail: No se pudo copiar la URL
         facebook: Facebook
         facebook_share: Compartir en Facebook
         google: Google+

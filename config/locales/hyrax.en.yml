@@ -338,6 +338,8 @@ en:
         label: "In %{type}:"
         Collection: Collection
       social_media:
+        url_copied: URL copied!
+        url_copied_fail: Failed to copy URL.
         link: copied to clipboard
       to_create_a_separate: To create a separate work for each of the files, go to 
       #metadata from view _form_progress
