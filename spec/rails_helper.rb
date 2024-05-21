@@ -32,7 +32,7 @@ require 'webmock/rspec'
 WebMock.allow_net_connect!
 
 RSpec.configure do |config|
-
+  config.include FactoryBot::Syntax::Methods
   config.before(:each) do
     stub_request(:get, "http://catalogs.repositorionacionalcti.mx/webresources/areacono")
       .with(

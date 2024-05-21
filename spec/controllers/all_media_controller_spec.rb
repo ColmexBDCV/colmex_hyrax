@@ -2,16 +2,20 @@ require 'rails_helper'
 
 RSpec.describe AllMediaController, type: :controller do
   describe "GET #get_media" do
-    let(:file_set) { create(:file_set) }
+    context "when file_set exists" do
+      let(:file_set) { create(:file_set) }
 
-    it "returns http success if file_set exists" do
-      get :get_media, params: { id: file_set.id }
-      expect(response).to have_http_status(:success)
+      it "returns http success" do
+        get :get_media, params: { id: file_set.id }, as: :json
+        expect(response).to have_http_status(:success)
+      end
     end
 
-    it "returns http not found if file_set does not exist" do
-      get :get_media, params: { id: 0 }
-      expect(response).to have_http_status(:not_found)
+    context "when file_set does not exist" do
+      it "returns http not found" do
+        get :get_media, params: { id: 'nonexistent_id' }
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 
@@ -26,8 +30,8 @@ RSpec.describe AllMediaController, type: :controller do
 
     it "renders the correct json response excluding 'thumbnail' and sorting the tags" do
       expected_links = [
-        ["/downloads/#{file_set.id}?file=1080p", "1080p"],
-        ["/downloads/#{file_set.id}?file=720p", "720p"]
+        ["/downloads/#{file_set.id}?file=1080p&locale=en", "1080p"],
+        ["/downloads/#{file_set.id}?file=720p&locale=en", "720p"]
       ]
       expect(controller).to receive(:render).with(json: expected_links)
       controller.send(:get_derivatives, file_set)

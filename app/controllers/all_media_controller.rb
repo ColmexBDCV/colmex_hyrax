@@ -1,9 +1,13 @@
 class AllMediaController < ApplicationController
 
     def get_media
-        file_set = FileSet.find params[:id]
-        
-    end
+        begin
+            file_set = FileSet.find(params[:id])
+        # Procesa el file_set, como renderizar un JSON o una vista
+        rescue ActiveFedora::ObjectNotFoundError
+            render json: { error: "FileSet not found" }, status: :not_found
+        end
+     end
 
     private
         def get_all()

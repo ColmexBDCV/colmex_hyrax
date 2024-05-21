@@ -60,7 +60,8 @@ class ImportsController < ApplicationController
 
   # POST /imports or /imports.json
   def create
-    params["import"]["num_records"] = params["import"]["identifiers"].count
+    identifiers = params.dig("import", "identifiers") || []
+    params["import"]["num_records"] = identifiers.count
     params["import"]["depositor"] = current_user.email
     params["import"]["status"] = "Procesando..."
     params["import"]["object_ids"] = params["import"]["identifiers"].to_json
