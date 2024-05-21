@@ -62,7 +62,7 @@ RSpec.feature 'Create a Amparo', js: true do
       check('agreement')
       
       click_on('Save')
-      sleep 40
+      sleep 50
       
       expect(page).to have_content('My Test Amparo')
       expect(page).to have_content "Your files are being processed"

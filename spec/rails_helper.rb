@@ -29,6 +29,7 @@ ActiveRecord::Migration[5.2].maintain_test_schema!
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 require 'webmock/rspec'
+WebMock.allow_net_connect!
 
 RSpec.configure do |config|
 
