@@ -5,6 +5,9 @@ en:
           index:
             is_lyricist_person_of_tesim: Lyricist
             is_composer_person_of_tesim: Composer
+            is_performer_agent_of_tesim: Performer
+            is_instrumentalist_agent_of_tesim: Intrumentalist
+            is_singer_agent_of_tesim: Singer
             
 
   hyrax:
@@ -18,3 +21,6 @@ en:
       show:
         is_lyricist_person_of: Lyricist
         is_composer_person_of: Composer
+        is_performer_agent_of: Performer
+        is_instrumentalist_agent_of: Intrumentalist
+        is_singer_agent_of: Singer 

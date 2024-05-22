@@ -16,5 +16,21 @@ RSpec.describe Hyrax::MusicPresenter do
       expect(solr_document).to receive(:is_composer_person_of)
       presenter.is_composer_person_of
     end
+
+    it 'delegates is_performer_agent_of' do
+      expect(solr_document).to receive(:is_performer_agent_of)
+      presenter.is_performer_agent_of
+    end
+
+    it 'delegates is_instrumentalist_agent_of' do
+      expect(solr_document).to receive(:is_instrumentalist_agent_of)
+      presenter.is_instrumentalist_agent_of
+    end
+
+    it 'delegates is_singer_agent_of' do
+      expect(solr_document).to receive(:is_singer_agent_of)
+      presenter.is_singer_agent_of
+    end
   end
+
 end

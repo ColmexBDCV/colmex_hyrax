@@ -399,6 +399,18 @@ class SolrDocument
   def is_composer_person_of
     self['is_composer_person_of_tesim']
   end
+
+  def is_performer_agent_of
+    self['is_performer_agent_of_tesim']
+  end
+  
+  def is_instrumentalist_agent_of
+    self['is_instrumentalist_agent_of_tesim']
+  end
+  
+  def is_singer_agent_of
+    self['is_singer_agent_of_tesim']
+  end
   
   def researcher_agent_of
     self['researcher_agent_of_tesim']

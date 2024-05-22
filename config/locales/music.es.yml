@@ -5,6 +5,9 @@ es:
           index:
             is_lyricist_person_of_tesim: Autor de la letra
             is_composer_person_of_tesim: Compositor
+            is_performer_agent_of_tesim: Ejecutante
+            is_instrumentalist_agent_of_tesim: Instrumentista
+            is_singer_agent_of_tesim: Intérprete 
   hyrax:
     icons:
       music:     'fa fa-file-text-o'
@@ -18,3 +21,6 @@ es:
       show:
         is_lyricist_person_of: Autor de la letra
         is_composer_person_of: Compositor
+        is_performer_agent_of: Ejecutante
+        is_instrumentalist_agent_of: Instrumentista
+        is_singer_agent_of: Intérprete 

@@ -19,6 +19,21 @@ class Music < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
+  property :is_performer_agent_of, predicate: ::Vocab::RDAA.isPerformerAgentOf, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+  
+  property :is_instrumentalist_agent_of, predicate: ::Vocab::RDAA.isInstrumentalistAgentOf, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+ 
+  property :is_singer_agent_of, predicate: ::Vocab::RDAA.isSingerAgentOf, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

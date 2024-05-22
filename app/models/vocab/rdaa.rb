@@ -37,5 +37,8 @@ module Vocab
     term :isCriminalDefendantCorporateBodyOf
     term :isCriminalDefendantPersonOf
     term :isDraftsmanAgentOf
+    term :isPerformerAgentOf
+    term :isInstrumentalistAgentOf
+    term :isSingerAgentOf
   end
 end

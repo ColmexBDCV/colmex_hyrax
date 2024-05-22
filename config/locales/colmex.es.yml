@@ -1166,6 +1166,9 @@ es:
         note_on_statement_of_responsibility: Nota sobre declaración de responsabilidad
         is_lyricist_person_of: Autor de la letra
         is_composer_person_of: Compositor
+        is_performer_agent_of: Ejecutante
+        is_instrumentalist_agent_of: Instrumentista
+        is_singer_agent_of: Intérprete 
         researcher_agent_of: Investigador
         summary_of_work: Resumen del proyecto
         nature_of_content: Naturaleza del contenido
