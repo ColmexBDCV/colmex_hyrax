@@ -1,6 +1,6 @@
 <% page_title ||= content_for?(:page_title) ? content_for(:page_title) : default_page_title %>
 <% page_title ||= content_for?(:page_title) ? content_for(:page_title) : default_page_title %>
-<% share_url ||=  @presenter.handle != [] ?  request.original_url : @presenter.handle.first %>
+<% share_url ||=  !@presenter.respond_to?(:handle) || @presenter.handle != []  ?  request.original_url : @presenter.handle.first %>
 <div class="social-media">
   <!-- Sharingbutton Facebook -->
   <%= link_to "https://facebook.com/sharer/sharer.php?#{{u: share_url}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.facebook') do %>
