@@ -12,6 +12,6 @@
   "uv-config": "shx cp ./config/uv/uv.html ./public/uv/uv.html & shx cp ./config/uv/uv-config.json ./public/uv/"
   },
   "devDependencies": {
-  "shx": "^0.3.2"
+    "shx": "git+ssh://git@github.com/shelljs/shx.git"
   }
 }
