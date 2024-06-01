@@ -336,22 +336,43 @@ class CatalogController < ApplicationController
     # This one uses all the defaults set by the solr request handler. Which
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
-   
-    config.add_search_field('all_fields') do |field|
-        # Obtén todos los worktypes y sus campos correspondientes
-        all_worktypes = Hyrax::WorkTypes.all # Este método puede variar dependiendo de tu configuración específica
-        
-        all_names = all_worktypes.flat_map do |worktype|
-          worktype.fields.map { |f| solr_name(f, :stored_searchable) }
-        end.join(" ")
+    config.add_search_field('all_fields', label: 'All Fields') do |field|
+      field.advanced_parse = false	
+      all_names = config.show_fields.values.map(&:field).join(" ")
+      title_name = solr_name("title", :stored_searchable)
+      field.solr_parameters = {
+        qf: "#{all_names}  file_format_tesim all_text_timv director_tesim subject_work_tesim subject_person_tesim subject_corporate_tesim geographic_coverage_tesim temporary_coverage_tesim table_of_contents_tesimtitle_of_series_tesim handle_tesim isbn_tesim",
+        pf: title_name.to_s
+      }
+    end
+
+    all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
     
-        field.advanced_parse = false
-        field.solr_parameters = {
-          qf: all_names,
-          pf: all_names.split(" ").join(" ")
-        }
+    exceptions = ["has_model"]
+
+    all_fields = all_worktypes.flat_map do |worktype|
+      worktype.singularize.classify.constantize.fields.map { |f| solr_name(f, :stored_searchable) }
+    end
+
+  #  all_fields = all_fields - ["has_model_tesim", "create_date_tesim", "modified_date_tesim", "head_tesim", "tail_tesim", "depositor_tesim",
+                                
+                               # ]
+
+    all_fields.each do |name|
+      begin
+        config.add_search_field(name) do |field|
+          solr_name = solr_name(name, :stored_searchable)
+          field.solr_local_parameters = {
+            qf: solr_name,
+            pf: solr_name
+          }
+        end
+      rescue StandardError => e
+        # Ignora el error si el campo ya existe
+        raise unless e.message =~ /_tesim already exists/
       end
-  
+    end
+
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
