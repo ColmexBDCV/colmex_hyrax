@@ -43,7 +43,7 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     config.search_builder_class = SearchBuilder
 
-       
+
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
@@ -79,13 +79,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("place_of_publication", :facetable), limit: 5
     config.add_facet_field solr_name("related_work_of_work", :facetable), limit: 5
     config.add_facet_field solr_name("has_organizer_corporate_body", :facetable), limit: 5
-    
+
     config.add_facet_field solr_name("date_created", :facetable) do |field|
       field.label = 'year'
       field.range = true
       field.include_in_advanced_search = false
     end
-    
+
     # config.add_facet_field solr_name("keyword", :facetable), limit: 5
     config.add_facet_field solr_name("subject_work", :facetable), limit: 5
     config.add_facet_field solr_name("subject_person", :facetable), limit: 5
@@ -99,7 +99,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("publisher", :facetable), limit: 5
     config.add_facet_field solr_name("source", :facetable), limit: 5
     config.add_facet_field solr_name("file_format", :facetable), limit: 5
-    
+
     # config.add_facet_field solr_name("reviewer", :facetable), limit: 5
     config.add_facet_field solr_name("degree_program", :facetable), limit: 5
     config.add_facet_field solr_name("type_of_illustrations", :facetable), limit: 5
@@ -122,7 +122,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("writer_of_suplementary_textual_content", :facetable), limit: 5
     config.add_facet_field solr_name("photographer_corporate_body_of_work", :facetable), limit: 5
     config.add_facet_field solr_name("dimensions_of_still_image", :facetable), limit: 5
-    
+
     config.add_facet_field solr_name("numbering_of_part", :facetable), limit: 5
     config.add_facet_field solr_name("speaker_agent_of", :facetable), limit: 5
     config.add_facet_field solr_name("assistant", :facetable), limit: 5
@@ -142,16 +142,16 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("witness", :facetable), limit: 5
     config.add_facet_field solr_name("is_criminal_defendant_corporate_body_of", :facetable), limit: 5
     config.add_facet_field solr_name("is_criminal_defendant_person_of", :facetable), limit: 5
-    config.add_facet_field solr_name("collector_collective_agent", :facetable), limit: 5   
+    config.add_facet_field solr_name("collector_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("subject_uniform_title", :facetable), limit: 5
     config.add_facet_field solr_name("thematic_collection", :facetable), limit: 5
     config.add_facet_field solr_name("has_system_of_organization", :facetable), limit: 5
     config.add_facet_field solr_name("is_subcollection_of", :facetable), limit: 5
     config.add_facet_field solr_name("depository_collective_agent_of", :facetable), limit: 5
     config.add_facet_field solr_name("corporate_body", :facetable), limit: 5
-    
-    
-    
+
+
+
     config.add_facet_field solr_name("beginning", :facetable), limit: 5
     config.add_facet_field solr_name("ending", :facetable), limit: 5
 
@@ -190,7 +190,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("classification", :stored_searchable)
     config.add_index_field solr_name("pages", :stored_searchable)
     config.add_index_field solr_name("thematic_collection", :stored_searchable), link_to_search: solr_name("thematic_collection", :facetable)
-    # config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url 
+    # config.add_index_field solr_name("related_url", :stored_searchable), helper_method: :link_to_url
     config.add_index_field solr_name("identifier", :stored_searchable)
     config.add_index_field solr_name("source", :stored_searchable), link_to_search: solr_name("source", :facetable)
     config.add_index_field solr_name("director", :stored_searchable), link_to_search: solr_name("director", :facetable)
@@ -318,7 +318,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
     config.add_show_field solr_name("interviewer", :stored_searchable)
-    
+
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
@@ -337,7 +337,7 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
     config.add_search_field('all_fields', label: 'All Fields') do |field|
-      field.advanced_parse = false	
+      field.advanced_parse = false
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
@@ -347,16 +347,14 @@ class CatalogController < ApplicationController
     end
 
     all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
-    
+
     exceptions = ["has_model"]
 
     all_fields = all_worktypes.flat_map do |worktype|
       worktype.singularize.classify.constantize.fields.map { |f| solr_name(f, :stored_searchable) }
     end
 
-  #  all_fields = all_fields - ["has_model_tesim", "create_date_tesim", "modified_date_tesim", "head_tesim", "tail_tesim", "depositor_tesim",
-                                
-                               # ]
+  # all_fields = all_fields - ["has_model_tesim", "create_date_tesim", "modified_date_tesim", "head_tesim", "tail_tesim", "depositor_tesim", ]
 
     all_fields.each do |name|
       begin

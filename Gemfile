@@ -16,7 +16,7 @@ gem 'puma'
 #Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '5.0.7' 
+gem 'sass-rails', '5.0.7'
 gem 'sassc', '2.2.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -74,7 +74,7 @@ end
 gem 'blacklight_range_limit', '6.3.3'
 gem 'blacklight_advanced_search'
 
-gem 'hyrax', '3.5.0'
+gem 'hyrax', '3.6.0'
 gem 'darlingtonia',  '3.1.1'
 gem 'rack-cors'
 gem 'hydra-access-controls'
