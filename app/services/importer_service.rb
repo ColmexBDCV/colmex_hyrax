@@ -77,6 +77,7 @@ module ImporterService
         resource_types['terms'].each do |term|
             types.push term['term']
         end
+        return types
 
     end
 
