@@ -72,10 +72,10 @@ module ImporterService
 
         # Carga y parsea el archivo YAML
         resource_types = YAML.load_file(file_path)
-        types = Array
+        types = Array.new()
         # Extrae y muestra los términos
         resource_types['terms'].each do |term|
-        types.push term['term']
+            types.push term['term']
         end
 
     end
