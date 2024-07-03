@@ -1,7 +1,6 @@
 
 <%  array_of_ids = presenter.ordered_ids %>
 <%  members = presenter.member_presenters_for(array_of_ids) #.sort_by { |presenter| presenter.title } %>
-<%byebug%>
 <% if members.present? %>
   <h2><%= t('.header_f') %></h2>
   <div style="overflow-x:auto;">
