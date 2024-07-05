@@ -32,12 +32,18 @@ module Hyrax
       "#{I18n.t('hyrax.base.show.work_type_'+human_readable_type, :default => human_readable_type)} | #{title.first} | ID: #{id} | #{I18n.t('hyrax.product_name')}"
     end
 
+    def parent_works
+      @parent_works ||= solr_document.fetch('parent_work_ids_ssim', []).map do |id|
+        ActiveFedora::Base.find(id)
+      end
+    end
+
     # CurationConcern methods
     delegate :stringify_keys, :human_readable_type, :collection?, :to_s,
              to: :solr_document
 
     # Metadata Methods
-   delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, :subject_uniform_title, 
+   delegate :title, :alternate_title, :other_title, :date_created, :description, :creator, :subject_uniform_title,
              :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
              :publisher, :language, :reviewer, :handle, :narrator, :writer_of_suplementary_textual_content, :place_of_publication,
              :license, :geographic_coverage, :temporary_coverage, :organizer_collective_agent, :has_field_activity_of_agent,
@@ -68,7 +74,7 @@ module Hyrax
 
     # @return [Boolean] render a IIIF viewer
     def iiif_viewer?
-      representative_id.present? && 
+      representative_id.present? &&
         representative_presenter.present? &&
         representative_presenter.image? &&
         Hyrax.config.iiif_image_server? &&

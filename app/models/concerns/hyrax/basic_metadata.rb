@@ -5,11 +5,12 @@ module Hyrax
   module BasicMetadata
     extend ActiveSupport::Concern
     include Coordinates
+    include IndexParentWorks
 
     included do
       property :alternate_title, predicate: ::Vocab::RDAM.variantTitle, multiple: true
       property :other_title, predicate: ::Vocab::RDAM.otherTitleInformation, multiple: false
-      
+
       property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false
 
       property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false
@@ -23,9 +24,9 @@ module Hyrax
       property :keyword, predicate: ::RDF::Vocab::SCHEMA.keywords
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights
-      property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: false 
+      property :handle, predicate: ::RDF::Vocab::DataCite.handle, multiple: false
       property :thematic_collection, predicate: ::RDF::Vocab::BF2.Collection, multiple: true
-      
+
       # This is for the rights statement
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights
       property :publisher, predicate: ::Vocab::RDAM.publicationStatement, multiple: true
@@ -49,8 +50,8 @@ module Hyrax
       property :numbering_of_part, predicate: ::Vocab::RDAW.hasNumberingOfPart, multiple: false
 
       property :doi, predicate: ::RDF::Vocab::BF2.Doi, multiple: false
-      property :isbn, predicate: ::RDF::Vocab::BF2.Isbn, multiple: true 
-      property :notes, predicate: ::Vocab::RDAM.noteOnManifestation, multiple: true  
+      property :isbn, predicate: ::RDF::Vocab::BF2.Isbn, multiple: true
+      property :notes, predicate: ::Vocab::RDAM.noteOnManifestation, multiple: true
       property :center, predicate: ::RDF::Vocab::SCHEMA.department, multiple: true
       property :classification, predicate: ::RDF::Vocab::BF2.Classification, multiple: true
       property :supplementary_content_or_bibliography, predicate: ::Vocab::RDAE.supplementaryContent, multiple: true
@@ -60,7 +61,7 @@ module Hyrax
       property :type_of_content, predicate: ::Vocab::RDAU.contentType, multiple: true
       property :type_of_illustrations, predicate: ::Vocab::RDAE.illustrativeContent, multiple: true
       property :language_of_expression, predicate: ::Vocab::RDAE.languagueOfExpresion, multiple: true
-      property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true 
+      property :reviewer, predicate: ::RDF::Vocab::Bibframe.review, multiple: true
       property :organizer, predicate: ::Vocab::RDAA.isOrganizerAgentOf, multiple: true
       property :editor, predicate: ::Vocab::RDAA.isEditorPersonOfTextOf, multiple: true
       property :compiler, predicate: ::Vocab::RDAA.isCompilerAgentFor, multiple: true
@@ -76,7 +77,7 @@ module Hyrax
       property :contained_in, predicate: ::Vocab::RDAW.containedWork, multiple: true
       property :collector_collective_agent, predicate: ::Vocab::RDAM.collectorCollectiveAgent, multiple: true
       property :researcher_agent_of, predicate: ::Vocab::RDAA.researcherAgentOf, multiple: true
-      
+
       property :has_system_of_organization, predicate: ::Vocab::RDAW.hasSystemOfOrganization, multiple: true
       property :is_subcollection_of, predicate: ::Vocab::RDAU.isSubCollection, multiple: true
 
@@ -113,11 +114,11 @@ module Hyrax
       property :manifestation_use_restrictions, predicate: ::Vocab::RDAM.restrictionsOnUseOfManifestation, multiple: true
       property :item_access_restrictions, predicate: ::Vocab::RDAI.restrictionsOnAccessToItem, multiple: true
       property :item_use_restrictions, predicate: ::Vocab::RDAI.restrictionsOnUseOfItem, multiple: true
-      property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true 
+      property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true
       property :note_on_statement_of_responsibility, predicate: ::Vocab::RDAM.noteOnStatementOfResposibility, multiple: true
       property :has_organizer_corporate_body, predicate: ::Vocab::RDAW.hasOrganizerCorporateBody, multiple: true
       id_blank = proc { |attributes| attributes[:id].blank? }
-      
+
       class_attribute :controlled_properties
       self.controlled_properties = [:based_near]
       accepts_nested_attributes_for :based_near, reject_if: id_blank, allow_destroy: true

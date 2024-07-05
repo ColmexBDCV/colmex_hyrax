@@ -61,3 +61,12 @@
 <!-- Special partial for every work type -->
 <%= render dom_class(presenter)+'_attribute_rows', presenter: presenter rescue nil%>
 
+<% #= presenter.attribute_to_html(:source, label: t('hyrax.collection.is_part_of'), render_as: :faceted, html_dl: true) %>
+<% unless presenter.parent_works.empty? ||  presenter.parent_works.nil?  %>
+    <dt> <%= t('hyrax.collection.is_part_of') %> </dt>
+
+    <% presenter.parent_works.each do |pw| %>
+        <%=link_to(pw.title.first, contextual_path(pw, @presenter))%><br>
+    <% end %>
+<% end %>
+
