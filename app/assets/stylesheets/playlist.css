@@ -2,10 +2,12 @@
 .mejs-container.mejs-video {
     overflow: hidden;
 }
-.mejs__container.mejs__audio,
+
+.media-wrapper > .mejs__container.mejs__audio,
 .mejs-container.mejs-audio {
     min-height: 450px !important;
 }
+
 .mejs__container.mejs__audio.mejs__no-playlist,
 .mejs-container.mejs-audio.mejs__no-playlist {
     min-height: 60px;
