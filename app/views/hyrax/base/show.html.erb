@@ -87,7 +87,7 @@
                 </div>
               
                 
-                <% if @presenter.representative_presenter.pdf? %>
+                <% if @presenter.representative_presenter.pdf? || @presenter.representative_presenter.image?%>
                   <div class="col-sm-12">
                     <%= render 'playlists', presenter: @presenter %>                    
                   </div>
