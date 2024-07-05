@@ -298,6 +298,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("collector_collective_agent", :stored_searchable), itemprop: 'collector_collective_agent', link_to_search: solr_name("collector_collective_agent", :facetable)
     config.add_index_field solr_name("subject_uniform_title", :stored_searchable), itemprop: 'subject_uniform_title', link_to_search: solr_name("subject_uniform_title", :facetable)
     config.add_index_field solr_name("has_organizer_corporate_body", :stored_searchable)
+    config.add_index_field "parent_work_titles_tesim",  label: I18n.t('hyrax.collection.is_part_of'), helper_method: :link_to_parent_works
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)
@@ -318,6 +319,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
     config.add_show_field solr_name("interviewer", :stored_searchable)
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

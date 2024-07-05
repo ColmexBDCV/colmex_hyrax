@@ -22,22 +22,36 @@ module ApplicationHelper
 
   def is_in_alma?(value)
     conn = Faraday.new :headers => { :accept => "application/json"}
-    begin          
+    begin
       #a = conn.get "action/dlSearch.do?search_scope=52COLMEX_ALL&institution=52COLMEX&vid=52COLMEX_INST&query=any,contains,#{value}"
       url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs?mms_id=#{value}&view=full&expand=p_avail&apikey=l8xx839588162ee7496e8b0e9e6c7fec4a89"
       a = conn.get url
       begin
         data = JSON.parse(a.body.force_encoding('utf-8'))
-      rescue 
+      rescue
         return value
-      end 
+      end
       if data.key?("bib") then
         %(<a href=http://colmex-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlSearch.do?search_scope=52COLMEX_ALL&institution=52COLMEX&vid=52COLMEX_INST&query=any,contains,#{value} target="_blank">#{value}</a>)
       else
         value
-      end 
-    rescue Faraday::ConnectionFailed 
+      end
+    rescue Faraday::ConnectionFailed
       value
     end
+  end
+
+  def link_to_parent_works(document)
+    ids = document[:document]['parent_work_ids_ssim'] || []
+    titles = document[:document]['parent_work_titles_tesim'] || []
+    byebug
+    if ids.empty? || titles.empty?
+      return 'No parent works available'
+    end
+
+    links = ids.zip(titles).map do |id, title|
+      link_to title, Rails.application.routes.url_helpers.hyrax_generic_work_path(id)
+    end
+    safe_join(links, ', ')
   end
 end
