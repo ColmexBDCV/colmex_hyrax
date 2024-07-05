@@ -44,7 +44,7 @@ module ApplicationHelper
   def link_to_parent_works(document)
     ids = document[:document]['parent_work_ids_ssim'] || []
     titles = document[:document]['parent_work_titles_tesim'] || []
-    byebug
+
     if ids.empty? || titles.empty?
       return 'No parent works available'
     end
