@@ -343,7 +343,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} parent_work_titles_tesim file_format_tesim all_text_timv director_tesim subject_work_tesim subject_person_tesim subject_corporate_tesim geographic_coverage_tesim temporary_coverage_tesim table_of_contents_tesimtitle_of_series_tesim handle_tesim isbn_tesim",
+        qf: "#{all_names} parent_work_titles_tesim file_format_tesim all_text_timv director_tesim subject_work_tesim subject_person_tesim subject_corporate_tesim geographic_coverage_tesim temporary_coverage_tesim table_of_contents_tesim title_of_series_tesim handle_tesim isbn_tesim",
         pf: title_name.to_s
       }
     end
@@ -354,8 +354,7 @@ class CatalogController < ApplicationController
 
     all_fields = all_worktypes.flat_map do |worktype|
       worktype.singularize.classify.constantize.fields.map { |f| solr_name(f, :stored_searchable) }
-    end
-
+    end.uniq
   # all_fields = all_fields - ["has_model_tesim", "create_date_tesim", "modified_date_tesim", "head_tesim", "tail_tesim", "depositor_tesim", ]
     all_fields.each do |name|
       begin
