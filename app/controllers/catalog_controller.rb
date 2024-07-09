@@ -346,21 +346,20 @@ class CatalogController < ApplicationController
 
 
 
-    all_fields.push :parent_works_titles
-    all_fields = all_fields - [:title, :description, :creator, :keyword, :has_model, :create_date, :modified_date, :head, :tail, :depositor, ]
+
 
     config.add_search_field('all_fields', label: 'All Fields') do |field|
       field.advanced_parse = false
-      all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf:"suggest file_format_tesim all_text_timv parent_work_titles_tesim",
+        qf:"suggest title_tesim description_tesim creator_tesim keyword_tesim file_format_tesim all_text_timv parent_work_titles_tesim",
         pf: title_name.to_s,
 
       }
     end
 
-
+    all_fields.push :parent_works_titles
+    all_fields = all_fields - [:title, :description, :creator, :keyword, :has_model, :create_date, :modified_date, :head, :tail, :depositor, ]
 
     all_fields.each do |name|
       begin
