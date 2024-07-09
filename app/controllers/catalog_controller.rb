@@ -49,7 +49,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim"
+      qf: "title_tesim description_tesim creator_tesim keyword_tesim",
     }
 
     # solr field configuration for document/show views
@@ -60,7 +60,7 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     # config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
-    config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
+    config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections', http_method: :post
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field solr_name("creator", :facetable), limit: 5
     config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
@@ -338,28 +338,34 @@ class CatalogController < ApplicationController
     # This one uses all the defaults set by the solr request handler. Which
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
+    all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
+
+    all_fields = all_worktypes.flat_map do |worktype|
+      worktype.singularize.classify.constantize.fields.map { |f| f }
+    end.uniq
+
+
+
+    all_fields.push :parent_works_titles
+    all_fields = all_fields - [:title, :description, :creator, :keyword, :has_model, :create_date, :modified_date, :head, :tail, :depositor, ]
+
     config.add_search_field('all_fields', label: 'All Fields') do |field|
       field.advanced_parse = false
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} parent_work_titles_tesim file_format_tesim all_text_timv director_tesim subject_work_tesim subject_person_tesim subject_corporate_tesim geographic_coverage_tesim temporary_coverage_tesim table_of_contents_tesim title_of_series_tesim handle_tesim isbn_tesim",
-        pf: title_name.to_s
+        qf:"suggest file_format_tesim all_text_timv table_of_contents_tesim",
+        pf: title_name.to_s,
+
       }
     end
 
-    all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
 
-    exceptions = ["has_model"]
 
-    all_fields = all_worktypes.flat_map do |worktype|
-      worktype.singularize.classify.constantize.fields.map { |f| solr_name(f, :stored_searchable) }
-    end.uniq
-  # all_fields = all_fields - ["has_model_tesim", "create_date_tesim", "modified_date_tesim", "head_tesim", "tail_tesim", "depositor_tesim", ]
     all_fields.each do |name|
       begin
-        config.add_search_field(name) do |field|
-          solr_name = solr_name(name, :stored_searchable)
+        config.add_search_field(name.to_s) do |field|
+          solr_name = solr_name(name.to_s, :stored_searchable)
           field.solr_local_parameters = {
             qf: solr_name,
             pf: solr_name
@@ -370,7 +376,6 @@ class CatalogController < ApplicationController
         raise unless e.message =~ /_tesim already exists/
       end
     end
-
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
