@@ -57,7 +57,7 @@ module Hyrax
       InheritPermissionsJob.perform_later(obj, use_valkyrie: false)
       VisibilityCopyJob.perform_later(obj)
       #Limited reindex
-      # obj.reindex_extent = Hyrax::Adapters::NestingIndexAdapter::LIMITED_REINDEX;
+      obj.reindex_extent = Hyrax::Adapters::NestingIndexAdapter::LIMITED_REINDEX;
       obj.save
     end
 
