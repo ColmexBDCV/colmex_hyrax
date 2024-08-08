@@ -1,10 +1,10 @@
 zh:
   hyrax:
     icons:
-      music:     'fa fa-file-text-o'
+      audio:     'fa fa-file-text-o'
     select_type:
-      music:
+      audio:
         # TODO: translate `human_name` into Chinese
-        description:        "Music 作品"
-        name:               "Music"
+        description:        "Audio 作品"
+        name:               "Audio"
         # TODO: translate `human_name` into Chinese

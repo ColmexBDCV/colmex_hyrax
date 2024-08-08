@@ -12,11 +12,11 @@ en:
 
   hyrax:
     icons:
-      music:     'fa fa-file-text-o'
+      audio:     'fa fa-file-text-o'
     select_type:
-      music:
-        description:        "Music works"
-        name:               "Music"
+      audio:
+        description:        "Audio works"
+        name:               "Audio"
     base:
       show:
         is_lyricist_person_of: Lyricist

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Hyrax::MusicForm do
+RSpec.describe Hyrax::AudioForm do
   describe 'terms' do
     subject { described_class.terms }
 

@@ -587,7 +587,7 @@ es:
         book: Libro
         video: Video
         book_chapter: Capítulo de libro
-        music: Música
+        audio: Música
         map: Mapa
         database: Base de Datos
         photography: Fotografía
@@ -684,7 +684,7 @@ es:
         work_type_Thesis: Tesis
         work_type_Book: Libro
         work_type_Book_Chapter: Capítulo de Libro
-        work_type_Music: Música
+        work_type_Audio: Música
         work_type_Map: Mapa
         work_type_Data_Base: Base de Datos
         work_type_Photography: Fotografía

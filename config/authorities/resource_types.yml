@@ -79,3 +79,11 @@ terms:
     term: Casete
   - id: DAT
     term: DAT
+  - id: Música
+    term: Música
+  - id: Entrevista
+    term: Entrevista
+  - id: Cancionero
+    term: Cancionero
+  - id: Poesía
+    term: Poesía 

@@ -10,9 +10,9 @@ es:
             is_singer_agent_of_tesim: Intérprete 
   hyrax:
     icons:
-      music:     'fa fa-file-text-o'
+      audio:     'fa fa-file-text-o'
     select_type:
-      music:
+      audio:
         # TODO: translate `human_name` into Spanish
         description:        "Música obras"
         name:               "Música"

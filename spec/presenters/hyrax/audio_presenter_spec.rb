@@ -1,8 +1,8 @@
 # Generated via
-#  `rails generate hyrax:work Music`
+#  `rails generate hyrax:work Audio`
 require 'rails_helper'
 
-RSpec.describe Hyrax::MusicPresenter do
+RSpec.describe Hyrax::AudioPresenter do
   describe 'delegation to solr_document' do
     let(:solr_document) { instance_double(SolrDocument) }
     let(:ability) { instance_double(Ability) }

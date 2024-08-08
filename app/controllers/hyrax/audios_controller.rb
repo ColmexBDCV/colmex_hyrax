@@ -1,14 +1,14 @@
 # Generated via
-#  `rails generate hyrax:work Music`
+#  `rails generate hyrax:work Audio`
 module Hyrax
-  # Generated controller for Music
-  class MusicsController < ApplicationController
+  # Generated controller for Audio
+  class AudiosController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include Hyrax::WorksControllerBehavior
     include Hyrax::BreadcrumbsForWorks
-    self.curation_concern_type = ::Music
+    self.curation_concern_type = ::Audio
 
     # Use this line if you want to use a custom presenter
-    self.show_presenter = Hyrax::MusicPresenter
+    self.show_presenter = Hyrax::AudioPresenter
   end
 end

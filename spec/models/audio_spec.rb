@@ -1,8 +1,8 @@
 # Generated via
-#  `rails generate hyrax:work Music`
+#  `rails generate hyrax:work Audio`
 require 'rails_helper'
 
-RSpec.describe Hyrax::Actors::MusicActor do
+RSpec.describe Audio do
   it "has tests" do
     skip "Add your tests here"
   end

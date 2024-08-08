@@ -1,9 +1,9 @@
 # Generated via
-#  `rails generate hyrax:work Music`
-class Music < ActiveFedora::Base
+#  `rails generate hyrax:work Audio`
+class Audio < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
-  self.indexer = MusicIndexer
+  self.indexer = AudioIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
@@ -23,12 +23,12 @@ class Music < ActiveFedora::Base
     index.type :text
     index.as :stored_searchable, :facetable
   end
-  
+
   property :is_instrumentalist_agent_of, predicate: ::Vocab::RDAA.isInstrumentalistAgentOf, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
   end
- 
+
   property :is_singer_agent_of, predicate: ::Vocab::RDAA.isSingerAgentOf, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable
