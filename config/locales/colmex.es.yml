@@ -587,7 +587,7 @@ es:
         book: Libro
         video: Video
         book_chapter: Capítulo de libro
-        audio: Música
+        audio: Audio
         map: Mapa
         database: Base de Datos
         photography: Fotografía
@@ -604,6 +604,7 @@ es:
         legal_case: Caso
         journal: Revista
         legislation: Legislación
+        generic_work: Obra genérica
       workflow_roles:
         user: Usuario
         workflow_role: Rol del flujo de obra
