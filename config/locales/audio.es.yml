@@ -14,8 +14,8 @@ es:
     select_type:
       audio:
         # TODO: translate `human_name` into Spanish
-        description:        "Música obras"
-        name:               "Música"
+        description:        "Audio obras"
+        name:               "Audio"
         # TODO: translate `human_name` into Spanish
     base:
       show:
