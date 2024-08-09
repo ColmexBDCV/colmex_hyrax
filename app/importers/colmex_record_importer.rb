@@ -18,7 +18,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     self.creator   = opts.delete(:creator)   || raise(ArgumentError)
     self.file_path = opts.delete(:file_path) || raise(ArgumentError)
     self.work = opts.delete(:work) || raise(ArgumentError)
-    self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError)) 
+    self.collection = Collection.where(title: opts.delete(:collection) || raise(ArgumentError))
     self.update = opts.respond_to?(:update) ?  opts.delete(:update) : nil
     super
   end
@@ -26,13 +26,13 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
   def import(record:)
     return create_for(record: record) if update.nil?
     return update_for(record: record) unless update.nil?
-    
+
   rescue Faraday::ConnectionFailed, Ldp::HttpError => e
     error_stream << e
   rescue RuntimeError => e
     error_stream << e
     raise e
-    
+
   end
 
   private
@@ -62,26 +62,29 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
     def create_for(record:)
       begin
-        if work.singularize.classify.constantize.where(identifier: record.identifier).empty?
+        results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |record|
+          record.identifier == exact_match
+        end
+        if results.empty?
           info_stream << 'Creating record: ' \
                         "#{record.respond_to?(:title) ? record.title : record}"
           created    = import_type.new
           attributes = record.attributes
           attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
-          
+
           embargo_attributes(attributes, record)
           locations = get_genomanes_data(attributes[:based_near]) if attributes.key? :based_near
-          
+
           attributes = attributes.merge(member_of_collections_attributes: { '0' => { id: collection.first.id } }) unless collection.empty?
-          
+
           actor_env = Hyrax::Actors::Environment.new(created,
                                                     ::Ability.new(creator),
                                                     attributes)
-          
+
           Hyrax::CurationConcern.actor.create(actor_env)
-          
+
           unless locations.nil?
-            w = created.class.find(created.id)  
+            w = created.class.find(created.id)
             w.based_near = locations
             w.save!
           end
@@ -90,11 +93,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           created.class.find(created.id).file_set_ids.each do |f_id|
             access_file_set(f_id,attributes[:item_access_restrictions].to_s)
           end
-          return [record.identifier, "Importado exitosamente"] 
-        else  
+          return [record.identifier, "Importado exitosamente"]
+        else
           info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
           return [record.identifier, "El identificador ya existe en el sistema"]
-          
+
         end
       rescue  => e
           return [record.identifier, "Error: #{e.to_s}"]
@@ -105,12 +108,12 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       gw = work.singularize.classify.constantize.where(identifier: record.identifier)
       if !gw.empty? && record.respond_to?(:identifier)
         gw = gw.first
-        attrs = record.attributes  
+        attrs = record.attributes
         attrs.delete(:identifier)
         attrs.each do |key, val|
           gw.send("#{key}=",val)
         end
-        
+
 
         locations = get_genomanes_data(attrs[:based_near]) if attrs.key? :based_near
         gw.based_near = locations unless locations.nil?
@@ -122,8 +125,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
           record.representative_file.each do |f|
             replace_file_set(f, gw)
-          end  
-        end  
+          end
+        end
 
         gw.file_set_ids.each do |f_id|
           access_file_set(f_id,attrs[:item_access_restrictions].to_s)
@@ -132,7 +135,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         info_stream << "\nRecord #{record.identifier} is updated"
       else
         info_stream << "\nRecord #{record.identifier} fail to update"
-      end  
+      end
     end
 
     def file_for(filenames)
@@ -145,11 +148,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def import_type
-      raise 'No curation_concern found for import' unless 
+      raise 'No curation_concern found for import' unless
         defined?(Hyrax) && Hyrax&.config&.curation_concerns&.any?
-      
+
       Hyrax.config.curation_concerns.each_with_index do |tw, i|
-        
+
         if tw.name == work
           return Hyrax.config.curation_concerns[i]
         end
@@ -175,12 +178,12 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     def replace_file_set(f, gw)
       now = Time.now
       file = Hyrax::UploadedFile.create(file: File.open(file_path + f), user: creator)
-      file_set = ::FileSet.new(depositor: creator.user_key, 
-                               date_uploaded: now, 
-                               date_modified: now, 
+      file_set = ::FileSet.new(depositor: creator.user_key,
+                               date_uploaded: now,
+                               date_modified: now,
                                creator: [creator.user_key])
       file_actor = ::Hyrax::Actors::FileSetActor.new(file_set, creator)
-      file_actor.create_content(file) 
+      file_actor.create_content(file)
       file_actor.attach_to_work(gw)
     end
 end
