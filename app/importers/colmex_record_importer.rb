@@ -63,7 +63,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     def create_for(record:)
       begin
         results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |record|
-          record.identifier == exact_match
+          record.identifier == record.identifier
         end
         if results.empty?
           info_stream << 'Creating record: ' \
