@@ -38,19 +38,21 @@ members.each do |member|
 
         end
 
-        records.push  [ member.id, member.model_name.name ]
+        records.push  build_member_json_info(member.id)
+
     end
 
 end
 
-ids = @presenter.solr_document['parent_work_ids_ssim'] || []
-titles = @presenter.solr_document['parent_work_titles_tesim'] || []
+is_part_of = []
 
-unless ids.empty? || titles.empty?
-    is_part_of = ids.zip(titles).map do |id, title|
-        { src:  "/concern/#{@presenter.solr_document["has_model_ssim"].first.downcase}/#{id}", title: title}
-    end
+@presenter.parent_works.each do |parent|
+
+    is_part_of << build_member_json_info(parent.id)
+
 end
+
+
 
 json.extract! @curation_concern, *[:id] + @curation_concern.class.fields.reject { |f| [:has_model].include? f }
 json.is_part_of is_part_of

@@ -54,4 +54,17 @@ module ApplicationHelper
     end
     safe_join(links, ', ')
   end
+
+  def build_member_json_info(id)
+    is_part_of = []
+
+    solr_doc = SolrDocument.find(id)
+
+    is_part_of << { :id => solr_doc.id,
+                      :has_model => solr_doc[:has_model_ssim].first,
+                      :thumbnail_path_ss => solr_doc.thumbnail_path,
+                      :hasRelatedMediaFragment => solr_doc[:hasRelatedMediaFragment_ssim]
+                    }
+
+  end
 end
