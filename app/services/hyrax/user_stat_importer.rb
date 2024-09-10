@@ -1,6 +1,5 @@
-require 'retriable' # frozen_string_literal: true
-
 module Hyrax
+  require 'retriable' # frozen_string_literal: true
   # Cache work view, file view & file download stats for all users
   # this is called by 'rake hyrax:stats:user_stats'
   class UserStatImporter
@@ -50,7 +49,7 @@ module Hyrax
 
     def process_files(stats, user, start_date)
       file_ids_for_user(user).each do |file_id|
-        puts file_id
+        log_message "FileSet in turn #{file_id}]"
         file = ::FileSet.find(file_id)
         view_stats = extract_stats_for(object: file, from: FileViewStat, start_date: start_date, user: user)
         stats = tally_results(view_stats, :views, stats) if view_stats.present?
