@@ -49,23 +49,32 @@ module Hyrax
 
     def process_files(stats, user, start_date)
       file_ids_for_user(user).each do |file_id|
-        log_message "FileSet in turn #{file_id}]"
-        file = ::FileSet.find(file_id)
-        view_stats = extract_stats_for(object: file, from: FileViewStat, start_date: start_date, user: user)
-        stats = tally_results(view_stats, :views, stats) if view_stats.present?
-        delay
-        dl_stats = extract_stats_for(object: file, from: FileDownloadStat, start_date: start_date, user: user)
-        stats = tally_results(dl_stats, :downloads, stats) if dl_stats.present?
-        delay
+        begin
+          file = ::FileSet.find(file_id)
+          view_stats = extract_stats_for(object: file, from: FileViewStat, start_date: start_date, user: user)
+          stats = tally_results(view_stats, :views, stats) if view_stats.present?
+          delay
+          dl_stats = extract_stats_for(object: file, from: FileDownloadStat, start_date: start_date, user: user)
+          stats = tally_results(dl_stats, :downloads, stats) if dl_stats.present?
+          delay
+        rescue => e
+          log_message "Error #{e} with FileSet #{file_id}"
+          next
+        end
       end
     end
 
     def process_works(stats, user, start_date)
       work_ids_for_user(user).each do |work_id|
-        work = Hyrax::WorkRelation.new.find(work_id)
-        work_stats = extract_stats_for(object: work, from: WorkViewStat, start_date: start_date, user: user)
-        stats = tally_results(work_stats, :work_views, stats) if work_stats.present?
-        delay
+        begin
+          work = Hyrax::WorkRelation.new.find(work_id)
+          work_stats = extract_stats_for(object: work, from: WorkViewStat, start_date: start_date, user: user)
+          stats = tally_results(work_stats, :work_views, stats) if work_stats.present?
+          delay
+        rescue => e
+          log_message "Error #{e} with Work #{file_id}"
+          next
+        end
       end
     end
 
