@@ -105,11 +105,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def update_for(record:)
-      results = gw.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
+      results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
         row.identifier == record.identifier
       end
-      if results.empty? && record.respond_to?(:identifier)
-        gw = gw.first
+      if not results.empty? && record.respond_to?(:identifier)
+        gw = results.first
         attrs = record.attributes
         attrs.delete(:identifier)
         attrs.each do |key, val|
