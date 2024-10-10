@@ -367,8 +367,6 @@ class CatalogController < ApplicationController
 
     all_fields.push :has_model
 
-    byebug
-
     all_fields.each do |name|
       begin
         config.add_search_field(name.to_s) do |field|
