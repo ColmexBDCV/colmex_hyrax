@@ -359,7 +359,7 @@ class CatalogController < ApplicationController
     end
 
     all_fields.push :parent_works_titles
-    all_fields = all_fields - [:title, :description, :creator, :keyword, :has_model, :create_date, :modified_date, :head, :tail, :depositor, ]
+    all_fields = all_fields - [:has_model, :head, :tail, :depositor, ]
 
     all_fields.each do |name|
       begin
