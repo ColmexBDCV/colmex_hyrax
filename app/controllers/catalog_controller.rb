@@ -365,6 +365,7 @@ class CatalogController < ApplicationController
                                :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
                                :bibliographic_citation ]
 
+    all_fields.push :has_model
 
     all_fields.each do |name|
       begin
