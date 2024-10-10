@@ -340,10 +340,6 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
     all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
 
-    all_fields = all_worktypes.flat_map do |worktype|
-      worktype.singularize.classify.constantize.fields.map { |f| f }
-    end.uniq
-
 
 
 
@@ -358,8 +354,17 @@ class CatalogController < ApplicationController
       }
     end
 
+    all_fields = all_worktypes.flat_map do |worktype|
+      worktype.singularize.classify.constantize.fields.map { |f| f }
+    end.uniq
+
     all_fields.push :parent_works_titles
-    all_fields = all_fields - [:has_model, :head, :tail, :depositor, ]
+    all_fields = all_fields - [:has_model, :head, :tail, :depositor, :date_uploaded, :date_modified, :create_date,
+                               :modified_date, :state, :proxy_depositor, :on_behalf_of, :arkivo_checksum,
+                               :creator_conacyt, :contributor_conacyt, :subject_conacyt, :pub_conacyt, :type_conacyt,
+                               :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
+                               :bibliographic_citation ]
+
 
     all_fields.each do |name|
       begin
