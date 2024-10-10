@@ -367,10 +367,12 @@ class CatalogController < ApplicationController
 
     all_fields.push :has_model
 
+    byebug
+
     all_fields.each do |name|
       begin
         config.add_search_field(name.to_s) do |field|
-          solr_name = solr_name(name.to_s, :stored_searchable)
+          solr_name = solr_name(name.to_s, name == :has_model ? :symbol : :stored_searchable)
           field.solr_local_parameters = {
             qf: solr_name,
             pf: solr_name
