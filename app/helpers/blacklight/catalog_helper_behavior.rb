@@ -211,7 +211,7 @@ module Blacklight::CatalogHelperBehavior
               url = thumbnail_url(document)
 
               if url.present?
-                image_options[:onerror] = "this.onerror=null; this.src='/assets/restringido.png';"
+                image_options[:onerror] = "this.onerror=null; this.src='/img/restringido.png';"
                 image_tag url, image_options
               end
             end
