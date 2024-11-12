@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class SolrDocument
-  
+
   include Blacklight::Solr::Document
   include BlacklightOaiProvider::SolrDocument
 
@@ -24,7 +24,7 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  # Do content negotiation for AF models. 
+  # Do content negotiation for AF models.
 
   use_extension( Hydra::ContentNegotiation )
 
@@ -87,7 +87,7 @@ class SolrDocument
   def subject_corporate
     self['subject_corporate_tesim']
   end
-  
+
   def alternate_title
     self['alternate_title_tesim']
   end
@@ -143,7 +143,7 @@ class SolrDocument
   def is_part_or_work
     self['is_part_or_work_tesim']
   end
-  
+
   def digital_resource_generation_information
     self['digital_resource_generation_information_tesim']
   end
@@ -235,7 +235,7 @@ class SolrDocument
   def themes
     self['themes_tesim']
   end
-   
+
   def period
     self['period_tesim']
   end
@@ -243,7 +243,7 @@ class SolrDocument
   def part
     self['part_tesim']
   end
-  
+
   def year
     self['year_tesim']
   end
@@ -279,7 +279,7 @@ class SolrDocument
   def reviewer
     self['reviewer_tesim']
   end
-  
+
   def editor
     self['editor_tesim']
   end
@@ -287,19 +287,19 @@ class SolrDocument
   def compiler
     self['compiler_tesim']
   end
-  
+
   def commentator
     self['commentator_tesim']
-  end 
+  end
 
   def organizer
     self['organizer_tesim']
-  end 
+  end
 
   def translator
     self['translator_tesim']
-  end 
-  
+  end
+
   def edition
     self['edition_tesim']
   end
@@ -343,7 +343,7 @@ class SolrDocument
   def note_on_statement_of_responsibility
     self['note_on_statement_of_responsibility_tesim']
   end
-  
+
   def interviewer
     self['interviewer_tesim']
   end
@@ -358,7 +358,7 @@ class SolrDocument
 
   def photographer
     self['photographer_tesim']
-  end 
+  end
 
   def collective_title
     self['collective_title_tesim']
@@ -378,7 +378,7 @@ class SolrDocument
 
   def project
     self['project_tesim']
-  end 
+  end
 
   def owner_agent_of
     self['owner_agent_of_tesim']
@@ -392,10 +392,10 @@ class SolrDocument
     self['file_type_details_tesim']
   end
 
-  def is_lyricist_person_of 
+  def is_lyricist_person_of
     self['is_lyricist_person_of_tesim']
   end
-  
+
   def is_composer_person_of
     self['is_composer_person_of_tesim']
   end
@@ -403,15 +403,15 @@ class SolrDocument
   def is_performer_agent_of
     self['is_performer_agent_of_tesim']
   end
-  
+
   def is_instrumentalist_agent_of
     self['is_instrumentalist_agent_of_tesim']
   end
-  
+
   def is_singer_agent_of
     self['is_singer_agent_of_tesim']
   end
-  
+
   def researcher_agent_of
     self['researcher_agent_of_tesim']
   end
@@ -639,7 +639,7 @@ class SolrDocument
   def collector_collective_agent
     self['collector_collective_agent_tesim']
   end
-  
+
   def thematic_collection
     self['thematic_collection_tesim']
   end
@@ -649,22 +649,30 @@ class SolrDocument
   end
 
   def related_work_of_work
-    self['related_work_of_work_tesim'] 
+    self['related_work_of_work_tesim']
   end
-  
+
   def numbering_of_part
-    self['numbering_of_part_tesim'] 
+    self['numbering_of_part_tesim']
   end
 
   def has_system_of_organization
-    self['has_system_of_organization_tesim'] 
+    self['has_system_of_organization_tesim']
   end
 
   def is_subcollection_of
-    self['is_subcollection_of_tesim'] 
+    self['is_subcollection_of_tesim']
   end
 
   def has_organizer_corporate_body
     self['has_organizer_corporate_body_tesim']
+  end
+
+  def has_transformation_by_genre
+    self['has_transformation_by_genre_tesim']
+  end
+
+  def is_transformation_by_genre
+    self['is_transformation_by_genre_tesim']
   end
 end

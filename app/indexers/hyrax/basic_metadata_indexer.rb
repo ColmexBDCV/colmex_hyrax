@@ -10,7 +10,7 @@ module Hyrax
        interviewer interviewee organizer_collective_agent photographer narrator
        collective_title part_of_place provenance curator_collective_agent_of related_work_of_work
        numbering_of_part project owner_agent_of custodian_agent_of file_type_details is_facsimile_of_manifestation_of
-       depository_collective_agent_of depository_agent corporate_body collective_agent has_system_of_organization 
+       depository_collective_agent_of depository_agent corporate_body collective_agent has_system_of_organization
        is_subcollection_of draftsman note_of_timespan researcher_agent_of note_on_statement_of_responsibility
        supplementary_content_or_bibliography responsibility_statement beginning ending
        other_related_persons table_of_contents type_of_content language_of_expression has_organizer_corporate_body
@@ -19,7 +19,8 @@ module Hyrax
        source reviewer mode_of_issuance edition dimensions extension system_requirements
        editor translator compiler commentator organizer contained_in writer_of_suplementary_textual_content
        resource_access_restrictions resource_use_restrictions manifestation_access_restrictions
-       manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent]
+       manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent
+       has_transformation_by_genre is_transformation_by_genre]
 
     self.stored_fields = %i[description identifier doi isbn related_url handle digital_file_characteristics]
     self.symbol_fields = %i[import_url]

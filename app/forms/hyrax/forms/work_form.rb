@@ -21,28 +21,28 @@ module Hyrax
 
       attr_reader :agreement_accepted
 
-      self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator, 
+      self.terms = [:title, :alternate_title, :other_title, :date_created, :description, :creator,
                     :contributor, :has_creator, :subject, :subject_person, :subject_family, :subject_work, :subject_corporate,
                     :publisher, :language, :reviewer, :identifier, :keyword, :based_near, :subject_uniform_title, :thematic_collection,
                     :license, :rights_statement, :handle, :geographic_coverage, :temporary_coverage, :writer_of_suplementary_textual_content,
                     :gender_or_form, :notes, :classification, :has_organizer_corporate_body, :supplementary_content_or_bibliography, :bibliographic_citation,
-                    :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work, 
+                    :responsibility_statement, :other_related_persons, :system_requirements, :item_access_restrictions, :related_work_of_work,
                     :numbering_of_part, :table_of_contents, :doi, :isbn, :edition, :dimensions, :extension, :item_use_restrictions, :encoding_format_details,
                     :type_of_content, :editor, :compiler, :narrator, :commentator, :translator, :digital_resource_generation_information,
-                    :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :collective_title, :part_of_place, 
+                    :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :collective_title, :part_of_place,
                     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :has_system_of_organization,
-                    :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,  
+                    :is_subcollection_of, :depository_collective_agent_of, :depository_agent, :type_of_illustrations, :center, :mode_of_issuance, :source,
                     :corporate_body, :collective_agent, :contained_in, :digital_file_characteristics, :has_field_activity_of_agent, :place_of_publication,
-                    :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending, 
+                    :related_url, :representative_id, :thumbnail_id, :rendering_ids, :files, :is_facsimile_of_manifestation_of, :beginning, :ending,
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation, :researcher_agent_of,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease, :collector_collective_agent, :language_of_expression,
                     :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
                     :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility,
-                    :member_of_collection_ids, :admin_set_id, :note_of_timespan]
+                    :member_of_collection_ids, :admin_set_id, :note_of_timespan, :has_transformation_by_genre, :is_transformation_by_genre]
 
-      self.required_fields = [:title, 
-                              # :creator, 
-                              # :keyword, 
+      self.required_fields = [:title,
+                              # :creator,
+                              # :keyword,
                               # :rights_statement
                             ]
 

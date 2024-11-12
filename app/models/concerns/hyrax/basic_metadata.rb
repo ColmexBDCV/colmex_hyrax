@@ -117,6 +117,9 @@ module Hyrax
       property :note_of_timespan, predicate: ::Vocab::RDAT.noteOfTimeSpan, multiple: true
       property :note_on_statement_of_responsibility, predicate: ::Vocab::RDAM.noteOnStatementOfResposibility, multiple: true
       property :has_organizer_corporate_body, predicate: ::Vocab::RDAW.hasOrganizerCorporateBody, multiple: true
+      property :has_transformation_by_genre, predicate: ::Vocab::RDAW.hasTransformationByGenre, multiple: true
+      property :is_transformation_by_genre, predicate: ::Vocab::RDAW.isTransformationByGenre, multiple: true
+
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties

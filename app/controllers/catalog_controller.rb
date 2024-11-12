@@ -319,6 +319,8 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("format", :stored_searchable)
     config.add_show_field solr_name("identifier", :stored_searchable)
     config.add_show_field solr_name("interviewer", :stored_searchable)
+    config.add_show_field solr_name("has_transformation_by_genre", :stored_searchable)
+    config.add_show_field solr_name("is_transformation_by_genre", :stored_searchable)
 
 
     # "fielded" search configuration. Used by pulldown among other places.

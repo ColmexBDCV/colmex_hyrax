@@ -31,5 +31,7 @@ module Vocab
     term :subjectUniformTitle
     term :hasNumberingOfPart
     term :hasSystemOfOrganization
+    term :hasTransformationByGenre
+    term :isTransformationByGenre
   end
 end

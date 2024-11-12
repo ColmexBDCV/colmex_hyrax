@@ -1,9 +1,10 @@
 
 <%
 =begin%>
- <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %> 
+ <%= presenter.attribute_to_html(:date_modified, label: t('hyrax.base.show.last_modified'), html_dl: true) %>
 <%
-=end%>
+=end
+%>
 <%= presenter.attribute_to_html(:creator, label: t('hyrax.base.show.creator'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:contributor, label: t('hyrax.base.show.contributor'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:has_creator, label: t('hyrax.base.show.has_creator'), render_as: :faceted, html_dl: true) %>
@@ -30,20 +31,24 @@
 <%= presenter.attribute_to_html(:commentator, label: t('hyrax.base.show.commentator'), html_dl: true) %>
 <%= presenter.attribute_to_html(:translator, label: t('hyrax.base.show.translator'), html_dl: true) %>
 
+<%= presenter.attribute_to_html(:has_transformation_by_genre, label: t('hyrax.base.show.has_transformation_by_genre'), html_dl: true) %>
+<%= presenter.attribute_to_html(:is_transformation_by_genre, label: t('hyrax.base.show.is_transformation_by_genre'), html_dl: true) %>
+
+
 <% [:note_of_timespan, :handle, :doi, :isbn, :alternate_title, :other_title, :system_requirements, :language_of_expression,
     :embargo_release_date, :lease_expiration_date, :dimensions, :extension ,:related_work_of_work, :note_on_statement_of_responsibility,
     :gender_or_form, :notes, :supplementary_content_or_bibliography, :has_field_activity_of_agent, :subject_uniform_title,
-    :responsibility_statement, :mode_of_issuance, :is_facsimile_of_manifestation_of, :date_of_manifestation, 
-    :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place, 
+    :responsibility_statement, :mode_of_issuance, :is_facsimile_of_manifestation_of, :date_of_manifestation,
+    :item_access_restrictions, :item_use_restrictions, :encoding_format_details, :digital_resource_generation_information, :collective_title, :part_of_place,
     :provenance, :curator_collective_agent_of, :project, :owner_agent_of, :custodian_agent_of, :file_type_details, :depository_collective_agent_of, :depository_agent, :corporate_body, :collective_agent
     ].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
-<% end %>  
+<% end %>
 <%= presenter.attribute_to_html(:table_of_contents, label: t('hyrax.base.show.table_of_contents'), render_as: :table_content, html_dl: true) %>
-<% [:has_organizer_corporate_body, :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content, 
+<% [:has_organizer_corporate_body, :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content,
      :place_of_publication, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, :has_system_of_organization, :is_subcollection_of].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
-<% end %>  
+<% end %>
 
 <%= presenter.attribute_to_html(:researcher_agent_of, label: t('hyrax.base.show.researcher_agent_of'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:based_near_label, label: t('hyrax.base.show.location'), render_as: :faceted, html_dl: true) %>
@@ -55,7 +60,7 @@
 =begin%>
  <%= presenter.attribute_to_html(:rights_statement, label: t('hyrax.base.show.rights_statement'), render_as: :rights_statement, html_dl: true) %>
 <%= presenter.attribute_to_html(:license, label: t('hyrax.base.show.license'), render_as: :license, html_dl: true) %>
-   
+
 <%
 =end%>
 <!-- Special partial for every work type -->
@@ -69,4 +74,3 @@
         <%=link_to(pw.title.first, contextual_path(pw, @presenter))%><br>
     <% end %>
 <% end %>
-
