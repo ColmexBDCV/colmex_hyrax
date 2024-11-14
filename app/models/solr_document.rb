@@ -675,4 +675,16 @@ class SolrDocument
   def is_transformation_by_genre
     self['is_transformation_by_genre_tesim']
   end
+
+  def has_medium_of_performance_of_musical_content
+    self['has_medium_of_performance_of_musical_content_tesim']
+  end
+
+  def is_person_member_of_collective_agent
+    self['is_person_member_of_collective_agent_tesim']
+  end
+
+  def has_person_member_of_collective_agent
+    self['has_person_member_of_collective_agent_tesim']
+  end
 end

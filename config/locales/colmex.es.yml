@@ -101,6 +101,9 @@ es:
           has_organizer_corporate_body_sim: "Conferencia/Evento"
           has_transformation_by_genre_sim: "Transformación al genero o forma"
           is_transformation_by_genre_sim: "Genero o forma"
+          has_medium_of_performance_of_musical_content_sim: Medio de interpretación de contenido musical
+          is_person_member_of_collective_agent_sim: "Es miembro de:"
+          has_person_member_of_collective_agent_sim: "Sus miembros son:"
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -207,6 +210,9 @@ es:
           note_on_statement_of_responsibility_tesim: Nota sobre declaración de responsabilidad
           has_transformation_by_genre_tesim: "Transformación al genero o forma"
           is_transformation_by_genre_tesim: "Genero o forma"
+          has_medium_of_performance_of_musical_content_tesim: Medio de interpretación de contenido musical
+          is_person_member_of_collective_agent_tesim: "Es miembro de:"
+          has_person_member_of_collective_agent_tesim: "Sus miembros son:"
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -245,6 +251,9 @@ es:
           custodian_agent_of: Custodio
           has_transformation_by_genre: "Transformación al genero o forma"
           is_transformation_by_genre: "Genero o forma"
+          has_medium_of_performance_of_musical_content: Medio de interpretación de contenido musical
+          is_person_member_of_collective_agent: "Es miembro de:"
+          has_person_member_of_collective_agent: "Sus miembros son:"
       sort:
         label: Ordenar por %{field}
         relevance: Relevancia 
@@ -809,6 +818,9 @@ es:
         has_organizer_corporate_body: Conferencia/Evento
         has_transformation_by_genre: "Transformación al genero o forma"
         is_transformation_by_genre: "Genero o forma"
+        has_medium_of_performance_of_musical_content: Medio de interpretación de contenido musical
+        is_person_member_of_collective_agent: "Es miembro de:"
+        has_person_member_of_collective_agent: "Sus miembros son:"
       relationships_parent_row:
         label: "En %{type}:"
         Collection: Colección
@@ -1233,4 +1245,6 @@ es:
         has_organizer_corporate_body: "Conferencia/Evento"
         has_transformation_by_genre: "Transformación al genero o forma"
         is_transformation_by_genre: "Genero o forma"
-        
+        has_medium_of_performance_of_musical_content: Medio de interpretación de contenido musical
+        is_person_member_of_collective_agent: "Es miembro de:"
+        has_person_member_of_collective_agent: "Sus miembros son:"

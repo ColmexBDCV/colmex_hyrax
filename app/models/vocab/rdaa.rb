@@ -40,5 +40,7 @@ module Vocab
     term :isPerformerAgentOf
     term :isInstrumentalistAgentOf
     term :isSingerAgentOf
+    term :isPersonMemberOfCollectiveAgent
+    term :hasPersonMemberOfCollectiveAgent
   end
 end

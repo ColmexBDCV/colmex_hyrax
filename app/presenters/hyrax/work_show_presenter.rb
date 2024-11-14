@@ -57,7 +57,8 @@ module Hyrax
              :numbering_of_part, :type_of_illustrations, :center, :mode_of_issuance, :source, :rights_statement, :is_facsimile_of_manifestation_of,
              :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation, :researcher_agent_of,
              :rendering_ids, :member_of_collection_ids, :collector_collective_agent, :note_of_timespan, :has_organizer_corporate_body,
-             :has_transformation_by_genre, :is_transformation_by_genre, to: :solr_document
+             :has_transformation_by_genre, :is_transformation_by_genre, :is_person_member_of_collective_agent, :has_person_member_of_collective_agent,
+             to: :solr_document
 
     def workflow
       @workflow ||= WorkflowPresenter.new(solr_document, current_ability)

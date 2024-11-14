@@ -34,6 +34,11 @@ class Audio < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
+  property :has_medium_of_performance_of_musical_content, predicate: ::Vocab::RDAU.hasMediumOfPerformanceOfMusicalContent, multiple: true do |index|
+    index.type :text
+    index.as :stored_searchable, :facetable
+  end
+
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

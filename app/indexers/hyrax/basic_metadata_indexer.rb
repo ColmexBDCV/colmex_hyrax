@@ -20,7 +20,8 @@ module Hyrax
        editor translator compiler commentator organizer contained_in writer_of_suplementary_textual_content
        resource_access_restrictions resource_use_restrictions manifestation_access_restrictions
        manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent
-       has_transformation_by_genre is_transformation_by_genre]
+       has_transformation_by_genre is_transformation_by_genre
+       is_person_member_of_collective_agent has_person_member_of_collective_agent]
 
     self.stored_fields = %i[description identifier doi isbn related_url handle digital_file_characteristics]
     self.symbol_fields = %i[import_url]

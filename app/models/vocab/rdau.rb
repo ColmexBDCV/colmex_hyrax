@@ -10,5 +10,6 @@ module Vocab
     term :isFindingAidFor
     term :isSubcollectionOf
     term :hasOrganizerCorporateBody
+    term :hasMediumOfPerformanceOfMusicalContent
   end
 end

@@ -37,8 +37,8 @@ module Hyrax
                     :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo, :date_of_manifestation, :researcher_agent_of,
                     :visibility_during_lease, :lease_expiration_date, :visibility_after_lease, :collector_collective_agent, :language_of_expression,
                     :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
-                    :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility,
-                    :member_of_collection_ids, :admin_set_id, :note_of_timespan, :has_transformation_by_genre, :is_transformation_by_genre]
+                    :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility, :is_person_member_of_collective_agent,
+                    :has_person_member_of_collective_agent, :member_of_collection_ids, :admin_set_id, :note_of_timespan, :has_transformation_by_genre, :is_transformation_by_genre]
 
       self.required_fields = [:title,
                               # :creator,
