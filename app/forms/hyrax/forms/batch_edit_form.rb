@@ -23,7 +23,9 @@ module Hyrax
         :organizer_collective_agent, :has_field_activity_of_agent, :place_of_publication,
         :is_facsimile_of_manifestation_of, :resource_access_restrictions, :resource_use_restrictions,
         :manifestation_access_restrictions, :manifestation_use_restrictions, :item_access_restrictions,
-        :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility
+        :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility, :is_lyricist_person_of, :is_composer_person_of, :is_performer_agent_of,
+        :is_instrumentalist_agent_of, :has_medium_of_performance_of_musical_content, :is_singer_agent_of
+        :is_person_member_of_collective_agent, :has_person_member_of_collective_agent, :has_transformation_by_genre, :is_transformation_by_genr
       ]
       self.required_fields = []
       self.model_class = Hyrax.primary_work_type
