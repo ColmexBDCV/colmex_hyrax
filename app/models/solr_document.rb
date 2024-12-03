@@ -687,4 +687,9 @@ class SolrDocument
   def has_person_member_of_collective_agent
     self['has_person_member_of_collective_agent_tesim']
   end
+
+  def has_carrier_type
+    self['has_carrier_type_tesim']
+  end
+
 end

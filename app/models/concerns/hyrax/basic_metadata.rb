@@ -121,7 +121,7 @@ module Hyrax
       property :is_transformation_by_genre, predicate: ::Vocab::RDAW.isTransformationByGenre, multiple: true
       property :is_person_member_of_collective_agent, predicate: ::Vocab::RDAA.isPersonMemberOfCollectiveAgent, multiple: true
       property :has_person_member_of_collective_agent, predicate: ::Vocab::RDAA.hasPersonMemberOfCollectiveAgent, multiple: true
-
+      property :has_carrier_type, predicate: ::Vocab::RDAM.hasCarrierType, multiple: true
 
       id_blank = proc { |attributes| attributes[:id].blank? }
 

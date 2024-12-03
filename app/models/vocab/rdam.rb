@@ -51,5 +51,6 @@ module Vocab
     term :restrictionsOnAccessToManifestation
     term :restrictionsOnUseOfManifestation
     term :collectorCollectiveAgent
+    term :hasCarrierType
   end
 end

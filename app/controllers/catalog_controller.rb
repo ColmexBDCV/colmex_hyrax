@@ -6,6 +6,16 @@ class CatalogController < ApplicationController
   include Hydra::Controller::ControllerBehavior
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
+  before_action :set_locale
+
+  private
+
+  def set_locale
+
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  public
 
   def self.uploaded_field
     solr_name('system_create', :stored_sortable, type: :date)
@@ -24,6 +34,7 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
@@ -154,6 +165,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("has_medium_of_performance_of_musical_content", :facetable), limit: 5
     config.add_facet_field solr_name("is_person_member_of_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("has_person_member_of_collective_agent", :facetable), limit: 5
+    config.add_facet_field solr_name("has_carrier_type", :facetable), limit: 5
 
 
     config.add_facet_field solr_name("beginning", :facetable), limit: 5
@@ -308,6 +320,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_person_member_of_collective_agent", :stored_searchable), itemprop: 'is_person_member_of_collective_agent', link_to_search: solr_name("is_person_member_of_collective_agent", :facetable)
     config.add_index_field solr_name("has_person_member_of_collective_agent", :stored_searchable), itemprop: 'has_person_member_of_collective_agent', link_to_search: solr_name("has_person_member_of_collective_agent", :facetable)
     config.add_index_field "parent_work_titles_tesim",  label: I18n.t('hyrax.collection.is_part_of'), helper_method: :link_to_parent_works
+    config.add_index_field solr_name("has_carrier_type", :stored_searchable), itemprop: 'has_carrier_type', link_to_search: solr_name("has_carrier_type", :facetable)
+
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable)
@@ -422,4 +436,7 @@ class CatalogController < ApplicationController
   def render_bookmarks_control?
     false
   end
+
+
+
 end

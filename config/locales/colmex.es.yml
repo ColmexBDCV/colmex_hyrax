@@ -102,8 +102,9 @@ es:
           has_transformation_by_genre_sim: "Transformación al genero o forma"
           is_transformation_by_genre_sim: "Genero o forma"
           has_medium_of_performance_of_musical_content_sim: Medio de interpretación de contenido musical
-          is_person_member_of_collective_agent_sim: "Es miembro de:"
-          has_person_member_of_collective_agent_sim: "Sus miembros son:"
+          is_person_member_of_collective_agent_sim: "Es miembro de"
+          has_person_member_of_collective_agent_sim: "Sus miembros son"
+          has_carrier_type_sim: Tipo de portador
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -211,8 +212,9 @@ es:
           has_transformation_by_genre_tesim: "Transformación al genero o forma"
           is_transformation_by_genre_tesim: "Genero o forma"
           has_medium_of_performance_of_musical_content_tesim: Medio de interpretación de contenido musical
-          is_person_member_of_collective_agent_tesim: "Es miembro de:"
-          has_person_member_of_collective_agent_tesim: "Sus miembros son:"
+          is_person_member_of_collective_agent_tesim: "Es miembro de"
+          has_person_member_of_collective_agent_tesim: "Sus miembros son"
+          has_carrier_type_tesim: Tipo de portador
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -254,6 +256,7 @@ es:
           has_medium_of_performance_of_musical_content: Medio de interpretación de contenido musical
           is_person_member_of_collective_agent: "Es miembro de:"
           has_person_member_of_collective_agent: "Sus miembros son:"
+          has_carrier_type: Tipo de portador
       sort:
         label: Ordenar por %{field}
         relevance: Relevancia 
@@ -831,6 +834,7 @@ es:
         number_of_results: Número de resultados por página
         results_per_page: Resultados por página
         sort: <span>Ordenar por:</span>
+        is_part_of: Es parte de
     contact_form:
       notice: Por favor utilice este formulario para enviar preguntas, reportar problemas, solicitar ayuda o enviar comentarios sobre el sistema.
       name_label: Nombre
@@ -1248,3 +1252,4 @@ es:
         has_medium_of_performance_of_musical_content: Medio de interpretación de contenido musical
         is_person_member_of_collective_agent: "Es miembro de:"
         has_person_member_of_collective_agent: "Sus miembros son:"
+        has_carrier_type: Tipo de portador
