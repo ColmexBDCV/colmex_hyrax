@@ -122,6 +122,7 @@ module Hyrax
       property :is_person_member_of_collective_agent, predicate: ::Vocab::RDAA.isPersonMemberOfCollectiveAgent, multiple: true
       property :has_person_member_of_collective_agent, predicate: ::Vocab::RDAA.hasPersonMemberOfCollectiveAgent, multiple: true
       property :has_carrier_type, predicate: ::Vocab::RDAM.hasCarrierType, multiple: true
+      property :is_dancer_agent_of, predicate: ::Vocab::RDAA.isDancerPersonOf, multiple: true
 
       id_blank = proc { |attributes| attributes[:id].blank? }
 

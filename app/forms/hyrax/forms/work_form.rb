@@ -39,7 +39,7 @@ module Hyrax
                     :visibility, :ordered_member_ids, :in_works_ids, :organizer_collective_agent, :resource_access_restrictions, :resource_use_restrictions,
                     :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility, :is_person_member_of_collective_agent,
                     :has_person_member_of_collective_agent, :member_of_collection_ids, :admin_set_id, :note_of_timespan,
-                    :has_carrier_type, :has_transformation_by_genre, :is_transformation_by_genre]
+                    :has_carrier_type, :has_transformation_by_genre, :is_transformation_by_genre, :is_dancer_agent_of]
 
       self.required_fields = [:title,
                               # :creator,

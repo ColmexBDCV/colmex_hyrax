@@ -150,6 +150,7 @@ en:
           has_system_of_organization_tesim:  Collection
           is_subcollection_of_tesim: Subcollecion
           draftsman_tesim: Draftsman
+          parent_work_titles_tesim: Is part of
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor

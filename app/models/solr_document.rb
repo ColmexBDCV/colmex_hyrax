@@ -692,4 +692,12 @@ class SolrDocument
     self['has_carrier_type_tesim']
   end
 
+  def is_dancer_agent_of
+    self['is_dancer_agent_of_tesim']
+  end
+
+  def parent_work_titles
+    self['parent_work_titles_tesim']
+  end
+
 end

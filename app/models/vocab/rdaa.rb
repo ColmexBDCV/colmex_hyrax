@@ -42,5 +42,6 @@ module Vocab
     term :isSingerAgentOf
     term :isPersonMemberOfCollectiveAgent
     term :hasPersonMemberOfCollectiveAgent
+    term :isDancerPersonOf
   end
 end
