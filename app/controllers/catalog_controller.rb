@@ -11,7 +11,7 @@ class CatalogController < ApplicationController
   private
 
   def set_locale
-    I18n.locale = params[:locale].to_sym.presence_in(I18n.available_locales) || I18n.default_locale
+    I18n.locale = params[:locale].presence_in(I18n.available_locales) || I18n.default_locale
   end
 
 
