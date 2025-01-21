@@ -15,6 +15,24 @@ es:
             Book: Libro
             Book Chapter: Capítulo de libro
             Video: Video
+            Audio: Audio
+            Map: Mapa
+            Database: Base de Datos
+            Photography: Fotografía
+            Jurisprudential Thesis: Tesis Jurisprudencial
+            Fact: Hecho
+            Archival Document: Documento Archivístico
+            Request: Solicitud
+            Judgment: Sentencia
+            Recomendation: Recomendación
+            resolution: Resolución
+            Amparo: Amparo
+            Press Release: Nota de Prensa
+            Presentation: Ponencia
+            Legal case: Caso
+            Journal: Revista
+            Legislation: Legislación
+            Generic Work: Obra genérica
           creator_sim: Autor
           contributor_sim: Colaborador
           thematic_collection_sim: Colección Temática
