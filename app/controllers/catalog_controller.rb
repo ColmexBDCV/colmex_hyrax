@@ -194,6 +194,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("volume", :stored_searchable)
     config.add_index_field solr_name("number", :stored_searchable)
     config.add_index_field solr_name("date_created", :stored_searchable), itemprop: 'dateCreated', link_to_search: solr_name("date_created", :facetable)
+    config.add_index_field solr_name("table_of_contents", :stored_searchable)
     config.add_index_field solr_name("geographic_coverage", :stored_searchable), itemprop: 'geographic_coverage', link_to_search: solr_name("geographic_coverage", :facetable)
     config.add_index_field solr_name("subject_work", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_work", :facetable)
     config.add_index_field solr_name("subject_person", :stored_searchable), itemprop: 'about', link_to_search: solr_name("subject_person", :facetable)
