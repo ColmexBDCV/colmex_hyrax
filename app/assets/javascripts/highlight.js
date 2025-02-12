@@ -421,22 +421,29 @@ var HighLight = function() {
     }
   }
   
-  function set_highlight(txt, value){
-    txt_mod= txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 \-]/g, "").split(" ")
-    txt = txt.split(" ")
-    val = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 \-]/g, "").split(" ")
-    for (index = 0; index < txt.length; index++) { 
-        if(isInArray(txt_mod[index], val) && !isInArray(txt_mod[index], stopwords) && txt_mod[index] != "" ) {
+  // function set_highlight(txt, value){
+  //   txt_mod= txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 \-]/g, "").split(" ")
+  //   txt = txt.split(" ")
+  //   val = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9 \-]/g, "").split(" ")
+  //   for (index = 0; index < txt.length; index++) { 
+  //       if(isInArray(txt_mod[index], val) && !isInArray(txt_mod[index], stopwords) && txt_mod[index] != "" ) {
            
-          txt[index] = "<mark>"+txt[index]+"</mark>"
-        }
+  //         txt[index] = "<mark>"+txt[index]+"</mark>"
+  //       }
         
-    }
+  //   }
    
-    return txt.join(" ")
+  //   return txt.join(" ")
 
     
 
+  // }
+
+  function set_highlight(txt, value){
+    console.log(txt,value)
+    let regex = new RegExp(`\\b(${value})\\b`, "gi"); 
+    console.log(txt.replace(regex, '<mark>$1</mark>'));
+    return txt.replace(regex, '<mark>$1</mark>');
   }
 
   function numberRange (start, end) {
