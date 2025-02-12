@@ -6,6 +6,7 @@ module Hyrax
     extend ActiveSupport::Concern
     include Coordinates
     include IndexParentWorks
+    include IndexChildrenWorks
 
     included do
       property :alternate_title, predicate: ::Vocab::RDAM.variantTitle, multiple: true

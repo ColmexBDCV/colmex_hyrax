@@ -374,9 +374,10 @@ class CatalogController < ApplicationController
     config.add_search_field('all_fields', label: 'All Fields') do |field|
       field.advanced_parse = false
       title_name = solr_name("title", :stored_searchable)
+      children_work_titles_names = solr_name("children_work_titles", :stored_searchable)
       field.solr_parameters = {
-        qf:"suggest title_tesim description_tesim creator_tesim keyword_tesim file_format_tesim all_text_timv parent_work_titles_tesim",
-        pf: title_name.to_s,
+        qf:"children_work_titles_tesim^50 suggest title_tesim^2 description_tesim creator_tesim keyword_tesim file_format_tesim all_text_timv parent_work_titles_tesim",
+        pf: title_name.to_s
 
       }
     end

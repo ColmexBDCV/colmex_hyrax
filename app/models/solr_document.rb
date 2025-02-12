@@ -700,4 +700,8 @@ class SolrDocument
     self['parent_work_titles_tesim']
   end
 
+  def children_work_titles
+    self['children_work_titles_tesim']
+  end
+
 end
