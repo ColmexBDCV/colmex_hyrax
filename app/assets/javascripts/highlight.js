@@ -440,9 +440,7 @@ var HighLight = function() {
   // }
 
   function set_highlight(txt, value){
-    console.log(txt,value)
     let regex = new RegExp(`\\b(${value})\\b`, "gi"); 
-    console.log(txt.replace(regex, '<mark>$1</mark>'));
     return txt.replace(regex, '<mark>$1</mark>');
   }
 

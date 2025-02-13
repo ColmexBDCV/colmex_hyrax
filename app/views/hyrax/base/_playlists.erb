@@ -1,5 +1,5 @@
 <%  array_of_ids = presenter.ordered_ids %>
-<%  members = presenter.member_presenters_for(array_of_ids).sort_by { |presenter| presenter.title } %>
+<%  members = presenter.member_presenters_for(array_of_ids).sort_by { |presenter| presenter.file_set_presenters.first.title } %>
 <%  
 
     # byebug
@@ -26,6 +26,7 @@
                 tags = []
                 derivatives = Hyrax::DerivativePath.derivatives_for_reference(file_set)
                 derivatives.each { |d| tags.push d.split(".").first.split("-").last } 
+                byebug
                 tags.delete("thumbnail")
                 tags.sort!
                 
@@ -72,7 +73,7 @@
 
 	for (var i = 0, total = mediaElements.length; i < total; i++) {
 		new MediaElementPlayer(mediaElements[i], {
-			features: ['prevtrack', 'playpause', 'nexttrack', 'current', 'progress', 'duration', 'volume', 'playlist', 'shuffle', 'loop', 'fullscreen'],
+			features: ['prevtrack', 'playpause', 'nexttrack', 'current', 'progress', 'duration', 'volume', 'playlist', 'loop', 'fullscreen'],
 		});
 	}
 
