@@ -1,4 +1,4 @@
 <% [:is_lyricist_person_of, :is_composer_person_of, :is_performer_agent_of,
 :is_instrumentalist_agent_of, :is_singer_agent_of, :has_medium_of_performance_of_musical_content ].each do |a| %>
-    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), html_dl:true) %>
+    <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>
