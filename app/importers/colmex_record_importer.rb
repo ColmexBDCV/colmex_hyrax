@@ -108,6 +108,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
         row.identifier == record.identifier
       end
+
       if not results.empty? && record.respond_to?(:identifier)
         gw = results.first
         attrs = record.attributes
@@ -162,11 +163,14 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def access_file_set(f_id,permit)
+      fs = FileSet.find f_id
       if permit != "" && !permit.nil? then
-        fs = FileSet.find f_id
         fs.visibility = "restricted"
-        fs.save
+      else
+        fs.visibility = "open"
       end
+
+      fs.save
     end
 
     def get_genomanes_data(based_near)
