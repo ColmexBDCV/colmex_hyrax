@@ -4,6 +4,7 @@ module Hyrax
     include FileSetHelper
     include Hyrax::Breadcrumbs
     include Hyrax::Collections::AcceptsBatches
+    include VisibilityParamsHandler
 
     before_action :build_breadcrumbs, only: :edit
     before_action :filter_docs_with_access!, only: [:edit, :update, :destroy_collection]
@@ -49,29 +50,33 @@ module Hyrax
       after_destroy_collection
     end
 
-    def update_document(obj)
-      interpret_visiblity_params(obj)
-      obj.attributes = work_params(admin_set_id: obj.admin_set_id).except(*visibility_params)
-      obj.date_modified = Time.current.ctime
+    # def update_document(obj)
+    #   interpret_visiblity_params(obj)
+    #   obj.attributes = work_params(admin_set_id: obj.admin_set_id).except(*visibility_params)
+    #   obj.date_modified = Time.current.ctime
 
-      InheritPermissionsJob.perform_later(obj, use_valkyrie: false)
-      VisibilityCopyJob.perform_later(obj)
+    #   InheritPermissionsJob.perform_later(obj, use_valkyrie: false)
+    #   VisibilityCopyJob.perform_later(obj)
 
-      obj.save
-    end
+    #   obj.save
+    # end
 
     def update
       case params["update_type"]
       when "update"
-        batch.each do |doc_id|
-          update_document(Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: doc_id, use_valkyrie: false))
-        end
+        # Encolar el job para procesamiento asincrónico
+        BatchUpdateJob.perform_later(
+          batch.to_a,
+          work_params.to_h,
+          current_user.user_key
+        )
         flash[:notice] = "Batch update complete"
         after_update
       when "delete_all"
         destroy_batch
       end
     end
+
 
     private
 
@@ -109,24 +114,24 @@ module Hyrax
       form_class.model_attributes(work_params.merge(extra_params))
     end
 
-    def interpret_visiblity_params(obj)
-      stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
-        middleware.use Hyrax::Actors::InterpretVisibilityActor
-      end
-      env = Hyrax::Actors::Environment.new(obj, current_ability, work_params(admin_set_id: obj.admin_set_id))
-      last_actor = Hyrax::Actors::Terminator.new
-      stack.build(last_actor).update(env)
-    end
+    # def interpret_visiblity_params(obj)
+    #   stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
+    #     middleware.use Hyrax::Actors::InterpretVisibilityActor
+    #   end
+    #   env = Hyrax::Actors::Environment.new(obj, current_ability, work_params(admin_set_id: obj.admin_set_id))
+    #   last_actor = Hyrax::Actors::Terminator.new
+    #   stack.build(last_actor).update(env)
+    # end
 
-    def visibility_params
-      ['visibility',
-       'lease_expiration_date',
-       'visibility_during_lease',
-       'visibility_after_lease',
-       'embargo_release_date',
-       'visibility_during_embargo',
-       'visibility_after_embargo']
-    end
+    # def visibility_params
+    #   ['visibility',
+    #    'lease_expiration_date',
+    #    'visibility_during_lease',
+    #    'visibility_after_lease',
+    #    'embargo_release_date',
+    #    'visibility_during_embargo',
+    #    'visibility_after_embargo']
+    # end
 
     def redirect_to_return_controller
       if params[:return_controller]
