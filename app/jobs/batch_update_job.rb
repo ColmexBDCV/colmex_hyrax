@@ -1,7 +1,7 @@
 class BatchUpdateJob < ApplicationJob
   queue_as :default
 
-  def perform(batch_ids, work_params_hash, user_key)
+  def perform(batch_ids, work_params_hash, user_id)
     begin
       current_user = User.find(user_id)
     rescue ActiveRecord::RecordNotFound => e
