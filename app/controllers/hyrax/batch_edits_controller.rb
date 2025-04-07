@@ -68,7 +68,7 @@ module Hyrax
         BatchUpdateJob.perform_later(
           batch.to_a,
           work_params.to_h,
-          current_user.user_key
+          current_user.id
         )
         flash[:notice] = "Batch update complete"
         after_update

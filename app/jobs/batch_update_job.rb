@@ -2,7 +2,13 @@ class BatchUpdateJob < ApplicationJob
   queue_as :default
 
   def perform(batch_ids, work_params_hash, user_key)
-    current_user = User.find_by(user_key: user_key)
+    begin
+      current_user = User.find(user_id)
+    rescue ActiveRecord::RecordNotFound => e
+      Rails.logger.error "Usuario no encontrado: #{user_id}"
+      return # Salir temprano del job
+    end
+
     ability = Ability.new(current_user)
 
     batch_ids.each do |doc_id|
@@ -24,4 +30,4 @@ class BatchUpdateJob < ApplicationJob
       Rails.logger.error "Error actualizando documento #{doc_id}: #{e.message}"
     end
   end
-end
+endfin
