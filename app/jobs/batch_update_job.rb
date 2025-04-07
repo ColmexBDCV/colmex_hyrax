@@ -30,4 +30,4 @@ class BatchUpdateJob < ApplicationJob
       Rails.logger.error "Error actualizando documento #{doc_id}: #{e.message}"
     end
   end
-endfin
+end
