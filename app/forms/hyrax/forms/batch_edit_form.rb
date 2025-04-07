@@ -24,7 +24,7 @@ module Hyrax
         :is_facsimile_of_manifestation_of, :resource_access_restrictions, :resource_use_restrictions,
         :manifestation_access_restrictions, :manifestation_use_restrictions, :item_access_restrictions,
         :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility,
-        :is_person_member_of_collective_agent, :has_person_member_of_collective_agent, :has_transformation_by_genre, :is_transformation_by_genr
+        :is_person_member_of_collective_agent, :has_person_member_of_collective_agent, :has_transformation_by_genre, :is_transformation_by_genre
       ]
       self.required_fields = []
       self.model_class = Hyrax.primary_work_type
