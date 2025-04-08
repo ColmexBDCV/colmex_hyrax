@@ -32,6 +32,7 @@
                 </div>
                 <div id="collapse_<%= term %>" class="collapse scrolly col-xs-12 col-sm-7">
                   <%= hidden_field_tag('update_type', 'update') %>
+                  <%= hidden_field_tag('async', "true") %>
                   <%= hidden_field_tag('key', term.to_s) %>
                   <%# TODO we don't need to show required %>
                   <%= render_edit_field_partial(term, f: f) %>
