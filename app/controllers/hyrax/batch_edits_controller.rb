@@ -50,33 +50,57 @@ module Hyrax
       after_destroy_collection
     end
 
-    # def update_document(obj)
-    #   interpret_visiblity_params(obj)
-    #   obj.attributes = work_params(admin_set_id: obj.admin_set_id).except(*visibility_params)
-    #   obj.date_modified = Time.current.ctime
+    def process_batch_update(batch_ids)
+      batch_ids.each do |doc_id|
+        begin
+          obj = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: doc_id, use_valkyrie: false)
+          update_document(obj)
+        rescue => e
+          logger.error "Error procesando #{doc_id}: #{e.message}"
+        end
+      end
+    end
 
-    #   InheritPermissionsJob.perform_later(obj, use_valkyrie: false)
-    #   VisibilityCopyJob.perform_later(obj)
+    def update_document(obj)
+      interpret_visiblity_params(obj)
+      obj.attributes = work_params(admin_set_id: obj.admin_set_id).except(*visibility_params)
+      obj.date_modified = Time.current.ctime
 
-    #   obj.save
-    # end
+      if obj.save
+        InheritPermissionsJob.perform_later(obj, use_valkyrie: false)
+        VisibilityCopyJob.perform_later(obj)
+        true
+      else
+        logger.error "Error guardando #{obj.id}: #{obj.errors.full_messages}"
+        false
+      end
+    end
 
     def update
       case params["update_type"]
       when "update"
-        # Encolar el job para procesamiento asincrónico
-        BatchUpdateJob.perform_later(
-          batch.to_a,
-          work_params.to_h,
-          current_user.id
-        )
-        flash[:notice] = "Batch update complete"
-        after_update
+        if params[:async] == "true"
+          # Encolar job para procesamiento asíncrono
+          BatchUpdateJob.perform_later(
+            batch.to_a,
+            work_params.to_h,
+            current_user.id
+          )
+          flash[:notice] = "Actualización por lotes en segundo plano iniciada"
+          after_update
+        else
+          # Procesamiento sincrónico (para debugging)
+          process_batch_update(batch)
+          after_update
+        end
       when "delete_all"
         destroy_batch
       end
     end
 
+    def set_current_user(user)
+      @current_user = user
+    end
 
     private
 
@@ -114,24 +138,24 @@ module Hyrax
       form_class.model_attributes(work_params.merge(extra_params))
     end
 
-    # def interpret_visiblity_params(obj)
-    #   stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
-    #     middleware.use Hyrax::Actors::InterpretVisibilityActor
-    #   end
-    #   env = Hyrax::Actors::Environment.new(obj, current_ability, work_params(admin_set_id: obj.admin_set_id))
-    #   last_actor = Hyrax::Actors::Terminator.new
-    #   stack.build(last_actor).update(env)
-    # end
+    def interpret_visiblity_params(obj)
+      stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
+        middleware.use Hyrax::Actors::InterpretVisibilityActor
+      end
+      env = Hyrax::Actors::Environment.new(obj, current_ability, work_params(admin_set_id: obj.admin_set_id))
+      last_actor = Hyrax::Actors::Terminator.new
+      stack.build(last_actor).update(env)
+    end
 
-    # def visibility_params
-    #   ['visibility',
-    #    'lease_expiration_date',
-    #    'visibility_during_lease',
-    #    'visibility_after_lease',
-    #    'embargo_release_date',
-    #    'visibility_during_embargo',
-    #    'visibility_after_embargo']
-    # end
+    def visibility_params
+      ['visibility',
+       'lease_expiration_date',
+       'visibility_during_lease',
+       'visibility_after_lease',
+       'embargo_release_date',
+       'visibility_during_embargo',
+       'visibility_after_embargo']
+    end
 
     def redirect_to_return_controller
       if params[:return_controller]
