@@ -47,25 +47,21 @@ module Hyrax
       end
 
       def create_pdf_derivatives(filename)
-        Hydra::Derivatives::PdfDerivatives.create(filename,
-                                                  outputs: [{
-                                                    label: :thumbnail,
-                                                    format: 'jpg',
-                                                    size: '338x493',
-                                                    url: derivative_url('thumbnail'),
-                                                    layer: 0
-                                                  }])
+        output_path = URI(derivative_url('thumbnail')).path
+
+        system("convert -density 150 '#{filename}[0]' -strip -trim -thumbnail 338x493^ -gravity center -extent 338x493 '#{output_path}'")
+
         extract_full_text(filename, uri)
       end
 
       def create_office_document_derivatives(filename)
         Hydra::Derivatives::DocumentDerivatives.create(filename,
                                                        outputs: [{
-                                                         label: :thumbnail, format: 'jpg',
-                                                         size: '200x150>',
+                                                         label: :thumbnail, format: 'png',
+                                                         size: '200x150',
                                                          url: derivative_url('thumbnail'),
                                                          layer: 0
-                                                       }])                                                
+                                                       }])
         extract_full_text(filename, uri)
       end
 
@@ -84,7 +80,7 @@ module Hyrax
           { label: '480p', size: '854x480', bitrate: '1000k', format: 'mp4', url: derivative_url('480p') },
           { label: '360p ', size: '640x360', bitrate: '600k', format: 'mp4', url: derivative_url('360p') }]
 
-        
+
         outputs.delete_at(1) if @file_set.height.first.to_i < 2160
         outputs.delete_at(1) if @file_set.height.first.to_i < 1080
         outputs.delete_at(1) if @file_set.height.first.to_i < 720
@@ -94,7 +90,7 @@ module Hyrax
         Hydra::Derivatives::VideoDerivatives.create(filename,
                                                     outputs: outputs)
 
-        
+
       end
 
       def create_image_derivatives(filename)
