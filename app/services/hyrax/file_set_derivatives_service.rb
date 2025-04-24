@@ -49,6 +49,11 @@ module Hyrax
       def create_pdf_derivatives(filename)
         output_path = URI(derivative_url('thumbnail')).path
 
+
+
+        dirname = File.dirname(output_path)
+        FileUtils.mkdir_p(dirname) unless Dir.exist?(dirname)
+
         system("convert -density 150 '#{filename}[0]' -strip -trim -thumbnail 338x493^ -gravity center -extent 338x493 '#{output_path}'")
 
         extract_full_text(filename, uri)
