@@ -23,7 +23,7 @@ module Hyrax
         :organizer_collective_agent, :has_field_activity_of_agent, :place_of_publication,
         :is_facsimile_of_manifestation_of, :resource_access_restrictions, :resource_use_restrictions,
         :manifestation_access_restrictions, :manifestation_use_restrictions, :item_access_restrictions,
-        :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility,
+        :item_use_restrictions, :note_of_timespan, :note_on_statement_of_responsibility, :local_resource_identifier,
         :is_person_member_of_collective_agent, :has_person_member_of_collective_agent, :has_transformation_by_genre, :is_transformation_by_genr
       ]
       self.required_fields = []

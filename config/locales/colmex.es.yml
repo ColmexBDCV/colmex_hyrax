@@ -124,6 +124,7 @@ es:
           has_person_member_of_collective_agent_sim: "Sus miembros son"
           has_carrier_type_sim: Tipo de portador
           is_dancer_agent_of_sim: Danzante
+          local_resource_identifier_sim: Identificador institucional
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -235,6 +236,7 @@ es:
           has_person_member_of_collective_agent_tesim: "Sus miembros son"
           has_carrier_type_tesim: Tipo de portador
           is_dancer_agent_of_tesim: Danzante
+          local_resource_identifier_tesim: Identificador institucional
           parent_work_titles_tesim: Es parte de
         show:
           based_near_tesim: Ubicación
@@ -279,6 +281,7 @@ es:
           has_person_member_of_collective_agent: "Sus miembros son:"
           has_carrier_type: Tipo de portador
           is_dancer_agent_of: Danzante
+          local_resource_identifier: Identificador institucional
       sort:
         label: Ordenar por %{field}
         relevance: Relevancia 
@@ -1277,3 +1280,4 @@ es:
         has_person_member_of_collective_agent: "Sus miembros son:"
         has_carrier_type: Tipo de portador
         is_dancer_agent_of: Danzante
+        local_resource_identifier: Identificador institucional

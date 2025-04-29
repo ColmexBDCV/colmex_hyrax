@@ -16,7 +16,7 @@ module Hyrax
        other_related_persons table_of_contents type_of_content language_of_expression has_organizer_corporate_body
        item_use_restrictions encoding_format_details type_of_illustrations subject_uniform_title
        center license rights_statement date_created bibliographic_citation date_of_manifestation
-       source reviewer mode_of_issuance edition dimensions extension system_requirements
+       source reviewer mode_of_issuance edition dimensions extension system_requirements local_resource_identifier
        editor translator compiler commentator organizer contained_in writer_of_suplementary_textual_content
        resource_access_restrictions resource_use_restrictions manifestation_access_restrictions
        manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent

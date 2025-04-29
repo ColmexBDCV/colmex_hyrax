@@ -704,4 +704,8 @@ class SolrDocument
     self['children_work_titles_tesim']
   end
 
+  def local_resource_identifier
+    self['local_resource_identifier_tesim']
+  end
+
 end
