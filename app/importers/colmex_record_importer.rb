@@ -164,7 +164,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
     def access_file_set(f_id,permit)
       fs = FileSet.find f_id
-      if permit != "" && !permit.nil? then
+      byebug
+      if permit != "" then
         fs.visibility = "restricted"
       else
         fs.visibility = "open"
