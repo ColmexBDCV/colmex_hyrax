@@ -70,7 +70,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
                         "#{record.respond_to?(:title) ? record.title : record}"
           created    = import_type.new
           attributes = record.attributes
-          attributes[:uploaded_files] = [file_for(record.representative_file)] if record.representative_file
+          attributes[:uploaded_files] = [file_for(record.representative_file, attributes[:item_access_restrictions].to_s)] if record.representative_file
 
           embargo_attributes(attributes, record)
           locations = get_genomanes_data(attributes[:based_near]) if attributes.key? :based_near
@@ -90,9 +90,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
 
           info_stream << "\nRecord created at: #{created.id} \n"
+
           created.class.find(created.id).file_set_ids.each do |f_id|
-            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+            access_file_set(f_id,attributes[:item_access_restrictions].first)
           end
+
           return [record.identifier, "Importado exitosamente"]
         else
           info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
@@ -132,7 +134,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         end
 
         gw.file_set_ids.each do |f_id|
-          access_file_set(f_id,attrs[:item_access_restrictions].to_s)
+          access_file_set(f_id,attrs[:item_access_restrictions].first)
         end
 
         info_stream << "\nRecord #{record.identifier} is updated"
@@ -141,7 +143,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       end
     end
 
-    def file_for(filenames)
+    def file_for(filenames, permit)
       ids = []
       filenames.each do |filename|
         fileset = Hyrax::UploadedFile.create(file: File.open(file_path + filename), user: creator)
@@ -164,12 +166,13 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
     def access_file_set(f_id,permit)
       fs = FileSet.find f_id
-      if permit == "" then
-        fs.visibility = "open"
-      else
-        fs.visibility = "restricted"
-      end
+      if permit != "" then
 
+        fs.visibility = "restricted"
+      else
+        fs.visibility = "open"
+      end
+      byebug
       fs.save
     end
 
