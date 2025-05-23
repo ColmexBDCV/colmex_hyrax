@@ -172,7 +172,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       else
         fs.visibility = "open"
       end
-      byebug
+
       fs.save
     end
 
