@@ -92,7 +92,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           info_stream << "\nRecord created at: #{created.id} \n"
 
           created.class.find(created.id).file_set_ids.each do |f_id|
-            access_file_set(f_id,attributes[:item_access_restrictions].first)
+            AccessFileSetJob.perform_later(f_id,attributes[:item_access_restrictions].first)
           end
 
           return [record.identifier, "Importado exitosamente"]
@@ -167,8 +167,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     def access_file_set(f_id,permit)
       fs = FileSet.find f_id
       if permit != "" then
-
-        fs.visibility = "restricted"
+        dfs.visibility = "restricted"
       else
         fs.visibility = "open"
       end

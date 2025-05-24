@@ -1,4 +1,4 @@
-class FileSetAccessJob < ApplicationJob
+class FileSetChangeAccessJob < ApplicationJob
   queue_as :default
 
   def perform(permission, text)
