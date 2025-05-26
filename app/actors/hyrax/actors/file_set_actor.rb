@@ -99,14 +99,23 @@ module Hyrax
       # Adds a FileSet to the work using ore:Aggregations.
       def attach_to_af_work(work, file_set_params)
         work.reload unless work.new_record?
-        file_set.visibility = work.visibility unless assign_visibility?(file_set_params)
+
+        # Set visibility based on item_access_restrictions
+        if work.respond_to?(:item_access_restrictions) && work.item_access_restrictions.present?
+          file_set.visibility = 'restricted'
+        else
+          file_set.visibility = work.visibility unless assign_visibility?(file_set_params)
+        end
+
+        file_set.title = work.title
+
+        file_set.save
+
         work.ordered_members << file_set
         work.representative = file_set if work.representative_id.blank?
         work.thumbnail = file_set if work.thumbnail_id.blank?
-        # Save the work so the association between the work and the file_set is persisted (head_id)
-        # NOTE: the work may not be valid, in which case this save doesn't do anything.
-        file_set.title = work.title
-        file_set.save
+
+
         work.save
       end
 

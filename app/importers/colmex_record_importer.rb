@@ -90,9 +90,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
 
           info_stream << "\nRecord created at: #{created.id} \n"
-          created.class.find(created.id).file_set_ids.each do |f_id|
-            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
-          end
+
           return [record.identifier, "Importado exitosamente"]
         else
           info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
@@ -131,10 +129,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
         end
 
-        gw.file_set_ids.each do |f_id|
-          access_file_set(f_id,attrs[:item_access_restrictions].to_s)
-        end
-
         info_stream << "\nRecord #{record.identifier} is updated"
       else
         info_stream << "\nRecord #{record.identifier} fail to update"
@@ -160,17 +154,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           return Hyrax.config.curation_concerns[i]
         end
       end
-    end
-
-    def access_file_set(f_id,permit)
-      fs = FileSet.find f_id
-      if permit != "" && !permit.nil? then
-        fs.visibility = "restricted"
-      else
-        fs.visibility = "open"
-      end
-
-      fs.save
     end
 
     def get_genomanes_data(based_near)
