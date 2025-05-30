@@ -946,6 +946,8 @@ es:
       fixity_check: Controles de Fijeza
       characterization: Caracterización
       not_yet_characterized: Aun no caracterizado
+      regenerate_derivatives: Regenerar derivados
+      regenerate_derivatives_title: Regenerar derivados para este archivo
     homepage:
       center_economic_studies: Centro de Estudios Económicos
       center_linguistic_and_literary_studies: Centro de Estudios Lingüísticos y Literarios

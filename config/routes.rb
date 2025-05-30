@@ -15,13 +15,14 @@ Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   concern :oai_provider, BlacklightOaiProvider::Routes.new
 
-  
-  get 'get_media', to: 'all_media#get_media' 
+  post '/derivatives/:file_set_id', to: 'derivatives#create', as: :create_derivatives
+
+  get 'get_media', to: 'all_media#get_media'
   get 'all_coordinates', to: 'all_coordinates#fetch_docs'
-  
+
   #Conacyt Requirements
   get 'persona_name', to: 'authority#person'
-  
+
 
   get 'padron', to: 'conacyt_stats#padron'
   get 'ranking/articulos', to: 'conacyt_stats#articulos'
@@ -29,21 +30,21 @@ Rails.application.routes.draw do
   get 'descargas', to: 'conacyt_stats#descargas'
 
   #End Conacyt Requirements
-     
-  
-  
+
+
+
   mount Sidekiq::Web => '/jobs'
 
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
-  
+
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     # concerns :oai_provider
 
-  
+
     concerns :searchable
     concerns :range_searchable
 
@@ -72,6 +73,6 @@ Rails.application.routes.draw do
   end
 
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
