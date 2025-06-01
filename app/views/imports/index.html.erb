@@ -37,6 +37,7 @@
               <th> # de Registros</th>
               <th> Validado para RepNal </th>
               <th> </th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +78,18 @@
                     <%= f.hidden_field :id, :value => import.id %>
                     <%= f.submit 'Deshacer Importación', data: {confirm: 'Confirmar (Esta acción no se puede deshacer)' }, class: "btn btn-default", disabled: d %>
                   <% end %>
+                </td>
+                <td>
+                  <%= button_to 'Exportar CSV',
+                      export_csv_import_path(import),
+                      method: :post,
+                      class: 'btn btn-primary',
+                      data: { 
+                        disable_with: 'Procesando...',
+                        confirm: '¿Desea exportar los registros a CSV?' 
+                      },
+                      disabled: d
+                  %>
                 </td>
               </tr>
             <% end %>            

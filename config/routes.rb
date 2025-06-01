@@ -2,7 +2,11 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   post '/imports/validate', to: 'imports#validate'
-  resources :imports, only: [:new,:index,:create,:update]
+  resources :imports, only: [:new,:index,:create,:update] do
+    member do
+      post 'export_csv'
+    end
+  end
   # get '/imports', to: 'imports#index'
   # get '/imports/new', to: 'imports#new'
   # post '/imports', to: 'imports#create'

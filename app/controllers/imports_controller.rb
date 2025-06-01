@@ -14,7 +14,7 @@ class ImportsController < ApplicationController
     add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
     add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
   end
-  
+
   def validate
     render :json => validate_csv(params[:sip], params[:work], params[:repnal])
   end
@@ -27,18 +27,18 @@ class ImportsController < ApplicationController
   def new
     # URL del servicio web que deseas verificar
     url = URI.parse('http://biblio-handle.colmex.mx:8080/handle/list')  # Cambia esto por la URL del servicio web que quieres verificar
-  
+
     begin
       # Realiza la solicitud HTTP
       response = Net::HTTP.get_response(url)
-  
+
       # Verifica si el servicio responde con código 200
       if response.code == "200"
         # Código existente para ejecutar si el servicio está disponible
         @sips = []
         imports = Import.where.not(status: "Cancelado").pluck(:name)
         list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
-  
+
         @user = current_user
         @path = Rails.root
         add_breadcrumb t(:'hyrax.controls.home'), root_path
@@ -68,7 +68,7 @@ class ImportsController < ApplicationController
     params["import"]["date"] = DateTime.now.strftime("%d/%m/%Y %H:%M")
     params["import"]["repnal"] = params["import"].key?("repnal") ? "Si" : "No"
     @import = Import.new(import_params)
-    
+
     respond_to do |format|
       if @import.save
         format.html { redirect_to import_url(@import), notice: "Import was successfully created." }
@@ -109,6 +109,18 @@ class ImportsController < ApplicationController
   #     format.json { head :no_content }
   #   end
   # end
+
+  def export_csv
+    import = Import.find(params[:id])
+    # Extraer solo los IDs de los objetos exitosos
+
+    object_ids = JSON.parse(import.object_ids).select { |obj| obj[1].include?("exitosamente") }.map { |obj| obj[0] }
+
+    ExportCsvJob.perform_later(import.name, import.object_type, object_ids)
+
+    # Redireccionar con mensaje de éxito
+    redirect_to imports_path, notice: "La exportación a CSV ha comenzado. El archivo estará disponible en breve en la carpeta del SIP #{import.name}."
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,4 +1,5 @@
 require 'set'
+require 'fileutils'
 
 module ExporterService
 
@@ -47,7 +48,10 @@ module ExporterService
         self.export(work_ids, fields, "thematic_collection")
     end
 
-    def self.export(work_ids, fields,tag = "all")
+    def self.export(work_ids, fields, tag = "all", path=".", no_objects = nil)
+        # Crear el directorio si no existe
+        FileUtils.mkdir_p(path) unless File.directory?(path) if path != "."
+
         remove_fields = ["head",
                "tail",
                "depositor",
@@ -67,12 +71,23 @@ module ExporterService
                "lease_id"
             ]
 
-        data=[]
+        data = []
         keys = []
-        keys.push("filenames")
         keys.push("identifier")
+        keys.push("filenames")
         keys.push("title")
         keys.push("thumbnail")
+
+        # Si no_objects está presente, crear un CSV con los objetos no encontrados
+        if no_objects.present?
+          CSV.open("#{path}/not_found_#{tag}.csv", "wb") do |csv|
+            csv << ["identifier", "estado"]
+            no_objects.each do |identifier|
+              csv << [identifier, "No encontrado"]
+            end
+          end
+        end
+
         work_ids.each do |id|
             obj = ActiveFedora::Base.find(id)
 
@@ -115,7 +130,7 @@ module ExporterService
 
         keys = fields.split if !fields.nil? && fields.split.count > 0
 
-        CSV.open("export_#{tag}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
+        CSV.open("#{path}/export_#{tag}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
             data.each do|v|
                 csv << v.to_h
             end
