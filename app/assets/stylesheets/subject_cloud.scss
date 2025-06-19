@@ -1,0 +1,45 @@
+#cloud-container {
+    background: #fff;
+    // border: 1px solid #ddd;
+    // border-radius: 4px;
+    padding: 20px;
+   // box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.jqcloud {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.jqcloud-word {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.jqcloud-word:hover {
+    transform: scale(1.1);
+}
+
+.ui-slider {
+    margin: 10px 0;
+}
+
+.ui-slider .ui-slider-handle {
+    cursor: pointer;
+}
+
+.form-check {
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos adicionales para mejorar la visualización */
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.alert {
+    margin-bottom: 1rem;
+}

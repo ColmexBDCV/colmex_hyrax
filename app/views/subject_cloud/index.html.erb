@@ -1,0 +1,285 @@
+<style>
+
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper-slider {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 50px 40px 20px 40px;
+  border-radius: 10px;
+}
+.container-slider {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.slider-track {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: #6C112F;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #6C112F;
+  pointer-events: auto;
+  border: none;
+}
+input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #6C112F;
+  pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 1px solid #6C112F;
+}
+.values {
+  background-color: #6C112F;
+  width: 32%;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ffffff;
+}
+.values:before {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 15px solid #6C112F;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  margin: auto;
+  bottom: -14px;
+  left: 0;
+  right: 0;
+}
+
+.horizontal-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  margin-bottom: 1em;
+  justify-content: center;
+}
+.horizontal-checkboxes .form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+#subject-form .form-group {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1.2em 1em 1em 1em;
+  margin-bottom: 1.5em;
+  /* background: #fafbfc; */
+}
+
+.form-check-input{
+  margin: 0 5px 5px 0 !important;
+}
+
+/* Spinner CSS para fallback si Bootstrap no está presente */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.spinner-fallback {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #6C112F;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+#spinner-cloud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 200px;
+}
+
+#cloud-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 540px;
+  position: relative;
+  border:0px solid #fff;
+  margin-bottom: 1.5em;
+}
+
+h1 {
+  color: #6C112F;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #6C112F;
+}
+
+</style>
+<div class="container mt-4">
+  <h1>Visualización del Conocimiento en El Colegio de México </h1>
+  <p>Esta herramienta genera nubes de palabras por años a partir de los términos extraidos de todo nuestro repositorio,
+   que incluye la producción académica del Colegio, nuestras colecciones digitales, el archivo y fondos digitalizados de programas académicos de investigación.
+   Selecciona el tipo de campo temático y el rango de años para visualizar cómo han evolucionado el conocimiento a los largo del tiempo. 
+   Representa el inicio del esfuerzo para visualizar la historio intelctual de nuestra institución.
+  </p>
+  <%= form_tag subject_cloud_get_terms_path, method: :get, id: 'subject-form', class: 'mb-4' do %>
+    <div class="form-group">
+      <h4 style="text-align:center;">ELIGE UN CAMPO:</h4>
+      <div class="horizontal-checkboxes">
+        <% fields = [
+          'creator',
+          'contributor',
+          'publisher',
+          'subject',
+          'subject_person',
+          'subject_family', 
+          'subject_corporate',
+          'geographic_coverage',
+          'temporary_coverage',
+          ]
+        %>
+        <% fields.each do |field| %>
+          <div class="form-check">
+            <%= check_box_tag 'fields[]', field, false, class: 'form-check-input', id: "#{field}_checkbox" %>
+            <%= label_tag "#{field}_checkbox", t('hyrax.base.show.'+field), class: 'form-check-label' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  
+  <div id="cloud-container" class="mt-4" style="height: 540px; position: relative;"></div>
+  
+  <div class="form-group mt-3">
+      <center><h4>ELEGIR UN RANGO DE AÑOS:</h4></center>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="wrapper-slider">
+            <div class="values">
+              <span id="range1">
+                <%= @min_year %>
+              </span>
+              <span> &dash; </span>
+              <span id="range2">
+                <%= @max_year %>
+              </span>
+            </div>
+            <div class="container-slider">
+              <div class="slider-track"></div>
+              <input name="start_year" type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @min_year %>" id="slider-1" oninput="slideOne()">
+              <input name="end_year" type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" id="slider-2" oninput="slideTwo()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+  <br>
+</div>
+
+<script>
+window.onload = function () {
+  slideOne();
+  slideTwo();
+};
+
+let sliderOne = document.getElementById("slider-1");
+let sliderTwo = document.getElementById("slider-2");
+let displayValOne = document.getElementById("range1");
+let displayValTwo = document.getElementById("range2");
+let minGap = 0;
+let sliderTrack = document.querySelector(".slider-track");
+let sliderMaxValue = document.getElementById("slider-1").max;
+
+function slideOne() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderOne.value = parseInt(sliderTwo.value) - minGap;
+  }
+  displayValOne.textContent = sliderOne.value;
+  fillColor();
+}
+function slideTwo() {
+  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    sliderTwo.value = parseInt(sliderOne.value) + minGap;
+  }
+  displayValTwo.textContent = sliderTwo.value;
+  fillColor();
+}
+function fillColor() {
+  let percent1 = (sliderOne.value - sliderOne.min) / (sliderOne.max - sliderOne.min) * 100;
+  let percent2 = (sliderTwo.value - sliderTwo.min) / (sliderTwo.max - sliderTwo.min) * 100;
+  sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #6C112F ${percent1}% , #6C112F ${percent2}%, #dadae5 ${percent2}%)`;
+}
+
+</script>

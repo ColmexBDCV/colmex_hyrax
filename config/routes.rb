@@ -57,6 +57,10 @@ Rails.application.routes.draw do
   devise_for :users
   mount Hydra::RoleManagement::Engine => '/'
 
+  # Rutas para la nube de subjects
+  get '/subject_cloud', to: 'subject_cloud#index'
+  get '/subject_cloud/get_terms', to: 'subject_cloud#get_terms'
+
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
