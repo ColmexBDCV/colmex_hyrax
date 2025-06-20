@@ -1,7 +1,7 @@
 /* fonts */
 
 div.jqcloud {
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: sans-serif "Helvetica", "Arial";
   font-size: 20px;
   line-height: normal;
 }
@@ -11,22 +11,21 @@ div.jqcloud a {
   text-decoration: none;
 }
 
-div.jqcloud span.w10 { font-size: 275%; }
-div.jqcloud span.w9 { font-size: 250%; }
-div.jqcloud span.w8 { font-size: 225%; }
-div.jqcloud span.w7 { font-size: 200%; }
-div.jqcloud span.w6 { font-size: 175%; }
-div.jqcloud span.w5 { font-size: 150%; }
-div.jqcloud span.w4 { font-size: 125%; }
-div.jqcloud span.w3 { font-size: 100%; }
-div.jqcloud span.w2 { font-size: 75%; }
-div.jqcloud span.w1 { font-size: 50%; }
-
+div.jqcloud span.w1 { font-size:  35%; }
+div.jqcloud span.w2 { font-size:  46%; }
+div.jqcloud span.w3 { font-size:  62%; }
+div.jqcloud span.w4 { font-size:  82%; }
+div.jqcloud span.w5 { font-size: 109%; }
+div.jqcloud span.w6 { font-size: 145%; }
+div.jqcloud span.w7 { font-size: 192%; }
+div.jqcloud span.w8 { font-size: 255%; }
+div.jqcloud span.w9 { font-size: 339%; }
+div.jqcloud span.w10 { font-size: 450%; }
 /* colors */
 
 div.jqcloud { color: #6C112F; }
 div.jqcloud a { color: inherit; }
-div.jqcloud a:hover { color: #F5DDE2; background-color: black;} /* nuevo tono 11 para hover */
+div.jqcloud a:hover {  background-color: white; font-weight: bolder;} /* nuevo tono 11 para hover */
 div.jqcloud span.w10 { color: #6C112F; }
 div.jqcloud span.w9  { color: #8B1E3F; }
 div.jqcloud span.w8  { color: #A42B4F; }

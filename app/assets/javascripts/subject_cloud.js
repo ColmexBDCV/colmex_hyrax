@@ -70,7 +70,7 @@ function initWordCloud() {
                     let orientation = Math.random() < 0.25 ? 3 : 0;
                     // Guardar el texto base y el texto con peso
                     let baseText = term.text;
-                    let hoverText = `&nbsp;${term.text} - ${term.weight}&nbsp;`;
+                    let hoverText = `&nbsp;${term.text}&nbsp;`;
                     let text = orientation === 3 ? `<a href='${url}' target='_blank' style='writing-mode: vertical-rl; transform: rotate(180deg); display:inline-block;' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a>` : `<a href='${url}' target='_blank' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a>`;
                     return {
                         text: text,
