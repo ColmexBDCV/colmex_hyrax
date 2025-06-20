@@ -152,6 +152,7 @@ input[type="range"]:active::-webkit-slider-thumb {
   height: 64px;
   animation: spin 1s linear infinite;
   margin: 0 auto;
+  /* margin-bottom: 150px */
 }
 #spinner-cloud {
   display: flex;
@@ -184,8 +185,9 @@ input[type="checkbox"]:checked {
   accent-color: #6C112F;
 }
 
+
 </style>
-<div class="container mt-4">
+<div id="cloud-wrapper" class="container mt-4">
   <h1>Visualización del Conocimiento en El Colegio de México </h1>
   <p>Esta herramienta genera nubes de palabras por años a partir de los términos extraidos de todo nuestro repositorio,
    que incluye la producción académica del Colegio, nuestras colecciones digitales, el archivo y fondos digitalizados de programas académicos de investigación.
@@ -199,7 +201,7 @@ input[type="checkbox"]:checked {
         <% fields = [
           'creator',
           'contributor',
-          'publisher',
+          'editor',
           'subject',
           'subject_person',
           'subject_family', 
@@ -214,10 +216,13 @@ input[type="checkbox"]:checked {
             <%= label_tag "#{field}_checkbox", t('hyrax.base.show.'+field), class: 'form-check-label' %>
           </div>
         <% end %>
+        <div class="form-input">
+          <button type="submit" class="btn btn-primary" id="search-terms">Buscar términos</button>
+          <button type="button" class="btn btn-secondary" id="clear-cloud">Limpiar</button>
+        </div>
       </div>
     </div>
-
-  
+     
   <div id="cloud-container" class="mt-4" style="height: 540px; position: relative;"></div>
   
   <div class="form-group mt-3">
@@ -282,4 +287,22 @@ function fillColor() {
   sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #6C112F ${percent1}% , #6C112F ${percent2}%, #dadae5 ${percent2}%)`;
 }
 
+// Controlar el z-index dinámicamente para el slider activo
+sliderOne.addEventListener('mousedown', function() {
+  sliderOne.style.zIndex = 2;
+  sliderTwo.style.zIndex = 1;
+});
+sliderTwo.addEventListener('mousedown', function() {
+  sliderTwo.style.zIndex = 2;
+  sliderOne.style.zIndex = 1;
+});
+// Para soporte táctil
+sliderOne.addEventListener('touchstart', function() {
+  sliderOne.style.zIndex = 2;
+  sliderTwo.style.zIndex = 1;
+});
+sliderTwo.addEventListener('touchstart', function() {
+  sliderTwo.style.zIndex = 2;
+  sliderOne.style.zIndex = 1;
+});
 </script>

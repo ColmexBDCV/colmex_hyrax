@@ -2,7 +2,7 @@
 
 div.jqcloud {
   font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   line-height: normal;
 }
 
@@ -11,22 +11,22 @@ div.jqcloud a {
   text-decoration: none;
 }
 
-div.jqcloud span.w10 { font-size: 550%; }
-div.jqcloud span.w9 { font-size: 500%; }
-div.jqcloud span.w8 { font-size: 450%; }
-div.jqcloud span.w7 { font-size: 400%; }
-div.jqcloud span.w6 { font-size: 350%; }
-div.jqcloud span.w5 { font-size: 300%; }
-div.jqcloud span.w4 { font-size: 250%; }
-div.jqcloud span.w3 { font-size: 200%; }
-div.jqcloud span.w2 { font-size: 150%; }
-div.jqcloud span.w1 { font-size: 100%; }
+div.jqcloud span.w10 { font-size: 275%; }
+div.jqcloud span.w9 { font-size: 250%; }
+div.jqcloud span.w8 { font-size: 225%; }
+div.jqcloud span.w7 { font-size: 200%; }
+div.jqcloud span.w6 { font-size: 175%; }
+div.jqcloud span.w5 { font-size: 150%; }
+div.jqcloud span.w4 { font-size: 125%; }
+div.jqcloud span.w3 { font-size: 100%; }
+div.jqcloud span.w2 { font-size: 75%; }
+div.jqcloud span.w1 { font-size: 50%; }
 
 /* colors */
 
 div.jqcloud { color: #6C112F; }
 div.jqcloud a { color: inherit; }
-div.jqcloud a:hover { color: #F5DDE2; } /* nuevo tono 11 para hover */
+div.jqcloud a:hover { color: #F5DDE2; background-color: black;} /* nuevo tono 11 para hover */
 div.jqcloud span.w10 { color: #6C112F; }
 div.jqcloud span.w9  { color: #8B1E3F; }
 div.jqcloud span.w8  { color: #A42B4F; }
@@ -42,8 +42,51 @@ div.jqcloud span.w1  { color: #B24C8D; }
 /* layout */
 
 div.jqcloud {
-  overflow: hidden;
+  overflow: visible !important;
   position: relative;
 }
 
-div.jqcloud span { padding: 0; }
+div.jqcloud span {
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Para evitar salto de posición al hacer scale */
+  will-change: transform;
+}
+
+div.jqcloud span:hover {
+  /* Centra el scale en el centro del span */
+  transform-origin: center center;
+}
+
+/* div.jqcloud span:hover {
+  transform: scale(1.4);
+  z-index: 20;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+} */
+
+#cloud-container {
+  height: auto !important;
+  min-height: 200px;
+  max-width: 100%;
+  position: relative;
+  overflow: visible !important;
+}
+
+.jqcloud {
+  height: auto !important;
+  min-height: 200px;
+  width: 100%;
+  position: relative;
+}
+
+div.jqcloud span.w1:hover, div.jqcloud span.w2:hover, div.jqcloud span.w3:hover, div.jqcloud span.w4:hover, div.jqcloud span.w5:hover, div.jqcloud span.w6:hover {
+  z-index: 9999;
+  transform: scale(1.6);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+div.jqcloud span.w7:hover, div.jqcloud span.w8:hover, div.jqcloud span.w9:hover, div.jqcloud span.w10:hover {
+  z-index: 9999;
+  transform: scale(1.2);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
