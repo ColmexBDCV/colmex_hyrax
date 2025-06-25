@@ -23,6 +23,7 @@ function initWordCloud() {
         if ($("#cloud-container").data('jqcloud')) {
             $("#cloud-container").jQCloud('destroy');
         }
+        
         $("#cloud-container").replaceWith('<div id="cloud-container"></div>');
     }
 
@@ -30,12 +31,6 @@ function initWordCloud() {
         e.preventDefault();
         const $form = $(this);
         const formData = $form.serialize();
-
-        // Si no hay ningún checkbox activo, limpiar la nube y salir
-        if ($("#subject-form input[type='checkbox']:checked").length === 0) {
-            clearCloud();
-            return;
-        }
 
         if (currentCloudRequest && typeof currentCloudRequest.abort === 'function') {
             currentCloudRequest.abort();
@@ -129,6 +124,8 @@ function initWordCloud() {
         if ($("#subject-form input[type='checkbox']:checked").length > 0) {
             $("#cloud-container").replaceWith('<div id="cloud-container"></div>');
             $("#subject-form").submit();
+        }else{
+            clearCloud();
         }
     });
 
