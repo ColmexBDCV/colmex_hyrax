@@ -30,10 +30,15 @@ class ImportsController < ApplicationController
 
     begin
       # Realiza la solicitud HTTP
-      response = Net::HTTP.get_response(url)
+      if Rails.env.production?
+        response = Net::HTTP.get_response(url)
+        code = response.code
+      else
+        code = "200"  # Simula una respuesta exitosa en desarrollo
+      end
 
       # Verifica si el servicio responde con código 200
-      if response.code == "200"
+      if code == "200"
         # Código existente para ejecutar si el servicio está disponible
         @sips = []
         imports = Import.where.not(status: "Cancelado").pluck(:name)

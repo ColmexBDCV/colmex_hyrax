@@ -39,16 +39,23 @@ class SubjectCloudController < ApplicationController
     # Obtener los campos seleccionados del parámetro
     fields = params[:fields] || []
 
+    # Lista de términos a excluir (puedes personalizarla)
+    exclusion_terms = [
+      "méxico"
+    ]
+
     # Obtener el rango de años
     start_year = params[:start_year]
     end_year = params[:end_year]
 
     # Construir el filtro para las plantillas registradas
     registered_types = Hyrax.config.registered_curation_concern_types
-    model_filter = registered_types.map { |type| "has_model_ssim:\"#{type}\"" }.join(" OR ")
+    solr_query = registered_types.map { |type| "has_model_ssim:\"#{type}\"" }.join(" OR ")
 
     # Construir la consulta Solr base con el filtro de plantillas y publisher
-    solr_query = "(#{model_filter}) AND publisher_tesim:\"El Colegio de México\""
+
+    solr_query = "(#{solr_query})"
+    # solr_query = "#{solr_query} AND publisher_tesim:\"El Colegio de México\""
 
     # Agregar filtro de años si están presentes
     if start_year.present? && end_year.present?
@@ -68,9 +75,12 @@ class SubjectCloudController < ApplicationController
         results = ActiveFedora::SolrService.get(solr_query, rows: page_size, start: start, fl: "#{field_name}")
         docs = results["response"]["docs"]
         total ||= results["response"]["numFound"]
+
         docs.each do |doc|
           if doc[field_name].present?
             doc[field_name].each do |term|
+              # Excluir términos de la lista
+              next if exclusion_terms.include?(term.downcase.strip)
               # Guardar el campo al que pertenece el término
               terms[[term, field_name]] += 1
             end
@@ -90,10 +100,10 @@ class SubjectCloudController < ApplicationController
     cloud_terms.sort_by! { |t| -t[:weight] }
 
     # Aleatorizar los términos de peso bajo (<=2) para distribuirlos mejor
-    high_weight, low_weight = cloud_terms.partition { |t| t[:weight] > 2 }
-    low_weight.shuffle!
-    cloud_terms = high_weight + low_weight
+    # high_weight, low_weight = cloud_terms.partition { |t| t[:weight] > 2 }
+    # low_weight.shuffle!
+    # cloud_terms = high_weight + low_weight
 
-    render json: cloud_terms.first(500) # Limitar a los 100 términos más frecuentes
+    render json: cloud_terms.first(200) # Limitar a los 100 términos más frecuentes
   end
 end
