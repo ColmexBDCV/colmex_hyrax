@@ -55,7 +55,7 @@ class SubjectCloudController < ApplicationController
     # Construir la consulta Solr base con el filtro de plantillas y publisher
 
     solr_query = "(#{solr_query})"
-    # solr_query = "#{solr_query} AND publisher_tesim:\"El Colegio de México\""
+    solr_query = "#{solr_query} AND has_model_ssim:\"Thesis\""
 
     # Agregar filtro de años si están presentes
     if start_year.present? && end_year.present?
