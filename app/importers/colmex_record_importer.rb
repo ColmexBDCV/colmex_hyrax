@@ -103,36 +103,59 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def update_for(record:)
-      results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
-        row.identifier == record.identifier
-      end
-
-      if not results.empty? && record.respond_to?(:identifier)
-        gw = results.first
-        attrs = record.attributes
-        attrs.delete(:identifier)
-        attrs.each do |key, val|
-          gw.send("#{key}=",val)
+      logger.info("--- Iniciando actualizacion para identificador: #{record.identifier} ---")
+      begin
+        step = "Buscando el trabajo por identificador"
+        results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
+          row.identifier == record.identifier
         end
 
+        if not results.empty? && record.respond_to?(:identifier)
+          gw = results.first
+          attrs = record.attributes
+          attrs.delete(:identifier)
 
-        locations = get_genomanes_data(attrs[:based_near]) if attrs.key? :based_near
-        gw.based_near = locations unless locations.nil?
-        gw.save
+          step = "Actualizando atributos"
+          attrs.each do |key, val|
+            gw.send("#{key}=",val)
+          end
 
-        if record.representative_file
-          gw.file_set_ids.each do |fsid|
-            FileSet.find(fsid).destroy
+          if attrs.key? :based_near
+            step = "Actualizando geonames"
+            locations = get_genomanes_data(attrs[:based_near])
+            gw.based_near = locations unless locations.nil?
           end
-          record.representative_file.each do |f|
-            replace_file_set(f, gw)
+
+          step = "Guardando el trabajo"
+          gw.save
+
+          if record.representative_file
+            step = "Eliminando FileSets anteriores"
+            gw.file_set_ids.each do |fsid|
+              FileSet.find(fsid).destroy
+            end
+
+            step = "Agregando nuevos FileSets"
+            record.representative_file.each do |f|
+              replace_file_set(f, gw)
+            end
           end
+
+          info_stream << "\nRecord #{record.identifier} is updated"
+          logger.info("--- Finalizado actualizacion para identificador: #{record.identifier} ---")
+        else
+          info_stream << "\nRecord #{record.identifier} fail to update"
+          logger.error("Fallo al actualizar: No se encontro el identificador #{record.identifier}")
         end
-
-        info_stream << "\nRecord #{record.identifier} is updated"
-      else
-        info_stream << "\nRecord #{record.identifier} fail to update"
+      rescue => e
+        logger.error("Fallo al actualizar: #{record.identifier} en el paso: #{step}")
+        logger.error(e.message)
+        logger.error(e.backtrace.join("\n"))
       end
+    end
+
+    def logger
+      @logger ||= Logger.new(Rails.root.join('log', 'importer_updates.log'))
     end
 
     def file_for(filenames)
