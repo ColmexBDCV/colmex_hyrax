@@ -1,4 +1,3 @@
-
 <div id="app">    
   <div class="row" >
       <div class="col-md-12">
@@ -202,6 +201,10 @@
        * Envia lo datos para validar la informacion y obtiene si estan correctos o no.
        **/ 
       validar(sip, id, size){
+        if (size > 30000) { // Check if size exceeds 30GB
+          alert("El SIP no debe pesar más de 30000 MB");
+          return;
+        }
         this.is_loading = true;
         var that = this;
         var worktype = $('#select_'+id).val();
