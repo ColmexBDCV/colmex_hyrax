@@ -90,7 +90,9 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
 
           info_stream << "\nRecord created at: #{created.id} \n"
-
+          created.class.find(created.id).file_set_ids.each do |f_id|
+            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+          end
           return [record.identifier, "Importado exitosamente"]
         else
           info_stream << "\nRecord exist: #{record.respond_to?(:title) ? record.title : record}\n"
@@ -103,59 +105,40 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def update_for(record:)
-      logger.info("--- Iniciando actualizacion para identificador: #{record.identifier} ---")
-      begin
-        step = "Buscando el trabajo por identificador"
-        results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
-          row.identifier == record.identifier
-        end
-
-        if not results.empty? && record.respond_to?(:identifier)
-          gw = results.first
-          attrs = record.attributes
-          attrs.delete(:identifier)
-
-          step = "Actualizando atributos"
-          attrs.each do |key, val|
-            gw.send("#{key}=",val)
-          end
-
-          if attrs.key? :based_near
-            step = "Actualizando geonames"
-            locations = get_genomanes_data(attrs[:based_near])
-            gw.based_near = locations unless locations.nil?
-          end
-
-          step = "Guardando el trabajo"
-          gw.save
-
-          if record.representative_file
-            step = "Eliminando FileSets anteriores"
-            gw.file_set_ids.each do |fsid|
-              FileSet.find(fsid).destroy
-            end
-
-            step = "Agregando nuevos FileSets"
-            record.representative_file.each do |f|
-              replace_file_set(f, gw)
-            end
-          end
-
-          info_stream << "\nRecord #{record.identifier} is updated"
-          logger.info("--- Finalizado actualizacion para identificador: #{record.identifier} ---")
-        else
-          info_stream << "\nRecord #{record.identifier} fail to update"
-          logger.error("Fallo al actualizar: No se encontro el identificador #{record.identifier}")
-        end
-      rescue => e
-        logger.error("Fallo al actualizar: #{record.identifier} en el paso: #{step}")
-        logger.error(e.message)
-        logger.error(e.backtrace.join("\n"))
+      results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
+        row.identifier == record.identifier
       end
-    end
 
-    def logger
-      @logger ||= Logger.new(Rails.root.join('log', 'importer_updates.log'))
+      if not results.empty? && record.respond_to?(:identifier)
+        gw = results.first
+        attrs = record.attributes
+        attrs.delete(:identifier)
+        attrs.each do |key, val|
+          gw.send("#{key}=",val)
+        end
+
+
+        locations = get_genomanes_data(attrs[:based_near]) if attrs.key? :based_near
+        gw.based_near = locations unless locations.nil?
+        gw.save
+
+        if record.representative_file
+          gw.file_set_ids.each do |fsid|
+            FileSet.find(fsid).destroy
+          end
+          record.representative_file.each do |f|
+            replace_file_set(f, gw)
+          end
+        end
+
+        gw.file_set_ids.each do |f_id|
+          access_file_set(f_id,attrs[:item_access_restrictions].to_s)
+        end
+
+        info_stream << "\nRecord #{record.identifier} is updated"
+      else
+        info_stream << "\nRecord #{record.identifier} fail to update"
+      end
     end
 
     def file_for(filenames)
@@ -177,6 +160,17 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           return Hyrax.config.curation_concerns[i]
         end
       end
+    end
+
+    def access_file_set(f_id,permit)
+      fs = FileSet.find f_id
+      if permit != "" && !permit.nil? then
+        fs.visibility = "restricted"
+      else
+        fs.visibility = "open"
+      end
+
+      fs.save
     end
 
     def get_genomanes_data(based_near)
