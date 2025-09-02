@@ -1,6 +1,7 @@
 require 'set'
 
 module ImporterService
+  METADATA_FIELDS_TO_IGNORE = [:file_name, :messagedigest].freeze
 
     def name_sip(sip)
         i = Import.where(name:sip).where(status: "Procesado")
@@ -118,10 +119,9 @@ module ImporterService
         nil
     end
 
-    def get_bad_fields(headers, wt)
-        bad_fields = headers.select { |h| !wt.new.respond_to?(h) }
-        bad_fields = bad_fields - [:file_name, :messagedigest]
-        bad_fields
+    def get_bad_fields(headers, work_type)
+      work_instance = work_type.new
+      (headers.reject { |h| work_instance.respond_to?(h) }) - METADATA_FIELDS_TO_IGNORE
     end
 
     def validate_files_and_duplicates(records, headers, sip, work)
