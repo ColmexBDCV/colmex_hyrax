@@ -21,6 +21,8 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require blacklight/blacklight
 
+//= require leaflet
+//= require vis-timeline-graph2d.min
 //= require_tree .
 //= require hyrax
 
