@@ -1,0 +1,304 @@
+<h1>Mapa de Registros por Años</h1>
+
+<div id="mapid" style="height: 500px; width: 100%;"></div>
+<%# @min_year = 2020%>
+<div class="wrapper-slider mt-4">
+  <div class="values">
+    <span id="range1"><%= @min_year %></span>
+    <span> &dash; </span>
+    <span id="range2"><%= @max_year %></span>
+  </div>
+  <div class="container-slider">
+    <div class="slider-track"></div>
+    <input type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @min_year %>" id="slider-1" oninput="slideOne()">
+    <input type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" id="slider-2" oninput="slideTwo()">
+  </div>
+</div>
+
+<!-- Spinner -->
+<div id="spinner" style="display:flex; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.7); z-index:9999;">
+  <div class="loader"></div>
+</div>
+
+<style>
+
+.wrapper-slider {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 50px 40px 20px 40px;
+  border-radius: 10px;
+}
+.container-slider {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+.slider-track {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: #6C112F;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #6C112F;
+  pointer-events: auto;
+  border: none;
+}
+input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #6C112F;
+  pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 1px solid #6C112F;
+}
+.values {
+  background-color: #6C112F;
+  width: 32%;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ffffff;
+}
+.values:before {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 15px solid #6C112F;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  margin: auto;
+  bottom: -14px;
+  left: 0;
+  right: 0;
+}
+
+
+/* Reuso tu CSS de slider + spinner */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #6C112F;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.leaflet-popup-content {
+  margin: 13px 24px 13px 20px;
+  line-height: 1.3;
+  font-size: 20px !important;
+  font-size: 1.08333em;
+  min-height: 1px;
+}
+
+#spinner {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  position: fixed; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%; 
+  background: rgba(255,255,255,0.7); 
+  z-index: 9999;
+}
+
+</style>
+
+<script>
+
+  window.onload = function () {
+    slideOne();
+    slideTwo();
+  };
+
+  // -------- MAPA --------
+  var mymap = L.map('mapid').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mymap);
+
+  var defaultIcon = new L.Icon({
+    iconRetinaUrl: '<%= image_path("marker-icon-2x.png") %>',
+    iconUrl: '<%= image_path("marker-icon.png") %>',
+    shadowUrl: '<%= image_path("marker-shadow.png") %>',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  var mapMarkers = {};
+
+  // En lugar de agregar cada marker al mapa directamente:
+  var markersCluster = L.markerClusterGroup();
+
+  function renderMarkers(records) {
+    // Limpia el cluster y el hash de marcadores
+    markersCluster.clearLayers();
+    mapMarkers = {};
+    var visibles = [];
+
+    records.forEach(function(item) {
+      if (item.lat && item.lon) {
+        var marker = L.marker([item.lat, item.lon], {icon: defaultIcon})
+          .bindPopup('<b><a href="/concern/'+item.model+'/'+item.id+'">' + item.title + '</a></b><br><br><br>Año:' + item.date+ '<br><br>Ubicación: ' + item.place);
+
+        markersCluster.addLayer(marker);
+        mapMarkers[item.id] = marker;
+        visibles.push(marker.getLatLng());
+      }
+    });
+
+    // Agregar el grupo al mapa (solo una vez se queda manejando los clusters)
+    if (!mymap.hasLayer(markersCluster)) {
+      mymap.addLayer(markersCluster);
+    }
+
+    if (visibles.length > 0) {
+      mymap.fitBounds(L.latLngBounds(visibles));
+    }
+  }
+
+  // -------- SPINNER --------
+  function showSpinner() { document.getElementById("spinner").style.display = "flex"; }
+  function hideSpinner() { document.getElementById("spinner").style.display = "none"; }
+
+  // --- Función de debounce ---
+  function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  // -------- FETCH --------
+  function updateMap() {
+    var startYear = parseInt(sliderOne.value);
+    var endYear   = parseInt(sliderTwo.value);
+
+    showSpinner();
+    fetch(`/timeline_map/get_data.json?start_year=${startYear}&end_year=${endYear}`)
+      .then(r => r.json())
+      .then(data => { renderMarkers(data); })
+      .finally(() => { hideSpinner(); });
+  }
+  
+  // -------- SLIDER --------
+  let sliderOne = document.getElementById("slider-1");
+  let sliderTwo = document.getElementById("slider-2");
+  let displayValOne = document.getElementById("range1");
+  let displayValTwo = document.getElementById("range2");
+  let sliderTrack = document.querySelector(".slider-track");
+  let minGap = 0;
+
+  // --- Versión con debounce (ej. 300 ms) ---
+  const debouncedUpdateMap = debounce(updateMap, 300);
+
+  // --- Sliders ---
+  function slideOne() {
+    if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+      sliderOne.value = parseInt(sliderTwo.value) - minGap;
+    }
+    displayValOne.textContent = sliderOne.value;
+    fillColor();
+    debouncedUpdateMap(); // usar la versión con debounce
+  }
+  function slideTwo() {
+    if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+      sliderTwo.value = parseInt(sliderOne.value) + minGap;
+    }
+    displayValTwo.textContent = sliderTwo.value;
+    fillColor();
+    debouncedUpdateMap(); // usar la versión con debounce
+  }
+
+  function fillColor() {
+    let percent1 = (sliderOne.value - sliderOne.min) / (sliderOne.max - sliderOne.min) * 100;
+    let percent2 = (sliderTwo.value - sliderTwo.min) / (sliderTwo.max - sliderTwo.min) * 100;
+    sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #6C112F ${percent1}% , #6C112F ${percent2}%, #dadae5 ${percent2}%)`;
+  }
+
+  // Controlar el z-index dinámicamente para el slider activo
+  sliderOne.addEventListener('mousedown', function() {
+    sliderOne.style.zIndex = 2;
+    sliderTwo.style.zIndex = 1;
+  });
+  sliderTwo.addEventListener('mousedown', function() {
+    sliderTwo.style.zIndex = 2;
+    sliderOne.style.zIndex = 1;
+  });
+  // Para soporte táctil
+  sliderOne.addEventListener('touchstart', function() {
+    sliderOne.style.zIndex = 2;
+    sliderTwo.style.zIndex = 1;
+  });
+  sliderTwo.addEventListener('touchstart', function() {
+    sliderTwo.style.zIndex = 2;
+    sliderOne.style.zIndex = 1;
+  });
+
+</script>

@@ -61,8 +61,12 @@ Rails.application.routes.draw do
   get '/subject_cloud', to: 'subject_cloud#index'
   get '/subject_cloud/get_terms', to: 'subject_cloud#get_terms'
 
-  # Ruta para el mapa de línea de tiempo
-  get '/timeline_map', to: 'timeline_map#show'
+  # Rutas para el mapa de línea de tiempo
+  resources :timeline_map, only: [:index] do
+    collection do
+      get :get_data
+    end
+  end
 
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'

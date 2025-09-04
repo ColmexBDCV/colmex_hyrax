@@ -1,10 +1,30 @@
-# app/controllers/timeline_map_controller.rb
 class TimelineMapController < ApplicationController
-  include Blacklight::Catalog
-  include Blacklight::SearchContext
-  include Blacklight::SearchHelper
+  def index
+    # Obtener rango de años disponibles en Solr
+    years_query = ActiveFedora::SolrService.get(
+      'based_near_coordinates_tesim:[* TO *] AND date_created_tesim:[* TO *]',
+      rows: 0,
+      'facet': true,
+      'facet.field': 'date_created_tesim',
+      'facet.sort': 'index',
+      'facet.limit': -1,
+      'facet.mincount': 1
+    )
 
-  def show
+    years = years_query['facet_counts']['facet_fields']['date_created_tesim'] || []
+
+    valid_years = []
+    years.each_slice(2) do |year, count|
+      if year.to_i.to_s == year && count > 0
+        valid_years << year.to_i
+      end
+    end
+
+    @min_year = valid_years.min || 1800
+    @max_year = valid_years.max || Time.current.year
+  end
+
+  def get_data
     start_year = params[:start_year] || '*'
     end_year   = params[:end_year]   || '*'
 
@@ -12,34 +32,38 @@ class TimelineMapController < ApplicationController
 
     solr_response = ActiveFedora::SolrService.get(
       solr_query,
-      rows: 5000,
-      fl: 'id,title_tesim,date_created_tesim,based_near_coordinates_tesim'
+      rows: 10000,
+      fl: 'id,title_tesim,date_created_tesim,based_near_coordinates_tesim, has_model_ssim, based_near_label_tesim'
     )
 
-    @document_list = solr_response['response']['docs']
+    docs = solr_response['response']['docs']
 
-    @data = @document_list.map do |doc|
-      coordinates = doc['based_near_coordinates_tesim']&.first
-      date_created = doc['date_created_tesim']&.first
-      title = doc['title_tesim']&.first
+    data = []
+    docs.each do |doc|
+      coords = doc['based_near_coordinates_tesim']
+      places = doc['based_near_label_tesim'] || []
+      date   = doc['date_created_tesim']&.first
+      title  = doc['title_tesim']&.first
+      model  = doc['has_model_ssim']&.first
 
-      if coordinates.present? && date_created.present? && title.present?
-        lat, lon = coordinates.split('|').map(&:to_f)
-        if lat != 0.0 && lon != 0.0
-          {
-            id: doc['id'],
-            title: title,
-            date: date_created,
-            lat: lat,
-            lon: lon
-          }
+      if coords.present? && date.present? && title.present?
+        coords.each_with_index do |coord, i|
+          lat, lon = coord.split('|').map(&:to_f)
+          if (lat != 0.0 && lon != 0.0) && !(lat.nil? && lon.nil?)
+            data << {
+              id: doc['id'],
+              title: title,
+              date: date,
+              model: model,
+              lat: lat,
+              lon: lon,
+              place: places[i].nil? ? "N/A" : places[i].gsub(', , ', ', ').delete_suffix(',').delete_suffix(', ') # si existe, agregamos la etiqueta del lugar
+            }
+          end
         end
       end
-    end.compact
-
-    respond_to do |format|
-      format.html # para la vista inicial
-      format.json { render json: @data } # para peticiones dinámicas desde JS
     end
+
+    render json: data
   end
 end

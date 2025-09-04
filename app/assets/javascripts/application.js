@@ -22,7 +22,7 @@
 //= require blacklight/blacklight
 
 //= require leaflet
-//= require vis-timeline-graph2d.min
+//= require leaflet.markercluster
 //= require_tree .
 //= require hyrax
 
