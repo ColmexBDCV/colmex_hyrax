@@ -217,8 +217,13 @@ input[type="range"]:active::-webkit-slider-thumb {
       mymap.addLayer(markersCluster);
     }
 
-    if (visibles.length > 0) {
-      mymap.fitBounds(L.latLngBounds(visibles));
+    // if (visibles.length > 0) {
+    //   mymap.fitBounds(L.latLngBounds(visibles));
+    // }
+
+    // Autoajustar mapa al bounding box de todos los clusters/markers
+    if (markersCluster.getLayers().length > 0) {
+      mymap.fitBounds(markersCluster.getBounds());
     }
   }
 
