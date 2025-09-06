@@ -52,9 +52,9 @@ class TimelineMapController < ApplicationController
           if (lat != 0.0 && lon != 0.0) && !(lat.nil? && lon.nil?)
             data << {
               id: doc['id'],
-              title: title.pluralize.downcase, 
+              title: title, 
               date: date,
-              model: model,
+              model: model.pluralize.downcase,
               lat: lat,
               lon: lon,
               place: places[i].nil? ? "N/A" : places[i].gsub(', , ', ', ').delete_suffix(',').delete_suffix(', ') # si existe, agregamos la etiqueta del lugar
