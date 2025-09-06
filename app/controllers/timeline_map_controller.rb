@@ -52,7 +52,7 @@ class TimelineMapController < ApplicationController
           if (lat != 0.0 && lon != 0.0) && !(lat.nil? && lon.nil?)
             data << {
               id: doc['id'],
-              title: title,
+              title: title.pluralize.downcase, 
               date: date,
               model: model,
               lat: lat,
