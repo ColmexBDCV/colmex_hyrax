@@ -8,5 +8,5 @@ development:
   logfile: ./log/sidekiq.log
 production:
   concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 2 %>
-  timeout:  <%= ENV['SIDEKIQ_TIMEOUT'] || 20 %>
+  timeout:  <%= ENV['SIDEKIQ_TIMEOUT'] || 200 %>
   logfile: ./log/sidekiq.log
