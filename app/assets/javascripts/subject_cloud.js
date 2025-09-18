@@ -43,9 +43,14 @@ function initWordCloud() {
 
         $("#cloud-container").html('<div id="spinner-cloud" style="display:flex;justify-content:center;align-items:center;height:200px;"><div class="spinner-fallback"></div></div>');
 
+        // Adjuntar exclusión a los datos del formulario
+    let exclusionList = (window.subjectCloudExclusionList || []).map(t => t.trim());
+    let exclusionParam = exclusionList.map(encodeURIComponent).join("|||");
+    let formDataWithExclusion = formData + (exclusionParam ? `&exclusion_terms=${exclusionParam}` : "");
+
         currentCloudRequest = $.ajax({
             url: $form.attr("action"),
-            data: formData,
+            data: formDataWithExclusion,
             method: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -63,6 +68,11 @@ function initWordCloud() {
                 let maxW = Math.max(...weights);
                 let steps = 10;
 
+                // Lista de exclusión local
+                let exclusionList = window.subjectCloudExclusionList || [];
+                // Renderizar la lista de exclusión
+                if (typeof renderExclusionList === 'function') renderExclusionList();
+
                 data = data.map(term => {
                     let group = 1;
                     if (maxW > minW) {
@@ -76,14 +86,19 @@ function initWordCloud() {
                     url += '&f[human_readable_type_sim][]=Thesis';
                     url += '&locale=en&q=&search_field=all_fields';
 
-                    let orientation = Math.random() < 0.25 ? 3 : 0;
+                    let orientation = 0; // Solo horizontal
                     let baseText = term.text;
                     let hoverText = `&nbsp;${term.text}&nbsp;`;
-                    let text = orientation === 3
-                        ? `<a href='${url}' target='_blank' style='writing-mode: vertical-rl; transform: rotate(180deg); display:inline-block;' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a>`
-                        : `<a href='${url}' target='_blank' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a>`;
 
-                    return { text, weight: group, orientation };
+
+                    // Botón de tache (✖) más pequeño y siempre visible
+                    let closeBtn = `<span style='pointer-events:none;'><span class='cloud-exclude-btn' data-term='${encodeURIComponent(baseText)}' title='Excluir término' style='pointer-events:auto;color:#b00;font-size:0.6em;cursor:pointer;margin-left:4px;line-height:1;'>✖</span></span>`;
+
+                    let linkHtml = orientation === 3
+                        ? `<span class='cloud-term-container' style='display:inline-block;position:relative;'><a href='${url}' target='_blank' style='writing-mode: vertical-rl; transform: rotate(180deg); display:inline-block;position:relative;' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a><span class='cloud-exclude-btn' data-term='${encodeURIComponent(baseText)}' title='Excluir término' style='color:#b00;font-size:0.6em;cursor:pointer;margin-left:4px;line-height:1;'>✖</span></span>`
+                        : `<span class='cloud-term-container' style='display:inline-block;position:relative;'><a href='${url}' target='_blank' style='position:relative;' class='cloud-term' data-base='${baseText}' data-hover='${hoverText}'>${baseText}</a><span class='cloud-exclude-btn' data-term='${encodeURIComponent(baseText)}' title='Excluir término' style='color:#b00;font-size:0.6em;cursor:pointer;margin-left:4px;line-height:1;'>✖</span></span>`;
+
+                    return { text: linkHtml, weight: group, orientation };
                 });
 
                 clearCloud(); // ✅ garantizar que solo haya una nube activa
@@ -102,12 +117,36 @@ function initWordCloud() {
                     autoResize: true,
                     afterCloudRender: function() {
                         // eventos hover
-                        $(document).off('mouseenter mouseleave', '.cloud-term');
-                        $(document).on('mouseenter', '.cloud-term', function() {
-                            $(this).text($(this).data('hover'));
+                        // Hover solo en el contenedor: nunca se pierde mientras el mouse esté sobre el contenedor o cualquier hijo
+                        // Hover solo en el contenedor, nunca en el anchor
+                        $(document).off('mouseenter mouseleave', '.cloud-term-container, .cloud-term');
+                        $(document).on('mouseenter', '.cloud-term-container', function() {
+                            let $container = $(this);
+                            let $anchor = $container.find('.cloud-term');
+                            let hoverText = $anchor.data('hover');
+                            $anchor.contents().filter(function(){ return this.nodeType === 3; }).first().replaceWith(hoverText);
+                            $anchor.addClass('cloud-term-hover');
                         });
-                        $(document).on('mouseleave', '.cloud-term', function() {
-                            $(this).text($(this).data('base'));
+                        $(document).on('mouseleave', '.cloud-term-container', function() {
+                            let $container = $(this);
+                            let $anchor = $container.find('.cloud-term');
+                            let baseText = $anchor.data('base');
+                            $anchor.contents().filter(function(){ return this.nodeType === 3; }).first().replaceWith(baseText);
+                            $anchor.removeClass('cloud-term-hover');
+                        });
+
+                        // Evento para el botón de tache
+                        $(document).off('click', '.cloud-exclude-btn');
+                        $(document).on('click', '.cloud-exclude-btn', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            let term = decodeURIComponent($(this).data('term')).trim();
+                            window.subjectCloudExclusionList = (window.subjectCloudExclusionList || []).map(t => t.trim());
+                            if (!window.subjectCloudExclusionList.includes(term)) {
+                                window.subjectCloudExclusionList.push(term);
+                            }
+                            if (typeof renderExclusionList === 'function') renderExclusionList();
+                            $("#subject-form").submit();
                         });
                     }
                 });

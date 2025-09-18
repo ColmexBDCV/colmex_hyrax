@@ -40,9 +40,12 @@ class SubjectCloudController < ApplicationController
     fields = params[:fields] || []
 
     # Lista de términos a excluir (puedes personalizarla)
-    exclusion_terms = [
-      "méxico"
-    ]
+    # Obtener términos a excluir desde el parámetro o usar default
+    exclusion_terms = if params[:exclusion_terms].present?
+      params[:exclusion_terms].split('|||').map { |t| CGI.unescape(t).strip }
+    else
+      ["méxico"]
+    end
 
     # Obtener el rango de años
     start_year = params[:start_year]
@@ -55,7 +58,7 @@ class SubjectCloudController < ApplicationController
     # Construir la consulta Solr base con el filtro de plantillas y publisher
 
     solr_query = "(#{solr_query})"
-    solr_query = "#{solr_query} AND has_model_ssim:\"Thesis\""
+    # solr_query = "#{solr_query} AND has_model_ssim:\"Thesis\""
 
     # Agregar filtro de años si están presentes
     if start_year.present? && end_year.present?
@@ -80,7 +83,7 @@ class SubjectCloudController < ApplicationController
           if doc[field_name].present?
             doc[field_name].each do |term|
               # Excluir términos de la lista
-              next if exclusion_terms.include?(term.downcase.strip)
+              next if exclusion_terms.include?(term.strip)
               # Guardar el campo al que pertenece el término
               terms[[term, field_name]] += 1
             end

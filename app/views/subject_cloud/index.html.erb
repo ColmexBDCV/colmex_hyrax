@@ -1,4 +1,14 @@
 <style>
+.cloud-term-hover {
+  font-weight: bold !important;
+}
+.cloud-term-container:hover {
+  background: #fff !important;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+</style>
+<style>
 
 *,
 *:before,
@@ -221,6 +231,7 @@ input[type="checkbox"]:checked {
       </div>
     </div>
      
+  <div id="exclusion-list-container" class="mb-3"></div>
   <div id="cloud-container" class="mt-4" style="height: 540px; position: relative;"></div>
   
   <div class="form-group mt-3">
@@ -241,7 +252,37 @@ input[type="checkbox"]:checked {
               <div class="slider-track"></div>
               <input name="start_year" type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @min_year %>" id="slider-1" oninput="slideOne()">
               <input name="end_year" type="range" min="<%= @min_year %>" max="<%= @max_year %>" value="<%= @max_year %>" id="slider-2" oninput="slideTwo()">
-            </div>
+
+            <script>
+            // Renderizar la lista de exclusión arriba de la nube
+            function renderExclusionList() {
+              let exclusionList = window.subjectCloudExclusionList || [];
+              let $container = $("#exclusion-list-container");
+              if (exclusionList.length === 0) {
+                $container.html("");
+                return;
+              }
+              let html = '<div class="alert alert-warning" style="display:flex;flex-wrap:wrap;align-items:center;gap:0.5em;justify-content:center;"><b>Excluyendo:</b>';
+              exclusionList.forEach(term => {
+                html += `<span class='badge badge-pill badge-danger' style='background:#b00;color:#fff;font-size:1em;padding:0.5em 1em;position:relative;margin:0 0.3em 0.3em 0;'>${term}<span class='remove-exclusion' data-term='${encodeURIComponent(term)}' style='margin-left:8px;cursor:pointer;font-weight:bold;' title='Quitar exclusión'>&times;</span></span>`;
+              });
+              html += '</div>';
+              $container.html(html);
+            }
+
+            // Evento para quitar término de la lista de exclusión
+            $(document).on('click', '.remove-exclusion', function() {
+              let term = decodeURIComponent($(this).data('term'));
+              window.subjectCloudExclusionList = (window.subjectCloudExclusionList || []).filter(t => t !== term);
+              renderExclusionList();
+              $("#subject-form").submit();
+            });
+
+            // Render inicial al cargar la página
+            $(document).ready(function() {
+              renderExclusionList();
+            });
+            </script>
           </div>
         </div>
       </div>
