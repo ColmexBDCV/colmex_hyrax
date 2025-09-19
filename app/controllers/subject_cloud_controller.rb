@@ -44,7 +44,7 @@ class SubjectCloudController < ApplicationController
     exclusion_terms = if params[:exclusion_terms].present?
       params[:exclusion_terms].split('|||').map { |t| CGI.unescape(t).strip }
     else
-      ["méxico"]
+      []
     end
 
     # Obtener el rango de años
