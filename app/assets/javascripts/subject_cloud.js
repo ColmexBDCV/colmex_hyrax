@@ -83,7 +83,7 @@ function initWordCloud() {
                     let url = `/catalog?f%5B${encodeURIComponent(fieldParam)}%5D%5B%5D=${encodeURIComponent(term.text)}`;
                     let currentUrlParams = window.location.search.substring(1);
                     if (currentUrlParams) url += `&${currentUrlParams}`;
-                    url += '&f[human_readable_type_sim][]=Thesis';
+                    //url += '&f[human_readable_type_sim][]=Thesis';
                     url += '&locale=en&q=&search_field=all_fields';
 
                     let orientation = 0; // Solo horizontal
