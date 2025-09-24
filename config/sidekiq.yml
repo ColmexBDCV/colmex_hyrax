@@ -2,11 +2,13 @@
   - default
   - event
   - ingest
+:limits:
+  ingest: 1
 development:
   concurrency: 5
   timeout: 3
   logfile: ./log/sidekiq.log
 production:
-  concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 2 %>
+  concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 5 %>
   timeout:  <%= ENV['SIDEKIQ_TIMEOUT'] || 200 %>
   logfile: ./log/sidekiq.log
