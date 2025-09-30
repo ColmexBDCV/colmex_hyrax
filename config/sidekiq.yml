@@ -2,8 +2,9 @@
   - default
   - event
   - ingest
+  - derivatives
 :limits:
-  ingest: 1
+  derivatives: 1
 development:
   concurrency: 5
   timeout: 3
