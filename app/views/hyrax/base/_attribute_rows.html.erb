@@ -48,7 +48,7 @@
 <% end %>
 <%= presenter.attribute_to_html(:table_of_contents, label: t('hyrax.base.show.table_of_contents'), render_as: :table_content, html_dl: true) %>
 <% [:has_organizer_corporate_body, :interviewer, :interviewee, :draftsman, :organizer_collective_agent, :photographer, :narrator, :publisher, :language, :keyword, :writer_of_suplementary_textual_content,
-     :place_of_publication, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, :local_resource_identifier,
+     :place_of_publication, :beginning, :ending, :subject_uniform_title, :collector_collective_agent,:numbering_of_part, # :local_resource_identifier,
      :has_system_of_organization, :is_subcollection_of, :has_carrier_type, :is_dancer_agent_of].each do |a| %>
     <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.'+a.to_s), render_as: :faceted, html_dl:true) %>
 <% end %>
