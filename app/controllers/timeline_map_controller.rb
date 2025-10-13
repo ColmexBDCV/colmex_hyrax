@@ -2,7 +2,7 @@ class TimelineMapController < ApplicationController
   def index
     # Obtener rango de años disponibles en Solr
     years_query = ActiveFedora::SolrService.get(
-      'based_near_coordinates_tesim:[* TO *] AND date_created_tesim:[* TO *] AND has_model_ssim:"Thesis" AND has_model_ssim:"Book"',
+      'based_near_coordinates_tesim:[* TO *] AND date_created_tesim:[* TO *] AND (has_model_ssim:"Thesis" OR has_model_ssim:"Book")',
       rows: 0,
       'facet': true,
       'facet.field': 'date_created_tesim',
@@ -28,7 +28,7 @@ class TimelineMapController < ApplicationController
     start_year = params[:start_year] || '*'
     end_year   = params[:end_year]   || '*'
 
-  solr_query = "date_created_tesim:[#{start_year} TO #{end_year}] AND based_near_coordinates_tesim:[* TO *] AND has_model_ssim:\"Thesis\" AND has_model_ssim:\"Book\""
+  solr_query = "date_created_tesim:[#{start_year} TO #{end_year}] AND based_near_coordinates_tesim:[* TO *] AND (has_model_ssim:\"Thesis\" OR has_model_ssim:\"Book\")"
 
     solr_response = ActiveFedora::SolrService.get(
       solr_query,

@@ -9,7 +9,7 @@ class SubjectCloudController < ApplicationController
 
     # Obtener el rango de años de los documentos activos SOLO de El Colegio de México
     years_query = ActiveFedora::SolrService.get(
-      "(#{model_filter}) AND #{publisher_filter} AND has_model_ssim:\"Thesis\" AND has_model_ssim:\"Book\"", # Solo documentos de las plantillas registradas y publisher
+      "(#{model_filter}) AND #{publisher_filter}", # Solo documentos de las plantillas registradas y publisher
       rows: 0,
       'facet': true,
       'facet.field': 'date_created_tesim',
@@ -58,7 +58,7 @@ class SubjectCloudController < ApplicationController
     # Construir la consulta Solr base con el filtro de plantillas y publisher
 
     solr_query = "(#{solr_query})"
-    solr_query = "#{solr_query} AND has_model_ssim:\"Thesis\" AND has_model_ssim:\"Book\""
+    solr_query = "#{solr_query} AND (has_model_ssim:\"Thesis\" OR has_model_ssim:\"Book\")"
 
     # Agregar filtro de años si están presentes
     if start_year.present? && end_year.present?
