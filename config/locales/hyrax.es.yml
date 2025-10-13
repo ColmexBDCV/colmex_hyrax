@@ -53,6 +53,7 @@ es:
       close: Cerca
       collection:
         new: Añadir Nueva Colección
+        collection: Colección
       delete: Borrar
       edit: Editar
       less: Menos
@@ -497,6 +498,19 @@ es:
         default: El recurso que intentó modificar no se puede modificar de acuerdo a su solicitud.
     background_attribution_html: ''
     base:
+      metadata_table:
+        headers:
+          attribute: Atributo
+          value: Valor
+      relationships:
+        panel_title: Relaciones
+      items_tabs:
+        files: Archivos
+        readme: README
+        file_set_count:
+          one: "%{count} archivo disponible"
+          other: "%{count} archivos disponibles"
+        file_set_summary: "Archivos (Cantidad: %{count}; Tamaño: %{size})"
       attributes:
         table_attribute_name: Nombre del Atributo
         table_heading_attributes: Atributos
@@ -640,6 +654,9 @@ es:
         items: Elementos
         last_modified: Última modificación
         relationships: Las relaciones
+        depositor: Depositante
+        system_created: Publicado
+        system_modified: Última modificación
       show_actions:
         analytics: Analíticas
         attach_child: Adjuntar Obra

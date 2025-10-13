@@ -325,6 +325,23 @@ en:
         user: User
         workflow_role: Workflow role
     base:
+      show:
+        depositor: Depositor
+        system_created: System Created
+        system_modified: System Modified
+      metadata_table:
+        headers:
+          attribute: Attribute
+          value: Value
+      relationships:
+        panel_title: Relationships
+      items_tabs:
+        files: Files
+        readme: README
+        file_set_count:
+          one: "%{count} file available"
+          other: "%{count} files available"
+        file_set_summary: "Files (Count: %{count}; Size: %{size})"
       citations:
         button: Cite work
         header: "Export citation"

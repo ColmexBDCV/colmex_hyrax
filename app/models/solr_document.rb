@@ -32,6 +32,14 @@ class SolrDocument
     self['identifier_tesim']
   end
 
+  def system_created
+    Array.wrap(self['system_create_dtsi'])
+  end
+
+  def system_modified
+    Array.wrap(self['system_modified_dtsi'])
+  end
+
   def notes
     self['notes_tesim']
   end

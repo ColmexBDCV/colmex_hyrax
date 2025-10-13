@@ -11,6 +11,8 @@ terms:
     term: Audio
   - id: Base de datos
     term: Base de datos
+  - id: Conjunto de datos
+    term: Conjunto de datos
   - id: Capítulo de libro
     term: Capítulo de libro
   - id: Convenio

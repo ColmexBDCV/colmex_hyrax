@@ -19,28 +19,31 @@
       </tbody>
     </table>
   </div>
-  <h2><%= t('.header') %></h2>
-  <div style="overflow-x:auto;">
-    <table class="table table-striped related-files">
-      <thead>
-        <tr>
-          <th><%= t('.thumbnail') %></th>
-          <th><%= t('.title') %></th>
-          <th><%= t('.date_uploaded') %></th>
-          <th><%= t('.visibility') %></th>
-          <th><%= t('.actions') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'member', collection: members%>
-      </tbody>
-    </table>
-  </div>
+  <% non_file_set_members = members.select { |member| member.model_name.name != 'FileSet' } %>
+  <% if non_file_set_members.present? %>
+    <h2><%= t('.header') %></h2>
+    <div style="overflow-x:auto;">
+      <table class="table table-striped related-files">
+        <thead>
+          <tr>
+            <th><%= t('.thumbnail') %></th>
+            <th><%= t('.title') %></th>
+            <th><%= t('.date_uploaded') %></th>
+            <th><%= t('.visibility') %></th>
+            <th><%= t('.actions') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'member', collection: non_file_set_members %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 
   <div class="row">
     <% if presenter.total_pages > 1 %>
         <div class="row record-padding col-md-9">
-          <!- Se eleimina esta linea dado que no es compatible con ordered_members -->
+          <!-- Se eleimina esta linea dado que no es compatible con ordered_members -->
           <% #= paginate array_of_ids, outer_window: 2, theme: 'blacklight', param_name: :page, route_set: main_app %>
         </div><!-- /pager -->
     <% end %>

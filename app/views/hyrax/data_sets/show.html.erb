@@ -1,0 +1,80 @@
+<% provide :page_title, @presenter.page_title %>
+<%= render 'shared/citations' %>
+
+<div class="row work-type">
+  <!-- <div class="col-xs-12">
+    <%#= render 'work_type', presenter: @presenter %>
+  </div> -->
+  <div itemscope itemtype="http://schema.org/CreativeWork" class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= render 'work_title', presenter: @presenter %>
+        <% @presenter.resource_type.each do |p| %>
+          <a class="badge-resource-type label label-default" href="/catalog?f%5Bresource_type_sim%5D%5B%5D=<%=p.gsub(" ","+")%>&amp;locale=en"><%=p%></a>
+        <% end %>
+        <%= render 'show_actions', presenter: @presenter %>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <%= render 'workflow_actions_widget', presenter: @presenter %>
+          <div class="col-sm-12">
+            <%= render 'metadata', presenter: @presenter %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <%= render 'citations', presenter: @presenter %>
+          </div>
+          
+          <div class="col-sm-6">
+            <style>
+              .social-media{
+                text-align: left;
+                padding-left: 0px;
+              }
+              .social-media i, .social-media a{
+                margin-left:0px;
+                margin-right: 20px;
+              }
+            </style>
+            <%#= render 'social_media' %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default relationships-panel">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= t('hyrax.base.relationships.panel_title', default: t('hyrax.base.relationships.header', default: 'Relationships')) %></h3>
+              </div>
+              <div class="panel-body">
+                <%= render 'relationships', presenter: @presenter %>
+              </div>
+            </div>
+            <%= render 'files_panel', presenter: @presenter %>
+            
+            <%# TODO: we may consider adding these partials in the future %>
+            <%# = render 'sharing_with', presenter: @presenter %>
+            <%# = render 'user_activity', presenter: @presenter %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% unless @pageviews.nil? || @downloads.nil? %>
+      <div class="alert alert-info">
+        <span class="glyphicon glyphicon-signal large-icon"></span>
+          <%= t('total_view', count: @pageviews.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
+          <%= t('download', count: @downloads.range(Hyrax.config.analytics_start_date.to_date, Time.zone.today)) %>
+      </div>
+    <% end %>
+    <% if current_user && current_user.admin? && !@log.nil? %>
+      <%= render 'record_change_log', log: @log%>
+    <% end %>
+  </div>
+</div>
+<% unless @presenter.representative_presenter.respond_to?('image?') && @presenter.representative_presenter.image? %>
+<script type="text/javascript">
+  $( "#file_download" ).prependTo( ".citations" );
+  
+</script>
+<% end %>

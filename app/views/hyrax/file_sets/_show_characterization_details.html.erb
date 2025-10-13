@@ -1,8 +1,8 @@
 <% @presenter.characterization_metadata.keys.each do |term| %>
   <div>
     <% additional_values = @presenter.secondary_characterization_values(term) %>
-    <% term2 = t('hyrax.file_set.' + term.to_s) %>
-    <%= @presenter.label_for_term(term2) %> : <%= sanitize @presenter.primary_characterization_values(term).join("<br />") %>
+    <% label_text = I18n.t("hyrax.file_set.#{term}", default: @presenter.label_for_term(term)) %>
+    <%= label_text %> : <%= sanitize @presenter.primary_characterization_values(term).join("<br />") %>
     <% unless additional_values.empty? %>
       <%= render partial: "extra_fields_modal", locals: { name: term, values: additional_values } %>
     <% end %>
