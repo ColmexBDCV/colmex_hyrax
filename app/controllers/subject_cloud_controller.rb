@@ -5,7 +5,7 @@ class SubjectCloudController < ApplicationController
     end    # Construir el filtro para las plantillas registradas
     registered_types = Hyrax.config.registered_curation_concern_types
     model_filter = registered_types.map { |type| "has_model_ssim:\"#{type}\"" }.join(" OR ")
-    publisher_filter = 'publisher_tesim:"El Colegio de México"'
+    publisher_filter = 'thematic_collection_tesim:"Producción Institucional"'
 
     # Obtener el rango de años de los documentos activos SOLO de El Colegio de México
     years_query = ActiveFedora::SolrService.get(
@@ -58,7 +58,7 @@ class SubjectCloudController < ApplicationController
     # Construir la consulta Solr base con el filtro de plantillas y publisher
 
     solr_query = "(#{solr_query})"
-    solr_query = "#{solr_query} AND (has_model_ssim:\"Thesis\" OR has_model_ssim:\"Book\")"
+    solr_query = "#{solr_query} AND thematic_collection_tesim:\"Producción Institucional\""
 
     # Agregar filtro de años si están presentes
     if start_year.present? && end_year.present?
