@@ -625,6 +625,7 @@ es:
         header_f: Detalles de archivos
         thumbnail: Miniatura
         title: Título
+        label: Nombre de archivo
         unauthorized: No hay elementos disponibles públicamente en este %{type}.
         visibility: Visibilidad
       relationships:

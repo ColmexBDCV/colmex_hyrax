@@ -105,14 +105,24 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def update_for(record:)
+      
       results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
         row.identifier == record.identifier
       end
 
       if not results.empty? && record.respond_to?(:identifier)
         gw = results.first
+        
+        # Capturar estado original desde persistencia (evita valores ya modificados en memoria)
+        persisted_gw = gw.class.find(gw.id)
+        original_record = capture_work_metadata(persisted_gw)
+        
         attrs = record.attributes
         attrs.delete(:identifier)
+        
+        # Guardar qué campos vienen en el CSV (incluso si están vacíos)
+        csv_fields = attrs.keys
+        
         attrs.each do |key, val|
           gw.send("#{key}=",val)
         end
@@ -130,13 +140,43 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
             replace_file_set(f, gw)
           end
         end
-
+        
+        # Log changes to RecordChangeLog
+        updated_record = capture_work_metadata(gw)
+        changes = get_metadata_changes(original_record, updated_record, csv_fields)
+        
         gw.file_set_ids.each do |f_id|
-          access_file_set(f_id,attrs[:item_access_restrictions].to_s)
+          access_file_set(f_id,attrs[:item_access_restrictions])
           if attrs[:item_access_restrictions].nil? then
             gw.item_access_restrictions = []
             gw.save
           end
+        end
+
+        info_stream << "\n[DEBUG] Campos a comparar: #{csv_fields.inspect}"
+        info_stream << "\n[DEBUG] Cambios detectados: #{changes.inspect}"
+        info_stream << "\n[DEBUG] Cambios vacíos?: #{changes.empty?}"
+        
+        unless changes.empty?
+          begin
+            log_entry = RecordChangeLog.new(
+              change: changes.to_json,
+              user_id: creator.id,
+              template: gw.has_model.first,
+              record_id: gw.id,
+              identifier: record.identifier
+            )
+            info_stream << "\n[DEBUG] Log entry creado: user_id=#{creator.id}, template=#{gw.has_model.first}, record_id=#{gw.id}"
+            if log_entry.save
+              info_stream << "\n[LOG] Cambios guardados en RecordChangeLog para #{record.identifier}"
+            else
+              info_stream << "\n[ERROR] No se pudo guardar log: #{log_entry.errors.full_messages.join(', ')}"
+            end
+          rescue => e
+            info_stream << "\n[ERROR] Exception al guardar log: #{e.message}\n#{e.backtrace.first(3).join("\n")}"
+          end
+        else
+          info_stream << "\n[DEBUG] No se detectaron cambios para registrar"
         end
 
         info_stream << "\nRecord #{record.identifier} is updated"
@@ -166,15 +206,37 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       end
     end
 
-    def access_file_set(f_id,permit)
+    def access_file_set(f_id, permit)
       fs = FileSet.find f_id
-      if permit != "" && !permit.nil? then
+      original_visibility = fs.visibility
+      
+      if permit != [] && !permit.nil? then
         fs.visibility = "restricted"
       else
         fs.visibility = "open"
       end
 
       fs.save
+      
+      # Log visibility changes for FileSet
+      if original_visibility != fs.visibility
+        work_id = fs.try(:parent)&.id
+        changes = {
+          file_set: "#{fs.id} - #{fs.label}",
+          visibility: {
+            before: original_visibility,
+            after: fs.visibility
+          }
+        }
+        
+        RecordChangeLog.create(
+          change: changes.to_json,
+          user_id: creator.id,
+          template: fs.class.name,
+          record_id: work_id,
+          identifier: fs.id
+        )
+      end
     end
 
     def get_genomanes_data(based_near)
@@ -195,5 +257,80 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       file_actor = ::Hyrax::Actors::FileSetActor.new(file_set, creator)
       file_actor.create_content(file)
       file_actor.attach_to_work(gw)
+    end
+
+    def capture_work_metadata(work)
+      metadata = {}
+      
+      # Capturar todos los campos definidos en el modelo
+      work.class.properties.keys.each do |field|
+        next if ['has_model', 'create_date', 'modified_date'].include?(field)
+        begin
+          value = work.send(field)
+          # Mantener el tipo original: arrays como arrays, strings como strings, etc.
+          metadata[field] = value
+        rescue
+          metadata[field] = nil
+        end
+      end
+      
+      # Agregar visibilidad
+      metadata['visibility'] = work.visibility
+      
+      metadata
+    end
+    
+    def get_metadata_changes(original_record, updated_record, changed_fields)
+      updated_fields = {}
+      
+      # Solo comparar los campos que se actualizaron en el CSV
+      changed_fields.each do |field|
+        field_str = field.to_s
+        
+        # Asegurar que capturamos el valor incluso si no está en original_record
+        original_value = normalize_value(original_record[field_str])
+        updated_value = normalize_value(updated_record[field_str])
+        
+        # Debug para ver valores originales vs nuevos
+        info_stream << "\n[DEBUG] Campo #{field_str}: before=#{original_value.inspect} after=#{updated_value.inspect}"
+        
+        # Detectar cambios incluyendo cuando se vacía un campo ([] o nil o "")
+        original_empty = value_empty?(original_value)
+        updated_empty = value_empty?(updated_value)
+        
+        if original_value != updated_value || (original_empty != updated_empty)
+          updated_fields[field_str] = {
+            before: original_value,
+            after: updated_value
+          }
+        end
+      end
+      
+      # Comparar visibilidad siempre
+      if original_record['visibility'] != updated_record['visibility']
+        updated_fields['visibility'] = {
+          before: original_record['visibility'],
+          after: updated_record['visibility']
+        }
+      end
+      
+      updated_fields
+    end
+    
+    def value_empty?(value)
+      value.nil? || value == [] || value == ""
+    end
+    
+    def normalize_value(value)
+      return nil if value.nil?
+      return [] if value == []
+      
+      # Si es un array, normalizar cada elemento
+      if value.is_a?(Array)
+        return value.map { |v| v.to_s.strip }.sort
+      end
+      
+      # Si es string, limpiar espacios
+      value.is_a?(String) ? value.strip : value
     end
 end

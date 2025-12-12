@@ -42,15 +42,26 @@ class ColmexCsvParser < Darlingtonia::CsvParser
         column_header = headers[j]
         column_value = r[j].to_s
         next unless field_available(column_header) 
-        next if column_value.blank? && update.nil?
+        
         if column_header == :file_name || is_multiple(column_header)
-          row[column_header] ||= row[column_header] = []
-          # column_value = YAML.load(column_value) unless column_value.instance_of? Integer
-          column_value = column_value.split("|").map(&:strip) # unless column_value.instance_of? Integer
-          row[column_header].push(column_value) unless column_value.instance_of? Array
-          row[column_header] = row[column_header] + column_value if column_value.instance_of? Array
+          # Campo múltiple
+          if column_value.blank? && !update.nil?
+            # En updates, campo vacío = array vacío para limpiar el campo
+            row[column_header] = []
+          else
+            row[column_header] ||= []
+            column_value = column_value.split("|").map(&:strip)
+            row[column_header].push(column_value) unless column_value.instance_of? Array
+            row[column_header] = row[column_header] + column_value if column_value.instance_of? Array
+          end
         else
-          row[column_header] = column_value.strip
+          # Campo singular
+          if column_value.blank? && !update.nil?
+            # En updates, campo vacío = nil para limpiar el campo
+            row[column_header] = nil
+          else
+            row[column_header] = column_value.strip
+          end
         end 
       end 
       yield Darlingtonia::InputRecord.from(metadata: row, mapper: ColmexMapper.new)

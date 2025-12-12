@@ -40,8 +40,14 @@
               </td>
               <td>
                   <%
-                    change = JSON.parse(l.change)
-                    change.each do |key, value| 
+                    change = JSON.parse(l.change) if l.change.class != Hash  
+                    change.each do |key, value|
+                    if key == "file_set"
+                      %>
+                        <p><span class="badge badge-light">Objeto digital: <%=value%></span></p>
+                      <%
+                      next
+                    end 
                     value["before"] = "Campo Vacío" if value["before"] == []
                     value["after"] = "Campo Vacío" if value["after"] == []
                   %>

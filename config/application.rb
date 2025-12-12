@@ -11,10 +11,11 @@ module Hyrax
     #add actor to work with workers
 
     config.to_prepare  do
+      Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::InterpretVisibilityActor, RecordChangeActor)
       Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, HandleActor)
-      Hyrax::CurationConcern.actor_factory.insert_before(Hyrax::Actors::ModelActor, RecordChangeActor)
+      # Hyrax::CurationConcern.actor_factory.insert_before(RecordChangeActor, HandleActor)
       Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, FixUpdateActor)
-      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, UpdateFileSetVisibilityActor)
+      Hyrax::CurationConcern.actor_factory.insert_after(FixUpdateActor, UpdateFileSetVisibilityActor)
 
     end
     # Initialize configuration defaults for originally generated Rails version.

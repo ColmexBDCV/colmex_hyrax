@@ -72,7 +72,7 @@ module Hyrax
       respond_to do |wants|
         wants.html do 
           @user_collections = user_collections
-          @log = RecordChangeLog.where(record_id: params[:id])
+          @log = RecordChangeLog.where(record_id: params[:id]).order(created_at: :desc)
           begin
             @pageviews = Hyrax::Analytics.daily_events_for_id(params[:id], 'work-view')
             @downloads = Hyrax::Analytics.daily_events_for_id(params[:id], 'file-set-in-work-download')
