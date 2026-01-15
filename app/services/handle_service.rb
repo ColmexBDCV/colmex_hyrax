@@ -54,6 +54,21 @@ module HandleService
         end
     end
 
+    def self.assing_handle_for_worktype(worktype)
+        
+        url = ENV['HANDLE_OBJ_URL'] || "https://repositorio.colmex.mx/concern/"
+        worktype.singularize.classify.constantize.where(handle: nil).each do |row|
+            if row.member_ids.count > 0
+                puts "#{url}#{worktype.underscore.pluralize}/#{row.id}"
+                handle = self.create("#{url}#{worktype.underscore.pluralize}/#{row.id}")
+                if handle["handleDesc"] == "SUCCESS"
+                    row.handle = handle["url"].sub("http","https")
+                    row.save
+                end
+            end
+        end
+    end
+
     def self.destroy_handle_for(work)
         
         url = "https://hdl.handle.net/"
