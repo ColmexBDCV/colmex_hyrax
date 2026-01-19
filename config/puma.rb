@@ -10,7 +10,7 @@ threads_min = ENV.fetch("RAILS_MIN_THREADS") { 1 }
 threads threads_min, threads_max
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
