@@ -29,12 +29,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  # <<: *default
   adapter: mysql2
   encoding: utf8
-  min_messages: warning
   host: <%= ENV['DATABASE_HOST'] %>
   database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/run/mysqld/mysqld.sock
+  pool: <%= ENV.fetch("DB_POOL") { ENV.fetch("RAILS_MAX_THREADS") { 6 }.to_i * ENV.fetch("WEB_CONCURRENCY") { 2 }.to_i } %>
+  reconnect: true
