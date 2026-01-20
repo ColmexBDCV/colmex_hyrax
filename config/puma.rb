@@ -16,7 +16,11 @@ threads threads_min, threads_max
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-bind "unix:///home/rcuellar/hyrax/shared/sockets/puma.sock"
+if ENV.fetch("RAILS_ENV") { "development" } == "production"
+  bind "unix:///home/rcuellar/hyrax/shared/sockets/puma.sock"
+else
+  port ENV.fetch("PORT") { 3000 }
+end
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
