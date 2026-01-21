@@ -68,7 +68,10 @@ Blacklight.onLoad(function() {
         // plus trigger redraw of the selection, which otherwise ain't always right
         // we'll trigger a fake event on one of the boxes
         var form = $(container).closest(".limit_content").find("form.range_limit");
-        form.find("input.range_begin").trigger("change");
+        var range_begin = form.find("input.range_begin");
+        if (range_begin.length > 0) {
+          range_begin.trigger("change");
+        }
 
         // send our custom event to trigger redraw of slider
         $(container).trigger(redrawnEvent);
@@ -238,15 +241,23 @@ Blacklight.onLoad(function() {
         });
 
         var form = $(container).closest(".limit_content").find("form.range_limit");
-        form.find("input.range_begin, input.range_end").change(function () {
-           plot.setSelection( form_selection(form, min, max) , true );
-        });
-        $(container).closest(".limit_content").find(".profile .range").on("slide", function(event, ui) {
-          var values = $(event.target).data("slider").getValue();
-          form.find("input.range_begin").val(values[0]);
-          form.find("input.range_end").val(values[1]);
-          plot.setSelection( normalized_selection(values[0], Math.max(values[0], values[1]-1)), true);
-        });
+        var range_inputs = form.find("input.range_begin, input.range_end");
+        if (range_inputs.length > 0) {
+          range_inputs.change(function () {
+             plot.setSelection( form_selection(form, min, max) , true );
+          });
+        }
+        var slider_el = $(container).closest(".limit_content").find(".profile .range");
+        if (slider_el.length > 0) {
+          slider_el.on("slide", function(event, ui) {
+            var values = $(event.target).data("slider").getValue();
+            var range_begin_el = form.find("input.range_begin");
+            var range_end_el = form.find("input.range_end");
+            if (range_begin_el.length > 0) range_begin_el.val(values[0]);
+            if (range_end_el.length > 0) range_end_el.val(values[1]);
+            plot.setSelection( normalized_selection(values[0], Math.max(values[0], values[1]-1)), true);
+          });
+        }
 
         // initially entirely selected, to match slider
         plot.setSelection( {xaxis: { from:min, to:max+0.9999}}  );
@@ -265,11 +276,13 @@ Blacklight.onLoad(function() {
     }
 
     function form_selection(form, min, max) {
-      var begin_val = BlacklightRangeLimit.parseNum($(form).find("input.range_begin").val());
+      var begin_element = $(form).find("input.range_begin");
+      var begin_val = begin_element.length > 0 ? BlacklightRangeLimit.parseNum(begin_element.val()) : min;
       if (isNaN(begin_val) || begin_val < min) {
         begin_val = min;
       }
-      var end_val = BlacklightRangeLimit.parseNum($(form).find("input.range_end").val());
+      var end_element = $(form).find("input.range_end");
+      var end_val = end_element.length > 0 ? BlacklightRangeLimit.parseNum(end_element.val()) : max;
       if (isNaN(end_val) || end_val > max) {
         end_val = max;
       }
