@@ -1,7 +1,7 @@
 # Generated via
 #  `rails generate hyrax:work PressRelease`
 class PressRelease < ActiveFedora::Base
-  include ::Hyrax::WorkBehavior
+  include Hyrax::WorkBehavior
 
   self.indexer = PressReleaseIndexer
   # Change this to restrict which works can be added as a child.

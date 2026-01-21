@@ -1,7 +1,7 @@
 # Generated via
 #  `rails generate hyrax:work Presentation`
 class Presentation < ActiveFedora::Base
-  include ::Hyrax::WorkBehavior
+  include Hyrax::WorkBehavior
 
   self.indexer = PresentationIndexer
   # Change this to restrict which works can be added as a child.

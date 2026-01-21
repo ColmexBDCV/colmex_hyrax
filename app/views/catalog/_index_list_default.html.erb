@@ -8,7 +8,7 @@
       <% if should_render_index_field? document, field %>
           
           <dt><%= render_index_field_label document, field: field_name %></dt>
-          <% field_render = doc_presenter.field_value field_name %>
+          <% field_render = doc_presenter.field_value field %>
           <% field_render = field_render.to_s.gsub(", and", " | ")%>
           <% field_render = field_render.to_s.gsub(" and ", " | ")%>
           <% field_render = field_render.to_s.gsub('</span>, <span', '</span> | <span')%>
@@ -28,7 +28,8 @@
     </dl>
   </div>
 </div>
-<% if(doc_presenter.field_value('has_model_ssim') == 'Collection') %>
+<% has_model_field = blacklight_config.index_fields['has_model_ssim'] %>
+<% if has_model_field && (doc_presenter.field_value(has_model_field) == 'Collection') %>
     <% collection_presenter = Hyrax::CollectionPresenter.new(document, current_ability) %>
 <div class="col-md-4">
   <div class="collection-counts-wrapper">

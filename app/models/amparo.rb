@@ -1,7 +1,7 @@
 # Generated via
 #  `rails generate hyrax:work Amparo`
 class Amparo < ActiveFedora::Base
-  include ::Hyrax::WorkBehavior
+  include Hyrax::WorkBehavior
 
   self.indexer = AmparoIndexer
   # Change this to restrict which works can be added as a child.

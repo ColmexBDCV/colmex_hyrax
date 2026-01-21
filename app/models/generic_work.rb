@@ -1,7 +1,7 @@
 # Generated via
 #  `rails generate hyrax:work GenericWork`
 class GenericWork < ActiveFedora::Base
-  include ::Hyrax::WorkBehavior
+  include Hyrax::WorkBehavior
   include Series
 
   self.indexer = GenericWorkIndexer
