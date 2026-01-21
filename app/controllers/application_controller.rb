@@ -16,6 +16,26 @@ class ApplicationController < ActionController::Base
     @guest_user ||= User.where(guest: true).first || super
   end
   
+  # Override Devise's redirect after sign in to avoid redirecting to thumbnails
+  def after_sign_in_path_for(resource)
+    stored_location = stored_location_for(resource)
+    
+    # If there's a stored location and it contains thumbnail parameters, clean it
+    if stored_location.present? && stored_location.include?('?file=thumbnail')
+      # Remove thumbnail parameter and redirect to the clean object URL
+      stored_location.split('?').first
+    elsif stored_location.present? && stored_location.match?(/\/downloads\//)
+      # If the stored location is a download URL, redirect to dashboard instead
+      hyrax.dashboard_path
+    elsif stored_location.present?
+      # Use the stored location if it's clean
+      stored_location
+    else
+      # Default to dashboard
+      hyrax.dashboard_path
+    end
+  end
+  
   protected
 
     #Allows new fields in sign_up an update an account
