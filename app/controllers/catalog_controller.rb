@@ -40,6 +40,9 @@ class CatalogController < ApplicationController
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
 
+    # Use POST to avoid overly long GET URLs
+    config.http_method = :post
+
     config.crawler_detector = ->(req) { req.env['HTTP_USER_AGENT'] =~ /Googlebot/ }
 
     # Show gallery view
@@ -51,15 +54,7 @@ class CatalogController < ApplicationController
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
     config.search_builder_class = SearchBuilder
-
-
-
-    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
-    config.default_solr_params = {
-      qt: "search",
-      rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim suggest",
-    }
+    
 
     # solr field configuration for document/show views
     config.index.title_field = solr_name("title", :stored_searchable)
@@ -331,24 +326,138 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("keyword", :stored_searchable)
     config.add_show_field solr_name("subject", :stored_searchable)
     config.add_show_field solr_name("creator", :stored_searchable)
+    config.add_show_field solr_name("has_creator", :stored_searchable)
     config.add_show_field solr_name("contributor", :stored_searchable)
     config.add_show_field solr_name("publisher", :stored_searchable)
+    config.add_show_field solr_name("center", :stored_searchable)
+    config.add_show_field solr_name("contained_in", :stored_searchable)
+    config.add_show_field solr_name("organizer_collective_agent", :stored_searchable)
+    config.add_show_field solr_name("handle", :stored_searchable)
+    config.add_show_field solr_name("volume", :stored_searchable)
+    config.add_show_field solr_name("number", :stored_searchable)
+    config.add_show_field solr_name("date_created", :stored_searchable)
+    config.add_show_field solr_name("table_of_contents", :stored_searchable)
+    config.add_show_field solr_name("geographic_coverage", :stored_searchable)
+    config.add_show_field solr_name("subject_work", :stored_searchable)
+    config.add_show_field solr_name("subject_person", :stored_searchable)
+    config.add_show_field solr_name("subject_corporate", :stored_searchable)
+    config.add_show_field solr_name("temporary_coverage", :stored_searchable)
+    config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
+    config.add_show_field solr_name("type_of_illustrations", :stored_searchable)
+    config.add_show_field solr_name("classification", :stored_searchable)
+    config.add_show_field solr_name("pages", :stored_searchable)
+    config.add_show_field solr_name("thematic_collection", :stored_searchable)
+    config.add_show_field solr_name("identifier", :stored_searchable)
+    config.add_show_field solr_name("source", :stored_searchable)
+    config.add_show_field solr_name("director", :stored_searchable)
+    config.add_show_field solr_name("mode_of_issuance", :stored_searchable)
+    config.add_show_field solr_name("degree_program", :stored_searchable)
+    config.add_show_field solr_name("alternative_numeric_and_or_alphabethic_designation", :stored_searchable)
+    config.add_show_field solr_name("proxy_depositor", :symbol), label: "Depositor", helper_method: :link_to_profile
     config.add_show_field solr_name("based_near_label", :stored_searchable)
     config.add_show_field solr_name("language", :stored_searchable)
     config.add_show_field solr_name("date_uploaded", :stored_searchable)
     config.add_show_field solr_name("date_modified", :stored_searchable)
-    config.add_show_field solr_name("date_created", :stored_searchable)
     config.add_show_field solr_name("rights_statement", :stored_searchable)
     config.add_show_field solr_name("license", :stored_searchable)
-    config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable)
-    config.add_show_field solr_name("identifier", :stored_searchable)
+    config.add_show_field solr_name("file_format", :stored_searchable)
+    config.add_show_field solr_name("embargo_release_date", :stored_sortable, type: :date), label: "Embargo release date", helper_method: :human_readable_date
+    config.add_show_field solr_name("lease_expiration_date", :stored_sortable, type: :date), label: "Lease expiration date", helper_method: :human_readable_date
+    config.add_show_field solr_name("corporate_body", :stored_searchable)
+    config.add_show_field solr_name("collective_agent", :stored_searchable)
+    config.add_show_field solr_name("related_work_of_work", :stored_searchable)
+    config.add_show_field solr_name("numbering_of_part", :stored_searchable)
+    config.add_show_field solr_name("organizer_author", :stored_searchable)
+    config.add_show_field solr_name("copyright", :stored_searchable)
+    config.add_show_field solr_name("title_of_series", :stored_searchable)
+    config.add_show_field solr_name("notes", :stored_searchable)
+    config.add_show_field solr_name("numbering_within_sequence", :stored_searchable)
+    config.add_show_field solr_name("video_format", :stored_searchable)
+    config.add_show_field solr_name("video_characteristic", :stored_searchable)
+    config.add_show_field solr_name("note_on_statement_of_responsibility", :stored_searchable)
+    config.add_show_field solr_name("editor", :stored_searchable)
+    config.add_show_field solr_name("organizer", :stored_searchable)
+    config.add_show_field solr_name("compiler", :stored_searchable)
+    config.add_show_field solr_name("commentator", :stored_searchable)
+    config.add_show_field solr_name("reviewer", :stored_searchable)
+    config.add_show_field solr_name("traslator", :stored_searchable)
     config.add_show_field solr_name("interviewer", :stored_searchable)
+    config.add_show_field solr_name("interviewee", :stored_searchable)
+    config.add_show_field solr_name("photographer", :stored_searchable)
+    config.add_show_field solr_name("narrator", :stored_searchable)
+    config.add_show_field solr_name("writer_of_suplementary_textual_content", :stored_searchable)
+    config.add_show_field solr_name("collective_title", :stored_searchable)
+    config.add_show_field solr_name("part_of_place", :stored_searchable)
+    config.add_show_field solr_name("provenance", :stored_searchable)
+    config.add_show_field solr_name("curator_collective_agent_of", :stored_searchable)
+    config.add_show_field solr_name("project", :stored_searchable)
+    config.add_show_field solr_name("owner_agent_of", :stored_searchable)
+    config.add_show_field solr_name("custodian_agent_of", :stored_searchable)
+    config.add_show_field solr_name("file_type_details", :stored_searchable)
+    config.add_show_field solr_name("depository_collective_agent_of", :stored_searchable)
+    config.add_show_field solr_name("depository_agent", :stored_searchable)
+    config.add_show_field solr_name("is_part_or_work", :stored_searchable)
+    config.add_show_field solr_name("issn", :stored_searchable)
+    config.add_show_field solr_name("is_lyricist_person_of", :stored_searchable)
+    config.add_show_field solr_name("is_composer_person_of", :stored_searchable)
+    config.add_show_field solr_name("is_performer_agent_of", :stored_searchable)
+    config.add_show_field solr_name("is_instrumentalist_agent_of", :stored_searchable)
+    config.add_show_field solr_name("is_singer_agent_of", :stored_searchable)
+    config.add_show_field solr_name("researcher_agent_of", :stored_searchable)
+    config.add_show_field solr_name("summary_of_work", :stored_searchable)
+    config.add_show_field solr_name("nature_of_content", :stored_searchable)
+    config.add_show_field solr_name("guide_to_work", :stored_searchable)
+    config.add_show_field solr_name("analysis_of_work", :stored_searchable)
+    config.add_show_field solr_name("complemented_by_work", :stored_searchable)
+    config.add_show_field solr_name("production_method", :stored_searchable)
+    config.add_show_field solr_name("scale", :stored_searchable)
+    config.add_show_field solr_name("longitud_and_latitud", :stored_searchable)
+    config.add_show_field solr_name("digital_representation_of_cartographic_content", :stored_searchable)
+    config.add_show_field solr_name("related_place_of_timespan", :stored_searchable)
+    config.add_show_field solr_name("note_of_timespan", :stored_searchable)
+    config.add_show_field solr_name("photographer_corporate_body_of_work", :stored_searchable)
+    config.add_show_field solr_name("dimensions_of_still_image", :stored_searchable)
+    config.add_show_field solr_name("period_of_activity_of_corporate_body", :stored_searchable)
+    config.add_show_field solr_name("speaker_agent_of", :stored_searchable)
+    config.add_show_field solr_name("assistant", :stored_searchable)
+    config.add_show_field solr_name("preceded_by_work", :stored_searchable)
+    config.add_show_field solr_name("primary_topic", :stored_searchable)
+    config.add_show_field solr_name("enacting_juridiction_of", :stored_searchable)
+    config.add_show_field solr_name("hierarchical_superior", :stored_searchable)
+    config.add_show_field solr_name("hierarchical_inferior", :stored_searchable)
+    config.add_show_field solr_name("subject_timespan", :stored_searchable)
+    config.add_show_field solr_name("identifier_of_work", :stored_searchable)
+    config.add_show_field solr_name("is_title_of_item_of", :stored_searchable)
+    config.add_show_field solr_name("timespan_described_in", :stored_searchable)
+    config.add_show_field solr_name("related_person_of", :stored_searchable)
+    config.add_show_field solr_name("related_corporate_body_of_timespan", :stored_searchable)
+    config.add_show_field solr_name("related_family_timespan", :stored_searchable)
+    config.add_show_field solr_name("complainant", :stored_searchable)
+    config.add_show_field solr_name("contestee", :stored_searchable)
+    config.add_show_field solr_name("witness", :stored_searchable)
+    config.add_show_field solr_name("is_criminal_defendant_corporate_body_of", :stored_searchable)
+    config.add_show_field solr_name("is_criminal_defendant_person_of", :stored_searchable)
+    config.add_show_field solr_name("has_identifier_for_item", :stored_searchable)
+    config.add_show_field solr_name("place_of_publication", :stored_searchable)
+    config.add_show_field solr_name("beginning", :stored_searchable)
+    config.add_show_field solr_name("ending", :stored_searchable)
+    config.add_show_field solr_name("has_field_activity_of_agent", :stored_searchable)
+    config.add_show_field solr_name("is_facsimile_of_manifestation_of", :stored_searchable)
+    config.add_show_field solr_name("date_of_manifestation", :stored_searchable)
+    config.add_show_field solr_name("language_of_expression", :stored_searchable)
+    config.add_show_field solr_name("is_finding_aid_for", :stored_searchable), helper_method: :convert_to_link
+    config.add_show_field solr_name("collector_collective_agent", :stored_searchable)
+    config.add_show_field solr_name("subject_uniform_title", :stored_searchable)
+    config.add_show_field solr_name("has_organizer_corporate_body", :stored_searchable)
     config.add_show_field solr_name("has_transformation_by_genre", :stored_searchable)
     config.add_show_field solr_name("is_transformation_by_genre", :stored_searchable)
     config.add_show_field solr_name("has_medium_of_performance_of_musical_content", :stored_searchable)
     config.add_show_field solr_name("is_person_member_of_collective_agent", :stored_searchable)
     config.add_show_field solr_name("has_person_member_of_collective_agent", :stored_searchable)
+    config.add_show_field solr_name("has_carrier_type", :stored_searchable)
+    config.add_show_field solr_name("is_dancer_agent_of", :stored_searchable)
+    config.add_show_field solr_name("parent_work_titles", :stored_searchable), helper_method: :link_to_parent_works
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -370,47 +479,62 @@ class CatalogController < ApplicationController
     all_worktypes = Hyrax::config.registered_curation_concern_types # Este método puede variar dependiendo de tu configuración específica
 
 
+    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
+    config.default_solr_params = {
+      qt: "search",
+      rows: 10,
+      qf: "title_tesim description_tesim creator_tesim keyword_tesim",
+    }
 
 
+    # config.add_search_field('all_fields', label: 'All Fields') do |field|
+    #   field.advanced_parse = false
+    #   title_name = solr_name("title", :stored_searchable)
+    #   children_work_titles_names = solr_name("children_work_titles", :stored_searchable)
+    #   field.solr_parameters = {
+    #     qf:"children_work_titles_tesim^50 suggest title_tesim^2 description_tesim creator_tesim keyword_tesim file_format_tesim all_text_timv parent_work_titles_tesim",
+    #     pf: title_name.to_s
+
+    #   }
+    # end
 
     config.add_search_field('all_fields', label: 'All Fields') do |field|
-      field.advanced_parse = false
-      title_name = solr_name("title", :stored_searchable)
-      children_work_titles_names = solr_name("children_work_titles", :stored_searchable)
+      all_names = config.show_fields.values.map(&:field).join(" ")
+      title_name = "title_tesim"
       field.solr_parameters = {
-        qf:"children_work_titles_tesim^50 suggest title_tesim^2 description_tesim creator_tesim keyword_tesim file_format_tesim all_text_timv parent_work_titles_tesim",
+        # qf: "#{all_names} file_format_tesim all_text_timv",
+        qf:"#{all_names} children_work_titles_tesim^4 all_text_timv^3 parent_work_titles_tesim^2",
         pf: title_name.to_s
-
       }
     end
 
-    all_fields = all_worktypes.flat_map do |worktype|
-      worktype.singularize.classify.constantize.fields.map { |f| f }
-    end.uniq
+    # all_fields = all_worktypes.flat_map do |worktype|
+    #   worktype.singularize.classify.constantize.fields.map { |f| f }
+    # end.uniq
 
-    all_fields.push :parent_works_titles
-    all_fields = all_fields - [:has_model, :head, :tail, :depositor, :date_uploaded, :date_modified, :create_date,
-                               :modified_date, :state, :proxy_depositor, :on_behalf_of, :arkivo_checksum,
-                               :creator_conacyt, :contributor_conacyt, :subject_conacyt, :pub_conacyt, :type_conacyt,
-                               :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
-                               :bibliographic_citation ]
+    # all_fields.push :parent_works_titles
+    # all_fields = all_fields - [:has_model, :head, :tail, :depositor, :date_uploaded, :date_modified, :create_date,
+    #                            :modified_date, :state, :proxy_depositor, :on_behalf_of, :arkivo_checksum,
+    #                            :creator_conacyt, :contributor_conacyt, :subject_conacyt, :pub_conacyt, :type_conacyt,
+    #                            :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
+    #                            :bibliographic_citation ]
 
-    all_fields.push :has_model
+    # all_fields.push :has_model
 
-    all_fields.each do |name|
-      begin
-        config.add_search_field(name.to_s) do |field|
-          solr_name = solr_name(name.to_s, name == :has_model ? :symbol : :stored_searchable)
-          field.solr_local_parameters = {
-            qf: solr_name,
-            pf: solr_name
-          }
-        end
-      rescue StandardError => e
-        # Ignora el error si el campo ya existe
-        raise unless e.message =~ /_tesim already exists/
-      end
-    end
+    # all_fields.each do |name|
+    #   begin
+    #     config.add_search_field(name.to_s) do |field|
+    #       solr_name = solr_name(name.to_s, name == :has_model ? :symbol : :stored_searchable)
+    #       field.solr_local_parameters = {
+    #         qf: solr_name,
+    #         pf: solr_name
+    #       }
+    #     end
+    #   rescue StandardError => e
+    #     # Ignora el error si el campo ya existe
+    #     raise unless e.message =~ /_tesim already exists/
+    #   end
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
