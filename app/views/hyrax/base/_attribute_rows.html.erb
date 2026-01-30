@@ -77,3 +77,18 @@
         <%=link_to(pw.title.first, contextual_path(pw, @presenter))%><br>
     <% end %>
 <% end %>
+
+<%#byebug%>
+
+<% if presenter.file_set_presenters.any? && presenter.file_set_presenters.any? { |fs| FileSet.image_mime_types.include?(fs.mime_type) } %>
+    <dt> <%= t('hyrax.base.show.iiif_manifest', default: 'IIIF Manifest') %> </dt>
+    <dd>
+        <ul class="tabular">
+            <li class="attribute">
+                <% manifest_url = "#{request.protocol}#{request.host_with_port}#{contextual_path(presenter, @presenter)}/manifest" %>
+                <%= link_to manifest_url, manifest_url %>
+            </li>
+        </ul>
+        
+    </dd>
+<% end %>

@@ -1283,3 +1283,4 @@ es:
         has_carrier_type: Tipo de portador
         is_dancer_agent_of: Danzante
         local_resource_identifier: Identificador institucional
+        iiif_manifest: Manifiesto IIIF
