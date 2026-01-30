@@ -81,12 +81,23 @@
 <%#byebug%>
 
 <% if presenter.file_set_presenters.any? && presenter.file_set_presenters.any? { |fs| FileSet.image_mime_types.include?(fs.mime_type) } %>
-    <dt> <%= t('hyrax.base.show.iiif_manifest', default: 'IIIF Manifest') %> </dt>
+    <dt>
+        <% route_key = presenter.model_name.route_key.sub(/^hyrax_/, '') %>
+        <% manifest_url = "#{request.base_url}/concern/#{route_key}/#{presenter.id}/manifest" %>
+        <%= image_tag('/img/logo_iiif.png', alt: 'IIIF', style: 'height:20px; vertical-align:middle; margin-right:6px;') %>
+        <%= t('hyrax.base.show.iiif_manifest', default: 'Manifest') %>
+        <%= button_tag image_tag('/img/copy.svg', alt: 'copy', style: 'height:15px; vertical-align:top;'),
+            type: 'button',
+            class: 'btn btn-link',
+            style: 'float:right; padding:0; border:0; background:transparent; outline:none; box-shadow:none; transition:all 0.15s;',
+            onclick: "navigator.clipboard.writeText('#{manifest_url}').then(function(){ var b=this; var msg=document.createElement('span'); msg.innerHTML='¡Copiado!'; msg.style.cssText='color:#28a745;font-size:12px;margin-left:8px;font-weight:bold;'; b.parentNode.insertBefore(msg,b); b.style.opacity='0.2'; b.style.transform='scale(1.3)'; setTimeout(function(){ b.style.opacity='1'; b.style.transform='scale(1)'; msg.remove(); }, 1500); }.bind(this), function(){})" %>
+
+    </dt>
     <dd>
         <ul class="tabular">
             <li class="attribute">
-                <% manifest_url = "#{request.protocol}#{request.host_with_port}#{contextual_path(presenter, @presenter)}/manifest" %>
                 <%= link_to manifest_url, manifest_url %>
+                
             </li>
         </ul>
         

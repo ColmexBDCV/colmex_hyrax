@@ -850,7 +850,7 @@ es:
         is_person_member_of_collective_agent: "Es miembro de:"
         has_person_member_of_collective_agent: "Sus miembros son:"
         has_carrier_type: Tipo de portador
-        iiif_manifest: Manifiesto IIIF
+        iiif_manifest: Manifiesto
         is_dancer_agent_of: Danzante
         local_resource_identifier: Identificador institucional  
       relationships_parent_row:
