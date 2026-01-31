@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   #Conacyt Requirements
   get 'persona_name', to: 'authority#person'
 
+  # IIIF manifest collection (manifiesto de manifiestos)
+  get 'iiif/collection', to: 'iiif_collections#index'
+
 
   get 'padron', to: 'conacyt_stats#padron'
   get 'ranking/articulos', to: 'conacyt_stats#articulos'
