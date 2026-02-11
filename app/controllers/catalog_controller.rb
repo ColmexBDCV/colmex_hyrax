@@ -503,7 +503,7 @@ class CatalogController < ApplicationController
       title_name = "title_tesim"
       field.solr_parameters = {
         # qf: "#{all_names} file_format_tesim all_text_timv",
-        qf:"#{all_names} children_work_titles_tesim^4 all_text_timv^3 parent_work_titles_tesim^2",
+        qf:"#{all_names} children_work_titles_tesim^4 all_text_timv^3 parent_work_titles_tesim^2 local_resource_identifier_tesim",
         pf: title_name.to_s
       }
     end
