@@ -508,6 +508,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('local_resource_identifier', label: 'Local Resource Identifier') do |field|
+      field.include_in_simple_select = false
+      field.solr_parameters = {
+        qf: 'local_resource_identifier_tesim',
+        pf: 'local_resource_identifier_tesim'
+      }
+    end
+
     # all_fields = all_worktypes.flat_map do |worktype|
     #   worktype.singularize.classify.constantize.fields.map { |f| f }
     # end.uniq
