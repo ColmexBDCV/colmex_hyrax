@@ -834,6 +834,7 @@ es:
         complainant: Quejoso (víctima y ofendido)
         contestee: Representante legal, defensor, etc.
         witness: Testigo
+        collective_agent: Autor congreso
         is_criminal_defendant_corporate_body_of: Organismo acusado o demandado
         is_criminal_defendant_person_of: Persona acusada o demandada
         has_identifier_for_item: Número de expediente o caso
