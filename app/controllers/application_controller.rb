@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   with_themed_layout '1_column'
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :enforce_startup_captcha, if: -> { Rails.env.production? }
+  before_action :enforce_startup_captcha, if: :startup_captcha_enabled?
   
   def guest_user
     @guest_user ||= User.where(guest: true).first || super
@@ -55,6 +55,12 @@ class ApplicationController < ActionController::Base
 
     def turnstile_configured?
       ENV['TURNSTILE_SITE_KEY'].present? && ENV['TURNSTILE_SECRET_KEY'].present?
+    end
+
+    def startup_captcha_enabled?
+      return false unless Rails.env.production?
+
+      ActiveModel::Type::Boolean.new.cast(ENV.fetch('ENABLE_STARTUP_CAPTCHA', 'true'))
     end
 
     def enforce_startup_captcha
