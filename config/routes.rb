@@ -73,6 +73,11 @@ Rails.application.routes.draw do
 
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
+
+  # Rutas de captcha de inicio (DESPUÉS de Hyrax para evitar ser capturadas)
+  get '/startup_captcha', to: 'startup_captcha#show', as: :startup_captcha
+  post '/startup_captcha', to: 'startup_captcha#verify', as: :verify_startup_captcha
+
   resources :welcome, only: 'index'
   root 'hyrax/homepage#index'
   curation_concerns_basic_routes

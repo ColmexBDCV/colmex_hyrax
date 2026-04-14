@@ -15,6 +15,25 @@ Docs: [![Documentation Status](https://inch-ci.org/github/samvera/hyrax.svg?bran
 Jump in: [![Slack Status](http://slack.samvera.org/badge.svg)](http://slack.samvera.org/)
 [![Ready Tickets](https://badge.waffle.io/samvera/hyrax.png?label=ready&milestone=2.x%20series&title=Ready)](https://waffle.io/samvera/hyrax?milestone=2.x%20series)
 
+## SEO quick setup
+
+This project includes:
+
+* Sitemap generation with `sitemap_generator`
+* Basic crawl controls in `public/robots.txt`
+
+Generate sitemap files:
+
+```bash
+bundle exec rake sitemap:refresh
+```
+
+Optional environment variable for canonical host when generating sitemap:
+
+```bash
+SEO_HOST=your-domain.example
+```
+
 # Table of Contents
 
   * [What is Hyrax?](#what-is-hyrax)

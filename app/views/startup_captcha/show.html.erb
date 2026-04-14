@@ -1,0 +1,14 @@
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<div style="max-width: 480px; margin: 3rem auto; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
+  <h1 style="margin-top: 0;">Verificación de acceso</h1>
+  <p>Por favor completa el CAPTCHA para continuar.</p>
+
+  <%= form_with url: '/startup_captcha', method: :post, local: true do |f| %>
+    <div style="margin-bottom: 1rem; display: flex; justify-content: center;">
+      <div class="cf-turnstile" data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>" data-theme="light"></div>
+    </div>
+
+    <%= submit_tag 'Ingresar', style: 'padding: 0.5rem 1rem;' %>
+  <% end %>
+</div>

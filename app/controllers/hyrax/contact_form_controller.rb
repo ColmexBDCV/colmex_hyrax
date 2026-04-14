@@ -7,14 +7,18 @@ module Hyrax
 
     def create
       # not spam and a valid form
-      if @contact_form.valid? && verify_recaptcha(model: @contact_form) 
+      turnstile_ok = verify_turnstile_response(params['cf-turnstile-response'])
+
+      if @contact_form.valid? && turnstile_ok
         ContactMailer.contact(@contact_form).deliver_now
         flash.now[:notice] = t('hyrax.contact_form.thanks',:default =>'Thank you for your message!')
         after_deliver
         @contact_form = ContactForm.new
       else
+        errors = @contact_form.errors.full_messages.map(&:to_s)
+        errors << 'Turnstile verification failed.' unless turnstile_ok
         flash.now[:error] = 'Sorry, this message was not sent successfully. '
-        flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(", ")
+        flash.now[:error] << errors.join(', ')
       end
       render :new
     rescue RuntimeError => exception

@@ -97,14 +97,14 @@ gem 'devise'
 gem 'devise-guests'
 gem 'devise-i18n'
 
-
+gem 'meta-tags'
 gem 'clipboard-rails'
 gem 'pdfjs_viewer-rails'
 gem 'riiif', '~> 2.0'
-gem "recaptcha"
 gem 'browse-everything','1.1.2'
 gem 'redlock', '< 2.0'
 gem 'okcomputer'
 gem 'simple_form', '5.2.0'
 gem 'terser'
 gem 'sidekiq-limit_fetch'
+gem 'sitemap_generator'

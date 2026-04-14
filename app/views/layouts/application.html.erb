@@ -6,8 +6,16 @@
       window.Locale = "<%= I18n.locale.to_s %>"
       window.I18n = <%= current_translations.to_json.html_safe %>
     </script>
-    <title><%=t('hyrax.product_name')%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= display_meta_tags site: t('hyrax.product_name') %>
+    <% if Rails.env.development? || Rails.env.test? %>
+      <meta name="robots" content="noindex, nofollow">
+    <% end %>
     <%= csrf_meta_tags %>
+    <% if seo_json_ld.present? %>
+      <script type="application/ld+json"><%= raw(json_escape(seo_json_ld.to_json)) %></script>
+    <% end %>
+    <%= yield :head %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
