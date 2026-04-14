@@ -1,14 +1,152 @@
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-<div style="max-width: 480px; margin: 3rem auto; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px;">
-  <h1 style="margin-top: 0;">Verificación de acceso</h1>
-  <p>Por favor completa el CAPTCHA para continuar.</p>
+<style>
+  .startup-captcha-page {
+    min-height: 100vh;
+    /* background: #f4f0f2; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3.5rem 1rem;
+    box-sizing: border-box;
+  }
 
-  <%= form_with url: '/startup_captcha', method: :post, local: true do |f| %>
-    <div style="margin-bottom: 1rem; display: flex; justify-content: center;">
-      <div class="cf-turnstile" data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>" data-theme="light"></div>
-    </div>
+  .startup-captcha-card {
+    width: 100%;
+    max-width: 760px;
+    background: #fff;
+    border: 1px solid #dfd3d8;
+    border-radius: 20px;
+    box-shadow: 0 22px 35px rgba(72, 34, 50, 0.08);
+    padding: 2.8rem 3.2rem 3rem;
+  }
 
-    <%= submit_tag 'Ingresar', style: 'padding: 0.5rem 1rem;' %>
-  <% end %>
+  .startup-captcha-title {
+    margin: 0 0 0.9rem;
+    text-align: center;
+    color: #4b2a37;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 3rem;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .startup-captcha-subtitle {
+    margin: 0 0 2rem;
+    text-align: center;
+    color: #5d4350;
+    font-size: 2rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .startup-captcha-inner {
+    border: 1px solid #e2d4d9;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2.4rem;
+    background: #fff;
+  }
+
+  .startup-captcha-inner-head {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid #eee2e6;
+    color: #5d3b48;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .startup-captcha-widget-wrap {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .startup-captcha-button-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .startup-captcha-submit {
+    border: 0;
+    border-radius: 12px;
+    min-width: 265px;
+    height: 68px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(180deg, #8a3a63 0%, #6f2a4c 100%);
+    box-shadow: 0 12px 22px rgba(102, 35, 69, 0.22);
+  }
+
+  .startup-captcha-alert {
+    margin: 0 0 1.2rem;
+    border: 1px solid #dfb9c6;
+    background: #fff2f6;
+    color: #7f2148;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    font-size: 1.45rem;
+  }
+
+  @media (max-width: 700px) {
+    .startup-captcha-page {
+      padding: 1.5rem 0.75rem;
+    }
+
+    .startup-captcha-card {
+      padding: 1.3rem 1rem 1.6rem;
+      border-radius: 14px;
+    }
+
+    .startup-captcha-title {
+      font-size: 2.3rem;
+    }
+
+    .startup-captcha-subtitle {
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .startup-captcha-inner-head {
+      font-size: 1.35rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .startup-captcha-widget-wrap {
+      justify-content: flex-start;
+      overflow-x: auto;
+    }
+
+    .startup-captcha-submit {
+      min-width: 100%;
+      height: 54px;
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+<div class="startup-captcha-page">
+  <div class="startup-captcha-card">
+    <% if flash.now[:alert].present? %>
+      <div class="startup-captcha-alert"><%= flash.now[:alert] %></div>
+    <% end %>
+
+    <h1 class="startup-captcha-title">Verificación de acceso</h1>
+    <p class="startup-captcha-subtitle">Por favor, completa el CAPTCHA para continuar.</p>
+
+    <%= form_with url: '/startup_captcha', method: :post, local: true do %>
+      <div class="startup-captcha-inner">
+        <div class="startup-captcha-inner-head">Debido a solicitudes masivas generadas por IA que pueden afectar la disponibilidad del sitio, es necesario completar esta verificación.</div>
+        <div class="startup-captcha-widget-wrap">
+          <div class="cf-turnstile" data-sitekey="<%= ENV['TURNSTILE_SITE_KEY'] %>" data-theme="light"></div>
+        </div>
+      </div>
+
+      <div class="startup-captcha-button-wrap">
+        <%= submit_tag 'Ingresar', class: 'startup-captcha-submit' %>
+      </div>
+    <% end %>
+  </div>
 </div>
