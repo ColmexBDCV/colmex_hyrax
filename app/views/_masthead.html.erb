@@ -75,17 +75,24 @@
 <script>
 
   function check_search_fiedl() {
-      if ($('#search-field-header').val().length == 0) {
-        $('#search-submit-header').html("<b>Buscar todo</b>") 
+      var $searchFieldHeader = $('#search-field-header');
+      var $searchSubmitHeader = $('#search-submit-header');
+
+      if ($searchFieldHeader.length === 0 || $searchSubmitHeader.length === 0) {
+        return;
+      }
+
+      if (($searchFieldHeader.val() || '').length === 0) {
+        $searchSubmitHeader.html("<b>Buscar todo</b>");
       } else {
-        $('#search-submit-header').html('<%= t('hyrax.search.button.html') %>')
+        $searchSubmitHeader.html("<%= j t('hyrax.search.button.html') %>");
       }
   }
 
-  check_search_fiedl()
+  check_search_fiedl();
 
   $("#search-field-header").on("input", function() {
-   check_search_fiedl()
+   check_search_fiedl();
   });
 
 </script>
