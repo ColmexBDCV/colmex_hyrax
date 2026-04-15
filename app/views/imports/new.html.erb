@@ -201,8 +201,8 @@
        * Envia lo datos para validar la informacion y obtiene si estan correctos o no.
        **/ 
       validar(sip, id, size){
-        if (size > 30000) { // Check if size exceeds 30GB
-          alert("El SIP no debe exceder 30000 MB");
+        if (size > 45000) { // Check if size exceeds 45GB
+          alert("El SIP no debe exceder 45000 MB");
           return;
         }
         this.is_loading = true;
