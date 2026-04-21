@@ -8,7 +8,6 @@ class UpdateFileSetVisibilityActor < Hyrax::Actors::AbstractActor
     return result unless work.respond_to?(:item_access_restrictions)
 
     target_visibility = work.item_access_restrictions.present? ? 'restricted' : 'open'
-
     work.file_sets.each do |fs|
       next if fs.visibility == target_visibility
 

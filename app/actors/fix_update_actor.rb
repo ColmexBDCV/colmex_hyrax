@@ -21,7 +21,9 @@ class FixUpdateActor < Hyrax::Actors::AbstractActor
             
         end
 
-        work.save
+        return false unless work.save
+
+        next_actor.update(env)
 
                 
     end
