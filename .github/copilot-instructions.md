@@ -1,0 +1,2 @@
+-Siempre agrega el respectivo test en spec que cubra todas las variantes posibles
+-Cada cambio que hagas en el codigo debe tambien reflejarse en su respectivo test en spec
