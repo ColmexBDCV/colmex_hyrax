@@ -29,8 +29,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
   rescue Faraday::ConnectionFailed, Ldp::HttpError => e
     error_stream << e
+    return [record.try(:identifier), "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }] unless update.nil?
   rescue RuntimeError => e
     error_stream << e
+    return [record.try(:identifier), "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }] unless update.nil?
     raise e
 
   end
@@ -91,7 +93,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
           info_stream << "\nRecord created at: #{created.id} \n"
           created.class.find(created.id).file_set_ids.each do |f_id|
-            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
+            access_file_set(f_id, attributes[:item_access_restrictions])
           end
           return [record.identifier, "Importado exitosamente"]
         else
@@ -153,10 +155,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           end
         end
 
-        info_stream << "\n[DEBUG] Campos a comparar: #{csv_fields.inspect}"
-        info_stream << "\n[DEBUG] Cambios detectados: #{changes.inspect}"
-        info_stream << "\n[DEBUG] Cambios vacíos?: #{changes.empty?}"
-        
         unless changes.empty?
           begin
             log_entry = RecordChangeLog.new(
@@ -166,7 +164,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
               record_id: gw.id,
               identifier: record.identifier
             )
-            info_stream << "\n[DEBUG] Log entry creado: user_id=#{creator.id}, template=#{gw.has_model.first}, record_id=#{gw.id}"
             if log_entry.save
               info_stream << "\n[LOG] Cambios guardados en RecordChangeLog para #{record.identifier}"
             else
@@ -180,9 +177,13 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         end
 
         info_stream << "\nRecord #{record.identifier} is updated"
+        return [record.identifier, "Actualizado exitosamente", changes]
       else
         info_stream << "\nRecord #{record.identifier} fail to update"
+        return [record.identifier, "El identificador no existe en el sistema", nil]
       end
+    rescue => e
+      return [record.identifier, "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }]
     end
 
     def file_for(filenames)
@@ -290,9 +291,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         # Asegurar que capturamos el valor incluso si no está en original_record
         original_value = normalize_value(original_record[field_str])
         updated_value = normalize_value(updated_record[field_str])
-        
-        # Debug para ver valores originales vs nuevos
-        info_stream << "\n[DEBUG] Campo #{field_str}: before=#{original_value.inspect} after=#{updated_value.inspect}"
         
         # Detectar cambios incluyendo cuando se vacía un campo ([] o nil o "")
         original_empty = value_empty?(original_value)
