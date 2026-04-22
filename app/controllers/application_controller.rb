@@ -1,6 +1,7 @@
 require 'json'
 require 'net/http'
 require 'uri'
+require 'ipaddr'
 
 class ApplicationController < ActionController::Base
   helper Openseadragon::OpenseadragonHelper
@@ -67,9 +68,27 @@ class ApplicationController < ActionController::Base
       return unless request.format.html?
       return if session[:startup_captcha_passed]
       return if controller_name == 'startup_captcha'
+      return if startup_captcha_skip_path?
+      return if startup_captcha_skip_ip?
 
       session[:startup_captcha_return_to] = request.fullpath if request.get?
       redirect_to '/startup_captcha'
+    end
+
+    def startup_captcha_skip_path?
+      skip_paths = ENV.fetch('STARTUP_CAPTCHA_SKIP_PATHS', '').split(',').map(&:strip).reject(&:empty?)
+      skip_paths.any? { |prefix| request.path.start_with?(prefix) }
+    end
+
+    def startup_captcha_skip_ip?
+      ranges = ENV.fetch('STARTUP_CAPTCHA_SKIP_IPS', '').split(',').map(&:strip).reject(&:empty?)
+      return false if ranges.empty?
+
+      client_ip = IPAddr.new(request.remote_ip)
+      ranges.any? { |cidr| IPAddr.new(cidr).include?(client_ip) }
+    rescue IPAddr::InvalidAddressError, IPAddr::AddressFamilyError => e
+      Rails.logger.warn("STARTUP_CAPTCHA_SKIP_IPS contiene un valor invalido: #{e.message}")
+      false
     end
 
   protect_from_forgery with: :exception
