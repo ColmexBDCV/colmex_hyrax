@@ -1,0 +1,174 @@
+<style>
+  .label-warning {
+    background-color: #f0ad4e;
+  }
+
+  .label-info {
+    background-color: #5bc0de;
+  }
+
+  .label {
+    font-size: 95% !important;
+  }
+
+  .table{
+    display: block;
+    overflow-x: auto;
+  }
+  
+</style>
+<div class="row">
+    <div class="col-md-12">
+      <div class="panel-heading">
+        <h1><span class="fa fa-check" aria-hidden="true"></span> Historial</h1>
+    </div>
+    <div class="panel panel-body">
+      <h1>Paquetes procesados</h1>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Nombre del paquete </th>
+              <th> Fecha de Ingreso </th>
+              <th> Peso (MB) </th>
+              <th> Depositante </th>
+              <th> Estado </th>
+              <th> Tipo de objeto </th>
+              <th> # de Registros</th>
+              <th> Validado para RepNal </th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @updates.each do |update| %>
+              <%
+                case update.status
+
+                  when "Procesado"
+                    label = "success"
+                  when "Cancelado"
+                    label = "danger"
+                  when "Procesando..."
+                    label = "info"
+                  when "Cancelando..."
+                    label = "warning"
+                end
+              %>
+              <% d = update.status != "Procesado" ? true : false %>
+              <tr>
+                <td><%= update.name %></td>
+                <td><%= update.date %></td>
+                <td><%= update.storage_size %></td>
+                <td><%= update.depositor %></td>
+                <td> <span class="label label-<%=label%>"><%= update.status %></span></td>
+                <td><%= update.object_type %></td>
+                <td>
+                  <button id="<%= update.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal" <%= "disabled" if d %> >
+                    <%= update.num_records %>
+                  </button>
+                  <div hidden><%= update.object_ids %></div>
+                </td>
+                <td><%= update.repnal %></td>
+                <td>
+                  <%= button_to 'Exportar log de cambios',
+                      export_csv_update_path(update),
+                      method: :post,
+                      class: 'btn btn-primary',
+                      data: { 
+                        disable_with: 'Procesando...',
+                        confirm: '¿Desea exportar los registros a CSV?' 
+                      },
+                      disabled: d
+                  %>
+                </td>
+              </tr>
+            <% end %>            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">
+          
+        </h2> 
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <a class="btn btn-success" role="button" data-toggle="collapse" href="#goods" aria-expanded="false" aria-controls="goods">
+          Exitosos
+        </a>
+        <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#errors" aria-expanded="false" aria-controls="errors">
+          Erroneos
+        </button>
+        <br>
+        <div class="collapse" id="goods">
+          <div class="well goods">
+            ...
+          </div>
+        </div>
+        <div class="collapse" id="errors">
+        <div class="well errors">
+          ...
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   
+  $('#goods').on('show.bs.collapse', function () {
+            $('#errors').collapse('hide');
+  });
+  $('#errors').on('show.bs.collapse', function () {
+      $('#goods').collapse('hide');
+  });
+
+  $('.custom-modal').click(function(e){
+      e.preventDefault();
+      var sip = $(this).attr('id');
+      var ids = JSON.parse($(this).next().text())
+      // console.log(ids)
+      var status_g = ""
+      var status_e = ""
+      ids.forEach(function(element) {
+
+        label="success"
+        if (element[1].includes("exitosamente"))
+        { 
+          
+          status_g += '<div class="list-group-item"><b>Registro con el Identificador</b>: '+element[0]+' <br><b>Estado</b>: <b><span class="label label-list-group-item label-success">'+element[1]+'</span></b></div>'
+
+        
+        } else {
+
+          status_e += '<div class="list-group-item"><b>Registro con el Identificador</b>: '+element[0]+' <br><b>Estado</b>: <b><span class="label label-list-group-item label-danger">'+element[1]+'</span></b></div>'
+
+        }
+        
+      })
+      
+      if (status_g == "") { status_g = "Todos los registros fallaron al actualizarse" }
+      if (status_e == "") { status_e = "Todos los registros tuvieron exito al actualizarse" }
+
+
+      var mymodal = $('#myModal');
+      
+      mymodal.find('#myModalLabel').text("Estado de los identificadores del SIP "+sip);
+      mymodal.find(".errors").html($.parseHTML( status_e));
+      mymodal.find(".goods").html($.parseHTML( status_g));
+           
+      mymodal.modal('show');
+
+  });
+    
+
+</script>
+
+<%# class="list-group-item" %>

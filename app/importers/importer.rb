@@ -6,14 +6,15 @@ class Importer < Darlingtonia::Importer
     Rails.application.config_for(:importer)
   end
 
-  attr_accessor :parser, :record_importer, :work, :collection, :update, :import_id
+  attr_accessor :parser, :record_importer, :work, :collection, :update, :import_id, :update_id
 
-  def initialize(parser:, work:, collection: nil, import_id: nil,update: nil, info_stream: Darlingtonia.config.default_info_stream, error_stream: Darlingtonia.config.default_error_stream )
+  def initialize(parser:, work:, collection: nil, import_id: nil, update_id: nil, update: nil, info_stream: Darlingtonia.config.default_info_stream, error_stream: Darlingtonia.config.default_error_stream )
     self.work = work
     self.collection = collection.nil? ? "" : collection 
     self.parser          = parser
     self.update = update ? true : nil
     self.import_id = import_id.nil? ? nil : import_id 
+    self.update_id = update_id.nil? ? nil : update_id
     self.record_importer = default_record_importer
     @info_stream = info_stream
     @error_stream = error_stream
@@ -38,6 +39,24 @@ class Importer < Darlingtonia::Importer
       import_record.status = "Procesado"
       import_record.save
     end 
+
+    unless self.update_id.nil?
+      update_record = Update.find self.update_id
+      safe_log = import_log.compact
+      compact_log = safe_log.map { |entry| [entry[0], entry[1]] }
+      detailed_log = safe_log.map do |entry|
+        {
+          identifier: entry[0],
+          status: entry[1],
+          changes: entry[2]
+        }
+      end
+
+      update_record.object_ids = compact_log.to_json
+      update_record.changes_log = detailed_log.to_json
+      update_record.status = "Procesado"
+      update_record.save
+    end
     
    
     @info_stream << "\n\nFinish\n\n"
