@@ -93,7 +93,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
           info_stream << "\nRecord created at: #{created.id} \n"
           created.class.find(created.id).file_set_ids.each do |f_id|
-            access_file_set(f_id, attributes[:item_access_restrictions])
+            access_file_set(f_id,attributes[:item_access_restrictions].to_s)
           end
           return [record.identifier, "Importado exitosamente"]
         else
