@@ -611,6 +611,9 @@ es:
         imports: Importaciones
         new_import: Nueva Importación
         history: Historial
+        updates: Actualizaciones
+        new_update: Nueva actualización
+        updates_history: Historial de actualizaciones
         collections_report: Informe de colecciones
       validations:
         save_and_notificate: Guardar y Notificar

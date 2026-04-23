@@ -105,28 +105,34 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
     end
 
     def update_for(record:)
-      
-      results = work.singularize.classify.constantize.where(identifier: record.identifier).select do |row|
-        row.identifier == record.identifier
-      end
+      begin
+        identifier = record.identifier
+        changes = {}
 
-      if not results.empty? && record.respond_to?(:identifier)
+        results = work.singularize.classify.constantize.where(identifier: identifier).select do |row|
+          row.identifier == identifier
+        end
+
+        unless identifier.present? && !results.empty?
+          info_stream << "\nRecord #{identifier} fail to update"
+          return [identifier, "El identificador no existe en el sistema", changes]
+        end
+
         gw = results.first
-        
+
         # Capturar estado original desde persistencia (evita valores ya modificados en memoria)
         persisted_gw = gw.class.find(gw.id)
         original_record = capture_work_metadata(persisted_gw)
-        
+
         attrs = record.attributes
         attrs.delete(:identifier)
-        
+
         # Guardar qué campos vienen en el CSV (incluso si están vacíos)
         csv_fields = attrs.keys
-        
-        attrs.each do |key, val|
-          gw.send("#{key}=",val)
-        end
 
+        attrs.each do |key, val|
+          gw.send("#{key}=", val)
+        end
 
         locations = get_genomanes_data(attrs[:based_near]) if attrs.key? :based_near
         gw.based_near = locations unless locations.nil?
@@ -140,23 +146,19 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
             replace_file_set(f, gw)
           end
         end
-        
+
         # Log changes to RecordChangeLog
         updated_record = capture_work_metadata(gw)
         changes = get_metadata_changes(original_record, updated_record, csv_fields)
-        
+
         gw.file_set_ids.each do |f_id|
-          access_file_set(f_id,attrs[:item_access_restrictions])
-          if attrs[:item_access_restrictions].nil? then
+          access_file_set(f_id, attrs[:item_access_restrictions])
+          if attrs[:item_access_restrictions].nil?
             gw.item_access_restrictions = []
             gw.save
           end
         end
 
-        info_stream << "\n[DEBUG] Campos a comparar: #{csv_fields.inspect}"
-        info_stream << "\n[DEBUG] Cambios detectados: #{changes.inspect}"
-        info_stream << "\n[DEBUG] Cambios vacíos?: #{changes.empty?}"
-        
         unless changes.empty?
           begin
             log_entry = RecordChangeLog.new(
@@ -164,24 +166,23 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
               user_id: creator.id,
               template: gw.has_model.first,
               record_id: gw.id,
-              identifier: record.identifier
+              identifier: identifier
             )
-            info_stream << "\n[DEBUG] Log entry creado: user_id=#{creator.id}, template=#{gw.has_model.first}, record_id=#{gw.id}"
             if log_entry.save
-              info_stream << "\n[LOG] Cambios guardados en RecordChangeLog para #{record.identifier}"
+              info_stream << "\n[LOG] Cambios guardados en RecordChangeLog para #{identifier}"
             else
               info_stream << "\n[ERROR] No se pudo guardar log: #{log_entry.errors.full_messages.join(', ')}"
             end
           rescue => e
             info_stream << "\n[ERROR] Exception al guardar log: #{e.message}\n#{e.backtrace.first(3).join("\n")}"
           end
-        else
-          info_stream << "\n[DEBUG] No se detectaron cambios para registrar"
         end
 
-        info_stream << "\nRecord #{record.identifier} is updated"
-      else
-        info_stream << "\nRecord #{record.identifier} fail to update"
+        info_stream << "\nRecord #{identifier} is updated"
+        [identifier, "Actualizado exitosamente", changes]
+      rescue => e
+        identifier = (record.identifier rescue nil)
+        [identifier, "Error: #{e}", { system_error: e.to_s }]
       end
     end
 

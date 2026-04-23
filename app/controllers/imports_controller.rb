@@ -42,7 +42,10 @@ class ImportsController < ApplicationController
         # Código existente para ejecutar si el servicio está disponible
         @sips = []
         imports = Import.where.not(status: "Cancelado").pluck(:name)
-        list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
+        list_sips.each do |s|
+          next if s[:sip].to_s.end_with?("_update")
+          @sips.push s unless imports.include?(s[:sip])
+        end
 
         @user = current_user
         @path = Rails.root
