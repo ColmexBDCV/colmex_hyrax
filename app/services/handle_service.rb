@@ -41,7 +41,7 @@ module HandleService
         
         url = ENV['HANDLE_OBJ_URL'] || "https://repositorio.colmex.mx/concern/"
         Hyrax::config.registered_curation_concern_types.each do |wt|
-            wt.singularize.classify.constantize.where(handle: nil).each do |row|
+            wt.singularize.classify.constantize.where(handle: [nil, ""]).each do |row|
                 if row.member_ids.count > 0
                     puts "#{url}#{wt.underscore.pluralize}/#{row.id}"
                     handle = self.create("#{url}#{wt.underscore.pluralize}/#{row.id}")
@@ -57,7 +57,7 @@ module HandleService
     def self.assing_handle_for_worktype(worktype)
         
         url = ENV['HANDLE_OBJ_URL'] || "https://repositorio.colmex.mx/concern/"
-        worktype.singularize.classify.constantize.where(handle: nil).each do |row|
+        worktype.singularize.classify.constantize.where(handle: [nil, ""]).each do |row|
             if row.member_ids.count > 0
                 puts "#{url}#{worktype.underscore.pluralize}/#{row.id}"
                 handle = self.create("#{url}#{worktype.underscore.pluralize}/#{row.id}")
