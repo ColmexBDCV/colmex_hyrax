@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'csv'
 
 RSpec.describe ImporterService, type: :module do
   include ImporterService
@@ -47,6 +48,31 @@ RSpec.describe ImporterService, type: :module do
       allow(self).to receive(:documents_exists?).and_return(false)
       result = validate_csv_update(sip, work)
       expect(result[:Error]).to match(/documentos_de_acceso/)
+    end
+  end
+
+  describe '#validate_csv_update instancia el parser en modo update' do
+    let(:parser_double) { instance_double(ColmexCsvParser, validate: true) }
+    let(:csv_table) { instance_double(CSV::Table, headers: [:identifier, :file_name]) }
+    let(:record) { instance_double(Darlingtonia::InputRecord) }
+
+    before do
+      allow(self).to receive(:metadata_exists?).and_return(true)
+      allow(self).to receive(:documents_exists?).and_return(true)
+      allow(File).to receive(:open).and_return(double('file'))
+      allow(ColmexCsvParser).to receive(:new).and_return(parser_double)
+      allow(Importer).to receive_message_chain(:new, :records, :to_a).and_return([record])
+      allow(CSV).to receive(:table).and_return(csv_table)
+      allow(self).to receive(:build_validation_context).and_return({ wt: wt_double })
+      allow(self).to receive(:process_records_and_report).and_return({})
+    end
+
+    it 'pasa update: true al parser' do
+      expect(ColmexCsvParser).to receive(:new).with(
+        hash_including(work: work, update: true)
+      ).and_return(parser_double)
+
+      validate_csv_update(sip, work)
     end
   end
 

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ColmexRecordImporter do
-  let(:user) { create(:user) }
+  let(:user) { User.new(email: 'user@example.com') }
   let(:collection) { instance_double(Collection, id: 'col-001') }
   let(:file_set) { instance_double(FileSet, id: 'fs-001', label: 'test.pdf', visibility: 'open') }
 
@@ -84,8 +84,8 @@ RSpec.describe ColmexRecordImporter do
   # ---------------------------------------------------------------------------
   describe '#create_for' do
     let(:record) do
-      instance_double(
-        Darlingtonia::InputRecord,
+      double(
+        'record',
         identifier: ['test-id-001'],
         title: 'Obra de prueba',
         representative_file: nil,
@@ -128,8 +128,8 @@ RSpec.describe ColmexRecordImporter do
 
     context 'cuando item_access_restrictions tiene valor en el CSV' do
       let(:record) do
-        instance_double(
-          Darlingtonia::InputRecord,
+        double(
+          'record',
           identifier: ['test-id-002'],
           title: 'Obra restringida',
           representative_file: nil,
@@ -194,6 +194,61 @@ RSpec.describe ColmexRecordImporter do
 
     it 'retorna false para string con contenido' do
       expect(importer.send(:value_empty?, 'algo')).to be false
+    end
+  end
+
+  describe '#update_for' do
+    let(:record) do
+      double(
+        'record',
+        identifier: 'id-update-001',
+        attributes: {},
+        representative_file: ['nuevo.pdf']
+      )
+    end
+
+    let(:gw_class) { double('GenericWorkClass') }
+    let(:gw) do
+      double(
+        'existing_work',
+        id: 'work-001',
+        identifier: 'id-update-001',
+        file_set_ids: ['fs-old'],
+        has_model: ['GenericWork'],
+        save: true
+      )
+    end
+    let(:persisted_gw) { double('persisted_work') }
+    let(:reloaded_gw) { double('reloaded_work', file_set_ids: ['fs-new']) }
+    let(:old_file_set) { double('old_file_set', label: 'anterior.pdf', destroy: true) }
+    let(:new_file_set) { double('new_file_set', label: 'nuevo.pdf') }
+    let(:log_entry) { double('log_entry', save: true) }
+
+    before do
+      allow(GenericWork).to receive(:where).with(identifier: 'id-update-001').and_return([gw])
+      allow(gw).to receive(:class).and_return(gw_class)
+      allow(gw_class).to receive(:name).and_return('GenericWork')
+      allow(gw_class).to receive(:find).with('work-001').and_return(persisted_gw, reloaded_gw)
+
+      allow(importer).to receive(:capture_work_metadata).with(persisted_gw).and_return({})
+      allow(importer).to receive(:capture_work_metadata).with(gw).and_return({})
+      allow(importer).to receive(:get_metadata_changes).and_return({})
+      allow(importer).to receive(:replace_file_set).with('nuevo.pdf', gw)
+      allow(importer).to receive(:access_file_set)
+
+      allow(gw).to receive(:item_access_restrictions=)
+      allow(FileSet).to receive(:find).with('fs-old').and_return(old_file_set)
+      allow(FileSet).to receive(:find).with('fs-new').and_return(new_file_set)
+      allow(RecordChangeLog).to receive(:new).and_return(log_entry)
+    end
+
+    it 'agrega file_name al log con los labels antes y despues del reemplazo' do
+      result = importer.send(:update_for, record: record)
+
+      expect(result[2]['file_name']).to eq(
+        before: ['anterior.pdf'],
+        after: ['nuevo.pdf']
+      )
     end
   end
 end

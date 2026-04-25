@@ -119,6 +119,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         end
 
         gw = results.first
+  original_file_labels = file_set_labels_for(gw)
 
         # Capturar estado original desde persistencia (evita valores ya modificados en memoria)
         persisted_gw = gw.class.find(gw.id)
@@ -150,6 +151,10 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         # Log changes to RecordChangeLog
         updated_record = capture_work_metadata(gw)
         changes = get_metadata_changes(original_record, updated_record, csv_fields)
+        unless record.representative_file.nil?
+          updated_file_labels = file_set_labels_for(gw.class.find(gw.id))
+          changes = merge_file_name_change(changes, original_file_labels, updated_file_labels)
+        end
 
         gw.file_set_ids.each do |f_id|
           access_file_set(f_id, attrs[:item_access_restrictions])
@@ -333,5 +338,26 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       
       # Si es string, limpiar espacios
       value.is_a?(String) ? value.strip : value
+    end
+
+    def file_set_labels_for(work_record)
+      Array(work_record.file_set_ids).filter_map do |file_set_id|
+        FileSet.find(file_set_id).label
+      rescue ActiveFedora::ObjectNotFoundError, Ldp::Gone
+        nil
+      end
+    end
+
+    def merge_file_name_change(changes, original_file_labels, updated_file_labels)
+      before_labels = normalize_value(original_file_labels || [])
+      after_labels = normalize_value(updated_file_labels || [])
+      return changes if before_labels == after_labels
+
+      changes.merge(
+        'file_name' => {
+          before: original_file_labels || [],
+          after: updated_file_labels || []
+        }
+      )
     end
 end

@@ -14,7 +14,7 @@ RSpec.describe UpdateCreateJob, type: :job do
 
   it 'instancia el parser con el archivo correcto' do
     expect(ColmexCsvParser).to receive(:new).with(
-      hash_including(work: 'Book')
+      hash_including(work: 'Book', update: true)
     )
     UpdateCreateJob.perform_now('digital_objects/sip/metadatos/metadatos.csv', 'Book', update_record.id)
   end

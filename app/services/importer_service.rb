@@ -194,7 +194,7 @@ module ImporterService
         return { Error: "No existe carpeta metadatos o archivo de metadatos.csv no existe"} unless metadata_exists?(sip)
         return { Error: "No existe carpeta documentos_de_acceso"} unless documents_exists?(sip, require_files: false)
 
-        parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work)
+        parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work, update: true)
 
         unless parser.validate then
             return { Error: "El archivo metadatos.csv es invalido y no lo puede ser interpretado, una de las causas comunes es que existan columnas vacias o columnas sin nombre del campo. SYSTEM_LOG: #{parse_errors(parser.errors).to_s}" }
