@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "imports/index", type: :view do
   before(:each) do
-    assign(:imports, [
+    imports = [
       Import.create!(
         name: "Name",
         object_type: "ObjectType", # Asume que este es un string válido para tu aplicación
@@ -25,7 +25,9 @@ RSpec.describe "imports/index", type: :view do
         num_records: 2,
         repnal: "RepnalValue"
       )
-    ])
+    ]
+    assign(:imports, Kaminari.paginate_array(imports).page(1))
+    assign(:per_page, 10)
   end
 
   it "renders a list of imports" do

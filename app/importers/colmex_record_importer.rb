@@ -94,7 +94,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           info_stream << "\nRecord created at: #{created.id} \n"
           created.class.find(created.id).file_set_ids.each do |f_id|
             access_file_set(f_id,attributes[:item_access_restrictions])
-            access_file_set(f_id,attributes[:item_access_restrictions])
           end
           return [record.identifier, "Importado exitosamente"]
         else
@@ -191,9 +190,6 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
         info_stream << "\nRecord #{record.identifier} is updated"
         return [record.identifier, "Actualizado exitosamente", changes]
-      else
-        info_stream << "\nRecord #{record.identifier} fail to update"
-        return [record.identifier, "El identificador no existe en el sistema", nil]
       end
     rescue => e
       return [record.identifier, "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }]
