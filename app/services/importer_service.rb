@@ -50,8 +50,11 @@ module ImporterService
         File.exists?("digital_objects/#{sip}/metadatos/metadatos.csv")
     end
 
-    def documents_exists?(sip)
-        File.directory?("digital_objects/#{sip}/documentos_de_acceso") && Dir.entries("digital_objects/#{sip}/documentos_de_acceso").count > 0
+    def documents_exists?(sip, require_files: true)
+        dir = "digital_objects/#{sip}/documentos_de_acceso"
+        return false unless File.directory?(dir)
+        return true unless require_files
+        Dir.entries(dir).count > 2
     end
 
     def list_folders(folder)
@@ -181,7 +184,32 @@ module ImporterService
         #     return {Error: "El campo title no se encuentra definido en los metadatos"}
         # end
 
-        report = process_records_and_report(records, headers, sip, work, context, repnal)
+        report = process_records_and_report(records, headers, sip, work, context, repnal, :create)
+
+        return report
+    end
+
+    def validate_csv_update(sip, work, repnal = false)
+
+        return { Error: "No existe carpeta metadatos o archivo de metadatos.csv no existe"} unless metadata_exists?(sip)
+        return { Error: "No existe carpeta documentos_de_acceso"} unless documents_exists?(sip, require_files: false)
+
+        parser = ColmexCsvParser.new(file: File.open("digital_objects/#{sip}/metadatos/metadatos.csv"), work: work, update: true)
+
+        unless parser.validate then
+            return { Error: "El archivo metadatos.csv es invalido y no lo puede ser interpretado, una de las causas comunes es que existan columnas vacias o columnas sin nombre del campo. SYSTEM_LOG: #{parse_errors(parser.errors).to_s}" }
+        end
+
+        begin
+            records = Importer.new(parser: parser, work: work, update: true).records.to_a
+            csv = CSV.table("digital_objects/#{sip}/metadatos/metadatos.csv", {:headers => :first_row, :liberal_parsing=> true})
+        rescue Exception => e
+            return { Error: "El archivo metadatos.csv es invalido y no lo puede ser interpretado, una de las causas comunes es que existan columnas vacias o columnas sin nombre del campo, SYSTEM_LOG: #{e}"}
+        end
+
+        context = build_validation_context(work, repnal)
+        headers = csv.headers
+        report = process_records_and_report(records, headers, sip, work, context, repnal, :update)
 
         return report
     end
@@ -197,10 +225,10 @@ module ImporterService
         }
     end
 
-    def process_records_and_report(records, headers, sip, work, context, repnal)
+    def process_records_and_report(records, headers, sip, work, context, repnal, mode = :create)
         report = Hash.new
         records.each_with_index do |record, index|
-            errors = validate_record(record, index, context[:wt], context[:rights], context[:licenses], context[:resource_types], context[:types_conacyt], context[:pub_conacyt], repnal)
+            errors = validate_record(record, index, context[:wt], context[:rights], context[:licenses], context[:resource_types], context[:types_conacyt], context[:pub_conacyt], repnal, mode)
             errors.each do |k, v|
                 next unless v && !v.empty?
                 report[k] = (report[k] || []) + v
@@ -277,6 +305,12 @@ module ImporterService
         [index + 2, [record.identifier]]
     end
 
+    def validate_non_existing_identifier(record, index, wt)
+        return nil unless record.respond_to?("identifier")
+        return nil unless wt.where(identifier: record.identifier).count == 0
+        [index + 2, [record.identifier]]
+    end
+
     def validate_duplicate_isbn(record, index, wt)
         return nil unless record.respond_to?("isbn")
         return nil unless wt.where(isbn: record.isbn).count > 0
@@ -334,18 +368,23 @@ module ImporterService
         index + 2
     end
 
-    def validate_record(record, index, wt, rights, licenses, resource_types, types_conacyt, pub_conacyt, repnal)
+    def validate_record(record, index, wt, rights, licenses, resource_types, types_conacyt, pub_conacyt, repnal, mode = :create)
         errors = {}
         id_error = validate_identifier(record, index, wt)
         errors["Los registros de las siguientes filas carecen de la información en el campo identifier o este no se encuentra definido dentro del CSV"] = [id_error] if id_error
-        title_error = validate_title(record, index)
+        title_error = mode == :create ? validate_title(record, index) : nil
         errors["Los registros de las siguientes filas carecen de la información en el campo title o este no se encuentra definido dentro del CSV"] = [title_error] if title_error
         rights_error = validate_rights_statement(record, index, rights)
         errors["El campo rights_statement no corresponde al vocabulario controlado"] = [rights_error] if rights_error
         date_error = validate_date_created(record, index)
         errors["El campo date_created no esta expresado en el formato correcto (yyyy)"] = [date_error] if date_error
-        dup_id_error = validate_duplicate_identifier(record, index, wt)
-        errors["Los registros que se encuentran en las siguientes Filas tienen un identificador que ya existe en el sistema  (campo identifier)"] = [dup_id_error] if dup_id_error
+        if mode == :update
+            missing_id_error = validate_non_existing_identifier(record, index, wt)
+            errors["Los registros que se encuentran en las siguientes Filas tienen un identificador que no existe en el sistema  (campo identifier)"] = [missing_id_error] if missing_id_error
+        else
+            dup_id_error = validate_duplicate_identifier(record, index, wt)
+            errors["Los registros que se encuentran en las siguientes Filas tienen un identificador que ya existe en el sistema  (campo identifier)"] = [dup_id_error] if dup_id_error
+        end
         dup_isbn_error = validate_duplicate_isbn(record, index, wt)
         errors["Los registros que se encuentran en las siguientes Filas tienen un ISBN que ya existe en el sistema  (campo isbn)"] = [dup_isbn_error] if dup_isbn_error
         based_near_error = validate_based_near(record, index)

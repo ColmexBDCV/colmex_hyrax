@@ -3,7 +3,7 @@ class ImportUpdateJob < ApplicationJob
 
   def perform(filename, work)
 
-    parser = ColmexCsvParser.new(file: File.open(filename), work: work)
+    parser = ColmexCsvParser.new(file: File.open(filename), work: work, update: true)
     Importer.new(parser: parser, work: work, update: true).import
   end
 end

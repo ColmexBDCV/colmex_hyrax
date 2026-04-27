@@ -7,7 +7,8 @@ class ImportsController < ApplicationController
 
   # GET /imports or /imports.json
   def index
-    @imports = Import.all
+    @per_page = [10, 20, 50, 100].include?(params[:per_page].to_i) ? params[:per_page].to_i : 10
+    @imports = Import.order(date: :desc, created_at: :desc).page(params[:page]).per(@per_page)
     @user = current_user
     @path = Rails.root
     add_breadcrumb t(:'hyrax.controls.home'), root_path
@@ -42,7 +43,10 @@ class ImportsController < ApplicationController
         # Código existente para ejecutar si el servicio está disponible
         @sips = []
         imports = Import.where.not(status: "Cancelado").pluck(:name)
-        list_sips.each { |s|  @sips.push s unless imports.include?(s[:sip]) }
+        list_sips.each do |s|
+          next if s[:sip].to_s.end_with?("_update")
+          @sips.push s unless imports.include?(s[:sip])
+        end
 
         @user = current_user
         @path = Rails.root

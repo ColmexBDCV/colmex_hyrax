@@ -15,8 +15,7 @@
     display: block;
     overflow-x: auto;
   }
-
-
+  
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -24,9 +23,9 @@
         <h1><span class="fa fa-check" aria-hidden="true"></span> Historial</h1>
     </div>
     <div class="panel panel-body">
-      <h1>Paquetes procesados</h1>
+      <h1>Actualizaciones aplicadas</h1>
       <div class="sort-toggle">
-        <%= form_tag(imports_path, method: :get, class: 'per_page form-inline') do %>
+        <%= form_tag(updates_path, method: :get, class: 'per_page form-inline') do %>
           <div class="form-group">
             <fieldset class="col-xs-12">
               <legend class="sr-only">Registros por pagina</legend>
@@ -34,7 +33,7 @@
                 Mostrar
                 <%= select_tag :per_page,
                     options_for_select(['10', '20', '50', '100'], @per_page.to_s),
-                    id: 'imports_per_page',
+                    id: 'updates_per_page',
                     title: 'Numero de resultados por pagina' %>
                 por pagina
               <% end %>
@@ -55,13 +54,12 @@
               <th> # de Registros</th>
               <th> Validado para RepNal </th>
               <th> </th>
-              <th> </th>
             </tr>
           </thead>
           <tbody>
-            <% @imports.each do |import| %>
+            <% @updates.each do |update| %>
               <%
-                case import.status
+                case update.status
 
                   when "Procesado"
                     label = "success"
@@ -73,33 +71,24 @@
                     label = "warning"
                 end
               %>
-              <% d = import.status != "Procesado" ? true : false %>
+              <% d = update.status != "Procesado" ? true : false %>
               <tr>
-                <td><%= import.name %></td>
-                <td><%= import.date %></td>
-                <td><%= import.storage_size %></td>
-                <td><%= import.depositor %></td>
-                <td> <span class="label label-<%=label%>"><%= import.status %></span></td>
-                <td><%= import.object_type %></td>
+                <td><%= update.name %></td>
+                <td><%= update.date %></td>
+                <td><%= update.storage_size %></td>
+                <td><%= update.depositor %></td>
+                <td> <span class="label label-<%=label%>"><%= update.status %></span></td>
+                <td><%= update.object_type %></td>
                 <td>
-                  <button id="<%= import.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal" <%= "disabled" if d %> >
-                    <%= import.num_records %>
+                  <button id="<%= update.name %>" role="button" class="btn btn-info custom-modal" data-toggle="modal" <%= "disabled" if d %> >
+                    <%= update.num_records %>
                   </button>
-                  <div hidden><%= import.object_ids %></div>
+                  <div hidden><%= update.object_ids %></div>
                 </td>
-                <td><%=import.repnal%></td>
+                <td><%= update.repnal %></td>
                 <td>
-                  
-                  <%= form_with(model: import, local: true) do |f| %>
-                    <%= f.hidden_field :object_type, :value => import.object_type %>
-                    <%= f.hidden_field :object_ids, :value => import.object_ids %>
-                    <%= f.hidden_field :id, :value => import.id %>
-                    <%= f.submit 'Deshacer Importación', data: {confirm: 'Confirmar (Esta acción no se puede deshacer)' }, class: "btn btn-default", disabled: d %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= button_to 'Exportar CSV',
-                      export_csv_import_path(import),
+                  <%= button_to 'Exportar log de cambios',
+                      export_csv_update_path(update),
                       method: :post,
                       class: 'btn btn-primary',
                       data: { 
@@ -115,7 +104,7 @@
         </table>
       </div>
       <div class="text-center">
-        <%= paginate @imports, theme: 'blacklight', params: { per_page: @per_page } %>
+        <%= paginate @updates, theme: 'blacklight', params: { per_page: @per_page } %>
       </div>
     </div>
   </div>
@@ -185,8 +174,8 @@
         
       })
       
-      if (status_g == "") { status_g = "Todos los registros fallaron al importarse" }
-      if (status_e == "") { status_e = "Todos los registros tuvieron exito al importarse" }
+      if (status_g == "") { status_g = "Todos los registros fallaron al actualizarse" }
+      if (status_e == "") { status_e = "Todos los registros tuvieron exito al actualizarse" }
 
 
       var mymodal = $('#myModal');
