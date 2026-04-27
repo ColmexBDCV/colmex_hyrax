@@ -7,7 +7,8 @@ class ImportsController < ApplicationController
 
   # GET /imports or /imports.json
   def index
-    @imports = Import.all
+    @per_page = [10, 20, 50, 100].include?(params[:per_page].to_i) ? params[:per_page].to_i : 10
+    @imports = Import.order(date: :desc, created_at: :desc).page(params[:page]).per(@per_page)
     @user = current_user
     @path = Rails.root
     add_breadcrumb t(:'hyrax.controls.home'), root_path

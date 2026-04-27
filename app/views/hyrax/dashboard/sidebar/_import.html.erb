@@ -1,10 +1,10 @@
 <li class="h5"><%= t('hyrax.admin.sidebar.imports') %></li>
 
-<li>
+<li class="<%= 'active' if request.path == '/imports/new' %>">
     <a href="/imports/new">
     <span class="fa fa-upload" aria-hidden="true"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.new_import') %></span></a>
 </li>
-<li>
+<li class="<%= 'active' if request.path.start_with?('/imports') && request.path != '/imports/new' %>">
     <a href="/imports">
     <span class="fa fa-list" aria-hidden="true"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.history') %></span></a>
 </li>
