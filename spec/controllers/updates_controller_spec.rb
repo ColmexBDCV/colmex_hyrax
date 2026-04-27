@@ -15,6 +15,22 @@ RSpec.describe UpdatesController, type: :controller do
       expect(response).to have_http_status(:ok)
       expect(controller.instance_variable_get(:@updates)).not_to be_nil
     end
+
+    it 'usa per_page permitido cuando se envia' do
+      Update.create!(name: 'sip_a_update', status: 'Procesado')
+      get :index, params: { per_page: 20 }
+
+      expect(controller.instance_variable_get(:@per_page)).to eq(20)
+      expect(controller.instance_variable_get(:@updates).limit_value).to eq(20)
+    end
+
+    it 'usa 10 cuando per_page no es permitido' do
+      Update.create!(name: 'sip_a_update', status: 'Procesado')
+      get :index, params: { per_page: 15 }
+
+      expect(controller.instance_variable_get(:@per_page)).to eq(10)
+      expect(controller.instance_variable_get(:@updates).limit_value).to eq(10)
+    end
   end
 
   describe 'GET #new' do

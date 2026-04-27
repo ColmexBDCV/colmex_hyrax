@@ -34,7 +34,8 @@
                 <%= select_tag :per_page,
                     options_for_select(['10', '20', '50', '100'], @per_page.to_s),
                     id: 'updates_per_page',
-                    title: 'Numero de resultados por pagina' %>
+                    title: 'Numero de resultados por pagina',
+                    onchange: 'this.form.submit();' %>
                 por pagina
               <% end %>
             </fieldset>
