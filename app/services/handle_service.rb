@@ -47,7 +47,7 @@ module HandleService
                     handle = self.create("#{url}#{wt.underscore.pluralize}/#{row.id}")
                     if handle["handleDesc"] == "SUCCESS"
                         row.handle = handle["url"].sub("http","https")
-                        row.save
+                        row.save unless row.handle.blank?
                     end
                 end
             end
