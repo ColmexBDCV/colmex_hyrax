@@ -1,3 +1,5 @@
+require 'ipaddr'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -47,6 +49,21 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+
+  # Trust only explicit reverse proxies so request.remote_ip keeps internal client
+  # addresses (for example 172.16.0.0/16) when they come via X-Forwarded-For.
+  trusted_proxy_ranges = ENV.fetch('TRUSTED_PROXIES', '127.0.0.1/32,::1/128')
+                            .split(',')
+                            .map(&:strip)
+                            .reject(&:empty?)
+
+  config.action_dispatch.trusted_proxies = trusted_proxy_ranges.filter_map do |cidr|
+    begin
+      IPAddr.new(cidr)
+    rescue IPAddr::InvalidAddressError, IPAddr::AddressFamilyError
+      nil
+    end
+  end
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
