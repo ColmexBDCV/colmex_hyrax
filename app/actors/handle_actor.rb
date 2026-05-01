@@ -11,7 +11,7 @@ class HandleActor < Hyrax::Actors::AbstractActor
                     # Obtener la URL del objeto
                     url = Rails.application.routes.url_helpers.polymorphic_url(obj, host: "https://repositorio.colmex.mx")
                     # Crear un handle si no existe
-                    if obj.handle.nil?
+                    if obj.handle.blank?
                         handle = HandleService.create(url)
                         if handle["handleDesc"] == "SUCCESS"
                             obj.handle = handle["url"].sub("http", "https")
