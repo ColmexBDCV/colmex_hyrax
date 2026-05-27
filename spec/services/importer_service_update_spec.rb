@@ -153,4 +153,37 @@ RSpec.describe ImporterService, type: :module do
       expect(errors.keys).to include(match(/ya existe en el sistema/))
     end
   end
+
+  describe '#validate_duplicate_isbn' do
+    it 'retorna nil cuando el record no responde a isbn' do
+      rec = double('record')
+      allow(rec).to receive(:respond_to?).with('isbn').and_return(false)
+
+      expect(validate_duplicate_isbn(rec, 0, wt_double)).to be_nil
+    end
+
+    it 'retorna nil cuando el isbn viene vacio' do
+      rec = double('record', isbn: [])
+      allow(rec).to receive(:respond_to?).with('isbn').and_return(true)
+
+      expect(wt_double).not_to receive(:where)
+      expect(validate_duplicate_isbn(rec, 0, wt_double)).to be_nil
+    end
+
+    it 'retorna nil cuando el isbn viene nil' do
+      rec = double('record', isbn: nil)
+      allow(rec).to receive(:respond_to?).with('isbn').and_return(true)
+
+      expect(wt_double).not_to receive(:where)
+      expect(validate_duplicate_isbn(rec, 0, wt_double)).to be_nil
+    end
+
+    it 'retorna error cuando el isbn ya existe' do
+      rec = double('record', isbn: ['9781234567890'])
+      allow(rec).to receive(:respond_to?).with('isbn').and_return(true)
+      allow(wt_double).to receive(:where).with(isbn: ['9781234567890']).and_return(double(count: 1))
+
+      expect(validate_duplicate_isbn(rec, 0, wt_double)).to eq([2, [['9781234567890']]])
+    end
+  end
 end

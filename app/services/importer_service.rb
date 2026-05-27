@@ -313,6 +313,7 @@ module ImporterService
 
     def validate_duplicate_isbn(record, index, wt)
         return nil unless record.respond_to?("isbn")
+        return nil if record.isbn.blank?
         return nil unless wt.where(isbn: record.isbn).count > 0
         [index + 2, [record.isbn]]
     end
