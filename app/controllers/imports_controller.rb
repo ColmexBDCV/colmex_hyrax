@@ -17,6 +17,22 @@ class ImportsController < ApplicationController
   end
 
   def validate
+    if Import.where(status: "Procesando...").exists?
+      return render json: { Error: "Ya existe una importación en proceso. Espere a que finalice antes de iniciar una nueva." }
+    end
+
+    if Rails.env.production?
+      sip_size_mb = get_size_sip(params[:sip])
+      required_mb = sip_size_mb * 3
+      free_mb     = disk_free_mb
+
+      if free_mb < required_mb
+        return render json: {
+          Error: "Espacio insuficiente en /datos."
+        }
+      end
+    end
+
     render :json => validate_csv(params[:sip], params[:work], params[:repnal])
   end
 
@@ -135,6 +151,14 @@ class ImportsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_import
       @import = Import.find(params[:id])
+    end
+
+    def disk_free_mb
+      mount = ENV['STORAGE_MOUNT_POINT'] || '/datos'
+      lines = `df -k #{mount} 2>/dev/null`.lines
+      lines.last&.split&.[](3).to_i / 1024.0
+    rescue
+      0.0
     end
 
     # Only allow a list of trusted parameters through.
