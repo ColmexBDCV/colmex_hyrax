@@ -508,41 +508,41 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('local_resource_identifier', label: 'Local Resource Identifier') do |field|
-      field.include_in_simple_select = false
-      field.solr_parameters = {
-        qf: 'local_resource_identifier_tesim',
-        pf: 'local_resource_identifier_tesim'
-      }
-    end
-
-    # all_fields = all_worktypes.flat_map do |worktype|
-    #   worktype.singularize.classify.constantize.fields.map { |f| f }
-    # end.uniq
-
-    # all_fields.push :parent_works_titles
-    # all_fields = all_fields - [:has_model, :head, :tail, :depositor, :date_uploaded, :date_modified, :create_date,
-    #                            :modified_date, :state, :proxy_depositor, :on_behalf_of, :arkivo_checksum,
-    #                            :creator_conacyt, :contributor_conacyt, :subject_conacyt, :pub_conacyt, :type_conacyt,
-    #                            :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
-    #                            :bibliographic_citation ]
-
-    # all_fields.push :has_model
-
-    # all_fields.each do |name|
-    #   begin
-    #     config.add_search_field(name.to_s) do |field|
-    #       solr_name = solr_name(name.to_s, name == :has_model ? :symbol : :stored_searchable)
-    #       field.solr_local_parameters = {
-    #         qf: solr_name,
-    #         pf: solr_name
-    #       }
-    #     end
-    #   rescue StandardError => e
-    #     # Ignora el error si el campo ya existe
-    #     raise unless e.message =~ /_tesim already exists/
-    #   end
+    # config.add_search_field('local_resource_identifier', label: 'Local Resource Identifier') do |field|
+    #   field.include_in_simple_select = false
+    #   field.solr_parameters = {
+    #     qf: 'local_resource_identifier_tesim',
+    #     pf: 'local_resource_identifier_tesim'
+    #   }
     # end
+
+    all_fields = all_worktypes.flat_map do |worktype|
+      worktype.singularize.classify.constantize.fields.map { |f| f }
+    end.uniq
+
+    all_fields.push :parent_works_titles
+    all_fields = all_fields - [:has_model, :head, :tail, :depositor, :date_uploaded, :date_modified, :create_date,
+                               :modified_date, :state, :proxy_depositor, :on_behalf_of, :arkivo_checksum,
+                               :creator_conacyt, :contributor_conacyt, :subject_conacyt, :pub_conacyt, :type_conacyt,
+                               :label, :relative_path, :owner, :import_url, :handle, :based_near, :related_url,
+                               :bibliographic_citation ]
+
+    all_fields.push :has_model
+
+    all_fields.each do |name|
+      begin
+        config.add_search_field(name.to_s) do |field|
+          solr_name = solr_name(name.to_s, name == :has_model ? :symbol : :stored_searchable)
+          field.solr_local_parameters = {
+            qf: solr_name,
+            pf: solr_name
+          }
+        end
+      rescue StandardError => e
+        # Ignora el error si el campo ya existe
+        raise unless e.message =~ /_tesim already exists/
+      end
+    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
