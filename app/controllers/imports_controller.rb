@@ -1,4 +1,18 @@
+require 'shellwords'
+
 class ImportsController < ApplicationController
+  # Estado de importacion que bloquea nuevos procesos.
+  ACTIVE_IMPORT_STATUSES = ['Procesando...', 'Cancelando...'].freeze
+
+  # Punto de montaje para revisar espacio disponible en produccion.
+  PRODUCTION_STORAGE_MOUNT_POINT = '/datos'.freeze
+
+  # Punto de montaje para revisar espacio disponible fuera de produccion.
+  DEVELOPMENT_STORAGE_MOUNT_POINT = '/'.freeze
+
+  # Porcentaje libre minimo antes de mostrar advertencia visual.
+  DEFAULT_DISK_WARNING_PERCENT = 10.0
+
   with_themed_layout 'dashboard'
   before_action :authenticate_user!
   before_action :set_import, only: %i[ show edit update destroy ]
@@ -17,20 +31,18 @@ class ImportsController < ApplicationController
   end
 
   def validate
-    if Import.where(status: "Procesando...").exists?
+    if active_import?
       return render json: { Error: "Ya existe una importación en proceso. Espere a que finalice antes de iniciar una nueva." }
     end
 
-    if Rails.env.production?
-      sip_size_mb = get_size_sip(params[:sip])
-      required_mb = sip_size_mb * 3
-      free_mb     = disk_free_mb
+    sip_size_mb = get_size_sip(params[:sip])
+    required_mb = sip_size_mb * 3
+    usage = disk_usage
 
-      if free_mb < required_mb
-        return render json: {
-          Error: "Espacio insuficiente en /datos."
-        }
-      end
+    if usage[:free_mb] < required_mb
+      return render json: {
+        Error: "Espacio insuficiente en #{usage[:mount]}."
+      }
     end
 
     render :json => validate_csv(params[:sip], params[:work], params[:repnal])
@@ -66,6 +78,8 @@ class ImportsController < ApplicationController
 
         @user = current_user
         @path = Rails.root
+        @import_status = import_status_summary
+        @last_import = Import.where(status: ACTIVE_IMPORT_STATUSES).order(created_at: :desc).first || Import.order(created_at: :desc).first
         add_breadcrumb t(:'hyrax.controls.home'), root_path
         add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
         add_breadcrumb t(:'hyrax.admin.sidebar.imports'), request.path
@@ -153,12 +167,61 @@ class ImportsController < ApplicationController
       @import = Import.find(params[:id])
     end
 
-    def disk_free_mb
-      mount = ENV['STORAGE_MOUNT_POINT'] || '/datos'
-      lines = `df -k #{mount} 2>/dev/null`.lines
-      lines.last&.split&.[](3).to_i / 1024.0
+    # Construye el estado visual que usa la vista de nuevas importaciones.
+    def import_status_summary
+      active = active_import?
+      usage = disk_usage
+      warning_percent = disk_warning_percent
+
+      state =
+        if active
+          :busy
+        elsif usage[:free_percent] <= warning_percent
+          :warning
+        else
+          :ready
+        end
+
+      usage.merge(
+        active_import: active,
+        state: state,
+        warning_percent: warning_percent
+      )
+    end
+
+    # Indica si existe una importacion o cancelacion en curso.
+    def active_import?
+      Import.where(status: ACTIVE_IMPORT_STATUSES).exists?
+    end
+
+    # Obtiene el uso de disco para el punto de montaje configurado.
+    def disk_usage
+      mount = storage_mount_point
+      lines = `df -kP #{Shellwords.escape(mount)} 2>/dev/null`.lines
+      columns = lines.last.to_s.split
+      total_kb = columns[1].to_f
+      available_kb = columns[3].to_f
+      free_percent = total_kb.positive? ? ((available_kb / total_kb) * 100).round(2) : 0.0
+
+      {
+        mount: mount,
+        total_mb: (total_kb / 1024.0).round(2),
+        free_mb: (available_kb / 1024.0).round(2),
+        free_percent: free_percent
+      }
     rescue
-      0.0
+      { mount: mount, total_mb: 0.0, free_mb: 0.0, free_percent: 0.0 }
+    end
+
+    # Devuelve el punto de montaje configurado para almacenamiento.
+    def storage_mount_point
+      Rails.env.production? ? PRODUCTION_STORAGE_MOUNT_POINT : DEVELOPMENT_STORAGE_MOUNT_POINT
+    end
+
+    # Devuelve el umbral configurable para marcar advertencia por disco.
+    def disk_warning_percent
+      value = ENV['IMPORT_DISK_WARNING_PERCENT'].presence
+      value ? value.to_f : DEFAULT_DISK_WARNING_PERCENT
     end
 
     # Only allow a list of trusted parameters through.

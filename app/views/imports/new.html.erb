@@ -6,10 +6,65 @@
                   <h1><span class="fa fa-check" aria-hidden="true"></span> <%= t('hyrax.admin.imports.new_import') %></h1>
               </div>
               <div class="panel panel-body">
-                  <h1>Paquetes por procesar</h1>
-                  <br>
-                  <h4>Solo se listarán los SIPS que <b>NO</b> tengan el sufijo <b>"_update"</b></h4>
-                  <br>
+                  <%
+                    import_status = @import_status || {}
+                    status_state = import_status[:state].to_s.presence || 'ready'
+                    status_texts = {
+                      'ready' => {
+                        icon: 'fa-check',
+                        title: 'Listo para importar',
+                        message: 'No hay importaciones en proceso.'
+                      },
+                      'warning' => {
+                        icon: 'fa-exclamation-triangle',
+                        title: 'Advertencia',
+                        message: "No hay importaciones en proceso, pero #{import_status[:mount]} tiene #{import_status[:free_percent]}% libre."
+                      },
+                      'busy' => {
+                        icon: 'fa-times',
+                        title: 'No listo para importar',
+                        message: 'Hay una importación en proceso.'
+                      }
+                    }
+                    status_content = status_texts[status_state] || status_texts['ready']
+                  %>
+                  <div class="imports-hero">
+                    <div class="imports-title">
+                      <h1>Paquetes por procesar</h1>
+                      <h4>Solo se listarán los SIPS que <b>NO</b> tengan el sufijo <b>"_update"</b></h4>
+                    </div>
+                    <div class="imports-status-wrap">
+                      <div class="imports-status imports-status-<%= status_state %>">
+                        <span class="imports-status-icon">
+                          <i class="fa <%= status_content[:icon] %>" aria-hidden="true"></i>
+                        </span>
+                        <span>
+                          <strong><%= status_content[:title] %></strong>
+                          <small><%= status_content[:message] %></small>
+                        </span>
+                      </div>
+                      <div class="imports-last-process">
+                        <strong>Último proceso</strong>
+                        <% if @last_import.present? %>
+                          <span class="imports-last-state imports-last-state-<%= @last_import.status == 'Procesado' ? 'ready' : 'busy' %>">
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                            <%= @last_import.status %>
+                          </span>
+                          <span>
+                            <%= @last_import.date.presence || l(@last_import.created_at, format: :short) %>
+                            <%= link_to imports_path, class: 'imports-history-link' do %>
+                              Historial <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            <% end %>
+                          </span>
+                        <% else %>
+                          <span class="imports-last-state imports-last-state-ready">
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                            Sin procesos
+                          </span>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
               <div>
               <%
                   workTypes = []
@@ -17,6 +72,20 @@
                       workTypes.append ([t('hyrax.admin.validations.'+wt.underscore.downcase), wt])
                   end
               %>
+                  <div class="imports-legend">
+                    <span class="imports-legend-item imports-legend-ready">
+                      <span class="imports-legend-icon"><i class="fa fa-check" aria-hidden="true"></i></span>
+                      Listo para importar
+                    </span>
+                    <span class="imports-legend-item imports-legend-warning">
+                      <span class="imports-legend-icon"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+                      Advertencia
+                    </span>
+                    <span class="imports-legend-item imports-legend-busy">
+                      <span class="imports-legend-icon"><i class="fa fa-times" aria-hidden="true"></i></span>
+                      No listo para importar
+                    </span>
+                  </div>
                   <table class="table">
                   <thead>
                       <tr>
@@ -178,6 +247,152 @@
 
   .form-check-input{
     margin-left: 25px !important;
+  }
+
+  .imports-hero {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    margin-bottom: 35px;
+  }
+
+  .imports-title h1 {
+    margin-top: 0;
+  }
+
+  .imports-status-wrap {
+    align-items: center;
+    display: flex;
+    gap: 28px;
+  }
+
+  .imports-status {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    min-width: 330px;
+  }
+
+  .imports-status-icon {
+    align-items: center;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    display: inline-flex;
+    font-size: 24px;
+    height: 58px;
+    justify-content: center;
+    width: 58px;
+  }
+
+  .imports-status strong,
+  .imports-status small {
+    display: block;
+  }
+
+  .imports-status strong {
+    color: #1b1f24;
+    font-size: 18px;
+  }
+
+  .imports-status small {
+    color: #1b1f24;
+    font-size: 16px;
+    margin-top: 4px;
+  }
+
+  .imports-status-ready,
+  .imports-last-state-ready {
+    color: #009b4c;
+  }
+
+  .imports-status-warning,
+  .imports-last-state-warning {
+    color: #f28c28;
+  }
+
+  .imports-status-busy,
+  .imports-last-state-busy {
+    color: #d93025;
+  }
+
+  .imports-last-process {
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 220px;
+    padding-left: 28px;
+  }
+
+  .imports-last-process strong {
+    font-size: 18px;
+  }
+
+  .imports-last-state .fa {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .imports-history-link {
+    color: #7a0043;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+
+  .imports-legend {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px;
+    margin-bottom: 28px;
+  }
+
+  .imports-legend-item {
+    align-items: center;
+    color: #1b1f24;
+    display: inline-flex;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .imports-legend-icon {
+    align-items: center;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 26px;
+    justify-content: center;
+    width: 26px;
+  }
+
+  .imports-legend-ready .imports-legend-icon {
+    color: #009b4c;
+  }
+
+  .imports-legend-warning .imports-legend-icon {
+    color: #f28c28;
+  }
+
+  .imports-legend-busy .imports-legend-icon {
+    color: #d93025;
+  }
+
+  @media (max-width: 991px) {
+    .imports-hero,
+    .imports-status-wrap {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .imports-last-process {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .imports-status {
+      min-width: 0;
+    }
   }
 </style>
 <script>
