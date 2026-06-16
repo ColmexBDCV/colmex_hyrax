@@ -5,7 +5,7 @@ require 'dotenv/load'
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-threads_max = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_max = ENV.fetch("RAILS_MAX_THREADS") { 1 }
 threads_min = ENV.fetch("RAILS_MIN_THREADS") { 1 }
 threads threads_min, threads_max
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
@@ -28,7 +28,7 @@ end
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers Integer(ENV.fetch("WEB_CONCURRENCY", 2))
+workers Integer(ENV.fetch("WEB_CONCURRENCY", 0))
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
