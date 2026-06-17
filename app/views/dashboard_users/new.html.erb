@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1><span class="fa fa-user-plus" aria-hidden="true"></span> Registrar usuario</h1>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <%= link_to dashboard_users_path, class: 'btn btn-default' do %>
+            <span class="fa fa-users" aria-hidden="true"></span>
+            Administrar usuarios
+          <% end %>
+        </p>
+
+        <%= render 'form',
+          user: @user,
+          form_url: dashboard_users_path,
+          submit_label: 'Registrar usuario',
+          password_label: 'Contrasena inicial *',
+          password_confirmation_label: 'Confirmar contrasena *',
+          password_required: true %>
+      </div>
+    </div>
+  </div>
+</div>

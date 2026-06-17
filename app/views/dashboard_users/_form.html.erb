@@ -1,0 +1,58 @@
+<%= form_with model: user, url: form_url, local: true do |f| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <strong>No se pudo guardar el usuario.</strong>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email, 'Usuario (correo) *' %>
+    <%= f.email_field :email, class: 'form-control', required: true, autocomplete: 'email' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :firstname, 'Nombre *' %>
+    <%= f.text_field :firstname, class: 'form-control', required: true, autocomplete: 'given-name' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :paternal_surname, 'Apellido paterno' %>
+    <%= f.text_field :paternal_surname, class: 'form-control', autocomplete: 'family-name' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :maternal_surname, 'Apellido materno' %>
+    <%= f.text_field :maternal_surname, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, 'Telefono' %>
+    <%= f.telephone_field :phone, class: 'form-control', autocomplete: 'tel' %>
+  </div>
+
+  <div class="checkbox">
+    <%= f.label :admin do %>
+      <%= hidden_field_tag 'user[admin]', '0' %>
+      <%= check_box_tag 'user[admin]', '1', user.admin? %>
+      Administrador
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, password_label %>
+    <%= f.password_field :password, class: 'form-control', required: password_required, autocomplete: 'new-password' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, password_confirmation_label %>
+    <%= f.password_field :password_confirmation, class: 'form-control', required: password_required, autocomplete: 'new-password' %>
+  </div>
+
+  <%= f.submit submit_label, class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', dashboard_users_path, class: 'btn btn-default' %>
+<% end %>

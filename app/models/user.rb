@@ -21,6 +21,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, # :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :firstname, presence: true
+  validates :password_confirmation, presence: true, if: :password_required?
+
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.

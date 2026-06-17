@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1><span class="fa fa-users" aria-hidden="true"></span> Usuarios</h1>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="sort-toggle">
+              <%= form_tag(dashboard_users_path, method: :get, class: 'per_page form-inline') do %>
+                <div class="form-group">
+                  <fieldset class="col-xs-12">
+                    <legend class="sr-only">Usuarios por pagina</legend>
+                    <%= label_tag :per_page do %>
+                      Mostrar
+                      <%= select_tag :per_page,
+                          options_for_select(['10', '20', '50', '100'], @per_page.to_s),
+                          id: 'dashboard_users_per_page',
+                          title: 'Numero de usuarios por pagina',
+                          onchange: 'this.form.submit();' %>
+                      por pagina
+                    <% end %>
+                  </fieldset>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-right">
+            <%= link_to new_dashboard_user_path, class: 'btn btn-primary' do %>
+              <span class="fa fa-user-plus" aria-hidden="true"></span>
+              Registrar usuario
+            <% end %>
+          </div>
+        </div>
+
+        <hr>
+
+        <% if @users.any? %>
+          <p>
+            Mostrando <%= @users.size %> de <%= @users.total_count %> usuarios registrados.
+          </p>
+
+          <div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Nombre</th>
+                  <th>Telefono</th>
+                  <th>Admin</th>
+                  <th class="text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td><%= user.email %></td>
+                    <td>
+                      <%= [user.firstname, user.paternal_surname, user.maternal_surname].compact.join(' ') %>
+                      <% if user.id == current_user.id %>
+                        <span class="label label-info">Tu usuario</span>
+                      <% end %>
+                    </td>
+                    <td><%= user.phone %></td>
+                    <td>
+                      <% if user.admin? %>
+                        <span class="label label-success">Admin</span>
+                      <% else %>
+                        <span class="label label-default">Usuario</span>
+                      <% end %>
+                    </td>
+                    <td class="text-right">
+                      <%= link_to edit_dashboard_user_path(id: user.id), class: 'btn btn-default btn-sm' do %>
+                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                        Editar
+                      <% end %>
+
+                      <% if user.id == current_user.id %>
+                        <span class="btn btn-danger btn-sm disabled">
+                          <span class="fa fa-trash" aria-hidden="true"></span>
+                          Eliminar
+                        </span>
+                      <% else %>
+                        <%= link_to dashboard_user_path(id: user.id), method: :delete, data: { confirm: '¿Eliminar este usuario?' }, class: 'btn btn-danger btn-sm' do %>
+                          <span class="fa fa-trash" aria-hidden="true"></span>
+                          Eliminar
+                        <% end %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-center">
+            <%= paginate @users, theme: 'blacklight', params: { per_page: @per_page } %>
+          </div>
+        <% else %>
+          <div class="alert alert-info">
+            No hay usuarios registrados.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

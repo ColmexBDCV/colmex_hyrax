@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'get_media', to: 'all_media#get_media'
   get 'all_coordinates', to: 'all_coordinates#fetch_docs'
+  resources :dashboard_users, path: 'dashboard/users', except: [:show]
 
   #Conacyt Requirements
   get 'persona_name', to: 'authority#person'

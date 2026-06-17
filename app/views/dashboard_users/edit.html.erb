@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1><span class="fa fa-pencil" aria-hidden="true"></span> Editar usuario</h1>
+      </div>
+
+      <div class="panel-body">
+        <%= render 'form',
+          user: @user,
+          form_url: dashboard_user_path(id: @user.id),
+          submit_label: 'Guardar usuario',
+          password_label: 'Nueva contrasena',
+          password_confirmation_label: 'Confirmar nueva contrasena',
+          password_required: false %>
+      </div>
+    </div>
+  </div>
+</div>
