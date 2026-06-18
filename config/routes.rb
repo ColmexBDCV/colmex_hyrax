@@ -102,7 +102,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
+  get '/pdf_viewer/:id', to: 'pdf_viewer#show', as: :pdf_viewer
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

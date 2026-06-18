@@ -6,7 +6,7 @@
                     alt: "",
                     role: "presentation" %>
 
-      <iframe id="pdfIframe" src="<%= pdfjs.full_path(file: hyrax.download_path(file_set)) %>" style="width: 100%;height:950px"></iframe>
+      <iframe id="pdfIframe" src="<%= main_app.pdf_viewer_path(file_set) %>" data-pdf-src="<%= main_app.pdf_viewer_path(file_set) %>" style="width: 100%;height:950px"></iframe>
       <%= render "shared/download_link", file_set: file_set  %>
 
     </div>
@@ -17,7 +17,9 @@
       });
 
       function go_to_page(num) {
-        document.getElementById("pdfIframe").contentWindow.PDFViewerApplication.page=num
+        // ponytail: usa el visor nativo; si se requiere API fina de PDF, migrar a PDF.js npm mantenido.
+        var pdfIframe = document.getElementById("pdfIframe");
+        pdfIframe.src = pdfIframe.dataset.pdfSrc + "#page=" + num;
       }
     </script>
 <% else %>
@@ -29,5 +31,3 @@
                     role: "presentation" %>
     </div>
 <% end %>
-
-
