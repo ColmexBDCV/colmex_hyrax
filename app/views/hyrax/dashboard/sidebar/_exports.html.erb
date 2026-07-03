@@ -1,0 +1,10 @@
+<% if current_user.admin? %>
+  <li class="h5">Exportar</li>
+
+  <li class="<%= 'active' if request.path.start_with?(main_app.dashboard_exports_path) %>">
+    <%= link_to main_app.dashboard_exports_path do %>
+      <span class="fa fa-file-text" aria-hidden="true"></span>
+      <span class="sidebar-action-text">Exportar datos</span>
+    <% end %>
+  </li>
+<% end %>

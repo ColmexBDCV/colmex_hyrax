@@ -1,0 +1,12 @@
+{
+  "mcp.servers": {
+    "codegraph": {
+      "command": "codegraph-mcp",
+      "args": [
+        "serve",
+        "--repo",
+        "${workspaceFolder}"
+      ]
+    }
+  }
+}

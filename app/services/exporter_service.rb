@@ -48,7 +48,7 @@ module ExporterService
         self.export(work_ids, fields, "thematic_collection")
     end
 
-    def self.export(work_ids, fields, tag = "all", path=".", no_objects = nil)
+    def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil)
         # Crear el directorio si no existe
         FileUtils.mkdir_p(path) unless File.directory?(path) if path != "."
 
@@ -78,15 +78,18 @@ module ExporterService
         keys.push("title")
         keys.push("thumbnail")
 
-        # Si no_objects está presente, crear un CSV con los objetos no encontrados
-        if no_objects.present?
-          CSV.open("#{path}/not_found_#{tag}.csv", "wb") do |csv|
-            csv << ["identifier", "estado"]
-            no_objects.each do |identifier|
-              csv << [identifier, "No encontrado"]
-            end
-          end
-        end
+                # Añadir timestamp a los nombres de archivo para diferenciarlos
+                timestamp = (Time.zone rescue Time).now.strftime("%Y%m%d_%H%M%S")
+
+                # Si no_objects está presente, crear un CSV con los objetos no encontrados
+                if no_objects.present?
+                    CSV.open("#{path}/not_found_#{tag}_#{timestamp}.csv", "wb") do |csv|
+                        csv << ["identifier", "estado"]
+                        no_objects.each do |identifier|
+                            csv << [identifier, "No encontrado"]
+                        end
+                    end
+                end
 
         work_ids.each do |id|
             obj = ActiveFedora::Base.find(id)
@@ -130,7 +133,7 @@ module ExporterService
 
         keys = fields.split if !fields.nil? && fields.split.count > 0
 
-        CSV.open("#{path}/export_#{tag}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
+        CSV.open("#{path}/export_#{tag}_#{timestamp}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
             data.each do|v|
                 csv << v.to_h
             end

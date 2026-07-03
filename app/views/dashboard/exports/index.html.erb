@@ -1,0 +1,156 @@
+<h1>Exportar datos</h1>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1><span class="fa fa-file-text" aria-hidden="true"></span> Exportar datos</h1>
+          </div>
+          <div class="panel panel-body">
+            <%= form_with url: main_app.dashboard_exports_path, local: true, html: {class: 'form-horizontal'} do |f| %>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Tipo de exportación</label>
+                <div class="col-sm-10">
+                  <%= select_tag :export_type, options_for_select([
+                    ['Seleccionar', ''],
+                    ['Por tipo de trabajo', 'by_work_type'],
+                    ['Por colección', 'by_collection'],
+                    ['Por campo', 'by_field'],
+                    ['Por colección temática', 'by_thematic_collection'],
+                    ['Todo', 'all']
+                  ]), id: 'export_type_select', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Plantilla</label>
+                <div class="col-sm-10">
+                  <% work_types = [] %>
+                  <% Hyrax::config.registered_curation_concern_types.each do |wt| %>
+                    <% work_types << [t('hyrax.admin.validations.' + wt.underscore.downcase), wt] %>
+                  <% end %>
+                  <%= select_tag :work_type, options_for_select(work_types), id: 'work_type_select', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Colección (título)</label>
+                <div class="col-sm-10">
+                  <% collections = @collections || [] %>
+                  <%= select_tag :collection, options_for_select([['Seleccionar', '']] + collections.map { |c| [c, c] }), id: 'collection_input', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Colección temática</label>
+                <div class="col-sm-10">
+                  <% thematic_collections = @thematic_collections || [] %>
+                  <%= select_tag :thematic_collection, options_for_select([['Seleccionar', '']] + thematic_collections.map { |c| [c, c] }), id: 'thematic_collection_input', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Campo (key)</label>
+                <div class="col-sm-10">
+                  <%= text_field_tag :key, nil, id: 'key_input', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Valor (value)</label>
+                <div class="col-sm-10">
+                  <%= text_field_tag :value, nil, id: 'value_input', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Campos (separados por espacio)</label>
+                <div class="col-sm-10">
+                  <%= text_field_tag :fields, nil, id: 'fields_input', class: 'form-control' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= submit_tag 'Iniciar exportación', class: 'btn btn-primary', id: 'export_submit', disabled: true %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="alert alert-info" style="margin-top: 20px;">
+              <h4><strong>Instrucciones de uso:</strong></h4>
+              <ol>
+                <li>Seleccione el <strong>Tipo de exportación</strong> deseado. Dependiendo de la opción, se habilitarán los campos necesarios para filtrar los datos.</li>
+                <li>Si utiliza "Por campo", deberá ingresar tanto la clave (key) como el valor (value) que desea buscar.</li>
+                <li>En el campo <strong>Campos (separados por espacio)</strong>, indique qué metadatos desea incluir en el archivo CSV resultante (si queda vacio, el csv contendra todos los metadatos descriptivos).</li>
+                <li>Una vez iniciada la exportación, los archivos generados se almacenarán en la siguiente ruta del servidor: <code>biblio-digital.colmex.mx/var/datos/catalogacion/exports</code></li>
+              </ol>
+            </div>
+
+
+
+            <script>
+              function updateExportInputs(){
+                var v = document.getElementById('export_type_select').value;
+                var ids = ['work_type_select','collection_input','thematic_collection_input','key_input','value_input','fields_input'];
+                ids.forEach(function(i){ var el = document.getElementById(i); if(el) el.disabled = true; });
+                var submit = document.getElementById('export_submit');
+                if(!v){ if(submit) submit.disabled = true; return; }
+                switch(v){
+                  case 'by_work_type':
+                    document.getElementById('work_type_select').disabled = false;
+                    document.getElementById('fields_input').disabled = false;
+                    break;
+                  case 'by_collection':
+                    document.getElementById('collection_input').disabled = false;
+                    document.getElementById('fields_input').disabled = false;
+                    break;
+                  case 'by_field':
+                    document.getElementById('key_input').disabled = false;
+                    document.getElementById('value_input').disabled = false;
+                    document.getElementById('fields_input').disabled = false;
+                    break;
+                  case 'by_thematic_collection':
+                    document.getElementById('thematic_collection_input').disabled = false;
+                    document.getElementById('fields_input').disabled = false;
+                    break;
+                  case 'all':
+                    document.getElementById('fields_input').disabled = false;
+                    break;
+                }
+                if(submit) submit.disabled = false;
+              }
+
+              document.addEventListener('turbolinks:load', updateExportInputs);
+              document.addEventListener('DOMContentLoaded', function(){
+                var sel = document.getElementById('export_type_select');
+                if(sel) sel.addEventListener('change', updateExportInputs);
+                updateExportInputs();
+              });
+            </script>
+
+            <h3>Exportados recientes</h3>
+            <% if @files.present? %>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Archivo</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @files.each do |f| %>
+                    <tr>
+                      <td><%= f %></td>
+                      <td><%= f.match(/_(\d{8}_\d{6})\.csv$/) ? $1 : '-' %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% else %>
+              <p>No hay archivos de exportación aún.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
