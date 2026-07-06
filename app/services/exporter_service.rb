@@ -45,10 +45,10 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields, "thematic_collection")
+        self.export(work_ids, fields, "thematic_collection", add_field: "human_readable_type")
     end
 
-    def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil)
+    def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil, add_field = nil)
         # Crear el directorio si no existe
         FileUtils.mkdir_p(path) unless File.directory?(path) if path != "."
 
@@ -77,6 +77,7 @@ module ExporterService
         keys.push("filenames")
         keys.push("title")
         keys.push("thumbnail")
+        keys.push(add_field) if add_field
 
                 # Añadir timestamp a los nombres de archivo para diferenciarlos
                 timestamp = (Time.zone rescue Time).now.strftime("%Y%m%d_%H%M%S")
@@ -132,6 +133,8 @@ module ExporterService
         end
 
         keys = fields.split if !fields.nil? && fields.split.count > 0
+
+        keys.push(add_field) if add_field
 
         CSV.open("#{path}/export_#{tag}_#{timestamp}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
             data.each do|v|

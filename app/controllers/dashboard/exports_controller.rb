@@ -48,7 +48,6 @@ class Dashboard::ExportsController < ApplicationController
       candidates = %w[thematic_collection_sim]
 
       solr_url = begin
-      byebug
         cfg = Rails.application.config_for(:solr) rescue nil
         cfg && cfg['url'] || ENV['SOLR_URL'] || 'http://127.0.0.1:8983/solr/hydra-indexer'
       end
