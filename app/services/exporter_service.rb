@@ -14,7 +14,7 @@ module ExporterService
 
     def self.by_collection(coll,fields)
         work_ids = Collection.where(title: coll)[0].member_work_ids
-        self.export(work_ids,fields, coll)
+        self.export(work_ids,fields, coll, "digital_objects/exports", nil, "human_readable_type")
     end
 
     def self.all(fields)
@@ -78,19 +78,19 @@ module ExporterService
         keys.push("title")
         keys.push("thumbnail")
         keys.push(add_field) if add_field
+        
+        # Añadir timestamp a los nombres de archivo para diferenciarlos
+        timestamp = (Time.zone rescue Time).now.strftime("%Y%m%d_%H%M%S")
 
-                # Añadir timestamp a los nombres de archivo para diferenciarlos
-                timestamp = (Time.zone rescue Time).now.strftime("%Y%m%d_%H%M%S")
-
-                # Si no_objects está presente, crear un CSV con los objetos no encontrados
-                if no_objects.present?
-                    CSV.open("#{path}/not_found_#{tag}_#{timestamp}.csv", "wb") do |csv|
-                        csv << ["identifier", "estado"]
-                        no_objects.each do |identifier|
-                            csv << [identifier, "No encontrado"]
-                        end
-                    end
+        # Si no_objects está presente, crear un CSV con los objetos no encontrados
+        if no_objects.present?
+            CSV.open("#{path}/not_found_#{tag}_#{timestamp}.csv", "wb") do |csv|
+                csv << ["identifier", "estado"]
+                no_objects.each do |identifier|
+                    csv << [identifier, "No encontrado"]
                 end
+            end
+        end
 
         work_ids.each do |id|
             obj = ActiveFedora::Base.find(id)
@@ -114,8 +114,6 @@ module ExporterService
 
             end
 
-
-
             if obj.file_sets.count > 0 then
                 filenames = ""
                 obj.file_sets.each do |fs|
@@ -128,13 +126,17 @@ module ExporterService
                 row["filenames"] = filenames.chomp(" | ")
             end
                 row["thumbnail"] = "https://repositorio.colmex.mx/downloads/#{obj.thumbnail_id}?file=thumbnail" if obj.respond_to?("thumbnail_id")
+            
+            row[add_field] = obj.send(add_field) unless row.include?(add_field)
+
             data << row
 
         end
 
+        
         keys = fields.split if !fields.nil? && fields.split.count > 0
 
-        keys.push(add_field) if add_field
+        keys << add_field if add_field
 
         CSV.open("#{path}/export_#{tag}_#{timestamp}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
             data.each do|v|
