@@ -45,7 +45,7 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields, "thematic_collection", add_field: "human_readable_type")
+        self.export(work_ids, fields, "thematic_collection", "digital_objects/exports", nil, "human_readable_type")
     end
 
     def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil, add_field = nil)
