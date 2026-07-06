@@ -43,58 +43,35 @@ class Dashboard::ExportsController < ApplicationController
     end
 
     def thematic_collection_values
-      # Intentar usar RSolr hacia la URL configurada en config/solr.yml
-      # Preferir campos no-analizados (ssim/ssi) para obtener valores completos
-      candidates = %w[thematic_collection_sim]
+      field = 'thematic_collection_sim'
 
-      solr_url = begin
-        cfg = Rails.application.config_for(:solr) rescue nil
-        cfg && cfg['url'] || ENV['SOLR_URL'] || 'http://127.0.0.1:8983/solr/hydra-indexer'
-      end
+      solr_params = {
+        q: '*:*',
+        rows: 0,
+        facet: true,
+        'facet.field' => field,
+        'facet.limit' => -1,
+        'facet.mincount' => 1,
+        fq: [
+          '-has_model_ssim:FileSet',
+          '-has_model_ssim:Collection'
+        ],
+        wt: 'json'
+      }
 
-      client = nil
-      begin
-        client = RSolr.connect(url: solr_url)
-      rescue StandardError
-        client = nil
-      end
+      resp = ActiveFedora::SolrService.instance.conn.get('select', params: solr_params)
 
-      # Primero intentar handler /terms vía RSolr
-      if client
-        field = candidates.find do |f|
-          begin
-            resp = client.get('terms', params: { 'terms.fl' => f, 'terms.limit' => 1 })
-            resp['terms'] && resp['terms'][f].present?
-          rescue StandardError
-            false
-          end
-        end
+      arr = resp.dig('facet_counts', 'facet_fields', field) || []
 
-        if field
-          begin
-            resp = client.get('terms', params: { 'terms.fl' => field, 'terms.limit' => -1 })
-            raw = resp.dig('terms', field) || []
-            values = raw.each_slice(2).map(&:first)
-            return values.map(&:to_s).map(&:strip).reject(&:blank?).uniq.sort
-          rescue StandardError
-            # continuar al fallback
-          end
-        end
-      end
-
-      # Fallback: usar ActiveFedora faceting via select
-      candidates.each do |field|
-        begin
-          resp = ActiveFedora::SolrService.get('*:*', rows: 0, facet: true, 'facet.field' => field, 'facet.limit' => -1)
-          arr = resp.dig('facet_counts', 'facet_fields', field) || []
-          next if arr.empty?
-          values = arr.each_slice(2).map(&:first)
-          return values.map(&:to_s).map(&:strip).reject(&:blank?).uniq.sort
-        rescue StandardError
-          next
-        end
-      end
-
+      arr.each_slice(2)
+        .map(&:first)
+        .map(&:to_s)
+        .map(&:strip)
+        .reject(&:blank?)
+        .uniq
+        .sort
+    rescue StandardError => e
+      Rails.logger.warn("thematic_collection_values failed: #{e.class} - #{e.message}")
       []
     end
 
