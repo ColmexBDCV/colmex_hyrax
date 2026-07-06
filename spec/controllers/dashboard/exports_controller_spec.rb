@@ -84,4 +84,20 @@ RSpec.describe Dashboard::ExportsController, type: :controller do
       expect(response).not_to have_http_status(:ok)
     end
   end
+
+  describe 'thematic_collection_values' do
+    it 'obtiene valores desde el handler terms de Solr' do
+      # Anular el stub global que devuelve [] para permitir ejecutar el método real
+      allow(controller).to receive(:thematic_collection_values).and_call_original
+      # preparar stub para la llamada al handler terms
+      solr_resp = { 'terms' => { 'thematic_collection_ssim' => ['Producción Institucional', 13432, 'Otra Colección', 10] } }
+      client = double('rsolr-client')
+      allow(RSolr).to receive(:connect).and_return(client)
+      allow(client).to receive(:get).with('terms', params: { 'terms.fl' => 'thematic_collection_ssim', 'terms.limit' => 1 }).and_return(solr_resp)
+      allow(client).to receive(:get).with('terms', params: { 'terms.fl' => 'thematic_collection_ssim', 'terms.limit' => -1 }).and_return(solr_resp)
+
+      vals = controller.send(:thematic_collection_values)
+      expect(vals).to include('uno', 'dos')
+    end
+  end
 end
