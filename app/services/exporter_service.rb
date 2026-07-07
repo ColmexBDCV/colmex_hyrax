@@ -14,7 +14,7 @@ module ExporterService
 
     def self.by_collection(coll,fields)
         work_ids = Collection.where(title: coll)[0].member_work_ids
-        self.export(work_ids,fields, coll, "digital_objects/exports", nil, "human_readable_type")
+        self.export(work_ids,fields, coll)
     end
 
     def self.all(fields)
@@ -24,7 +24,7 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields)
+        self.export(work_ids, fields, "all")
     end
 
     def self.by_field(value, key,fields)
@@ -45,10 +45,10 @@ module ExporterService
                 work_ids << row.id
             end
         end
-        self.export(work_ids, fields, "thematic_collection", "digital_objects/exports", nil, "human_readable_type")
+        self.export(work_ids, fields, "thematic_collection")
     end
 
-    def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil, add_field = nil)
+    def self.export(work_ids, fields, tag = "all", path="digital_objects/exports", no_objects = nil)
         # Crear el directorio si no existe
         FileUtils.mkdir_p(path) unless File.directory?(path) if path != "."
 
@@ -77,7 +77,7 @@ module ExporterService
         keys.push("filenames")
         keys.push("title")
         keys.push("thumbnail")
-        keys.push(add_field) if add_field
+        keys.push("human_readable_type")
         
         # Añadir timestamp a los nombres de archivo para diferenciarlos
         timestamp = (Time.zone rescue Time).now.strftime("%Y%m%d_%H%M%S")
@@ -125,9 +125,10 @@ module ExporterService
 
                 row["filenames"] = filenames.chomp(" | ")
             end
-                row["thumbnail"] = "https://repositorio.colmex.mx/downloads/#{obj.thumbnail_id}?file=thumbnail" if obj.respond_to?("thumbnail_id")
             
-            row[add_field] = obj.send(add_field) unless row.include?(add_field)
+            row["thumbnail"] = "https://repositorio.colmex.mx/downloads/#{obj.thumbnail_id}?file=thumbnail" if obj.respond_to?("thumbnail_id")
+            
+            row["human_readable_type"] = obj.human_readable_type if obj.respond_to?("human_readable_type")
 
             data << row
 
@@ -135,8 +136,6 @@ module ExporterService
 
         
         keys = fields.split if !fields.nil? && fields.split.count > 0
-
-        keys << add_field if add_field
 
         CSV.open("#{path}/export_#{tag}_#{timestamp}.csv", "wb", :headers => keys, :write_headers => true, :force_quotes => true) do |csv|
             data.each do|v|
