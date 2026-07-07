@@ -105,12 +105,18 @@ module ExporterService
 
             row = {}
             obj.attributes.each do |key, value|
-
+                
                 if value.is_a?(ActiveTriples::Resource) || value.is_a?(ActiveTriples::Relation) then
-                    row[key] =  value.to_a.join(" | ")
+                     if key == "based_near" then
+                        row[key] = value.map(&:id).join(" | ")
+                    else
+                        row[key] =  value.to_a.join(" | ")
+                    end
                 else
                     row[key] = value
                 end
+
+                
 
             end
 
