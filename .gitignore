@@ -59,7 +59,7 @@ db/*.sqlite3
 .buildpath
 
 /.yardoc
-/doc
+/docs
 
 #ignore your keys on config/application.yml
 /config/application.yml
@@ -98,3 +98,4 @@ log_fedora_startup
 *.docx
 *.md
 .opencode
+

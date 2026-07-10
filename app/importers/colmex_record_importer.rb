@@ -134,6 +134,9 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         csv_fields = attrs.keys
 
         attrs.each do |key, val|
+          # Evitar asignar `based_near` aquí porque su setter puede esperar
+          # objetos controlados (Location) y provocar recursión/errores.
+          next if key.to_s == 'based_near'
           gw.send("#{key}=", val)
         end
 
