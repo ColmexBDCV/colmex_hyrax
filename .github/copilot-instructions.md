@@ -22,7 +22,3 @@ Not lazy about: input validation at trust boundaries, error handling that preven
 (Yes, this file also applies to agents working on the ponytail repo itself. Especially to them.)
 
 
-Adicionalmente: 
-
--Siempre agrega el respectivo test en spec que cubra todas las variantes posibles
--Cada cambio que hagas en el codigo debe tambien reflejarse en su respectivo test en spec

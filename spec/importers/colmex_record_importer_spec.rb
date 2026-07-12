@@ -173,6 +173,39 @@ RSpec.describe ColmexRecordImporter do
     it 'elimina espacios de strings' do
       expect(importer.send(:normalize_value, '  hola  ')).to eq('hola')
     end
+
+    it 'aplana based_near a uris serializables' do
+      location_a = double('location_a', rdf_subject: RDF::URI('https://sws.geonames.org/6252001/'))
+      location_b = double('location_b', rdf_subject: RDF::URI('https://sws.geonames.org/3996063/'))
+
+      normalized = importer.send(:normalize_value, [location_a, location_b], 'based_near')
+
+      expect(normalized).to eq([
+        'https://sws.geonames.org/3996063/',
+        'https://sws.geonames.org/6252001/'
+      ])
+    end
+  end
+
+  describe '#get_metadata_changes' do
+    it 'serializa based_near como uris planas en el diff' do
+      original_record = {
+        'based_near' => [double('original_location', rdf_subject: RDF::URI('https://sws.geonames.org/3996063/'))]
+      }
+      updated_record = {
+        'based_near' => [double('updated_location', rdf_subject: RDF::URI('https://sws.geonames.org/6252001/'))]
+      }
+
+      changes = importer.send(:get_metadata_changes, original_record, updated_record, [:based_near])
+
+      expect(changes).to eq(
+        'based_near' => {
+          before: ['https://sws.geonames.org/3996063/'],
+          after: ['https://sws.geonames.org/6252001/']
+        }
+      )
+      expect { changes.to_json }.not_to raise_error
+    end
   end
 
   describe '#value_empty?' do

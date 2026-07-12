@@ -301,8 +301,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
         field_str = field.to_s
         
         # Asegurar que capturamos el valor incluso si no está en original_record
-        original_value = normalize_value(original_record[field_str])
-        updated_value = normalize_value(updated_record[field_str])
+        original_value = normalize_value(original_record[field_str], field_str)
+        updated_value = normalize_value(updated_record[field_str], field_str)
         
         # Detectar cambios incluyendo cuando se vacía un campo ([] o nil o "")
         original_empty = value_empty?(original_value)
@@ -331,9 +331,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       value.nil? || value == [] || value == ""
     end
     
-    def normalize_value(value)
+    def normalize_value(value, field_name = nil)
       return nil if value.nil?
       return [] if value == []
+
+      return normalize_based_near_value(value) if field_name.to_s == 'based_near'
       
       # Si es un array, normalizar cada elemento
       if value.is_a?(Array)
@@ -342,6 +344,37 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
       
       # Si es string, limpiar espacios
       value.is_a?(String) ? value.strip : value
+    end
+
+    def normalize_based_near_value(value)
+      values = if value.respond_to?(:to_a) && !value.is_a?(String)
+                 value.to_a
+               else
+                 Array(value)
+               end
+
+      values.filter_map do |entry|
+        normalize_based_near_entry(entry)
+      end.sort
+    end
+
+    def normalize_based_near_entry(value)
+      return if value.nil?
+      return value.strip if value.is_a?(String)
+
+      if value.respond_to?(:rdf_subject) && value.rdf_subject.present?
+        return value.rdf_subject.to_s.strip
+      end
+
+      if value.respond_to?(:uri) && value.uri.present?
+        return value.uri.to_s.strip
+      end
+
+      if value.respond_to?(:id) && value.id.present?
+        return value.id.to_s.strip
+      end
+
+      value.to_s.strip
     end
 
     def file_set_labels_for(work_record)
