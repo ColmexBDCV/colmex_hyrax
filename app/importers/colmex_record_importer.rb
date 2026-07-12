@@ -108,7 +108,7 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
 
     def update_for(record:)
       begin
-        identifier = record.identifier
+        identifier = safe_identifier(record)
         changes = {}
 
         results = work.singularize.classify.constantize.where(identifier: identifier).select do |row|
@@ -191,11 +191,12 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           info_stream << "\n[DEBUG] No se detectaron cambios para registrar"
         end
 
-        info_stream << "\nRecord #{record.identifier} is updated"
-        return [record.identifier, "Actualizado exitosamente", changes]
+        info_stream << "\nRecord #{identifier} is updated"
+        return [identifier, "Actualizado exitosamente", changes]
       end
     rescue => e
-      return [record.identifier, "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }]
+      identifier = safe_identifier(record)
+      return [identifier, "Error: #{e.class}: #{e.message}", { error_class: e.class.to_s, error_message: e.message }]
     end
 
     def file_for(filenames)
@@ -396,5 +397,11 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
           after: updated_file_labels || []
         }
       )
+    end
+
+    def safe_identifier(record)
+      record.try(:identifier) ||
+        record.try(:attributes).try(:[], :identifier) ||
+        record.try(:attributes).try(:[], 'identifier')
     end
 end
