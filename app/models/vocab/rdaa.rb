@@ -43,5 +43,6 @@ module Vocab
     term :isPersonMemberOfCollectiveAgent
     term :hasPersonMemberOfCollectiveAgent
     term :isDancerPersonOf
+    term :isGraduateOf
   end
 end

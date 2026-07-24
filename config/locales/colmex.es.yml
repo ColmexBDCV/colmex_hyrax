@@ -123,6 +123,8 @@ es:
           is_person_member_of_collective_agent_sim: "Es miembro de"
           has_person_member_of_collective_agent_sim: "Sus miembros son"
           has_carrier_type_sim: Tipo de portador
+          has_category_of_work_sim: Categoría de obra
+          is_graduate_of_sim: Programa de estudios
           is_dancer_agent_of_sim: Danzante
           local_resource_identifier_sim: Identificador institucional
         index:
@@ -235,6 +237,8 @@ es:
           is_person_member_of_collective_agent_tesim: "Es miembro de"
           has_person_member_of_collective_agent_tesim: "Sus miembros son"
           has_carrier_type_tesim: Tipo de portador
+          has_category_of_work_tesim: Categoría de obra
+          is_graduate_of_tesim: Programa de estudios
           is_dancer_agent_of_tesim: Danzante
           local_resource_identifier_tesim: Identificador institucional
           parent_work_titles_tesim: Es parte de
@@ -280,6 +284,8 @@ es:
           is_person_member_of_collective_agent: "Es miembro de:"
           has_person_member_of_collective_agent: "Sus miembros son:"
           has_carrier_type: Tipo de portador
+          has_category_of_work: Categoría de obra
+          is_graduate_of: Programa de estudios
           is_dancer_agent_of: Danzante
           local_resource_identifier: Identificador institucional
       sort:
@@ -854,6 +860,8 @@ es:
         is_person_member_of_collective_agent: "Es miembro de:"
         has_person_member_of_collective_agent: "Sus miembros son:"
         has_carrier_type: Tipo de portador
+        has_category_of_work: Categoría de obra
+        is_graduate_of: Programa de estudios
         iiif_manifest: Manifiesto
         is_dancer_agent_of: Danzante
         local_resource_identifier: Identificador institucional  
@@ -1214,7 +1222,7 @@ es:
         awards: Premios
         academic_degree: Título Académico
         type_of_thesis: Tipo de Tesis
-        degree_program: Programa de Estudios
+        degree_program: Grado
         institution: Institución
         date_of_presentation_of_the_thesis: Fecha de presentación de la Tesis
         creator_conacyt: Creador CONACYT
@@ -1288,6 +1296,8 @@ es:
         is_person_member_of_collective_agent: "Es miembro de:"
         has_person_member_of_collective_agent: "Sus miembros son:"
         has_carrier_type: Tipo de portador
+        has_category_of_work: Categoría de obra
+        is_graduate_of: Programa de estudios
         is_dancer_agent_of: Danzante
         local_resource_identifier: Identificador institucional
         

@@ -1,15 +1,22 @@
 class ChangeChangesLogToLongtextInUpdates < ActiveRecord::Migration[5.2]
   def up
-    # Cambia la columna a LONGTEXT en MySQL para aceptar entradas muy grandes
-    execute <<-SQL.squish
-      ALTER TABLE updates MODIFY changes_log LONGTEXT
-    SQL
+    # Ajusta según el adaptador: MySQL necesita LONGTEXT, Postgres y SQLite usan :text
+    adapter = ActiveRecord::Base.connection.adapter_name.downcase
+    if adapter.include?('mysql')
+      execute "ALTER TABLE updates MODIFY changes_log LONGTEXT"
+    else
+      # Para PostgreSQL y SQLite, :text ya acepta valores grandes; use change_column para portabilidad
+      change_column :updates, :changes_log, :text
+    end
   end
 
   def down
-    # Revertir a TEXT (límite ~64KB)
-    execute <<-SQL.squish
-      ALTER TABLE updates MODIFY changes_log TEXT
-    SQL
+    adapter = ActiveRecord::Base.connection.adapter_name.downcase
+    if adapter.include?('mysql')
+      execute "ALTER TABLE updates MODIFY changes_log TEXT"
+    else
+      # Dejar como :text por seguridad; si necesitas un tipo más pequeño, ajusta aquí.
+      change_column :updates, :changes_log, :text
+    end
   end
 end

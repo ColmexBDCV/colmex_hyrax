@@ -21,11 +21,15 @@ es:
           collection_type_gid_ssim: Tipo de colección
           member_of_collections_ssim: Colección
           resource_type_sim: Tipo de recurso
+          has_category_of_work_sim: Categoría de obra
+          is_graduate_of_sim: Programa de estudios
           suppressed_bsi: Estado
           visibility_ssi: Visibilidad
         show:
           admin_set: 'En Conjunto Administrativo:'
           based_near_label: Ubicación
+          has_category_of_work: Categoría de obra
+          is_graduate_of: Programa de estudios
           contributor: Colaboradores
           keyword: Palabra Clave
       filters:

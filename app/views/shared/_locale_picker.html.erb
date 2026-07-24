@@ -14,7 +14,8 @@
         <li role="presentation" class="divider"></li>
         <% available_translations.each do |language, label| %>
             <li role="presentation" lang="<%= language %>">
-                <%= link_to label, "?locale=#{language}", class: 'dropdown-item', role: 'menuitem', tabindex: '-1', data: { locale: language } %>
+                <% locale_url = "#{request.path}?#{request.query_parameters.merge(locale: language.to_s).to_query}" %>
+                <%= link_to label, locale_url, class: 'dropdown-item', role: 'menuitem', tabindex: '-1', data: { locale: language } %>
             </li>
         <% end %>
     </ul>

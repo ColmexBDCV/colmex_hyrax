@@ -676,6 +676,14 @@ class SolrDocument
     self['is_transformation_by_genre_tesim']
   end
 
+  def has_category_of_work
+    self['has_category_of_work_tesim']
+  end
+
+  def is_graduate_of
+    self['is_graduate_of_tesim']
+  end
+
   def has_medium_of_performance_of_musical_content
     self['has_medium_of_performance_of_musical_content_tesim']
   end

@@ -120,6 +120,8 @@ module Hyrax
       property :has_organizer_corporate_body, predicate: ::Vocab::RDAW.hasOrganizerCorporateBody, multiple: true
       property :has_transformation_by_genre, predicate: ::Vocab::RDAW.hasTransformationByGenre, multiple: true
       property :is_transformation_by_genre, predicate: ::Vocab::RDAW.isTransformationByGenre, multiple: true
+      property :has_category_of_work, predicate: ::Vocab::RDAW.hasCategoryOfwork, multiple: true
+      property :is_graduate_of, predicate: ::Vocab::RDAA.isGraduateOf, multiple: true
       property :is_person_member_of_collective_agent, predicate: ::Vocab::RDAA.isPersonMemberOfCollectiveAgent, multiple: true
       property :has_person_member_of_collective_agent, predicate: ::Vocab::RDAA.hasPersonMemberOfCollectiveAgent, multiple: true
       property :has_carrier_type, predicate: ::Vocab::RDAM.hasCarrierType, multiple: true

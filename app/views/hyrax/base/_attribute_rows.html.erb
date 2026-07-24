@@ -35,6 +35,8 @@
 
 <%= presenter.attribute_to_html(:has_transformation_by_genre, label: t('hyrax.base.show.has_transformation_by_genre'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:is_transformation_by_genre, label: t('hyrax.base.show.is_transformation_by_genre'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:has_category_of_work, label: t('hyrax.base.show.has_category_of_work'), render_as: :faceted, html_dl: true) %>
+<%= presenter.attribute_to_html(:is_graduate_of, label: t('hyrax.base.show.is_graduate_of'), render_as: :faceted, html_dl: true) %>
 
 
 <% [:note_of_timespan, :handle, :doi, :isbn, :alternate_title, :other_title, :system_requirements, :language_of_expression,

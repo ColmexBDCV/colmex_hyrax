@@ -33,5 +33,6 @@ module Vocab
     term :hasSystemOfOrganization
     term :hasTransformationByGenre
     term :isTransformationByGenre
+    term :hasCategoryOfwork
   end
 end

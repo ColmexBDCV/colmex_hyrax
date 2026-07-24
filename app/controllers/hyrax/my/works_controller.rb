@@ -82,6 +82,8 @@ module Hyrax
           config.add_facet_field "is_subcollection_of_sim", limit: 5
           config.add_facet_field "depository_collective_agent_of_sim", limit: 5
           config.add_facet_field "corporate_body_sim", limit: 5
+          config.add_facet_field "has_category_of_work_sim", limit: 5
+          config.add_facet_field "is_graduate_of_sim", limit: 5
           config.add_facet_field "beginning_sim", limit: 5
           config.add_facet_field "ending_sim", limit: 5
         end

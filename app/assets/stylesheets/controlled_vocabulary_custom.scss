@@ -1,0 +1,8 @@
+/* Ensure remove button is visible for based_near single-value fields */
+.controlled_vocabulary[data-field-name="based_near"] .remove,
+.controlled_vocabulary[data-field-name="based_near"] .btn.remove {
+  display: inline-block !important;
+}
+
+/* Also for attribute name variant */
+.controlled_vocabulary[data-field-name="based_near"] .field-controls { display: inline-block !important; }

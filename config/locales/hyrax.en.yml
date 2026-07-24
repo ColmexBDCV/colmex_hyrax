@@ -69,6 +69,8 @@ en:
           is_criminal_defendant_corporate_body_of_sim: Is criminal defendant corporate body of
           is_criminal_defendant_person_of_sim: Is criminal defendant person of
           has_system_of_organization_sim:  Collection
+          has_category_of_work_sim: Category of work
+          is_graduate_of_sim: Graduate of
           is_subcollection_of_sim: Subcollecion
           draftsman_sim: Draftsman
         index:
@@ -148,6 +150,8 @@ en:
           is_criminal_defendant_person_of_tesim: Is criminal defendant person of
           has_identifier_for_item_tesim: Has identifier for item
           has_system_of_organization_tesim:  Collection
+          has_category_of_work_tesim: Category of work
+          is_graduate_of_tesim: Graduate of
           is_subcollection_of_tesim: Subcollecion
           draftsman_tesim: Draftsman
           parent_work_titles_tesim: Is part of
@@ -456,6 +460,8 @@ en:
         beginning: Beginning
         ending: Ending
         has_field_activity_of_agent: Has field activity of agent
+        has_category_of_work: Category of work
+        is_graduate_of: Graduate of
         is_facsimile_of_manifestation_of: Is facsimile of manifestation of
         date_of_manifestation: Date of manifestation
         primary_topic: Primary topic

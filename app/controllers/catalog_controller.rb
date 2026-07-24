@@ -5,14 +5,9 @@ class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
   # This filter applies the hydra access controls
-  before_action :set_locale
   before_action :enforce_show_permissions, only: :show
 
   private
-
-  def set_locale
-    I18n.locale = params[:locale].presence_in(I18n.available_locales) || I18n.default_locale
-  end
 
 
   def self.uploaded_field
@@ -159,6 +154,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("is_person_member_of_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("has_person_member_of_collective_agent", :facetable), limit: 5
     config.add_facet_field solr_name("has_carrier_type", :facetable), limit: 5
+    config.add_facet_field solr_name("has_category_of_work", :facetable), limit: 5
+    config.add_facet_field solr_name("is_graduate_of", :facetable), limit: 5
     config.add_facet_field solr_name("is_dancer_agent_of", :facetable), limit: 5
     # config.add_facet_field solr_name("local_resource_identifier", :facetable), limit: 5
 
@@ -316,6 +313,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_person_member_of_collective_agent", :stored_searchable), itemprop: 'is_person_member_of_collective_agent', link_to_search: solr_name("is_person_member_of_collective_agent", :facetable)
     config.add_index_field solr_name("has_person_member_of_collective_agent", :stored_searchable), itemprop: 'has_person_member_of_collective_agent', link_to_search: solr_name("has_person_member_of_collective_agent", :facetable)
     config.add_index_field solr_name("has_carrier_type", :stored_searchable), itemprop: 'has_carrier_type', link_to_search: solr_name("has_carrier_type", :facetable)
+    config.add_index_field solr_name("has_category_of_work", :stored_searchable), itemprop: 'has_category_of_work', link_to_search: solr_name("has_category_of_work", :facetable)
+    config.add_index_field solr_name("is_graduate_of", :stored_searchable), itemprop: 'is_graduate_of', link_to_search: solr_name("is_graduate_of", :facetable)
     config.add_index_field solr_name("is_dancer_agent_of", :stored_searchable), itemprop: 'is_dancer_agent_of', link_to_search: solr_name("is_dancer_agent_of", :facetable)
     config.add_index_field solr_name("parent_work_titles", :stored_searchable), itemprop: 'parent_work_titles', helper_method: :link_to_parent_works
     # config.add_index_field solr_name("local_resource_identifier", :stored_searchable), itemprop: 'local_resource_identifier', link_to_search: solr_name("local_resource_identifier", :facetable)
@@ -456,6 +455,8 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("is_person_member_of_collective_agent", :stored_searchable)
     config.add_show_field solr_name("has_person_member_of_collective_agent", :stored_searchable)
     config.add_show_field solr_name("has_carrier_type", :stored_searchable)
+    config.add_show_field solr_name("has_category_of_work", :stored_searchable)
+    config.add_show_field solr_name("is_graduate_of", :stored_searchable)
     config.add_show_field solr_name("is_dancer_agent_of", :stored_searchable)
     config.add_show_field solr_name("parent_work_titles", :stored_searchable), helper_method: :link_to_parent_works
 

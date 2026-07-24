@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :enforce_startup_captcha, if: :startup_captcha_enabled?
+  before_action :set_locale
   
   def guest_user
     @guest_user ||= User.where(guest: true).first || super
@@ -29,6 +30,22 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+
+    def set_locale
+      requested_locale = params[:locale].presence || session[:locale]
+      locale = requested_locale.to_s
+
+      if I18n.available_locales.map(&:to_s).include?(locale)
+        I18n.locale = locale
+        session[:locale] = locale
+      else
+        I18n.locale = I18n.default_locale
+      end
+    end
+
+    def default_url_options
+      { locale: I18n.locale }
+    end
 
     #Allows new fields in sign_up an update an account
     def configure_permitted_parameters
