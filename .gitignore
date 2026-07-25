@@ -94,8 +94,8 @@ node_modules
 *.csv
 .vscode/tasks.json
 log_fedora_startup
-
 *.docx
-*.md
-.opencode
+.opencode/git
+.opencode/node_modules
+.opencode/*.json
 
