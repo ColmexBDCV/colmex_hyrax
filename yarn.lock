@@ -2510,10 +2510,10 @@ shelljs@^0.8.5:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-"shx@git+ssh://git@github.com/shelljs/shx.git":
+"shx@git+https://github.com/shelljs/shx.git":
   version "0.3.4"
   uid "03c29642c2d284364d04ec243102ab7a7ef92622"
-  resolved "git+ssh://git@github.com/shelljs/shx.git#03c29642c2d284364d04ec243102ab7a7ef92622"
+  resolved "git+https://github.com/shelljs/shx.git#03c29642c2d284364d04ec243102ab7a7ef92622"
   dependencies:
     minimist "^1.2.6"
     shelljs "^0.8.5"

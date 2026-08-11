@@ -80,6 +80,9 @@ spec/reports
 *.sh
 /public/assets
 solr/*
+!solr/
+!solr/config/
+!solr/config/**
 digital_objects/*
 *.csv
 config/ga.key
@@ -98,4 +101,5 @@ log_fedora_startup
 .opencode/git
 .opencode/node_modules
 .opencode/*.json
+.hermes
 

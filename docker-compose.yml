@@ -1,0 +1,68 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: bash -lc "bundle exec rails server -b 0.0.0.0 -p 3000"
+    environment:
+      RAILS_ENV: development
+      SOLR_URL: http://solr:8983/solr/hydra-development
+      FEDORA_URL: http://fedora:8080/rest
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      ACTIVE_JOB_QUEUE_ADAPTER: inline
+      FITS_PATH: /usr/local/bin/fits.sh
+      LIBREOFFICE_PATH: /usr/bin/soffice
+      DERIVATIVES_PATH: /app/tmp/derivatives
+      UPLOAD_PATH: /app/tmp/uploads
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+    ports:
+      - "0.0.0.0:3000:3000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      solr:
+        condition: service_healthy
+      fedora:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "0.0.0.0:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  solr:
+    image: solr:7.1.0
+    command: solr-precreate hydra-development /opt/solr/server/solr/configsets/hydra-development
+    volumes:
+      - ./solr/config:/opt/solr/server/solr/configsets/hydra-development:ro
+    ports:
+      - "0.0.0.0:8983:8983"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8983/solr/hydra-development/admin/ping >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  fedora:
+    image: samvera/fcrepo4:4.7.5
+    ports:
+      - "0.0.0.0:8984:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/rest/ >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  bundle:
+  node_modules:

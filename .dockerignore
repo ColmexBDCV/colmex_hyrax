@@ -1,0 +1,18 @@
+# Ruby and Bundler artifacts
+.bundle
+/usr/local/bundle
+
+# JavaScript dependencies
+node_modules
+
+# Runtime and local state
+tmp
+log
+coverage
+.env
+
+# Development data
+fcrepo4-data
+fcrepo4-test-data
+solr/data
+public/assets
