@@ -269,8 +269,8 @@ class ColmexRecordImporter < Darlingtonia::RecordImporter
                                date_modified: now,
                                creator: [creator.user_key])
       file_actor = ::Hyrax::Actors::FileSetActor.new(file_set, creator)
-      file_actor.create_content(file)
       file_actor.attach_to_work(gw)
+      file_actor.create_content(file)
     end
 
     def capture_work_metadata(work)

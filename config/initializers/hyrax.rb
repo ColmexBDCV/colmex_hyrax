@@ -109,6 +109,12 @@ Hyrax.config do |config|
 
   # Use the database-backed minter class
   # config.noid_minter_class = ::Noid::Rails::Minter::Db
+  # Prevent the NOID minter from reusing an identifier already persisted in
+  # Fedora. The noid-rails default always returns false here, which can cause
+  # Ldp::Conflict when a development database is restored or reused.
+  Noid::Rails.config.identifier_in_use = lambda do |id|
+    ActiveFedora::Base.exists?(id) || ActiveFedora::Base.gone?(id)
+  end
   if Rails.env.test?
     Hyrax.config do |config|
       # Cambiar a un minter basado en archivos
