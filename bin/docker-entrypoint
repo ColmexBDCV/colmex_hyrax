@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd /app
+
+if [[ "${SKIP_BOOTSTRAP:-0}" != "1" ]]; then
+  echo "[bootstrap] Preparando base de datos..."
+  DISABLE_SPRING=1 bundle exec rails db:create db:migrate
+
+  echo "[bootstrap] Verificando worktypes registrados..."
+  DISABLE_SPRING=1 bundle exec rails runner '
+    concerns = Hyrax.config.registered_curation_concern_types.map(&:to_s).sort
+    puts "[bootstrap] Worktypes (#{concerns.length}): #{concerns.join(", ")}"
+
+    Hyrax::CollectionType.find_or_create_default_collection_type
+    Hyrax::CollectionType.find_or_create_admin_set_type
+  '
+
+  DISABLE_SPRING=1 bundle exec rails hyrax:default_admin_set:create
+  echo "[bootstrap] CollectionTypes y AdminSet predeterminado verificados"
+fi
+
+exec "$@"

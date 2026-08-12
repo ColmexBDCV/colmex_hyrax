@@ -23,16 +23,16 @@
           $('#dashboard-centers tspan:first').text("")
           $('#dashboard-centers tspan').css("font-size","xx-large")
           
-          for(i = 0; i < center.segments.length; i++) {
-              center.segments[i].handlers['hover'].push( function(i){
+          (center.segments || []).forEach(function(segment, i) {
+              segment.handlers['hover'].push( function(){
                   $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
                   $('#dashboard-centers tspan:first').text("")
                   $('#dashboard-centers tspan').css("font-size","xx-large")
               });
-              if (center.segments[i].selected) {
+              if (segment.selected) {
                 $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
               }
-          }
+          });
       </script>
     </div>
                       

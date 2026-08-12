@@ -25,16 +25,16 @@
           $('#dashboard-visibility tspan:first').text("")
           $('#dashboard-visibility tspan').css("font-size","xx-large")
           
-          for(i = 0; i < ro.segments.length; i++) {
-              ro.segments[i].handlers['hover'].push( function(i){
+          (ro.segments || []).forEach(function(segment, i) {
+              segment.handlers['hover'].push( function(){
                   $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
                   $('#dashboard-visibility tspan:first').text("")
                   $('#dashboard-visibility tspan').css("font-size","xx-large")
               });
-              if (ro.segments[i].selected) {
+              if (segment.selected) {
                 $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
               }
-          }
+          });
       </script>
       </div>
       <table class="table table-striped sr-only text-left">

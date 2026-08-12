@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
-    command: bash -lc "bundle exec rails server -b 0.0.0.0 -p 3000"
+    command: ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
     environment:
       RAILS_ENV: development
       SOLR_URL: http://solr:8983/solr/hydra-development

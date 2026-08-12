@@ -25,16 +25,16 @@
           $('#dashboard-work-types tspan:first').text("")
           $('#dashboard-work-types tspan').css("font-size","xx-large")
           
-          for(i = 0; i < wt.segments.length; i++) {
-              wt.segments[i].handlers['hover'].push( function(i){
+          (wt.segments || []).forEach(function(segment, i) {
+              segment.handlers['hover'].push( function(){
                   $('#wtdetails-item .morris-hover-row-label').text(wt.data[i].label);
                   $('#dashboard-work-types tspan:first').text("")
                   $('#dashboard-work-types tspan').css("font-size","xx-large")
               });
-              if (wt.segments[i].selected) {
+              if (segment.selected) {
                 $('#wtdetails-item .morris-hover-row-label').text(wt.data[i].label);
               }
-          }
+          });
       </script>
     </div>
     <table aria-label="<%= t('hyrax.homepage.work_type') %>" class="table table-striped sr-only text-left">

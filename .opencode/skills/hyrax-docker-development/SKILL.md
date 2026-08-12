@@ -7,6 +7,32 @@ description: Develop this Hyrax application with Docker, Solr, Fedora, Redis, an
 
 Use this skill for development, debugging, testing, and local administration of this repository. Run Ruby, Bundler, Rails, RSpec, Redis, Solr, and Fedora through Docker so contributors do not need Ruby 2.7 or the application dependencies installed on the host.
 
+## Automatic bootstrap
+
+The app image uses `/app/bin/docker-entrypoint` before starting Rails. Unless `SKIP_BOOTSTRAP=1`, it idempotently:
+
+1. Runs `DISABLE_SPRING=1 bundle exec rails db:create db:migrate`.
+2. Reads and logs worktypes registered in `config/initializers/hyrax.rb` through `Hyrax.config.registered_curation_concern_types`.
+3. Creates or reuses the default and AdminSet `Hyrax::CollectionType` records.
+4. Runs `DISABLE_SPRING=1 bundle exec rails hyrax:default_admin_set:create`, which creates or reuses the default AdminSet and workflows.
+5. Starts the command passed to the entrypoint.
+
+Idempotent means repeated container starts reuse existing databases, CollectionTypes, and AdminSets instead of duplicating them. The bootstrap runs on every app start so worktypes added to the code are detected automatically.
+
+Normal startup:
+
+```bash
+docker compose up -d app
+```
+
+Skip the bootstrap only for a specific invocation:
+
+```bash
+SKIP_BOOTSTRAP=1 docker compose up -d app
+```
+
+`SKIP_BOOTSTRAP=1` does not delete or undo data; it only skips the checks for that container invocation. Omit it for normal development. Use `DISABLE_SPRING=1` for standalone Rails commands when the `mutex_m`/Spring conflict occurs.
+
 ## Project constraints
 
 - Hyrax: `3.6.0`
