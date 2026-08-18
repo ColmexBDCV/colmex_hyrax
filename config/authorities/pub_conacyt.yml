@@ -1,0 +1,33 @@
+terms:
+  - id: administrators
+    term: administrators
+  - id: beneficiariesFundsFederalAppli
+    term: beneficiariesFundsFederalAppli
+  - id: librarians
+    term: librarians
+  - id: counsellors
+    term: counsellors
+  - id: companies
+    term: companies
+  - id: students
+    term: students
+  - id: communityGroups
+    term: communityGroups
+  - id: researchers
+    term: researchers
+  - id: teachers
+    term: teachers
+  - id: newsMedia
+    term: newsMedia
+  - id: other
+    term: other
+  - id: parentsAndFamilies
+    term: parentsAndFamilies
+  - id: schoolSupportStaff
+    term: schoolSupportStaff
+  - id: legislators
+    term: legislators
+  - id: studentFinancialAidProviders
+    term: studentFinancialAidProviders
+  - id: generalPublic
+    term: generalPublic

@@ -1,0 +1,33 @@
+terms:
+  - id: info:eu-repo/semantics/article
+    term: info:eu-repo/semantics/article
+  - id: info:eu-repo/semantics/bachelorThesis
+    term: info:eu-repo/semantics/bachelorThesis
+  - id: info:eu-repo/semantics/masterThesis
+    term: info:eu-repo/semantics/masterThesis
+  - id: info:eu-repo/semantics/doctoralThesis
+    term: info:eu-repo/semantics/doctoralThesis
+  - id: info:eu-repo/semantics/book
+    term: info:eu-repo/semantics/book
+  - id: info:eu-repo/semantics/bookPart
+    term: info:eu-repo/semantics/bookPart
+  - id: info:eu-repo/semantics/review
+    term: info:eu-repo/semantics/review
+  - id: info:eu-repo/semantics/conferenceObject
+    term: info:eu-repo/semantics/conferenceObject
+  - id: info:eu-repo/semantics/lecture
+    term: info:eu-repo/semantics/lecture
+  - id: info:eu-repo/semantics/workingPaper
+    term: info:eu-repo/semantics/workingPaper
+  - id: info:eu-repo/semantics/preprint
+    term: info:eu-repo/semantics/preprint
+  - id: info:eu-repo/semantics/report
+    term: info:eu-repo/semantics/report
+  - id: info:eu-repo/semantics/annotation
+    term: info:eu-repo/semantics/annotation
+  - id: info:eu-repo/semantics/contributionToPeriodical
+    term: info:eu-repo/semantics/contributionToPeriodical
+  - id: info:eu-repo/semantics/patent
+    term: info:eu-repo/semantics/patent
+  - id: info:eu-repo/semantics/other
+    term: info:eu-repo/semantics/other

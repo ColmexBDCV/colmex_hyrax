@@ -8,13 +8,14 @@ module ImporterService
         return true if i.count > 0
     end
 
-    def get_qa()
-        { licenses: get_licenses,
-          rights: get_rights_statements,
-          types: get_types_conacyt,
-          pub: get_pub_conacyt
-        }
-    end
+    # def get_qa()
+    #     { licenses: get_licenses,
+    #       rights: get_rights_statements,
+    #                 resource_types: get_resource_types,
+    #       types: get_types_conacyt,
+    #       pub: get_pub_conacyt
+    #     }
+    # end
 
     def get_size_sip(sip)
         size_b = Dir.glob("digital_objects/#{sip}/**/*").select { |f| File.file?(f) }.sum { |f| File.size(f) }
@@ -27,23 +28,7 @@ module ImporterService
     end
 
     def get_pub_conacyt
-        [   "administrators",
-            "beneficiariesFundsFederalAppli",
-            "librarians",
-            "counsellors",
-            "companies",
-            "students",
-            "communityGroups",
-            "researchers",
-            "teachers",
-            "newsMedia",
-            "other",
-            "parentsAndFamilies",
-            "schoolSupportStaff",
-            "legislators",
-            "studentFinancialAidProviders",
-            "generalPublic"
-        ]
+        get_authority_terms('pub_conacyt.yml')
     end
 
     def metadata_exists?(sip)
@@ -72,38 +57,16 @@ module ImporterService
     end
 
     def get_resource_types
-        file_path = Rails.root.join('config', 'authorities', 'resource_types.yml')
-
-        # Carga y parsea el archivo YAML
-        resource_types = YAML.load_file(file_path)
-        types = Array.new()
-        # Extrae y muestra los términos
-        resource_types['terms'].each do |term|
-            types.push term['term']
-        end
-        return types
-
+        get_authority_terms('resource_types.yml')
     end
 
     def get_types_conacyt
-        [
-            "info:eu-repo/semantics/article",
-            "info:eu-repo/semantics/bachelorThesis",
-            "info:eu-repo/semantics/masterThesis",
-            "info:eu-repo/semantics/doctoralThesis",
-            "info:eu-repo/semantics/book",
-            "info:eu-repo/semantics/bookPart",
-            "info:eu-repo/semantics/review",
-            "info:eu-repo/semantics/conferenceObject",
-            "info:eu-repo/semantics/lecture",
-            "info:eu-repo/semantics/workingPaper",
-            "info:eu-repo/semantics/preprint",
-            "info:eu-repo/semantics/report",
-            "info:eu-repo/semantics/annotation",
-            "info:eu-repo/semantics/contributionToPeriodical",
-            "info:eu-repo/semantics/patent",
-            "info:eu-repo/semantics/other",
-        ]
+        get_authority_terms('types_conacyt.yml')
+    end
+
+    def get_authority_terms(filename)
+        authority = YAML.load_file(Rails.root.join('config', 'authorities', filename))
+        authority.fetch('terms').map { |term| term.fetch('term') }
     end
 
     def parse_errors(errors)
