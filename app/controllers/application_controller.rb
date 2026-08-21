@@ -2,6 +2,7 @@ require 'json'
 require 'net/http'
 require 'uri'
 require 'ipaddr'
+require 'resolv'
 
 class ApplicationController < ActionController::Base
   helper Openseadragon::OpenseadragonHelper
@@ -87,6 +88,7 @@ class ApplicationController < ActionController::Base
       return if controller_name == 'startup_captcha'
       return if startup_captcha_skip_path?
       return if startup_captcha_skip_ip?
+      return if startup_captcha_skip_googlebot?
 
       session[:startup_captcha_return_to] = request.fullpath if request.get?
       redirect_to '/startup_captcha'
@@ -105,6 +107,27 @@ class ApplicationController < ActionController::Base
       ranges.any? { |cidr| IPAddr.new(cidr).include?(client_ip) }
     rescue IPAddr::InvalidAddressError, IPAddr::AddressFamilyError => e
       Rails.logger.warn("STARTUP_CAPTCHA_SKIP_IPS contiene un valor invalido: #{e.message}")
+      false
+    end
+
+    def startup_captcha_skip_googlebot?
+      user_agent = request.user_agent.to_s
+      return false unless user_agent.match?(/\b(?:Googlebot|Google-InspectionTool)\b/i)
+
+      client_ip = request.remote_ip
+      cache_key = "startup_captcha:verified_googlebot:#{client_ip}"
+
+      Rails.cache.fetch(cache_key, expires_in: 1.hour) do
+        hostname = Resolv.getname(client_ip).to_s.downcase.chomp('.')
+        google_hostname = hostname.match?(%r{(?:\A|\.)(?:googlebot\.com|google\.com|googleusercontent\.com)\z})
+        next false unless google_hostname
+
+        Resolv.getaddresses(hostname).any? do |address|
+          IPAddr.new(address) == IPAddr.new(client_ip)
+        end
+      end
+    rescue StandardError => e
+      Rails.logger.debug("No se pudo verificar Googlebot para #{request.remote_ip}: #{e.class}")
       false
     end
 

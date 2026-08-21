@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'resolv'
 
 RSpec.describe ApplicationController, type: :controller do
   controller do
@@ -38,6 +39,32 @@ RSpec.describe ApplicationController, type: :controller do
     it 'no rompe flujo cuando el CIDR esta mal configurado' do
       allow(ENV).to receive(:fetch).with('STARTUP_CAPTCHA_SKIP_IPS', '').and_return('valor_invalido')
       allow_any_instance_of(ActionDispatch::Request).to receive(:remote_ip).and_return('172.16.4.20')
+
+      get :index
+
+      expect(response).to redirect_to('/startup_captcha')
+    end
+  end
+
+  describe 'startup_captcha_skip_googlebot?' do
+    it 'omite gatekeeper para un Googlebot verificado por DNS' do
+      ip = '66.249.79.1'
+      hostname = 'crawl-66-249-79-1.googlebot.com'
+      allow_any_instance_of(ActionDispatch::Request).to receive(:remote_ip).and_return(ip)
+      allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return('Mozilla/5.0 (compatible; Googlebot/2.1)')
+      allow(Resolv).to receive(:getname).with(ip).and_return(hostname)
+      allow(Resolv).to receive(:getaddresses).with(hostname).and_return([ip])
+
+      get :index
+
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'no confia en un User-Agent de Googlebot sin verificacion DNS' do
+      ip = '203.0.113.10'
+      allow_any_instance_of(ActionDispatch::Request).to receive(:remote_ip).and_return(ip)
+      allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return('Googlebot/2.1')
+      allow(Resolv).to receive(:getname).with(ip).and_return('crawler.example.net')
 
       get :index
 
