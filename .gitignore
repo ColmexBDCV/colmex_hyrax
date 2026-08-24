@@ -102,4 +102,5 @@ log_fedora_startup
 .opencode/node_modules
 .opencode/*.json
 .hermes
+public/sitemap.xml.gz
 

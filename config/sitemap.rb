@@ -1,10 +1,10 @@
-sitemap_host = ENV['SEO_HOST'].presence || ENV['URL'].presence || 'example.com'
+sitemap_host = ENV['SEO_HOST'].presence || ENV['URL'].presence || 'https://repositorio.colmex.mx'
 normalized_host = sitemap_host.match?(%r{\Ahttps?://}) ? sitemap_host : "https://#{sitemap_host}"
 
 SitemapGenerator::Sitemap.default_host = normalized_host
 SitemapGenerator::Sitemap.public_path = 'public/'
 
-SitemapGenerator::Sitemap.create do
+SitemapGenerator::Sitemap.create(include_root: false) do
   add_public_documents = lambda do |model_names, path_prefix|
     model_names.each do |model_name|
       escaped_models = "\"#{model_name}\""
@@ -36,14 +36,6 @@ SitemapGenerator::Sitemap.create do
     end
   end
 
-  add '/', changefreq: 'daily', priority: 1.0
-  add '/catalog', changefreq: 'daily', priority: 0.8
-  add '/iiif/collection', changefreq: 'weekly', priority: 0.6
-  add '/subject_cloud', changefreq: 'weekly', priority: 0.5
-  add '/timeline_map', changefreq: 'weekly', priority: 0.5
-  add '/descargas', changefreq: 'weekly', priority: 0.4
-
   work_models = Hyrax.config.curation_concerns.map(&:to_s)
   add_public_documents.call(work_models, ->(model_name) { "/concern/#{model_name.underscore.pluralize}" }) if work_models.present?
-  add_public_documents.call(['Collection'], ->(_model_name) { '/collections' })
 end

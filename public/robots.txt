@@ -7,5 +7,6 @@ Disallow: /admin
 Disallow: /dashboard
 Disallow: /jobs
 Disallow: /notifications
+Disallow: /catalog
 
-Sitemap: /sitemap.xml.gz
+Sitemap: https://repositorio.colmex.mx/sitemap.xml.gz

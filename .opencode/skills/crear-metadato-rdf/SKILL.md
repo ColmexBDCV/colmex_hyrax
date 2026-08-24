@@ -13,7 +13,7 @@ the user.
 
 Before asking questions or proposing files, inspect:
 
-- `docs/CREACION_DE_METADATOS.md`
+- `.opencode/skills/crear-metadato-rdf/references/CREACION_DE_METADATOS.md`
 - `app/models/vocab/`
 - `app/models/concerns/hyrax/basic_metadata.rb`
 - `app/indexers/hyrax/basic_metadata_indexer.rb`
