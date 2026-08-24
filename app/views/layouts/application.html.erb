@@ -8,6 +8,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= display_meta_tags site: t('hyrax.product_name') %>
+    <link rel="canonical" href="<%= seo_canonical_url %>">
     <% if Rails.env.development? || Rails.env.test? %>
       <meta name="robots" content="noindex, nofollow">
     <% end %>

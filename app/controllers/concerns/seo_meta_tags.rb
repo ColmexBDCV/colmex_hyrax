@@ -3,7 +3,7 @@ module SeoMetaTags
 
   included do
     before_action :set_default_seo_meta_tags
-    helper_method :seo_indexable?, :seo_json_ld
+    helper_method :seo_indexable?, :seo_json_ld, :seo_canonical_url
   end
 
   private
@@ -16,7 +16,6 @@ module SeoMetaTags
       separator: '|',
       description: seo_description,
       keywords: seo_keywords,
-      canonical: seo_canonical_url,
       noindex: !seo_indexable?,
       nofollow: !seo_indexable?,
       og: {
