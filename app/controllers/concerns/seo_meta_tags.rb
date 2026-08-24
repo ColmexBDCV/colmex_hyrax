@@ -142,6 +142,8 @@ module SeoMetaTags
   def seo_canonical_query_params
     if controller_name == 'catalog' && action_name == 'index'
       request.query_parameters.slice('q', 'search_field').except('locale', 'utf8', 'commit')
+    elsif action_name == 'show'
+      {}
     else
       request.query_parameters.except('utf8', 'commit', 'locale', 'page').except(:utf8, :commit, :locale, :page)
     end
