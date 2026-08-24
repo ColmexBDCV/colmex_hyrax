@@ -24,7 +24,9 @@
     <meta name="citation_author" content="<%= creator %>" />
   <% end %>
   <meta name="citation_publication_date" content="<%= @presenter.date_created.first %>" />
-  <meta name="citation_pdf_url" content="<%= @presenter.download_url %>" />
+  <% if @presenter.representative_presenter&.pdf? && @presenter.download_url.present? %>
+    <meta name="citation_pdf_url" content="<%= @presenter.download_url %>" />
+  <% end %>
   <!-- Hyrax does not yet support these metadata -->
   <!--
     <meta name="citation_journal_title" content=""/>
