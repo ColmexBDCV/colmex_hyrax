@@ -1,7 +1,12 @@
 development:
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/hydra-development" %>
+  timeout: 7200
+  open_timeout: 300
 test:
   url: <%= ENV['SOLR_TEST_URL'] || "http://localhost:8985/solr/hydra-test" %>
+  timeout: 7200
+  open_timeout: 300
 production:
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/hydra-indexer" %>
-
+  timeout: 7200
+  open_timeout: 300
