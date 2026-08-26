@@ -25,12 +25,12 @@
           %>
           <% if @presenter.representative_presenter.nil? || 
                 # (fs == "restricted" && !user_signed_in?)|| 
-                @presenter.representative_presenter.office_document? || 
-              !(@presenter.representative_presenter.video? || 
-                @presenter.representative_presenter.audio? || 
-                @presenter.representative_presenter.pdf? ||
+                (@presenter.representative_presenter.respond_to?(:office_document?) && @presenter.representative_presenter.office_document?) || 
+              !((@presenter.representative_presenter.respond_to?(:video?) && @presenter.representative_presenter.video?) || 
+                (@presenter.representative_presenter.respond_to?(:audio?) && @presenter.representative_presenter.audio?) || 
+                (@presenter.representative_presenter.respond_to?(:pdf?) && @presenter.representative_presenter.pdf?) ||
                 
-                @presenter.representative_presenter.image? ) then %>
+                (@presenter.representative_presenter.respond_to?(:image?) && @presenter.representative_presenter.image?)) then %>
               
               <%# first = 3 second = 9 third = 4 %>
               <div class="col-sm-3 text-center">
@@ -87,7 +87,8 @@
                 </div>
               
                 
-                <% if @presenter.representative_presenter.pdf? || @presenter.representative_presenter.image?%>
+                    <% if (@presenter.representative_presenter.respond_to?(:pdf?) && @presenter.representative_presenter.pdf?) ||
+                      (@presenter.representative_presenter.respond_to?(:image?) && @presenter.representative_presenter.image?) %>
                   <div class="col-sm-12">
                     <%= render 'playlists', presenter: @presenter %>                    
                   </div>
