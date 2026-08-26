@@ -111,7 +111,10 @@ module Hyrax
         begin
           result = member_presenters([representative_id]).first
           return nil if result.try(:id) == id
-          result.try(:representative_presenter) || result
+          representative = result.try(:representative_presenter) || result
+          return nil unless representative.respond_to?(:image?)
+
+          representative
         rescue Hyrax::ObjectNotFoundError
           Hyrax.logger.warn "Unable to find representative_id #{representative_id} for work #{id}"
           return nil
