@@ -78,6 +78,7 @@ module Hyrax
     def iiif_viewer?
       representative_id.present? &&
         representative_presenter.present? &&
+        representative_presenter.respond_to?(:image?) &&
         representative_presenter.image? &&
         Hyrax.config.iiif_image_server? &&
         members_include_viewable_image?
