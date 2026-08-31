@@ -8,34 +8,38 @@
         <div class="morris-hover-row-label"></div>
       </div>
       <% repository_objects = Hyrax::Admin::DashboardPresenter.new.repository_objects.to_json%>
-      
+      <% if JSON.parse(repository_objects).present? %>
       <script>
-        
-        var ro = new Morris.Donut({
-            element: 'dashboard-visibility',
-            data: [
-              <% JSON.parse(repository_objects).each do |row| %>
-                { label: "<%= row["label"] %>", value: <%= row["value"].to_i %> },
-              <% end %>
-            ],  
-            colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
-            gridTextSize: '12px',
-            resize: false
-          });
-          $('#dashboard-visibility tspan:first').text("")
-          $('#dashboard-visibility tspan').css("font-size","xx-large")
-          
-          (ro.segments || []).forEach(function(segment, i) {
-              segment.handlers['hover'].push( function(){
+        // solo corre si el contenedor sigue en el DOM (evita fallos si Turbolinks ya navego a otra pagina)
+        if (document.getElementById('dashboard-visibility')) {
+          var ro = new Morris.Donut({
+              element: 'dashboard-visibility',
+              data: [
+                <% JSON.parse(repository_objects).each do |row| %>
+                  { label: "<%= row["label"] %>", value: <%= row["value"].to_i %> },
+                <% end %>
+              ],  
+              colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
+              gridTextSize: '12px',
+              resize: false
+            });
+            $('#dashboard-visibility tspan:first').text("");
+            $('#dashboard-visibility tspan').css("font-size","xx-large");
+            
+            (ro.segments || []).forEach(function(segment, i) {
+                segment.handlers['hover'].push( function(){
+                    if (!document.getElementById('dashboard-visibility')) return;
+                    $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
+                    $('#dashboard-visibility tspan:first').text("")
+                    $('#dashboard-visibility tspan').css("font-size","xx-large")
+                });
+                if (segment.selected) {
                   $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
-                  $('#dashboard-visibility tspan:first').text("")
-                  $('#dashboard-visibility tspan').css("font-size","xx-large")
-              });
-              if (segment.selected) {
-                $('#rodetails-item .morris-hover-row-label').text(ro.data[i].label);
-              }
-          });
+                }
+            });
+        }
       </script>
+      <% end %>
       </div>
       <table class="table table-striped sr-only text-left">
         <thead>

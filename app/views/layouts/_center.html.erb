@@ -8,32 +8,38 @@
           <div class="morris-hover-row-label"></div>
         </div>
       <% @centers = Hyrax::Statistic.centers %>
+      <% if @centers.present? %>
       <script>
-        var center = new Morris.Donut({
-            element: 'dashboard-centers',
-            data: [
-              <% @centers.each do |row| %>
-                { label: "<%= row[0] %>", value: <%= row[1].to_i %> },
-              <% end %>
-            ],  
-            colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
-            gridTextSize: '12px',
-            // resize: false
-          });
-          $('#dashboard-centers tspan:first').text("")
-          $('#dashboard-centers tspan').css("font-size","xx-large")
-          
-          (center.segments || []).forEach(function(segment, i) {
-              segment.handlers['hover'].push( function(){
+        // solo corre si el contenedor sigue en el DOM (evita fallos si Turbolinks ya navego a otra pagina)
+        if (document.getElementById('dashboard-centers')) {
+          var center = new Morris.Donut({
+              element: 'dashboard-centers',
+              data: [
+                <% @centers.each do |row| %>
+                  { label: "<%= row[0] %>", value: <%= row[1].to_i %> },
+                <% end %>
+              ],  
+              colors: ['#001219','#005f73','#0a9396','#94d2bd','#e9d8a6','#ee9b00','#ca6702','#bb3e03','#ae2012','#9b2226'],
+              gridTextSize: '12px',
+              // resize: false
+            });
+            $('#dashboard-centers tspan:first').text("");
+            $('#dashboard-centers tspan').css("font-size","xx-large");
+            
+            (center.segments || []).forEach(function(segment, i) {
+                segment.handlers['hover'].push( function(){
+                    if (!document.getElementById('dashboard-centers')) return;
+                    $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
+                    $('#dashboard-centers tspan:first').text("")
+                    $('#dashboard-centers tspan').css("font-size","xx-large")
+                });
+                if (segment.selected) {
                   $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
-                  $('#dashboard-centers tspan:first').text("")
-                  $('#dashboard-centers tspan').css("font-size","xx-large")
-              });
-              if (segment.selected) {
-                $('#centerdetails-item .morris-hover-row-label').text(center.data[i].label);
-              }
-          });
+                }
+            });
+        }
       </script>
+      <% end %>
     </div>
                       
     <table aria-label="<%= t('hyrax.homepage.center') %>" class="table table-striped sr-only text-left">
