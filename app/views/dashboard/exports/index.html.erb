@@ -92,7 +92,9 @@
 
             <script>
               function updateExportInputs(){
-                var v = document.getElementById('export_type_select').value;
+                var select = document.getElementById('export_type_select');
+                if (!select) return; // el listener de turbolinks:load persiste aunque se navegue fuera de /exports
+                var v = select.value;
                 var ids = ['work_type_select','collection_input','thematic_collection_input','key_input','value_input','fields_input'];
                 ids.forEach(function(i){ var el = document.getElementById(i); if(el) el.disabled = true; });
                 var submit = document.getElementById('export_submit');
@@ -122,8 +124,7 @@
                 if(submit) submit.disabled = false;
               }
 
-              document.addEventListener('turbolinks:load', updateExportInputs);
-              document.addEventListener('DOMContentLoaded', function(){
+              document.addEventListener('turbolinks:load', function(){
                 var sel = document.getElementById('export_type_select');
                 if(sel) sel.addEventListener('change', updateExportInputs);
                 updateExportInputs();
