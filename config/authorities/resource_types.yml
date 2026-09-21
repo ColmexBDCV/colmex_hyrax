@@ -9,14 +9,14 @@ terms:
     term: Artículo en revista COLMEX
   - id: Audio
     term: Audio
-  - id: Datos de investigación
-    term: Datos de investigación
   - id: Capítulo de libro
     term: Capítulo de libro
   - id: Convenio
     term: Convenio
   - id: Convocatoria Pública
     term: Convocatoria Pública
+  - id: Datos de investigación
+    term: Datos de investigación
   - id: Decreto
     term: Decreto
   - id: Documento archivístico
