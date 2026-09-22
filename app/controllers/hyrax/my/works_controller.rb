@@ -86,6 +86,8 @@ module Hyrax
           config.add_facet_field "is_graduate_of_sim", limit: 5
           config.add_facet_field "beginning_sim", limit: 5
           config.add_facet_field "ending_sim", limit: 5
+          config.add_facet_field "criterio_seaes_sim", limit: 5
+          config.add_facet_field "justificacion_seaes_sim", limit: 5
         end
       end
       configure_facets

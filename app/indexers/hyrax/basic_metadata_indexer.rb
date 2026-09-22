@@ -21,7 +21,8 @@ module Hyrax
        resource_access_restrictions resource_use_restrictions manifestation_access_restrictions
        manifestation_use_restrictions item_access_restrictions item_use_restrictions collector_collective_agent
        has_transformation_by_genre is_transformation_by_genre has_category_of_work is_graduate_of has_carrier_type is_dancer_agent_of
-       is_person_member_of_collective_agent has_person_member_of_collective_agent]
+        is_person_member_of_collective_agent has_person_member_of_collective_agent criterio_seaes
+        justificacion_seaes]
 
     self.stored_fields = %i[description identifier doi isbn related_url handle digital_file_characteristics]
     self.symbol_fields = %i[import_url]

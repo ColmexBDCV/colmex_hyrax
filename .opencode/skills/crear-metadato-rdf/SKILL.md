@@ -83,6 +83,19 @@ or local RDF term can be generated. Ask for confirmation of all of these:
 - Complete resulting URI.
 - Local vocabulary class/file where the term will be declared.
 
+If a confirmed local predicate is only used by one model or concern, prefer
+declaring it directly with `::RDF::URI.new('<complete URI>')` at the property
+definition instead of creating a one-use vocabulary file. Create or extend a
+file under `app/models/vocab/` only when the term is reused, belongs to an
+existing vocabulary namespace, or the user explicitly requests a vocabulary
+class.
+
+For a controlled vocabulary backed by QA, put the terms in
+`config/authorities/<name>.yml` and use QA's local file authority as the source
+of form options. Local YAML authorities are discovered automatically; do not
+add a manual initializer registration unless the authority intentionally uses a
+database-backed `TableBasedAuthority`.
+
 An RDA typo changes the RDF URI and makes persisted data semantically wrong.
 Never normalize, correct, or change the capitalization of a confirmed term
 without telling the user.
@@ -117,7 +130,8 @@ but still call out any inferred defaults.
 For a shared field, update only the layers that the confirmed behavior
 requires, normally:
 
-1. Add or extend the selected vocabulary in `app/models/vocab/*.rb`.
+1. Add or extend the selected vocabulary in `app/models/vocab/*.rb`, or use
+   `::RDF::URI.new` inline for a confirmed one-use local predicate.
 2. Add the ActiveFedora property to `Hyrax::BasicMetadata` before its schema
    finalization behavior takes effect.
 3. Add the attribute to the appropriate collection in
@@ -137,6 +151,11 @@ requires, normally:
 10. Add `add_index_field` when the field belongs in search results.
 11. Add `add_show_field` when the field belongs in the individual result view.
 12. Add locale labels in the applicable Spanish and English files.
+
+For a shared field that needs a custom editor, add the corresponding partial
+under `app/views/records/edit_fields/`. Use QA-provided options for controlled
+selects rather than duplicating terms in the view. Follow the existing
+`_description.html.erb` pattern for wide multi-line text fields.
 
 For a type-specific field, use that type's model, form, presenter, view, and
 locale files instead of the shared layers. Keep the same Solr and locale

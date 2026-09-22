@@ -4,7 +4,7 @@
 
 En este repositorio, crear un campo de metadatos no consiste solo en añadir un `property` al modelo. Para que el campo sea útil debe quedar definido con su URI RDF, persistirse en Fedora, exponerse en el formulario, indexarse en Solr, mostrarse en la ficha y tener una etiqueta localizada.
 
-Los vocabularios RDA usados por la aplicación no están disponibles como clases listas para usar en la gema `rdf-vocab`. Por ello se declaran manualmente en `app/models/vocab/` y se consumen mediante `Vocab::...`.
+Los vocabularios RDA usados por la aplicación no están disponibles como clases listas para usar en la gema `rdf-vocab`. Por ello se declaran manualmente en `app/models/vocab/` y se consumen mediante `Vocab::...`. Para un predicado local confirmado que solo se use en una propiedad, es preferible declararlo directamente con `::RDF::URI.new('<URI completa>')` en el modelo o concern, evitando crear un archivo de vocabulario de un solo uso.
 
 ## Flujo completo
 
@@ -24,7 +24,30 @@ Para un campo nuevo, revisar y modificar según aplique:
 
 No todos los campos son compartidos. Los campos comunes a las obras se definen en `Hyrax::BasicMetadata`; los propios de un tipo de obra se definen en el modelo de ese tipo, como `Thesis`, `Photography` o `Map`.
 
-## 1. Declarar o ampliar el vocabulario RDA
+## Vocabularios controlados con QA
+
+Cuando los valores permitidos provienen de una lista controlada, declararlos en
+`config/authorities/<nombre>.yml` con la estructura `terms`, `id` y `term`.
+QA descubre automáticamente estos archivos como autoridades locales basadas en
+archivo. No registrar manualmente la autoridad en un initializer salvo que se
+requiera deliberadamente una autoridad basada en la tabla de QA.
+
+Para un selector múltiple en el formulario, obtener las opciones desde QA en el
+parcial específico del campo, sin repetir la lista en la vista:
+
+```erb
+<%= f.input key,
+            as: :select,
+            collection: Qa::Authorities::Local.subauthority_for('nuevo_campo').all.map { |term| [term[:label], term[:id]] },
+            input_html: { class: 'form-control', multiple: true },
+            required: false %>
+```
+
+`as: :controlled_vocabulary` proporciona un autocompletado, no un dropdown con
+todos los términos desde el inicio. Usarlo solo cuando esa interacción sea la
+requerida.
+
+## 1. Declarar o ampliar el vocabulario RDA o usar una URI directa
 
 Los vocabularios locales siguen este patrón:
 
@@ -38,6 +61,19 @@ end
 ```
 
 Cada llamada a `term` añade un término al espacio de nombres de esa clase. Después se usa como `::Vocab::RDAM.detailsOfGenerationOfDigitalResource`.
+
+Cuando el predicado local no se reutiliza y no requiere una clase de vocabulario,
+declararlo directamente en la propiedad:
+
+```ruby
+property :nuevo_campo,
+         predicate: ::RDF::URI.new('https://ejemplo.org/vocabulario#nuevo_campo'),
+         multiple: true
+```
+
+Usar un archivo en `app/models/vocab/` cuando el término se reutilice, forme
+parte de un vocabulario existente o el usuario solicite explícitamente una
+clase de vocabulario.
 
 Los espacios de nombres existentes incluyen, entre otros:
 
@@ -137,6 +173,11 @@ Para un campo compartido, agregarlo a `self.terms` de `app/forms/hyrax/forms/wor
 
 Los `terms` permiten que HydraEditor construya el control del formulario y que el campo pase por el formulario al modelo. Declarar una propiedad sin añadirla a los `terms` permite usarla desde consola o importador, pero no la muestra ni permite editarla desde la interfaz estándar.
 
+Si el campo necesita una presentación distinta a la predeterminada, crear un
+parcial en `app/views/records/edit_fields/_<campo>.html.erb`. Para texto amplio,
+seguir el patrón de `_description.html.erb`, usando `as: :multi_value`,
+`type: 'textarea'` y `rows` cuando la propiedad sea múltiple.
+
 ## 5. Hacerlo visible en la ficha
 
 Los presentadores reciben los valores desde el documento Solr, no directamente desde Fedora. Para un campo específico, delegarlo en el presentador del tipo:
@@ -223,7 +264,8 @@ No agregar una faceta para un campo de cardinalidad alta o texto libre sin valor
 ## Checklist de implementación
 
 1. Validar en RDA Registry el URI y la semántica del elemento.
-2. Declarar el término faltante en `app/models/vocab/<vocabulario>.rb`.
+2. Declarar el término faltante en `app/models/vocab/<vocabulario>.rb`, o usar
+   `::RDF::URI.new` directamente si es un predicado local de un solo uso.
 3. Declarar la propiedad en el modelo o concern, antes de incluir `Hyrax::BasicMetadata` cuando corresponda.
 4. Definir indexación: bloque `index` para campos propios o `BasicMetadataIndexer` para campos compartidos.
 5. Añadir el método correspondiente en `app/models/solr_document.rb`.

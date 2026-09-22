@@ -127,6 +127,8 @@ es:
           is_graduate_of_sim: Programa de estudios
           is_dancer_agent_of_sim: Danzante
           local_resource_identifier_sim: Identificador institucional
+          criterio_seaes_sim: SEAES
+          justificacion_seaes_sim: SEAES Justificación
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -242,6 +244,8 @@ es:
           is_dancer_agent_of_tesim: Danzante
           local_resource_identifier_tesim: Identificador institucional
           parent_work_titles_tesim: Es parte de
+          criterio_seaes_tesim: SEAES
+          justificacion_seaes_tesim: SEAES Justificación
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -712,6 +716,8 @@ es:
         unfeature: Sin Características
       show:
         #metadatos de la vista _show_actions.html.erb
+        criterio_seaes: SEAES
+        justificacion_seaes: SEAES Justificación
         has_creator: Creador
         unfeature: Sin Características
         edit: Editar
@@ -1211,7 +1217,9 @@ es:
         number: Número
         contained_in: "Incluido en:"
         database: Base de Datos
-        subject_conacyt: Persona del CONACYT        
+        criterio_seaes: SEAES
+        justificacion_seaes: SEAES Justificación
+        subject_conacyt: Persona del CONACYT
         corporate_body: Autor corporativo
         collective_agent: Autor congreso
         organizer_author: Coordinador / Organizador

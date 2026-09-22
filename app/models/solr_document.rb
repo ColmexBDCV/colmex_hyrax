@@ -716,4 +716,12 @@ class SolrDocument
     self['local_resource_identifier_tesim']
   end
 
+  def criterio_seaes
+    self['criterio_seaes_tesim']
+  end
+
+  def justificacion_seaes
+    self['justificacion_seaes_tesim']
+  end
+
 end
