@@ -107,7 +107,20 @@ module Hyrax
           file_set.visibility = work.visibility unless assign_visibility?(file_set_params)
         end
 
-        file_set.title = work.title
+        existing_file_sets = work.file_sets.to_a
+
+        if existing_file_sets.empty?
+          file_set.title = work.title
+        else
+          existing_file_sets.each do |fs|
+            next unless Array.wrap(fs.title) == Array.wrap(work.title)
+
+            fs.title = Array.wrap(fs.label)
+            fs.save!
+          end
+
+          file_set.title = Array.wrap(file_set.label)
+        end
 
         file_set.save
 

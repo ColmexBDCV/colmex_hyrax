@@ -1,0 +1,8 @@
+<% members = Array.wrap(members) %>
+<% file_set_members = members.select { |member| member.model_name.name == 'FileSet' } %>
+<% file_set_count = file_set_members.size %>
+<% total_file_set_size = file_set_members.sum { |member| member.file_size.to_i } %>
+<% human_total_size = number_to_human_size(total_file_set_size) %>
+<p class="file-set-count text-muted">
+  <%= t('hyrax.base.items_tabs.file_set_summary', count: file_set_count, size: human_total_size) %>
+</p>

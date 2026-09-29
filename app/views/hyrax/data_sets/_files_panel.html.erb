@@ -1,0 +1,56 @@
+<% readme_content = readme_content_for(presenter) %>
+<% files_tab_id = "files-tab-#{presenter.id.to_s.parameterize}" %>
+<% readme_tab_id = "readme-tab-#{presenter.id.to_s.parameterize}" %>
+<% members = presenter.member_presenters_for(presenter.ordered_ids) %>
+<style>
+  .items-panel-thumbnails .thumbnail {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+
+  .items-panel-thumbnails .thumbnail img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+</style>
+<div class="panel panel-default items-panel">
+  <div class="panel-heading" style="background-color: white;">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="<%= "##{files_tab_id}" %>" aria-controls="<%= files_tab_id %>" role="tab" data-toggle="tab">
+          <%= t('hyrax.base.items_tabs.files', default: 'Files') %>
+        </a>
+      </li>
+      <% if readme_content %>
+        <li role="presentation">
+          <a href="<%= "##{readme_tab_id}" %>" aria-controls="<%= readme_tab_id %>" role="tab" data-toggle="tab">
+            <%= t('hyrax.base.items_tabs.readme', default: 'README') %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="panel-body tab-content">
+    <div role="tabpanel" class="tab-pane active" id="<%= files_tab_id %>">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= render 'file_set_count', members: members %>
+        </div>
+      </div>
+      <div class="items-panel-thumbnails">
+        <%= render 'items', presenter: presenter %>
+      </div>
+    </div>
+    <% if readme_content %>
+      <div role="tabpanel" class="tab-pane" id="<%= readme_tab_id %>">
+        <pre class="readme-content" style="white-space: pre-wrap;"><%= h(readme_content) %></pre>
+      </div>
+    <% end %>
+  </div>
+</div>

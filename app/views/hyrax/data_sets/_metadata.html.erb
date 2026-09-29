@@ -1,0 +1,10 @@
+<% metadata_definition_list = capture do %>
+    <%= render 'attribute_rows', presenter: presenter %>
+    <%= presenter.attribute_to_html(:depositor, label: t('hyrax.base.show.depositor', default: 'Depositor'), html_dl: true) %>
+    <%= presenter.attribute_to_html(:system_created, label: t('hyrax.base.show.system_created', default: 'System Created'), render_as: :date, html_dl: true) %>
+    <%= presenter.attribute_to_html(:system_modified, label: t('hyrax.base.show.system_modified', default: 'System Modified'), render_as: :date, html_dl: true) %>
+    <%= presenter.attribute_to_html(:embargo_release_date, render_as: :date, html_dl: true) %>
+    <%= presenter.attribute_to_html(:lease_expiration_date, render_as: :date, html_dl: true) %>
+<% end %>
+<% # byebug %>
+<%= metadata_dl_to_table(metadata_definition_list, presenter: presenter) %>
