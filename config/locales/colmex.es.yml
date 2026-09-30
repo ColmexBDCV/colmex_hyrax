@@ -129,6 +129,26 @@ es:
           local_resource_identifier_sim: Identificador institucional
           criterio_seaes_sim: SEAES
           justificacion_seaes_sim: SEAES Justificación
+          author_identifier_sim: Identificador del autor
+          has_contact_information_sim: Contacto
+          data_type_sim: Tipo de datos
+          has_conceptualization_contributor_sim: Responsable de la conceptualización
+          has_data_curation_contributor_sim: Curador de datos
+          has_formal_analysis_contributor_sim: Responsable del análisis formal
+          has_funding_acquisition_contributor_sim: Responsable de la captación de fondos
+          has_investigation_contributor_sim: Investigador
+          has_methodology_contributor_sim: Responsable del desarrollo de la metodología
+          has_project_administration_contributor_sim: Administrador del proyecto
+          has_resources_contributor_sim: Responsable del suministro de recursos
+          has_software_contributor_sim: Responsable del desarrollo de software
+          has_supervision_contributor_sim: Supervisor
+          has_validation_contributor_sim: Responsable de la validación
+          has_visualization_contributor_sim: Responsable de la visualización
+          has_writing_original_draft_contributor_sim: Redactor
+          has_writing_review_editing_contributor_sim: Revisor y edición
+          has_degree_granting_institution_sim: Institución que otorga el grado
+          funding_information_sim: Información de financiamiento
+          has_designation_of_version_sim: Versión
         index:
           based_near_tesim: Ubicación
           based_near_label_tesim: Ubicación
@@ -246,6 +266,26 @@ es:
           parent_work_titles_tesim: Es parte de
           criterio_seaes_tesim: SEAES
           justificacion_seaes_tesim: SEAES Justificación
+          author_identifier_tesim: Identificador del autor
+          has_contact_information_tesim: Contacto
+          data_type_tesim: Tipo de datos
+          has_conceptualization_contributor_tesim: Responsable de la conceptualización
+          has_data_curation_contributor_tesim: Curador de datos
+          has_formal_analysis_contributor_tesim: Responsable del análisis formal
+          has_funding_acquisition_contributor_tesim: Responsable de la captación de fondos
+          has_investigation_contributor_tesim: Investigador
+          has_methodology_contributor_tesim: Responsable del desarrollo de la metodología
+          has_project_administration_contributor_tesim: Administrador del proyecto
+          has_resources_contributor_tesim: Responsable del suministro de recursos
+          has_software_contributor_tesim: Responsable del desarrollo de software
+          has_supervision_contributor_tesim: Supervisor
+          has_validation_contributor_tesim: Responsable de la validación
+          has_visualization_contributor_tesim: Responsable de la visualización
+          has_writing_original_draft_contributor_tesim: Redactor
+          has_writing_review_editing_contributor_tesim: Revisor y edición
+          has_degree_granting_institution_tesim: Institución que otorga el grado
+          funding_information_tesim: Información de financiamiento
+          has_designation_of_version_tesim: Versión
         show:
           based_near_tesim: Ubicación
           contributor_tesim: Colaborador
@@ -718,6 +758,26 @@ es:
         #metadatos de la vista _show_actions.html.erb
         criterio_seaes: SEAES
         justificacion_seaes: SEAES Justificación
+        author_identifier: Identificador del autor
+        has_contact_information: Contacto
+        data_type: Tipo de datos
+        has_conceptualization_contributor: Responsable de la conceptualización
+        has_data_curation_contributor: Curador de datos
+        has_formal_analysis_contributor: Responsable del análisis formal
+        has_funding_acquisition_contributor: Responsable de la captación de fondos
+        has_investigation_contributor: Investigador
+        has_methodology_contributor: Responsable del desarrollo de la metodología
+        has_project_administration_contributor: Administrador del proyecto
+        has_resources_contributor: Responsable del suministro de recursos
+        has_software_contributor: Responsable del desarrollo de software
+        has_supervision_contributor: Supervisor
+        has_validation_contributor: Responsable de la validación
+        has_visualization_contributor: Responsable de la visualización
+        has_writing_original_draft_contributor: Redactor
+        has_writing_review_editing_contributor: Revisor y edición
+        has_degree_granting_institution: Institución que otorga el grado
+        funding_information: Información de financiamiento
+        has_designation_of_version: Versión
         has_creator: Creador
         unfeature: Sin Características
         edit: Editar
@@ -1219,6 +1279,26 @@ es:
         database: Base de Datos
         criterio_seaes: SEAES
         justificacion_seaes: SEAES Justificación
+        author_identifier: Identificador del autor
+        has_contact_information: Contacto
+        data_type: Tipo de datos
+        has_conceptualization_contributor: Responsable de la conceptualización
+        has_data_curation_contributor: Curador de datos
+        has_formal_analysis_contributor: Responsable del análisis formal
+        has_funding_acquisition_contributor: Responsable de la captación de fondos
+        has_investigation_contributor: Investigador
+        has_methodology_contributor: Responsable del desarrollo de la metodología
+        has_project_administration_contributor: Administrador del proyecto
+        has_resources_contributor: Responsable del suministro de recursos
+        has_software_contributor: Responsable del desarrollo de software
+        has_supervision_contributor: Supervisor
+        has_validation_contributor: Responsable de la validación
+        has_visualization_contributor: Responsable de la visualización
+        has_writing_original_draft_contributor: Redactor
+        has_writing_review_editing_contributor: Revisor y edición
+        has_degree_granting_institution: Institución que otorga el grado
+        funding_information: Información de financiamiento
+        has_designation_of_version: Versión
         subject_conacyt: Persona del CONACYT
         corporate_body: Autor corporativo
         collective_agent: Autor congreso

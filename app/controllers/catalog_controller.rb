@@ -158,6 +158,9 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("is_graduate_of", :facetable), limit: 5
     config.add_facet_field solr_name("is_dancer_agent_of", :facetable), limit: 5
     config.add_facet_field solr_name("criterio_seaes", :facetable), limit: 5
+    %w[author_identifier has_contact_information data_type has_conceptualization_contributor has_data_curation_contributor has_formal_analysis_contributor has_funding_acquisition_contributor has_investigation_contributor has_methodology_contributor has_project_administration_contributor has_resources_contributor has_software_contributor has_supervision_contributor has_validation_contributor has_visualization_contributor has_writing_original_draft_contributor has_writing_review_editing_contributor has_degree_granting_institution funding_information has_designation_of_version].each do |field|
+      config.add_facet_field solr_name(field, :facetable), limit: 5
+    end
     # config.add_facet_field solr_name("justificacion_seaes", :facetable), limit: 5
     # config.add_facet_field solr_name("local_resource_identifier", :facetable), limit: 5
 
@@ -320,6 +323,9 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("is_dancer_agent_of", :stored_searchable), itemprop: 'is_dancer_agent_of', link_to_search: solr_name("is_dancer_agent_of", :facetable)
     config.add_index_field solr_name("criterio_seaes", :stored_searchable), itemprop: 'criterio_seaes', link_to_search: solr_name("criterio_seaes", :facetable)
     config.add_index_field solr_name("justificacion_seaes", :stored_searchable), itemprop: 'justificacion_seaes', link_to_search: solr_name("justificacion_seaes", :facetable)
+    %w[author_identifier has_contact_information data_type has_conceptualization_contributor has_data_curation_contributor has_formal_analysis_contributor has_funding_acquisition_contributor has_investigation_contributor has_methodology_contributor has_project_administration_contributor has_resources_contributor has_software_contributor has_supervision_contributor has_validation_contributor has_visualization_contributor has_writing_original_draft_contributor has_writing_review_editing_contributor has_degree_granting_institution funding_information has_designation_of_version].each do |field|
+      config.add_index_field solr_name(field, :stored_searchable), itemprop: field, link_to_search: solr_name(field, :facetable)
+    end
     config.add_index_field solr_name("parent_work_titles", :stored_searchable), itemprop: 'parent_work_titles', helper_method: :link_to_parent_works
     # config.add_index_field solr_name("local_resource_identifier", :stored_searchable), itemprop: 'local_resource_identifier', link_to_search: solr_name("local_resource_identifier", :facetable)
     # solr fields to be displayed in the show (single result) view
@@ -464,6 +470,9 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("is_dancer_agent_of", :stored_searchable)
     config.add_show_field solr_name("criterio_seaes", :stored_searchable)
     config.add_show_field solr_name("justificacion_seaes", :stored_searchable)
+    %w[author_identifier has_contact_information data_type has_conceptualization_contributor has_data_curation_contributor has_formal_analysis_contributor has_funding_acquisition_contributor has_investigation_contributor has_methodology_contributor has_project_administration_contributor has_resources_contributor has_software_contributor has_supervision_contributor has_validation_contributor has_visualization_contributor has_writing_original_draft_contributor has_writing_review_editing_contributor has_degree_granting_institution funding_information has_designation_of_version].each do |field|
+      config.add_show_field solr_name(field, :stored_searchable)
+    end
     config.add_show_field solr_name("parent_work_titles", :stored_searchable), helper_method: :link_to_parent_works
 
     # "fielded" search configuration. Used by pulldown among other places.

@@ -11,5 +11,6 @@ module Vocab
     term :isSubcollectionOf
     term :hasOrganizerCorporateBody
     term :hasMediumOfPerformanceOfMusicalContent
+    term :hasContactInformation
   end
 end

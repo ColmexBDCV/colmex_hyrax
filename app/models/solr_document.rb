@@ -732,4 +732,25 @@ class SolrDocument
     self['justificacion_seaes_tesim']
   end
 
+  def author_identifier; self['author_identifier_tesim']; end
+  def has_contact_information; self['has_contact_information_tesim']; end
+  def data_type; self['data_type_tesim']; end
+  def has_conceptualization_contributor; self['has_conceptualization_contributor_tesim']; end
+  def has_data_curation_contributor; self['has_data_curation_contributor_tesim']; end
+  def has_formal_analysis_contributor; self['has_formal_analysis_contributor_tesim']; end
+  def has_funding_acquisition_contributor; self['has_funding_acquisition_contributor_tesim']; end
+  def has_investigation_contributor; self['has_investigation_contributor_tesim']; end
+  def has_methodology_contributor; self['has_methodology_contributor_tesim']; end
+  def has_project_administration_contributor; self['has_project_administration_contributor_tesim']; end
+  def has_resources_contributor; self['has_resources_contributor_tesim']; end
+  def has_software_contributor; self['has_software_contributor_tesim']; end
+  def has_supervision_contributor; self['has_supervision_contributor_tesim']; end
+  def has_validation_contributor; self['has_validation_contributor_tesim']; end
+  def has_visualization_contributor; self['has_visualization_contributor_tesim']; end
+  def has_writing_original_draft_contributor; self['has_writing_original_draft_contributor_tesim']; end
+  def has_writing_review_editing_contributor; self['has_writing_review_editing_contributor_tesim']; end
+  def has_degree_granting_institution; self['has_degree_granting_institution_tesim']; end
+  def funding_information; self['funding_information_tesim']; end
+  def has_designation_of_version; self['has_designation_of_version_tesim']; end
+
 end

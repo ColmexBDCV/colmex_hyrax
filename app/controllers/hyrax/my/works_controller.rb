@@ -88,6 +88,9 @@ module Hyrax
           config.add_facet_field "ending_sim", limit: 5
           config.add_facet_field "criterio_seaes_sim", limit: 5
           config.add_facet_field "justificacion_seaes_sim", limit: 5
+          %w[author_identifier has_contact_information data_type has_conceptualization_contributor has_data_curation_contributor has_formal_analysis_contributor has_funding_acquisition_contributor has_investigation_contributor has_methodology_contributor has_project_administration_contributor has_resources_contributor has_software_contributor has_supervision_contributor has_validation_contributor has_visualization_contributor has_writing_original_draft_contributor has_writing_review_editing_contributor has_degree_granting_institution funding_information has_designation_of_version].each do |field|
+            config.add_facet_field "#{field}_sim", limit: 5
+          end
         end
       end
       configure_facets

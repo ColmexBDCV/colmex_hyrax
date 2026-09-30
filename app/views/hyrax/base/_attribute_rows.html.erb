@@ -39,6 +39,14 @@
 <%= presenter.attribute_to_html(:is_graduate_of, label: t('hyrax.base.show.is_graduate_of'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:criterio_seaes, label: t('hyrax.base.show.criterio_seaes'), render_as: :faceted, html_dl: true) %>
 <%= presenter.attribute_to_html(:justificacion_seaes, label: t('hyrax.base.show.justificacion_seaes'), render_as: :faceted, html_dl: true) %>
+<% [:author_identifier, :has_contact_information, :data_type, :has_conceptualization_contributor, :has_data_curation_contributor,
+    :has_formal_analysis_contributor, :has_funding_acquisition_contributor, :has_investigation_contributor, :has_methodology_contributor,
+    :has_project_administration_contributor, :has_resources_contributor, :has_software_contributor, :has_supervision_contributor,
+    :has_validation_contributor, :has_visualization_contributor, :has_writing_original_draft_contributor,
+    :has_writing_review_editing_contributor, :has_degree_granting_institution, :funding_information,
+    :has_designation_of_version].each do |a| %>
+  <%= presenter.attribute_to_html(a, label: t('hyrax.base.show.' + a.to_s), render_as: :faceted, html_dl: true) %>
+<% end %>
 
 
 <% [:note_of_timespan, :handle, :doi, :isbn, :alternate_title, :other_title, :system_requirements, :language_of_expression,

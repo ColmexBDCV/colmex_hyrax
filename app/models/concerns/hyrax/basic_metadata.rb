@@ -130,6 +130,27 @@ module Hyrax
       property :criterio_seaes, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/seaes#criterio_seaes'), multiple: true
       property :justificacion_seaes, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/seaes#justificacion_seaes'), multiple: true
 
+      property :author_identifier, predicate: ::RDF::URI.new('http://purl.org/spar/datacite/authorIdentifier'), multiple: true
+      property :has_contact_information, predicate: ::Vocab::RDAU.hasContactInformation, multiple: true
+      property :data_type, predicate: ::RDF::Vocab::DISCO.kindOfData, multiple: true
+      property :has_conceptualization_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasConceptualizationContributor'), multiple: true
+      property :has_data_curation_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasDataCurationContributor'), multiple: true
+      property :has_formal_analysis_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasFormalAnalysisContributor'), multiple: true
+      property :has_funding_acquisition_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasFundingAcquisitionContributor'), multiple: true
+      property :has_investigation_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasInvestigationContributor'), multiple: true
+      property :has_methodology_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasMethodologyContributor'), multiple: true
+      property :has_project_administration_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasProjectAdministrationContributor'), multiple: true
+      property :has_resources_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasResourcesContributor'), multiple: true
+      property :has_software_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasSoftwareContributor'), multiple: true
+      property :has_supervision_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasSupervisionContributor'), multiple: true
+      property :has_validation_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasValidationContributor'), multiple: true
+      property :has_visualization_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasVisualizationContributor'), multiple: true
+      property :has_writing_original_draft_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasWritingOriginalDraftContributor'), multiple: true
+      property :has_writing_review_editing_contributor, predicate: ::RDF::URI.new('https://biblioteca.colmex.mx/vocabularios/credit/hasWritingReviewEditingContributor'), multiple: true
+      property :has_degree_granting_institution, predicate: ::Vocab::RDAW.grantingInstitutionOrFaculty, multiple: true
+      property :funding_information, predicate: ::RDF::Vocab::DISCO.fundedBy, multiple: true
+      property :has_designation_of_version, predicate: ::Vocab::RDAE.hasDesignationOfVersion, multiple: true
+
       id_blank = proc { |attributes| attributes[:id].blank? }
 
       class_attribute :controlled_properties

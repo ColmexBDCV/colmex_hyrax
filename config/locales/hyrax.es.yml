@@ -1851,6 +1851,26 @@ es:
         rights_notes: Notas de derechos
         rights_statement: Declaración de derechos
         title: Título
+        author_identifier: Identificador del autor
+        has_contact_information: Contacto
+        data_type: Tipo de datos
+        has_conceptualization_contributor: Responsable de la conceptualización
+        has_data_curation_contributor: Curador de datos
+        has_formal_analysis_contributor: Responsable del análisis formal
+        has_funding_acquisition_contributor: Responsable de la captación de fondos
+        has_investigation_contributor: Investigador
+        has_methodology_contributor: Responsable del desarrollo de la metodología
+        has_project_administration_contributor: Administrador del proyecto
+        has_resources_contributor: Responsable del suministro de recursos
+        has_software_contributor: Responsable del desarrollo de software
+        has_supervision_contributor: Supervisor
+        has_validation_contributor: Responsable de la validación
+        has_visualization_contributor: Responsable de la visualización
+        has_writing_original_draft_contributor: Redactor
+        has_writing_review_editing_contributor: Revisor y edición
+        has_degree_granting_institution: Institución que otorga el grado
+        funding_information: Información de financiamiento
+        has_designation_of_version: Versión
         visibility_after_embargo: luego abrirlo a
         visibility_after_lease: luego restringirlo a
         visibility_during_embargo: Restringido a

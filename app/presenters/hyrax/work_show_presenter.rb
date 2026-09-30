@@ -58,7 +58,12 @@ module Hyrax
              :embargo_release_date, :lease_expiration_date, :thumbnail_id, :representative_id, :date_of_manifestation, :researcher_agent_of,
              :rendering_ids, :member_of_collection_ids, :collector_collective_agent, :note_of_timespan, :has_organizer_corporate_body,
              :has_transformation_by_genre, :is_transformation_by_genre, :has_category_of_work, :is_graduate_of, :is_person_member_of_collective_agent, :local_resource_identifier,
-              :has_person_member_of_collective_agent, :has_carrier_type, :is_dancer_agent_of, :criterio_seaes, :justificacion_seaes, to: :solr_document
+              :has_person_member_of_collective_agent, :has_carrier_type, :is_dancer_agent_of, :criterio_seaes, :justificacion_seaes,
+              :author_identifier, :has_contact_information, :data_type, :has_conceptualization_contributor, :has_data_curation_contributor,
+              :has_formal_analysis_contributor, :has_funding_acquisition_contributor, :has_investigation_contributor, :has_methodology_contributor,
+              :has_project_administration_contributor, :has_resources_contributor, :has_software_contributor, :has_supervision_contributor,
+              :has_validation_contributor, :has_visualization_contributor, :has_writing_original_draft_contributor,
+              :has_writing_review_editing_contributor, :has_degree_granting_institution, :funding_information, :has_designation_of_version, to: :solr_document
 
     def workflow
       @workflow ||= WorkflowPresenter.new(solr_document, current_ability)

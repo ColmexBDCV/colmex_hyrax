@@ -13,5 +13,6 @@ module Vocab
     term :contentType
     term :noteOnExpression
     term :scale
+    term :hasDesignationOfVersion
   end
 end

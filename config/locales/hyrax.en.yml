@@ -157,6 +157,26 @@ en:
           parent_work_titles_tesim: Is part of
           criterio_seaes_tesim: SEAES
           justificacion_seaes_tesim: SEAES Justification
+          author_identifier_tesim: Author identifier
+          has_contact_information_tesim: Contact information
+          data_type_tesim: Data type
+          has_conceptualization_contributor_tesim: Conceptualization contributor
+          has_data_curation_contributor_tesim: Data curation contributor
+          has_formal_analysis_contributor_tesim: Formal analysis contributor
+          has_funding_acquisition_contributor_tesim: Funding acquisition contributor
+          has_investigation_contributor_tesim: Investigation contributor
+          has_methodology_contributor_tesim: Methodology contributor
+          has_project_administration_contributor_tesim: Project administration contributor
+          has_resources_contributor_tesim: Resources contributor
+          has_software_contributor_tesim: Software contributor
+          has_supervision_contributor_tesim: Supervision contributor
+          has_validation_contributor_tesim: Validation contributor
+          has_visualization_contributor_tesim: Visualization contributor
+          has_writing_original_draft_contributor_tesim: Writing - original draft contributor
+          has_writing_review_editing_contributor_tesim: Writing - review and editing contributor
+          has_degree_granting_institution_tesim: Degree-granting institution
+          funding_information_tesim: Funding information
+          has_designation_of_version_tesim: Version
         show:
           based_near_tesim: Location
           contributor_tesim: Contributor
@@ -333,6 +353,26 @@ en:
       show:
         criterio_seaes: SEAES
         justificacion_seaes: SEAES Justification
+        author_identifier: Author identifier
+        has_contact_information: Contact information
+        data_type: Data type
+        has_conceptualization_contributor: Conceptualization contributor
+        has_data_curation_contributor: Data curation contributor
+        has_formal_analysis_contributor: Formal analysis contributor
+        has_funding_acquisition_contributor: Funding acquisition contributor
+        has_investigation_contributor: Investigation contributor
+        has_methodology_contributor: Methodology contributor
+        has_project_administration_contributor: Project administration contributor
+        has_resources_contributor: Resources contributor
+        has_software_contributor: Software contributor
+        has_supervision_contributor: Supervision contributor
+        has_validation_contributor: Validation contributor
+        has_visualization_contributor: Visualization contributor
+        has_writing_original_draft_contributor: Writing - original draft contributor
+        has_writing_review_editing_contributor: Writing - review and editing contributor
+        has_degree_granting_institution: Degree-granting institution
+        funding_information: Funding information
+        has_designation_of_version: Version
         depositor: Depositor
         system_created: System Created
         system_modified: System Modified
@@ -672,6 +712,30 @@ en:
       language_code: EN
     product_name_html: "Digital Collections of El Colegio de Mexico"
     product_name_movil: "Digital Collections of El Colegio de Mexico"
+
+  simple_form:
+    labels:
+      defaults:
+        author_identifier: Author identifier
+        has_contact_information: Contact information
+        data_type: Data type
+        has_conceptualization_contributor: Conceptualization contributor
+        has_data_curation_contributor: Data curation contributor
+        has_formal_analysis_contributor: Formal analysis contributor
+        has_funding_acquisition_contributor: Funding acquisition contributor
+        has_investigation_contributor: Investigation contributor
+        has_methodology_contributor: Methodology contributor
+        has_project_administration_contributor: Project administration contributor
+        has_resources_contributor: Resources contributor
+        has_software_contributor: Software contributor
+        has_supervision_contributor: Supervision contributor
+        has_validation_contributor: Validation contributor
+        has_visualization_contributor: Visualization contributor
+        has_writing_original_draft_contributor: Writing - original draft contributor
+        has_writing_review_editing_contributor: Writing - review and editing contributor
+        has_degree_granting_institution: Degree-granting institution
+        funding_information: Funding information
+        has_designation_of_version: Version
     
   
 

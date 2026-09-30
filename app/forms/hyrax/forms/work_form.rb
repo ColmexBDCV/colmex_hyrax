@@ -40,7 +40,12 @@ module Hyrax
                     :manifestation_access_restrictions, :manifestation_use_restrictions, :note_on_statement_of_responsibility, :is_person_member_of_collective_agent,
                      :has_person_member_of_collective_agent, :member_of_collection_ids, :admin_set_id, :note_of_timespan, :local_resource_identifier,
                      :criterio_seaes, :justificacion_seaes,
-                     :has_carrier_type, :has_transformation_by_genre, :is_transformation_by_genre, :has_category_of_work, :is_graduate_of, :is_dancer_agent_of]
+                     :has_carrier_type, :has_transformation_by_genre, :is_transformation_by_genre, :has_category_of_work, :is_graduate_of, :is_dancer_agent_of,
+                     :author_identifier, :has_contact_information, :data_type, :has_conceptualization_contributor, :has_data_curation_contributor,
+                     :has_formal_analysis_contributor, :has_funding_acquisition_contributor, :has_investigation_contributor, :has_methodology_contributor,
+                     :has_project_administration_contributor, :has_resources_contributor, :has_software_contributor, :has_supervision_contributor,
+                     :has_validation_contributor, :has_visualization_contributor, :has_writing_original_draft_contributor,
+                     :has_writing_review_editing_contributor, :has_degree_granting_institution, :funding_information, :has_designation_of_version]
 
       self.required_fields = [:title,
                               # :creator,
