@@ -14,3 +14,8 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.uncountable %w(research_data ResearchData)
+  inflect.singular /^hyrax_research_data$/i, 'hyrax_research_data'
+end

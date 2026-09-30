@@ -1,0 +1,29 @@
+en:
+  hyrax:
+    icons:
+      research_data:     'fa fa-file-text-o'
+    select_type:
+      research_data:
+        description:        "Research data works"
+        name:               "Research Data"
+    base:
+      show:
+        summary_of_work: Summary
+        nature_of_content: Nature of content
+        guide_to_work: Guide to work
+        analysis_of_work: Analysis of work
+        complemented_by_work: Complemented by work
+        production_method: Production method
+  blacklight:
+    search:
+      fields:
+        facet:
+          guide_to_work_sim: Guide to work
+          production_method_sim: Production method
+        index:
+          summary_of_work_tesim: Summary
+          nature_of_content_tesim: Nature of content
+          guide_to_work_tesim: Guide to work
+          analysis_of_work_tesim: Analysis of work
+          complemented_by_work_tesim: Complemented by work
+          production_method_tesim: Production method

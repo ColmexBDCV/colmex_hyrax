@@ -326,7 +326,6 @@ en:
         book: Book
         video: Video
         book_chapter: Book Chapter
-        database: Database
       workflow_roles:
         user: User
         workflow_role: Workflow role

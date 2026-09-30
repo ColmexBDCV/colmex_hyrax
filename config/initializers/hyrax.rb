@@ -13,8 +13,6 @@ Hyrax.config do |config|
   config.register_curation_concern :book_chapter
   # Injected via `rails g hyrax:work Audio`
   config.register_curation_concern :audio
-  # Injected via `rails g hyrax:work DataBase`
-  config.register_curation_concern :database
   # Injected via `rails g hyrax:work Map`
   config.register_curation_concern :map
   # Injected via `rails g hyrax:work Fact`
@@ -47,8 +45,8 @@ Hyrax.config do |config|
   config.register_curation_concern :legislation
   # Injected via `rails g hyrax:work GenericWork`
   config.register_curation_concern :generic_work
-  # Injected via `rails g hyrax:work DataSet`
-  config.register_curation_concern :data_set
+  # Injected via `rails g hyrax:work ResearchData`
+  config.register_curation_concern :research_data
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES

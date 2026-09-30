@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      research_data:     'fa fa-file-text-o'
+    select_type:
+      research_data:
+        description:        "Data set œuvres"
+        name:               "Données de recherche"

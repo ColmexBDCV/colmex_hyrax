@@ -17,7 +17,7 @@ es:
             Video: Video
             Audio: Audio
             Map: Mapa
-            Database: Base de Datos
+            ResearchData: Datos de investigación
             Photography: Fotografía
             Jurisprudential Thesis: Tesis Jurisprudencial
             Fact: Hecho
@@ -645,7 +645,7 @@ es:
         book_chapter: Capítulo de libro
         audio: Audio
         map: Mapa
-        database: Base de Datos
+        research_data: Datos de investigación
         photography: Fotografía
         jurisprudential_thesis: Tesis Jurisprudencial
         fact: Hecho
@@ -750,7 +750,7 @@ es:
         work_type_Jurisprudential_Thesis: Tesis Jurisprudencial
         work_type_Video: Vídeo
         work_type_Fact: Hecho
-        work_type_Database: Base de datos
+        work_type_ResearchData: Datos de investigación
         work_type_Archival_Document: Documento Archivístico
         work_type_Request: Solicitud
         work_type_Judgment: Sentencia

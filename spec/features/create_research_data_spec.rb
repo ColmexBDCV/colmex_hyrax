@@ -1,10 +1,10 @@
 # Generated via
-#  `rails generate hyrax:work DataSet`
+#  `rails generate hyrax:work ResearchData`
 require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a DataSet', js: false do
+RSpec.feature 'Create Research Data', js: false do
   context 'a logged in user' do
     let(:user_attributes) do
       { email: 'test@example.com' }
@@ -38,10 +38,10 @@ RSpec.feature 'Create a DataSet', js: false do
       click_link "Add new work"
 
       # TODO: If you generate more than one work uncomment these lines
-      # choose "payload_concern", option: "DataSet"
+      # choose "payload_concern", option: "ResearchData"
       # click_button "Create work"
 
-      expect(page).to have_content "Add New Data set"
+      expect(page).to have_content "Add New Research Data"
       click_link "Files" # switch tab
       expect(page).to have_content "Add files"
       expect(page).to have_content "Add folder"
@@ -58,7 +58,7 @@ RSpec.feature 'Create a DataSet', js: false do
       # select box. Click outside the box so the next line can't find
       # its element
       find('body').click
-      choose('data_set_visibility_open')
+      choose('research_data_visibility_open')
       expect(page).to have_content('Please note, making something visible to the world (i.e. marking this as Public) may be viewed as publishing which could impact your ability to')
       check('agreement')
 

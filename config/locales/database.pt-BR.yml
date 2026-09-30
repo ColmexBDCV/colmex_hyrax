@@ -1,8 +1,0 @@
-pt-BR:
-  hyrax:
-    icons:
-      database:     'fa fa-file-text-o'
-    select_type:
-      database:
-        description:        "Data base trabalhos"
-        name:               "Data Base"

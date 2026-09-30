@@ -1,13 +1,13 @@
 # Generated via
-#  `rails generate hyrax:work DataBase`
-class Database < ActiveFedora::Base
+#  `rails generate hyrax:work ResearchData`
+class ResearchData < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
-  self.indexer = DatabaseIndexer
+  self.indexer = ResearchDataIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
-   
+
   property :summary_of_work, predicate: ::Vocab::RDAW.summary_of_work, multiple: true do |index|
     index.type :text
     index.as :stored_searchable, :facetable

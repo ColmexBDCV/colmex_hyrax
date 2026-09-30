@@ -1,0 +1,29 @@
+es:
+  hyrax:
+    icons:
+      research_data:     'fa fa-file-text-o'
+    select_type:
+      research_data:
+        description:        "Obras de datos de investigación"
+        name:               "Datos de investigación"
+    base:
+      show:
+        summary_of_work: Resumen del proyecto
+        nature_of_content: Naturaleza del contenido
+        guide_to_work: Protocolo o guia
+        analysis_of_work: Análisis
+        complemented_by_work: Documentos complementarios
+        production_method: Medio de producción
+  blacklight:
+    search:
+      fields:
+        facet:
+          guide_to_work_sim: Protocolo o guia
+          production_method_sim: Medio de producción
+        index:
+          summary_of_work_tesim: Resumen del proyecto
+          nature_of_content_tesim: Naturaleza del contenido
+          guide_to_work_tesim: Protocolo o guia
+          analysis_of_work_tesim: Análisis
+          complemented_by_work_tesim: Documentos complementarios
+          production_method_tesim: Medio de producción
